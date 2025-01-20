@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { ChevronRightIcon } from '../icons'
+import { MapPinIcon } from '../icons'
 import { Container } from '../ui/Container'
 import { motion } from 'framer-motion'
 
@@ -19,18 +19,18 @@ export default function Hero() {
             className="mx-auto max-w-2xl flex-shrink-0 lg:mx-0 lg:max-w-xl lg:pt-8"
           >
             <div className="mt-24 sm:mt-32 lg:mt-16">
-              <Link
-                href="/contact"
-                className="inline-flex space-x-6"
-              >
-                <span className="rounded-full bg-blue-600/10 px-3 py-1 text-sm font-semibold leading-6 text-blue-600 dark:text-blue-400 ring-1 ring-inset ring-blue-600/10">
-                  Jetzt verfügbar
-                </span>
+              <div className="inline-flex space-x-6">
+                <Link
+                  href="/contact"
+                  className="rounded-full bg-blue-600/10 px-3 py-1 text-sm font-semibold leading-6 text-blue-600 dark:text-blue-400 ring-1 ring-inset ring-blue-600/10"
+                >
+                  Webdesign & SEO
+                </Link>
                 <span className="inline-flex items-center space-x-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-                  <span>Kontaktieren Sie uns</span>
-                  <ChevronRightIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
+                  <span>Made im Waldviertel</span>
+                  <MapPinIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
                 </span>
-              </Link>
+              </div>
             </div>
             
             <motion.h1 
@@ -39,7 +39,7 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              Moderne Websites für Ihren Erfolg
+              Individuelle Websites mit Fokus auf SEO
             </motion.h1>
             <motion.p 
               className="mt-6 text-lg leading-relaxed text-gray-600 dark:text-gray-400 max-w-2xl"
@@ -47,8 +47,7 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
             >
-              Wir entwickeln professionelle Websites, die nicht nur gut aussehen, sondern auch Ihre Geschäftsziele unterstützen.
-              Mit modernem Design und optimaler Performance.
+              Modern, funktional und optimiert für maximale Sichtbarkeit und nachhaltigen Erfolg. Ihre Webagentur aus dem Waldviertel, Niederösterreich – regional verwurzelt, digital vernetzt.
             </motion.p>
 
             <motion.div 
