@@ -154,7 +154,7 @@ export default function KontaktPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div>
               <label htmlFor="projectType" className="block text-sm font-medium text-gray-900 dark:text-slate-200 mb-2">
-                Projektart
+                Projektart<span className="text-red-500 ml-1" aria-hidden="true">*</span>
               </label>
               <select
                 id="projectType"
@@ -162,6 +162,7 @@ export default function KontaktPage() {
                 value={formData.projectType}
                 onChange={handleChange}
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-blue-600 dark:bg-slate-800 dark:text-white dark:ring-slate-700"
+                required
               >
                 <option value="website">Webseite</option>
                 <option value="shop">Online-Shop</option>

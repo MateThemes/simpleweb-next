@@ -6,10 +6,11 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement | HTMLTe
   error?: string
   type?: 'text' | 'email' | 'tel' | 'textarea'
   rows?: number
+  required?: boolean
 }
 
 export const Input = forwardRef<HTMLInputElement | HTMLTextAreaElement, InputProps>(
-  ({ className, label, error, type = 'text', rows = 4, ...props }, ref) => {
+  ({ className, label, error, type = 'text', rows = 4, required, ...props }, ref) => {
     const inputClasses = clsx(
       'block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm',
       'ring-1 ring-inset ring-gray-300',
@@ -34,6 +35,7 @@ export const Input = forwardRef<HTMLInputElement | HTMLTextAreaElement, InputPro
         {label && (
           <label htmlFor={props.id} className={labelClasses}>
             {label}
+            {required && <span className="text-red-500 ml-1" aria-hidden="true">*</span>}
           </label>
         )}
         <div className="relative">
@@ -49,7 +51,7 @@ export const Input = forwardRef<HTMLInputElement | HTMLTextAreaElement, InputPro
               ref={ref as React.RefObject<HTMLInputElement>}
               type={type}
               className={inputClasses}
-              {...(props as React.InputHTMLAttributes<HTMLInputElement>)}
+              {...props}
             />
           )}
         </div>
