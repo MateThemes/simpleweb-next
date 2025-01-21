@@ -66,6 +66,8 @@
   - [x] Email integration with Resend
   - [x] Validation and error handling
   - [x] Success/error feedback
+  - [x] Form reset functionality
+  - [x] Required field indicators
 - [ ] Portfolio page
 
 ### Legal Pages
@@ -100,6 +102,8 @@
   - [x] Form validation
   - [x] Email integration
   - [x] Success/error handling
+  - [x] Form reset functionality
+  - [x] Required field indicators
 - [ ] Cookie consent
   - [ ] Floating banner implementation
   - [ ] Preferences management

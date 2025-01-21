@@ -120,36 +120,76 @@ export default function DatenschutzPage() {
 
           <section>
             <h2 className="text-2xl sm:text-3xl font-display font-semibold text-gray-900 dark:text-white mb-6">
-              4. Datenerfassung auf dieser Website
+              4. Cookies und Tracking
             </h2>
             <div className="space-y-6">
               <div>
                 <h3 className="text-xl font-display font-semibold text-gray-900 dark:text-white mb-4">
                   Cookies
                 </h3>
-                <p>
-                  Unsere Internetseiten verwenden so genannte &#34;Cookies&#34;. Cookies sind kleine Textdateien und richten
-                  auf Ihrem Endgerät keinen Schaden an. Sie werden entweder vorübergehend für die Dauer einer
-                  Sitzung (Session-Cookies) oder dauerhaft (permanente Cookies) auf Ihrem Endgerät gespeichert.
-                </p>
+                <div className="space-y-4">
+                  <p>
+                    Unsere Website verwendet Cookies. Das sind kleine Textdateien, die Ihr Webbrowser auf Ihrem Endgerät speichert.
+                    Cookies helfen uns dabei, unser Angebot nutzerfreundlicher, effektiver und sicherer zu machen.
+                  </p>
+                  <p>
+                    Wir verwenden verschiedene Arten von Cookies:
+                  </p>
+                  <div className="space-y-4 pl-4">
+                    <div>
+                      <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
+                        Notwendige Cookies
+                      </h4>
+                      <p>
+                        Diese Cookies sind für den Betrieb der Website erforderlich und können nicht deaktiviert werden. 
+                        Sie werden nur als Reaktion auf von Ihnen getätigte Aktionen gesetzt, die einer Dienstanforderung entsprechen, 
+                        wie etwa dem Festlegen Ihrer Datenschutzeinstellungen oder dem Ausfüllen von Formularen.
+                      </p>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
+                        Analyse-Cookies
+                      </h4>
+                      <p>
+                        Diese Cookies ermöglichen es uns, Besuche und Verkehrsquellen zu zählen, damit wir die Leistung unserer Website messen 
+                        und verbessern können. Sie helfen uns zu verstehen, welche Seiten am beliebtesten und am wenigsten beliebt sind, 
+                        und zu sehen, wie sich Besucher auf der Website bewegen.
+                      </p>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
+                        Marketing-Cookies
+                      </h4>
+                      <p>
+                        Diese Cookies können von uns oder unseren Werbepartnern über unsere Website gesetzt werden. 
+                        Sie können verwendet werden, um ein Interessenprofil zu erstellen und Ihnen relevante Werbung 
+                        auf anderen Websites zu zeigen.
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
 
               <div>
                 <h3 className="text-xl font-display font-semibold text-gray-900 dark:text-white mb-4">
-                  Server-Log-Dateien
+                  Cookie-Einstellungen
                 </h3>
                 <p>
-                  Der Provider der Seiten erhebt und speichert automatisch Informationen in so genannten
-                  &#34;Server-Log-Dateien&#34;, die Ihr Browser automatisch an uns übermittelt. Dies sind:
+                  Sie können Ihre Cookie-Einstellungen jederzeit anpassen. Klicken Sie dazu auf den Button unten, 
+                  um Ihre Präferenzen zu überprüfen oder zu ändern.
                 </p>
-                <ul className="list-disc pl-6 mt-2 space-y-1">
-                  <li>Browsertyp und Browserversion</li>
-                  <li>Verwendetes Betriebssystem</li>
-                  <li>Referrer URL</li>
-                  <li>Hostname des zugreifenden Rechners</li>
-                  <li>Uhrzeit der Serveranfrage</li>
-                  <li>IP-Adresse</li>
-                </ul>
+                <div className="mt-4">
+                  <button
+                    onClick={() => {
+                      // Open cookie preferences
+                      const event = new CustomEvent('openCookiePreferences')
+                      window.dispatchEvent(event)
+                    }}
+                    className="inline-flex items-center rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+                  >
+                    Cookie-Einstellungen öffnen
+                  </button>
+                </div>
               </div>
             </div>
           </section>

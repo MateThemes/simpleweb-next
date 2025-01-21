@@ -1,9 +1,11 @@
-import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Inter, Outfit } from 'next/font/google'
 import { ThemeProvider } from "next-themes";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { CookieConsent } from "@/components/cookie/CookieConsent";
+import { CookieSettingsButton } from "@/components/cookie/CookieSettingsButton";
+import type { Metadata } from "next";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -31,6 +33,9 @@ const outfit = Outfit({
 export const metadata: Metadata = {
   title: "SimpleWebDesign",
   description: "Professional Web Design and Development Services",
+  verification: {
+    google: "DF5fLBHgCmP3fGWh_C86kV5DWFzFRBwm2xZadx2om9k",
+  },
 };
 
 export default function RootLayout({
@@ -53,6 +58,8 @@ export default function RootLayout({
               {children}
             </main>
             <Footer />
+            <CookieConsent />
+            <CookieSettingsButton />
           </div>
         </ThemeProvider>
       </body>
