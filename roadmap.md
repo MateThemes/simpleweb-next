@@ -68,7 +68,25 @@
   - [x] Success/error feedback
   - [x] Form reset functionality
   - [x] Required field indicators
-- [ ] Portfolio page
+- [x] Portfolio page
+  - [x] Project showcase
+  - [x] Project cards with images
+  - [x] Technology tags
+  - [x] Project status indicators
+- [ ] Preise page
+  - [ ] Service pricing tiers
+  - [ ] Feature comparison
+  - [ ] Custom quote section
+  - [ ] FAQ section
+- [ ] Prozess page
+  - [ ] Development process steps
+  - [ ] Technology stack overview
+    - [ ] Next.js projects
+    - [ ] Nuxt.js projects
+    - [ ] Astro projects
+    - [ ] CMS integrations
+  - [ ] Project timeline
+  - [ ] Tools and methodologies
 
 ### Legal Pages
 - [x] Impressum

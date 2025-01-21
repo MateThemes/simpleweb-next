@@ -241,6 +241,12 @@ export function Header() {
             >
               Blog
             </Link>
+            <Link
+              href="/portfolio"
+              className="text-base font-medium leading-6 text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-200"
+            >
+              Portfolio
+            </Link>
           </div>
         </div>
 
@@ -382,6 +388,14 @@ export function Header() {
                     onClick={() => setIsOpen(false)}
                   >
                     Blog
+                  </Link>
+
+                  <Link
+                    href="/portfolio"
+                    className="block px-3 py-3 rounded-md text-lg font-medium text-gray-600 hover:text-gray-900 dark:text-white dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Portfolio
                   </Link>
                 </div>
               </div>
