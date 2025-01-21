@@ -17,9 +17,16 @@ export async function sendEmail(formData: {
   timeline: '' | 'urgent' | 'month' | 'quarter' | 'flexible'
   description: string
 }) {
+  if (!process.env.RESEND_API_KEY) {
+    console.error('RESEND_API_KEY is not configured')
+    return { success: false, error: 'Email service not configured' }
+  }
+
   try {
+    console.log('Rendering email template...')
     const emailHtml = await render(ContactEmail(formData))
 
+    console.log('Sending email via Resend...')
     const data = await resend.emails.send({
       from: 'SimpleWebDesign <no-reply@simplewebdesign.at>',
       to: ['info@simplewebdesign.at'],
@@ -36,9 +43,21 @@ export async function sendEmail(formData: {
         Beschreibung: ${formData.description}
       `,
     })
+
+    console.log('Email sent successfully:', data)
     return { success: true, data }
   } catch (error) {
-    console.error('Error sending email:', error)
-    return { success: false, error }
+    // Log the full error object for debugging
+    console.error('Detailed error sending email:', {
+      error,
+      errorMessage: error instanceof Error ? error.message : 'Unknown error',
+      errorStack: error instanceof Error ? error.stack : undefined,
+    })
+
+    // Return a more specific error message
+    return { 
+      success: false, 
+      error: error instanceof Error ? error.message : 'Failed to send email'
+    }
   }
 }

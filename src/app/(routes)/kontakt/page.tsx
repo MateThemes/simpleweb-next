@@ -23,6 +23,7 @@ export default function KontaktPage() {
   const [errors, setErrors] = useState<Partial<FormData>>({})
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'success' | 'error' | null>(null)
+  const [errorMessage, setErrorMessage] = useState<string>('')
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target
@@ -55,6 +56,7 @@ export default function KontaktPage() {
 
     setIsSubmitting(true)
     setSubmitStatus(null)
+    setErrorMessage('')
 
     try {
       const result = await sendEmail({
@@ -74,14 +76,23 @@ export default function KontaktPage() {
         setFormData(initialFormData)
         window.scrollTo({ top: 0, behavior: 'smooth' })
       } else {
-        throw new Error('Failed to send email')
+        setSubmitStatus('error')
+        setErrorMessage(result.error?.toString() || 'Failed to send email')
       }
     } catch (err) {
       console.error('Error submitting form:', err)
       setSubmitStatus('error')
+      setErrorMessage('Ein unerwarteter Fehler ist aufgetreten')
     } finally {
       setIsSubmitting(false)
     }
+  }
+
+  const handleReset = () => {
+    setFormData(initialFormData)
+    setErrors({})
+    setSubmitStatus(null)
+    setErrorMessage('')
   }
 
   return (
@@ -235,12 +246,12 @@ export default function KontaktPage() {
           {submitStatus === 'error' && (
             <div className="rounded-md bg-red-50 dark:bg-red-900/30 p-4">
               <p className="text-sm text-red-800 dark:text-red-400">
-                Es ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut oder kontaktieren Sie uns direkt.
+                Es ist ein Fehler aufgetreten: {errorMessage || 'Bitte versuchen Sie es später erneut oder kontaktieren Sie uns direkt.'}
               </p>
             </div>
           )}
 
-          <div className="mt-8">
+          <div className="mt-8 flex flex-col sm:flex-row gap-4">
             <button
               type="submit"
               disabled={isSubmitting}
@@ -252,6 +263,21 @@ export default function KontaktPage() {
               )}
             >
               {isSubmitting ? 'Wird gesendet...' : 'Anfrage senden'}
+            </button>
+
+            <button
+              type="button"
+              onClick={handleReset}
+              className={clsx(
+                'rounded-md bg-gray-100 dark:bg-gray-700 px-6 py-3 text-base font-semibold',
+                'text-gray-900 dark:text-gray-100 shadow-sm',
+                'hover:bg-gray-200 dark:hover:bg-gray-600',
+                'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-600',
+                'transition duration-150 ease-in-out w-full sm:w-auto',
+                'border border-gray-300 dark:border-gray-600'
+              )}
+            >
+              Formular zurücksetzen
             </button>
           </div>
         </form>
