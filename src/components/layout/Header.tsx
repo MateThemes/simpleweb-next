@@ -244,17 +244,24 @@ export function Header() {
           </div>
         </div>
 
-        {/* Theme toggle button - Desktop and Mobile */}
-        <div className="flex xl:w-1/4 xl:justify-end">
-          <button
-            onClick={toggleTheme}
-            className="rounded-md p-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
-            aria-label="Toggle theme"
+        {/* Desktop Navigation - Right Side */}
+        <div className="flex items-center justify-end xl:w-1/4">
+          <Link
+            href="/kontakt"
+            className="hidden xl:flex items-center justify-center rounded-md px-3 py-2 text-sm font-semibold text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:bg-slate-800 mr-2"
           >
+            Kontakt
+          </Link>
+          <button
+            type="button"
+            onClick={toggleTheme}
+            className="rounded-md p-2 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-slate-800"
+          >
+            <span className="sr-only">Toggle theme</span>
             {theme === 'dark' ? (
-              <SunIcon className="h-5 w-5" />
+              <SunIcon className="h-6 w-6" />
             ) : (
-              <MoonIcon className="h-5 w-5" />
+              <MoonIcon className="h-6 w-6" />
             )}
           </button>
         </div>
@@ -382,11 +389,11 @@ export function Header() {
               {/* Fixed Footer with Contact Button */}
               <div className="fixed bottom-0 left-0 right-0 border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-slate-950 p-4">
                 <Link
-                  href="/contact"
+                  href="/kontakt"
                   className="flex w-full items-center justify-center rounded-full bg-gray-900 dark:bg-white px-4 py-3 text-base font-semibold text-white dark:text-gray-900 hover:bg-gray-700 dark:hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-900 dark:focus:ring-white focus:ring-offset-2"
                   onClick={() => setIsOpen(false)}
                 >
-                  Contact us
+                  Kontaktiere uns
                 </Link>
               </div>
             </div>

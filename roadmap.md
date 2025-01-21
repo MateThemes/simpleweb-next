@@ -61,13 +61,17 @@
   - [x] Core values
   - [x] CTA section
 - [ ] Blog section
-- [ ] Contact page
+- [x] Contact page
+  - [x] Form implementation
+  - [x] Email integration with Resend
+  - [x] Validation and error handling
+  - [x] Success/error feedback
 - [ ] Portfolio page
 
 ### Legal Pages
-- [ ] Impressum
-- [ ] Datenschutz
-- [ ] AGB
+- [x] Impressum
+- [x] Datenschutz
+- [x] AGB
 
 ## 4. Components & UI
 - [x] Create reusable UI components
@@ -92,12 +96,12 @@
   - [ ] Blog posts
 
 ## 6. Features & Functionality
-- [ ] Contact form
-  - [ ] Form validation
-  - [ ] Email integration
-  - [ ] Success/error handling
+- [x] Contact form
+  - [x] Form validation
+  - [x] Email integration
+  - [x] Success/error handling
 - [ ] Cookie consent
-  - [ ] Banner implementation
+  - [ ] Floating banner implementation
   - [ ] Preferences management
   - [ ] Cookie policy
 - [ ] Newsletter signup
@@ -159,12 +163,11 @@
 - [ ] SEO final check
 
 ## Priority Order
-1. Complete Homepage Sections
-2. Add Core Pages
-3. Implement Features & Functionality
-4. Optimize Performance & SEO
-5. Add Testing & Quality Measures
-6. Deploy & Monitor
+1. Complete Core Pages
+2. Implement Features & Functionality
+3. Optimize Performance & SEO
+4. Add Testing & Quality Measures
+5. Deploy & Monitor
 
 ## Notes
 - Keep tracking progress in this roadmap
