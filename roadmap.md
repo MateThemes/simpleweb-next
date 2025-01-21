@@ -104,10 +104,11 @@
   - [x] Success/error handling
   - [x] Form reset functionality
   - [x] Required field indicators
-- [ ] Cookie consent
-  - [ ] Floating banner implementation
-  - [ ] Preferences management
-  - [ ] Cookie policy
+- [x] Cookie consent
+  - [x] Floating banner implementation
+  - [x] Preferences management
+  - [x] Cookie policy
+  - [x] Settings button
 - [ ] Newsletter signup
 - [ ] Blog functionality
   - [ ] MDX implementation
