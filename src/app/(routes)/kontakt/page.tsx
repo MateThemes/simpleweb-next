@@ -4,64 +4,7 @@ import { useState } from 'react'
 import clsx from 'clsx'
 import { Container } from '@/components/ui/Container'
 import { Input } from '@/components/ui/Input'
-import { Resend } from 'resend'
-import ContactEmail, { ContactEmailProps } from '@/emails/ContactEmail'
-import { render } from '@react-email/render'
-
-const resend = new Resend(process.env.RESEND_API_KEY)
-
-async function sendEmail(formData: FormData) {
-  'use server'
-  
-  try {
-    const emailHtml = await render(ContactEmail({
-      firstName: formData.firstName as string,
-      lastName: formData.lastName as string,
-      email: formData.email as string,
-      phone: formData.phone as string,
-      company: formData.company as string,
-      projectType: formData.projectType as ProjectType,
-      budget: formData.budget as '' | 'small' | 'medium' | 'large' | 'xlarge',
-      timeline: formData.timeline as '' | 'urgent' | 'month' | 'quarter' | 'flexible',
-      description: formData.description as string,
-    } as ContactEmailProps))
-
-    const data = await resend.emails.send({
-      from: 'SimpleWebDesign <no-reply@simplewebdesign.at>',
-      to: ['info@simplewebdesign.at'],
-      subject: `Neue Projektanfrage von ${formData.firstName} ${formData.lastName}`,
-      html: emailHtml,
-      text: `
-        Name: ${formData.firstName} ${formData.lastName}
-        Email: ${formData.email}
-        Telefon: ${formData.phone}
-        Firma: ${formData.company}
-        Projektart: ${formData.projectType}
-        Budget: ${formData.budget}
-        Zeitrahmen: ${formData.timeline}
-        Beschreibung: ${formData.description}
-      `,
-    })
-    return { success: true, data }
-  } catch (error) {
-    console.error('Error sending email:', error)
-    return { success: false, error }
-  }
-}
-
-type ProjectType = 'website' | 'shop' | 'seo' | 'marketing' | 'other'
-
-interface FormData {
-  firstName: string
-  lastName: string
-  email: string
-  phone: string
-  company: string
-  projectType: ProjectType
-  budget: '' | 'small' | 'medium' | 'large' | 'xlarge'
-  timeline: '' | 'urgent' | 'month' | 'quarter' | 'flexible'
-  description: string
-}
+import { sendEmail } from './actions'
 
 const initialFormData: FormData = {
   firstName: '',
@@ -114,10 +57,22 @@ export default function KontaktPage() {
     setSubmitStatus(null)
 
     try {
-      const result = await sendEmail(formData)
+      const result = await sendEmail({
+        firstName: formData.firstName as string,
+        lastName: formData.lastName as string,
+        email: formData.email as string,
+        phone: formData.phone as string,
+        company: formData.company as string,
+        projectType: formData.projectType as ProjectType,
+        budget: formData.budget as '' | 'small' | 'medium' | 'large' | 'xlarge',
+        timeline: formData.timeline as '' | 'urgent' | 'month' | 'quarter' | 'flexible',
+        description: formData.description as string,
+      })
+      
       if (result.success) {
         setSubmitStatus('success')
         setFormData(initialFormData)
+        window.scrollTo({ top: 0, behavior: 'smooth' })
       } else {
         throw new Error('Failed to send email')
       }
@@ -302,4 +257,18 @@ export default function KontaktPage() {
       </div>
     </Container>
   )
+}
+
+type ProjectType = 'website' | 'shop' | 'seo' | 'marketing' | 'other'
+
+interface FormData {
+  firstName: string
+  lastName: string
+  email: string
+  phone: string
+  company: string
+  projectType: ProjectType
+  budget: '' | 'small' | 'medium' | 'large' | 'xlarge'
+  timeline: '' | 'urgent' | 'month' | 'quarter' | 'flexible'
+  description: string
 }
