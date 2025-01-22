@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 import Image from 'next/image'
 import { Container } from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
-import { RocketLaunchIcon, CheckIcon } from '@/components/icons'
+import { RocketIcon, CheckIcon } from '@/components/icons'
 import { serviceSchema } from '@/app/schema'
 
 export const metadata: Metadata = {
@@ -104,7 +104,7 @@ export default function PerformancePage() {
                   />
                   <div className="absolute -bottom-8 -left-8">
                     <div className="bg-orange-600 rounded-xl shadow-lg p-6 text-white">
-                      <RocketLaunchIcon className="h-8 w-8 mb-2" />
+                      <RocketIcon className="h-8 w-8 mb-2" />
                       <div className="text-2xl font-bold">0.8s</div>
                       <div className="text-sm opacity-90">Ladezeit</div>
                     </div>
@@ -129,7 +129,7 @@ export default function PerformancePage() {
             <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 sm:mt-20 lg:max-w-none lg:grid-cols-2">
               {features.map((feature, index) => (
                 <div key={index} className="flex gap-6 rounded-2xl bg-white dark:bg-neutral-800 p-8 shadow-sm">
-                  <RocketLaunchIcon className="h-8 w-8 text-orange-600 flex-shrink-0" />
+                  <RocketIcon className="h-8 w-8 text-orange-600 flex-shrink-0" />
                   <div>
                     <h3 className="font-display text-xl font-semibold text-neutral-950 dark:text-white">
                       {feature.title}

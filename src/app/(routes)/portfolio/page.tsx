@@ -111,7 +111,7 @@ export default function PortfolioPage() {
                 name: project.title,
                 description: project.description,
                 image: project.imageUrl,
-                url: project.href || "#"
+                url: "#"
               }))
             })
           ),

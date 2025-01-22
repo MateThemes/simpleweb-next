@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 interface TechFeature {
   name: string
   description: string
@@ -21,13 +23,13 @@ export function TechStack({
       <div className="p-8">
         <div className="flex items-center gap-4">
           {/* Tech Logo */}
-          <div className="h-12 w-12 flex-none">
-            <img
+          <div className="h-12 w-12 flex-none relative">
+            <Image
               src={imageUrl}
               alt={`${title} logo`}
-              className="h-12 w-12"
-              width={48}
-              height={48}
+              fill
+              className="object-contain"
+              sizes="48px"
             />
           </div>
           
