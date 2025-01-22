@@ -27,7 +27,7 @@ export async function sendEmail(formData: {
     const emailHtml = await render(ContactEmail(formData))
 
     console.log('Sending email via Resend...')
-    const data = await resend.emails.send({
+    await resend.emails.send({
       from: 'SimpleWebDesign <no-reply@simplewebdesign.at>',
       to: ['info@simplewebdesign.at'],
       subject: `Neue Projektanfrage von ${formData.firstName} ${formData.lastName}`,
@@ -44,20 +44,9 @@ export async function sendEmail(formData: {
       `,
     })
 
-    console.log('Email sent successfully:', data)
-    return { success: true, data }
+    return { success: true }
   } catch (error) {
-    // Log the full error object for debugging
-    console.error('Detailed error sending email:', {
-      error,
-      errorMessage: error instanceof Error ? error.message : 'Unknown error',
-      errorStack: error instanceof Error ? error.stack : undefined,
-    })
-
-    // Return a more specific error message
-    return { 
-      success: false, 
-      error: error instanceof Error ? error.message : 'Failed to send email'
-    }
+    console.error('Failed to send email:', error)
+    return { success: false, error: 'Failed to send email' }
   }
 }

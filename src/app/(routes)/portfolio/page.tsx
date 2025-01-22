@@ -1,10 +1,33 @@
 import { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
 import { ProjectCard } from "@/components/ui/ProjectCard";
+import { portfolioSchema } from "@/app/schema";
 
 export const metadata: Metadata = {
-  title: "Portfolio | Gerald Hüsch",
-  description: "Entdecken Sie meine Webentwicklungsprojekte und Arbeiten im Bereich moderner Webtechnologien.",
+  title: "Portfolio | Unsere Webdesign Projekte",
+  description: "Entdecken Sie unsere erfolgreichen Webdesign-Projekte. Von modernen Websites bis zu E-Commerce Lösungen - hier finden Sie Inspiration für Ihr nächstes Projekt.",
+  openGraph: {
+    title: "Portfolio | Unsere Webdesign Projekte",
+    description: "Entdecken Sie unsere erfolgreichen Webdesign-Projekte. Von modernen Websites bis zu E-Commerce Lösungen - hier finden Sie Inspiration für Ihr nächstes Projekt.",
+    url: "https://simplewebdesign.de/portfolio",
+    images: [
+      {
+        url: "/img/portfolio/showcase.jpg",
+        width: 1200,
+        height: 630,
+        alt: "SimpleWeb Design Portfolio",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Portfolio | Unsere Webdesign Projekte",
+    description: "Entdecken Sie unsere erfolgreichen Webdesign-Projekte.",
+    images: ["/img/portfolio/showcase.jpg"],
+  },
+  alternates: {
+    canonical: "https://simplewebdesign.de/portfolio",
+  },
 };
 
 const projects = [
@@ -75,27 +98,47 @@ const projects = [
 
 export default function PortfolioPage() {
   return (
-    <main className="flex-auto">
-      <Container className="mt-16 sm:mt-32">
-        <header className="max-w-2xl">
-          <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
-            Mein Portfolio
-          </h1>
-          <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-            Willkommen in meinem Portfolio! Diese Projekte repräsentieren meine Reise in der Webentwicklung
-            und zeigen meine Fähigkeiten sowie zukünftige Ambitionen. Einige befinden sich noch in der
-            Entwicklung oder Planung, aber sie spiegeln mein Engagement wider, innovative und
-            bedeutungsvolle Weblösungen zu schaffen.
-          </p>
-        </header>
-        <div className="mt-16 sm:mt-20 pb-24">
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {projects.map((project) => (
-              <ProjectCard key={project.title} {...project} />
-            ))}
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            portfolioSchema({
+              name: "SimpleWeb Design Portfolio",
+              description: "Unsere erfolgreichen Webdesign-Projekte. Von modernen Websites bis zu E-Commerce Lösungen.",
+              image: "/img/portfolio/showcase.jpg",
+              projects: projects.map((project) => ({
+                name: project.title,
+                description: project.description,
+                image: project.imageUrl,
+                url: project.href || "#"
+              }))
+            })
+          ),
+        }}
+      />
+      <main className="flex-auto">
+        <Container className="mt-16 sm:mt-32">
+          <header className="max-w-2xl">
+            <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
+              Mein Portfolio
+            </h1>
+            <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
+              Willkommen in meinem Portfolio! Diese Projekte repräsentieren meine Reise in der Webentwicklung
+              und zeigen meine Fähigkeiten sowie zukünftige Ambitionen. Einige befinden sich noch in der
+              Entwicklung oder Planung, aber sie spiegeln mein Engagement wider, innovative und
+              bedeutungsvolle Weblösungen zu schaffen.
+            </p>
+          </header>
+          <div className="mt-16 sm:mt-20 pb-24">
+            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+              {projects.map((project) => (
+                <ProjectCard key={project.title} {...project} />
+              ))}
+            </div>
           </div>
-        </div>
-      </Container>
-    </main>
+        </Container>
+      </main>
+    </>
   );
 }

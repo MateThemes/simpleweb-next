@@ -31,10 +31,53 @@ const outfit = Outfit({
 })
 
 export const metadata: Metadata = {
-  title: "SimpleWebDesign",
-  description: "Professional Web Design and Development Services",
+  metadataBase: new URL('https://simplewebdesign.de'),
+  title: {
+    default: "SimpleWebDesign | Professional Web Design and Development",
+    template: "%s | SimpleWebDesign"
+  },
+  description: "Professional Web Design and Development Services in Deutschland. Wir erstellen moderne, performante und SEO-optimierte Websites.",
+  keywords: ['web design', 'web development', 'SEO', 'hosting', 'performance optimization', 'webdesign agentur', 'webentwicklung'],
+  authors: [{ name: 'SimpleWebDesign' }],
+  creator: 'SimpleWebDesign',
+  publisher: 'SimpleWebDesign',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   verification: {
     google: "DF5fLBHgCmP3fGWh_C86kV5DWFzFRBwm2xZadx2om9k",
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'de_DE',
+    siteName: 'SimpleWebDesign',
+    images: [
+      {
+        url: '/img/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'SimpleWebDesign - Professional Web Design and Development'
+      }
+    ]
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'SimpleWebDesign | Professional Web Design and Development',
+    description: 'Professional Web Design and Development Services in Deutschland. Wir erstellen moderne, performante und SEO-optimierte Websites.',
+    images: ['/img/og-image.jpg']
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
 };
 
