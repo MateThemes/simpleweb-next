@@ -36,7 +36,7 @@ export default function ImpressumPage() {
             </h2>
             <div className="space-y-2">
               <p>Telefon: [+43 664 518 26 96]</p>
-              <p>E-Mail: info@simplewebdesign.at</p>
+              <p>E-Mail: info[at]simplewebdesign.at</p>
               <p>Dienstleistungen in der Informationstechnologie</p>
             </div>
           </section>
