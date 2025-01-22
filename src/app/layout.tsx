@@ -49,6 +49,18 @@ export const metadata: Metadata = {
   verification: {
     google: "DF5fLBHgCmP3fGWh_C86kV5DWFzFRBwm2xZadx2om9k",
   },
+  icons: {
+    icon: [
+      { url: '/img/favicon/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
+      { url: '/img/favicon/favicon.svg', type: 'image/svg+xml' },
+    ],
+    shortcut: '/img/favicon/favicon.ico',
+    apple: { url: '/img/favicon/apple-touch-icon.png', sizes: '180x180' },
+  },
+  manifest: '/img/favicon/site.webmanifest',
+  appleWebApp: {
+    title: 'SimpleWeb',
+  },
   openGraph: {
     type: 'website',
     locale: 'de_DE',

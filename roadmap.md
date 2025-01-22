@@ -70,7 +70,11 @@
   - [x] Work philosophy
   - [x] Core values
   - [x] CTA section
-- [x] Blog section
+- [ ] Blog section
+  - [ ] MDX setup
+  - [ ] Blog post templates
+  - [ ] Category system
+  - [ ] RSS feed
 - [x] Contact page
   - [x] Form implementation
   - [x] Email integration with Resend
@@ -117,8 +121,15 @@
   - [x] Implement next/image
   - [x] Add proper image sizes
   - [x] Add WebP format support
-- [x] Add sitemap.xml
-- [x] Implement robots.txt
+- [ ] Add sitemap.xml
+  - [ ] Configure dynamic sitemap generation
+  - [ ] Include all routes
+  - [ ] Add lastmod dates
+  - [ ] Set proper priorities
+- [ ] Implement robots.txt
+  - [ ] Define crawling rules
+  - [ ] Add sitemap location
+  - [ ] Set proper user-agent rules
 - [x] Add schema markup for:
   - [x] Organization
   - [x] Services
@@ -132,23 +143,33 @@
   - [x] Success/error handling
   - [x] Form reset functionality
   - [x] Required field indicators
-- [x] Cookie consent
-  - [x] Floating banner implementation
-  - [x] Preferences management
-  - [x] Cookie policy
-  - [x] Settings button
+- [ ] Cookie consent
+  - [ ] Design GDPR-compliant banner
+  - [ ] Implement consent management system
+  - [ ] Add granular cookie preferences
+  - [ ] Store consent in localStorage
+  - [ ] Block GA until consent is given
+  - [ ] Add cookie policy page
+  - [ ] Add consent withdrawal option
+- [ ] Blog functionality
+  - [ ] MDX implementation
+  - [ ] Categories and tags
+  - [ ] Search functionality
+  - [ ] RSS feed implementation
+  - [ ] Social sharing
 - [x] Newsletter signup
-- [x] Blog functionality
-  - [x] MDX implementation
-  - [x] Categories and tags
-  - [x] Search functionality
 - [x] Service inquiry form
 
 ## 7. Testing & Quality
 - [x] Add unit tests
 - [x] Add E2E tests
 - [x] Implement error tracking
-- [x] Add analytics
+- [ ] Add analytics
+  - [ ] Set up Google Analytics account
+  - [ ] Implement GA4 tracking code
+  - [ ] Configure custom events
+  - [ ] Set up conversion tracking
+  - [ ] Implement privacy-compliant cookie consent
 - [x] Performance monitoring
 - [x] Accessibility testing
 
