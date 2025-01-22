@@ -43,7 +43,7 @@ export default function Cta() {
                     className="flex flex-col sm:flex-row gap-6 justify-center items-center"
                   >
                     <Link
-                      href="/contact"
+                      href="/kontakt"
                       className="group text-lg px-8 py-4 min-w-[200px] rounded-xl bg-white text-gray-900 hover:bg-gray-50 transition-colors duration-200"
                     >
                       Jetzt starten
