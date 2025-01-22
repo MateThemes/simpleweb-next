@@ -11,7 +11,8 @@ import {
   BrushIcon,
   RocketIcon,
   CheckIcon,
-  ArrowRightIcon
+  ArrowRightIcon,
+  ServerIcon
 } from '../icons'
 
 const services = [
@@ -78,11 +79,25 @@ const services = [
     icon: RocketIcon,
     bgColor: 'bg-orange-600',
     image: '/img/services/performance.jpg',
-    link: '/services/webdesign#performance',
+    link: '/services/performance',
     features: [
-      'Schnelle Ladezeiten',
-      'Optimierte Assets',
+      'Core Web Vitals',
+      'Asset-Optimierung',
       'Caching-Strategien'
+    ]
+  },
+  {
+    id: 'hosting',
+    title: 'Hosting-Beratung',
+    description: 'Professionelle Beratung für die optimale Hosting-Lösung Ihres Projekts.',
+    icon: ServerIcon,
+    bgColor: 'bg-teal-600',
+    image: '/img/services/hosting.jpg',
+    link: '/services/hosting',
+    features: [
+      'Vercel & IONOS Partner',
+      'SSL & Sicherheit',
+      'Performance-Optimierung'
     ]
   }
 ]

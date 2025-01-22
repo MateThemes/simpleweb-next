@@ -230,6 +230,24 @@ export function Header() {
               )}
             </div>
             <Link
+              href="/preise"
+              className="text-base font-medium leading-6 text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-200"
+            >
+              Preise
+            </Link>
+            <Link
+              href="/prozess"
+              className="text-base font-medium leading-6 text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-200"
+            >
+              Prozess
+            </Link>
+            <Link
+              href="/portfolio"
+              className="text-base font-medium leading-6 text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-200"
+            >
+              Portfolio
+            </Link>
+            <Link
               href="/ueber-uns"
               className="text-base font-medium leading-6 text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-200"
             >
@@ -240,12 +258,6 @@ export function Header() {
               className="text-base font-medium leading-6 text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-200"
             >
               Blog
-            </Link>
-            <Link
-              href="/portfolio"
-              className="text-base font-medium leading-6 text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-200"
-            >
-              Portfolio
             </Link>
           </div>
         </div>
@@ -375,6 +387,30 @@ export function Header() {
                   </div>
 
                   <Link
+                    href="/preise"
+                    className="block px-3 py-3 rounded-md text-lg font-medium text-gray-600 hover:text-gray-900 dark:text-white dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Preise
+                  </Link>
+
+                  <Link
+                    href="/prozess"
+                    className="block px-3 py-3 rounded-md text-lg font-medium text-gray-600 hover:text-gray-900 dark:text-white dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Prozess
+                  </Link>
+
+                  <Link
+                    href="/portfolio"
+                    className="block px-3 py-3 rounded-md text-lg font-medium text-gray-600 hover:text-gray-900 dark:text-white dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Portfolio
+                  </Link>
+
+                  <Link
                     href="/ueber-uns"
                     className="block px-3 py-3 rounded-md text-lg font-medium text-gray-600 hover:text-gray-900 dark:text-white dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
                     onClick={() => setIsOpen(false)}
@@ -388,14 +424,6 @@ export function Header() {
                     onClick={() => setIsOpen(false)}
                   >
                     Blog
-                  </Link>
-
-                  <Link
-                    href="/portfolio"
-                    className="block px-3 py-3 rounded-md text-lg font-medium text-gray-600 hover:text-gray-900 dark:text-white dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    Portfolio
                   </Link>
                 </div>
               </div>
