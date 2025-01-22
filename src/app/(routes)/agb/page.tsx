@@ -21,7 +21,7 @@ export default function AGBPage() {
             </h2>
             <div className="space-y-4">
               <p>
-                Diese Allgemeinen Geschäftsbedingungen (nachfolgend &quot;AGB&quot;) gelten für alle zwischen SimpleWebDesign
+                Diese Allgemeinen Geschäftsbedingungen (nachfolgend &quot;AGB&quot;) gelten für alle zwischen Gerald Schandl (SimpleWebDesign)
                 (nachfolgend &quot;Agentur&quot;) und dem Auftraggeber geschlossenen Verträge über die Erbringung von
                 Webdesign-, SEO- und Marketingdienstleistungen.
               </p>
