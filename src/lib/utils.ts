@@ -5,18 +5,26 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-type AvatarStyle = 'avataaars' | 'initials' | 'bottts' | 'personas'
-type AvatarOptions = {
-  style?: AvatarStyle
-  background?: string
+function normalizeGermanChars(str: string): string {
+  return str
+    .replace(/ä/g, 'ae')
+    .replace(/ö/g, 'oe')
+    .replace(/ü/g, 'ue')
+    .replace(/ß/g, 'ss')
+    .replace(/Ä/g, 'Ae')
+    .replace(/Ö/g, 'Oe')
+    .replace(/Ü/g, 'Ue')
 }
 
-export function getPlaceholderAvatar(seed: string, options: AvatarOptions = {}) {
-  const { style = 'avataaars', background } = options
-  const baseUrl = 'https://api.dicebear.com/7.x'
-  const backgroundParam = background ? `&backgroundColor=${background}` : ''
+export function getPlaceholderAvatar(name: string, options?: { style?: 'personas' }) {
+  const style = options?.style || 'personas'
+  const normalizedName = normalizeGermanChars(name)
   
-  return `${baseUrl}/${style}/svg?seed=${encodeURIComponent(seed)}${backgroundParam}`
+  // For production, we should use local placeholder images
+  return `/img/avatars/${style}/placeholder-${normalizedName.toLowerCase().replace(/\s+/g, '-')}.jpg`
+  
+  // Alternatively, if we don't have local images yet, we can use a service like DiceBear
+  // return `https://api.dicebear.com/7.x/${style}/svg?seed=${encodeURIComponent(name)}`
 }
 
 // Example usage:
