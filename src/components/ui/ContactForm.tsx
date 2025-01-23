@@ -16,6 +16,7 @@ interface FormData {
   timeline: '' | 'urgent' | 'month' | 'quarter' | 'flexible'
   description: string
   privacyAccepted: boolean
+  _honeypot: string
 }
 
 interface FormErrors {
@@ -42,6 +43,7 @@ const initialFormData: FormData = {
   timeline: '',
   description: '',
   privacyAccepted: false,
+  _honeypot: ''
 }
 
 interface ContactFormProps {
@@ -54,6 +56,7 @@ export function ContactForm({ className }: ContactFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'success' | 'error' | null>(null)
   const [errorMessage, setErrorMessage] = useState<string>('')
+  const [formStartTime] = useState<number>(Date.now())
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement> | 
@@ -88,6 +91,21 @@ export function ContactForm({ className }: ContactFormProps) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!validateForm()) return
+
+    // Check if form was filled too quickly (likely a bot)
+    const timeDiff = Date.now() - formStartTime
+    if (timeDiff < 5000) { // Less than 5 seconds
+      setSubmitStatus('error')
+      setErrorMessage('Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.')
+      return
+    }
+
+    // Check honeypot
+    if (formData._honeypot) {
+      setSubmitStatus('error')
+      setErrorMessage('Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.')
+      return
+    }
 
     setIsSubmitting(true)
     setSubmitStatus(null)
@@ -230,6 +248,20 @@ export function ContactForm({ className }: ContactFormProps) {
           rows={4}
           placeholder="Beschreiben Sie Ihr Projekt und Ihre Ziele..."
           className="mt-2 block w-full rounded-md border-0 px-4 py-3.5 text-base text-neutral-950 shadow-sm ring-1 ring-inset ring-neutral-200 placeholder:text-neutral-500 focus:ring-2 focus:ring-inset focus:ring-neutral-950 dark:bg-white/5 dark:text-white dark:ring-neutral-800 dark:placeholder:text-neutral-400 dark:focus:ring-white"
+        />
+      </div>
+
+      {/* Honeypot field - hidden from real users */}
+      <div className="hidden" aria-hidden="true">
+        <label htmlFor="_honeypot">Leave this field empty</label>
+        <input
+          type="text"
+          id="_honeypot"
+          name="_honeypot"
+          value={formData._honeypot}
+          onChange={handleChange}
+          tabIndex={-1}
+          autoComplete="off"
         />
       </div>
 
