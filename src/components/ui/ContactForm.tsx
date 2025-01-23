@@ -15,6 +15,20 @@ interface FormData {
   budget: '' | 'small' | 'medium' | 'large' | 'xlarge'
   timeline: '' | 'urgent' | 'month' | 'quarter' | 'flexible'
   description: string
+  privacyAccepted: boolean
+}
+
+interface FormErrors {
+  firstName?: string;
+  lastName?: string;
+  email?: string;
+  phone?: string;
+  company?: string;
+  projectType?: string;
+  budget?: string;
+  timeline?: string;
+  description?: string;
+  privacyAccepted?: string;
 }
 
 const initialFormData: FormData = {
@@ -27,6 +41,7 @@ const initialFormData: FormData = {
   budget: '',
   timeline: '',
   description: '',
+  privacyAccepted: false,
 }
 
 interface ContactFormProps {
@@ -35,22 +50,25 @@ interface ContactFormProps {
 
 export function ContactForm({ className }: ContactFormProps) {
   const [formData, setFormData] = useState<FormData>(initialFormData)
-  const [errors, setErrors] = useState<Partial<FormData>>({})
+  const [errors, setErrors] = useState<FormErrors>({})
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'success' | 'error' | null>(null)
   const [errorMessage, setErrorMessage] = useState<string>('')
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement> | 
+    { target: { name: string; value: string | boolean } }
+  ) => {
     const { name, value } = e.target
     setFormData(prev => ({ ...prev, [name]: value }))
     // Clear error when user starts typing
-    if (errors[name as keyof FormData]) {
+    if (errors[name as keyof FormErrors]) {
       setErrors(prev => ({ ...prev, [name]: undefined }))
     }
   }
 
   const validateForm = (): boolean => {
-    const newErrors: Partial<FormData> = {}
+    const newErrors: FormErrors = {}
 
     if (!formData.firstName) newErrors.firstName = 'Bitte geben Sie Ihren Vornamen ein'
     if (!formData.lastName) newErrors.lastName = 'Bitte geben Sie Ihren Nachnamen ein'
@@ -58,6 +76,9 @@ export function ContactForm({ className }: ContactFormProps) {
       newErrors.email = 'Bitte geben Sie Ihre E-Mail-Adresse ein'
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       newErrors.email = 'Bitte geben Sie eine gültige E-Mail-Adresse ein'
+    }
+    if (!formData.privacyAccepted) {
+      newErrors.privacyAccepted = 'Bitte akzeptieren Sie die Datenschutzerklärung'
     }
 
     setErrors(newErrors)
@@ -210,6 +231,35 @@ export function ContactForm({ className }: ContactFormProps) {
           placeholder="Beschreiben Sie Ihr Projekt und Ihre Ziele..."
           className="mt-2 block w-full rounded-md border-0 px-4 py-3.5 text-base text-neutral-950 shadow-sm ring-1 ring-inset ring-neutral-200 placeholder:text-neutral-500 focus:ring-2 focus:ring-inset focus:ring-neutral-950 dark:bg-white/5 dark:text-white dark:ring-neutral-800 dark:placeholder:text-neutral-400 dark:focus:ring-white"
         />
+      </div>
+
+      {/* Privacy Policy Checkbox */}
+      <div className="sm:col-span-2">
+        <div className="flex items-start">
+          <div className="flex items-center h-6">
+            <input
+              id="privacy"
+              name="privacyAccepted"
+              type="checkbox"
+              checked={formData.privacyAccepted}
+              onChange={(e) => handleChange({ 
+                target: { 
+                  name: 'privacyAccepted', 
+                  value: e.target.checked 
+                } 
+              })}
+              className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-600 dark:border-gray-600 dark:focus:ring-blue-600"
+            />
+          </div>
+          <div className="ml-3">
+            <label htmlFor="privacy" className="text-sm text-gray-600 dark:text-gray-400">
+              Ich akzeptiere die <a href="/datenschutz" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline dark:text-blue-400">Datenschutzerklärung</a>
+            </label>
+            {errors.privacyAccepted && (
+              <p className="mt-1 text-sm text-red-600">{errors.privacyAccepted}</p>
+            )}
+          </div>
+        </div>
       </div>
 
       {/* Submit Button and Status Messages */}
