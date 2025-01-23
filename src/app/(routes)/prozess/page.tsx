@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import Image from 'next/image'
+import React from 'react'
 import { Container } from '@/components/ui/Container'
 import { processSchema } from '@/app/schema'
 
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Unser Prozess | Webdesign Workflow',
     description: 'Erfahren Sie mehr über unseren bewährten Webdesign-Prozess. Von der ersten Konzeption bis zum Launch Ihrer Website - transparent und effizient.',
-    url: 'https://simplewebdesign.de/prozess',
+    url: 'https://simplewebdesign.at/prozess',
     images: [
       {
         url: '/img/process/workflow.jpg',
@@ -92,6 +93,8 @@ export default function ProcessPage() {
                     src={step.image}
                     alt={step.name}
                     fill
+                    sizes="(min-width: 1024px) 50vw, 100vw"
+                    priority={index === 0}
                     className="object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/60 to-neutral-900/0" />
