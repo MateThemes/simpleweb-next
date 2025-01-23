@@ -32,7 +32,7 @@ const outfit = Outfit({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://simplewebdesign.de'),
+  metadataBase: new URL('https://simplewebdesign.at'),
   title: {
     default: "SimpleWebDesign | Professional Web Design and Development",
     template: "%s | SimpleWebDesign"

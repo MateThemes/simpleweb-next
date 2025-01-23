@@ -90,7 +90,7 @@ export function serviceSchema({ name, description, image }: ServiceSchemaProps) 
     "description": description,
     "provider": {
       "@type": "Organization",
-      "name": "SimpleWeb Design",
+      "name": "SimpleWebDesign",
       "image": image
     }
   };

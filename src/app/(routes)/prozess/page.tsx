@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     images: ['/img/process/workflow.jpg']
   },
   alternates: {
-    canonical: 'https://simplewebdesign.de/prozess'
+    canonical: 'https://simplewebdesign.at/prozess'
   }
 }
 
