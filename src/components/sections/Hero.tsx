@@ -20,12 +20,11 @@ export default function Hero() {
           >
             <div className="mt-24 sm:mt-32 lg:mt-16">
               <div className="inline-flex space-x-6">
-                <Link
-                  href="/contact"
+                <span
                   className="rounded-full bg-blue-600/10 px-3 py-1 text-sm font-semibold leading-6 text-blue-600 dark:text-blue-400 ring-1 ring-inset ring-blue-600/10"
                 >
                   Webdesign & SEO
-                </Link>
+                </span>
                 <span className="inline-flex items-center space-x-2 text-sm font-medium text-gray-600 dark:text-gray-400">
                   <span>Made im Waldviertel</span>
                   <MapPinIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
@@ -57,16 +56,16 @@ export default function Hero() {
               transition={{ duration: 0.5, delay: 0.4 }}
             >
               <Link
-                href="/contact"
+                href="/kontakt"
                 className="rounded-xl bg-blue-600 px-6 py-3 text-base font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-colors duration-200"
               >
                 Kostenloses Erstgespräch
               </Link>
               <Link
-                href="/services"
+                href="/preise"
                 className="text-base font-semibold text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-300"
               >
-                Unsere Leistungen <span aria-hidden="true">→</span>
+                Unsere Preise <span aria-hidden="true">→</span>
               </Link>
             </motion.div>
           </div>
