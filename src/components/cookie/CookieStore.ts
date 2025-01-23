@@ -24,7 +24,7 @@ export function getCookiePreferences(): CookiePreferences {
   if (!preferences) return defaultPreferences
 
   try {
-    return JSON.parse(preferences)
+    return JSON.parse(preferences) as CookiePreferences
   } catch {
     return defaultPreferences
   }
@@ -65,27 +65,80 @@ export function hasConsented(): boolean {
   return Cookies.get(COOKIE_PREFERENCES_KEY) !== undefined
 }
 
-// Placeholder functions for managing specific cookie categories
+type ConsentEvent = {
+  consent: 'default' | 'update';
+  analytics_storage: 'granted' | 'denied';
+  ad_storage: 'granted' | 'denied';
+  ad_user_data: 'granted' | 'denied';
+  ad_personalization: 'granted' | 'denied';
+}
+
+type GTMEvent = {
+  'gtm.start'?: number;
+  event?: string;
+} | ConsentEvent
+
+declare global {
+  interface Window {
+    dataLayer: GTMEvent[];
+  }
+}
+
 function enableAnalytics() {
-  // TODO: Implement analytics cookies (e.g., Google Analytics)
+  window.dataLayer = window.dataLayer || []
+  const consentEvent: ConsentEvent = {
+    consent: 'update',
+    analytics_storage: 'granted',
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied'
+  }
+  window.dataLayer.push(consentEvent)
   console.log('Analytics cookies enabled')
 }
 
 function disableAnalytics() {
+  window.dataLayer = window.dataLayer || []
+  const consentEvent: ConsentEvent = {
+    consent: 'update',
+    analytics_storage: 'denied',
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied'
+  }
+  window.dataLayer.push(consentEvent)
   // Remove analytics cookies
-  Cookies.remove('_ga')
-  Cookies.remove('_gid')
-  Cookies.remove('_gat')
+  Cookies.remove('_ga', { path: '/' })
+  Cookies.remove('_gid', { path: '/' })
+  Cookies.remove('_gat', { path: '/' })
   console.log('Analytics cookies disabled')
 }
 
 function enableMarketing() {
-  // TODO: Implement marketing cookies
+  window.dataLayer = window.dataLayer || []
+  const consentEvent: ConsentEvent = {
+    consent: 'update',
+    analytics_storage: 'granted',
+    ad_storage: 'granted',
+    ad_user_data: 'granted',
+    ad_personalization: 'granted'
+  }
+  window.dataLayer.push(consentEvent)
   console.log('Marketing cookies enabled')
 }
 
 function disableMarketing() {
+  window.dataLayer = window.dataLayer || []
+  const consentEvent: ConsentEvent = {
+    consent: 'update',
+    analytics_storage: 'denied',
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied'
+  }
+  window.dataLayer.push(consentEvent)
   // Remove marketing cookies
-  // Add specific marketing cookie names here
+  Cookies.remove('_gcl_au', { path: '/' })
+  Cookies.remove('_gac_', { path: '/' })
   console.log('Marketing cookies disabled')
 }

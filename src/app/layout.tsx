@@ -5,6 +5,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { CookieConsent } from "@/components/cookie/CookieConsent";
 import { CookieSettingsButton } from "@/components/cookie/CookieSettingsButton";
+import { GoogleTagManager } from "@/components/analytics/GoogleTagManager";
 import type { Metadata } from "next";
 import "./globals.css";
 
@@ -99,25 +100,26 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="de" className={`${inter.variable} ${outfit.variable}`} suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <div className="bg-white dark:bg-slate-950 transition-colors">
-            <Header />
-            <main className="flex-1">
-              {children}
-            </main>
-            <Footer />
-            <CookieConsent />
-            <CookieSettingsButton />
-          </div>
+    <html
+      lang="de"
+      className={`${inter.variable} ${outfit.variable} ${geistSans.variable} ${geistMono.variable}`}
+      suppressHydrationWarning
+    >
+      <head>
+        <GoogleTagManager />
+      </head>
+      <body className="flex min-h-screen flex-col bg-white dark:bg-gray-950">
+        <GoogleTagManager />
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <Header />
+          <main className="flex-1">
+            {children}
+          </main>
+          <Footer />
+          <CookieConsent />
+          <CookieSettingsButton />
         </ThemeProvider>
       </body>
     </html>
-  )
+  );
 }
