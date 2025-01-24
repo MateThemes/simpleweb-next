@@ -1,41 +1,38 @@
-import { Container } from '@/components/ui/Container'
-import { BlogCard } from '@/components/blog'
-import { getAllPosts } from '@/lib/mdx'
-import { Metadata } from 'next'
-import { PaginationControls } from '@/components/blog'
+'use client';
 
-export const metadata: Metadata = {
-  title: 'Blog | SimpleWebDesign',
-  description: 'Aktuelle Artikel und Insights zu Webdesign, SEO und Online Marketing.',
-}
+import { useSearchParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import { Container } from '@/components/ui/Container';
+import { BlogCard } from '@/components/blog';
+import { getAllPosts } from '@/lib/mdx';
+import { PaginationControls } from '@/components/blog';
+import { Post } from '@/lib/types';
 
-const POSTS_PER_PAGE = 6
+const POSTS_PER_PAGE = 6;
 
-interface SearchParams {
-  page?: string
-}
+export default function BlogPage() {
+  const searchParams = useSearchParams();
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [paginatedPosts, setPaginatedPosts] = useState<Post[]>([]);
 
-interface PageProps {
-  searchParams: SearchParams
-}
+  useEffect(() => {
+    async function fetchPageData() {
+      const page = searchParams.get('page');
+      const currentPageNumber = page ? parseInt(page, 10) : 1;
 
-async function getPageData(searchParams: SearchParams) {
-  const currentPage = searchParams.page ? parseInt(searchParams.page) : 1
-  
-  const posts = await getAllPosts()
-  const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE)
-  const startIndex = (currentPage - 1) * POSTS_PER_PAGE
-  const paginatedPosts = posts.slice(startIndex, startIndex + POSTS_PER_PAGE)
+      const posts = await getAllPosts();
+      const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
+      const startIndex = (currentPageNumber - 1) * POSTS_PER_PAGE;
+      const paginatedPosts = posts.slice(startIndex, startIndex + POSTS_PER_PAGE);
 
-  return {
-    currentPage,
-    totalPages,
-    paginatedPosts
-  }
-}
+      setCurrentPage(currentPageNumber);
+      setTotalPages(totalPages);
+      setPaginatedPosts(paginatedPosts);
+    }
 
-export default async function BlogPage({ searchParams }: PageProps) {
-  const { currentPage, totalPages, paginatedPosts } = await getPageData(searchParams)
+    fetchPageData();
+  }, [searchParams]);
 
   return (
     <main>
@@ -69,5 +66,5 @@ export default async function BlogPage({ searchParams }: PageProps) {
         </div>
       </Container>
     </main>
-  )
+  );
 }
