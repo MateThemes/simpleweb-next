@@ -6,10 +6,11 @@ import { BlogContent } from '@/components/blog/BlogContent'
 import { getAllPosts, getPostBySlug } from '@/lib/mdx'
 import { formatDate } from '@/lib/utils'
 
-interface Props {
+type PageProps = {
   params: {
     slug: string
   }
+  searchParams: { [key: string]: string | string[] | undefined }
 }
 
 export async function generateStaticParams() {
@@ -20,7 +21,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata(
-  { params }: Props
+  { params }: PageProps
 ): Promise<Metadata> {
   const post = await getPostBySlug(params.slug)
 
@@ -57,7 +58,7 @@ export async function generateMetadata(
   }
 }
 
-export default async function BlogPost({ params }: Props) {
+export default async function BlogPost({ params, searchParams }: PageProps) {
   const post = await getPostBySlug(params.slug)
 
   if (!post) {
