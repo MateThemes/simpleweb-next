@@ -5,4 +5,6 @@ export interface Post {
   slug: string;
   image: string;
   category: string;
+  author: string;
+  content?: string;
 }

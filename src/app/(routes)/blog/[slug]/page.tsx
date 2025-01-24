@@ -5,6 +5,7 @@ import { Container } from '@/components/ui/Container'
 import { BlogContent } from '@/components/blog/BlogContent'
 import { getAllPosts, getPostBySlug } from '@/lib/mdx'
 import { formatDate } from '@/lib/utils'
+import { Post } from '@/lib/types'
 
 interface PageParams {
   slug: string
@@ -23,7 +24,7 @@ export async function generateStaticParams(): Promise<PageParams[]> {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const post = await getPostBySlug(params.slug)
+  const post: Post | null = await getPostBySlug(params.slug)
 
   if (!post) {
     return {
@@ -59,10 +60,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function BlogPage({ params }: Props) {
-  const post = await getPostBySlug(params.slug)
+  const post: Post | null = await getPostBySlug(params.slug)
 
   if (!post) {
     console.error(`Post not found for slug: ${params.slug}`) // Debug log
+    notFound()
+  }
+
+  if (!post.content) {
+    console.error(`Post content missing for slug: ${params.slug}`) // Debug log
     notFound()
   }
 
