@@ -27,8 +27,7 @@ export async function generateStaticParams(): Promise<PageParams[]> {
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const resolvedParams = await params;
-  const post: Post | null = await getPostBySlug(resolvedParams.slug)
+  const post: Post | null = await getPostBySlug((await params).slug)
 
   if (!post) {
     return {
@@ -64,16 +63,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default async function BlogPage({ params }: PageProps) {
-  const resolvedParams = await params;
-  const post: Post | null = await getPostBySlug(resolvedParams.slug)
+  const post: Post | null = await getPostBySlug((await params).slug)
 
   if (!post) {
-    console.error(`Post not found for slug: ${resolvedParams.slug}`) // Debug log
+    console.error(`Post not found for slug: (await params).slug`) // Debug log
     notFound()
   }
 
   if (!post.content) {
-    console.error(`Post content missing for slug: ${resolvedParams.slug}`) // Debug log
+    console.error(`Post content missing for slug: (await params).slug`) // Debug log
     notFound()
   }
 
