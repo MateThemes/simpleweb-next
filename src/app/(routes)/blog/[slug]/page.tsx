@@ -11,11 +11,6 @@ interface PageParams {
   slug: string
 }
 
-interface PageProps {
-  params: Promise<{ [key: string]: string }>
-  searchParams?: { [key: string]: string | string[] | undefined }
-}
-
 export async function generateStaticParams(): Promise<PageParams[]> {
   const posts = await getAllPosts()
   console.log('Generated paths:', posts.map(p => p.slug)) // Debug log
