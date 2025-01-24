@@ -13,11 +13,13 @@ export async function generateStaticParams() {
   }))
 }
 
-type Props = {
+type GenerateMetadataProps = {
   params: { slug: string }
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata(
+  { params }: GenerateMetadataProps
+): Promise<Metadata> {
   const post = await getPostBySlug(params.slug)
 
   if (!post) {
@@ -53,7 +55,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-async function BlogPost({ params }: Props) {
+type PageProps = {
+  params: { slug: string }
+}
+
+export default async function BlogPost({ params }: PageProps) {
   const post = await getPostBySlug(params.slug)
 
   if (!post) {
@@ -101,5 +107,3 @@ async function BlogPost({ params }: Props) {
     </main>
   )
 }
-
-export default BlogPost
