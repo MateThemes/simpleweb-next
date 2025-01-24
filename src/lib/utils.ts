@@ -16,6 +16,14 @@ function normalizeGermanChars(str: string): string {
     .replace(/Ü/g, 'Ue')
 }
 
+export function formatDate(date: string) {
+  return new Date(date).toLocaleDateString('de-AT', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  })
+}
+
 export function getPlaceholderAvatar(name: string, options?: { style?: 'personas' }) {
   const style = options?.style || 'personas'
   const normalizedName = normalizeGermanChars(name)

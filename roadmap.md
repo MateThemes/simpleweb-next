@@ -70,6 +70,11 @@
   - [x] Work philosophy
   - [x] Core values
   - [x] CTA section
+- [x] 404 page
+  - [x] Custom error message
+  - [x] Navigation options
+  - [x] Responsive design
+  - [x] Dark mode support
 - [ ] Blog section
   - [ ] MDX setup
   - [ ] Blog post templates

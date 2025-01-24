@@ -1,4 +1,5 @@
 import { MetadataRoute } from 'next'
+import { getAllPosts, getAllCategories } from '@/lib/mdx'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://simplewebdesign.at'
@@ -55,9 +56,40 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.3
   }))
 
+  // Get all blog posts
+  const posts = await getAllPosts()
+  const categories = await getAllCategories()
+
+  // Generate blog post entries
+  const blogEntries = posts.map(post => ({
+    url: `${baseUrl}/blog/${post.slug}`,
+    lastModified: new Date(post.date),
+    changeFrequency: 'monthly' as const,
+    priority: 0.7
+  }))
+
+  // Generate blog category entries
+  const categoryEntries = categories.map(category => ({
+    url: `${baseUrl}/blog/kategorie/${category.slug}`,
+    lastModified,
+    changeFrequency: 'monthly' as const,
+    priority: 0.6
+  }))
+
+  // Add main blog page
+  const blogMainEntry = {
+    url: `${baseUrl}/blog`,
+    lastModified,
+    changeFrequency: 'weekly' as const,
+    priority: 0.8
+  }
+
   return [
     ...mainEntries,
     ...serviceEntries,
     ...legalEntries,
+    blogMainEntry,
+    ...blogEntries,
+    ...categoryEntries,
   ]
 }
