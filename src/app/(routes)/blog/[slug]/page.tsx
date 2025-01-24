@@ -6,10 +6,6 @@ import { BlogContent } from '@/components/blog/BlogContent'
 import { getAllPosts, getPostBySlug } from '@/lib/mdx'
 import { formatDate } from '@/lib/utils'
 
-interface BlogParams {
-  slug: string;
-}
-
 export async function generateStaticParams() {
   const posts = await getAllPosts()
   return posts.map((post) => ({
@@ -17,9 +13,11 @@ export async function generateStaticParams() {
   }))
 }
 
-export async function generateMetadata(
-  { params }: { params: BlogParams }
-): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string }
+}): Promise<Metadata> {
   const post = await getPostBySlug(params.slug)
 
   if (!post) {
@@ -55,7 +53,7 @@ export async function generateMetadata(
   }
 }
 
-export default async function page({ params }: { params: BlogParams }) {
+const page = async ({ params }: { params: { slug: string } }) => {
   const post = await getPostBySlug(params.slug)
 
   if (!post) {
@@ -103,3 +101,5 @@ export default async function page({ params }: { params: BlogParams }) {
     </main>
   )
 }
+
+export default page
