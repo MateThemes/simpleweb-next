@@ -18,8 +18,6 @@ interface PageProps {
   searchParams?: { [key: string]: string | string[] | undefined }
 }
 
-interface Props extends PageProps {}
-
 export async function generateStaticParams(): Promise<PageParams[]> {
   const posts = await getAllPosts()
   console.log('Generated paths:', posts.map(p => p.slug)) // Debug log
@@ -28,7 +26,7 @@ export async function generateStaticParams(): Promise<PageParams[]> {
   }))
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const post: Post | null = await getPostBySlug(params.slug)
 
   if (!post) {
@@ -64,7 +62,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-export default async function BlogPage({ params }: Props) {
+export default async function BlogPage({ params }: PageProps) {
   const post: Post | null = await getPostBySlug(params.slug)
 
   if (!post) {
