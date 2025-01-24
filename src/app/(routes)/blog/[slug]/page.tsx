@@ -1,4 +1,4 @@
-import type { Metadata, PageProps } from 'next'
+import type { Metadata } from 'next'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { Container } from '@/components/ui/Container'
@@ -6,15 +6,24 @@ import { BlogContent } from '@/components/blog/BlogContent'
 import { getAllPosts, getPostBySlug } from '@/lib/mdx'
 import { formatDate } from '@/lib/utils'
 
-export async function generateStaticParams() {
+interface PageParams {
+  slug: string
+}
+
+interface Props {
+  params: PageParams
+}
+
+export async function generateStaticParams(): Promise<PageParams[]> {
   const posts = await getAllPosts()
+  console.log('Generated paths:', posts.map(p => p.slug)) // Debug log
   return posts.map((post) => ({
     slug: post.slug,
   }))
 }
 
-export async function generateMetadata(props: PageProps): Promise<Metadata> {
-  const post = await getPostBySlug(props.params.slug)
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const post = await getPostBySlug(params.slug)
 
   if (!post) {
     return {
@@ -49,10 +58,11 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
   }
 }
 
-export default async function Page(props: PageProps) {
-  const post = await getPostBySlug(props.params.slug)
+export default async function BlogPage({ params }: Props) {
+  const post = await getPostBySlug(params.slug)
 
   if (!post) {
+    console.error(`Post not found for slug: ${params.slug}`) // Debug log
     notFound()
   }
 

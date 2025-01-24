@@ -11,38 +11,36 @@ const POSTS_PER_PAGE = 6;
 
 export default function BlogPage() {
   const searchParams = useSearchParams();
-  const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
-  const [paginatedPosts, setPaginatedPosts] = useState<Post[]>([]);
+  const [posts, setPosts] = useState<Post[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [totalPages, setTotalPages] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    async function fetchPageData() {
+    async function fetchPosts() {
+      setIsLoading(true);
       try {
-        setIsLoading(true);
         const page = searchParams.get('page');
         const currentPageNumber = page ? parseInt(page, 10) : 1;
+        setCurrentPage(currentPageNumber);
 
         const response = await fetch('/api/posts');
-        if (!response.ok) throw new Error('Failed to fetch posts');
-        
-        const posts = await response.json();
-        const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
-        const startIndex = (currentPageNumber - 1) * POSTS_PER_PAGE;
-        const paginatedPosts = posts.slice(startIndex, startIndex + POSTS_PER_PAGE);
-
-        setCurrentPage(currentPageNumber);
-        setTotalPages(totalPages);
-        setPaginatedPosts(paginatedPosts);
+        const postsData = await response.json();
+        setPosts(postsData);
+        setTotalPages(Math.ceil(postsData.length / POSTS_PER_PAGE));
       } catch (error) {
         console.error('Error fetching posts:', error);
       } finally {
         setIsLoading(false);
       }
     }
-
-    fetchPageData();
+    fetchPosts();
   }, [searchParams]);
+
+  const paginatedPosts = posts.slice(
+    (currentPage - 1) * POSTS_PER_PAGE,
+    currentPage * POSTS_PER_PAGE
+  );
 
   return (
     <main>
