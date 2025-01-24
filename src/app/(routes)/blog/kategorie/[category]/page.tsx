@@ -7,14 +7,13 @@ import { getAllPosts, getAllCategories } from '@/lib/mdx'
 import { formatDate } from '@/lib/utils'
 
 interface Props {
-  params: {
-    category: string
-  }
+  params: Promise<{ category: string }>
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const paramsValue = await params;
   const categories = await getAllCategories()
-  const category = categories.find((cat) => cat.slug === params.category)
+  const category = categories.find((cat) => cat.slug === paramsValue.category)
 
   if (!category) {
     return {
@@ -36,15 +35,16 @@ export async function generateStaticParams() {
 }
 
 export default async function CategoryPage({ params }: Props) {
+  const paramsValue = await params;
   const categories = await getAllCategories()
-  const category = categories.find((cat) => cat.slug === params.category)
+  const category = categories.find((cat) => cat.slug === paramsValue.category)
 
   if (!category) {
     notFound()
   }
 
   const posts = (await getAllPosts()).filter(
-    (post) => post.category.toLowerCase() === params.category
+    (post) => post.category.toLowerCase() === paramsValue.category
   )
 
   return (
