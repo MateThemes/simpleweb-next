@@ -8,7 +8,7 @@ import { formatDate } from '@/lib/utils'
 
 interface Props {
   params: {
-    slug: string | null
+    slug: string
   }
 }
 
@@ -22,14 +22,8 @@ export async function generateStaticParams() {
 export async function generateMetadata(
   { params }: Props
 ): Promise<Metadata> {
-  const slug = params?.slug
-  if (!slug) {
-    return {
-      title: 'Artikel nicht gefunden',
-    }
-  }
+  const post = await getPostBySlug(params.slug)
 
-  const post = await getPostBySlug(slug)
   if (!post) {
     return {
       title: 'Artikel nicht gefunden',
@@ -64,12 +58,8 @@ export async function generateMetadata(
 }
 
 export default async function BlogPost({ params }: Props) {
-  const slug = params?.slug
-  if (!slug) {
-    notFound()
-  }
+  const post = await getPostBySlug(params.slug)
 
-  const post = await getPostBySlug(slug)
   if (!post) {
     notFound()
   }

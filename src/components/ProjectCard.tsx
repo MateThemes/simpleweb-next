@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 interface ProjectCardProps {
   title: string;
   description: string;
@@ -17,10 +19,11 @@ export function ProjectCard({
     <div className="group relative flex flex-col overflow-hidden rounded-lg border border-zinc-200 bg-white dark:border-zinc-700 dark:bg-zinc-800">
       <div className="aspect-[16/9] overflow-hidden">
         {imageUrl ? (
-          <img
+          <Image
             src={imageUrl}
             alt={`${title} project screenshot`}
-            className="h-full w-full object-cover"
+            fill
+            className="absolute inset-0 h-full w-full object-cover"
           />
         ) : (
           <div className="h-full w-full bg-zinc-100 dark:bg-zinc-700 flex items-center justify-center text-zinc-400 dark:text-zinc-500">
