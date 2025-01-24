@@ -11,15 +11,15 @@ import {
 
 // Metadata
 export const metadata: Metadata = {
-  title: 'Über Uns | SimpleWeb Design',
-  description: 'Lernen Sie das Team hinter SimpleWeb Design kennen. Wir sind Ihre Experten für modernes Webdesign, SEO und digitales Marketing in Deutschland.',
+  title: 'Über Uns | SimpleWebDesign',
+  description: 'Lernen Sie das Team hinter SimpleWebDesign kennen. Wir sind Ihre Experten für modernes Webdesign, SEO und digitales Marketing in Österreich.',
   openGraph: {
-    title: 'Über Uns | SimpleWeb Design',
-    description: 'Lernen Sie das Team hinter SimpleWeb Design kennen. Wir sind Ihre Experten für modernes Webdesign, SEO und digitales Marketing in Deutschland.',
-    url: 'https://simplewebdesign.de/ueber-uns',
+    title: 'Über Uns | SimpleWebDesign',
+    description: 'Lernen Sie das Team hinter SimpleWebDesign kennen. Wir sind Ihre Experten für modernes Webdesign, SEO und digitales Marketing in Österreich.',
+    url: 'https://simplewebdesign.at/ueber-uns',
     images: [
       {
-        url: '/img/about/team.jpg',
+        url: 'https://simplewebdesign.at/img/about/team.jpg',
         width: 1200,
         height: 630,
         alt: 'SimpleWeb Design Team'
@@ -28,12 +28,12 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Über Uns | SimpleWeb Design',
-    description: 'Lernen Sie das Team hinter SimpleWeb Design kennen.',
-    images: ['/img/about/team.jpg']
+    title: 'Über Uns | SimpleWebDesign',
+    description: 'Lernen Sie das Team hinter SimpleWebDesign kennen.',
+    images: ['https://simplewebdesign.at/img/about/team.jpg']
   },
   alternates: {
-    canonical: 'https://simplewebdesign.de/ueber-uns'
+    canonical: 'https://simplewebdesign.at/ueber-uns'
   }
 }
 
@@ -69,8 +69,8 @@ export default function AboutPage() {
           __html: JSON.stringify(
             aboutSchema({
               name: 'SimpleWeb Design',
-              description: 'Wir sind Ihre Experten für modernes Webdesign, SEO und digitales Marketing in Deutschland.',
-              image: '/img/about/team.jpg',
+              description: 'Wir sind Ihre Experten für modernes Webdesign, SEO und digitales Marketing in Österreich.',
+              image: 'https://simplewebdesign.at/img/about/team.jpg',
               foundingDate: '2020',
               founders: ['Gerald Böhm'],
               address: {
@@ -102,7 +102,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:gap-x-12">
             <div className="relative h-[400px] lg:h-[600px] overflow-hidden rounded-2xl">
               <Image
-                src="/img/about/workspace.jpg"
+                src="https://simplewebdesign.at/img/about/workspace.jpg"
                 alt="Modern workspace with computer setup"
                 fill
                 className="object-cover"
@@ -191,7 +191,7 @@ export default function AboutPage() {
                   Responsive Websites mit modernem Design und optimaler Benutzerführung.
                 </p>
                 <Image
-                  src="/img/about/webdesign.jpg"
+                  src="https://simplewebdesign.at/img/about/webdesign.jpg"
                   alt="Webdesign Service"
                   width={300}
                   height={200}
@@ -199,13 +199,13 @@ export default function AboutPage() {
                 />
               </div>
               <div className="flex flex-col rounded-3xl bg-white dark:bg-neutral-800 px-6 py-8">
-                <h3 className="font-display text-xl font-medium text-neutral-950 dark:text-white">E-Commerce</h3>
+                <h3 className="font-display text-xl font-medium text-neutral-950 dark:text-white">SEO</h3>
                 <p className="mt-2 text-base text-neutral-600 dark:text-neutral-400">
-                  Professionelle Online-Shops mit sicheren Zahlungssystemen.
+                  Optimierung für Suchmaschinen und bessere Online-Sichtbarkeit.
                 </p>
                 <Image
-                  src="/img/about/ecommerce.jpg"
-                  alt="E-Commerce Service"
+                  src="https://simplewebdesign.at/img/services/seo.jpg"
+                  alt="SEO Service"
                   width={300}
                   height={200}
                   className="mt-6 rounded-2xl"
@@ -214,11 +214,50 @@ export default function AboutPage() {
               <div className="flex flex-col rounded-3xl bg-white dark:bg-neutral-800 px-6 py-8">
                 <h3 className="font-display text-xl font-medium text-neutral-950 dark:text-white">Marketing</h3>
                 <p className="mt-2 text-base text-neutral-600 dark:text-neutral-400">
-                  SEO und digitale Marketing-Strategien für mehr Sichtbarkeit.
+                  Digitale Marketing-Strategien für nachhaltiges Wachstum.
                 </p>
                 <Image
-                  src="/images/services/marketing-icon.jpg"
+                  src="https://simplewebdesign.at/img/services/marketing.jpg"
                   alt="Marketing Service"
+                  width={300}
+                  height={200}
+                  className="mt-6 rounded-2xl"
+                />
+              </div>
+              <div className="flex flex-col rounded-3xl bg-white dark:bg-neutral-800 px-6 py-8">
+                <h3 className="font-display text-xl font-medium text-neutral-950 dark:text-white">Redesign</h3>
+                <p className="mt-2 text-base text-neutral-600 dark:text-neutral-400">
+                  Modernisierung bestehender Websites für zeitgemäßen Auftritt.
+                </p>
+                <Image
+                  src="https://simplewebdesign.at/img/services/redesign.jpg"
+                  alt="Redesign Service"
+                  width={300}
+                  height={200}
+                  className="mt-6 rounded-2xl"
+                />
+              </div>
+              <div className="flex flex-col rounded-3xl bg-white dark:bg-neutral-800 px-6 py-8">
+                <h3 className="font-display text-xl font-medium text-neutral-950 dark:text-white">Hosting</h3>
+                <p className="mt-2 text-base text-neutral-600 dark:text-neutral-400">
+                  Zuverlässiges Hosting mit erstklassigem Support.
+                </p>
+                <Image
+                  src="https://simplewebdesign.at/img/services/hosting.jpg"
+                  alt="Hosting Service"
+                  width={300}
+                  height={200}
+                  className="mt-6 rounded-2xl"
+                />
+              </div>
+              <div className="flex flex-col rounded-3xl bg-white dark:bg-neutral-800 px-6 py-8">
+                <h3 className="font-display text-xl font-medium text-neutral-950 dark:text-white">Performance</h3>
+                <p className="mt-2 text-base text-neutral-600 dark:text-neutral-400">
+                  Optimierung der Ladezeiten und Website-Performance.
+                </p>
+                <Image
+                  src="https://simplewebdesign.at/img/services/performance.jpg"
+                  alt="Performance Service"
                   width={300}
                   height={200}
                   className="mt-6 rounded-2xl"
