@@ -6,10 +6,19 @@ import { Container } from '@/components/ui/Container';
 import { BlogCard } from '@/components/blog';
 import { PaginationControls } from '@/components/blog';
 import { Post } from '@/lib/types';
+import { Suspense } from 'react';
 
 const POSTS_PER_PAGE = 6;
 
 export default function BlogPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ActualBlogPage />
+    </Suspense>
+  );
+}
+
+function ActualBlogPage() {
   const searchParams = useSearchParams();
   const [posts, setPosts] = useState<Post[]>([]);
   const [isLoading, setIsLoading] = useState(true);
