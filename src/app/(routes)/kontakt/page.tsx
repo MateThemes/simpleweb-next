@@ -38,16 +38,16 @@ export default function ContactPage() {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(
             contactSchema({
-              name: 'SimpleWeb Design',
-              email: 'info@simplewebdesign.de',
-              phone: '+49 (0) 123 456789',
+              name: 'SimpleWebDesign',
+              email: 'info@simplewebdesign.at',
+              phone: '+43 664 518 26 96',
               address: {
-                street: 'Musterstraße 123',
-                city: 'München',
-                postalCode: '80331',
-                country: 'Deutschland'
+                street: 'Sonnleite 20',
+                city: 'Vitis',
+                postalCode: '3902',
+                country: 'Austria'
               },
-              openingHours: ['Mo-Fr 09:00-18:00', 'Sa-So geschlossen'],
+              openingHours: ['Mo-Fr 09:00-15:00', 'Sa-So geschlossen'],
               image: '/img/contact/office.jpg'
             })
           )
