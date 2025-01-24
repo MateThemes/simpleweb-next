@@ -126,10 +126,10 @@
   - [ ] Include all routes
   - [ ] Add lastmod dates
   - [ ] Set proper priorities
-- [ ] Implement robots.txt
-  - [ ] Define crawling rules
-  - [ ] Add sitemap location
-  - [ ] Set proper user-agent rules
+- [x] Implement robots.txt
+  - [x] Define crawling rules
+  - [x] Add sitemap location
+  - [x] Set proper user-agent rules
 - [x] Add schema markup for:
   - [x] Organization
   - [x] Services
