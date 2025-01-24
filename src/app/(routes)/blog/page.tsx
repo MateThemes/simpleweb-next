@@ -4,7 +4,6 @@ import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { Container } from '@/components/ui/Container';
 import { BlogCard } from '@/components/blog';
-import { getAllPosts } from '@/lib/mdx';
 import { PaginationControls } from '@/components/blog';
 import { Post } from '@/lib/types';
 
@@ -15,20 +14,31 @@ export default function BlogPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [paginatedPosts, setPaginatedPosts] = useState<Post[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     async function fetchPageData() {
-      const page = searchParams.get('page');
-      const currentPageNumber = page ? parseInt(page, 10) : 1;
+      try {
+        setIsLoading(true);
+        const page = searchParams.get('page');
+        const currentPageNumber = page ? parseInt(page, 10) : 1;
 
-      const posts = await getAllPosts();
-      const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
-      const startIndex = (currentPageNumber - 1) * POSTS_PER_PAGE;
-      const paginatedPosts = posts.slice(startIndex, startIndex + POSTS_PER_PAGE);
+        const response = await fetch('/api/posts');
+        if (!response.ok) throw new Error('Failed to fetch posts');
+        
+        const posts = await response.json();
+        const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
+        const startIndex = (currentPageNumber - 1) * POSTS_PER_PAGE;
+        const paginatedPosts = posts.slice(startIndex, startIndex + POSTS_PER_PAGE);
 
-      setCurrentPage(currentPageNumber);
-      setTotalPages(totalPages);
-      setPaginatedPosts(paginatedPosts);
+        setCurrentPage(currentPageNumber);
+        setTotalPages(totalPages);
+        setPaginatedPosts(paginatedPosts);
+      } catch (error) {
+        console.error('Error fetching posts:', error);
+      } finally {
+        setIsLoading(false);
+      }
     }
 
     fetchPageData();
@@ -48,11 +58,15 @@ export default function BlogPage() {
           </header>
 
           <div className="mt-16 sm:mt-20">
-            <div className="grid grid-cols-1 gap-x-8 gap-y-16 lg:grid-cols-2">
-              {paginatedPosts.map((post) => (
-                <BlogCard key={post.slug} {...post} />
-              ))}
-            </div>
+            {isLoading ? (
+              <div className="text-center">Laden...</div>
+            ) : (
+              <div className="grid grid-cols-1 gap-x-8 gap-y-16 lg:grid-cols-2">
+                {paginatedPosts.map((post) => (
+                  <BlogCard key={post.slug} {...post} />
+                ))}
+              </div>
+            )}
           </div>
 
           {totalPages > 1 && (
