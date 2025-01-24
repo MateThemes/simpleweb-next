@@ -11,11 +11,14 @@ interface PageParams {
   slug: string
 }
 
-interface Props {
+interface PageProps {
   params: {
     [key: string]: string
   }
+  searchParams?: { [key: string]: string | string[] | undefined }
 }
+
+interface Props extends PageProps {}
 
 export async function generateStaticParams(): Promise<PageParams[]> {
   const posts = await getAllPosts()
