@@ -12,7 +12,9 @@ interface PageParams {
 }
 
 interface Props {
-  params: PageParams
+  params: {
+    [key: string]: string
+  }
 }
 
 export async function generateStaticParams(): Promise<PageParams[]> {
