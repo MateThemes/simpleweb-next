@@ -10,7 +10,6 @@ type PageProps = {
   params: {
     slug: string
   }
-  searchParams: { [key: string]: string | string[] | undefined }
 }
 
 export async function generateStaticParams() {
@@ -58,7 +57,7 @@ export async function generateMetadata(
   }
 }
 
-export default async function BlogPost({ params, searchParams }: PageProps) {
+export default async function BlogPost({ params }: PageProps) {
   const post = await getPostBySlug(params.slug)
 
   if (!post) {
