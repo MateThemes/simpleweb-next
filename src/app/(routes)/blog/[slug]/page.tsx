@@ -1,4 +1,4 @@
-import { Metadata } from 'next'
+import type { Metadata, PageProps } from 'next'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { Container } from '@/components/ui/Container'
@@ -13,12 +13,8 @@ export async function generateStaticParams() {
   }))
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string }
-}): Promise<Metadata> {
-  const post = await getPostBySlug(params.slug)
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const post = await getPostBySlug(props.params.slug)
 
   if (!post) {
     return {
@@ -53,8 +49,8 @@ export async function generateMetadata({
   }
 }
 
-const page = async ({ params }: { params: { slug: string } }) => {
-  const post = await getPostBySlug(params.slug)
+export default async function Page(props: PageProps) {
+  const post = await getPostBySlug(props.params.slug)
 
   if (!post) {
     notFound()
@@ -101,5 +97,3 @@ const page = async ({ params }: { params: { slug: string } }) => {
     </main>
   )
 }
-
-export default page
