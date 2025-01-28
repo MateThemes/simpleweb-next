@@ -33,64 +33,82 @@ export const metadata: Metadata = {
 const projects = [
   {
     title: "Business Website",
-    description: "Eine moderne Unternehmenswebsite mit responsivem Design, optimiert für mobile Geräte. Features wie Kontaktformular, Angebotsbereich und Leistungsübersicht.",
-    technologies: ["Nuxt.js", "Vue.js", "UIKit 3", "Static Site Generator"],
+    description:
+      "Eine moderne Unternehmenswebsite für Parkett Stelzl in München mit responsivem Design, optimiert für mobile Geräte. Features wie Kontaktformular, Angebotsbereich und Leistungsübersicht.",
+    technologies: ["Nuxt.js", "Vue.js", "UIKit 3", "Static Site"],
     imageUrl: "/img/portfolio/parkett-stelzl-munich.jpg",
     status: "Relaunch",
-    websiteUrl: "https://artparkett-stelzl.de"
+    websiteUrl: "https://artparkett-stelzl.de",
+  },
+  {
+    title: "Business Website",
+    description:
+      "Derzeit ist die Webseite von Müller Bodenbeläge in München noch ein OnePager, erstellt mit Nuxt.js. Wir überarbeiten die Webseite gerade auf eine moderne Unternehmenswebsite mit responsivem Design. Features wie Kontaktformular, Angebotsbereich und Leistungsübersicht.",
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "CMS"],
+    imageUrl: "/img/portfolio/placeholder.jpg",
+    status: "ReDesign",
+    websiteUrl: "https://boden-mueller.de",
   },
   {
     title: "Online Shop",
-    description: "Ein moderner Webshop mit benutzerfreundlicher Navigation, Produktfiltern und sicherem Checkout-Prozess. Optimiert für Conversion und Nutzererlebnis.",
+    description:
+      "Ein moderner Webshop mit benutzerfreundlicher Navigation, Produktfiltern und sicherem Checkout-Prozess. Optimiert für Conversion und Nutzererlebnis.",
     technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Stripe"],
     imageUrl: "/img/portfolio/placeholder.jpg",
     status: "In Entwicklung",
   },
   {
     title: "Portfolio Website",
-    description: "Eine elegante Portfolio-Website für Kreative, mit Bildergalerie, Projektvorstellung und Kontaktmöglichkeiten. Perfekt für Selbstständige und Freelancer.",
+    description:
+      "Eine elegante Portfolio-Website für Kreative, mit Bildergalerie, Projektvorstellung und Kontaktmöglichkeiten. Perfekt für Selbstständige und Freelancer.",
     technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
     imageUrl: "/img/portfolio/placeholder.jpg",
     status: "Planung",
   },
   {
     title: "Blog Website",
-    description: "Eine moderne Blog-Website mit Kategorien, Tags und Suchfunktion. Optimiert für SEO und Lesefreundlichkeit, ideal für Content Creator.",
+    description:
+      "Eine moderne Blog-Website mit Kategorien, Tags und Suchfunktion. Optimiert für SEO und Lesefreundlichkeit, ideal für Content Creator.",
     technologies: ["Next.js", "MDX", "TailwindCSS"],
     imageUrl: "/img/portfolio/placeholder.jpg",
     status: "Konzept",
   },
   {
     title: "Restaurant Website",
-    description: "Eine ansprechende Website für Restaurants mit Speisekarte, Bildergalerie und Online-Reservierungssystem. Mobile-first Design für optimale Nutzung.",
+    description:
+      "Eine ansprechende Website für Restaurants mit Speisekarte, Bildergalerie und Online-Reservierungssystem. Mobile-first Design für optimale Nutzung.",
     technologies: ["Next.js", "TypeScript", "TailwindCSS"],
     imageUrl: "/img/portfolio/placeholder.jpg",
     status: "In Entwicklung",
   },
   {
     title: "Landing Page",
-    description: "Eine conversion-optimierte Landing Page für Produkte oder Dienstleistungen. Mit Call-to-Actions, Testimonials und responsivem Design.",
+    description:
+      "Eine conversion-optimierte Landing Page für Produkte oder Dienstleistungen. Mit Call-to-Actions, Testimonials und responsivem Design.",
     technologies: ["Next.js", "TypeScript", "TailwindCSS"],
     imageUrl: "/img/portfolio/placeholder.jpg",
     status: "Planung",
   },
   {
     title: "Immobilien Website",
-    description: "Eine professionelle Website für Immobilienmakler mit Objektsuche, Detailansichten und Kontaktformularen. Optimiert für lokales SEO.",
+    description:
+      "Eine professionelle Website für Immobilienmakler mit Objektsuche, Detailansichten und Kontaktformularen. Optimiert für lokales SEO.",
     technologies: ["Next.js", "TypeScript", "TailwindCSS"],
     imageUrl: "/img/portfolio/placeholder.jpg",
     status: "Konzept",
   },
   {
     title: "Event Website",
-    description: "Eine informative Website für Veranstaltungen mit Programm-Übersicht, Anfahrt und Newsletter-Anmeldung. Ideal für Konferenzen und Events.",
+    description:
+      "Eine informative Website für Veranstaltungen mit Programm-Übersicht, Anfahrt und Newsletter-Anmeldung. Ideal für Konferenzen und Events.",
     technologies: ["Next.js", "TypeScript", "TailwindCSS"],
     imageUrl: "/img/portfolio/placeholder.jpg",
     status: "In Entwicklung",
   },
   {
     title: "Bildung Website",
-    description: "Eine übersichtliche Website für Bildungsangebote mit Kursübersicht, Anmeldeformular und Dozenten-Vorstellung. Perfekt für Schulen und Trainer.",
+    description:
+      "Eine übersichtliche Website für Bildungsangebote mit Kursübersicht, Anmeldeformular und Dozenten-Vorstellung. Perfekt für Schulen und Trainer.",
     technologies: ["Next.js", "TypeScript", "TailwindCSS"],
     imageUrl: "/img/portfolio/placeholder.jpg",
     status: "Planung",
