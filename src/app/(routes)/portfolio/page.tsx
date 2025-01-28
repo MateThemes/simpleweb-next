@@ -32,7 +32,8 @@ export const metadata: Metadata = {
 
 const projects = [
   {
-    title: "Business Website",
+    id: "parkett-stelzl",
+    title: "Parkett Stelzl",
     description:
       "Eine moderne Unternehmenswebsite für Parkett Stelzl in München mit responsivem Design, optimiert für mobile Geräte. Features wie Kontaktformular, Angebotsbereich und Leistungsübersicht.",
     technologies: ["Nuxt.js", "Vue.js", "UIKit 3", "Static Site"],
@@ -41,7 +42,8 @@ const projects = [
     websiteUrl: "https://artparkett-stelzl.de",
   },
   {
-    title: "Business Website",
+    id: "mueller-bodenleger",
+    title: "Müller Bodenbeläge",
     description:
       "Derzeit ist die Webseite von Müller Bodenbeläge in München noch ein OnePager, erstellt mit Nuxt.js. Wir überarbeiten die Webseite gerade auf eine moderne Unternehmenswebsite mit responsivem Design. Features wie Kontaktformular, Angebotsbereich und Leistungsübersicht.",
     technologies: ["Next.js", "TypeScript", "Tailwind CSS", "CMS"],
@@ -50,6 +52,7 @@ const projects = [
     websiteUrl: "https://boden-mueller.de",
   },
   {
+    id: "online-shop",
     title: "Online Shop",
     description:
       "Ein moderner Webshop mit benutzerfreundlicher Navigation, Produktfiltern und sicherem Checkout-Prozess. Optimiert für Conversion und Nutzererlebnis.",
@@ -58,6 +61,7 @@ const projects = [
     status: "In Entwicklung",
   },
   {
+    id: "portfolio-website",
     title: "Portfolio Website",
     description:
       "Eine elegante Portfolio-Website für Kreative, mit Bildergalerie, Projektvorstellung und Kontaktmöglichkeiten. Perfekt für Selbstständige und Freelancer.",
@@ -66,6 +70,7 @@ const projects = [
     status: "Planung",
   },
   {
+    id: "blog-website",
     title: "Blog Website",
     description:
       "Eine moderne Blog-Website mit Kategorien, Tags und Suchfunktion. Optimiert für SEO und Lesefreundlichkeit, ideal für Content Creator.",
@@ -74,6 +79,7 @@ const projects = [
     status: "Konzept",
   },
   {
+    id: "restaurant-website",
     title: "Restaurant Website",
     description:
       "Eine ansprechende Website für Restaurants mit Speisekarte, Bildergalerie und Online-Reservierungssystem. Mobile-first Design für optimale Nutzung.",
@@ -82,6 +88,7 @@ const projects = [
     status: "In Entwicklung",
   },
   {
+    id: "landing-page",
     title: "Landing Page",
     description:
       "Eine conversion-optimierte Landing Page für Produkte oder Dienstleistungen. Mit Call-to-Actions, Testimonials und responsivem Design.",
@@ -90,6 +97,7 @@ const projects = [
     status: "Planung",
   },
   {
+    id: "immobilien-website",
     title: "Immobilien Website",
     description:
       "Eine professionelle Website für Immobilienmakler mit Objektsuche, Detailansichten und Kontaktformularen. Optimiert für lokales SEO.",
@@ -98,6 +106,7 @@ const projects = [
     status: "Konzept",
   },
   {
+    id: "event-website",
     title: "Event Website",
     description:
       "Eine informative Website für Veranstaltungen mit Programm-Übersicht, Anfahrt und Newsletter-Anmeldung. Ideal für Konferenzen und Events.",
@@ -106,6 +115,7 @@ const projects = [
     status: "In Entwicklung",
   },
   {
+    id: "bildung-website",
     title: "Bildung Website",
     description:
       "Eine übersichtliche Website für Bildungsangebote mit Kursübersicht, Anmeldeformular und Dozenten-Vorstellung. Perfekt für Schulen und Trainer.",
@@ -152,7 +162,7 @@ export default function PortfolioPage() {
           <div className="mt-16 sm:mt-20 pb-24">
             <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
               {projects.map((project) => (
-                <ProjectCard key={project.title} {...project} />
+                <ProjectCard key={project.id} {...project} />
               ))}
             </div>
           </div>
