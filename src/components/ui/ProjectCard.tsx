@@ -23,6 +23,7 @@ export function ProjectCard({
             src={imageUrl}
             alt={`${title} project screenshot`}
             fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             className="object-cover"
           />
         ) : (

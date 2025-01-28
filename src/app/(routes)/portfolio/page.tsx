@@ -15,7 +15,7 @@ export const metadata: Metadata = {
         url: "/img/portfolio/showcase.jpg",
         width: 1200,
         height: 630,
-        alt: "SimpleWeb Design Portfolio",
+        alt: "SimpleWeb Design Portfolio"
       },
     ],
   },
