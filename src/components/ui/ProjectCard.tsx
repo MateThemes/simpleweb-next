@@ -6,6 +6,7 @@ interface ProjectCardProps {
   technologies: string[];
   imageUrl: string;
   status: string;
+  websiteUrl?: string;
 }
 
 export function ProjectCard({
@@ -14,6 +15,7 @@ export function ProjectCard({
   technologies,
   imageUrl,
   status,
+  websiteUrl,
 }: ProjectCardProps) {
   return (
     <div className="group relative flex flex-col overflow-hidden rounded-lg border border-zinc-200 bg-white dark:border-zinc-700 dark:bg-zinc-800">
@@ -36,7 +38,18 @@ export function ProjectCard({
         <div className="flex-1">
           <div className="flex items-center justify-between">
             <h3 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">
-              {title}
+              {websiteUrl ? (
+                <a 
+                  href={websiteUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                >
+                  {title} <span className="inline-block ml-1">↗</span>
+                </a>
+              ) : (
+                title
+              )}
             </h3>
             <span className="inline-flex items-center rounded-full bg-zinc-100 px-2.5 py-0.5 text-xs font-medium text-zinc-800 dark:bg-zinc-700 dark:text-zinc-100">
               {status}

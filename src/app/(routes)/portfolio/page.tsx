@@ -37,6 +37,7 @@ const projects = [
     technologies: ["Nuxt.js", "Vue.js", "UIKit 3", "Static Site Generator"],
     imageUrl: "/img/portfolio/parkett-stelzl-munich.jpg",
     status: "Relaunch",
+    websiteUrl: "https://artparkett-stelzl.de"
   },
   {
     title: "Online Shop",
