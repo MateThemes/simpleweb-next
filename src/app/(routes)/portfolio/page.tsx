@@ -83,7 +83,7 @@ const projects = [
     title: "Restaurant Website",
     description:
       "Eine ansprechende Website für Restaurants mit Speisekarte, Bildergalerie und Online-Reservierungssystem. Mobile-first Design für optimale Nutzung.",
-    technologies: ["Next.js", "TypeScript", "TailwindCSS"],
+    technologies: ["CMS", "Marktplatz", "TailwindCSS"],
     imageUrl: "/img/portfolio/placeholder.jpg",
     status: "In Entwicklung",
   },
