@@ -28,7 +28,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '',  // home page
     'kontakt',
     'portfolio',
-    'preise',
+    'preise-und-pakete',
     'prozess',
     'ueber-uns'
   ]

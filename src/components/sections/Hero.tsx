@@ -62,7 +62,7 @@ export default function Hero() {
                 Kostenloses Erstgespräch
               </Link>
               <Link
-                href="/preise"
+                href="/preise-und-pakete"
                 className="text-base font-semibold text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-300"
               >
                 Unsere Preise <span aria-hidden="true">→</span>

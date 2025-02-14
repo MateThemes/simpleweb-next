@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Preise | Webdesign Pakete & Leistungen',
     description: 'Transparente Preise für professionelles Webdesign. Wählen Sie aus unseren maßgeschneiderten Paketen das passende für Ihr Projekt.',
-    url: 'https://simplewebdesign.de/preise',
+    url: 'https://simplewebdesign.de/preise-und-pakete',
     images: [
       {
         url: '/img/pricing/packages.jpg',
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     images: ['/img/pricing/packages.jpg']
   },
   alternates: {
-    canonical: 'https://simplewebdesign.de/preise'
+    canonical: 'https://simplewebdesign.de/preise-und-pakete'
   }
 }
 
