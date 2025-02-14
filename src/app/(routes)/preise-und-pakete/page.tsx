@@ -116,17 +116,17 @@ export default function PricingPage() {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(
             pricingSchema({
-              name: 'SimpleWeb Design Preise',
-              description: 'Unsere Webdesign Pakete und Leistungen',
-              image: '/img/pricing/packages.jpg',
-              packages: packages.map(pkg => ({
+              name: "SimpleWeb Design Preise",
+              description: "Unsere Webdesign Pakete und Leistungen",
+              image: "/img/pricing/packages.jpg",
+              packages: packages.map((pkg) => ({
                 name: pkg.name,
                 description: pkg.description,
                 price: pkg.price,
-                features: pkg.features
-              }))
+                features: pkg.features,
+              })),
             })
-          )
+          ),
         }}
       />
       <main className="flex-auto">
@@ -137,7 +137,8 @@ export default function PricingPage() {
               Transparente Preise
             </h1>
             <p className="mt-6 text-xl text-neutral-600 dark:text-neutral-400">
-              Wählen Sie das passende Paket für Ihr Projekt. Alle Preise verstehen sich zzgl. MwSt.
+              Wählen Sie das passende Paket für Ihr Projekt. Gemäß § 6 Abs. 1 Z
+              27 UStG wird keine Umsatzsteuer berechnet.
             </p>
           </div>
         </Container>
@@ -158,31 +159,46 @@ export default function PricingPage() {
               Stundensätze & Beratung
             </h2>
             <p className="mt-6 text-lg text-neutral-600 dark:text-neutral-400">
-              Für individuelle Anforderungen, Beratung und Wartung bieten wir flexible Stundensätze:
+              Für individuelle Anforderungen, Beratung und Wartung bieten wir
+              flexible Stundensätze:
             </p>
-            
+
             <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2">
               <div className="rounded-3xl bg-neutral-950 dark:bg-white/5 px-6 py-8">
-                <h3 className="text-lg font-semibold text-white">Beratung & Konzeption</h3>
-                <p className="mt-2 text-sm text-neutral-300">Strategieberatung, Konzeptentwicklung, Workshops</p>
+                <h3 className="text-lg font-semibold text-white">
+                  Beratung & Konzeption
+                </h3>
+                <p className="mt-2 text-sm text-neutral-300">
+                  Strategieberatung, Konzeptentwicklung, Workshops
+                </p>
                 <p className="mt-4 text-3xl font-bold text-white">150€/h</p>
               </div>
-              
+
               <div className="rounded-3xl bg-neutral-950 dark:bg-white/5 px-6 py-8">
-                <h3 className="text-lg font-semibold text-white">Entwicklung</h3>
-                <p className="mt-2 text-sm text-neutral-300">Programmierung, Debugging, Technische Anpassungen</p>
+                <h3 className="text-lg font-semibold text-white">
+                  Entwicklung
+                </h3>
+                <p className="mt-2 text-sm text-neutral-300">
+                  Programmierung, Debugging, Technische Anpassungen
+                </p>
                 <p className="mt-4 text-3xl font-bold text-white">130€/h</p>
               </div>
-              
+
               <div className="rounded-3xl bg-neutral-950 dark:bg-white/5 px-6 py-8">
                 <h3 className="text-lg font-semibold text-white">Design</h3>
-                <p className="mt-2 text-sm text-neutral-300">UI/UX Design, Grafikdesign, Prototyping</p>
+                <p className="mt-2 text-sm text-neutral-300">
+                  UI/UX Design, Grafikdesign, Prototyping
+                </p>
                 <p className="mt-4 text-3xl font-bold text-white">120€/h</p>
               </div>
-              
+
               <div className="rounded-3xl bg-neutral-950 dark:bg-white/5 px-6 py-8">
-                <h3 className="text-lg font-semibold text-white">Support & Wartung</h3>
-                <p className="mt-2 text-sm text-neutral-300">Technischer Support, Updates, Wartungsarbeiten</p>
+                <h3 className="text-lg font-semibold text-white">
+                  Support & Wartung
+                </h3>
+                <p className="mt-2 text-sm text-neutral-300">
+                  Technischer Support, Updates, Wartungsarbeiten
+                </p>
                 <p className="mt-4 text-3xl font-bold text-white">100€/h</p>
               </div>
             </div>
@@ -190,7 +206,9 @@ export default function PricingPage() {
             <div className="mt-10 text-sm text-neutral-600 dark:text-neutral-400">
               <p>* Mindestabnahme: 1 Stunde</p>
               <p>* Abrechnung erfolgt in 15-Minuten-Intervallen</p>
-              <p>* Alle Preise zzgl. MwSt.</p>
+              <p>* Alle Preise sind Endpreise gemäß § 6 Abs. 1 Z 27 UStG wird
+                keine Umsatzsteuer berechnet.
+              </p>
             </div>
           </div>
         </Container>
@@ -203,37 +221,94 @@ export default function PricingPage() {
             </h2>
             <dl className="mt-10 space-y-8 text-neutral-600 dark:text-neutral-400">
               <div>
-                <dt className="font-semibold text-neutral-950 dark:text-white">Was ist in den Preisen enthalten?</dt>
-                <dd className="mt-2">Alle Preise beinhalten Design, Entwicklung, Testing und Launch Ihrer Website. Bei Neuprojekten sind Hosting und Domain für das erste Jahr inklusive. Jedes Paket enthält auch eine ausführliche Einweisung in Ihr neues System.</dd>
+                <dt className="font-semibold text-neutral-950 dark:text-white">
+                  Was ist in den Preisen enthalten?
+                </dt>
+                <dd className="mt-2">
+                  Alle Preise beinhalten Design, Entwicklung, Testing und Launch
+                  Ihrer Website. Bei Neuprojekten sind Hosting und Domain für
+                  das erste Jahr inklusive. Jedes Paket enthält auch eine
+                  ausführliche Einweisung in Ihr neues System.
+                </dd>
               </div>
               <div>
-                <dt className="font-semibold text-neutral-950 dark:text-white">Wie läuft ein Redesign-Projekt ab?</dt>
-                <dd className="mt-2">Wir beginnen mit einer gründlichen Analyse Ihrer bestehenden Website. Anschließend erstellen wir ein Konzept für das neue Design unter Berücksichtigung Ihrer Ziele und Anforderungen. Die Migration erfolgt ohne Unterbrechung Ihres laufenden Betriebs, und wir stellen durch 301-Weiterleitungen sicher, dass Ihr SEO-Ranking erhalten bleibt.</dd>
+                <dt className="font-semibold text-neutral-950 dark:text-white">
+                  Wie läuft ein Redesign-Projekt ab?
+                </dt>
+                <dd className="mt-2">
+                  Wir beginnen mit einer gründlichen Analyse Ihrer bestehenden
+                  Website. Anschließend erstellen wir ein Konzept für das neue
+                  Design unter Berücksichtigung Ihrer Ziele und Anforderungen.
+                  Die Migration erfolgt ohne Unterbrechung Ihres laufenden
+                  Betriebs, und wir stellen durch 301-Weiterleitungen sicher,
+                  dass Ihr SEO-Ranking erhalten bleibt.
+                </dd>
               </div>
               <div>
-                <dt className="font-semibold text-neutral-950 dark:text-white">Welches E-Commerce System ist das Richtige für mich?</dt>
-                <dd className="mt-2">Die Wahl zwischen Shopify und WooCommerce hängt von Ihren spezifischen Anforderungen ab. Shopify eignet sich besonders für schnelles Wachstum und einfache Verwaltung, während WooCommerce mehr Flexibilität und Kontrolle bietet. In einem Beratungsgespräch finden wir gemeinsam die beste Lösung für Sie.</dd>
+                <dt className="font-semibold text-neutral-950 dark:text-white">
+                  Welches E-Commerce System ist das Richtige für mich?
+                </dt>
+                <dd className="mt-2">
+                  Die Wahl zwischen Shopify und WooCommerce hängt von Ihren
+                  spezifischen Anforderungen ab. Shopify eignet sich besonders
+                  für schnelles Wachstum und einfache Verwaltung, während
+                  WooCommerce mehr Flexibilität und Kontrolle bietet. In einem
+                  Beratungsgespräch finden wir gemeinsam die beste Lösung für
+                  Sie.
+                </dd>
               </div>
               <div>
-                <dt className="font-semibold text-neutral-950 dark:text-white">Wie lange dauert die Umsetzung?</dt>
-                <dd className="mt-2">Die Projektdauer variiert je nach Paket: Starter-Websites sind in 4-6 Wochen fertig, Business-Projekte in 6-8 Wochen. Redesign-Projekte benötigen etwa 4-6 Wochen, E-Commerce-Lösungen 8-12 Wochen. Enterprise-Projekte werden individuell geplant.</dd>
+                <dt className="font-semibold text-neutral-950 dark:text-white">
+                  Wie lange dauert die Umsetzung?
+                </dt>
+                <dd className="mt-2">
+                  Die Projektdauer variiert je nach Paket: Starter-Websites sind
+                  in 4-6 Wochen fertig, Business-Projekte in 6-8 Wochen.
+                  Redesign-Projekte benötigen etwa 4-6 Wochen,
+                  E-Commerce-Lösungen 8-12 Wochen. Enterprise-Projekte werden
+                  individuell geplant.
+                </dd>
               </div>
               <div>
-                <dt className="font-semibold text-neutral-950 dark:text-white">Welche laufenden Kosten entstehen?</dt>
-                <dd className="mt-2">Nach dem ersten Jahr fallen Kosten für Hosting und Domain an (ab 15€/Monat). Bei E-Commerce-Lösungen können je nach gewähltem System Lizenzgebühren hinzukommen. Wartung und Support bieten wir optional als Servicepakete an. Alle zusätzlichen Kosten werden transparent im Vorfeld besprochen.</dd>
+                <dt className="font-semibold text-neutral-950 dark:text-white">
+                  Welche laufenden Kosten entstehen?
+                </dt>
+                <dd className="mt-2">
+                  Nach dem ersten Jahr fallen Kosten für Hosting und Domain an
+                  (ab 15€/Monat). Bei E-Commerce-Lösungen können je nach
+                  gewähltem System Lizenzgebühren hinzukommen. Wartung und
+                  Support bieten wir optional als Servicepakete an. Alle
+                  zusätzlichen Kosten werden transparent im Vorfeld besprochen.
+                </dd>
               </div>
               <div>
-                <dt className="font-semibold text-neutral-950 dark:text-white">Kann ich meine Website später erweitern?</dt>
-                <dd className="mt-2">Ja, alle unsere Websites sind modular aufgebaut und können jederzeit erweitert werden. Sie können beispielsweise von einem Starter-Paket auf ein Business-Paket upgraden oder später einen Online-Shop integrieren. Die Preise für Erweiterungen werden individuell kalkuliert.</dd>
+                <dt className="font-semibold text-neutral-950 dark:text-white">
+                  Kann ich meine Website später erweitern?
+                </dt>
+                <dd className="mt-2">
+                  Ja, alle unsere Websites sind modular aufgebaut und können
+                  jederzeit erweitert werden. Sie können beispielsweise von
+                  einem Starter-Paket auf ein Business-Paket upgraden oder
+                  später einen Online-Shop integrieren. Die Preise für
+                  Erweiterungen werden individuell kalkuliert.
+                </dd>
               </div>
               <div>
-                <dt className="font-semibold text-neutral-950 dark:text-white">Wie werden Stundensätze abgerechnet?</dt>
-                <dd className="mt-2">Die Abrechnung erfolgt in 15-Minuten-Intervallen mit einer Mindestabnahme von einer Stunde. Vor Beginn der Arbeiten erhalten Sie einen Kostenvoranschlag über den erwarteten Zeitaufwand. Regelmäßige Wartungsarbeiten können auch als monatliches Servicepaket vereinbart werden.</dd>
+                <dt className="font-semibold text-neutral-950 dark:text-white">
+                  Wie werden Stundensätze abgerechnet?
+                </dt>
+                <dd className="mt-2">
+                  Die Abrechnung erfolgt in 15-Minuten-Intervallen mit einer
+                  Mindestabnahme von einer Stunde. Vor Beginn der Arbeiten
+                  erhalten Sie einen Kostenvoranschlag über den erwarteten
+                  Zeitaufwand. Regelmäßige Wartungsarbeiten können auch als
+                  monatliches Servicepaket vereinbart werden.
+                </dd>
               </div>
             </dl>
           </div>
         </Container>
       </main>
     </>
-  )
+  );
 }
