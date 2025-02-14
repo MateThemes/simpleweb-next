@@ -2,9 +2,16 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['simplewebdesign.at'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'simplewebdesign.at',
+        port: '',
+        pathname: '/**',
+      },
+    ],
   },
-  webpack: (config, { isServer }) => {
+  webpack: (config) => {
     // Ignore punycode warning
     config.ignoreWarnings = [
       { module: /node_modules\/punycode/ }
