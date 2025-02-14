@@ -92,17 +92,17 @@ const packages = [
     popular: false
   },
   {
-    name: 'Enterprise',
-    description: 'Maßgeschneiderte Lösungen für große Unternehmen',
-    price: 'Individuell',
+    name: 'Performance & Hosting',
+    description: 'Optimierung & Beratung für bestehende Websites',
+    price: '990',
     features: [
-      { name: 'Individuelle Entwicklung', included: true },
-      { name: 'Unbegrenzte Unterseiten', included: true },
-      { name: 'Multi-Language Support', included: true },
-      { name: 'Custom Funktionen', included: true },
-      { name: 'API-Integrationen', included: true },
-      { name: 'Dedicated Support', included: true },
-      { name: 'Service Level Agreement', included: true }
+      { name: 'Performance-Audit', included: true },
+      { name: 'Server-Analyse', included: true },
+      { name: 'Hosting-Optimierung', included: true },
+      { name: 'Caching-Strategie', included: true },
+      { name: 'CDN-Setup', included: true },
+      { name: 'Security-Check', included: true },
+      { name: 'Monitoring-Einrichtung', included: true }
     ],
     popular: false
   }
@@ -265,8 +265,19 @@ export default function PricingPage() {
                   Die Projektdauer variiert je nach Paket: Starter-Websites sind
                   in 4-6 Wochen fertig, Business-Projekte in 6-8 Wochen.
                   Redesign-Projekte benötigen etwa 4-6 Wochen,
-                  E-Commerce-Lösungen 8-12 Wochen. Enterprise-Projekte werden
-                  individuell geplant.
+                  E-Commerce-Lösungen 8-12 Wochen. Performance & Hosting Beratung
+                  kann in 1-2 Wochen abgeschlossen sein.
+                </dd>
+              </div>
+              <div>
+                <dt className="font-semibold text-neutral-950 dark:text-white">
+                  Was beinhaltet das Performance & Hosting Paket?
+                </dt>
+                <dd className="mt-2">
+                  Das Paket beginnt mit einem umfassenden Audit Ihrer bestehenden Website und Server-Infrastruktur. 
+                  Wir analysieren Performance-Bottlenecks, optimieren Ihre Hosting-Umgebung und implementieren 
+                  moderne Technologien wie CDN und effektives Caching. Zusätzlich erhalten Sie eine 
+                  Security-Überprüfung und ein Monitoring-Setup zur kontinuierlichen Überwachung.
                 </dd>
               </div>
               <div>

@@ -195,7 +195,10 @@ export default function PerformancePage() {
                 Bereit für mehr Speed?
               </h2>
               <p className="mt-4 text-lg text-orange-100">
-                Lassen Sie uns gemeinsam die Performance Ihrer Website analysieren und optimieren.
+                Performance & Hosting Optimierung ab 990€. Lassen Sie uns gemeinsam die Performance Ihrer Website analysieren und optimieren.
+              </p>
+              <p className="mt-2 text-sm text-orange-100">
+                Gemäß § 6 Abs. 1 Z 27 UStG wird keine Umsatzsteuer berechnet.
               </p>
               <div className="mt-8">
                 <Button href="/kontakt" variant="secondary" className="text-orange-600 border-orange-600 hover:bg-orange-600 hover:text-white dark:text-white dark:border-white dark:hover:bg-white dark:hover:text-orange-600">

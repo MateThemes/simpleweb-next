@@ -195,7 +195,10 @@ export default function RedesignPage() {
                 Bereit für einen neuen Look?
               </h2>
               <p className="mt-4 text-lg text-purple-100">
-                Lassen Sie uns gemeinsam Ihre Website in einen modernen und erfolgreichen Webauftritt verwandeln.
+                Professionelles Redesign ab 2.490€. Lassen Sie uns gemeinsam Ihre Website in einen modernen und erfolgreichen Webauftritt verwandeln.
+              </p>
+              <p className="mt-2 text-sm text-purple-100">
+                Gemäß § 6 Abs. 1 Z 27 UStG wird keine Umsatzsteuer berechnet.
               </p>
               <div className="mt-8">
                 <Button href="/kontakt" variant="secondary" className="text-purple-600 border-purple-600 hover:bg-purple-600 hover:text-white dark:text-white dark:border-white dark:hover:bg-white dark:hover:text-purple-600">

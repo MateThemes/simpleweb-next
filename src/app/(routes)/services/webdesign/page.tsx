@@ -108,7 +108,10 @@ export default function WebdesignPage() {
                   Responsive Webdesign
                 </h1>
                 <p className="mt-6 text-xl text-neutral-600 dark:text-neutral-300">
-                  Professionelles Webdesign, das Ihre Zielgruppe begeistert und Ihre Geschäftsziele unterstützt.
+                  Professionelles Webdesign, das Ihre Zielgruppe begeistert und Ihre Geschäftsziele unterstützt. Starter-Pakete ab 1.990€, Business-Pakete ab 3.990€.
+                </p>
+                <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-400">
+                  Gemäß § 6 Abs. 1 Z 27 UStG wird keine Umsatzsteuer berechnet.
                 </p>
                 <div className="mt-8 flex gap-4">
                   <Button href="/kontakt">Kostenlose Beratung</Button>
