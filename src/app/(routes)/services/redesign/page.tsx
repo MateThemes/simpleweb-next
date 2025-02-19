@@ -4,6 +4,7 @@ import { Container } from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
 import { PaintBrushIcon, CheckIcon } from '@/components/icons'
 import { serviceSchema } from '@/app/schema'
+import { PriceCard } from '@/components/ui/PriceCard'
 
 export const metadata: Metadata = {
   title: 'Website Redesign | Moderne Website Neugestaltung',
@@ -58,6 +59,54 @@ const benefits = [
   'Schnellere Ladezeiten',
   'Verbesserte Usability',
   'Zukunftssichere Technologie',
+]
+
+const packages = [
+  {
+    name: 'Standard Redesign',
+    description: 'Perfekt für kleine Unternehmen und Selbstständige',
+    price: '1.490',
+    features: [
+      { name: 'Modernes responsives Design', included: true },
+      { name: 'Übernahme bestehender Inhalte', included: true },
+      { name: 'Kontaktformular & Maps Integration', included: true },
+      { name: 'Grundlegende SEO-Optimierung', included: true },
+      { name: 'SSL-Verschlüsselung', included: true },
+      { name: 'DSGVO-konforme Umsetzung', included: true },
+      { name: '1 Jahr Hosting & Domain', included: true }
+    ],
+    popular: false
+  },
+  {
+    name: 'Premium Redesign',
+    description: 'Ideal für wachsende Unternehmen',
+    price: '2.990',
+    features: [
+      { name: 'Alles aus Standard, plus:', included: true },
+      { name: 'Erweiterte SEO & Local SEO', included: true },
+      { name: 'Performance-Optimierung', included: true },
+      { name: 'Content-Überarbeitung', included: true },
+      { name: 'Blog-System & News-Bereich', included: true },
+      { name: 'Individuelle Funktionen', included: true },
+      { name: 'Premium Support', included: true }
+    ],
+    popular: true
+  },
+  {
+    name: 'Komplett Redesign',
+    description: 'Full-Service mit laufender Betreuung',
+    price: '4.990',
+    features: [
+      { name: 'Alles aus Premium, plus:', included: true },
+      { name: 'Laufende Wartung & Updates', included: true },
+      { name: 'Regelmäßige SEO-Optimierung', included: true },
+      { name: 'Content-Marketing & Blog-Artikel', included: true },
+      { name: 'Performance-Monitoring', included: true },
+      { name: 'Monatliche Reports', included: true },
+      { name: 'Priority Support', included: true }
+    ],
+    popular: false
+  }
 ]
 
 export default function RedesignPage() {
@@ -178,6 +227,30 @@ export default function RedesignPage() {
           </Container>
         </div>
 
+        {/* Packages Section */}
+        <div className="py-24 bg-neutral-50 dark:bg-neutral-900">
+          <Container>
+            <div className="mx-auto max-w-2xl sm:text-center">
+              <h2 className="font-display text-4xl font-medium tracking-tight text-neutral-950 dark:text-white sm:text-5xl">
+                Unsere Redesign-Pakete
+              </h2>
+              <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-300">
+                Wählen Sie das passende Paket für die Modernisierung Ihrer Website. Alle Preise sind Endpreise gemäß § 6 Abs. 1 Z 27 UStG.
+              </p>
+            </div>
+            <div className="mx-auto mt-16 grid grid-cols-1 gap-8 lg:grid-cols-3">
+              {packages.map((pkg) => (
+                <PriceCard key={pkg.name} {...pkg} />
+              ))}
+            </div>
+            <div className="mt-16 flex justify-center">
+              <Button href="/preise-und-pakete" variant="secondary">
+                Alle Pakete ansehen
+              </Button>
+            </div>
+          </Container>
+        </div>
+
         {/* CTA Section */}
         <div className="relative py-24 bg-purple-600 overflow-hidden">
           <div className="absolute inset-0 mix-blend-multiply opacity-40">
@@ -195,7 +268,7 @@ export default function RedesignPage() {
                 Bereit für einen neuen Look?
               </h2>
               <p className="mt-4 text-lg text-purple-100">
-                Professionelles Redesign ab 2.490€. Lassen Sie uns gemeinsam Ihre Website in einen modernen und erfolgreichen Webauftritt verwandeln.
+                Professionelles Redesign ab 1.490€. Lassen Sie uns gemeinsam Ihre Website in einen modernen und erfolgreichen Webauftritt verwandeln.
               </p>
               <p className="mt-2 text-sm text-purple-100">
                 Gemäß § 6 Abs. 1 Z 27 UStG wird keine Umsatzsteuer berechnet.
