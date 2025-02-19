@@ -195,7 +195,10 @@ export default function SeoPage() {
                 Bereit für mehr Sichtbarkeit?
               </h2>
               <p className="mt-4 text-lg text-green-100">
-                Lassen Sie uns Ihre SEO-Potenziale analysieren und einen Plan für mehr organischen Traffic erstellen.
+                SEO-Audit & Analyse ab €490. Monatliche SEO-Betreuung ab €390. Lassen Sie uns Ihre SEO-Potenziale analysieren und einen Plan für mehr organischen Traffic erstellen.
+              </p>
+              <p className="mt-2 text-sm text-green-100">
+                Gemäß § 6 Abs. 1 Z 27 UStG wird keine Umsatzsteuer berechnet.
               </p>
               <div className="mt-8">
                 <Button href="/kontakt" variant="secondary" className="text-green-600 border-green-600 hover:bg-green-600 hover:text-white dark:text-white dark:border-white dark:hover:bg-white dark:hover:text-green-600">

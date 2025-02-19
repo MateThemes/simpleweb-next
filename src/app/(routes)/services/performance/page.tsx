@@ -195,7 +195,7 @@ export default function PerformancePage() {
                 Bereit für mehr Speed?
               </h2>
               <p className="mt-4 text-lg text-orange-100">
-                Performance & Hosting Optimierung ab 990€. Lassen Sie uns gemeinsam die Performance Ihrer Website analysieren und optimieren.
+                Performance-Optimierung nach Aufwand: €90-120/Stunde. Lassen Sie uns gemeinsam die Performance Ihrer Website analysieren und optimieren.
               </p>
               <p className="mt-2 text-sm text-orange-100">
                 Gemäß § 6 Abs. 1 Z 27 UStG wird keine Umsatzsteuer berechnet.

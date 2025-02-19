@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import { Container } from '@/components/ui/Container'
 import { PriceCard } from '@/components/ui/PriceCard'
 import { pricingSchema } from '@/app/schema'
+import Button from '@/components/ui/Button'
 
 export const metadata: Metadata = {
   title: 'Preise | Webdesign Pakete & Leistungen',
@@ -196,6 +197,96 @@ export default function PricingPage() {
             </div>
           </div>
         </Container>
+
+        {/* Other Services Section */}
+        <div className="py-24">
+          <Container>
+            <div className="mx-auto max-w-2xl lg:max-w-none">
+              <div className="mx-auto max-w-2xl sm:text-center">
+                <h2 className="font-display text-4xl font-medium tracking-tight text-neutral-950 dark:text-white sm:text-5xl">
+                  Weitere Dienstleistungen
+                </h2>
+                <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-300">
+                  Für technische Services und Hosting bieten wir flexible Abrechnungsmodelle nach Aufwand.
+                </p>
+              </div>
+              <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 lg:max-w-none lg:grid-cols-2">
+                <div className="flex gap-6 rounded-2xl bg-white dark:bg-neutral-800 p-8 shadow-sm">
+                  <div>
+                    <h3 className="font-display text-xl font-semibold text-neutral-950 dark:text-white">
+                      Performance & Hosting Beratung
+                    </h3>
+                    <ul className="mt-6 space-y-4 text-base text-neutral-600 dark:text-neutral-300">
+                      <li>• Hosting-Analyse & Empfehlung</li>
+                      <li>• Performance-Optimierung nach Aufwand</li>
+                      <li>• Server-Setup Beratung</li>
+                      <li>• Technischer Support: €90-120/Stunde</li>
+                    </ul>
+                    <div className="mt-8">
+                      <Button href="/services/performance-hosting" variant="secondary">
+                        Details ansehen
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex gap-6 rounded-2xl bg-white dark:bg-neutral-800 p-8 shadow-sm">
+                  <div>
+                    <h3 className="font-display text-xl font-semibold text-neutral-950 dark:text-white">
+                      SEO & Marketing
+                    </h3>
+                    <ul className="mt-6 space-y-4 text-base text-neutral-600 dark:text-neutral-300">
+                      <li>• SEO-Audit & Analyse: €490</li>
+                      <li>• Monatliche SEO-Betreuung ab €390</li>
+                      <li>• Content-Marketing nach Aufwand</li>
+                      <li>• Local SEO & Google Business</li>
+                    </ul>
+                    <div className="mt-8">
+                      <Button href="/services/seo-marketing" variant="secondary">
+                        Details ansehen
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex gap-6 rounded-2xl bg-white dark:bg-neutral-800 p-8 shadow-sm">
+                  <div>
+                    <h3 className="font-display text-xl font-semibold text-neutral-950 dark:text-white">
+                      Wartung & Support
+                    </h3>
+                    <ul className="mt-6 space-y-4 text-base text-neutral-600 dark:text-neutral-300">
+                      <li>• Basis-Wartung ab €49/Monat</li>
+                      <li>• Updates & Sicherheit</li>
+                      <li>• Backup & Monitoring</li>
+                      <li>• Express-Support verfügbar</li>
+                    </ul>
+                    <div className="mt-8">
+                      <Button href="/services/wartung" variant="secondary">
+                        Details ansehen
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex gap-6 rounded-2xl bg-white dark:bg-neutral-800 p-8 shadow-sm">
+                  <div>
+                    <h3 className="font-display text-xl font-semibold text-neutral-950 dark:text-white">
+                      Individuelle Projekte
+                    </h3>
+                    <ul className="mt-6 space-y-4 text-base text-neutral-600 dark:text-neutral-300">
+                      <li>• Maßgeschneiderte Lösungen</li>
+                      <li>• Komplexe Funktionen & Features</li>
+                      <li>• Spezielle Integrationen</li>
+                      <li>• Projektbasierte Kalkulation</li>
+                    </ul>
+                    <div className="mt-8">
+                      <Button href="/kontakt" variant="secondary">
+                        Anfrage stellen
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Container>
+        </div>
 
         {/* Additional Services */}
         <Container className="mt-24 sm:mt-32">
