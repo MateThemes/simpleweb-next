@@ -1,0 +1,369 @@
+---
+title: 'Tailwind CSS Advanced Setup Guide: Von Basis bis Enterprise'
+description: 'Detaillierte Anleitung für fortgeschrittene Tailwind CSS Konfigurationen. Von Custom Plugins bis zur Enterprise-Scale Architektur mit praktischen Code-Beispielen.'
+date: '2025-02-19'
+author: 'Gerald'
+category: 'Entwicklung'
+image: '/img/blog/tailwind-advanced-setup.jpg'
+---
+
+# Tailwind CSS Advanced Setup Guide: Von Basis bis Enterprise
+
+In diesem technischen Deep-Dive zeigen wir Ihnen, wie Sie Tailwind CSS für professionelle Projekte optimal konfigurieren und skalieren.
+
+## 1. Fortgeschrittene Konfiguration
+
+### Basis-Setup mit TypeScript
+
+```js
+// tailwind.config.ts
+import type { Config } from 'tailwindcss'
+import defaultTheme from 'tailwindcss/defaultTheme'
+
+export default {
+  content: [
+    './src/**/*.{js,jsx,ts,tsx}',
+    './content/**/*.mdx',
+  ],
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+      },
+    },
+  },
+  plugins: [
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/forms'),
+  ],
+} satisfies Config
+```
+
+### Custom Design-System Integration
+
+```js
+// theme/colors.ts
+export const colors = {
+  primary: {
+    50: '#f0f9ff',
+    100: '#e0f2fe',
+    // ... weitere Farbtöne
+    900: '#0c4a6e',
+  },
+  // ... weitere Farbpaletten
+}
+
+// theme/spacing.ts
+export const spacing = {
+  '4.5': '1.125rem',
+  '18': '4.5rem',
+  // ... weitere Abstände
+}
+
+// tailwind.config.ts
+import { colors } from './theme/colors'
+import { spacing } from './theme/spacing'
+
+export default {
+  theme: {
+    extend: {
+      colors,
+      spacing,
+    },
+  },
+}
+```
+
+## 2. Custom Plugins Entwicklung
+
+### Container-Query Plugin
+
+```js
+// plugins/container-queries.ts
+const plugin = require('tailwindcss/plugin')
+
+module.exports = plugin(function({ addVariant }) {
+  addVariant('container-sm', '@container (min-width: 640px)')
+  addVariant('container-md', '@container (min-width: 768px)')
+  addVariant('container-lg', '@container (min-width: 1024px)')
+})
+
+// Verwendung im JSX
+<div className="@container">
+  <div className="container-sm:grid-cols-2 container-lg:grid-cols-4">
+    {/* Content */}
+  </div>
+</div>
+```
+
+### Custom Utilities Plugin
+
+```js
+// plugins/aspect-ratios.ts
+const plugin = require('tailwindcss/plugin')
+
+module.exports = plugin(function({ addUtilities }) {
+  addUtilities({
+    '.aspect-video-4k': {
+      aspectRatio: '3840 / 2160',
+    },
+    '.aspect-cinema': {
+      aspectRatio: '2.39 / 1',
+    },
+  })
+})
+```
+
+## 3. Performance-Optimierung
+
+### JIT-Modus Konfiguration
+
+```js
+// tailwind.config.ts
+module.exports = {
+  mode: 'jit',
+  purge: {
+    content: [
+      './src/**/*.{js,jsx,ts,tsx}',
+      './content/**/*.mdx',
+    ],
+    options: {
+      safelist: [
+        'bg-blue-500',
+        'text-center',
+        /^hover:*/,
+      ],
+    },
+  },
+}
+```
+
+### Layer-basierte Organisation
+
+```css
+/* styles/main.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .btn-primary {
+    @apply px-4 py-2 bg-blue-500 text-white rounded-lg 
+           hover:bg-blue-600 transition-colors;
+  }
+}
+
+@layer utilities {
+  .text-shadow-sm {
+    text-shadow: 0 1px 2px rgb(0 0 0 / 0.1);
+  }
+}
+```
+
+## 4. Enterprise-Scale Architektur
+
+### Komponenten-System
+
+```tsx
+// components/Button/Button.tsx
+import { cva, type VariantProps } from 'class-variance-authority'
+
+const button = cva(
+  'inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors',
+  {
+    variants: {
+      variant: {
+        default: 'bg-primary-500 text-white hover:bg-primary-600',
+        secondary: 'bg-secondary-500 text-white hover:bg-secondary-600',
+        ghost: 'hover:bg-accent hover:text-accent-foreground',
+      },
+      size: {
+        default: 'h-10 py-2 px-4',
+        sm: 'h-9 px-3',
+        lg: 'h-11 px-8',
+      },
+    },
+    defaultVariants: {
+      variant: 'default',
+      size: 'default',
+    },
+  }
+)
+
+interface ButtonProps extends 
+  React.ButtonHTMLAttributes<HTMLButtonElement>,
+  VariantProps<typeof button> {}
+
+export function Button({ 
+  className, 
+  variant, 
+  size, 
+  ...props 
+}: ButtonProps) {
+  return (
+    <button
+      className={button({ variant, size, className })}
+      {...props}
+    />
+  )
+}
+```
+
+### Theming-System
+
+```ts
+// theme/index.ts
+import { createTheme } from './createTheme'
+
+export const lightTheme = createTheme({
+  colors: {
+    background: 'white',
+    foreground: 'black',
+    primary: {
+      DEFAULT: '#3b82f6',
+      foreground: 'white',
+    },
+  },
+})
+
+export const darkTheme = createTheme({
+  colors: {
+    background: '#020617',
+    foreground: 'white',
+    primary: {
+      DEFAULT: '#60a5fa',
+      foreground: 'white',
+    },
+  },
+})
+```
+
+### CSS-Module Integration
+
+```ts
+// next.config.js
+module.exports = {
+  webpack(config) {
+    config.module.rules.push({
+      test: /\.css$/,
+      use: [
+        'style-loader',
+        {
+          loader: 'css-loader',
+          options: {
+            modules: {
+              localIdentName: '[local]__[hash:base64:5]',
+            },
+          },
+        },
+        'postcss-loader',
+      ],
+    })
+    return config
+  },
+}
+```
+
+## 5. Testing und Qualitätssicherung
+
+### Jest-Konfiguration für Tailwind
+
+```js
+// jest.config.js
+module.exports = {
+  transform: {
+    '^.+\\.(js|jsx|ts|tsx)$': ['babel-jest', { presets: ['next/babel'] }],
+  },
+  moduleNameMapper: {
+    '^@/components/(.*)$': '<rootDir>/components/$1',
+    '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
+  },
+}
+```
+
+### Komponenten-Tests
+
+```tsx
+// Button.test.tsx
+import { render, screen } from '@testing-library/react'
+import { Button } from './Button'
+
+describe('Button', () => {
+  it('renders with correct styles', () => {
+    render(<Button variant="primary">Test</Button>)
+    const button = screen.getByRole('button')
+    expect(button).toHaveClass('bg-primary-500')
+  })
+})
+```
+
+## 6. Automatisierung und CI/CD
+
+### Tailwind CSS Linting
+
+```js
+// .stylelintrc.js
+module.exports = {
+  extends: ['stylelint-config-standard'],
+  rules: {
+    'at-rule-no-unknown': [
+      true,
+      {
+        ignoreAtRules: [
+          'tailwind',
+          'apply',
+          'variants',
+          'responsive',
+          'screen',
+        ],
+      },
+    ],
+  },
+}
+```
+
+### GitHub Actions Workflow
+
+```yaml
+# .github/workflows/tailwind.yml
+name: Tailwind CSS Build
+
+on:
+  push:
+    paths:
+      - '**/*.css'
+      - 'tailwind.config.*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - run: npm ci
+      - run: npm run build:css
+      - name: Check for CSS changes
+        run: |
+          if [[ -n $(git status --porcelain) ]]; then
+            echo "CSS files need to be rebuilt"
+            exit 1
+          fi
+```
+
+## Fazit
+
+Eine professionelle Tailwind CSS Konfiguration ist der Schlüssel zu skalierbaren und wartbaren Projekten. Mit den richtigen Werkzeugen und Strukturen können Sie:
+
+1. Konsistente Design-Systeme erstellen
+2. Performance optimieren
+3. Code-Qualität sicherstellen
+4. Entwicklungsprozesse automatisieren
+
+Möchten Sie Ihr Projekt mit einer professionellen Tailwind CSS Implementierung ausstatten? [Kontaktieren Sie uns](/kontakt) für eine Beratung. Wir unterstützen Sie bei der optimalen Konfiguration und Implementierung.
+
+---
+
+**Bonus: Code-Review**  
+Buchen Sie ein kostenloses 30-minütiges Code-Review Ihrer Tailwind CSS Implementierung. [Termin vereinbaren](/kontakt)
