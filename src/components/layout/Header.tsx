@@ -244,6 +244,25 @@ export function Header() {
                           </p>
                         </div>
                       </div>
+                      {/* Wartung & Support */}
+                      <div className="group relative flex items-center gap-x-6 rounded-lg p-4 hover:bg-gray-50 dark:hover:bg-slate-800">
+                        <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 dark:bg-slate-800 group-hover:bg-white dark:group-hover:bg-slate-700">
+                          <RocketLaunchIcon className="h-6 w-6 text-gray-600 dark:text-gray-400 group-hover:text-yellow-600" aria-hidden="true" />
+                        </div>
+                        <div>
+                          <Link
+                            href="/services/wartung"
+                            className="font-display text-lg font-medium text-gray-900 dark:text-white"
+                            onClick={() => setIsServicesOpen(false)}
+                          >
+                            Wartung & Support
+                            <span className="absolute inset-0" />
+                          </Link>
+                          <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                            Professionelle Wartung und technischer Support
+                          </p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -410,6 +429,14 @@ export function Header() {
                       >
                         <ServerIcon className="h-5 w-5 text-teal-600" />
                         Hosting
+                      </Link>
+                      <Link
+                        href="/services/wartung"
+                        className="flex items-center gap-3 px-3 py-3 rounded-md text-base font-medium text-gray-600 hover:text-gray-900 dark:text-white dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        <RocketLaunchIcon className="h-5 w-5 text-yellow-600" />
+                        Wartung & Support
                       </Link>
                     </div>
                   </div>

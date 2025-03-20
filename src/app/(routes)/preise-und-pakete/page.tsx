@@ -223,7 +223,7 @@ export default function PricingPage() {
                       <li>• Technischer Support: €90-120/Stunde</li>
                     </ul>
                     <div className="mt-8">
-                      <Button href="/services/performance-hosting" variant="secondary">
+                      <Button href="/services/performance" variant="secondary">
                         Details ansehen
                       </Button>
                     </div>
@@ -241,7 +241,7 @@ export default function PricingPage() {
                       <li>• Local SEO & Google Business</li>
                     </ul>
                     <div className="mt-8">
-                      <Button href="/services/seo-marketing" variant="secondary">
+                      <Button href="/services/seo" variant="secondary">
                         Details ansehen
                       </Button>
                     </div>
