@@ -4,7 +4,7 @@ import Banner from '@/components/sections/Banner'
 import Services from '@/components/sections/Services'
 import Features from '@/components/sections/Features'
 import Process from '@/components/sections/Process'
-import Testimonials from '@/components/sections/Testimonials'
+import WorkingPrinciples from '@/components/sections/WorkingPrinciples'
 import Faq from '@/components/sections/Faq'
 import Cta from '@/components/sections/Cta'
 
@@ -56,7 +56,7 @@ export default function Home() {
         <Services />
         <Features />
         <Process />
-        <Testimonials />
+        <WorkingPrinciples />
         <Faq />
         <Cta />
       </div>
