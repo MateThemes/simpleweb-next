@@ -2,12 +2,13 @@
 
 import { Container } from '../ui/Container'
 import { motion } from 'framer-motion'
+import { UserGroupIcon, RocketLaunchIcon, ClockIcon, ChatBubbleBottomCenterTextIcon } from '@heroicons/react/24/outline'
 
 const stats = [
-  { id: 1, name: 'Zufriedene Kunden', value: '100+' },
-  { id: 2, name: 'Erfolgreiche Projekte', value: '200+' },
-  { id: 3, name: 'Jahre Erfahrung', value: '10+' },
-  { id: 4, name: 'Support-Anfragen gelöst', value: '1000+' },
+  { id: 1, name: 'Zufriedene Kunden', icon: UserGroupIcon, subtext: 'Vertrauen seit Jahren' },
+  { id: 2, name: 'Erfolgreiche Projekte', icon: RocketLaunchIcon, subtext: 'Individuell umgesetzt' },
+  { id: 3, name: 'Jahre Erfahrung', icon: ClockIcon, subtext: 'Expertise & Know-how' },
+  { id: 4, name: 'Support-Anfragen gelöst', icon: ChatBubbleBottomCenterTextIcon, subtext: 'Schnell & zuverlässig' },
 ]
 
 export default function Stats() {
@@ -46,14 +47,12 @@ export default function Stats() {
                 transition={{ duration: 0.5, delay: 0.1 * stat.id }}
                 className="flex flex-col items-center"
               >
-                <dd className="text-4xl font-display font-bold text-blue-600 dark:text-blue-400">
-                  {stat.value}
-                </dd>
+                <stat.icon className="h-12 w-12 text-blue-600 dark:text-blue-400" />
                 <dt className="mt-4 text-base font-medium text-gray-900 dark:text-white text-center">
                   {stat.name}
                 </dt>
                 <p className="mt-2 text-sm text-gray-600 dark:text-gray-400 text-center">
-                  Und wachsend
+                  {stat.subtext}
                 </p>
               </motion.div>
             ))}
