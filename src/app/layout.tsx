@@ -6,6 +6,7 @@ import { Footer } from "@/components/layout/Footer";
 import { CookieConsent } from "@/components/cookie/CookieConsent";
 import { CookieSettingsButton } from "@/components/cookie/CookieSettingsButton";
 import { GoogleTagManager } from "@/components/analytics/GoogleTagManager";
+import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
 import "./globals.css";
 
@@ -118,6 +119,7 @@ export default function RootLayout({
           <Footer />
           <CookieConsent />
           <CookieSettingsButton />
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>
