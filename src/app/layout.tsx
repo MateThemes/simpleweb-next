@@ -106,9 +106,7 @@ export default function RootLayout({
         {/* Preload critical resources */}
         <link rel="preload" href="/img/hero-image.png" as="image" />
         
-        {/* Preload critical fonts */}
-        <link rel="preload" href="/_next/static/media/inter-var.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
-        <link rel="preload" href="/_next/static/media/outfit-var.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+
         
         <GoogleTagManagerLazy />
       </head>
