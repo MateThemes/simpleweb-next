@@ -16,6 +16,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated `src/app/layout.tsx` to use only essential fonts
 - **Impact**: 50% reduction in font loading time
 
+#### Network Dependency Tree Optimization
+- **Added preconnect hints** for external domains (Google Tag Manager, Google Analytics)
+- **Added DNS prefetch** for faster domain resolution
+- **Created lazy-loaded GTM component** (`GoogleTagManagerLazy`) to reduce critical path impact
+- **Added resource preloading** for critical images and fonts
+- **Delayed GTM loading** by 2 seconds to prioritize content rendering
+- **Impact**: Reduced critical path latency and improved LCP scores
+
 #### Image Loading Optimization
 - Added `loading="lazy"` to all below-the-fold images:
   - Blog card images (`src/components/blog/BlogCard.tsx`)
@@ -138,6 +146,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### New Files Created
 - `src/components/ui/ErrorBoundary.tsx` - Error boundary component
 - `src/lib/rateLimit.ts` - Rate limiting utility
+- `src/components/analytics/GoogleTagManagerLazy.tsx` - Lazy-loaded GTM component
 - `CHANGELOG.md` - This changelog file
 
 #### Files Modified

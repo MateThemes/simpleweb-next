@@ -4,7 +4,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { CookieConsent } from "@/components/cookie/CookieConsent";
 import { CookieSettingsButton } from "@/components/cookie/CookieSettingsButton";
-import { GoogleTagManager } from "@/components/analytics/GoogleTagManager";
+import { GoogleTagManagerLazy } from "@/components/analytics/GoogleTagManagerLazy";
 import { ErrorBoundary } from "@/components/ui/ErrorBoundary";
 import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
@@ -97,10 +97,23 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        <GoogleTagManager />
+        {/* Preconnect to external domains for faster loading */}
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://www.google-analytics.com" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+        
+        {/* Preload critical resources */}
+        <link rel="preload" href="/img/hero-image.png" as="image" />
+        
+        {/* Preload critical fonts */}
+        <link rel="preload" href="/_next/static/media/inter-var.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        <link rel="preload" href="/_next/static/media/outfit-var.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        
+        <GoogleTagManagerLazy />
       </head>
       <body className="flex min-h-screen flex-col bg-white dark:bg-gray-950">
-        <GoogleTagManager />
+        <GoogleTagManagerLazy />
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <ErrorBoundary>
             <Header />
