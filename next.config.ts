@@ -12,6 +12,14 @@ const nextConfig = {
       },
     ],
   },
+  experimental: {
+    optimizePackageImports: ['@heroicons/react', 'framer-motion'],
+  },
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
+  },
+  // Optimize for modern browsers
+  poweredByHeader: false,
 }
 
 const withMDX = createMDX({
