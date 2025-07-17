@@ -21,7 +21,7 @@ export default function Hero() {
             <div className="mt-24 sm:mt-32 lg:mt-16">
               <div className="inline-flex space-x-6">
                 <span
-                  className="rounded-full bg-blue-600/10 px-3 py-1 text-sm font-semibold leading-6 text-blue-600 dark:text-blue-400 ring-1 ring-inset ring-blue-600/10"
+                  className="rounded-full bg-blue-600 px-3 py-1 text-sm font-semibold leading-6 text-white ring-1 ring-inset ring-blue-600"
                 >
                   Webdesign & SEO
                 </span>
