@@ -31,7 +31,7 @@ export default function Stats() {
             </p>
           </motion.div>
 
-          <motion.dl
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
@@ -48,15 +48,15 @@ export default function Stats() {
                 className="flex flex-col items-center"
               >
                 <stat.icon className="h-12 w-12 text-blue-600 dark:text-blue-400" />
-                <dt className="mt-4 text-base font-medium text-gray-900 dark:text-white text-center">
+                <h3 className="mt-4 text-base font-medium text-gray-900 dark:text-white text-center">
                   {stat.name}
-                </dt>
+                </h3>
                 <p className="mt-2 text-sm text-gray-600 dark:text-gray-400 text-center">
                   {stat.subtext}
                 </p>
               </motion.div>
             ))}
-          </motion.dl>
+          </motion.div>
         </div>
       </Container>
     </section>
