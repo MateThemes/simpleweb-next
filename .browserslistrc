@@ -1,8 +1,0 @@
-# Target only modern browsers to reduce polyfills
-last 1 chrome version
-last 1 firefox version
-last 1 safari version
-last 1 edge version
-not ie 11
-not ie_mob 11
-not dead 

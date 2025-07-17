@@ -14,14 +14,14 @@ const nextConfig = {
   },
   experimental: {
     optimizePackageImports: ['@heroicons/react', 'framer-motion'],
-    // Modern browser optimizations
-    modern: true,
   },
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
   // Optimize for modern browsers
   poweredByHeader: false,
+  // Target modern browsers
+  swcMinify: true,
 
 }
 
