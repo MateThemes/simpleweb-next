@@ -1,4 +1,3 @@
-import { Geist, Geist_Mono } from "next/font/google";
 import { Inter, Outfit } from 'next/font/google'
 import { ThemeProvider } from "next-themes";
 import { Header } from "@/components/layout/Header";
@@ -6,19 +5,10 @@ import { Footer } from "@/components/layout/Footer";
 import { CookieConsent } from "@/components/cookie/CookieConsent";
 import { CookieSettingsButton } from "@/components/cookie/CookieSettingsButton";
 import { GoogleTagManager } from "@/components/analytics/GoogleTagManager";
+import { ErrorBoundary } from "@/components/ui/ErrorBoundary";
 import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 const inter = Inter({
   subsets: ['latin'],
@@ -103,7 +93,7 @@ export default function RootLayout({
   return (
     <html
       lang="de"
-      className={`${inter.variable} ${outfit.variable} ${geistSans.variable} ${geistMono.variable}`}
+      className={`${inter.variable} ${outfit.variable}`}
       suppressHydrationWarning
     >
       <head>
@@ -112,14 +102,16 @@ export default function RootLayout({
       <body className="flex min-h-screen flex-col bg-white dark:bg-gray-950">
         <GoogleTagManager />
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <Header />
-          <main className="flex-1">
-            {children}
-          </main>
-          <Footer />
-          <CookieConsent />
-          <CookieSettingsButton />
-          <Analytics />
+          <ErrorBoundary>
+            <Header />
+            <main className="flex-1">
+              {children}
+            </main>
+            <Footer />
+            <CookieConsent />
+            <CookieSettingsButton />
+            <Analytics />
+          </ErrorBoundary>
         </ThemeProvider>
       </body>
     </html>

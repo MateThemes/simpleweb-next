@@ -70,6 +70,7 @@ export default async function CategoryPage({ params }: Props) {
                   alt={post.title}
                   fill
                   className="object-cover transition duration-300 group-hover:scale-105"
+                  loading="lazy"
                 />
               </div>
               <h2 className="mt-6 text-2xl font-semibold text-neutral-950 dark:text-white">

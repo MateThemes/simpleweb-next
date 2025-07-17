@@ -285,7 +285,7 @@ export function ContactForm({ className }: ContactFormProps) {
           </div>
           <div className="ml-3">
             <label htmlFor="privacy" className="text-sm text-gray-600 dark:text-gray-400">
-              Ich akzeptiere die <a href="/datenschutz" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline dark:text-blue-400">Datenschutzerklärung</a>
+              Ich stimme der Datenverarbeitung gemäß <a href="/datenschutz" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline dark:text-blue-400">Datenschutzerklärung</a> zu.
             </label>
             {errors.privacyAccepted && (
               <p className="mt-1 text-sm text-red-600">{errors.privacyAccepted}</p>

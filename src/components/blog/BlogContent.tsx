@@ -60,6 +60,7 @@ const components: MDXComponents = {
           fill
           sizes="(min-width: 1024px) 32rem, 100vw"
           className="object-cover"
+          loading="lazy"
         />
       </div>
     )

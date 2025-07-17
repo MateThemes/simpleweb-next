@@ -135,10 +135,7 @@ export async function sendEmail(formData: {
       return { success: false, error: 'Ungültige E-Mail-Adresse' }
     }
 
-    console.log('Rendering email template...')
     const emailHtml = await render(ContactEmail(formData))
-
-    console.log('Sending email via Resend...')
     await resend.emails.send({
       from: 'SimpleWebDesign <no-reply@simplewebdesign.at>',
       to: ['info@simplewebdesign.at'],

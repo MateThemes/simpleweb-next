@@ -94,7 +94,6 @@ function enableAnalytics() {
     ad_personalization: 'denied'
   }
   window.dataLayer.push(consentEvent)
-  console.log('Analytics cookies enabled')
 }
 
 function disableAnalytics() {
@@ -111,7 +110,6 @@ function disableAnalytics() {
   Cookies.remove('_ga', { path: '/' })
   Cookies.remove('_gid', { path: '/' })
   Cookies.remove('_gat', { path: '/' })
-  console.log('Analytics cookies disabled')
 }
 
 function enableMarketing() {
@@ -124,7 +122,6 @@ function enableMarketing() {
     ad_personalization: 'granted'
   }
   window.dataLayer.push(consentEvent)
-  console.log('Marketing cookies enabled')
 }
 
 function disableMarketing() {
@@ -140,5 +137,4 @@ function disableMarketing() {
   // Remove marketing cookies
   Cookies.remove('_gcl_au', { path: '/' })
   Cookies.remove('_gac_', { path: '/' })
-  console.log('Marketing cookies disabled')
 }

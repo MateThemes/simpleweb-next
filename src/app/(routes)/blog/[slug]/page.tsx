@@ -13,7 +13,6 @@ interface PageParams {
 
 export async function generateStaticParams(): Promise<PageParams[]> {
   const posts = await getAllPosts()
-  console.log('Generated paths:', posts.map(p => p.slug)) // Debug log
   return posts.map((post) => ({
     slug: post.slug,
   }))
@@ -65,12 +64,10 @@ export default async function BlogPage(props: {
   const post: Post | null = await getPostBySlug(params.slug)
 
   if (!post) {
-    console.error(`Post not found for slug: ${params.slug}`) // Debug log
     notFound()
   }
 
   if (!post.content) {
-    console.error(`Post content missing for slug: ${params.slug}`) // Debug log
     notFound()
   }
 

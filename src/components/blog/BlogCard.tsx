@@ -29,6 +29,7 @@ export function BlogCard({
           height={630}
           className="aspect-[2/1] w-full rounded-2xl bg-gray-100 object-cover sm:aspect-[3/2]"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          loading="lazy"
         />
         <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10" />
       </div>

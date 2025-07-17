@@ -24,6 +24,7 @@ export function ProjectCard({
             alt={`${title} project screenshot`}
             fill
             className="absolute inset-0 h-full w-full object-cover"
+            loading="lazy"
           />
         ) : (
           <div className="h-full w-full bg-zinc-100 dark:bg-zinc-700 flex items-center justify-center text-zinc-400 dark:text-zinc-500">

@@ -27,6 +27,7 @@ export function ProjectCard({
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             className="object-cover"
+            loading="lazy"
           />
         ) : (
           <div className="h-full w-full bg-zinc-100 dark:bg-zinc-700 flex items-center justify-center text-zinc-400 dark:text-zinc-500">

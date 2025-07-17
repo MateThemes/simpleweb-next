@@ -196,6 +196,7 @@ export default function AboutPage() {
                   width={300}
                   height={200}
                   className="mt-6 rounded-2xl"
+                  loading="lazy"
                 />
               </div>
               <div className="flex flex-col rounded-3xl bg-white dark:bg-neutral-800 px-6 py-8">
@@ -222,6 +223,7 @@ export default function AboutPage() {
                   width={300}
                   height={200}
                   className="mt-6 rounded-2xl"
+                  loading="lazy"
                 />
               </div>
               <div className="flex flex-col rounded-3xl bg-white dark:bg-neutral-800 px-6 py-8">
@@ -261,6 +263,7 @@ export default function AboutPage() {
                   width={300}
                   height={200}
                   className="mt-6 rounded-2xl"
+                  loading="lazy"
                 />
               </div>
             </div>
