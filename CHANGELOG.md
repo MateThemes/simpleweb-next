@@ -95,9 +95,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Impact**: Better code reliability and developer experience
 
 #### Build Optimization
+- **Configured aggressive modern browser targets** to reduce polyfills
+- **Added `.babelrc`** with strict modern browser targeting
+- **Updated browserslist** to target only latest browser versions
+- **Added experimental modern flag** in Next.js config
 - Clean ESLint output (no warnings or errors)
 - Optimized bundle size through font reduction
-- **Impact**: Faster builds and smaller production bundles
+- **Impact**: Expected 10 KiB reduction in polyfill size, faster builds and smaller production bundles
 
 ### 📊 Performance Metrics
 
@@ -147,10 +151,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `src/components/ui/ErrorBoundary.tsx` - Error boundary component
 - `src/lib/rateLimit.ts` - Rate limiting utility
 - `src/components/analytics/GoogleTagManagerLazy.tsx` - Lazy-loaded GTM component
+- `.babelrc` - Modern browser Babel configuration
+- `.browserslistrc` - Aggressive browser targeting
 - `CHANGELOG.md` - This changelog file
 
 #### Files Modified
-- `src/app/layout.tsx` - Font optimization, error boundary integration
+- `src/app/layout.tsx` - Font optimization, error boundary integration, network optimizations
+- `next.config.ts` - Added modern browser optimizations
+- `package.json` - Updated browserslist for modern browsers
+- `.babelrc` - Added strict modern browser targeting
+- `.browserslistrc` - Added aggressive browser targeting
 - `src/app/(routes)/blog/[slug]/page.tsx` - Console log cleanup
 - `src/components/cookie/CookieStore.ts` - Console log cleanup
 - `src/app/(routes)/kontakt/actions.ts` - Console log cleanup
