@@ -138,7 +138,7 @@ export async function sendEmail(formData: {
     const emailHtml = await render(ContactEmail(formData))
     await resend.emails.send({
       from: 'SimpleWebDesign <no-reply@simplewebdesign.at>',
-      to: ['info@simplewebdesign.at'],
+      to: ['gerald@simplewebdesign.at'],
       subject: `Neue Projektanfrage von ${formData.firstName} ${formData.lastName}`,
       html: emailHtml,
       text: `
