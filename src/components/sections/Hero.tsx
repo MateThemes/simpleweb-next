@@ -1,10 +1,9 @@
 'use client'
 
-import Image from 'next/image'
 import Link from 'next/link'
+import Image from 'next/image'
 import { MapPinIcon } from '../icons'
 import { Container } from '../ui/Container'
-import { motion } from 'framer-motion'
 
 export default function Hero() {
   return (
@@ -32,29 +31,14 @@ export default function Hero() {
               </div>
             </div>
             
-            <motion.h1 
-              className="mt-10 font-display text-4xl font-bold tracking-tighter text-gray-900 dark:text-white sm:text-6xl lg:text-7xl lg:leading-[1.1]"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
+            <h1 className="mt-10 font-display text-4xl font-bold tracking-tighter text-gray-900 dark:text-white sm:text-6xl lg:text-7xl lg:leading-[1.1]">
               Individuelle Websites mit Fokus auf SEO
-            </motion.h1>
-            <motion.p 
-              className="mt-6 text-lg leading-relaxed text-gray-600 dark:text-gray-400 max-w-2xl"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-            >
+            </h1>
+            <p className="mt-6 text-lg leading-relaxed text-gray-600 dark:text-gray-400 max-w-2xl">
               Modern, funktional und optimiert für maximale Sichtbarkeit und nachhaltigen Erfolg. Ihre Webagentur aus dem Waldviertel, Niederösterreich – regional verwurzelt, digital vernetzt.
-            </motion.p>
+            </p>
 
-            <motion.div 
-              className="mt-10 flex items-center gap-6"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-            >
+            <div className="mt-10 flex items-center gap-6">
               <Link
                 href="/kontakt"
                 className="rounded-xl bg-blue-600 px-6 py-3 text-base font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-colors duration-200"
@@ -67,26 +51,21 @@ export default function Hero() {
               >
                 Unsere Preise <span aria-hidden="true">→</span>
               </Link>
-            </motion.div>
+            </div>
           </div>
           
           <div className="mx-auto mt-16 flex max-w-2xl sm:mt-24 lg:ml-10 lg:mr-0 lg:mt-0 lg:max-w-none lg:flex-none xl:ml-32">
             <div className="max-w-3xl flex-none sm:max-w-5xl lg:max-w-none">
-              <motion.div
-                className="relative"
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: 0.5 }}
-              >
+              <div className="relative">
                 <Image
-                  src="/img/hero-image.png"
+                  src="/img/hero-image-optimized.jpg"
                   alt="App screenshot"
                   width={2432}
                   height={1442}
                   priority
                   className="w-[76rem] rounded-xl shadow-2xl ring-1 ring-gray-900/10"
                 />
-              </motion.div>
+              </div>
             </div>
           </div>
         </div>

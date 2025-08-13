@@ -45,4 +45,13 @@ export default {
     },
   },
   plugins: [],
+  // Performance optimizations
+  future: {
+    hoverOnlyWhenSupported: true,
+  },
+  // Reduce bundle size by only including used utilities
+  corePlugins: {
+    preflight: true,
+    container: false, // We have our own Container component
+  },
 } satisfies Config;
