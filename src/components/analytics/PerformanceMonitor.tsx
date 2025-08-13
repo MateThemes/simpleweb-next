@@ -2,6 +2,22 @@
 
 import { useEffect } from 'react'
 
+interface LayoutShiftEntry extends PerformanceEntry {
+  hadRecentInput: boolean
+  value: number
+}
+
+interface NavigationEntry extends PerformanceEntry {
+  entryType: string
+  responseStart: number
+  requestStart: number
+}
+
+interface FirstInputEntry extends PerformanceEntry {
+  processingStart: number
+  startTime: number
+}
+
 export function PerformanceMonitor() {
   useEffect(() => {
     if (typeof window !== 'undefined' && 'PerformanceObserver' in window) {
@@ -20,7 +36,8 @@ export function PerformanceMonitor() {
       const fidObserver = new PerformanceObserver((list) => {
         const entries = list.getEntries()
         entries.forEach((entry) => {
-          console.log('FID:', entry.processingStart - entry.startTime)
+          const fidEntry = entry as FirstInputEntry
+          console.log('FID:', fidEntry.processingStart - fidEntry.startTime)
           // Send to analytics if needed
         })
       })
@@ -30,9 +47,10 @@ export function PerformanceMonitor() {
       let clsValue = 0
       const clsObserver = new PerformanceObserver((list) => {
         const entries = list.getEntries()
-        entries.forEach((entry: any) => {
-          if (!entry.hadRecentInput) {
-            clsValue += entry.value
+        entries.forEach((entry) => {
+          const clsEntry = entry as LayoutShiftEntry
+          if (!clsEntry.hadRecentInput) {
+            clsValue += clsEntry.value
             console.log('CLS:', clsValue)
             // Send to analytics if needed
           }
@@ -43,9 +61,10 @@ export function PerformanceMonitor() {
       // Monitor Time to First Byte (TTFB)
       const navigationObserver = new PerformanceObserver((list) => {
         const entries = list.getEntries()
-        entries.forEach((entry: any) => {
-          if (entry.entryType === 'navigation') {
-            const ttfb = entry.responseStart - entry.requestStart
+        entries.forEach((entry) => {
+          const navEntry = entry as NavigationEntry
+          if (navEntry.entryType === 'navigation') {
+            const ttfb = navEntry.responseStart - navEntry.requestStart
             console.log('TTFB:', ttfb)
             // Send to analytics if needed
           }

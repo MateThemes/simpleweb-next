@@ -51,7 +51,7 @@ const components: MDXComponents = {
     <blockquote className="mt-6 border-l-4 border-neutral-200 pl-4 italic text-neutral-600 dark:border-neutral-700 dark:text-neutral-400" {...props} />
   ),
   img: ({ alt, src }) => {
-    if (!src) return null
+    if (!src || typeof src !== 'string') return null
     return (
       <div className="relative mt-6 aspect-[16/9] w-full overflow-hidden rounded-lg">
         <Image
