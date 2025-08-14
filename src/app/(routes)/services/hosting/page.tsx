@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Hosting-Beratung | Professionelle Hosting-Lösungen',
     description: 'Professionelle Hosting-Beratung und Service. Wir finden die optimale Hosting-Lösung für Ihr Projekt mit Fokus auf Performance und Sicherheit.',
-    url: 'https://simplewebdesign.de/services/hosting',
+    url: 'https://simplewebdesign.at/services/hosting',
     images: [
       {
         url: '/img/services/hosting.jpg',
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     images: ['/img/services/hosting.jpg']
   },
   alternates: {
-    canonical: 'https://simplewebdesign.de/services/hosting'
+    canonical: 'https://simplewebdesign.at/services/hosting'
   }
 }
 

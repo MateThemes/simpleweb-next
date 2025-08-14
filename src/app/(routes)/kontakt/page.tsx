@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Kontakt | Webdesign Anfrage',
     description: 'Kontaktieren Sie uns für Ihr Webdesign-Projekt. Wir beraten Sie gerne und erstellen ein individuelles Angebot.',
-    url: 'https://simplewebdesign.de/kontakt',
+    url: 'https://simplewebdesign.at/kontakt',
     images: [
       {
         url: '/img/contact/office.jpg',
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     images: ['/img/contact/office.jpg']
   },
   alternates: {
-    canonical: 'https://simplewebdesign.de/kontakt'
+    canonical: 'https://simplewebdesign.at/kontakt'
   }
 }
 

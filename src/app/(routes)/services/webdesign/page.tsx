@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Webdesign | Professionelles Website Design',
     description: 'Modernes und professionelles Webdesign für Ihren erfolgreichen Onlineauftritt. Wir erstellen responsive Websites mit benutzerfreundlichem Design.',
-    url: 'https://simplewebdesign.de/services/webdesign',
+    url: 'https://simplewebdesign.at/services/webdesign',
     images: [
       {
         url: '/img/services/webdesign.jpg',
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     images: ['/img/services/webdesign.jpg']
   },
   alternates: {
-    canonical: 'https://simplewebdesign.de/services/webdesign'
+    canonical: 'https://simplewebdesign.at/services/webdesign'
   }
 }
 

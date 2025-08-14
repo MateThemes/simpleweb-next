@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Digital Marketing | Online Marketing Strategien',
     description: 'Professionelles Digital Marketing für Ihr Unternehmen. Steigern Sie Ihre Online-Präsenz mit unseren maßgeschneiderten Marketing-Strategien.',
-    url: 'https://simplewebdesign.de/services/marketing',
+    url: 'https://simplewebdesign.at/services/marketing',
     images: [
       {
         url: '/img/services/marketing.jpg',
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     images: ['/img/services/marketing.jpg']
   },
   alternates: {
-    canonical: 'https://simplewebdesign.de/services/marketing'
+    canonical: 'https://simplewebdesign.at/services/marketing'
   }
 }
 

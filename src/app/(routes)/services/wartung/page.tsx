@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Website Wartung & Support | Professionelle Betreuung',
     description: 'Professionelle Website-Wartung und technischer Support. Wir kümmern uns um Updates, Sicherheit und Performance Ihrer Website.',
-    url: 'https://simplewebdesign.de/services/wartung',
+    url: 'https://simplewebdesign.at/services/wartung',
     images: [
       {
         url: '/img/services/wartung.jpg',
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     images: ['/img/services/wartung.jpg']
   },
   alternates: {
-    canonical: 'https://simplewebdesign.de/services/wartung'
+    canonical: 'https://simplewebdesign.at/services/wartung'
   }
 }
 

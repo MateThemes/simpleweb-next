@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Website Performance Optimierung | Schnellere Websites',
     description: 'Professionelle Website Performance Optimierung. Verbessern Sie Ihre Core Web Vitals und PageSpeed für besseres Ranking und Conversion.',
-    url: 'https://simplewebdesign.de/services/performance',
+    url: 'https://simplewebdesign.at/services/performance',
     images: [
       {
         url: '/img/services/performance.jpg',
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     images: ['/img/services/performance.jpg']
   },
   alternates: {
-    canonical: 'https://simplewebdesign.de/services/performance'
+    canonical: 'https://simplewebdesign.at/services/performance'
   }
 }
 

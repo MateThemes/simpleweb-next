@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'SEO Optimierung | Suchmaschinenoptimierung',
     description: 'Professionelle SEO Optimierung für bessere Google Rankings. Steigern Sie Ihre Sichtbarkeit in den Suchergebnissen mit unserer SEO Expertise.',
-    url: 'https://simplewebdesign.de/services/seo',
+    url: 'https://simplewebdesign.at/services/seo',
     images: [
       {
         url: '/img/services/seo.jpg',
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     images: ['/img/services/seo.jpg']
   },
   alternates: {
-    canonical: 'https://simplewebdesign.de/services/seo'
+    canonical: 'https://simplewebdesign.at/services/seo'
   }
 }
 

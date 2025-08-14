@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Website Redesign | Moderne Website Neugestaltung',
     description: 'Professionelles Website Redesign für einen modernen, benutzerfreundlichen Webauftritt. Wir modernisieren Ihre Website mit aktuellem Design und Technologie.',
-    url: 'https://simplewebdesign.de/services/redesign',
+    url: 'https://simplewebdesign.at/services/redesign',
     images: [
       {
         url: '/img/services/redesign.jpg',
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     images: ['/img/services/redesign.jpg']
   },
   alternates: {
-    canonical: 'https://simplewebdesign.de/services/redesign'
+    canonical: 'https://simplewebdesign.at/services/redesign'
   }
 }
 
