@@ -1,51 +1,25 @@
-'use client';
-
-import { useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { Metadata } from 'next'
 import { Container } from '@/components/ui/Container';
 import { BlogCard } from '@/components/blog';
 import { PaginationControls } from '@/components/blog';
-import { Post } from '@/lib/types';
-import { Suspense } from 'react';
+import { getAllPosts } from '@/lib/mdx';
+
+export const metadata: Metadata = {
+  title: 'Blog | Webdesign, SEO & Marketing Insights | SimpleWebDesign',
+  description: 'Aktuelle Artikel und Insights zu Webdesign, SEO und Online Marketing. Professionelle Tipps für Ihren Online-Erfolg.',
+}
 
 const POSTS_PER_PAGE = 6;
 
-export default function BlogPage() {
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <ActualBlogPage />
-    </Suspense>
-  );
-}
-
-function ActualBlogPage() {
-  const searchParams = useSearchParams();
-  const [posts, setPosts] = useState<Post[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [totalPages, setTotalPages] = useState(1);
-  const [currentPage, setCurrentPage] = useState(1);
-
-  useEffect(() => {
-    async function fetchPosts() {
-      setIsLoading(true);
-      try {
-        const page = searchParams.get('page');
-        const currentPageNumber = page ? parseInt(page, 10) : 1;
-        setCurrentPage(currentPageNumber);
-
-        const response = await fetch('/api/posts');
-        const postsData = await response.json();
-        setPosts(postsData);
-        setTotalPages(Math.ceil(postsData.length / POSTS_PER_PAGE));
-      } catch (error) {
-        console.error('Error fetching posts:', error);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-    fetchPosts();
-  }, [searchParams]);
-
+export default async function BlogPage({
+  searchParams,
+}: {
+  searchParams: { page?: string }
+}) {
+  const posts = await getAllPosts();
+  const currentPage = searchParams.page ? parseInt(searchParams.page, 10) : 1;
+  const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
+  
   const paginatedPosts = posts.slice(
     (currentPage - 1) * POSTS_PER_PAGE,
     currentPage * POSTS_PER_PAGE
