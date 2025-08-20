@@ -3,29 +3,28 @@ import Image from 'next/image'
 import { Container } from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
 import { PaletteIcon, CheckIcon } from '@/components/icons'
-import { serviceSchema } from '@/app/schema'
 import { PriceCard } from '@/components/ui/PriceCard'
 
 export const metadata: Metadata = {
-  title: 'Webdesign | Professionelles Website Design',
-  description: 'Modernes und professionelles Webdesign für Ihren erfolgreichen Onlineauftritt. Wir erstellen responsive Websites mit benutzerfreundlichem Design.',
+  title: 'Webdesign Agentur Niederösterreich | Responsive Websites & UI/UX Design',
+  description: 'Professionelles Webdesign in Niederösterreich. Responsive Websites, moderne UI/UX und Conversion-optimiertes Design. Starter-Pakete ab 1.490€.',
   openGraph: {
-    title: 'Webdesign | Professionelles Website Design',
-    description: 'Modernes und professionelles Webdesign für Ihren erfolgreichen Onlineauftritt. Wir erstellen responsive Websites mit benutzerfreundlichem Design.',
+    title: 'Webdesign Agentur Niederösterreich | Responsive Websites & UI/UX Design',
+    description: 'Professionelles Webdesign in Niederösterreich. Responsive Websites, moderne UI/UX und Conversion-optimiertes Design. Starter-Pakete ab 1.490€.',
     url: 'https://simplewebdesign.at/services/webdesign',
     images: [
       {
         url: '/img/services/webdesign.jpg',
         width: 1200,
         height: 630,
-        alt: 'Professional Web Design Services'
+        alt: 'Webdesign Services Niederösterreich - Responsive Websites & UI/UX Design'
       }
     ]
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Webdesign | Professionelles Website Design',
-    description: 'Modernes und professionelles Webdesign für Ihren erfolgreichen Onlineauftritt.',
+    title: 'Webdesign Agentur Niederösterreich | Responsive Websites & UI/UX Design',
+    description: 'Professionelles Webdesign in Niederösterreich. Responsive Websites, moderne UI/UX und Conversion-optimiertes Design.',
     images: ['/img/services/webdesign.jpg']
   },
   alternates: {
@@ -138,13 +137,81 @@ export default function WebdesignPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(
-            serviceSchema({
-              name: 'Webdesign',
-              description: 'Modernes und professionelles Webdesign für Ihren erfolgreichen Onlineauftritt. Wir erstellen responsive Websites mit benutzerfreundlichem Design.',
-              image: '/img/services/webdesign.jpg'
-            })
-          )
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "Webdesign Agentur Niederösterreich",
+            "description": "Professionelles Webdesign in Niederösterreich. Responsive Websites, moderne UI/UX und Conversion-optimiertes Design. Starter-Pakete ab 1.490€.",
+            "image": "/img/services/webdesign.jpg",
+            "provider": {
+              "@type": "Organization",
+              "name": "SimpleWebDesign",
+              "url": "https://simplewebdesign.at",
+              "logo": "https://simplewebdesign.at/img/logo.png"
+            },
+            "areaServed": {
+              "@type": "State",
+              "name": "Niederösterreich"
+            },
+            "serviceType": ["Webdesign", "Responsive Design", "UI/UX Design", "Website Development", "Conversion Optimization"],
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Webdesign Services",
+              "itemListElement": [
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Responsive Webdesign"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "UI/UX Design"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Website Development"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Conversion Optimization"
+                  }
+                }
+              ]
+            },
+            "offers": [
+              {
+                "@type": "Offer",
+                "name": "Standard Webdesign",
+                "price": "1490",
+                "priceCurrency": "EUR",
+                "description": "Perfekt für kleine Unternehmen und Selbstständige"
+              },
+              {
+                "@type": "Offer",
+                "name": "Premium Webdesign",
+                "price": "2990",
+                "priceCurrency": "EUR",
+                "description": "Ideal für wachsende Unternehmen"
+              },
+              {
+                "@type": "Offer",
+                "name": "Komplett Webdesign",
+                "price": "4990",
+                "priceCurrency": "EUR",
+                "description": "Full-Service mit laufender Betreuung"
+              }
+            ]
+          })
         }}
       />
       <main className="flex-auto">
@@ -154,10 +221,10 @@ export default function WebdesignPage() {
             <div className="lg:flex lg:items-center lg:gap-x-10">
               <div className="max-w-2xl lg:max-w-lg">
                 <h1 className="font-display text-5xl font-medium tracking-tight text-neutral-950 dark:text-white [text-wrap:balance] sm:text-7xl">
-                  Responsive Webdesign
+                  Webdesign Agentur Niederösterreich
                 </h1>
                 <p className="mt-6 text-xl text-neutral-600 dark:text-neutral-300">
-                  Professionelles Webdesign, das Ihre Zielgruppe begeistert und Ihre Geschäftsziele unterstützt. Starter-Pakete ab 1.490€.
+                  Professionelles Webdesign in Niederösterreich, das Ihre Zielgruppe begeistert und Ihre Geschäftsziele unterstützt. Responsive Websites mit modernem UI/UX Design. Starter-Pakete ab 1.490€.
                 </p>
                 <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-400">
                   Gemäß § 6 Abs. 1 Z 27 UStG wird keine Umsatzsteuer berechnet.
@@ -171,7 +238,7 @@ export default function WebdesignPage() {
                 <div className="relative">
                   <Image
                     src="/img/services/responsive.webp"
-                    alt="Responsive Webdesign Showcase"
+                    alt="Webdesign Services Niederösterreich - Responsive Webdesign Showcase mit modernem UI/UX"
                     width={600}
                     height={400}
                     className="rounded-2xl shadow-xl"
@@ -180,7 +247,7 @@ export default function WebdesignPage() {
                   <div className="absolute -bottom-8 -left-8">
                     <Image
                       src="/img/services/responsive.jpg"
-                      alt="Mobile Design Example"
+                      alt="Mobile Webdesign Beispiel - Responsive Design für Smartphones"
                       width={200}
                       height={400}
                       className="rounded-xl shadow-lg"
@@ -200,7 +267,7 @@ export default function WebdesignPage() {
                 Alles was Sie brauchen
               </h2>
               <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-300">
-                Von der ersten Konzeption bis zum fertigen Projekt - wir begleiten Sie durch den gesamten Prozess.
+                Von der ersten Konzeption bis zum fertigen Projekt - wir begleiten Sie durch den gesamten Webdesign-Prozess in Niederösterreich.
               </p>
             </div>
             <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 sm:mt-20 lg:max-w-none lg:grid-cols-2">
@@ -228,7 +295,7 @@ export default function WebdesignPage() {
                   Unser Prozess
                 </h2>
                 <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-300">
-                  Wir unterstützen Sie bei jedem Schritt, um sicherzustellen, dass Ihr Projekt erfolgreich ist.
+                  Wir unterstützen Sie bei jedem Schritt des Webdesign-Prozesses in Niederösterreich, um sicherzustellen, dass Ihr Projekt erfolgreich ist.
                 </p>
               </div>
               <div className="mt-16 grid grid-cols-1 gap-8 lg:grid-cols-3">
@@ -254,7 +321,7 @@ export default function WebdesignPage() {
                 Unsere Webdesign-Pakete
               </h2>
               <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-300">
-                Wählen Sie das passende Paket für Ihren individuellen Bedarf. Alle Preise sind Endpreise gemäß § 6 Abs. 1 Z 27 UStG.
+                Wählen Sie das passende Webdesign-Paket für Ihren individuellen Bedarf in Niederösterreich. Alle Preise sind Endpreise gemäß § 6 Abs. 1 Z 27 UStG.
               </p>
             </div>
             <div className="mx-auto mt-16 grid grid-cols-1 gap-8 lg:grid-cols-3">
@@ -280,7 +347,7 @@ export default function WebdesignPage() {
                     Ihre Vorteile
                   </h2>
                   <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-300">
-                    Mit unserem Webdesign-Service erhalten Sie eine maßgeschneiderte Lösung, die genau auf Ihre Bedürfnisse zugeschnitten ist.
+                    Mit unserem Webdesign-Service erhalten Sie eine maßgeschneiderte Lösung, die genau auf Ihre Bedürfnisse zugeschnitten ist. Kombinieren Sie dies mit unserem <a href="/services/seo" className="text-blue-600 hover:text-blue-500 underline">SEO-Service</a> und <a href="/services/marketing" className="text-blue-600 hover:text-blue-500 underline">Marketing-Service</a> für maximale Online-Sichtbarkeit.
                   </p>
                 </div>
                 <div className="mt-16 grid grid-cols-1 gap-8 lg:grid-cols-2">
@@ -296,7 +363,7 @@ export default function WebdesignPage() {
                 <div className="relative aspect-square">
                   <Image
                     src="/img/services/performance.jpg"
-                    alt="Web Performance Optimization"
+                    alt="Web Performance Optimization und Performance-Monitoring für Webdesign in Niederösterreich"
                     fill
                     className="rounded-2xl object-cover shadow-xl"
                   />
