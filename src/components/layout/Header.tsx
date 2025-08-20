@@ -332,9 +332,9 @@ export function Header() {
               <div className="flex items-center justify-between p-4">
                 <Link href="/" className="-m-1.5 p-1.5" onClick={() => setIsOpen(false)}>
                   <span className="sr-only">SimpleWebDesign</span>
-                  <h1 className="font-display text-2xl font-bold text-gray-900 dark:text-white">
+                  <h2 className="font-display text-2xl font-bold text-gray-900 dark:text-white">
                     SimpleWebDesign
-                  </h1>
+                  </h2>
                 </Link>
                 <button
                   type="button"
