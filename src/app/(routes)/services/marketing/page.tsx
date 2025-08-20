@@ -196,9 +196,9 @@ export default function MarketingPage() {
                   <h2 className="font-display text-4xl font-medium tracking-tight text-neutral-950 dark:text-white sm:text-5xl">
                     Ihre Vorteile
                   </h2>
-                  <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-300">
-                    Mit unseren Marketing-Strategien erreichen Sie Ihre Zielgruppe effektiv und steigern nachhaltig Ihren Erfolg.
-                  </p>
+                                  <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-300">
+                  Mit unseren Marketing-Strategien erreichen Sie Ihre Zielgruppe effektiv und steigern nachhaltig Ihren Erfolg. Kombinieren Sie dies mit unserem <Link href="/services/seo" className="text-indigo-600 hover:text-indigo-500 underline">SEO-Service</Link> für maximale Online-Sichtbarkeit.
+                </p>
                 </div>
                 <div className="mt-16 grid grid-cols-1 gap-8 lg:grid-cols-2">
                   {benefits.map((benefit, index) => (
