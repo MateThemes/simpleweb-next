@@ -66,13 +66,58 @@ export default function MarketingPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(
-            serviceSchema({
-              name: 'Digital Marketing',
-              description: 'Professionelles Digital Marketing für Ihr Unternehmen. Steigern Sie Ihre Online-Präsenz mit unseren maßgeschneiderten Marketing-Strategien.',
-              image: '/img/services/marketing.jpg'
-            })
-          )
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "Digital Marketing Agentur Niederösterreich",
+            "description": "Social Media, Content & Performance Marketing in Niederösterreich. Steigern Sie Ihre Reichweite, Leads und ROI mit maßgeschneiderten Marketing-Strategien.",
+            "image": "/img/services/marketing.jpg",
+            "provider": {
+              "@type": "Organization",
+              "name": "SimpleWebDesign",
+              "url": "https://simplewebdesign.at",
+              "logo": "https://simplewebdesign.at/img/logo.png"
+            },
+            "areaServed": {
+              "@type": "State",
+              "name": "Niederösterreich"
+            },
+            "serviceType": ["Digital Marketing", "Social Media Marketing", "Content Marketing", "Performance Marketing", "Email Marketing"],
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Marketing Services",
+              "itemListElement": [
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Social Media Marketing"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Content Marketing"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Performance Marketing"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Email Marketing"
+                  }
+                }
+              ]
+            }
+          })
         }}
       />
       <main className="flex-auto">
