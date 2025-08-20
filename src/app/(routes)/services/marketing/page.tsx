@@ -1,30 +1,30 @@
 import { Metadata } from 'next'
 import Image from 'next/image'
+import Link from 'next/link'
 import { Container } from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
 import { ChartBarIcon, CheckIcon } from '@/components/icons'
-import { serviceSchema } from '@/app/schema'
 
 export const metadata: Metadata = {
-  title: 'Digital Marketing | Online Marketing Strategien',
-  description: 'Professionelles Digital Marketing für Ihr Unternehmen. Steigern Sie Ihre Online-Präsenz mit unseren maßgeschneiderten Marketing-Strategien.',
+  title: 'Digital Marketing Agentur Niederösterreich | Social Media & Performance Marketing',
+  description: 'Social Media, Content & Performance Marketing in Niederösterreich. Steigern Sie Ihre Reichweite, Leads und ROI mit maßgeschneiderten Marketing-Strategien.',
   openGraph: {
-    title: 'Digital Marketing | Online Marketing Strategien',
-    description: 'Professionelles Digital Marketing für Ihr Unternehmen. Steigern Sie Ihre Online-Präsenz mit unseren maßgeschneiderten Marketing-Strategien.',
+    title: 'Digital Marketing Agentur Niederösterreich | Social Media & Performance Marketing',
+    description: 'Social Media, Content & Performance Marketing in Niederösterreich. Steigern Sie Ihre Reichweite, Leads und ROI mit maßgeschneiderten Marketing-Strategien.',
     url: 'https://simplewebdesign.at/services/marketing',
     images: [
       {
         url: '/img/services/marketing.jpg',
         width: 1200,
         height: 630,
-        alt: 'Digital Marketing Services'
+        alt: 'Digital Marketing Services Niederösterreich'
       }
     ]
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Digital Marketing | Online Marketing Strategien',
-    description: 'Professionelles Digital Marketing für Ihr Unternehmen. Steigern Sie Ihre Online-Präsenz.',
+    title: 'Digital Marketing Agentur Niederösterreich | Social Media & Performance Marketing',
+    description: 'Social Media, Content & Performance Marketing in Niederösterreich. Steigern Sie Ihre Reichweite, Leads und ROI.',
     images: ['/img/services/marketing.jpg']
   },
   alternates: {
@@ -82,10 +82,10 @@ export default function MarketingPage() {
             <div className="lg:flex lg:items-center lg:gap-x-10">
               <div className="max-w-2xl lg:max-w-lg">
                 <h1 className="font-display text-5xl font-medium tracking-tight text-neutral-950 dark:text-white [text-wrap:balance] sm:text-7xl">
-                  Online Marketing
+                  Digital Marketing Agentur Niederösterreich
                 </h1>
                 <p className="mt-6 text-xl text-neutral-600 dark:text-neutral-300">
-                  Steigern Sie Ihre digitale Reichweite mit maßgeschneiderten Marketing-Strategien und erreichen Sie Ihre Zielgruppe effektiv.
+                  Steigern Sie Ihre digitale Reichweite in Niederösterreich mit maßgeschneiderten Marketing-Strategien und erreichen Sie Ihre lokale Zielgruppe effektiv.
                 </p>
                 <div className="mt-8 flex gap-4">
                   <Button href="/kontakt">Strategie-Gespräch</Button>
@@ -96,7 +96,7 @@ export default function MarketingPage() {
                 <div className="relative">
                   <Image
                     src="/img/services/marketing.webp"
-                    alt="Marketing Dashboard"
+                    alt="Digital Marketing Services Niederösterreich - Marketing Dashboard mit Analytics"
                     width={600}
                     height={400}
                     className="rounded-2xl shadow-xl"
@@ -123,7 +123,7 @@ export default function MarketingPage() {
                 Ganzheitliches Marketing
               </h2>
               <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-300">
-                Von Social Media bis Performance Marketing - wir entwickeln die perfekte Strategie für Ihren Erfolg.
+                Von Social Media bis Performance Marketing - wir entwickeln die perfekte Marketing-Strategie für Unternehmen in Niederösterreich und Umgebung.
               </p>
             </div>
             <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 sm:mt-20 lg:max-w-none lg:grid-cols-2">
@@ -168,7 +168,7 @@ export default function MarketingPage() {
                 <div className="relative aspect-square">
                   <Image
                     src="/img/services/marketing.jpg"
-                    alt="Marketing Analytics"
+                    alt="Marketing Analytics und Performance Tracking für Digital Marketing in Niederösterreich"
                     fill
                     className="rounded-2xl object-cover shadow-xl"
                   />
