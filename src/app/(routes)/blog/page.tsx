@@ -39,15 +39,11 @@ export default async function BlogPage({
           </header>
 
           <div className="mt-16 sm:mt-20">
-            {isLoading ? (
-              <div className="text-center">Laden...</div>
-            ) : (
-              <div className="grid grid-cols-1 gap-x-8 gap-y-16 lg:grid-cols-2">
-                {paginatedPosts.map((post) => (
-                  <BlogCard key={post.slug} {...post} />
-                ))}
-              </div>
-            )}
+            <div className="grid grid-cols-1 gap-x-8 gap-y-16 lg:grid-cols-2">
+              {paginatedPosts.map((post) => (
+                <BlogCard key={post.slug} {...post} />
+              ))}
+            </div>
           </div>
 
           {totalPages > 1 && (
