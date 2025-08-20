@@ -2,8 +2,8 @@ import { Container } from '@/components/ui/Container'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Impressum | SimpleWebDesign',
-  description: 'Impressum und rechtliche Informationen von SimpleWebDesign - Ihre Webagentur aus dem Waldviertel.',
+  title: 'Impressum & Rechtliche Informationen | Gerald Schandl - SimpleWebDesign, Vitis, Niederösterreich',
+  description: 'Impressum, rechtliche Informationen und Unternehmensangaben von Gerald Schandl - SimpleWebDesign. Webdesign Agentur in Vitis, Niederösterreich - Kontakt, Gewerbeberechtigung und rechtliche Hinweise gemäß TMG & UGB.',
 }
 
 export default function ImpressumPage() {
