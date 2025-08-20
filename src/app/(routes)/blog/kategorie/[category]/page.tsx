@@ -22,8 +22,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: `${category.name} | Blog`,
-    description: `Artikel aus der Kategorie ${category.name}`,
+    title: `${category.name} Blog Artikel & Tipps | SimpleWebDesign - Webdesign & Marketing Blog`,
+    description: `Entdecken Sie alle ${category.name} Blog Artikel, Tipps und Insights von SimpleWebDesign. Professionelle Beratung zu ${category.name} für Unternehmen in Niederösterreich.`,
   }
 }
 
