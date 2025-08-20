@@ -24,6 +24,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${category.name} Blog Artikel & Tipps | SimpleWebDesign - Webdesign & Marketing Blog`,
     description: `Entdecken Sie alle ${category.name} Blog Artikel, Tipps und Insights von SimpleWebDesign. Professionelle Beratung zu ${category.name} für Unternehmen in Niederösterreich.`,
+    openGraph: {
+      title: `${category.name} Blog Artikel & Tipps | SimpleWebDesign - Webdesign & Marketing Blog`,
+      description: `Entdecken Sie alle ${category.name} Blog Artikel, Tipps und Insights von SimpleWebDesign. Professionelle Beratung zu ${category.name} für Unternehmen in Niederösterreich.`,
+      type: 'website',
+      url: `https://simplewebdesign.at/blog/kategorie/${paramsValue.category}`,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${category.name} Blog Artikel & Tipps | SimpleWebDesign - Webdesign & Marketing Blog`,
+      description: `Entdecken Sie alle ${category.name} Blog Artikel, Tipps und Insights von SimpleWebDesign. Professionelle Beratung zu ${category.name} für Unternehmen in Niederösterreich.`,
+    },
   }
 }
 

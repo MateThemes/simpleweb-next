@@ -4,6 +4,17 @@ import { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Impressum & Rechtliche Informationen | Gerald Schandl - SimpleWebDesign, Vitis, Niederösterreich',
   description: 'Impressum, rechtliche Informationen und Unternehmensangaben von Gerald Schandl - SimpleWebDesign. Webdesign Agentur in Vitis, Niederösterreich - Kontakt, Gewerbeberechtigung und rechtliche Hinweise gemäß TMG & UGB.',
+  openGraph: {
+    title: 'Impressum & Rechtliche Informationen | Gerald Schandl - SimpleWebDesign, Vitis, Niederösterreich',
+    description: 'Impressum, rechtliche Informationen und Unternehmensangaben von Gerald Schandl - SimpleWebDesign. Webdesign Agentur in Vitis, Niederösterreich.',
+    type: 'website',
+    url: 'https://simplewebdesign.at/impressum',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Impressum & Rechtliche Informationen | Gerald Schandl - SimpleWebDesign, Vitis, Niederösterreich',
+    description: 'Impressum, rechtliche Informationen und Unternehmensangaben von Gerald Schandl - SimpleWebDesign. Webdesign Agentur in Vitis, Niederösterreich.',
+  },
 }
 
 export default function ImpressumPage() {

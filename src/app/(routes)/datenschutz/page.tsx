@@ -5,6 +5,17 @@ import { CookieSettingsOpener } from '@/components/cookie/CookieSettingsOpener'
 export const metadata: Metadata = {
   title: 'Datenschutzerklärung | SimpleWebDesign',
   description: 'Datenschutzerklärung von SimpleWebDesign - Erfahren Sie mehr über den Schutz Ihrer persönlichen Daten.',
+  openGraph: {
+    title: 'Datenschutzerklärung | SimpleWebDesign',
+    description: 'Datenschutzerklärung von SimpleWebDesign - Erfahren Sie mehr über den Schutz Ihrer persönlichen Daten.',
+    type: 'website',
+    url: 'https://simplewebdesign.at/datenschutz',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Datenschutzerklärung | SimpleWebDesign',
+    description: 'Datenschutzerklärung von SimpleWebDesign - Erfahren Sie mehr über den Schutz Ihrer persönlichen Daten.',
+  },
 }
 
 export default function DatenschutzPage() {

@@ -7,6 +7,17 @@ import { getAllPosts } from '@/lib/mdx';
 export const metadata: Metadata = {
   title: 'Blog | Webdesign, SEO & Marketing Insights | SimpleWebDesign',
   description: 'Aktuelle Artikel und Insights zu Webdesign, SEO und Online Marketing. Professionelle Tipps für Ihren Online-Erfolg.',
+  openGraph: {
+    title: 'Blog | Webdesign, SEO & Marketing Insights | SimpleWebDesign',
+    description: 'Aktuelle Artikel und Insights zu Webdesign, SEO und Online Marketing. Professionelle Tipps für Ihren Online-Erfolg.',
+    type: 'website',
+    url: 'https://simplewebdesign.at/blog',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Blog | Webdesign, SEO & Marketing Insights | SimpleWebDesign',
+    description: 'Aktuelle Artikel und Insights zu Webdesign, SEO und Online Marketing. Professionelle Tipps für Ihren Online-Erfolg.',
+  },
 }
 
 const POSTS_PER_PAGE = 6;

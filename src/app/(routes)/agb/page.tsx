@@ -4,6 +4,17 @@ import { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Allgemeine Geschäftsbedingungen | SimpleWebDesign',
   description: 'Allgemeine Geschäftsbedingungen von SimpleWebDesign - Ihre Webagentur aus dem Waldviertel.',
+  openGraph: {
+    title: 'Allgemeine Geschäftsbedingungen | SimpleWebDesign',
+    description: 'Allgemeine Geschäftsbedingungen von SimpleWebDesign - Ihre Webagentur aus dem Waldviertel.',
+    type: 'website',
+    url: 'https://simplewebdesign.at/agb',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Allgemeine Geschäftsbedingungen | SimpleWebDesign',
+    description: 'Allgemeine Geschäftsbedingungen von SimpleWebDesign - Ihre Webagentur aus dem Waldviertel.',
+  },
 }
 
 export default function AGBPage() {
