@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     url: 'https://simplewebdesign.at/ueber-uns',
     images: [
       {
-        url: 'https://simplewebdesign.at/img/about/team.jpg',
+        url: '/img/about/workspace.jpg',
         width: 1200,
         height: 630,
         alt: 'SimpleWeb Design Team'
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Über Uns | SimpleWebDesign',
     description: 'Lernen Sie das Team hinter SimpleWebDesign kennen.',
-    images: ['https://simplewebdesign.at/img/about/team.jpg']
+    images: ['/img/about/workspace.jpg']
   },
   alternates: {
     canonical: 'https://simplewebdesign.at/ueber-uns'
@@ -70,7 +70,7 @@ export default function AboutPage() {
             aboutSchema({
               name: 'SimpleWeb Design',
               description: 'Wir sind Ihre Experten für modernes Webdesign, SEO und digitales Marketing in Österreich.',
-              image: 'https://simplewebdesign.at/img/about/team.jpg',
+              image: '/img/about/workspace.jpg',
               foundingDate: '2020',
               founders: ['Gerald Böhm'],
               address: {
@@ -102,7 +102,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:gap-x-12">
             <div className="relative h-[400px] lg:h-[600px] overflow-hidden rounded-2xl">
               <Image
-                src="https://simplewebdesign.at/img/about/workspace.jpg"
+                src="/img/about/workspace.jpg"
                 alt="Modern workspace with computer setup"
                 fill
                 className="object-cover"
@@ -191,7 +191,7 @@ export default function AboutPage() {
                   Responsive Websites mit modernem Design und optimaler Benutzerführung.
                 </p>
                 <Image
-                  src="https://simplewebdesign.at/img/about/webdesign.jpg"
+                  src="/img/about/webdesign.jpg"
                   alt="Webdesign Service"
                   width={300}
                   height={200}
@@ -205,7 +205,7 @@ export default function AboutPage() {
                   Optimierung für Suchmaschinen und bessere Online-Sichtbarkeit.
                 </p>
                 <Image
-                  src="https://simplewebdesign.at/img/services/seo.jpg"
+                  src="/img/services/seo.jpg"
                   alt="SEO Service"
                   width={300}
                   height={200}
@@ -218,7 +218,7 @@ export default function AboutPage() {
                   Digitale Marketing-Strategien für nachhaltiges Wachstum.
                 </p>
                 <Image
-                  src="https://simplewebdesign.at/img/services/marketing.jpg"
+                  src="/img/about/marketing.jpg"
                   alt="Marketing Service"
                   width={300}
                   height={200}
@@ -232,7 +232,7 @@ export default function AboutPage() {
                   Modernisierung bestehender Websites für zeitgemäßen Auftritt.
                 </p>
                 <Image
-                  src="https://simplewebdesign.at/img/services/redesign.jpg"
+                  src="/img/services/redesign.jpg"
                   alt="Redesign Service"
                   width={300}
                   height={200}
@@ -245,7 +245,7 @@ export default function AboutPage() {
                   Zuverlässiges Hosting mit erstklassigem Support.
                 </p>
                 <Image
-                  src="https://simplewebdesign.at/img/services/hosting.jpg"
+                  src="/img/services/hosting.jpg"
                   alt="Hosting Service"
                   width={300}
                   height={200}
@@ -258,7 +258,7 @@ export default function AboutPage() {
                   Optimierung der Ladezeiten und Website-Performance.
                 </p>
                 <Image
-                  src="https://simplewebdesign.at/img/services/performance.jpg"
+                  src="/img/services/performance.jpg"
                   alt="Performance Service"
                   width={300}
                   height={200}
