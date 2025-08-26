@@ -2,30 +2,16 @@
 
 import Script from 'next/script'
 import { useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 import { getCookiePreferences } from '../cookie/CookieStore'
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import type { ConsentEvent, GTMEvent } from '@/types/gtm'
 
 const GTM_ID = 'GTM-TNK6X4Q5'
 
-type ConsentEvent = {
-  consent: 'default' | 'update';
-  analytics_storage: 'granted' | 'denied';
-  ad_storage: 'granted' | 'denied';
-  ad_user_data: 'granted' | 'denied';
-  ad_personalization: 'granted' | 'denied';
-}
-
-type GTMEvent = {
-  'gtm.start'?: number;
-  event?: string;
-} | ConsentEvent
-
-declare global {
-  interface Window {
-    dataLayer: GTMEvent[];
-  }
-}
-
 export function GoogleTagManagerLazy() {
+  const pathname = usePathname()
+
   useEffect(() => {
     // Initialize dataLayer immediately
     window.dataLayer = window.dataLayer || []
@@ -43,6 +29,17 @@ export function GoogleTagManagerLazy() {
     }
     window.dataLayer.push(consentEvent)
   }, [])
+
+  // Track page views for GA4
+  useEffect(() => {
+    if (pathname && window.dataLayer) {
+      // Push page view event for GA4
+      window.dataLayer.push({
+        event: 'gtm.pageview',
+        'gtm.pageview': pathname
+      } as GTMEvent)
+    }
+  }, [pathname])
 
   return (
     <>
