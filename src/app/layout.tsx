@@ -38,6 +38,17 @@ export default function RootLayout({
       className={`${inter.variable} ${outfit.variable}`}
       suppressHydrationWarning
     >
+      <head>
+        {/* Google Tag Manager (noscript) - for better tracking when JavaScript is disabled */}
+        <noscript>
+          <iframe 
+            src="https://www.googletagmanager.com/ns.html?id=GTM-TNK6X4Q5"
+            height="0" 
+            width="0" 
+            style={{ display: 'none', visibility: 'hidden' }}
+          />
+        </noscript>
+      </head>
       <body className="flex min-h-screen flex-col bg-white dark:bg-gray-950">
         <GoogleTagManagerLazy />
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>

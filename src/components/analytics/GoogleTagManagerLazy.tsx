@@ -1,7 +1,7 @@
 'use client'
 
 import Script from 'next/script'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { getCookiePreferences } from '../cookie/CookieStore'
 
 const GTM_ID = 'GTM-TNK6X4Q5'
@@ -26,21 +26,14 @@ declare global {
 }
 
 export function GoogleTagManagerLazy() {
-  const [shouldLoad, setShouldLoad] = useState(false)
-
   useEffect(() => {
-    // Delay GTM loading to prioritize critical content
-    const timer = setTimeout(() => {
-      setShouldLoad(true)
-    }, 2000) // Load after 2 seconds
-
-    return () => clearTimeout(timer)
-  }, [])
-
-  useEffect(() => {
+    // Initialize dataLayer immediately
+    window.dataLayer = window.dataLayer || []
+    
+    // Get current cookie preferences
     const preferences = getCookiePreferences()
     
-    window.dataLayer = window.dataLayer || []
+    // Push consent event based on current preferences
     const consentEvent: ConsentEvent = {
       consent: 'default',
       analytics_storage: preferences.analytics ? 'granted' : 'denied',
@@ -51,15 +44,11 @@ export function GoogleTagManagerLazy() {
     window.dataLayer.push(consentEvent)
   }, [])
 
-  if (!shouldLoad) {
-    return null
-  }
-
   return (
     <>
       <Script
-        id="gtm-script-lazy"
-        strategy="lazyOnload"
+        id="gtm-script"
+        strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: `
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
