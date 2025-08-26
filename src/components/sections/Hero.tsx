@@ -63,7 +63,9 @@ export default function Hero() {
                   width={2432}
                   height={1442}
                   priority
-                  className="w-[76rem] rounded-xl shadow-2xl ring-1 ring-gray-900/10"
+                  className="w-full h-auto max-w-4xl rounded-xl shadow-2xl ring-1 ring-gray-900/10"
+                  sizes="(max-width: 640px) 100vw, (max-width: 768px) 90vw, (max-width: 1024px) 80vw, (max-width: 1280px) 70vw, 60vw"
+                  quality={85}
                 />
               </div>
             </div>
