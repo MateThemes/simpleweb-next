@@ -4,28 +4,10 @@ import Script from 'next/script'
 import { useEffect } from 'react'
 import { usePathname } from 'next/navigation'
 import { getCookiePreferences } from '../cookie/CookieStore'
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import type { ConsentEvent, GTMEvent } from '@/types/gtm'
 
 const GTM_ID = 'GTM-TNK6X4Q5'
-
-type ConsentEvent = {
-  consent: 'default' | 'update';
-  analytics_storage: 'granted' | 'denied';
-  ad_storage: 'granted' | 'denied';
-  ad_user_data: 'granted' | 'denied';
-  ad_personalization: 'granted' | 'denied';
-}
-
-type GTMEvent = {
-  'gtm.start'?: number;
-  event?: string;
-  'gtm.pageview'?: string;
-} | ConsentEvent
-
-declare global {
-  interface Window {
-    dataLayer: GTMEvent[];
-  }
-}
 
 export function GoogleTagManager() {
   const pathname = usePathname()
@@ -55,7 +37,7 @@ export function GoogleTagManager() {
       window.dataLayer.push({
         event: 'gtm.pageview',
         'gtm.pageview': pathname
-      })
+      } as GTMEvent)
     }
   }, [pathname])
 
