@@ -12,6 +12,7 @@ export default function robots(): MetadataRoute.Robots {
           '/_next/',
           '/_vercel/',
           '/static/',
+          '/test-gtm',  // Prevent indexing of GTM test page
         ]
       }
     ],
