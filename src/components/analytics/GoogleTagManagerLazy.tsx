@@ -2,6 +2,7 @@
 
 import Script from 'next/script'
 import { useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 import { getCookiePreferences } from '../cookie/CookieStore'
 
 const GTM_ID = 'GTM-TNK6X4Q5'
@@ -17,6 +18,7 @@ type ConsentEvent = {
 type GTMEvent = {
   'gtm.start'?: number;
   event?: string;
+  'gtm.pageview'?: string;
 } | ConsentEvent
 
 declare global {
@@ -26,6 +28,8 @@ declare global {
 }
 
 export function GoogleTagManagerLazy() {
+  const pathname = usePathname()
+
   useEffect(() => {
     // Initialize dataLayer immediately
     window.dataLayer = window.dataLayer || []
@@ -43,6 +47,17 @@ export function GoogleTagManagerLazy() {
     }
     window.dataLayer.push(consentEvent)
   }, [])
+
+  // Track page views for GA4
+  useEffect(() => {
+    if (pathname && window.dataLayer) {
+      // Push page view event for GA4
+      window.dataLayer.push({
+        event: 'gtm.pageview',
+        'gtm.pageview': pathname
+      })
+    }
+  }, [pathname])
 
   return (
     <>
