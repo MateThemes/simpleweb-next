@@ -25,6 +25,21 @@ const outfit = Outfit({
 export const metadata: Metadata = {
   title: "SimpleWebDesign | Professional Web Design and Development",
   description: "Professional Web Design and Development Services in Deutschland. Wir erstellen moderne, performante und SEO-optimierte Websites.",
+  icons: {
+    icon: [
+      { url: '/img/favicon/favicon.ico', sizes: 'any' },
+      { url: '/img/favicon/favicon.svg', type: 'image/svg+xml' },
+      { url: '/img/favicon/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/img/favicon/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+    other: [
+      { url: '/img/favicon/web-app-manifest-192x192.png', sizes: '192x192', type: 'image/png' },
+      { url: '/img/favicon/web-app-manifest-512x512.png', sizes: '512x512', type: 'image/png' },
+    ],
+  },
+  manifest: '/img/favicon/site.webmanifest',
 }
 
 export default function RootLayout({
