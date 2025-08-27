@@ -8,6 +8,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Define all service pages
   const servicePages = [
     'webdesign',
+    'webdesign-handwerker',
     'marketing',
     'seo',
     'redesign',
