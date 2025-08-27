@@ -498,10 +498,75 @@ export function PaletteIcon({ className }: { className?: string }) {
       strokeLinejoin="round"
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-      <path d="M12 21a9 9 0 0 1 0 -18c4.97 0 9 3.582 9 8c0 1.06 -.474 2.078 -1.318 2.828c-.844 .75 -1.989 1.172 -3.182 1.172h-2.5a2 2 0 0 0 -1 3.75a1.3 1.3 0 0 1 -1 2.25" />
-      <path d="M8.5 10.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
-      <path d="M12.5 7.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
-      <path d="M16.5 10.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+      <path d="M12 21a9.004 9.004 0 0 0 2.32 -.302a9 9 0 0 0 1.74 -16.733a9 9 0 0 0 -11.082 0a9 9 0 0 0 -1.988 16.793a9 9 0 0 0 8.008 0" />
+      <path d="M9 7.5c.553 0 1 .895 1 2s-.447 2 -1 2s-1 -.895 -1 -2s.447 -2 1 -2z" />
+      <path d="M15 7.5c.553 0 1 .895 1 2s-.447 2 -1 2s-1 -.895 -1 -2s.447 -2 1 -2z" />
+      <path d="M12 12c.553 0 1 .895 1 2s-.447 2 -1 2s-1 -.895 -1 -2s.447 -2 1 -2z" />
+    </svg>
+  )
+}
+
+export function StarIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      strokeWidth="2"
+      stroke="currentColor"
+      fill="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z" />
+    </svg>
+  )
+}
+
+export function PhoneIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      strokeWidth="2"
+      stroke="currentColor"
+      fill="none"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" />
+    </svg>
+  )
+}
+
+export function CalendarIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      strokeWidth="2"
+      stroke="currentColor"
+      fill="none"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <path d="M4 5m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" />
+      <path d="M16 3l0 4" />
+      <path d="M8 3l0 4" />
+      <path d="M4 11l16 0" />
+      <path d="M11 15l1 0" />
+      <path d="M12 15l0 3" />
     </svg>
   )
 }

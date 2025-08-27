@@ -286,6 +286,42 @@ export default function WebdesignPage() {
           </Container>
         </div>
 
+        {/* Branch Solutions Section */}
+        <div className="py-24">
+          <Container>
+            <div className="mx-auto max-w-2xl sm:text-center">
+              <h2 className="font-display text-4xl font-medium tracking-tight text-neutral-950 dark:text-white sm:text-5xl">
+                Branchenlösungen
+              </h2>
+              <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-300">
+                Spezialisierte Webdesign-Lösungen für verschiedene Branchen und Anforderungen.
+              </p>
+            </div>
+            <div className="mx-auto mt-16 max-w-2xl">
+              <div className="rounded-2xl bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 p-8 border border-blue-200 dark:border-blue-800">
+                <div className="flex items-start gap-6">
+                  <div className="flex-shrink-0">
+                    <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
+                      <span className="text-white text-xl">🏗️</span>
+                    </div>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="font-display text-xl font-semibold text-neutral-950 dark:text-white mb-2">
+                      Webdesign für Handwerker
+                    </h3>
+                    <p className="text-neutral-600 dark:text-neutral-300 mb-4">
+                      Spezialisierte Websites für Handwerksbetriebe mit lokaler SEO-Optimierung, DSGVO-Compliance und mobile-first Design.
+                    </p>
+                    <Button href="/services/webdesign-handwerker" variant="secondary">
+                      Mehr erfahren
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Container>
+        </div>
+
         {/* Process Section */}
         <div className="py-24">
           <Container>
