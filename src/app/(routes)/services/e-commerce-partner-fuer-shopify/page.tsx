@@ -5,12 +5,12 @@ import Button from '@/components/ui/Button'
 // Icons werden nicht verwendet in dieser Komponente
 
 export const metadata: Metadata = {
-  title: 'Shopify Partner Österreich & Deutschland | Shopify Agentur | E-Commerce Experten 2025',
-  description: 'Professioneller Shopify Partner für erfolgreiche Online-Shops in Österreich & Deutschland. Shopify Agentur mit Expertise in Shopify Webdesign, Setup, DSGVO, SEO & Support. Kostenlose Beratung!',
-  keywords: 'Shopify Agentur, Shopify Partner, Shopify Webdesign, Shopify Shop erstellen lassen, Shopify Experte Österreich, Shopify Experte Deutschland, Shopify Setup, Shopify Theme Entwicklung, E-Commerce Partner, Shopify SEO, Shopify DSGVO, Shopify Marketing, Online Shop erstellen, E-Commerce Lösung',
+  title: 'Shopify Experte Österreich & Deutschland | Shopify Agentur | E-Commerce Experten 2025',
+  description: 'Professioneller Shopify Experte für erfolgreiche Online-Shops in Österreich & Deutschland. Shopify Agentur mit Expertise in Shopify Webdesign, Setup, DSGVO, SEO & Support. Kostenlose Beratung!',
+  keywords: 'Shopify Agentur, Shopify Experte, Shopify Webdesign, Shopify Shop erstellen lassen, Shopify Experte Österreich, Shopify Experte Deutschland, Shopify Setup, Shopify Theme Entwicklung, E-Commerce Experte, Shopify SEO, Shopify DSGVO, Shopify Marketing, Online Shop erstellen, E-Commerce Lösung',
   openGraph: {
-    title: 'Shopify Partner Österreich & Deutschland | Shopify Agentur | E-Commerce Experten 2025',
-    description: 'Professioneller Shopify Partner für erfolgreiche Online-Shops in Österreich & Deutschland. Shopify Agentur mit Expertise in Shopify Webdesign, Setup, DSGVO, SEO & Support. Kostenlose Beratung!',
+    title: 'Shopify Experte Österreich & Deutschland | Shopify Agentur | E-Commerce Experten 2025',
+    description: 'Professioneller Shopify Experte für erfolgreiche Online-Shops in Österreich & Deutschland. Shopify Agentur mit Expertise in Shopify Webdesign, Setup, DSGVO, SEO & Support. Kostenlose Beratung!',
     url: 'https://simplewebdesign.at/services/e-commerce-partner-fuer-shopify',
     type: 'website',
     locale: 'de_AT',
@@ -19,14 +19,14 @@ export const metadata: Metadata = {
         url: '/img/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Shopify Partner Österreich & Deutschland - Professionelle Shopify Agentur für E-Commerce'
+        alt: 'Shopify Experte Österreich & Deutschland - Professionelle Shopify Agentur für E-Commerce'
       }
     ]
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Shopify Partner Österreich & Deutschland | Shopify Agentur | E-Commerce Experten 2025',
-    description: 'Professioneller Shopify Partner für erfolgreiche Online-Shops in Österreich & Deutschland. Shopify Agentur mit Expertise in Shopify Webdesign, Setup, DSGVO, SEO & Support.',
+    title: 'Shopify Experte Österreich & Deutschland | Shopify Agentur | E-Commerce Experten 2025',
+    description: 'Professioneller Shopify Experte für erfolgreiche Online-Shops in Österreich & Deutschland. Shopify Agentur mit Expertise in Shopify Webdesign, Setup, DSGVO, SEO & Support.',
     images: ['/img/og-image.jpg']
   },
   alternates: {
@@ -49,8 +49,8 @@ export default function ShopifyPartnerPage() {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Service",
-    "name": "Shopify Partner Agentur Österreich & Deutschland",
-    "description": "Professioneller Shopify Partner für erfolgreiche Online-Shops in Österreich & Deutschland. Shopify Agentur mit Expertise in Shopify Webdesign, Setup, DSGVO, SEO & Support.",
+    "name": "Shopify Experte Agentur Österreich & Deutschland",
+    "description": "Professioneller Shopify Experte für erfolgreiche Online-Shops in Österreich & Deutschland. Shopify Agentur mit Expertise in Shopify Webdesign, Setup, DSGVO, SEO & Support.",
     "provider": {
       "@type": "Organization",
       "name": "SimpleWebDesign",
@@ -82,7 +82,7 @@ export default function ShopifyPartnerPage() {
             <div className="lg:flex lg:items-center lg:gap-x-10">
               <div className="max-w-2xl lg:max-w-lg">
                 <h1 className="font-display text-5xl font-medium tracking-tight text-neutral-950 dark:text-white [text-wrap:balance] sm:text-7xl">
-                  Shopify Partner Österreich & Deutschland
+                  Shopify Experte Österreich & Deutschland
                 </h1>
                 <p className="mt-6 text-xl text-neutral-600 dark:text-neutral-300">
                   Professionelle Shopify Agentur für erfolgreiche Online-Shops. Wir erstellen, optimieren und betreuen E-Commerce-Lösungen von der Konzeption bis zum laufenden Support.
@@ -96,7 +96,7 @@ export default function ShopifyPartnerPage() {
                 <div className="relative">
                   <Image
                     src="/img/services/shopify.png"
-                    alt="Shopify Partner Österreich & Deutschland - Professionelle E-Commerce Agentur"
+                    alt="Shopify Experte Österreich & Deutschland - Professionelle E-Commerce Agentur"
                     width={600}
                     height={600}
                     className="rounded-2xl shadow-xl"
@@ -177,7 +177,7 @@ export default function ShopifyPartnerPage() {
           <Container>
             <div className="mx-auto max-w-2xl sm:text-center">
               <h2 className="font-display text-4xl font-medium tracking-tight text-neutral-950 dark:text-white sm:text-5xl">
-                Unsere Shopify Partner Leistungen
+                Unsere Shopify Experten Leistungen
               </h2>
               <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-300">
                 Alles was Sie für einen erfolgreichen Online-Shop brauchen - aus einer Hand.
@@ -260,7 +260,7 @@ export default function ShopifyPartnerPage() {
             <div className="mx-auto max-w-2xl lg:max-w-none">
               <div className="max-w-2xl">
                 <h2 className="font-display text-4xl font-medium tracking-tight text-neutral-950 dark:text-white sm:text-5xl">
-                  Unser Shopify Partner Prozess
+                  Unser Shopify Experten Prozess
                 </h2>
                 <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-300">
                   Wir begleiten Sie Schritt für Schritt zu Ihrem erfolgreichen Online-Shop.
@@ -400,7 +400,7 @@ export default function ShopifyPartnerPage() {
                 Häufige Fragen
               </h2>
               <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-300">
-                Antworten auf die wichtigsten Fragen zu Shopify Partner Services.
+                Antworten auf die wichtigsten Fragen zu Shopify Experte Services.
               </p>
             </div>
             <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 sm:mt-20 lg:max-w-none lg:grid-cols-2">
