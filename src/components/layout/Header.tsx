@@ -127,9 +127,10 @@ export function Header() {
               </button>
 
               {isServicesOpen && (
-                <div className="absolute left-1/2 z-10 mt-3 w-screen max-w-md -translate-x-1/2 transform px-2">
+                <div className="absolute left-1/2 z-10 mt-3 w-screen max-w-4xl -translate-x-1/2 transform px-2">
                   <div className="overflow-hidden rounded-xl bg-white dark:bg-slate-900 shadow-lg ring-1 ring-gray-900/5 dark:ring-white/10">
                     <div className="p-4">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       {/* Services Menu Items */}
                       <div className="group relative flex items-center gap-x-6 rounded-lg p-4 hover:bg-gray-50 dark:hover:bg-slate-800">
                         <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 dark:bg-slate-800 group-hover:bg-white dark:group-hover:bg-slate-700">
@@ -262,6 +263,26 @@ export function Header() {
                             Professionelle Wartung und technischer Support
                           </p>
                         </div>
+                      </div>
+                      {/* Shopify Partner */}
+                      <div className="group relative flex items-center gap-x-6 rounded-lg p-4 hover:bg-gray-50 dark:hover:bg-slate-800">
+                        <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 dark:bg-slate-800 group-hover:bg-white dark:group-hover:bg-slate-700">
+                          <ServerIcon className="h-6 w-6 text-gray-600 dark:text-gray-400 group-hover:text-green-600" aria-hidden="true" />
+                        </div>
+                        <div>
+                          <Link
+                            href="/services/e-commerce-partner-fuer-shopify"
+                            className="font-display text-lg font-medium text-gray-900 dark:text-white"
+                            onClick={() => setIsServicesOpen(false)}
+                          >
+                            Shopify Partner
+                            <span className="absolute inset-0" />
+                          </Link>
+                          <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                            Professionelle Shopify Agentur für E-Commerce
+                          </p>
+                        </div>
+                      </div>
                       </div>
                     </div>
                   </div>
@@ -437,6 +458,14 @@ export function Header() {
                       >
                         <RocketLaunchIcon className="h-5 w-5 text-yellow-600" />
                         Wartung & Support
+                      </Link>
+                      <Link
+                        href="/services/e-commerce-partner-fuer-shopify"
+                        className="flex items-center gap-3 px-3 py-3 rounded-md text-base font-medium text-gray-600 hover:text-gray-900 dark:text-white dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        <ServerIcon className="h-5 w-5 text-green-600" />
+                        Shopify Partner
                       </Link>
                     </div>
                   </div>

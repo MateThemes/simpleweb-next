@@ -6,48 +6,62 @@ import { RocketIcon, CheckIcon } from '@/components/icons'
 import { serviceSchema } from '@/app/schema'
 
 export const metadata: Metadata = {
-  title: 'Website Performance Optimierung | Schnellere Websites',
-  description: 'Professionelle Website Performance Optimierung. Verbessern Sie Ihre Core Web Vitals und PageSpeed für besseres Ranking und Conversion.',
+  title: 'Website Performance Optimierung | Schnellere Websites | Shopify Performance',
+  description: 'Professionelle Website Performance Optimierung für alle Websites und Online-Shops. Spezielle Shopify Performance Optimierung, Core Web Vitals & PageSpeed für besseres Ranking.',
+  keywords: 'Website Performance, Performance Optimierung, Core Web Vitals, PageSpeed, Shopify Performance, E-Commerce Performance, Website Speed, Performance Österreich, SEO Performance',
   openGraph: {
-    title: 'Website Performance Optimierung | Schnellere Websites',
-    description: 'Professionelle Website Performance Optimierung. Verbessern Sie Ihre Core Web Vitals und PageSpeed für besseres Ranking und Conversion.',
+    title: 'Website Performance Optimierung | Schnellere Websites | Shopify Performance',
+    description: 'Professionelle Website Performance Optimierung für alle Websites und Online-Shops. Spezielle Shopify Performance Optimierung, Core Web Vitals & PageSpeed für besseres Ranking.',
     url: 'https://simplewebdesign.at/services/performance',
+    type: 'website',
+    locale: 'de_AT',
     images: [
       {
         url: '/img/services/performance.jpg',
         width: 1200,
         height: 630,
-        alt: 'Website Performance Optimization'
+        alt: 'Website Performance Optimierung - Schnellere Websites und Online-Shops'
       }
     ]
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Website Performance Optimierung | Schnellere Websites',
-    description: 'Professionelle Website Performance Optimierung. Verbessern Sie Ihre Core Web Vitals und PageSpeed.',
+    title: 'Website Performance Optimierung | Schnellere Websites | Shopify Performance',
+    description: 'Professionelle Website Performance Optimierung für alle Websites und Online-Shops. Spezielle Shopify Performance Optimierung.',
     images: ['/img/services/performance.jpg']
   },
   alternates: {
     canonical: 'https://simplewebdesign.at/services/performance'
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   }
 }
 
 const features = [
   {
     title: 'Core Web Vitals',
-    description: 'Optimierung der wichtigsten Performance-Metriken für besseres Google-Ranking.',
+    description: 'Optimierung der wichtigsten Performance-Metriken für besseres Google-Ranking. LCP, FID und CLS Verbesserung.',
   },
   {
     title: 'Asset-Optimierung',
-    description: 'Komprimierung und Optimierung von Bildern, Scripts und Stylesheets.',
+    description: 'Komprimierung und Optimierung von Bildern, Scripts und Stylesheets für schnellere Ladezeiten.',
   },
   {
     title: 'Caching-Strategien',
-    description: 'Implementierung effektiver Caching-Mechanismen für schnellere Ladezeiten.',
+    description: 'Implementierung effektiver Caching-Mechanismen und CDN für globale Performance.',
   },
   {
     title: 'Server-Optimierung',
-    description: 'Optimierung der Server-Konfiguration und Datenbank-Performance.',
+    description: 'Optimierung der Server-Konfiguration und Datenbank-Performance für alle Website-Typen.',
   },
 ]
 
@@ -142,8 +156,51 @@ export default function PerformancePage() {
           </Container>
         </div>
 
-        {/* Performance Metrics Section */}
+        {/* Performance Stats Section */}
         <div className="py-24">
+          <Container>
+            <div className="mx-auto max-w-2xl sm:text-center">
+              <h2 className="font-display text-4xl font-medium tracking-tight text-neutral-950 dark:text-white sm:text-5xl">
+                Warum Performance wichtig ist
+              </h2>
+              <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-300">
+                Performance-Statistiken zeigen: Schnelle Websites performen besser.
+              </p>
+            </div>
+            <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 sm:mt-20 lg:max-w-none lg:grid-cols-3">
+              <div className="rounded-2xl bg-white dark:bg-neutral-800 p-8 shadow-sm text-center">
+                <div className="text-4xl font-bold text-orange-600 mb-2">53%</div>
+                <h3 className="font-display text-xl font-semibold text-neutral-950 dark:text-white mb-2">
+                  Weniger Absprungrate
+                </h3>
+                <p className="text-neutral-600 dark:text-neutral-300">
+                  Bei Ladezeiten unter 3 Sekunden springen 53% weniger Besucher ab.
+                </p>
+              </div>
+              <div className="rounded-2xl bg-white dark:bg-neutral-800 p-8 shadow-sm text-center">
+                <div className="text-4xl font-bold text-orange-600 mb-2">+27%</div>
+                <h3 className="font-display text-xl font-semibold text-neutral-950 dark:text-white mb-2">
+                  Höhere Conversion
+                </h3>
+                <p className="text-neutral-600 dark:text-neutral-300">
+                  Jede Sekunde Ladezeit-Verbesserung steigert die Conversion-Rate um 27%.
+                </p>
+              </div>
+              <div className="rounded-2xl bg-white dark:bg-neutral-800 p-8 shadow-sm text-center">
+                <div className="text-4xl font-bold text-orange-600 mb-2">+16%</div>
+                <h3 className="font-display text-xl font-semibold text-neutral-950 dark:text-white mb-2">
+                  Besseres Ranking
+                </h3>
+                <p className="text-neutral-600 dark:text-neutral-300">
+                  Google bevorzugt schnelle Websites - bessere Rankings durch Performance.
+                </p>
+              </div>
+            </div>
+          </Container>
+        </div>
+
+        {/* Performance Metrics Section */}
+        <div className="py-24 bg-neutral-50 dark:bg-neutral-900">
           <Container>
             <div className="mx-auto max-w-2xl lg:max-w-none lg:flex lg:items-center lg:gap-x-16">
               <div className="lg:flex-1">
@@ -174,6 +231,63 @@ export default function PerformancePage() {
                   />
                 </div>
               </div>
+            </div>
+          </Container>
+        </div>
+
+        {/* Shopify Performance Section */}
+        <div className="py-24">
+          <Container>
+            <div className="mx-auto max-w-2xl sm:text-center">
+              <h2 className="font-display text-4xl font-medium tracking-tight text-neutral-950 dark:text-white sm:text-5xl">
+                Spezielle Shopify Performance Optimierung
+              </h2>
+              <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-300">
+                Wir optimieren auch speziell Shopify Online-Shops für maximale Performance und bessere Verkäufe.
+              </p>
+            </div>
+            <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 sm:mt-20 lg:max-w-none lg:grid-cols-2">
+              <div className="rounded-2xl bg-white dark:bg-neutral-800 p-8 shadow-sm border border-neutral-200 dark:border-neutral-700">
+                <h3 className="font-display text-xl font-semibold text-neutral-950 dark:text-white mb-4">
+                  Shopify Core Web Vitals
+                </h3>
+                <p className="text-neutral-600 dark:text-neutral-300 mb-4">
+                  Optimierung der wichtigsten Performance-Metriken speziell für Shopify Stores. LCP, FID und CLS Verbesserung für bessere Rankings.
+                </p>
+                <div className="text-sm text-orange-600 font-medium">Shopify-spezifisch</div>
+              </div>
+              <div className="rounded-2xl bg-white dark:bg-neutral-800 p-8 shadow-sm border border-neutral-200 dark:border-neutral-700">
+                <h3 className="font-display text-xl font-semibold text-neutral-950 dark:text-white mb-4">
+                  Shopify App-Optimierung
+                </h3>
+                <p className="text-neutral-600 dark:text-neutral-300 mb-4">
+                  Analyse und Optimierung von Shopify Apps, die die Performance beeinträchtigen. App-Performance-Monitoring und Optimierung.
+                </p>
+                <div className="text-sm text-orange-600 font-medium">Shopify-spezifisch</div>
+              </div>
+              <div className="rounded-2xl bg-white dark:bg-neutral-800 p-8 shadow-sm border border-neutral-200 dark:border-neutral-700">
+                <h3 className="font-display text-xl font-semibold text-neutral-950 dark:text-white mb-4">
+                  Shopify Asset-Optimierung
+                </h3>
+                <p className="text-neutral-600 dark:text-neutral-300 mb-4">
+                  Komprimierung von Produktbildern, Theme-Assets und Scripts für bessere Shopify Performance und schnellere Ladezeiten.
+                </p>
+                <div className="text-sm text-orange-600 font-medium">Shopify-spezifisch</div>
+              </div>
+              <div className="rounded-2xl bg-white dark:bg-neutral-800 p-8 shadow-sm border border-neutral-200 dark:border-neutral-700">
+                <h3 className="font-display text-xl font-semibold text-neutral-950 dark:text-white mb-4">
+                  Shopify Caching & CDN
+                </h3>
+                <p className="text-neutral-600 dark:text-neutral-300 mb-4">
+                  Implementierung von Shopify Plus CDN und optimierte Caching-Strategien für globale Performance und bessere Conversion-Raten.
+                </p>
+                <div className="text-sm text-orange-600 font-medium">Shopify-spezifisch</div>
+              </div>
+            </div>
+            <div className="mt-12 text-center">
+              <Button href="/services/e-commerce-partner-fuer-shopify" variant="secondary">
+                Mehr über Shopify Services erfahren
+              </Button>
             </div>
           </Container>
         </div>
