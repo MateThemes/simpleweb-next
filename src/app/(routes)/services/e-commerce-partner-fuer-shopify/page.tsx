@@ -422,10 +422,10 @@ export default function ShopifyPartnerPage() {
               </div>
               <div className="rounded-2xl bg-white dark:bg-neutral-800 p-8 shadow-sm border border-neutral-200 dark:border-neutral-700">
                 <h3 className="font-display text-xl font-semibold text-neutral-950 dark:text-white mb-4">
-                  Ist Shopify DSGVO-konform für deutsche Unternehmen?
+                  Ist Shopify DSGVO-konform für österreichische und deutsche Unternehmen?
                 </h3>
                 <p className="text-neutral-600 dark:text-neutral-300">
-                  Ja, Shopify ist grundsätzlich DSGVO-konform. Wir sorgen für die vollständige Compliance durch korrekte Cookie-Banner, Datenschutzerklärungen und alle notwendigen rechtlichen Texte.
+                  Shopify bietet DSGVO-konforme Funktionen. Wir unterstützen Sie bei der technischen Umsetzung von Cookie-Bannern und Datenschutzeinstellungen. Für rechtliche Beratung empfehlen wir einen spezialisierten Anwalt.
                 </p>
               </div>
               <div className="rounded-2xl bg-white dark:bg-neutral-800 p-8 shadow-sm border border-neutral-200 dark:border-neutral-700">
