@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     locale: 'de_AT',
     images: [
       {
-        url: '/images/services/shopify.png',
+        url: '/img/og-image.jpg',
         width: 1200,
         height: 630,
         alt: 'Shopify Partner Österreich & Deutschland - Professionelle Shopify Agentur für E-Commerce'
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Shopify Partner Österreich & Deutschland | Shopify Agentur | E-Commerce Experten 2025',
     description: 'Professioneller Shopify Partner für erfolgreiche Online-Shops in Österreich & Deutschland. Shopify Agentur mit Expertise in Shopify Webdesign, Setup, DSGVO, SEO & Support.',
-    images: ['/images/services/shopify.png']
+    images: ['/img/og-image.jpg']
   },
   alternates: {
     canonical: 'https://simplewebdesign.at/services/e-commerce-partner-fuer-shopify'
@@ -515,7 +515,7 @@ export default function ShopifyPartnerPage() {
         <div className="relative py-24 bg-blue-600 overflow-hidden">
           <div className="absolute inset-0 mix-blend-multiply opacity-40">
             <Image
-              src="/images/services/shopify.png"
+              src="/img/services/shopify.png"
               alt="Background Pattern"
               fill
               className="object-cover"
