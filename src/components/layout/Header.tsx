@@ -264,7 +264,7 @@ export function Header() {
                           </p>
                         </div>
                       </div>
-                      {/* Shopify Partner */}
+                      {/* Shopify Experte */}
                       <div className="group relative flex items-center gap-x-6 rounded-lg p-4 hover:bg-gray-50 dark:hover:bg-slate-800">
                         <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 dark:bg-slate-800 group-hover:bg-white dark:group-hover:bg-slate-700">
                           <ServerIcon className="h-6 w-6 text-gray-600 dark:text-gray-400 group-hover:text-green-600" aria-hidden="true" />
@@ -275,7 +275,7 @@ export function Header() {
                             className="font-display text-lg font-medium text-gray-900 dark:text-white"
                             onClick={() => setIsServicesOpen(false)}
                           >
-                            Shopify Partner
+                            Shopify Experte
                             <span className="absolute inset-0" />
                           </Link>
                           <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
@@ -465,7 +465,7 @@ export function Header() {
                         onClick={() => setIsOpen(false)}
                       >
                         <ServerIcon className="h-5 w-5 text-green-600" />
-                        Shopify Partner
+                        Shopify Experte
                       </Link>
                     </div>
                   </div>
