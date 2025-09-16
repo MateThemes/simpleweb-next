@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   title: 'Das perfekte Design für deine Webseite',
   description: 'Professionelles Webdesign mit Fokus auf SEO, Performance und Nutzerfreundlichkeit. Individuelle Websites für nachhaltigen Geschäftserfolg.',
   openGraph: {
-    images: '/images/og-home.jpg',
+    images: '/img/og-image.jpg',
     type: 'website',
   },
 }
