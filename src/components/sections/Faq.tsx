@@ -1,7 +1,6 @@
 'use client'
 
 import { Container } from '../ui/Container'
-import { motion } from 'framer-motion'
 import { ClockIcon, CodeIcon, RouteIcon, ToolIcon, DeviceMobileIcon, SearchIcon } from '../icons'
 
 interface FaqItem {
@@ -47,37 +46,21 @@ export default function Faq() {
   return (
     <section className="relative py-section-xl bg-gradient-to-b from-white to-gray-50 dark:from-slate-950 dark:to-slate-900/50">
       <Container>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.5 }}
-          className="text-center max-w-2xl mx-auto mb-section-lg"
-        >
+        <div className="text-center max-w-2xl mx-auto mb-section-lg">
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-gray-900 dark:text-white mb-6">
             Häufig gestellte Fragen
           </h2>
           <p className="text-lg sm:text-xl leading-relaxed text-gray-600 dark:text-gray-400">
             Hier finden Sie Antworten auf die häufigsten Fragen zu unseren Dienstleistungen
           </p>
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="mx-auto grid max-w-4xl gap-8 sm:grid-cols-2"
-        >
+        <div className="mx-auto grid max-w-4xl gap-8 sm:grid-cols-2">
           {faqItems.map((item, index) => {
             const Icon = item.icon
             return (
-              <motion.div
+              <div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.5, delay: 0.1 * index }}
                 className="relative bg-white dark:bg-slate-900 rounded-2xl p-6 shadow-lg shadow-gray-900/5 dark:shadow-none ring-1 ring-gray-900/5 dark:ring-white/10"
               >
                 <div className="flex gap-4">
@@ -93,10 +76,10 @@ export default function Faq() {
                     </p>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             )
           })}
-        </motion.div>
+        </div>
       </Container>
     </section>
   )

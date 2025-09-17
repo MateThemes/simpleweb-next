@@ -1,7 +1,6 @@
 'use client'
 
 import { Container } from '../ui/Container'
-import { motion } from 'framer-motion'
 import { ClockIcon, CodeIcon, RouteIcon, ToolIcon } from '../icons'
 
 interface ProcessStep {
@@ -65,37 +64,21 @@ export default function Process() {
       className="relative scroll-mt-[72px] bg-gradient-to-br from-blue-50 via-white to-blue-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 py-section-xl"
     >
       <Container>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.5 }}
-          className="text-center max-w-3xl mx-auto mb-section-lg"
-        >
+        <div className="text-center max-w-3xl mx-auto mb-section-lg">
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-gray-900 dark:text-white mb-6">
             Unser Prozess
           </h2>
           <p className="text-lg sm:text-xl leading-relaxed text-gray-600 dark:text-gray-400">
             Von der ersten Idee bis zur fertigen Website - wir begleiten Sie durch den gesamten Prozess
           </p>
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="max-w-4xl mx-auto"
-        >
+        <div className="max-w-4xl mx-auto">
           {processSteps.map((step, index) => {
             const Icon = step.icon
             return (
-              <motion.div
+              <div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.5, delay: 0.1 * index }}
                 className="flex flex-col md:flex-row gap-8 mb-section-md last:mb-0"
               >
                 {/* Step Number and Line */}
@@ -130,10 +113,10 @@ export default function Process() {
                     ))}
                   </div>
                 </div>
-              </motion.div>
+              </div>
             )
           })}
-        </motion.div>
+        </div>
       </Container>
     </section>
   )

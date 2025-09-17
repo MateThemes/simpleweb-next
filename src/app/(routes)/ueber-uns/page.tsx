@@ -7,7 +7,7 @@ import {
   CodeBracketIcon, 
   RocketLaunchIcon, 
   LightBulbIcon 
-} from '@heroicons/react/24/outline'
+} from '@/components/icons'
 
 // Metadata
 export const metadata: Metadata = {

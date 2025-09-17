@@ -54,8 +54,8 @@ export default function Hero() {
             </div>
           </div>
           
-          <div className="mx-auto mt-16 flex max-w-2xl sm:mt-24 lg:ml-10 lg:mr-0 lg:mt-0 lg:max-w-none lg:flex-none xl:ml-32">
-            <div className="max-w-3xl flex-none sm:max-w-5xl lg:max-w-none">
+          <div className="mx-auto mt-16 flex max-w-4xl sm:mt-24 lg:ml-10 lg:mr-0 lg:mt-0 lg:max-w-none lg:flex-none xl:ml-32">
+            <div className="max-w-4xl flex-none sm:max-w-5xl lg:max-w-none">
               <div className="relative">
                 <Image
                   src="/img/hero-image-optimized.jpg"
@@ -63,9 +63,11 @@ export default function Hero() {
                   width={2432}
                   height={1442}
                   priority
-                  className="w-full h-auto max-w-4xl rounded-xl shadow-2xl ring-1 ring-gray-900/10"
+                  className="w-full h-auto max-w-5xl rounded-xl shadow-2xl ring-1 ring-gray-900/10"
                   sizes="(max-width: 640px) 100vw, (max-width: 768px) 90vw, (max-width: 1024px) 80vw, (max-width: 1280px) 70vw, 60vw"
-                  quality={85}
+                  quality={90}
+                  placeholder="blur"
+                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
                 />
               </div>
             </div>
