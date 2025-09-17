@@ -4,7 +4,6 @@ import Script from 'next/script'
 import { useEffect } from 'react'
 import { usePathname } from 'next/navigation'
 import { getCookiePreferences } from '../cookie/CookieStore'
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import type { ConsentEvent, GTMEvent } from '@/types/gtm'
 
 const GTM_ID = 'GTM-TNK6X4Q5'
