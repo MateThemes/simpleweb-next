@@ -13,7 +13,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     'seo',
     'redesign',
     'hosting',
-    'performance'
+    'performance',
+    'e-commerce-partner-fuer-shopify'
   ]
 
   // Generate service page entries
