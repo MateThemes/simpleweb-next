@@ -14,7 +14,7 @@ import {
   RocketLaunchIcon,
   PaintBrushIcon,
   ServerIcon
-} from '@heroicons/react/24/outline'
+} from '../icons'
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false)

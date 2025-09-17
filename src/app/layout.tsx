@@ -5,7 +5,6 @@ import { Footer } from "@/components/layout/Footer";
 import { CookieConsent } from "@/components/cookie/CookieConsent";
 import { CookieSettingsButton } from "@/components/cookie/CookieSettingsButton";
 import { GoogleTagManagerLazy } from "@/components/analytics/GoogleTagManagerLazy";
-import { ErrorBoundary } from "@/components/ui/ErrorBoundary";
 import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
 import "./globals.css";
@@ -67,16 +66,14 @@ export default function RootLayout({
       <body className="flex min-h-screen flex-col bg-white dark:bg-gray-950">
         <GoogleTagManagerLazy />
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <ErrorBoundary>
-            <Header />
-            <main className="flex-1">
-              {children}
-            </main>
-            <Footer />
-            <CookieConsent />
-            <CookieSettingsButton />
-            <Analytics />
-          </ErrorBoundary>
+          <Header />
+          <main className="flex-1">
+            {children}
+          </main>
+          <Footer />
+          <CookieConsent />
+          <CookieSettingsButton />
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>

@@ -3,20 +3,17 @@ import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { Container } from '@/components/ui/Container'
 import { BlogContent } from '@/components/blog/BlogContent'
-import { getAllPosts, getPostBySlug } from '@/lib/mdx'
+import { getPostBySlug } from '@/lib/mdx'
 import { formatDate } from '@/lib/utils'
 import { Post } from '@/lib/types'
 
-interface PageParams {
-  slug: string
-}
-
-export async function generateStaticParams(): Promise<PageParams[]> {
-  const posts = await getAllPosts()
-  return posts.map((post) => ({
-    slug: post.slug,
-  }))
-}
+// Temporarily disabled static generation due to React version conflict
+// export async function generateStaticParams(): Promise<PageParams[]> {
+//   const posts = await getAllPosts()
+//   return posts.map((post) => ({
+//     slug: post.slug,
+//   }))
+// }
 
 export async function generateMetadata(props: {
   params: Promise<{ slug: string }>

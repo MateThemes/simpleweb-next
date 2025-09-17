@@ -3,7 +3,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { Container } from '../ui/Container'
-import { motion } from 'framer-motion'
 import { 
   DeviceLaptopIcon, 
   ChartBarIcon, 
@@ -102,26 +101,6 @@ const services = [
   }
 ]
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1
-    }
-  }
-}
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5
-    }
-  }
-}
 
 export default function Services() {
   return (
@@ -130,34 +109,21 @@ export default function Services() {
       className="relative scroll-mt-[72px] bg-gradient-to-b from-white to-gray-50 dark:from-slate-950 dark:to-slate-900 py-section-xl" 
     >
       <Container>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.5 }}
-          className="text-center max-w-2xl mx-auto mb-section-lg"
-        >
+        <div className="text-center max-w-2xl mx-auto mb-section-lg">
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-gray-900 dark:text-white mb-6">
             Professionelles Webdesign für Ihren Erfolg
           </h2>
           <p className="text-lg sm:text-xl leading-relaxed text-gray-600 dark:text-gray-400">
             Nutzen Sie die neuesten Webtechnologien für Ihren Geschäftserfolg
           </p>
-        </motion.div>
+        </div>
         
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          className="grid gap-8 md:grid-cols-2 lg:grid-cols-3"
-        >
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {services.map((service) => {
             const Icon = service.icon
             return (
-              <motion.div
+              <div
                 key={service.id}
-                variants={itemVariants}
                 className="group relative overflow-hidden bg-white dark:bg-slate-900 rounded-2xl shadow-lg shadow-gray-900/5 dark:shadow-none ring-1 ring-gray-900/5 dark:ring-white/10 hover:shadow-xl dark:hover:ring-white/20 transition-all duration-300"
               >
                 {/* Service Image */}
@@ -205,10 +171,10 @@ export default function Services() {
                     <ArrowRightIcon className="w-4 h-4 ml-1 transform group-hover/link:translate-x-1 transition-transform" />
                   </Link>
                 </div>
-              </motion.div>
+              </div>
             )
           })}
-        </motion.div>
+        </div>
       </Container>
     </section>
   )
