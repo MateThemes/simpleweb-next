@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: `${category.name} Blog Artikel & Tipps | SimpleWebDesign - Webdesign & Marketing Blog`,
       description: `Entdecken Sie alle ${category.name} Blog Artikel, Tipps und Insights von SimpleWebDesign. Professionelle Beratung zu ${category.name} für Unternehmen in Niederösterreich.`,
       type: 'website',
-      url: `https://simplewebdesign.at/blog/kategorie/${paramsValue.category}`,
+      url: `https://simplewebdesign.at/blog/kategorie/${categorySlug}`,
     },
     twitter: {
       card: 'summary_large_image',
