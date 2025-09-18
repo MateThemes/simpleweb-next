@@ -8,7 +8,6 @@ import { GoogleTagManagerLazy } from "@/components/analytics/GoogleTagManagerLaz
 import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
 import "./globals.css";
-import "./layout.css"; // CHANGE: add placeholder layout-level CSS to avoid dev 404s
 
 const inter = Inter({
   subsets: ['latin'],
@@ -23,6 +22,9 @@ const outfit = Outfit({
 })
 
 export const metadata: Metadata = {
+  // CHANGE: Define metadataBase so Next.js can resolve relative Open Graph/Twitter image URLs without warnings.
+  // Uses NEXT_PUBLIC_SITE_URL in production, with a sensible localhost fallback for development.
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
   title: "SimpleWebDesign | Professional Web Design and Development",
   description: "Professional Web Design and Development Services in Deutschland. Wir erstellen moderne, performante und SEO-optimierte Websites.",
   icons: {
