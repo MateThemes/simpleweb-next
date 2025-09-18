@@ -12,7 +12,7 @@ export function BlogContent({ content }: { content: string }) {
   
   return (
     <div 
-      className="prose prose-neutral dark:prose-invert max-w-none"
+      className="blog-content prose prose-neutral dark:prose-invert max-w-none"
       dangerouslySetInnerHTML={{ __html: htmlContent }}
     />
   )
