@@ -25,11 +25,12 @@ const POSTS_PER_PAGE = 6;
 export default async function BlogPage({
   searchParams,
 }: {
+  // CHANGE: Next 15.3 sync dynamic APIs return Promise for searchParams
   searchParams: Promise<{ page?: string }>
 }) {
-  const params = await searchParams;
+  const sp = await searchParams;
   const posts = await getAllPosts();
-  const currentPage = params.page ? parseInt(params.page, 10) : 1;
+  const currentPage = sp?.page ? parseInt(sp.page, 10) || 1 : 1;
   const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
   
   const paginatedPosts = posts.slice(

@@ -11,9 +11,10 @@ interface Props {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const paramsValue = await params;
+  // CHANGE: Next 15.3 sync dynamic APIs return Promise for params; await before using
+  const { category: categorySlug } = await params;
   const categories = await getAllCategories()
-  const category = categories.find((cat) => cat.slug === paramsValue.category)
+  const category = categories.find((cat) => cat.slug === categorySlug)
 
   if (!category) {
     return {
@@ -46,16 +47,17 @@ export async function generateStaticParams() {
 }
 
 export default async function CategoryPage({ params }: Props) {
-  const paramsValue = await params;
+  // CHANGE: Next 15.3 sync dynamic APIs return Promise for params; await before using
+  const { category: categorySlug } = await params;
   const categories = await getAllCategories()
-  const category = categories.find((cat) => cat.slug === paramsValue.category)
+  const category = categories.find((cat) => cat.slug === categorySlug)
 
   if (!category) {
     notFound()
   }
 
   const posts = (await getAllPosts()).filter(
-    (post) => post.category.toLowerCase() === paramsValue.category
+    (post) => post.category.toLowerCase() === categorySlug
   )
 
   return (
