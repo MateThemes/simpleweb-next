@@ -1,5 +1,11 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Requirements
+
+- Node.js: >=20.18.1 <21 (see package.json "engines")
+- Package manager: npm, pnpm, yarn, or bun
+- Dev server: Next.js 15 uses Turbopack by default in development with `next dev`. For production, use `next build` and `next start`.
+
 ## Getting Started
 
 First, run the development server:

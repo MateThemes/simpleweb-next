@@ -1,0 +1,5 @@
+/* CHANGE: Placeholder CSS file to satisfy Next.js dev CSS asset request for app/layout.css.
+   This prevents repeated 404s for /_next/static/css/app/layout.css during development.
+   Keep minimal to avoid overriding Tailwind globals.
+*/
+:root {}
