@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation' // CHANGE: needed to close drawer on route change
 import { useTheme } from 'next-themes'
 import { 
   Bars3Icon, 
@@ -25,6 +26,10 @@ export function Header() {
   const servicesDropdownRef = useRef<HTMLDivElement>(null)
   const lastScrollY = useRef(0)
   const { theme, setTheme } = useTheme()
+  const pathname = usePathname() // CHANGE: observe route changes to close mobile menu
+  const triggerRef = useRef<HTMLButtonElement>(null) // CHANGE: store trigger to return focus
+  const panelRef = useRef<HTMLDivElement>(null) // CHANGE: reference to the panel for focus trap
+  const previouslyFocusedRef = useRef<HTMLElement | null>(null) // CHANGE: remember previously focused element
 
   // After mounting, we have access to the theme
   useEffect(() => setMounted(true), [])
@@ -51,6 +56,73 @@ export function Header() {
     return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [])
 
+  // CHANGE: Body scroll lock and focus management when mobile menu opens
+  useEffect(() => {
+    if (isOpen) {
+      previouslyFocusedRef.current = document.activeElement as HTMLElement
+      const body = document.body
+      const prevOverflow = body.style.overflow
+      const prevTouchAction = body.style.touchAction as string
+      body.style.overflow = 'hidden' // prevent background scroll
+      body.style.touchAction = 'none'
+
+      // Focus the panel itself to start focus within dialog
+      const panel = panelRef.current
+      requestAnimationFrame(() => {
+        panel?.focus()
+      })
+
+      return () => {
+        body.style.overflow = prevOverflow
+        body.style.touchAction = prevTouchAction
+        // Restore focus to trigger
+        const el = triggerRef.current || previouslyFocusedRef.current
+        if (el) {
+          el.focus()
+        }
+      }
+    }
+  }, [isOpen])
+
+  // CHANGE: Close on ESC and keep focus trapped within panel
+  useEffect(() => {
+    if (!isOpen) return
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setIsOpen(false)
+        return
+      }
+      if (e.key === 'Tab' && panelRef.current) {
+        const container = panelRef.current
+        const focusable = container.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])'
+        )
+        const first = focusable[0]
+        const last = focusable[focusable.length - 1]
+        if (!first || !last) return
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault()
+          ;(last as HTMLElement).focus()
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault()
+          ;(first as HTMLElement).focus()
+        }
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyDown)
+    return () => document.removeEventListener('keydown', handleKeyDown)
+  }, [isOpen])
+
+  // CHANGE: Close the drawer on route change
+  useEffect(() => {
+    if (isOpen) {
+      setIsOpen(false)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pathname])
+
   const toggleTheme = () => {
     setTheme(theme === 'dark' ? 'light' : 'dark')
   }
@@ -69,10 +141,12 @@ export function Header() {
         {/* Mobile menu button */}
         <div className="flex xl:hidden">
           <button
+            ref={triggerRef} // CHANGE: keep reference to restore focus when closing
             onClick={() => setIsOpen(!isOpen)}
             type="button"
             className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 dark:text-gray-200"
             aria-expanded={isOpen}
+            aria-controls="mobile-menu-dialog" // CHANGE: link trigger with dialog
           >
             <span className="sr-only">{isOpen ? 'Close menu' : 'Open menu'}</span>
             {!isOpen ? (
@@ -347,10 +421,26 @@ export function Header() {
         {/* Mobile menu */}
         {isOpen && (
           <div className="fixed inset-0 z-50">
-            {/* Overlay */}
-            <div className="fixed inset-0 bg-white dark:bg-slate-950">
-              {/* Header */}
-              <div className="flex items-center justify-between p-4">
+            {/* CHANGE: Clickable, non-through overlay to close the panel */}
+            <button
+              type="button"
+              aria-label="Close menu"
+              className="fixed inset-0 bg-black/40 z-50 cursor-default"
+              onClick={() => setIsOpen(false)}
+            />
+
+            {/* CHANGE: Right-side fixed panel acts as its own scroll container */}
+            <div
+              id="mobile-menu-dialog"
+              role="dialog" // CHANGE: a11y role
+              aria-modal="true" // CHANGE: prevent background from being considered
+              aria-label="Hauptmenü"
+              ref={panelRef}
+              tabIndex={-1} // CHANGE: make focusable container for focus trap start
+              className="fixed right-0 top-0 z-[60] h-[100dvh] min-h-svh w-[min(90vw,24rem)] bg-white dark:bg-slate-950 shadow-xl outline-none flex flex-col"
+            >
+              {/* Header inside the panel */}
+              <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-800">
                 <Link href="/" className="-m-1.5 p-1.5" onClick={() => setIsOpen(false)}>
                   <span className="sr-only">SimpleWebDesign</span>
                   <h2 className="font-display text-2xl font-bold text-gray-900 dark:text-white">
@@ -367,8 +457,8 @@ export function Header() {
                 </button>
               </div>
 
-              {/* Navigation Links */}
-              <div className="mt-6 px-4 overflow-y-auto">
+              {/* CHANGE: Make the menu list scrollable only within the panel */}
+              <div className="flex-1 overflow-y-auto overscroll-contain px-4 py-6">
                 <div className="flex flex-col gap-y-4">
                   <Link
                     href="/"
@@ -383,6 +473,8 @@ export function Header() {
                     <button
                       onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
                       className="w-full flex items-center justify-between px-3 py-3 rounded-md text-lg font-medium text-gray-600 hover:text-gray-900 dark:text-white dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
+                      aria-expanded={isMobileServicesOpen} // CHANGE: a11y state for accordion
+                      aria-controls="mobile-services-submenu" // CHANGE: link to submenu
                     >
                       <span>Services</span>
                       <svg
@@ -402,7 +494,7 @@ export function Header() {
                     </button>
 
                     {/* Services Submenu */}
-                    <div className={`space-y-1 pl-3 ${isMobileServicesOpen ? '' : 'hidden'}`}>
+                    <div id="mobile-services-submenu" className={`space-y-1 pl-3 ${isMobileServicesOpen ? '' : 'hidden'}`}>
                       <Link
                         href="/services/webdesign"
                         className="flex items-center gap-3 px-3 py-3 rounded-md text-base font-medium text-gray-600 hover:text-gray-900 dark:text-white dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
@@ -512,8 +604,8 @@ export function Header() {
                 </div>
               </div>
 
-              {/* Fixed Footer with Contact Button */}
-              <div className="fixed bottom-0 left-0 right-0 border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-slate-950 p-4">
+              {/* Footer button inside the panel (sticky) */}
+              <div className="sticky bottom-0 left-0 right-0 border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-slate-950 p-4">
                 <Link
                   href="/kontakt"
                   className="flex w-full items-center justify-center rounded-full bg-gray-900 dark:bg-white px-4 py-3 text-base font-semibold text-white dark:text-gray-900 hover:bg-gray-700 dark:hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-900 dark:focus:ring-white focus:ring-offset-2"

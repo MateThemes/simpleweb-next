@@ -8,6 +8,7 @@ import { GoogleTagManagerLazy } from "@/components/analytics/GoogleTagManagerLaz
 import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
 import "./globals.css";
+import "./layout.css"; // CHANGE: add placeholder layout-level CSS to avoid dev 404s
 
 const inter = Inter({
   subsets: ['latin'],
