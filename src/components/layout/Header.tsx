@@ -76,7 +76,9 @@ export function Header() {
         body.style.overflow = prevOverflow
         body.style.touchAction = prevTouchAction
         // Restore focus to trigger
-        const el = triggerRef.current || previouslyFocusedRef.current
+        const triggerElement = triggerRef.current
+        const previouslyFocusedElement = previouslyFocusedRef.current
+        const el = triggerElement || previouslyFocusedElement
         if (el) {
           el.focus()
         }

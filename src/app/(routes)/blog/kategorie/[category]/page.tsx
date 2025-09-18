@@ -11,9 +11,10 @@ interface Props {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const paramsValue = await params;
+  // CHANGE: Next 15.3 sync dynamic APIs return Promise for params; await before using
+  const { category: categorySlug } = await params;
   const categories = await getAllCategories()
-  const category = categories.find((cat) => cat.slug === paramsValue.category)
+  const category = categories.find((cat) => cat.slug === categorySlug)
 
   if (!category) {
     return {
@@ -28,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: `${category.name} Blog Artikel & Tipps | SimpleWebDesign - Webdesign & Marketing Blog`,
       description: `Entdecken Sie alle ${category.name} Blog Artikel, Tipps und Insights von SimpleWebDesign. Professionelle Beratung zu ${category.name} für Unternehmen in Niederösterreich.`,
       type: 'website',
-      url: `https://simplewebdesign.at/blog/kategorie/${paramsValue.category}`,
+      url: `https://simplewebdesign.at/blog/kategorie/${categorySlug}`,
     },
     twitter: {
       card: 'summary_large_image',
@@ -46,16 +47,17 @@ export async function generateStaticParams() {
 }
 
 export default async function CategoryPage({ params }: Props) {
-  const paramsValue = await params;
+  // CHANGE: Next 15.3 sync dynamic APIs return Promise for params; await before using
+  const { category: categorySlug } = await params;
   const categories = await getAllCategories()
-  const category = categories.find((cat) => cat.slug === paramsValue.category)
+  const category = categories.find((cat) => cat.slug === categorySlug)
 
   if (!category) {
     notFound()
   }
 
   const posts = (await getAllPosts()).filter(
-    (post) => post.category.toLowerCase() === paramsValue.category
+    (post) => post.category.toLowerCase() === categorySlug
   )
 
   return (

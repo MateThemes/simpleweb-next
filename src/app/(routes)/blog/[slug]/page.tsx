@@ -15,17 +15,18 @@ import { Post } from '@/lib/types'
 //   }))
 // }
 
-export async function generateMetadata(props: {
-  params: Promise<{ slug: string }>
-}): Promise<Metadata> {
-  const params = await props.params
-  const post: Post | null = await getPostBySlug(params.slug)
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  // CHANGE: Next 15.3 sync dynamic APIs return Promise for params; await before using
+  const { slug } = await params
+  const post: Post | null = await getPostBySlug(slug)
 
   if (!post) {
     return {
       title: 'Artikel nicht gefunden',
     }
   }
+
+  const hasImage = typeof post.image === 'string' && post.image.length > 0;
 
   return {
     title: `${post.title} | Blog`,
@@ -36,29 +37,32 @@ export async function generateMetadata(props: {
       type: 'article',
       publishedTime: post.date,
       authors: [post.author],
-      images: [
-        {
-          url: post.image,
-          width: 1200,
-          height: 630,
-          alt: post.title,
-        },
-      ],
+      ...(hasImage
+        ? {
+            images: [
+              {
+                url: post.image,
+                width: 1200,
+                height: 630,
+                alt: post.title,
+              },
+            ],
+          }
+        : {}),
     },
     twitter: {
-      card: 'summary_large_image',
+      card: hasImage ? 'summary_large_image' : 'summary',
       title: post.title,
       description: post.description,
-      images: [post.image],
+      ...(hasImage ? { images: [post.image] } : {}),
     },
   }
 }
 
-export default async function BlogPage(props: {
-  params: Promise<{ slug: string }>
-}) {
-  const params = await props.params
-  const post: Post | null = await getPostBySlug(params.slug)
+export default async function BlogPage({ params }: { params: Promise<{ slug: string }> }) {
+  // CHANGE: Next 15.3 sync dynamic APIs return Promise for params; await before using
+  const { slug } = await params
+  const post: Post | null = await getPostBySlug(slug)
 
   if (!post) {
     notFound()
@@ -89,16 +93,18 @@ export default async function BlogPage(props: {
                 </p>
               </header>
               
-              <div className="mt-8 relative aspect-[16/9] w-full overflow-hidden rounded-2xl bg-neutral-100 dark:bg-neutral-800">
-                <Image
-                  src={post.image}
-                  alt={post.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 80vw"
-                  className="object-cover"
-                  priority
-                />
-              </div>
+              {post.image ? (
+                <div className="mt-8 relative aspect-[16/9] w-full overflow-hidden rounded-2xl bg-neutral-100 dark:bg-neutral-800">
+                  <Image
+                    src={post.image}
+                    alt={post.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 80vw"
+                    className="object-cover"
+                    priority
+                  />
+                </div>
+              ) : null}
 
               <div className="mt-8 prose prose-neutral dark:prose-invert max-w-none">
                 <BlogContent content={post.content} />

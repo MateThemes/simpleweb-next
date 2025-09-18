@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": ">=20.18.1 <21"
+    "node": ">=20.18.1 <23"
   },
   "scripts": {
     "dev": "next dev",
@@ -14,9 +14,6 @@
   "dependencies": {
     "@headlessui/react": "^2.2.0",
     "@heroicons/react": "^2.2.0",
-    "@mdx-js/loader": "^3.1.0",
-    "@mdx-js/react": "^3.1.0",
-    "@next/mdx": "^15.1.5",
     "@react-email/components": "^0.5.3",
     "@react-email/render": "^1.2.3",
     "@types/js-cookie": "^3.0.6",
@@ -24,14 +21,13 @@
     "clsx": "^2.1.1",
     "gray-matter": "^4.0.3",
     "js-cookie": "^3.0.5",
-    "next": "^15.1.5",
+    "marked": "^16.3.0",
+    "next": "^15.3.5",
     "next-client-cookies": "^2.0.1",
-    "next-mdx-remote": "^5.0.0",
     "next-themes": "^0.4.4",
     "react": "^18.3.1",
     "react-cookie-consent": "^9.0.0",
     "react-dom": "^18.3.1",
-    "remark-gfm": "^4.0.1",
     "resend": "^4.1.1",
     "tailwind-merge": "^2.6.0",
     "zustand": "^4.4.7"
@@ -46,13 +42,17 @@
     "@eslint/eslintrc": "^3",
     "@types/debug": "^4.1.12",
     "@types/json-schema": "^7.0.15",
-    "@types/node": "^20",
+    "@types/node": "^22",
     "@types/react": "^18.3.24",
     "@types/react-dom": "^18.3.7",
     "eslint": "^9",
-    "eslint-config-next": "^15.1.5",
+    "eslint-config-next": "^15.3.5",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
+  },
+  "overrides": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   }
 }

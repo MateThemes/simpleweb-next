@@ -2,9 +2,10 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Requirements
 
-- Node.js: >=20.18.1 <21 (see package.json "engines")
+- Node.js: >=20.18.1 and <23 (LTS 20.18.1+ or 22.x) — aligns local Node 20 and Vercel Node 22 without warnings
 - Package manager: npm, pnpm, yarn, or bun
 - Dev server: Next.js 15 uses Turbopack by default in development with `next dev`. For production, use `next build` and `next start`.
+- MDX: Single pipeline using next-mdx-remote/rsc (remark-gfm). @next/mdx is not used to avoid dual processing. After pulling, run a clean install to update deps: rm -rf node_modules .next && npm install.
 
 ## Getting Started
 
