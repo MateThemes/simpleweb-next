@@ -467,7 +467,9 @@ export async function POST(request: NextRequest) {
     // Send email if requested
     if (email && consent) {
       const hostname = new URL(normalizedUrl).hostname;
-      const shareableUrl = `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/audit-result/${leadId}`;
+      const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 
+                     (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000');
+      const shareableUrl = `${baseUrl}/audit-result/${leadId}`;
       const emailData: EmailData = {
         hostname,
         summary,
@@ -523,7 +525,9 @@ export async function POST(request: NextRequest) {
     await storeAuditResult(leadId, auditResult);
     
     // Add shareable URL to response
-    const shareableUrl = `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/audit-result/${leadId}`;
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 
+                   (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000');
+    const shareableUrl = `${baseUrl}/audit-result/${leadId}`;
     response.shareableUrl = shareableUrl;
     
     clearTimeout(timeoutId);
