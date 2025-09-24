@@ -37,6 +37,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       type: 'article',
       publishedTime: post.date,
       authors: [post.author],
+      url: `https://simplewebdesign.at/blog/${slug}`,
       ...(hasImage
         ? {
             images: [
@@ -55,6 +56,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       title: post.title,
       description: post.description,
       ...(hasImage ? { images: [post.image] } : {}),
+    },
+    alternates: {
+      canonical: `https://simplewebdesign.at/blog/${slug}`,
     },
   }
 }

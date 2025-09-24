@@ -16,6 +16,9 @@ export const metadata: Metadata = {
     title: 'Datenschutzerklärung | SimpleWebDesign',
     description: 'Datenschutzerklärung von SimpleWebDesign - Erfahren Sie mehr über den Schutz Ihrer persönlichen Daten.',
   },
+  alternates: {
+    canonical: 'https://simplewebdesign.at/datenschutz',
+  },
 }
 
 export default function DatenschutzPage() {

@@ -7,6 +7,7 @@ import { CookieSettingsButton } from "@/components/cookie/CookieSettingsButton";
 import { GoogleTagManagerLazy } from "@/components/analytics/GoogleTagManagerLazy";
 import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
+import { getCanonicalMetadata } from "@/lib/canonical";
 import "./globals.css";
 
 const inter = Inter({
@@ -27,6 +28,9 @@ export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
   title: "SimpleWebDesign | Professional Web Design and Development",
   description: "Professional Web Design and Development Services in Deutschland. Wir erstellen moderne, performante und SEO-optimierte Websites.",
+  alternates: {
+    canonical: getCanonicalMetadata('/').alternates.canonical,
+  },
   icons: {
     icon: [
       { url: '/img/favicon/favicon.ico', sizes: 'any' },

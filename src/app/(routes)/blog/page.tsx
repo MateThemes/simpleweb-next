@@ -18,6 +18,9 @@ export const metadata: Metadata = {
     title: 'Blog | Webdesign, SEO & Marketing Insights | SimpleWebDesign',
     description: 'Aktuelle Artikel und Insights zu Webdesign, SEO und Online Marketing. Professionelle Tipps für Ihren Online-Erfolg.',
   },
+  alternates: {
+    canonical: 'https://simplewebdesign.at/blog',
+  },
 }
 
 const POSTS_PER_PAGE = 6;
