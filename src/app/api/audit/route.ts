@@ -567,8 +567,10 @@ export async function POST(request: NextRequest) {
     };
     
     // Store in audit result API
+    console.log(`[DEBUG] Storing audit result for leadId: ${leadId}`);
     const { storeAuditResult } = await import('@/lib/audit-storage');
     await storeAuditResult(leadId, auditResult);
+    console.log(`[DEBUG] Audit result stored successfully for leadId: ${leadId}`);
     
     // Add shareable URL to response
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 

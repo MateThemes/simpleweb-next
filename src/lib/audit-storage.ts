@@ -10,38 +10,53 @@ if (process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN) 
       url: process.env.UPSTASH_REDIS_REST_URL,
       token: process.env.UPSTASH_REDIS_REST_TOKEN,
     });
+    console.log('[DEBUG] Redis client initialized successfully');
   } catch (error) {
-    console.log('Failed to initialize Redis client:', error);
+    console.log('[DEBUG] Failed to initialize Redis client:', error);
   }
+} else {
+  console.log('[DEBUG] Redis credentials not available');
+  console.log('[DEBUG] UPSTASH_REDIS_REST_URL:', process.env.UPSTASH_REDIS_REST_URL ? 'SET' : 'NOT SET');
+  console.log('[DEBUG] UPSTASH_REDIS_REST_TOKEN:', process.env.UPSTASH_REDIS_REST_TOKEN ? 'SET' : 'NOT SET');
 }
 
 // In-memory cache for audit results (fallback for local development)
 const auditCache = new Map<string, unknown>();
 
 export async function getAuditResult(auditId: string) {
+  console.log(`[DEBUG] getAuditResult called for: ${auditId}`);
+  console.log(`[DEBUG] Environment: ${process.env.NODE_ENV}`);
+  console.log(`[DEBUG] Redis available: ${redis ? 'YES' : 'NO'}`);
+  console.log(`[DEBUG] Cache size: ${auditCache.size}`);
+  
   try {
     // Try to get from local cache first (fastest)
     let auditData: unknown = null;
     
     auditData = auditCache.get(auditId);
     if (auditData) {
-      console.log(`Audit ${auditId} found in local cache`);
+      console.log(`[DEBUG] Audit ${auditId} found in local cache`);
       return auditData;
     }
+    console.log(`[DEBUG] Audit ${auditId} NOT found in local cache`);
     
     // Try to get from Upstash Redis (production)
     if (redis) {
       try {
+        console.log(`[DEBUG] Trying to get ${auditId} from Redis...`);
         auditData = await redis.get(`audit:${auditId}`);
         if (auditData) {
-          console.log(`Audit ${auditId} found in Redis`);
+          console.log(`[DEBUG] Audit ${auditId} found in Redis`);
           // Cache it locally for faster access
           auditCache.set(auditId, auditData);
           return auditData;
         }
+        console.log(`[DEBUG] Audit ${auditId} NOT found in Redis`);
       } catch (error) {
-        console.log(`Upstash Redis not available: ${error}`);
+        console.log(`[DEBUG] Redis error: ${error}`);
       }
+    } else {
+      console.log(`[DEBUG] Redis not available`);
     }
     
     // If not in cache or Redis, try to read from file (only in development)
@@ -97,21 +112,26 @@ export async function getAuditResult(auditId: string) {
 
 // Store audit result
 export async function storeAuditResult(auditId: string, auditData: unknown) {
+  console.log(`[DEBUG] storeAuditResult called for: ${auditId}`);
+  console.log(`[DEBUG] Environment: ${process.env.NODE_ENV}`);
+  console.log(`[DEBUG] Redis available: ${redis ? 'YES' : 'NO'}`);
+  
   try {
     // Store in local cache first (always available)
     auditCache.set(auditId, auditData);
-    console.log(`Audit ${auditId} stored in local cache`);
+    console.log(`[DEBUG] Audit ${auditId} stored in local cache`);
     
     // Store in Upstash Redis (production) with 7-day expiration
     if (redis) {
       try {
+        console.log(`[DEBUG] Storing ${auditId} in Redis...`);
         await redis.setex(`audit:${auditId}`, 7 * 24 * 60 * 60, JSON.stringify(auditData)); // 7 days in seconds
-        console.log(`Audit ${auditId} stored in Upstash Redis`);
+        console.log(`[DEBUG] Audit ${auditId} stored in Upstash Redis`);
       } catch (error) {
-        console.log(`Upstash Redis not available, using local cache only: ${error}`);
+        console.log(`[DEBUG] Redis storage error: ${error}`);
       }
     } else {
-      console.log(`Redis not configured, using local cache only`);
+      console.log(`[DEBUG] Redis not configured, using local cache only`);
     }
     
     // Store in file for persistence (only in development)
