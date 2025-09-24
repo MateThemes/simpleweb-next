@@ -152,7 +152,7 @@ async function getPageSpeedInsights(url: string): Promise<{ mobile: PageSpeedIns
             'best-practices': { score: 0.90 }
           }
         }
-      } as PageSpeedInsightsResponse,
+      },
       desktop: {
         lighthouseResult: {
           categories: {
@@ -162,7 +162,7 @@ async function getPageSpeedInsights(url: string): Promise<{ mobile: PageSpeedIns
             'best-practices': { score: 0.90 }
           }
         }
-      } as PageSpeedInsightsResponse
+      }
     };
   }
   

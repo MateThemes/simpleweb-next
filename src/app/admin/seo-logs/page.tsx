@@ -3,15 +3,8 @@
 import { useState, useEffect } from 'react';
 import { Container } from '@/components/ui/Container';
 
-// Simple password protection
-const ADMIN_PASSWORD = process.env.NEXT_PUBLIC_ADMIN_PASSWORD || 'admin123';
-
-// Emergency passwords from environment variables (secure)
-const EMERGENCY_PASSWORDS = [
-  process.env.NEXT_PUBLIC_EMERGENCY_PASSWORD_1,
-  process.env.NEXT_PUBLIC_EMERGENCY_PASSWORD_2,
-  process.env.NEXT_PUBLIC_EMERGENCY_PASSWORD_3
-].filter(Boolean); // Remove undefined values
+// Simple password protection - use default for local testing
+const DEFAULT_PASSWORD = 'admin123';
 
 interface AuditLog {
   timestamp: string;
@@ -48,11 +41,17 @@ export default function SeoLogsPage() {
   });
 
   useEffect(() => {
-    // Check if already authenticated
+    // Check if session is still valid
     const authStatus = localStorage.getItem('admin-authenticated');
-    if (authStatus === 'true') {
+    const sessionToken = localStorage.getItem('admin-session-token');
+    const sessionExpires = localStorage.getItem('admin-session-expires');
+    
+    if (authStatus === 'true' && sessionToken && sessionExpires && parseInt(sessionExpires) > Date.now()) {
       setIsAuthenticated(true);
       fetchLogs();
+    } else {
+      // Session expired or invalid, clear storage
+      handleLogout();
     }
   }, []);
 
@@ -73,6 +72,8 @@ export default function SeoLogsPage() {
       if (data.success) {
         setIsAuthenticated(true);
         localStorage.setItem('admin-authenticated', 'true');
+        localStorage.setItem('admin-session-token', data.sessionToken); // Store session token
+        localStorage.setItem('admin-session-expires', data.expires.toString()); // Store expiration
         fetchLogs();
         
         if (data.type === 'emergency') {
@@ -91,7 +92,12 @@ export default function SeoLogsPage() {
   const handleLogout = () => {
     setIsAuthenticated(false);
     localStorage.removeItem('admin-authenticated');
+    localStorage.removeItem('admin-session-token');
+    localStorage.removeItem('admin-session-expires');
     setPassword('');
+    setAuthError(null);
+    setLogs([]);
+    setStats({ total: 0, filtered: 0 });
   };
 
   const handlePasswordChange = (e: React.FormEvent) => {
@@ -135,14 +141,21 @@ export default function SeoLogsPage() {
       const queryString = queryParams.toString();
       const url = `/api/admin/audit-logs${queryString ? `?${queryString}` : ''}`;
       
-      // Get stored password for API call
-      const storedPassword = localStorage.getItem('admin-password') || password;
+      // Get stored session token for API call
+      const sessionToken = localStorage.getItem('admin-session-token');
+      const sessionExpires = localStorage.getItem('admin-session-expires');
+      
+      // Check if session is expired
+      if (!sessionToken || !sessionExpires || parseInt(sessionExpires) < Date.now()) {
+        handleLogout();
+        return;
+      }
       
       const response = await fetch(url, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${storedPassword}`,
+          'Authorization': `Bearer ${sessionToken}`,
         },
       });
       

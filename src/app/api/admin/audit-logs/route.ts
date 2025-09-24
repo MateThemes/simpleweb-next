@@ -1,29 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { readFile, readdir } from 'fs/promises';
 import path from 'path';
-
-// Server-side password validation
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'admin123';
-const EMERGENCY_PASSWORDS = [
-  process.env.EMERGENCY_PASSWORD_1,
-  process.env.EMERGENCY_PASSWORD_2,
-  process.env.EMERGENCY_PASSWORD_3
-].filter(Boolean);
-
-function validatePassword(request: NextRequest): boolean {
-  const authHeader = request.headers.get('authorization');
-  if (!authHeader || !authHeader.startsWith('Bearer ')) {
-    return false;
-  }
-  
-  const password = authHeader.substring(7);
-  return password === ADMIN_PASSWORD || EMERGENCY_PASSWORDS.includes(password);
-}
+import { validateSession } from '../auth/route';
 
 export async function GET(request: NextRequest) {
   try {
-    // Validate password
-    if (!validatePassword(request)) {
+    // Validate session token
+    if (!validateSession(request)) {
       return NextResponse.json(
         { error: 'Unauthorized' },
         { status: 401 }
