@@ -69,7 +69,7 @@ const PRIVATE_IP_RANGES = [
   /^fe80:/, // IPv6 link-local
 ];
 
-function validateUrl(url: string): { isValid: boolean; normalizedUrl?: string; error?: string } {
+function validateUrl(url: string): { isValid: boolean; normalizedUrl?: string; error?: string; isLocalhost?: boolean } {
   try {
     const parsed = new URL(url);
     
@@ -78,8 +78,8 @@ function validateUrl(url: string): { isValid: boolean; normalizedUrl?: string; e
       return { isValid: false, error: 'Only HTTP and HTTPS URLs are allowed' };
     }
     
-    // Enforce HTTPS for final URL
-    if (parsed.protocol === 'http:') {
+    // Enforce HTTPS for final URL (except localhost)
+    if (parsed.protocol === 'http:' && !parsed.hostname.includes('localhost')) {
       parsed.protocol = 'https:';
     }
     
@@ -88,11 +88,13 @@ function validateUrl(url: string): { isValid: boolean; normalizedUrl?: string; e
     
     // Check for private IPs
     const hostname = parsed.hostname;
-    if (PRIVATE_IP_RANGES.some(range => range.test(hostname))) {
+    const isLocalhost = hostname.includes('localhost') || hostname.includes('127.0.0.1');
+    
+    if (PRIVATE_IP_RANGES.some(range => range.test(hostname)) && !isLocalhost) {
       return { isValid: false, error: 'Private IP addresses are not allowed' };
     }
     
-    return { isValid: true, normalizedUrl: parsed.toString() };
+    return { isValid: true, normalizedUrl: parsed.toString(), isLocalhost };
   } catch {
     return { isValid: false, error: 'Invalid URL format' };
   }
@@ -138,10 +140,11 @@ async function fetchWithTimeout(url: string, options: RequestInit = {}): Promise
 
 async function getPageSpeedInsights(url: string): Promise<{ mobile: PageSpeedInsightsResponse; desktop: PageSpeedInsightsResponse }> {
   const apiKey = process.env.GOOGLE_PSI_KEY;
+  const isLocalhost = url.includes('localhost') || url.includes('127.0.0.1');
   
-  // If no API key, return mock data for testing
-  if (!apiKey) {
-    console.warn('GOOGLE_PSI_KEY not configured - using mock data for testing');
+  // If no API key or localhost, return mock data for testing
+  if (!apiKey || isLocalhost) {
+    console.warn(isLocalhost ? 'Localhost detected - using mock data' : 'GOOGLE_PSI_KEY not configured - using mock data for testing');
     const mockData = {
       mobile: {
         lighthouseResult: {
@@ -199,6 +202,27 @@ async function analyzePage(url: string): Promise<{
   metaRobotsNoindex: boolean;
   schemaElements: Array<{ "@type": string }>;
 }> {
+  const isLocalhost = url.includes('localhost') || url.includes('127.0.0.1');
+  
+  // For localhost, return mock data since we can't fetch the actual page
+  if (isLocalhost) {
+    console.warn('Localhost detected - returning mock page analysis data');
+    return {
+      title: 'Localhost Test Page',
+      metaDescription: 'This is a test meta description for localhost development.',
+      canonical: url,
+      h1Count: 1,
+      imagesWithoutAlt: 0,
+      ogTags: {
+        title: 'Localhost Test Page',
+        description: 'Test page for localhost development',
+        image: undefined,
+      },
+      metaRobotsNoindex: false,
+      schemaElements: [{ '@type': 'WebPage' }],
+    };
+  }
+  
   const response = await fetchWithTimeout(url);
   if (!response.ok) {
     throw new Error(`HTTP ${response.status}: ${response.statusText}`);
@@ -258,6 +282,14 @@ async function analyzePage(url: string): Promise<{
 }
 
 async function checkRobotsAndSitemap(url: string): Promise<{ robots: "OK" | "NOT_FOUND" | "ERROR"; sitemap: "FOUND" | "NOT_FOUND" | "ERROR" }> {
+  const isLocalhost = url.includes('localhost') || url.includes('127.0.0.1');
+  
+  // For localhost, return mock data
+  if (isLocalhost) {
+    console.warn('Localhost detected - returning mock robots/sitemap data');
+    return { robots: 'OK', sitemap: 'FOUND' };
+  }
+  
   try {
     const robotsUrl = new URL('/robots.txt', url).toString();
     const robotsResponse = await fetchWithTimeout(robotsUrl);
@@ -376,6 +408,12 @@ export async function POST(request: NextRequest) {
     }
     
     const normalizedUrl = urlValidation.normalizedUrl!;
+    const isLocalhost = urlValidation.isLocalhost || false;
+    
+    // Log localhost usage
+    if (isLocalhost) {
+      console.warn(`SEO Audit requested for localhost URL: ${normalizedUrl} - using mock data`);
+    }
     
     // Validate email consent
     if (email && !consent) {
