@@ -152,28 +152,61 @@ async function getPageSpeedInsights(url: string): Promise<{ mobile: PageSpeedIns
   // If no API key or localhost, return mock data for testing
   if (!apiKey || isLocalhost) {
     console.warn(isLocalhost ? 'Localhost detected - using mock data' : 'GOOGLE_PSI_KEY not configured - using mock data for testing');
-    const mockData = {
-      mobile: {
-        lighthouseResult: {
-          categories: {
-            performance: { score: 0.85 },
-            seo: { score: 0.78 },
-            accessibility: { score: 0.88 },
-            'best-practices': { score: 0.90 }
+    
+    // Generate realistic mock data based on URL
+    const isSimpleWebDesign = url.includes('simplewebdesign.at');
+    
+    let mockData;
+    if (isSimpleWebDesign) {
+      // Realistic mock data for simplewebdesign.at (good scores)
+      mockData = {
+        mobile: {
+          lighthouseResult: {
+            categories: {
+              performance: { score: 0.95 },
+              seo: { score: 0.88 },
+              accessibility: { score: 0.92 },
+              'best-practices': { score: 0.95 }
+            }
+          }
+        },
+        desktop: {
+          lighthouseResult: {
+            categories: {
+              performance: { score: 0.98 },
+              seo: { score: 0.88 },
+              accessibility: { score: 0.92 },
+              'best-practices': { score: 0.95 }
+            }
           }
         }
-      },
-      desktop: {
-        lighthouseResult: {
-          categories: {
-            performance: { score: 0.92 },
-            seo: { score: 0.78 },
-            accessibility: { score: 0.88 },
-            'best-practices': { score: 0.90 }
+      };
+    } else {
+      // Generic mock data for other websites (average scores)
+      mockData = {
+        mobile: {
+          lighthouseResult: {
+            categories: {
+              performance: { score: 0.75 },
+              seo: { score: 0.65 },
+              accessibility: { score: 0.80 },
+              'best-practices': { score: 0.85 }
+            }
+          }
+        },
+        desktop: {
+          lighthouseResult: {
+            categories: {
+              performance: { score: 0.85 },
+              seo: { score: 0.65 },
+              accessibility: { score: 0.80 },
+              'best-practices': { score: 0.85 }
+            }
           }
         }
-      }
-    };
+      };
+    }
+    
     console.log('Mock data structure:', JSON.stringify(mockData, null, 2));
     return mockData;
   }
