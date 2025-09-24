@@ -468,7 +468,7 @@ export async function POST(request: NextRequest) {
     if (email && consent) {
       const hostname = new URL(normalizedUrl).hostname;
       const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 
-                     (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000');
+                     (process.env.NODE_ENV === 'production' ? 'https://simplewebdesign.at' : 'http://localhost:3000');
       const shareableUrl = `${baseUrl}/audit-result/${leadId}`;
       const emailData: EmailData = {
         hostname,
@@ -526,7 +526,7 @@ export async function POST(request: NextRequest) {
     
     // Add shareable URL to response
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 
-                   (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000');
+                   (process.env.NODE_ENV === 'production' ? 'https://simplewebdesign.at' : 'http://localhost:3000');
     const shareableUrl = `${baseUrl}/audit-result/${leadId}`;
     response.shareableUrl = shareableUrl;
     
