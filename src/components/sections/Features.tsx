@@ -55,6 +55,20 @@ export default function Features() {
             )
           })}
         </div>
+        
+        {/* SEO Audit CTA */}
+        <div className="mt-16 text-center">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-50 dark:bg-green-900/20 rounded-full border border-green-200 dark:border-green-800">
+            <span className="text-green-600 dark:text-green-400 font-medium">🎯 Neugierig auf Ihre SEO-Performance?</span>
+            <a 
+              href="/seo-audit" 
+              className="text-green-600 dark:text-green-400 hover:text-green-700 dark:hover:text-green-300 font-semibold underline decoration-2 underline-offset-2 hover:decoration-green-700 dark:hover:decoration-green-300 transition-colors"
+            >
+              Kostenlose Analyse starten
+            </a>
+          </div>
+        </div>
+        
         <Stats />
       </Container>
     </section>

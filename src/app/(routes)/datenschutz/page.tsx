@@ -216,20 +216,203 @@ export default function DatenschutzPage() {
 
           <section>
             <h2 className="text-2xl sm:text-3xl font-display font-semibold text-gray-900 dark:text-white mb-6">
-              6. Newsletter
+              6. SEO-Audit-Tool
             </h2>
-            <div className="space-y-4">
-              <p>
-                Wenn Sie den auf der Website angebotenen Newsletter beziehen möchten, benötigen wir von Ihnen eine
-                E-Mail-Adresse sowie Informationen, welche uns die Überprüfung gestatten, dass Sie der Inhaber der
-                angegebenen E-Mail-Adresse sind und mit dem Empfang des Newsletters einverstanden sind.
-              </p>
+            <div className="space-y-6">
+              <div>
+                <h3 className="text-xl font-display font-semibold text-gray-900 dark:text-white mb-4">
+                  Datenerfassung beim SEO-Audit
+                </h3>
+                <p>
+                  Unser kostenloses SEO-Audit-Tool analysiert Ihre Website auf Suchmaschinenoptimierung und Performance. 
+                  Bei der Nutzung dieses Tools erfassen wir folgende Daten:
+                </p>
+                <ul className="list-disc pl-6 space-y-2 mt-4">
+                  <li><strong>Website-URL:</strong> Die von Ihnen eingegebene URL wird zur technischen Analyse verwendet</li>
+                  <li><strong>E-Mail-Adresse (optional):</strong> Nur wenn Sie den Audit-Bericht per E-Mail erhalten möchten</li>
+                  <li><strong>IP-Adresse:</strong> Zur Sicherheit und Rate-Limiting (wird gehashed gespeichert)</li>
+                  <li><strong>Technische Daten:</strong> Performance-Metriken, SEO-Bewertungen und Analyseergebnisse</li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 className="text-xl font-display font-semibold text-gray-900 dark:text-white mb-4">
+                  Rechtsgrundlage und Zweck
+                </h3>
+                <p>
+                  Die Verarbeitung erfolgt auf Grundlage Ihrer freiwilligen Einwilligung (Art. 6 Abs. 1 lit. a DSGVO). 
+                  Der Zweck der Datenverarbeitung ist die Bereitstellung eines kostenlosen SEO-Audit-Services zur 
+                  Analyse Ihrer Website-Performance.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-xl font-display font-semibold text-gray-900 dark:text-white mb-4">
+                  Speicherdauer
+                </h3>
+                <p>
+                  Die eingegebene URL und Analyseergebnisse werden temporär für maximal 7 Tage gespeichert, 
+                  um die Qualität unseres Services zu gewährleisten. E-Mail-Adressen werden nur bei expliziter 
+                  Einwilligung für die Zusendung des Audit-Berichts verwendet.
+                </p>
+                <p className="mt-4">
+                  <strong>Automatische Löschung:</strong> Nach 7 Tagen werden alle Audit-Berichte und 
+                  zugehörigen Daten automatisch und unwiderruflich gelöscht. Die Berichte sind dann 
+                  nicht mehr über die bereitgestellten Links abrufbar.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-xl font-display font-semibold text-gray-900 dark:text-white mb-4">
+                  Drittanbieter-Integrationen
+                </h3>
+                <p>
+                  Für die technische Analyse nutzen wir folgende Dienste:
+                </p>
+                <ul className="list-disc pl-6 space-y-2 mt-4">
+                  <li><strong>Google PageSpeed Insights API:</strong> Zur Performance-Analyse (nur bei konfigurierter API)</li>
+                  <li><strong>Resend E-Mail-Service:</strong> Zur Versendung von Audit-Berichten (EU-Server, DSGVO-konform)</li>
+                </ul>
+              </div>
             </div>
           </section>
 
           <section>
             <h2 className="text-2xl sm:text-3xl font-display font-semibold text-gray-900 dark:text-white mb-6">
-              7. Plugins und Tools
+              7. Newsletter
+            </h2>
+            <div className="space-y-6">
+              <div>
+                <h3 className="text-xl font-display font-semibold text-gray-900 dark:text-white mb-4">
+                  Newsletter-Anmeldung
+                </h3>
+                <p>
+                  Wenn Sie unseren Newsletter beziehen möchten, benötigen wir von Ihnen eine E-Mail-Adresse sowie 
+                  Ihre explizite Einwilligung zum Empfang des Newsletters. Die Anmeldung erfolgt über:
+                </p>
+                <ul className="list-disc pl-6 space-y-2 mt-4">
+                  <li>Kontaktformular mit Newsletter-Checkbox</li>
+                  <li>SEO-Audit-Tool mit Newsletter-Einwilligung</li>
+                  <li>Direkte Newsletter-Anmeldung (falls verfügbar)</li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 className="text-xl font-display font-semibold text-gray-900 dark:text-white mb-4">
+                  Rechtsgrundlage
+                </h3>
+                <p>
+                  Die Verarbeitung Ihrer E-Mail-Adresse erfolgt ausschließlich auf Grundlage Ihrer freiwilligen 
+                  Einwilligung (Art. 6 Abs. 1 lit. a DSGVO). Die Einwilligung zur Speicherung der Daten, der 
+                  E-Mail-Adresse sowie deren Nutzung zum Versand des Newsletters können Sie jederzeit widerrufen.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-xl font-display font-semibold text-gray-900 dark:text-white mb-4">
+                  Newsletter-Inhalte
+                </h3>
+                <p>
+                  Unser Newsletter enthält regelmäßig Informationen zu:
+                </p>
+                <ul className="list-disc pl-6 space-y-2 mt-4">
+                  <li>SEO-Tipps und Webdesign-Trends</li>
+                  <li>Neue Services und Angebote</li>
+                  <li>Technische Updates und Best Practices</li>
+                  <li>Kundenerfolge und Case Studies</li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 className="text-xl font-display font-semibold text-gray-900 dark:text-white mb-4">
+                  Newsletter-Anbieter
+                </h3>
+                <p>
+                  Wir nutzen für den Versand unseres Newsletters den E-Mail-Service Resend (Resend Inc., 
+                  San Francisco, CA, USA). Resend ist DSGVO-konform und verarbeitet Daten auf EU-Servern. 
+                  Weitere Informationen finden Sie in der Datenschutzerklärung von Resend.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-xl font-display font-semibold text-gray-900 dark:text-white mb-4">
+                  Abmeldung
+                </h3>
+                <p>
+                  Sie können den Newsletter jederzeit abbestellen. Dazu können Sie:
+                </p>
+                <ul className="list-disc pl-6 space-y-2 mt-4">
+                  <li>Den Abmeldelink in jeder Newsletter-E-Mail nutzen</li>
+                  <li>Eine E-Mail mit &ldquo;Abmelden&rdquo; an uns senden</li>
+                  <li>Uns über das Kontaktformular kontaktieren</li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 className="text-xl font-display font-semibold text-gray-900 dark:text-white mb-4">
+                  Speicherdauer
+                </h3>
+                <p>
+                  Die bei der Newsletter-Anmeldung angegebenen Daten werden von uns gespeichert, bis Sie sich 
+                  vom Newsletter abmelden und nach der Abmeldung aus unseren Servern gelöscht. Daten, die zu 
+                  anderen Zwecken bei uns gespeichert wurden, bleiben hiervon unberührt.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h2 className="text-2xl sm:text-3xl font-display font-semibold text-gray-900 dark:text-white mb-6">
+              8. Ihre Rechte
+            </h2>
+            <div className="space-y-6">
+              <div>
+                <h3 className="text-xl font-display font-semibold text-gray-900 dark:text-white mb-4">
+                  Betroffenenrechte nach DSGVO
+                </h3>
+                <p>
+                  Sie haben folgende Rechte bezüglich Ihrer personenbezogenen Daten:
+                </p>
+                <ul className="list-disc pl-6 space-y-2 mt-4">
+                  <li><strong>Auskunftsrecht (Art. 15 DSGVO):</strong> Sie können Auskunft über die von uns verarbeiteten personenbezogenen Daten verlangen</li>
+                  <li><strong>Berichtigungsrecht (Art. 16 DSGVO):</strong> Sie haben das Recht auf Berichtigung unrichtiger oder Vervollständigung unvollständiger Daten</li>
+                  <li><strong>Löschungsrecht (Art. 17 DSGVO):</strong> Sie können die Löschung Ihrer personenbezogenen Daten verlangen</li>
+                  <li><strong>Einschränkung der Verarbeitung (Art. 18 DSGVO):</strong> Sie können die Einschränkung der Verarbeitung Ihrer Daten verlangen</li>
+                  <li><strong>Datenübertragbarkeit (Art. 20 DSGVO):</strong> Sie haben das Recht, Ihre Daten in einem strukturierten, gängigen Format zu erhalten</li>
+                  <li><strong>Widerspruchsrecht (Art. 21 DSGVO):</strong> Sie können der Verarbeitung Ihrer Daten widersprechen</li>
+                  <li><strong>Widerruf der Einwilligung (Art. 7 Abs. 3 DSGVO):</strong> Sie können Ihre Einwilligung jederzeit widerrufen</li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 className="text-xl font-display font-semibold text-gray-900 dark:text-white mb-4">
+                  Beschwerderecht
+                </h3>
+                <p>
+                  Sie haben das Recht, sich bei einer Datenschutz-Aufsichtsbehörde über die Verarbeitung 
+                  Ihrer personenbezogenen Daten durch uns zu beschweren. Die zuständige Aufsichtsbehörde 
+                  in Österreich ist die Datenschutzbehörde (DSB).
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-xl font-display font-semibold text-gray-900 dark:text-white mb-4">
+                  Kontakt für Datenschutzanfragen
+                </h3>
+                <p>
+                  Für alle Anfragen bezüglich Ihrer personenbezogenen Daten wenden Sie sich bitte an:
+                </p>
+                <div className="mt-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                  <p><strong>E-Mail:</strong> info@simplewebdesign.at</p>
+                  <p><strong>Post:</strong> Gerald Schandl - SimpleWebDesign, Sonnleite 20, 3902 Vitis, Österreich</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h2 className="text-2xl sm:text-3xl font-display font-semibold text-gray-900 dark:text-white mb-6">
+              9. Plugins und Tools
             </h2>
             <div className="space-y-6">
               <div>

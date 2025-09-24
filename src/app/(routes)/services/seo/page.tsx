@@ -88,7 +88,7 @@ export default function SeoPage() {
                   Verbessern Sie Ihre Online-Sichtbarkeit durch modernste SEO-Techniken und erreichen Sie mehr qualifizierte Besucher.
                 </p>
                 <div className="mt-8 flex gap-4">
-                  <Button href="/kontakt">Kostenlose SEO-Analyse</Button>
+                  <Button href="/seo-audit">Kostenlose SEO-Analyse</Button>
                   <Button href="#features" variant="secondary">Mehr erfahren</Button>
                 </div>
               </div>
@@ -201,7 +201,7 @@ export default function SeoPage() {
                 Gemäß § 6 Abs. 1 Z 27 UStG wird keine Umsatzsteuer berechnet.
               </p>
               <div className="mt-8">
-                <Button href="/kontakt" variant="secondary" className="text-green-600 border-green-600 hover:bg-green-600 hover:text-white dark:text-white dark:border-white dark:hover:bg-white dark:hover:text-green-600">
+                <Button href="/seo-audit" variant="secondary" className="text-green-600 border-green-600 hover:bg-green-600 hover:text-white dark:text-white dark:border-white dark:hover:bg-white dark:hover:text-green-600">
                   Jetzt kostenlose SEO-Analyse anfordern
                 </Button>
               </div>
