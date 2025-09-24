@@ -61,9 +61,9 @@ const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
 const RATE_LIMIT_REQUESTS = 8;
 const RATE_LIMIT_WINDOW = 10 * 60 * 1000; // 10 minutes
 
-// Timeout settings
-const FETCH_TIMEOUT = 15000; // 15 seconds
-const OVERALL_TIMEOUT = 30000; // 30 seconds
+// Timeout settings (optimized for Vercel's 15s limit)
+const FETCH_TIMEOUT = 8000; // 8 seconds
+const OVERALL_TIMEOUT = 12000; // 12 seconds
 
 // Private IP ranges to block
 const PRIVATE_IP_RANGES = [
@@ -207,7 +207,7 @@ async function getPageSpeedInsights(url: string): Promise<{ mobile: PageSpeedIns
       };
     }
     
-    console.log('Mock data structure:', JSON.stringify(mockData, null, 2));
+    // console.log('Mock data structure:', JSON.stringify(mockData, null, 2)); // Disabled for performance
     return mockData;
   }
   
@@ -263,13 +263,32 @@ async function analyzePage(url: string): Promise<{
     };
   }
   
-  const response = await fetchWithTimeout(url);
-  if (!response.ok) {
-    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+  try {
+    const response = await fetchWithTimeout(url);
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+    }
+    
+    const html = await response.text();
+    const $ = cheerio.load(html);
+  } catch (error) {
+    console.warn(`Failed to fetch page ${url}:`, error);
+    // Return fallback data if page fetch fails
+    return {
+      title: 'Page Analysis Failed',
+      metaDescription: undefined,
+      canonical: undefined,
+      h1Count: 0,
+      imagesWithoutAlt: 0,
+      ogTags: {
+        title: undefined,
+        description: undefined,
+        image: undefined,
+      },
+      metaRobotsNoindex: false,
+      schemaElements: [],
+    };
   }
-  
-  const html = await response.text();
-  const $ = cheerio.load(html);
   
   // Extract title
   const title = $('title').text().trim();
@@ -464,16 +483,15 @@ export async function POST(request: NextRequest) {
     }
     
     // Run PageSpeed Insights
-    const psiResults = await getPageSpeedInsights(normalizedUrl);
-    
-    // Analyze page content
-    const pageAnalysis = await analyzePage(normalizedUrl);
-    
-    // Check robots.txt and sitemap
-    const crawlabilityCheck = await checkRobotsAndSitemap(normalizedUrl);
+    // Run all analysis operations in parallel for better performance
+    const [psiResults, pageAnalysis, crawlabilityCheck] = await Promise.all([
+      getPageSpeedInsights(normalizedUrl),
+      analyzePage(normalizedUrl),
+      checkRobotsAndSitemap(normalizedUrl)
+    ]);
     
     // Calculate scores (average mobile and desktop)
-    console.log('PSI Results structure:', JSON.stringify(psiResults, null, 2));
+    // console.log('PSI Results structure:', JSON.stringify(psiResults, null, 2)); // Disabled for performance
     
     // Safe access to PSI results with fallbacks
     const mobileCategories = psiResults.mobile?.lighthouseResult?.categories || {};
