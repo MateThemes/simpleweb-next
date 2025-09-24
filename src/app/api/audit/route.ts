@@ -263,6 +263,8 @@ async function analyzePage(url: string): Promise<{
     };
   }
   
+  let $: cheerio.CheerioAPI;
+  
   try {
     const response = await fetchWithTimeout(url);
     if (!response.ok) {
@@ -270,7 +272,7 @@ async function analyzePage(url: string): Promise<{
     }
     
     const html = await response.text();
-    const $ = cheerio.load(html);
+    $ = cheerio.load(html);
   } catch (error) {
     console.warn(`Failed to fetch page ${url}:`, error);
     // Return fallback data if page fetch fails

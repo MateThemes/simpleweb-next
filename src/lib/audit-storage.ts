@@ -1,4 +1,4 @@
-import { readFile, writeFile, mkdir, readdir, stat, unlink } from 'fs/promises';
+import { writeFile, mkdir, readdir, stat, unlink } from 'fs/promises';
 import path from 'path';
 import { Redis } from '@upstash/redis';
 
