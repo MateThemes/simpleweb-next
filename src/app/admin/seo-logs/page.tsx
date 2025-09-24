@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { Container } from '@/components/ui/Container';
 
 // Simple password protection - use default for local testing
-const DEFAULT_PASSWORD = 'admin123';
+// const DEFAULT_PASSWORD = 'admin123'; // Not used anymore with session-based auth
 
 interface AuditLog {
   timestamp: string;
@@ -84,7 +84,7 @@ export default function SeoLogsPage() {
       } else {
         setAuthError(data.error || 'Falsches Passwort');
       }
-    } catch (error) {
+    } catch {
       setAuthError('Verbindungsfehler - bitte versuche es erneut');
     }
   };

@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { readFile, readdir } from 'fs/promises';
 import path from 'path';
-import { validateSession } from '../auth/route';
+import { validateSession } from '@/lib/admin-auth';
 
 export async function GET(request: NextRequest) {
   try {

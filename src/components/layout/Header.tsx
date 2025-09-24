@@ -84,7 +84,7 @@ export function Header() {
         }
       }
     }
-  }, [isOpen])
+  }, [isOpen, triggerRef, previouslyFocusedRef])
 
   // CHANGE: Close on ESC and keep focus trapped within panel
   useEffect(() => {

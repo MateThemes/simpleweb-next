@@ -1,35 +1,31 @@
 import { Container } from '@/components/ui/Container';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import { getAuditResult } from '@/lib/audit-storage';
 
 interface AuditResultPageProps {
   params: Promise<{ id: string }>;
 }
 
 export async function generateMetadata({ params }: AuditResultPageProps): Promise<Metadata> {
+  const { id } = await params;
+  const auditData = await getAuditResult(id);
+  
+  if (!auditData) {
+    return {
+      title: 'Audit nicht gefunden | SimpleWebDesign',
+      description: 'Der angeforderte SEO-Audit Bericht wurde nicht gefunden oder ist abgelaufen.',
+    };
+  }
+  
   return {
-    title: `SEO-Audit Ergebnis | SimpleWebDesign`,
-    description: 'Detaillierter SEO-Audit Bericht mit Empfehlungen und Verbesserungsvorschlägen.',
+    title: `SEO-Audit für ${auditData.hostname} | SimpleWebDesign`,
+    description: `Detaillierter SEO-Audit Bericht für ${auditData.hostname} mit Empfehlungen und Verbesserungsvorschlägen.`,
     robots: 'noindex, nofollow', // Don't index individual audit results
   };
 }
 
-async function getAuditResult(auditId: string) {
-  try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/audit-result/${auditId}`, {
-      cache: 'no-store',
-    });
-    
-    if (!response.ok) {
-      return null;
-    }
-    
-    return await response.json();
-  } catch (error) {
-    console.error('Error fetching audit result:', error);
-    return null;
-  }
-}
+// getAuditResult is now imported from @/lib/audit-storage
 
 export default async function AuditResultPage({ params }: AuditResultPageProps) {
   const { id } = await params;
