@@ -1,22 +1,19 @@
 {
-  "functions": {
-    "src/app/admin/**": {
-      "headers": {
-        "Cache-Control": "no-cache"
-      }
+  "headers": [
+    {
+      "source": "/admin/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-cache, no-store, must-revalidate"
+        }
+      ]
     }
-  },
+  ],
   "rewrites": [
     {
       "source": "/admin/:path*",
-      "destination": "/admin/:path*",
-      "has": [
-        {
-          "type": "header",
-          "key": "authorization",
-          "value": "Bearer admin-token-here"
-        }
-      ]
+      "destination": "/admin/:path*"
     }
   ]
 }
