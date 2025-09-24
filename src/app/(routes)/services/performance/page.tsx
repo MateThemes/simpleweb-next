@@ -102,7 +102,7 @@ export default function PerformancePage() {
                   Optimieren Sie die Geschwindigkeit Ihrer Website für bessere Rankings und zufriedenere Besucher.
                 </p>
                 <div className="mt-8 flex gap-4">
-                  <Button href="/kontakt">Performance Audit</Button>
+                  <Button href="/seo-audit">Performance Audit</Button>
                   <Button href="#features" variant="secondary">Mehr erfahren</Button>
                 </div>
               </div>

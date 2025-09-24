@@ -38,13 +38,21 @@ export default function Hero() {
               Modern, funktional und optimiert für maximale Sichtbarkeit und nachhaltigen Erfolg. Ihre Webagentur aus dem Waldviertel, Niederösterreich – regional verwurzelt, digital vernetzt.
             </p>
 
-            <div className="mt-10 flex items-center gap-6">
-              <Link
-                href="/kontakt"
-                className="rounded-xl bg-blue-600 px-6 py-3 text-base font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-colors duration-200"
-              >
-                Kostenloses Erstgespräch
-              </Link>
+            <div className="mt-10 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
+              <div className="flex items-center gap-4">
+                <Link
+                  href="/kontakt"
+                  className="rounded-xl bg-blue-600 px-6 py-3 text-base font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-colors duration-200"
+                >
+                  Kostenloses Erstgespräch
+                </Link>
+                <Link
+                  href="/seo-audit"
+                  className="rounded-xl bg-green-600 px-6 py-3 text-base font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600 transition-colors duration-200"
+                >
+                  Kostenlose SEO-Analyse
+                </Link>
+              </div>
               <Link
                 href="/preise-und-pakete"
                 className="text-base font-semibold text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-300"
