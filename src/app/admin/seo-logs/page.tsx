@@ -1,17 +1,10 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Container } from '@/components/ui/Container';
 
-// Simple password protection
-const ADMIN_PASSWORD = process.env.NEXT_PUBLIC_ADMIN_PASSWORD || 'admin123';
-
-// Emergency passwords from environment variables (secure)
-const EMERGENCY_PASSWORDS = [
-  process.env.NEXT_PUBLIC_EMERGENCY_PASSWORD_1,
-  process.env.NEXT_PUBLIC_EMERGENCY_PASSWORD_2,
-  process.env.NEXT_PUBLIC_EMERGENCY_PASSWORD_3
-].filter(Boolean); // Remove undefined values
+// Simple password protection - use default for local testing
+// const DEFAULT_PASSWORD = 'admin123'; // Not used anymore with session-based auth
 
 interface AuditLog {
   timestamp: string;
@@ -26,7 +19,7 @@ interface AuditLog {
 export default function SeoLogsPage() {
   const [logs, setLogs] = useState<AuditLog[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  // const [error, setError] = useState<string | null>(null); // Not used anymore
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [password, setPassword] = useState('');
   const [authError, setAuthError] = useState<string | null>(null);
@@ -47,14 +40,72 @@ export default function SeoLogsPage() {
     filtered: 0
   });
 
+  const fetchLogs = useCallback(async (filterParams = {}) => {
+    try {
+      setLoading(true);
+      
+      // Build query string from filters
+      const queryParams = new URLSearchParams();
+      Object.entries({ ...filters, ...filterParams }).forEach(([key, value]) => {
+        if (value) queryParams.append(key, value);
+      });
+      
+      const queryString = queryParams.toString();
+      const url = `/api/admin/audit-logs${queryString ? `?${queryString}` : ''}`;
+      
+      const sessionToken = localStorage.getItem('admin-session-token');
+      const sessionExpires = localStorage.getItem('admin-session-expires');
+      
+      if (!sessionToken || !sessionExpires || parseInt(sessionExpires) < Date.now()) {
+        handleLogout();
+        return;
+      }
+      
+      const response = await fetch(url, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${sessionToken}`,
+        },
+      });
+      
+      if (!response.ok) {
+        if (response.status === 401) {
+          handleLogout();
+          return;
+        }
+        throw new Error('Failed to fetch logs');
+      }
+      
+      const data = await response.json();
+      setLogs(data.logs || []);
+      setStats({
+        total: data.total || 0,
+        filtered: data.filtered || 0
+      });
+      
+    } catch (error) {
+      console.error('Error fetching audit logs:', error);
+      setAuthError('Fehler beim Laden der Logs');
+    } finally {
+      setLoading(false);
+    }
+  }, [filters]);
+
   useEffect(() => {
-    // Check if already authenticated
+    // Check if session is still valid
     const authStatus = localStorage.getItem('admin-authenticated');
-    if (authStatus === 'true') {
+    const sessionToken = localStorage.getItem('admin-session-token');
+    const sessionExpires = localStorage.getItem('admin-session-expires');
+    
+    if (authStatus === 'true' && sessionToken && sessionExpires && parseInt(sessionExpires) > Date.now()) {
       setIsAuthenticated(true);
       fetchLogs();
+    } else {
+      // Session expired or invalid, clear storage
+      handleLogout();
     }
-  }, []);
+  }, [fetchLogs]);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -73,6 +124,8 @@ export default function SeoLogsPage() {
       if (data.success) {
         setIsAuthenticated(true);
         localStorage.setItem('admin-authenticated', 'true');
+        localStorage.setItem('admin-session-token', data.sessionToken); // Store session token
+        localStorage.setItem('admin-session-expires', data.expires.toString()); // Store expiration
         fetchLogs();
         
         if (data.type === 'emergency') {
@@ -83,7 +136,7 @@ export default function SeoLogsPage() {
       } else {
         setAuthError(data.error || 'Falsches Passwort');
       }
-    } catch (error) {
+    } catch {
       setAuthError('Verbindungsfehler - bitte versuche es erneut');
     }
   };
@@ -91,7 +144,12 @@ export default function SeoLogsPage() {
   const handleLogout = () => {
     setIsAuthenticated(false);
     localStorage.removeItem('admin-authenticated');
+    localStorage.removeItem('admin-session-token');
+    localStorage.removeItem('admin-session-expires');
     setPassword('');
+    setAuthError(null);
+    setLogs([]);
+    setStats({ total: 0, filtered: 0 });
   };
 
   const handlePasswordChange = (e: React.FormEvent) => {
@@ -122,47 +180,7 @@ export default function SeoLogsPage() {
     alert('✅ Passwort erfolgreich geändert!');
   };
 
-  const fetchLogs = async (filterParams = {}) => {
-    try {
-      setLoading(true);
-      
-      // Build query string from filters
-      const queryParams = new URLSearchParams();
-      Object.entries({ ...filters, ...filterParams }).forEach(([key, value]) => {
-        if (value) queryParams.append(key, value);
-      });
-      
-      const queryString = queryParams.toString();
-      const url = `/api/admin/audit-logs${queryString ? `?${queryString}` : ''}`;
-      
-      // Get stored password for API call
-      const storedPassword = localStorage.getItem('admin-password') || password;
-      
-      const response = await fetch(url, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${storedPassword}`,
-        },
-      });
-      
-      if (!response.ok) {
-        throw new Error('Fehler beim Laden der Logs');
-      }
-      
-      const data = await response.json();
-      setLogs(data.logs || []);
-      setStats({
-        total: data.total || 0,
-        filtered: data.filtered || 0
-      });
-    } catch (err) {
-      setError('Fehler beim Laden der Logs');
-      console.error('Error fetching logs:', err);
-    } finally {
-      setLoading(false);
-    }
-  };
+  // fetchLogs is now defined above with useCallback
 
   const handleFilterChange = (key: string, value: string) => {
     setFilters(prev => ({ ...prev, [key]: value }));
@@ -394,9 +412,9 @@ export default function SeoLogsPage() {
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto"></div>
           <p className="mt-4 text-gray-600">Lade Logs...</p>
         </div>
-      ) : error ? (
+      ) : authError ? (
         <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-          <p className="text-red-600">{error}</p>
+          <p className="text-red-600">{authError}</p>
         </div>
       ) : (
         <div className="space-y-4">

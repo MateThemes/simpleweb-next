@@ -64,7 +64,7 @@ pnpm add cheerio resend @react-email/components
 GOOGLE_PSI_KEY=your_google_pagespeed_api_key  # Optional für echte Performance-Daten
 RESEND_API_KEY=your_resend_api_key            # Bereits konfiguriert
 RESEND_FROM="SimpleWebDesign <no-reply@simplewebdesign.at>"  # Optional
-RESEND_BCC="leads@simplewebdesign.at"         # Optional
+RESEND_BCC="gerald@simplewebdesign.at"         # Optional
 ```
 
 ## 📊 API-Endpoints
@@ -259,7 +259,7 @@ git push origin main
 GOOGLE_PSI_KEY=your_google_pagespeed_api_key
 RESEND_API_KEY=your_resend_api_key
 RESEND_FROM=SimpleWebDesign <no-reply@simplewebdesign.at>
-RESEND_BCC=leads@simplewebdesign.at
+RESEND_BCC=gerald@simplewebdesign.at
 ```
 
 ## 📈 Performance & Sicherheit

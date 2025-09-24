@@ -1,0 +1,52 @@
+{
+  "summary": {
+    "overall": 100,
+    "performance": 100,
+    "seo": 78,
+    "accessibility": 88,
+    "bestPractices": 90
+  },
+  "onPage": {
+    "title": {
+      "ok": true,
+      "text": "Example Domain"
+    },
+    "metaDescription": {
+      "ok": false,
+      "text": null,
+      "hint": "Fehlt"
+    },
+    "h1": {
+      "count": 1
+    },
+    "imagesWithoutAlt": 0,
+    "canonical": {
+      "ok": false,
+      "url": null
+    },
+    "ogTags": {
+      "ok": false,
+      "missing": [
+        "og:title",
+        "og:description",
+        "og:image"
+      ]
+    },
+    "schema": []
+  },
+  "crawlability": {
+    "robots": "NOT_FOUND",
+    "sitemap": "NOT_FOUND",
+    "metaRobotsNoindex": false
+  },
+  "recommendations": [
+    "Meta-Description hinzufügen (150-160 Zeichen)",
+    "Canonical-URL hinzufügen",
+    "Open Graph Tags ergänzen: og:title, og:description, og:image",
+    "XML-Sitemap erstellen und in robots.txt verlinken"
+  ],
+  "hostname": "example.com",
+  "auditUrl": "https://example.com/",
+  "leadId": "audit_1758722428593_onyq7tx6v",
+  "timestamp": "2025-09-24T14:00:29.713Z"
+}

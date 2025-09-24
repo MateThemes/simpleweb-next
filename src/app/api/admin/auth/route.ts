@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { createSession } from '@/lib/admin-auth';
 
 // Server-side password validation (secure)
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'admin123';
@@ -21,18 +22,26 @@ export async function POST(request: NextRequest) {
     
     // Check main password
     if (password === ADMIN_PASSWORD) {
+      const { sessionToken, expires } = createSession(password);
+      
       return NextResponse.json({ 
         success: true, 
         type: 'main',
+        sessionToken,
+        expires,
         message: 'Authentication successful' 
       });
     }
     
     // Check emergency passwords
     if (EMERGENCY_PASSWORDS.includes(password)) {
+      const { sessionToken, expires } = createSession(password);
+      
       return NextResponse.json({ 
         success: true, 
         type: 'emergency',
+        sessionToken,
+        expires,
         message: 'Emergency access granted - please change password' 
       });
     }
@@ -42,7 +51,7 @@ export async function POST(request: NextRequest) {
       { status: 401 }
     );
     
-  } catch (error) {
+  } catch {
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }
