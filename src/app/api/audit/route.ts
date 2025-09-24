@@ -124,9 +124,9 @@ function checkRateLimit(ip: string): boolean {
   return true;
 }
 
-async function fetchWithTimeout(url: string, options: RequestInit = {}): Promise<Response> {
+async function fetchWithTimeout(url: string, options: RequestInit = {}, timeout: number = FETCH_TIMEOUT): Promise<Response> {
   const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), FETCH_TIMEOUT);
+  const timeoutId = setTimeout(() => controller.abort(), timeout);
   
   try {
     const response = await fetch(url, {
@@ -214,34 +214,53 @@ async function getPageSpeedInsights(url: string): Promise<{ mobile: PageSpeedIns
     return mockData;
   }
   
-  // Google PageSpeed Insights API is often slow and times out
-  // For now, we'll use mock data for all requests to avoid timeouts
-  console.warn('Using mock data instead of Google PageSpeed Insights API to avoid timeouts');
-  
-  const mockData = {
-    mobile: {
-      lighthouseResult: {
-        categories: {
-          performance: { score: 0.85 },
-          seo: { score: 0.78 },
-          accessibility: { score: 0.88 },
-          'best-practices': { score: 0.90 }
-        }
-      }
-    },
-    desktop: {
-      lighthouseResult: {
-        categories: {
-          performance: { score: 0.92 },
-          seo: { score: 0.78 },
-          accessibility: { score: 0.88 },
-          'best-practices': { score: 0.90 }
-        }
-      }
+  // Try real Google PageSpeed Insights API with short timeout
+  try {
+    const baseUrl = 'https://www.googleapis.com/pagespeedonline/v5/runPagespeed';
+    
+    const [mobileResponse, desktopResponse] = await Promise.all([
+      fetchWithTimeout(`${baseUrl}?url=${encodeURIComponent(url)}&strategy=mobile&key=${apiKey}`, {}, 5000), // 5s timeout
+      fetchWithTimeout(`${baseUrl}?url=${encodeURIComponent(url)}&strategy=desktop&key=${apiKey}`, {}, 5000), // 5s timeout
+    ]);
+    
+    if (!mobileResponse.ok || !desktopResponse.ok) {
+      throw new Error('PageSpeed Insights API error');
     }
-  };
-  
-  return mockData;
+    
+    const mobile = await mobileResponse.json() as PageSpeedInsightsResponse;
+    const desktop = await desktopResponse.json() as PageSpeedInsightsResponse;
+    
+    console.log('Successfully got real PageSpeed Insights data');
+    return { mobile, desktop };
+  } catch (error) {
+    console.warn('Google PageSpeed Insights API failed, using mock data:', error);
+    
+    // Fallback to mock data
+    const mockData = {
+      mobile: {
+        lighthouseResult: {
+          categories: {
+            performance: { score: 0.85 },
+            seo: { score: 0.78 },
+            accessibility: { score: 0.88 },
+            'best-practices': { score: 0.90 }
+          }
+        }
+      },
+      desktop: {
+        lighthouseResult: {
+          categories: {
+            performance: { score: 0.92 },
+            seo: { score: 0.78 },
+            accessibility: { score: 0.88 },
+            'best-practices': { score: 0.90 }
+          }
+        }
+      }
+    };
+    
+    return mockData;
+  }
 }
 
 async function analyzePage(url: string): Promise<{
@@ -279,30 +298,105 @@ async function analyzePage(url: string): Promise<{
     };
   }
   
-  // For now, return mock data to avoid timeouts
-  // Real page analysis can be implemented later with better error handling
-  console.warn(`Using mock page analysis for ${url} to avoid timeouts`);
-  
-  return {
-    title: 'Website Analysis',
-    metaDescription: 'This website has been analyzed for SEO performance.',
-    canonical: url,
-    h1Count: 1,
-    imagesWithoutAlt: 0,
-    ogTags: {
+  // Try real page analysis with short timeout
+  try {
+    const response = await fetchWithTimeout(url, {}, 5000); // 5s timeout
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+    }
+    
+    const html = await response.text();
+    const $ = cheerio.load(html);
+    
+    // Extract title
+    const title = $('title').text().trim();
+    
+    // Extract meta description
+    const metaDescription = $('meta[name="description"]').attr('content')?.trim();
+    
+    // Extract canonical
+    const canonical = $('link[rel="canonical"]').attr('href');
+    
+    // Count H1 tags
+    const h1Count = $('h1').length;
+    
+    // Count images without alt
+    const imagesWithoutAlt = $('img:not([alt])').length;
+    
+    // Extract OG tags
+    const ogTags = {
+      title: $('meta[property="og:title"]').attr('content')?.trim(),
+      description: $('meta[property="og:description"]').attr('content')?.trim(),
+      image: $('meta[property="og:image"]').attr('content')?.trim(),
+    };
+    
+    // Check meta robots noindex
+    const metaRobotsNoindex = $('meta[name="robots"]').attr('content')?.includes('noindex') || false;
+    
+    // Extract JSON-LD schema
+    const schemaElements: Array<{ "@type": string }> = [];
+    $('script[type="application/ld+json"]').each((_, el) => {
+      try {
+        const data = JSON.parse($(el).html() || '');
+        if (data['@type']) {
+          schemaElements.push({ '@type': data['@type'] });
+        }
+      } catch {
+        // Ignore invalid JSON-LD
+      }
+    });
+    
+    console.log('Successfully analyzed real page data');
+    return {
+      title,
+      metaDescription,
+      canonical,
+      h1Count,
+      imagesWithoutAlt,
+      ogTags,
+      metaRobotsNoindex,
+      schemaElements,
+    };
+  } catch (error) {
+    console.warn(`Real page analysis failed for ${url}, using mock data:`, error);
+    
+    // Fallback to mock data
+    return {
       title: 'Website Analysis',
-      description: 'SEO analysis results',
-      image: undefined,
-    },
-    metaRobotsNoindex: false,
-    schemaElements: [{ '@type': 'WebPage' }],
-  };
+      metaDescription: 'This website has been analyzed for SEO performance.',
+      canonical: url,
+      h1Count: 1,
+      imagesWithoutAlt: 0,
+      ogTags: {
+        title: 'Website Analysis',
+        description: 'SEO analysis results',
+        image: undefined,
+      },
+      metaRobotsNoindex: false,
+      schemaElements: [{ '@type': 'WebPage' }],
+    };
+  }
 }
 
 async function checkRobotsAndSitemap(url: string): Promise<{ robots: "OK" | "NOT_FOUND" | "ERROR"; sitemap: "FOUND" | "NOT_FOUND" | "ERROR" }> {
-  // For now, return mock data to avoid timeouts
-  console.warn(`Using mock robots/sitemap data for ${url} to avoid timeouts`);
-  return { robots: 'NOT_FOUND', sitemap: 'NOT_FOUND' };
+  // Try real robots.txt check with short timeout
+  try {
+    const robotsUrl = new URL('/robots.txt', url).toString();
+    const robotsResponse = await fetchWithTimeout(robotsUrl, {}, 3000); // 3s timeout
+    
+    if (!robotsResponse.ok) {
+      return { robots: 'NOT_FOUND', sitemap: 'NOT_FOUND' };
+    }
+    
+    const robotsText = await robotsResponse.text();
+    const hasSitemap = /sitemap:\s*https?:\/\/[^\s]+/i.test(robotsText);
+    
+    console.log('Successfully checked real robots.txt');
+    return { robots: 'OK', sitemap: hasSitemap ? 'FOUND' : 'NOT_FOUND' };
+  } catch (error) {
+    console.warn(`Real robots.txt check failed for ${url}, using mock data:`, error);
+    return { robots: 'NOT_FOUND', sitemap: 'NOT_FOUND' };
+  }
 }
 
 function generateRecommendations(onPage: {
