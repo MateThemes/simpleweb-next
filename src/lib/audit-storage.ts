@@ -6,11 +6,15 @@ import { Redis } from '@upstash/redis';
 let redis: Redis | null = null;
 let redisAvailable = false;
 
-if (process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN) {
+// Try Vercel Upstash integration variables first, then fallback to manual ones
+const redisUrl = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL;
+const redisToken = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN;
+
+if (redisUrl && redisToken) {
   try {
     redis = new Redis({
-      url: process.env.UPSTASH_REDIS_REST_URL,
-      token: process.env.UPSTASH_REDIS_REST_TOKEN,
+      url: redisUrl,
+      token: redisToken,
     });
     
     // Test Redis connection
@@ -27,6 +31,8 @@ if (process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN) 
   }
 } else {
   console.log('[DEBUG] Redis credentials not available');
+  console.log('[DEBUG] KV_REST_API_URL:', process.env.KV_REST_API_URL ? 'SET' : 'NOT SET');
+  console.log('[DEBUG] KV_REST_API_TOKEN:', process.env.KV_REST_API_TOKEN ? 'SET' : 'NOT SET');
   console.log('[DEBUG] UPSTASH_REDIS_REST_URL:', process.env.UPSTASH_REDIS_REST_URL ? 'SET' : 'NOT SET');
   console.log('[DEBUG] UPSTASH_REDIS_REST_TOKEN:', process.env.UPSTASH_REDIS_REST_TOKEN ? 'SET' : 'NOT SET');
 }
