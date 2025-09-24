@@ -38,6 +38,30 @@ const auditCache = new Map<string, unknown>();
 // This will persist for the lifetime of the server instance
 const globalAuditStorage = new Map<string, unknown>();
 
+// Simple file-based storage for Vercel (works in production)
+const AUDIT_STORAGE_FILE = '/tmp/audit-storage.json';
+
+async function loadAuditStorage(): Promise<Map<string, unknown>> {
+  try {
+    const fs = await import('fs/promises');
+    const data = await fs.readFile(AUDIT_STORAGE_FILE, 'utf-8');
+    const parsed = JSON.parse(data);
+    return new Map(Object.entries(parsed));
+  } catch {
+    return new Map();
+  }
+}
+
+async function saveAuditStorage(storage: Map<string, unknown>): Promise<void> {
+  try {
+    const fs = await import('fs/promises');
+    const data = Object.fromEntries(storage);
+    await fs.writeFile(AUDIT_STORAGE_FILE, JSON.stringify(data, null, 2));
+  } catch (error) {
+    console.warn('Failed to save audit storage:', error);
+  }
+}
+
 export async function getAuditResult(auditId: string) {
   console.log(`[DEBUG] getAuditResult called for: ${auditId}`);
   console.log(`[DEBUG] Environment: ${process.env.NODE_ENV}`);
@@ -75,16 +99,22 @@ export async function getAuditResult(auditId: string) {
       console.log(`[DEBUG] Redis not available or not tested`);
     }
     
-    // If not in cache or Redis, try global storage
+    // If not in cache or Redis, try file-based storage
     if (!auditData) {
-      auditData = globalAuditStorage.get(auditId);
-      if (auditData) {
-        console.log(`[DEBUG] Audit ${auditId} found in global storage`);
-        // Cache it for faster access
-        auditCache.set(auditId, auditData);
-        return auditData;
+      try {
+        const fileStorage = await loadAuditStorage();
+        auditData = fileStorage.get(auditId);
+        if (auditData) {
+          console.log(`[DEBUG] Audit ${auditId} found in file storage`);
+          // Cache it for faster access
+          auditCache.set(auditId, auditData);
+          return auditData;
+        }
+      } catch (error) {
+        console.warn(`[DEBUG] Failed to load file storage:`, error);
       }
-      console.log(`[DEBUG] Audit ${auditId} not found in Redis, cache, or global storage`);
+      
+      console.log(`[DEBUG] Audit ${auditId} not found in Redis, cache, or file storage`);
       return null;
     }
     
@@ -126,25 +156,34 @@ export async function storeAuditResult(auditId: string, auditData: unknown) {
     auditCache.set(auditId, auditData);
     console.log(`[DEBUG] Audit ${auditId} stored in local cache`);
     
-    // Store in global storage (always available)
-    globalAuditStorage.set(auditId, auditData);
-    console.log(`[DEBUG] Audit ${auditId} stored in global storage`);
+    // Store in file-based storage (works in Vercel)
+    try {
+      const fileStorage = await loadAuditStorage();
+      fileStorage.set(auditId, auditData);
+      await saveAuditStorage(fileStorage);
+      console.log(`[DEBUG] Audit ${auditId} stored in file storage`);
+    } catch (error) {
+      console.warn(`[DEBUG] Failed to store in file storage:`, error);
+    }
     
-    // Clean up old entries from global storage (keep only last 100)
-    if (globalAuditStorage.size > 100) {
-      const entries = Array.from(globalAuditStorage.entries());
-      // Sort by timestamp and keep only the 100 most recent
-      const sortedEntries = entries.sort((a, b) => {
-        const aTime = new Date((a[1] as { timestamp: string }).timestamp).getTime();
-        const bTime = new Date((b[1] as { timestamp: string }).timestamp).getTime();
-        return bTime - aTime;
-      });
-      
-      globalAuditStorage.clear();
-      sortedEntries.slice(0, 100).forEach(([key, value]) => {
-        globalAuditStorage.set(key, value);
-      });
-      console.log(`[DEBUG] Cleaned up global storage, kept ${globalAuditStorage.size} entries`);
+    // Clean up old entries from file storage (keep only last 100)
+    try {
+      const fileStorage = await loadAuditStorage();
+      if (fileStorage.size > 100) {
+        const entries = Array.from(fileStorage.entries());
+        // Sort by timestamp and keep only the 100 most recent
+        const sortedEntries = entries.sort((a, b) => {
+          const aTime = new Date((a[1] as { timestamp: string }).timestamp).getTime();
+          const bTime = new Date((b[1] as { timestamp: string }).timestamp).getTime();
+          return bTime - aTime;
+        });
+        
+        const cleanedStorage = new Map(sortedEntries.slice(0, 100));
+        await saveAuditStorage(cleanedStorage);
+        console.log(`[DEBUG] Cleaned up file storage, kept ${cleanedStorage.size} entries`);
+      }
+    } catch (error) {
+      console.warn(`[DEBUG] Failed to cleanup file storage:`, error);
     }
     
     // Store in Upstash Redis (production) with 7-day expiration - only if Redis is available
