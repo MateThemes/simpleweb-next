@@ -1,22 +1,28 @@
 import { readFile, writeFile, mkdir, readdir, stat, unlink } from 'fs/promises';
 import path from 'path';
-import { kv } from '@vercel/kv';
+import { Redis } from '@upstash/redis';
+
+// Initialize Redis client
+const redis = new Redis({
+  url: process.env.UPSTASH_REDIS_REST_URL!,
+  token: process.env.UPSTASH_REDIS_REST_TOKEN!,
+});
 
 // In-memory cache for audit results (fallback for local development)
 const auditCache = new Map<string, unknown>();
 
 export async function getAuditResult(auditId: string) {
   try {
-    // Try to get from Vercel KV first (production)
+    // Try to get from Upstash Redis first (production)
     let auditData: unknown = null;
     
     try {
-      auditData = await kv.get(`audit:${auditId}`);
+      auditData = await redis.get(`audit:${auditId}`);
     } catch (error) {
-      console.log(`Vercel KV not available, trying local cache: ${error}`);
+      console.log(`Upstash Redis not available, trying local cache: ${error}`);
     }
     
-    // If not in KV, try local cache (development)
+    // If not in Redis, try local cache (development)
     if (!auditData) {
       auditData = auditCache.get(auditId);
     }
@@ -34,7 +40,7 @@ export async function getAuditResult(auditId: string) {
           // Cache it for faster access
           auditCache.set(auditId, auditData);
         } else {
-          console.log(`Audit ${auditId} not found in KV or cache`);
+          console.log(`Audit ${auditId} not found in Redis or cache`);
           return null;
         }
       } catch (error) {
@@ -52,9 +58,9 @@ export async function getAuditResult(auditId: string) {
       // Clean up expired audit
       auditCache.delete(auditId);
       try {
-        await kv.del(`audit:${auditId}`);
+        await redis.del(`audit:${auditId}`);
       } catch (error) {
-        console.log(`Could not delete expired audit from KV: ${error}`);
+        console.log(`Could not delete expired audit from Redis: ${error}`);
       }
       return null;
     }
@@ -69,12 +75,12 @@ export async function getAuditResult(auditId: string) {
 // Store audit result
 export async function storeAuditResult(auditId: string, auditData: unknown) {
   try {
-    // Store in Vercel KV (production) with 7-day expiration
+    // Store in Upstash Redis (production) with 7-day expiration
     try {
-      await kv.setex(`audit:${auditId}`, 7 * 24 * 60 * 60, auditData); // 7 days in seconds
-      console.log(`Audit ${auditId} stored in Vercel KV`);
+      await redis.setex(`audit:${auditId}`, 7 * 24 * 60 * 60, JSON.stringify(auditData)); // 7 days in seconds
+      console.log(`Audit ${auditId} stored in Upstash Redis`);
     } catch (error) {
-      console.log(`Vercel KV not available, using local cache: ${error}`);
+      console.log(`Upstash Redis not available, using local cache: ${error}`);
     }
     
     // Store in local cache (development fallback)
