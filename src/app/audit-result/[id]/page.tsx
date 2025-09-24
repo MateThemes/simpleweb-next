@@ -32,9 +32,14 @@ export async function generateMetadata({ params }: AuditResultPageProps): Promis
 
 export default async function AuditResultPage({ params }: AuditResultPageProps) {
   const { id } = await params;
+  console.log(`[DEBUG] AuditResultPage called with id: ${id}`);
+  console.log(`[DEBUG] Environment: ${process.env.NODE_ENV}`);
+  
   const auditData = await getAuditResult(id);
+  console.log(`[DEBUG] Audit data found: ${auditData ? 'YES' : 'NO'}`);
   
   if (!auditData) {
+    console.log(`[DEBUG] Audit data not found, calling notFound()`);
     notFound();
   }
   
