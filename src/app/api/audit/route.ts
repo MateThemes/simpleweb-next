@@ -18,7 +18,7 @@ import path from 'path';
 
 export const runtime = 'nodejs';
 
-// Log audit leads to file system
+// Log audit leads to file system (only in development)
 async function logAuditLead(data: {
   email: string | null;
   url: string;
@@ -27,6 +27,12 @@ async function logAuditLead(data: {
   leadId: string;
   ip: string;
 }) {
+  // Only log to file system in development
+  if (process.env.NODE_ENV !== 'development') {
+    console.log(`[DEBUG] Skipping file logging in production for lead: ${data.leadId}`);
+    return;
+  }
+  
   try {
     const logDir = path.join(process.cwd(), 'logs');
     const today = new Date().toISOString().split('T')[0];
@@ -44,6 +50,7 @@ async function logAuditLead(data: {
     };
     
     await appendFile(logFile, JSON.stringify(logEntry) + '\n', { flag: 'a' });
+    console.log(`[DEBUG] Audit lead logged to file: ${data.leadId}`);
   } catch (error) {
     console.error('Failed to log audit lead:', error);
   }

@@ -4,15 +4,26 @@ import { Redis } from '@upstash/redis';
 
 // Initialize Redis client (only if credentials are available)
 let redis: Redis | null = null;
+let redisAvailable = false;
+
 if (process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN) {
   try {
     redis = new Redis({
       url: process.env.UPSTASH_REDIS_REST_URL,
       token: process.env.UPSTASH_REDIS_REST_TOKEN,
     });
-    console.log('[DEBUG] Redis client initialized successfully');
+    
+    // Test Redis connection
+    redis.ping().then(() => {
+      redisAvailable = true;
+      console.log('[DEBUG] Redis client initialized and tested successfully');
+    }).catch((error) => {
+      console.log('[DEBUG] Redis connection test failed:', error);
+      redisAvailable = false;
+    });
   } catch (error) {
     console.log('[DEBUG] Failed to initialize Redis client:', error);
+    redisAvailable = false;
   }
 } else {
   console.log('[DEBUG] Redis credentials not available');
@@ -22,6 +33,10 @@ if (process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN) 
 
 // In-memory cache for audit results (fallback for local development)
 const auditCache = new Map<string, unknown>();
+
+// Global audit storage for production (when Redis is not available)
+// This will persist for the lifetime of the server instance
+const globalAuditStorage = new Map<string, unknown>();
 
 export async function getAuditResult(auditId: string) {
   console.log(`[DEBUG] getAuditResult called for: ${auditId}`);
@@ -40,8 +55,8 @@ export async function getAuditResult(auditId: string) {
     }
     console.log(`[DEBUG] Audit ${auditId} NOT found in local cache`);
     
-    // Try to get from Upstash Redis (production)
-    if (redis) {
+    // Try to get from Upstash Redis (production) - only if Redis is available
+    if (redis && redisAvailable) {
       try {
         console.log(`[DEBUG] Trying to get ${auditId} from Redis...`);
         auditData = await redis.get(`audit:${auditId}`);
@@ -54,33 +69,23 @@ export async function getAuditResult(auditId: string) {
         console.log(`[DEBUG] Audit ${auditId} NOT found in Redis`);
       } catch (error) {
         console.log(`[DEBUG] Redis error: ${error}`);
+        redisAvailable = false; // Mark Redis as unavailable
       }
     } else {
-      console.log(`[DEBUG] Redis not available`);
+      console.log(`[DEBUG] Redis not available or not tested`);
     }
     
-    // If not in cache or Redis, try to read from file (only in development)
+    // If not in cache or Redis, try global storage
     if (!auditData) {
-      try {
-        // Only try file system in development
-        if (process.env.NODE_ENV === 'development') {
-          const auditDir = path.join(process.cwd(), 'audit-results');
-          const auditFile = path.join(auditDir, `${auditId}.json`);
-          const fileContent = await readFile(auditFile, 'utf-8');
-          auditData = JSON.parse(fileContent);
-          
-          // Cache it for faster access
-          auditCache.set(auditId, auditData);
-          console.log(`Audit ${auditId} found in file system`);
-          return auditData;
-        } else {
-          console.log(`Audit ${auditId} not found in Redis or cache (production mode)`);
-          return null;
-        }
-      } catch (error) {
-        console.log(`Could not read audit file for ${auditId}:`, error);
-        return null;
+      auditData = globalAuditStorage.get(auditId);
+      if (auditData) {
+        console.log(`[DEBUG] Audit ${auditId} found in global storage`);
+        // Cache it for faster access
+        auditCache.set(auditId, auditData);
+        return auditData;
       }
+      console.log(`[DEBUG] Audit ${auditId} not found in Redis, cache, or global storage`);
+      return null;
     }
     
     // Check if audit is older than 7 days
@@ -121,17 +126,39 @@ export async function storeAuditResult(auditId: string, auditData: unknown) {
     auditCache.set(auditId, auditData);
     console.log(`[DEBUG] Audit ${auditId} stored in local cache`);
     
-    // Store in Upstash Redis (production) with 7-day expiration
-    if (redis) {
+    // Store in global storage (always available)
+    globalAuditStorage.set(auditId, auditData);
+    console.log(`[DEBUG] Audit ${auditId} stored in global storage`);
+    
+    // Clean up old entries from global storage (keep only last 100)
+    if (globalAuditStorage.size > 100) {
+      const entries = Array.from(globalAuditStorage.entries());
+      // Sort by timestamp and keep only the 100 most recent
+      const sortedEntries = entries.sort((a, b) => {
+        const aTime = new Date((a[1] as { timestamp: string }).timestamp).getTime();
+        const bTime = new Date((b[1] as { timestamp: string }).timestamp).getTime();
+        return bTime - aTime;
+      });
+      
+      globalAuditStorage.clear();
+      sortedEntries.slice(0, 100).forEach(([key, value]) => {
+        globalAuditStorage.set(key, value);
+      });
+      console.log(`[DEBUG] Cleaned up global storage, kept ${globalAuditStorage.size} entries`);
+    }
+    
+    // Store in Upstash Redis (production) with 7-day expiration - only if Redis is available
+    if (redis && redisAvailable) {
       try {
         console.log(`[DEBUG] Storing ${auditId} in Redis...`);
         await redis.setex(`audit:${auditId}`, 7 * 24 * 60 * 60, JSON.stringify(auditData)); // 7 days in seconds
         console.log(`[DEBUG] Audit ${auditId} stored in Upstash Redis`);
       } catch (error) {
         console.log(`[DEBUG] Redis storage error: ${error}`);
+        redisAvailable = false; // Mark Redis as unavailable
       }
     } else {
-      console.log(`[DEBUG] Redis not configured, using local cache only`);
+      console.log(`[DEBUG] Redis not available or not tested, using global storage only`);
     }
     
     // Store in file for persistence (only in development)
