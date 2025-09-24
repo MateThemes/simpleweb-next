@@ -99,7 +99,7 @@ export async function GET(request: NextRequest) {
         filtered: filteredLogs.length
       });
       
-    } catch (dirError) {
+    } catch {
       // If logs directory doesn't exist, return empty array
       return NextResponse.json({ 
         logs: [],

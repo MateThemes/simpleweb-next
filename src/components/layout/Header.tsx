@@ -72,13 +72,15 @@ export function Header() {
         panel?.focus()
       })
 
+      // Store current ref values to avoid stale closure issues
+      const currentTriggerElement = triggerRef.current
+      const currentPreviouslyFocusedElement = previouslyFocusedRef.current
+
       return () => {
         body.style.overflow = prevOverflow
         body.style.touchAction = prevTouchAction
-        // Restore focus to trigger
-        const triggerElement = triggerRef.current
-        const previouslyFocusedElement = previouslyFocusedRef.current
-        const el = triggerElement || previouslyFocusedElement
+        // Restore focus to trigger using stored values
+        const el = currentTriggerElement || currentPreviouslyFocusedElement
         if (el) {
           el.focus()
         }
