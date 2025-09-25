@@ -659,6 +659,7 @@ export async function POST(request: NextRequest) {
     
     // Store in audit result API
     console.log(`[DEBUG] Storing audit result for leadId: ${leadId}`);
+    console.log(`[DEBUG] Audit result data:`, JSON.stringify(auditResult, null, 2));
     const { storeAuditResult } = await import('@/lib/audit-storage');
     await storeAuditResult(leadId, auditResult);
     console.log(`[DEBUG] Audit result stored successfully for leadId: ${leadId}`);

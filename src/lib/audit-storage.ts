@@ -17,14 +17,15 @@ if (redisUrl && redisToken) {
       token: redisToken,
     });
     
-    // Test Redis connection
-    redis.ping().then(() => {
+    // Test Redis connection synchron
+    try {
+      await redis.ping();
       redisAvailable = true;
       console.log('[DEBUG] Redis client initialized and tested successfully');
-    }).catch((error) => {
+    } catch (error) {
       console.log('[DEBUG] Redis connection test failed:', error);
       redisAvailable = false;
-    });
+    }
   } catch (error) {
     console.log('[DEBUG] Failed to initialize Redis client:', error);
     redisAvailable = false;
@@ -203,7 +204,7 @@ export async function storeAuditResult(auditId: string, auditData: unknown) {
         redisAvailable = false; // Mark Redis as unavailable
       }
     } else {
-      console.log(`[DEBUG] Redis not available or not tested, using global storage only`);
+      console.log(`[DEBUG] Redis not available (redis: ${!!redis}, redisAvailable: ${redisAvailable}), using file storage only`);
     }
     
     // Store in file for persistence (only in development)
