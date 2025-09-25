@@ -11,34 +11,44 @@ interface FaqItem {
 
 const faqItems: FaqItem[] = [
   {
-    question: 'Wie lange dauert die Entwicklung einer Website?',
-    answer: 'Die Entwicklungszeit variiert je nach Umfang und Komplexität des Projekts. Ein einfaches Projekt kann in 2-3 Wochen abgeschlossen sein, während komplexere Projekte 6-8 Wochen oder länger dauern können.',
+    question: 'Arbeiten Sie auch mit KMU in Deutschland zusammen?',
+    answer: 'Ja, wir betreuen KMU sowohl in Österreich als auch in Deutschland. Dank moderner Kommunikationstools und regelmäßiger Abstimmung funktioniert die Zusammenarbeit auch über Ländergrenzen hinweg reibungslos.',
     icon: ClockIcon
   },
   {
-    question: 'Welche Technologien verwenden Sie?',
-    answer: 'Wir setzen auf moderne, zukunftssichere Technologien wie Next.js, React und Tailwind CSS. Diese ermöglichen uns, performante, wartbare und skalierbare Websites zu entwickeln.',
+    question: 'Wie lange dauert die Entwicklung einer KMU-Website?',
+    answer: 'Für eine typische KMU-Website planen wir 3-4 Wochen. Einfache Projekte können in 2 Wochen fertig sein, während komplexere mit Online-Shop oder Terminbuchung 6-8 Wochen benötigen. Wir halten Sie stets über den Fortschritt auf dem Laufenden.',
     icon: CodeIcon
   },
   {
-    question: 'Wie ist der Ablauf eines Webprojekts?',
-    answer: 'Der Prozess beginnt mit einem ausführlichen Gespräch über Ihre Anforderungen. Danach erstellen wir ein Konzept und Design. Nach Ihrer Freigabe beginnt die Entwicklung. Während der gesamten Zeit stehen wir in engem Austausch.',
+    question: 'Welche Kosten entstehen für eine KMU-Website?',
+    answer: 'Unsere Preise richten sich nach dem Umfang Ihres Projekts. Eine einfache KMU-Website startet bei €2.500, komplexere Lösungen mit E-Commerce bei €5.000+. Wir bieten auch flexible Ratenzahlung für KMU an.',
     icon: RouteIcon
   },
   {
-    question: 'Bieten Sie auch Wartung und Support an?',
-    answer: 'Ja, wir bieten verschiedene Wartungspakete an. Diese umfassen regelmäßige Updates, Sicherheitschecks, Backups und technischen Support. So stellen wir sicher, dass Ihre Website stets sicher und aktuell bleibt.',
+    question: 'Bieten Sie lokale SEO für Handwerker an?',
+    answer: 'Ja, lokale SEO ist einer unserer Schwerpunkte! Wir optimieren Ihre Website für Google My Business, lokale Keywords und regionale Suchergebnisse. Perfekt für Handwerker, Dienstleister und lokale Geschäfte.',
     icon: ToolIcon
   },
   {
-    question: 'Sind die Websites für mobile Geräte optimiert?',
-    answer: 'Absolut! Alle unsere Websites werden nach dem Mobile-First Prinzip entwickelt und sind vollständig responsiv. Sie funktionieren perfekt auf allen Geräten, von Smartphones bis Desktop-PCs.',
+    question: 'Können Sie auch bestehende KMU-Websites modernisieren?',
+    answer: 'Absolut! Wir modernisieren bestehende Websites schrittweise, ohne dass Ihr Geschäft unterbrochen wird. Mobile-Optimierung, SEO-Verbesserungen und Design-Updates führen wir professionell durch.',
     icon: DeviceMobileIcon
   },
   {
-    question: 'Wie wird die Website für Suchmaschinen optimiert?',
-    answer: 'SEO ist ein integraler Bestandteil unserer Entwicklung. Wir optimieren Ladezeiten, Struktur, Meta-Tags und erstellen eine saubere, semantische Code-Basis. Zusätzlich beraten wir Sie zu Content-Strategien.',
+    question: 'Welche Wartung und Support bieten Sie für KMU?',
+    answer: 'Wir bieten verschiedene Wartungspakete speziell für KMU: Von monatlichen Updates und Sicherheitschecks bis hin zu 24/7-Monitoring. So bleibt Ihre Website immer sicher und aktuell.',
     icon: SearchIcon
+  },
+  {
+    question: 'Können Sie auch Online-Shops für KMU erstellen?',
+    answer: 'Ja, wir entwickeln E-Commerce-Lösungen mit Shopify oder individuellen Systemen. Von der Produktpräsentation bis zur Zahlungsabwicklung – wir machen Ihren Online-Shop erfolgreich.',
+    icon: ClockIcon
+  },
+  {
+    question: 'Wie schnell können Sie in Wien oder München starten?',
+    answer: 'Wir können bereits innerhalb einer Woche mit Ihrem Projekt beginnen. Dank unserer digitalen Arbeitsweise sind wir flexibel und können auch kurzfristige Projekte umsetzen.',
+    icon: RouteIcon
   }
 ]
 
@@ -46,12 +56,12 @@ export default function Faq() {
   return (
     <section className="relative py-section-xl bg-gradient-to-b from-white to-gray-50 dark:from-slate-950 dark:to-slate-900/50">
       <Container>
-        <div className="text-center max-w-2xl mx-auto mb-section-lg">
+        <div className="text-center max-w-3xl mx-auto mb-section-lg">
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-gray-900 dark:text-white mb-6">
-            Häufig gestellte Fragen
+            FAQ für KMU - Häufige Fragen zu Webdesign
           </h2>
           <p className="text-lg sm:text-xl leading-relaxed text-gray-600 dark:text-gray-400">
-            Hier finden Sie Antworten auf die häufigsten Fragen zu unseren Dienstleistungen
+            Antworten auf die wichtigsten Fragen kleiner und mittlerer Unternehmen zu Webdesign, SEO und Online-Marketing
           </p>
         </div>
 
@@ -73,6 +83,16 @@ export default function Faq() {
                     </h3>
                     <p className="text-base leading-relaxed text-gray-600 dark:text-gray-400">
                       {item.answer}
+                      {index === 3 && (
+                        <span className="block mt-2">
+                          <a href="/services/seo" className="text-blue-600 hover:text-blue-700 underline">Lokale SEO Services →</a>
+                        </span>
+                      )}
+                      {index === 6 && (
+                        <span className="block mt-2">
+                          <a href="/services/e-commerce-partner-fuer-shopify" className="text-blue-600 hover:text-blue-700 underline">Shopify E-Commerce →</a>
+                        </span>
+                      )}
                     </p>
                   </div>
                 </div>

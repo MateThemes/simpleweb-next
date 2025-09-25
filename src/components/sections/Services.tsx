@@ -17,86 +17,92 @@ import {
 const services = [
   {
     id: 'webdesign',
-    title: 'Responsive Webdesign',
-    description: 'Ihre Website passt sich perfekt an alle Geräte an - vom Smartphone bis zum Desktop.',
+    title: 'Responsive Webdesign für KMU',
+    description: 'Moderne Websites, die auf allen Geräten perfekt funktionieren. Speziell entwickelt für kleine und mittlere Unternehmen, die online erfolgreich sein wollen.',
     icon: DeviceLaptopIcon,
     bgColor: 'bg-blue-600',
     image: '/img/services/responsive.jpg',
     link: '/services/webdesign',
     features: [
-      'Optimiert für alle Bildschirmgrößen',
-      'Moderne Designprinzipien',
-      'Intuitive Benutzerführung'
+      'Mobile-First Design für KMU',
+      'Schnelle Ladezeiten & Performance',
+      'Benutzerfreundliche Navigation',
+      'Terminbuchung & Kontaktformulare'
     ]
   },
   {
     id: 'marketing',
-    title: 'Online Marketing',
-    description: 'Steigern Sie Ihre digitale Reichweite mit maßgeschneiderten Marketing-Strategien.',
+    title: 'Online Marketing für KMU',
+    description: 'Digitale Marketing-Strategien, die zu Ihrem Budget passen. Wir helfen KMU dabei, online sichtbar zu werden und neue Kunden zu gewinnen.',
     icon: ChartBarIcon,
     bgColor: 'bg-indigo-600',
     image: '/img/services/marketing.jpg',
     link: '/services/marketing',
     features: [
-      'Social Media Marketing',
-      'Content Marketing',
-      'Performance Marketing'
+      'Google Ads & Facebook Marketing',
+      'Lokale SEO für KMU',
+      'Social Media Management',
+      'E-Mail Marketing & Newsletter'
     ]
   },
   {
     id: 'seo',
-    title: 'SEO-Optimierung',
-    description: 'Verbessern Sie Ihre Online-Sichtbarkeit durch modernste SEO-Techniken.',
+    title: 'SEO-Optimierung für KMU',
+    description: 'Lokale SEO-Strategien, die Ihr Unternehmen in der Region sichtbar machen. Perfekt für Handwerker, Dienstleister und lokale Geschäfte.',
     icon: ChartArrowsVerticalIcon,
     bgColor: 'bg-green-600',
     image: '/img/services/seo.jpg',
     link: '/services/seo',
     features: [
-      'Google-optimierte Struktur',
-      'Keyword-Recherche',
-      'Performance-Optimierung'
+      'Lokale Google-Suche optimieren',
+      'Google My Business Optimierung',
+      'Keyword-Recherche für KMU',
+      'Bewertungen & Testimonials'
     ]
   },
   {
     id: 'redesign',
-    title: 'Website Redesign',
-    description: 'Modernisieren Sie Ihren bestehenden Webauftritt für mehr Erfolg.',
+    title: 'Website Redesign für KMU',
+    description: 'Ihre bestehende Website auf den neuesten Stand bringen. Wir modernisieren Ihren Webauftritt, ohne dass Sie Kunden verlieren.',
     icon: BrushIcon,
     bgColor: 'bg-purple-600',
     image: '/img/services/redesign.jpg',
     link: '/services/redesign',
     features: [
-      'Moderne Neugestaltung',
-      'Verbesserte Conversion',
-      'Optimierte Nutzerführung'
+      'Schrittweise Modernisierung',
+      'Mobile-Optimierung nachrüsten',
+      'SEO-Verbesserungen',
+      'Kontinuierlicher Betrieb'
     ]
   },
   {
     id: 'performance',
-    title: 'Performance & Speed',
-    description: 'Schnelle Ladezeiten und optimale Performance für zufriedene Besucher.',
+    title: 'Performance & Speed für KMU',
+    description: 'Schnelle Ladezeiten, die Ihre Besucher begeistern und Google überzeugen. Essentiell für erfolgreiche KMU-Websites.',
     icon: RocketIcon,
     bgColor: 'bg-orange-600',
     image: '/img/services/performance.jpg',
     link: '/services/performance',
     features: [
-      'Core Web Vitals',
-      'Asset-Optimierung',
-      'Caching-Strategien'
+      'Google Core Web Vitals optimieren',
+      'Bild- und Datei-Optimierung',
+      'Schnelle Ladezeiten garantieren',
+      'Mobile Performance verbessern'
     ]
   },
   {
     id: 'hosting',
-    title: 'Hosting-Beratung',
-    description: 'Professionelle Beratung für die optimale Hosting-Lösung Ihres Projekts.',
+    title: 'Hosting & Wartung für KMU',
+    description: 'Zuverlässiges Hosting und regelmäßige Wartung, damit Ihre Website immer erreichbar und sicher bleibt.',
     icon: ServerIcon,
     bgColor: 'bg-teal-600',
     image: '/img/services/hosting.jpg',
     link: '/services/hosting',
     features: [
-      'Vercel & IONOS Partner',
-      'SSL & Sicherheit',
-      'Performance-Optimierung'
+      'Vercel & IONOS Partner-Hosting',
+      'SSL-Zertifikate & Sicherheit',
+      'Regelmäßige Backups',
+      '24/7 Monitoring & Support'
     ]
   }
 ]
@@ -109,12 +115,12 @@ export default function Services() {
       className="relative scroll-mt-[72px] bg-gradient-to-b from-white to-gray-50 dark:from-slate-950 dark:to-slate-900 py-section-xl" 
     >
       <Container>
-        <div className="text-center max-w-2xl mx-auto mb-section-lg">
+        <div className="text-center max-w-3xl mx-auto mb-section-lg">
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-gray-900 dark:text-white mb-6">
-            Professionelles Webdesign für Ihren Erfolg
+            Webdesign-Lösungen für KMU in Österreich & Deutschland
           </h2>
           <p className="text-lg sm:text-xl leading-relaxed text-gray-600 dark:text-gray-400">
-            Nutzen Sie die neuesten Webtechnologien für Ihren Geschäftserfolg
+            Moderne Websites, die Ihr Unternehmen digital voranbringen. Von der ersten Idee bis zum erfolgreichen Online-Auftritt – wir begleiten KMU durch die digitale Transformation.
           </p>
         </div>
         
@@ -130,7 +136,7 @@ export default function Services() {
                 <div className="relative h-48 overflow-hidden">
                   <Image
                     src={service.image}
-                    alt={service.title}
+                    alt={`${service.title} - Webdesign Service für KMU in Österreich und Deutschland`}
                     fill
                     sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                     className="object-cover transform group-hover:scale-105 transition-transform duration-300"
