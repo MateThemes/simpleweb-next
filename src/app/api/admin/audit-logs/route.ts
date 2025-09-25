@@ -1,6 +1,24 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getAuditResult } from '@/lib/audit-storage';
 
+// Type definition for audit data
+interface AuditData {
+  timestamp?: string;
+  email?: string;
+  auditUrl?: string;
+  newsletter?: boolean;
+  psiResults?: {
+    performanceScore?: number;
+    mobileScore?: number;
+    desktopScore?: number;
+  };
+  pageAnalysis?: {
+    seoScore?: number;
+    accessibilityScore?: number;
+    bestPracticesScore?: number;
+  };
+}
+
 export async function GET(request: NextRequest) {
   try {
     // Validate session token (temporarily disabled for debugging)
@@ -25,19 +43,20 @@ export async function GET(request: NextRequest) {
         const auditData = await getAuditResult(auditId);
         if (auditData) {
           // Transform audit data to log format
+          const audit = auditData as AuditData;
           const logEntry = {
-            timestamp: (auditData as any).timestamp || new Date().toISOString(),
-            email: (auditData as any).email || '',
-            url: (auditData as any).auditUrl || '',
-            score: (auditData as any).psiResults?.performanceScore || 0,
-            newsletter: (auditData as any).newsletter || false,
+            timestamp: audit.timestamp || new Date().toISOString(),
+            email: audit.email || '',
+            url: audit.auditUrl || '',
+            score: audit.psiResults?.performanceScore || 0,
+            newsletter: audit.newsletter || false,
             leadId: auditId,
             // Add more fields as needed
-            mobileScore: (auditData as any).psiResults?.mobileScore || 0,
-            desktopScore: (auditData as any).psiResults?.desktopScore || 0,
-            seoScore: (auditData as any).pageAnalysis?.seoScore || 0,
-            accessibilityScore: (auditData as any).pageAnalysis?.accessibilityScore || 0,
-            bestPracticesScore: (auditData as any).pageAnalysis?.bestPracticesScore || 0
+            mobileScore: audit.psiResults?.mobileScore || 0,
+            desktopScore: audit.psiResults?.desktopScore || 0,
+            seoScore: audit.pageAnalysis?.seoScore || 0,
+            accessibilityScore: audit.pageAnalysis?.accessibilityScore || 0,
+            bestPracticesScore: audit.pageAnalysis?.bestPracticesScore || 0
           };
           allLogs.push(logEntry);
         }
