@@ -1,6 +1,7 @@
 'use client'
 
 import { type ReactElement } from 'react'
+import Link from 'next/link'
 import { Container } from '../ui/Container'
 import { 
   UsersIcon, 
@@ -61,6 +62,19 @@ export default function WorkingPrinciples(): ReactElement {
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+
+        {/* Blog Integration */}
+        <div className="mt-16 text-center">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 dark:bg-slate-800 rounded-full border border-slate-200 dark:border-slate-700">
+            <span className="text-slate-600 dark:text-slate-400 font-medium">💡 Mehr Tipps für KMU</span>
+            <Link 
+              href="/blog" 
+              className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-semibold underline decoration-2 underline-offset-2 hover:decoration-blue-700 dark:hover:decoration-blue-300 transition-colors"
+            >
+              Blog lesen →
+            </Link>
           </div>
         </div>
       </Container>

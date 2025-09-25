@@ -36,15 +36,15 @@ export default function ModernHero() {
 
             {/* Headline */}
             <div className="space-y-4">
-              <h2 className="text-4xl lg:text-6xl font-bold tracking-tight text-slate-900 dark:text-white">
-                Ihre digitale
+              <h1 className="text-4xl lg:text-6xl font-bold tracking-tight text-slate-900 dark:text-white">
+                Webdesign für KMU
                 <span className="block bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-                  Zukunft beginnt hier
+                  Moderne Websites Österreich
                 </span>
-              </h2>
+              </h1>
               <p className="text-xl text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl">
                 Professionelle Websites, die nicht nur gut aussehen, sondern auch Ihre Geschäftsziele erreichen. 
-                Mit modernster Technologie und bewährten SEO-Strategien.
+                Mit modernster Technologie und bewährten <Link href="/services/seo" className="text-blue-600 hover:text-blue-700 underline">SEO-Strategien</Link>.
               </p>
             </div>
 
@@ -90,7 +90,7 @@ export default function ModernHero() {
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                 <Image
                   src="/img/hero-image-optimized.jpg"
-                  alt="Moderne Webentwicklung - Professionelle Websites"
+                  alt="Webdesign Agentur für KMU - Moderne Websites Österreich Deutschland"
                   width={600}
                   height={400}
                   className="w-full h-auto"

@@ -1,23 +1,24 @@
 'use client'
 
+import Link from 'next/link'
 import { ChartArrowsIcon, ChartDotsIcon, TrendingUpIcon } from '../icons'
 import { Container } from '../ui/Container'
 import Stats from './Stats'
 
 const features = [
   {
-    title: 'Mehr Reichweite',
-    description: 'Erreichen Sie Ihre Zielgruppe effektiv durch optimale Darstellung auf allen Geräten und in Suchmaschinen.',
+    title: 'Lokale Sichtbarkeit für KMU',
+    description: 'Erreichen Sie Kunden in Ihrer Region durch lokale SEO und Google My Business Optimierung. Perfekt für Handwerker, Dienstleister und lokale Geschäfte.',
     icon: ChartArrowsIcon
   },
   {
-    title: 'Bessere Conversion',
-    description: 'Überzeugen Sie Besucher durch schnelle Ladezeiten und intuitive Benutzerführung zum Handeln.',
+    title: 'Höhere Conversion-Raten',
+    description: 'Mehr Anfragen und Terminbuchungen durch benutzerfreundliche Websites mit klaren Call-to-Actions. Speziell optimiert für KMU-Bedürfnisse.',
     icon: ChartDotsIcon
   },
   {
-    title: 'Nachhaltiger Erfolg',
-    description: 'Profitieren Sie langfristig von einer modernen Webpräsenz, die mit Ihrem Unternehmen wächst.',
+    title: 'Nachhaltiges Wachstum',
+    description: 'Eine moderne Webpräsenz, die mit Ihrem Unternehmen wächst. Von der ersten Website bis zum umfangreichen Online-Shop – wir begleiten Sie.',
     icon: TrendingUpIcon
   }
 ]
@@ -30,6 +31,15 @@ export default function Features() {
       id="features"
     >
       <Container>
+        <div className="text-center max-w-3xl mx-auto mb-12">
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-gray-900 dark:text-white mb-6">
+            Warum KMU mit uns erfolgreich werden
+          </h2>
+          <p className="text-lg sm:text-xl leading-relaxed text-gray-600 dark:text-gray-400">
+            Wir verstehen die besonderen Herausforderungen kleiner und mittlerer Unternehmen und bieten maßgeschneiderte Lösungen.
+          </p>
+        </div>
+
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {features.map((feature, index) => {
             const Icon = feature.icon
@@ -48,6 +58,21 @@ export default function Features() {
                     </h3>
                     <p className="mt-2 text-base leading-7 text-gray-600 dark:text-gray-400">
                       {feature.description}
+                      {index === 0 && (
+                        <span className="block mt-2">
+                          <Link href="/services/seo" className="text-blue-600 hover:text-blue-700 underline">Mehr über lokale SEO →</Link>
+                        </span>
+                      )}
+                      {index === 1 && (
+                        <span className="block mt-2">
+                          <Link href="/services/webdesign" className="text-blue-600 hover:text-blue-700 underline">Webdesign für KMU →</Link>
+                        </span>
+                      )}
+                      {index === 2 && (
+                        <span className="block mt-2">
+                          <Link href="/services/marketing" className="text-blue-600 hover:text-blue-700 underline">Online Marketing →</Link>
+                        </span>
+                      )}
                     </p>
                   </div>
                 </div>
@@ -60,12 +85,25 @@ export default function Features() {
         <div className="mt-16 text-center">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-50 dark:bg-green-900/20 rounded-full border border-green-200 dark:border-green-800">
             <span className="text-green-600 dark:text-green-400 font-medium">🎯 Neugierig auf Ihre SEO-Performance?</span>
-            <a 
+            <Link 
               href="/seo-audit" 
               className="text-green-600 dark:text-green-400 hover:text-green-700 dark:hover:text-green-300 font-semibold underline decoration-2 underline-offset-2 hover:decoration-green-700 dark:hover:decoration-green-300 transition-colors"
             >
               Kostenlose Analyse starten
-            </a>
+            </Link>
+          </div>
+        </div>
+
+        {/* Blog Integration */}
+        <div className="mt-12 text-center">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 dark:bg-blue-900/20 rounded-full border border-blue-200 dark:border-blue-800">
+            <span className="text-blue-600 dark:text-blue-400 font-medium">📚 Tipps für KMU-Websites</span>
+            <Link 
+              href="/blog" 
+              className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-semibold underline decoration-2 underline-offset-2 hover:decoration-blue-700 dark:hover:decoration-blue-300 transition-colors"
+            >
+              Blog lesen
+            </Link>
           </div>
         </div>
         
