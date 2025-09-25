@@ -18,15 +18,15 @@ const services = [
   {
     id: 'webdesign',
     title: 'Responsive Webdesign für KMU',
-    description: 'Moderne Websites, die auf allen Geräten perfekt funktionieren. Speziell entwickelt für kleine und mittlere Unternehmen, die online erfolgreich sein wollen.',
+    description: 'Moderne Websites mit Next.js und React, die auf allen Geräten perfekt funktionieren. Speziell entwickelt für kleine und mittlere Unternehmen, die online erfolgreich sein wollen.',
     icon: DeviceLaptopIcon,
     bgColor: 'bg-blue-600',
     image: '/img/services/responsive.jpg',
     link: '/services/webdesign',
     features: [
+      'Next.js & React Entwicklung',
       'Mobile-First Design für KMU',
       'Schnelle Ladezeiten & Performance',
-      'Benutzerfreundliche Navigation',
       'Terminbuchung & Kontaktformulare'
     ]
   },
@@ -93,15 +93,15 @@ const services = [
   {
     id: 'hosting',
     title: 'Hosting & Wartung für KMU',
-    description: 'Zuverlässiges Hosting und regelmäßige Wartung, damit Ihre Website immer erreichbar und sicher bleibt.',
+    description: 'Zuverlässiges Hosting mit Vercel und IONOS sowie regelmäßige Wartung, damit Ihre Website immer erreichbar und sicher bleibt.',
     icon: ServerIcon,
     bgColor: 'bg-teal-600',
     image: '/img/services/hosting.jpg',
     link: '/services/hosting',
     features: [
       'Vercel & IONOS Partner-Hosting',
+      'Strapi CMS Integration',
       'SSL-Zertifikate & Sicherheit',
-      'Regelmäßige Backups',
       '24/7 Monitoring & Support'
     ]
   }
