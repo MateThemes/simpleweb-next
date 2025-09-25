@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import Hero from '@/components/sections/Hero'
+import ModernHero from '@/components/sections/ModernHero'
 import Banner from '@/components/sections/Banner'
 import Services from '@/components/sections/Services'
 import Features from '@/components/sections/Features'
@@ -51,7 +51,7 @@ export default function Home() {
       
       {/* Main content sections */}
       <div>
-        <Hero />
+        <ModernHero />
         <Banner />
         <Services />
         <Features />
