@@ -33,7 +33,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     'portfolio',
     'preise-und-pakete',
     'prozess',
-    'ueber-uns'
+    'ueber-uns',
+    'seo-audit'
   ]
 
   // Generate main page entries
