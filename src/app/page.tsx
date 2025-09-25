@@ -9,8 +9,8 @@ import Faq from '@/components/sections/Faq'
 import CtaV1 from '@/components/sections/CtaV1'
 
 export const metadata: Metadata = {
-  title: 'Das perfekte Design für deine Webseite',
-  description: 'Webdesign Agentur für KMU | Moderne Websites & Online-Marketing | SEO-optimiert für Österreich & Deutschland | SimpleWebDesign',
+  title: 'Webdesign Agentur für KMU | Moderne Websites Österreich & Deutschland',
+  description: 'Professionelle Webdesign Agentur für KMU in Österreich & Deutschland. Moderne Websites, SEO-Optimierung, E-Commerce & Online-Marketing. Kostenlose Beratung für kleine und mittlere Unternehmen.',
   openGraph: {
     images: '/img/og-image.jpg',
     type: 'website',
