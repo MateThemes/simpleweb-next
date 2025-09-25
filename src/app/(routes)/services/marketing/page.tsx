@@ -6,11 +6,11 @@ import Button from '@/components/ui/Button'
 import { ChartBarIcon, CheckIcon } from '@/components/icons'
 
 export const metadata: Metadata = {
-  title: 'Digital Marketing Agentur Niederösterreich | Social Media & Performance Marketing',
-  description: 'Social Media, Content & Performance Marketing in Niederösterreich. Steigern Sie Ihre Reichweite, Leads und ROI mit maßgeschneiderten Marketing-Strategien.',
+  title: 'Digital Marketing Agentur für KMU | Social Media & Performance Marketing Österreich & Deutschland',
+  description: 'Social Media, Content & Performance Marketing für KMU in Österreich & Deutschland. Steigern Sie Ihre Reichweite, Leads und ROI mit maßgeschneiderten Marketing-Strategien.',
   openGraph: {
-    title: 'Digital Marketing Agentur Niederösterreich | Social Media & Performance Marketing',
-    description: 'Social Media, Content & Performance Marketing in Niederösterreich. Steigern Sie Ihre Reichweite, Leads und ROI mit maßgeschneiderten Marketing-Strategien.',
+    title: 'Digital Marketing Agentur für KMU | Social Media & Performance Marketing Österreich & Deutschland',
+    description: 'Social Media, Content & Performance Marketing für KMU in Österreich & Deutschland. Steigern Sie Ihre Reichweite, Leads und ROI mit maßgeschneiderten Marketing-Strategien.',
     url: 'https://simplewebdesign.at/services/marketing',
     images: [
       {
@@ -23,8 +23,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Digital Marketing Agentur Niederösterreich | Social Media & Performance Marketing',
-    description: 'Social Media, Content & Performance Marketing in Niederösterreich. Steigern Sie Ihre Reichweite, Leads und ROI.',
+    title: 'Digital Marketing Agentur für KMU | Social Media & Performance Marketing Österreich & Deutschland',
+    description: 'Social Media, Content & Performance Marketing für KMU in Österreich & Deutschland. Steigern Sie Ihre Reichweite, Leads und ROI.',
     images: ['/img/services/marketing.jpg']
   },
   alternates: {
@@ -127,10 +127,10 @@ export default function MarketingPage() {
             <div className="lg:flex lg:items-center lg:gap-x-10">
               <div className="max-w-2xl lg:max-w-lg">
                 <h1 className="font-display text-5xl font-medium tracking-tight text-neutral-950 dark:text-white [text-wrap:balance] sm:text-7xl">
-                  Digital Marketing Agentur Niederösterreich
+                  Digital Marketing Agentur für KMU
                 </h1>
                 <p className="mt-6 text-xl text-neutral-600 dark:text-neutral-300">
-                  Steigern Sie Ihre digitale Reichweite in Niederösterreich mit maßgeschneiderten Marketing-Strategien und erreichen Sie Ihre lokale Zielgruppe effektiv.
+                  Steigern Sie Ihre digitale Reichweite in Wien, München, Waldviertel und ganz Österreich & Deutschland mit maßgeschneiderten Marketing-Strategien für KMU.
                 </p>
                 <div className="mt-8 flex gap-4">
                   <Button href="/kontakt">Strategie-Gespräch</Button>
@@ -168,7 +168,7 @@ export default function MarketingPage() {
                 Ganzheitliches Marketing
               </h2>
               <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-300">
-                Von Social Media bis Performance Marketing - wir entwickeln die perfekte Marketing-Strategie für Unternehmen in Niederösterreich und Umgebung.
+                Von Social Media bis Performance Marketing - wir entwickeln die perfekte Marketing-Strategie für KMU. Kombinieren Sie dies mit unserem <a href="/services/seo" className="text-indigo-600 hover:text-indigo-500 underline">SEO-Service</a> und <a href="/services/webdesign" className="text-indigo-600 hover:text-indigo-500 underline">Webdesign</a> für maximale Online-Sichtbarkeit.
               </p>
             </div>
             <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 sm:mt-20 lg:max-w-none lg:grid-cols-2">

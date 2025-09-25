@@ -6,11 +6,11 @@ import { ServerIcon, CheckIcon } from '@/components/icons'
 import { serviceSchema } from '@/app/schema'
 
 export const metadata: Metadata = {
-  title: 'Hosting-Beratung | Professionelle Hosting-Lösungen',
-  description: 'Professionelle Hosting-Beratung und Service. Wir finden die optimale Hosting-Lösung für Ihr Projekt mit Fokus auf Performance und Sicherheit.',
+  title: 'Hosting-Beratung für KMU | Professionelle Hosting-Lösungen Österreich & Deutschland',
+  description: 'Professionelle Hosting-Beratung für KMU in Österreich & Deutschland. Wir finden die optimale Hosting-Lösung für Ihr Projekt mit Fokus auf Performance und Sicherheit.',
   openGraph: {
-    title: 'Hosting-Beratung | Professionelle Hosting-Lösungen',
-    description: 'Professionelle Hosting-Beratung und Service. Wir finden die optimale Hosting-Lösung für Ihr Projekt mit Fokus auf Performance und Sicherheit.',
+    title: 'Hosting-Beratung für KMU | Professionelle Hosting-Lösungen Österreich & Deutschland',
+    description: 'Professionelle Hosting-Beratung für KMU in Österreich & Deutschland. Wir finden die optimale Hosting-Lösung für Ihr Projekt mit Fokus auf Performance und Sicherheit.',
     url: 'https://simplewebdesign.at/services/hosting',
     images: [
       {
@@ -23,8 +23,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Hosting-Beratung | Professionelle Hosting-Lösungen',
-    description: 'Professionelle Hosting-Beratung und Service. Wir finden die optimale Hosting-Lösung für Ihr Projekt.',
+    title: 'Hosting-Beratung für KMU | Professionelle Hosting-Lösungen Österreich & Deutschland',
+    description: 'Professionelle Hosting-Beratung für KMU in Österreich & Deutschland. Wir finden die optimale Hosting-Lösung für Ihr Projekt.',
     images: ['/img/services/hosting.jpg']
   },
   alternates: {
@@ -82,10 +82,10 @@ export default function HostingPage() {
             <div className="lg:flex lg:items-center lg:gap-x-10">
               <div className="max-w-2xl lg:max-w-lg">
                 <h1 className="font-display text-5xl font-medium tracking-tight text-neutral-950 dark:text-white [text-wrap:balance] sm:text-7xl">
-                  Hosting-Beratung & Service
+                  Hosting-Beratung für KMU
                 </h1>
                 <p className="mt-6 text-xl text-neutral-600 dark:text-neutral-300">
-                  Wir beraten Sie bei der Wahl der optimalen Hosting-Lösung und arbeiten mit erstklassigen Hosting-Partnern zusammen.
+                  Wir beraten KMU in Wien, München, Waldviertel und ganz Österreich & Deutschland bei der Wahl der optimalen Hosting-Lösung mit erstklassigen Partnern.
                 </p>
                 <div className="mt-8 flex gap-4">
                   <Button href="/kontakt">Kostenlose Beratung</Button>
@@ -123,7 +123,7 @@ export default function HostingPage() {
                 Umfassende Hosting-Lösungen
               </h2>
               <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-300">
-                Von der Beratung bis zur Umsetzung - wir unterstützen Sie bei allen Hosting-Fragen.
+                Von der Beratung bis zur Umsetzung - wir unterstützen Sie bei allen Hosting-Fragen. Kombinieren Sie dies mit unserem <a href="/services/webdesign" className="text-teal-600 hover:text-teal-500 underline">Webdesign</a> und <a href="/services/performance" className="text-teal-600 hover:text-teal-500 underline">Performance-Service</a> für optimale Website-Performance.
               </p>
             </div>
             <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 sm:mt-20 lg:max-w-none lg:grid-cols-2">
