@@ -43,7 +43,7 @@ export default function ModernHero() {
                 </span>
               </h1>
               <p className="text-xl text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl">
-                Professionelle Websites, die nicht nur gut aussehen, sondern auch Ihre Geschäftsziele erreichen. 
+                Professionelle Websites für KMU in Wien, München, Waldviertel und ganz Österreich. 
                 Mit modernster Technologie und bewährten <Link href="/services/seo" className="text-blue-600 hover:text-blue-700 underline">SEO-Strategien</Link>.
               </p>
             </div>
@@ -73,6 +73,17 @@ export default function ModernHero() {
               >
                 Beratung anfragen
               </Link>
+            </div>
+
+            {/* Phone CTA */}
+            <div className="mt-4 text-center">
+              <a 
+                href="tel:+436645182696" 
+                className="inline-flex items-center gap-2 text-lg font-semibold text-green-600 hover:text-green-700 dark:text-green-400 dark:hover:text-green-300 transition-colors"
+              >
+                📞 +43 664 518 26 96
+              </a>
+              <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">Direkt anrufen für schnelle Beratung</p>
             </div>
 
             {/* Trust indicators */}

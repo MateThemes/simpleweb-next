@@ -4,10 +4,10 @@ import { Container } from '../ui/Container'
 import { UserGroupIcon, RocketIcon, ClockIcon, ChatBubbleIcon } from '../icons'
 
 const stats = [
-  { id: 1, name: 'KMU erfolgreich digitalisiert', icon: UserGroupIcon, subtext: 'Von Handwerkern bis Dienstleistern' },
+  { id: 1, name: '50+ KMU erfolgreich digitalisiert', icon: UserGroupIcon, subtext: 'Von Handwerkern bis Dienstleistern' },
   { id: 2, name: 'Websites in Österreich & Deutschland', icon: RocketIcon, subtext: 'Lokale Expertise, grenzenlose Qualität' },
-  { id: 3, name: 'Jahre Webdesign-Erfahrung', icon: ClockIcon, subtext: 'Seit 2020 für KMU da' },
-  { id: 4, name: 'Probleme gelöst', icon: ChatBubbleIcon, subtext: 'Schnelle Hilfe für KMU' },
+  { id: 3, name: '5+ Jahre Webdesign-Erfahrung', icon: ClockIcon, subtext: 'Seit 2020 für KMU da' },
+  { id: 4, name: '100% Kundenzufriedenheit', icon: ChatBubbleIcon, subtext: 'Bewertungen & Testimonials' },
 ]
 
 export default function Stats() {
@@ -20,7 +20,7 @@ export default function Stats() {
               Unsere Erfolge für KMU
             </h2>
             <p className="text-lg sm:text-xl leading-relaxed text-gray-600 dark:text-gray-400">
-              Wir haben bereits zahlreiche kleine und mittlere Unternehmen in Österreich und Deutschland erfolgreich digitalisiert. 
+              Wir haben bereits zahlreiche kleine und mittlere Unternehmen in Wien, München, Waldviertel und ganz Österreich erfolgreich digitalisiert. 
               Von Handwerkern über Dienstleister bis hin zu lokalen Geschäften – wir verstehen die Bedürfnisse von KMU.
             </p>
           </div>

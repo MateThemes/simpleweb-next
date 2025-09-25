@@ -8,7 +8,7 @@ import Stats from './Stats'
 const features = [
   {
     title: 'Lokale Sichtbarkeit für KMU',
-    description: 'Erreichen Sie Kunden in Ihrer Region durch lokale SEO und Google My Business Optimierung. Perfekt für Handwerker, Dienstleister und lokale Geschäfte.',
+    description: 'Erreichen Sie Kunden in Wien, München, Waldviertel und ganz Österreich durch lokale SEO und Google My Business Optimierung. Perfekt für Handwerker, Dienstleister und lokale Geschäfte.',
     icon: ChartArrowsIcon
   },
   {

@@ -43,7 +43,7 @@ const faqItems: FaqItem[] = [
   },
   {
     question: 'Können Sie auch Online-Shops für KMU erstellen?',
-    answer: 'Ja, wir entwickeln E-Commerce-Lösungen mit Shopify oder individuellen Systemen. Von der Produktpräsentation bis zur Zahlungsabwicklung – wir machen Ihren Online-Shop erfolgreich.',
+    answer: 'Ja, wir entwickeln E-Commerce-Lösungen mit Shopify, Strapi CMS oder individuellen Next.js Systemen. Von der Produktpräsentation bis zur Zahlungsabwicklung – wir machen Ihren Online-Shop erfolgreich.',
     icon: ClockIcon
   },
   {

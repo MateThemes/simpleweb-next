@@ -27,11 +27,17 @@ export default function Cta() {
                   <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
                     <Link
                       href="/kontakt"
-                      className="group text-lg px-8 py-4 min-w-[200px] rounded-xl bg-white text-gray-900 hover:bg-gray-50 transition-colors duration-200"
+                      className="group text-xl px-10 py-5 min-w-[250px] rounded-xl bg-white text-gray-900 hover:bg-gray-50 font-semibold shadow-lg hover:shadow-xl transition-all duration-200"
                     >
                       Jetzt starten
-                      <ArrowRightIcon className="w-5 h-5 ml-2 inline-block transition-transform group-hover:translate-x-1" />
+                      <ArrowRightIcon className="w-6 h-6 ml-2 inline-block transition-transform group-hover:translate-x-1" />
                     </Link>
+                    <a
+                      href="tel:+436645182696"
+                      className="text-lg px-8 py-4 min-w-[200px] rounded-xl bg-transparent text-white border-2 border-white hover:bg-white hover:text-gray-900 transition-all duration-200 text-center"
+                    >
+                      📞 Direkt anrufen
+                    </a>
                   </div>
                 </div>
               </div>

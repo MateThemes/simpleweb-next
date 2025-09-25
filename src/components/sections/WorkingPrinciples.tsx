@@ -65,8 +65,26 @@ export default function WorkingPrinciples(): ReactElement {
           </div>
         </div>
 
-        {/* Blog Integration */}
+        {/* Trust Signals */}
         <div className="mt-16 text-center">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-2xl mx-auto">
+            <div className="flex flex-col items-center p-4 bg-slate-50 dark:bg-slate-800 rounded-xl">
+              <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">5★</div>
+              <div className="text-sm text-slate-600 dark:text-slate-400">Google Bewertungen</div>
+            </div>
+            <div className="flex flex-col items-center p-4 bg-slate-50 dark:bg-slate-800 rounded-xl">
+              <div className="text-2xl font-bold text-green-600 dark:text-green-400">100%</div>
+              <div className="text-sm text-slate-600 dark:text-slate-400">Kundenzufriedenheit</div>
+            </div>
+            <div className="flex flex-col items-center p-4 bg-slate-50 dark:bg-slate-800 rounded-xl">
+              <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">24/7</div>
+              <div className="text-sm text-slate-600 dark:text-slate-400">Support verfügbar</div>
+            </div>
+          </div>
+        </div>
+
+        {/* Blog Integration */}
+        <div className="mt-12 text-center">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 dark:bg-slate-800 rounded-full border border-slate-200 dark:border-slate-700">
             <span className="text-slate-600 dark:text-slate-400 font-medium">💡 Mehr Tipps für KMU</span>
             <Link 
