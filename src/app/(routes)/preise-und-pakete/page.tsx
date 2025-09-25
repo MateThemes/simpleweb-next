@@ -5,11 +5,11 @@ import { pricingSchema } from '@/app/schema'
 import Button from '@/components/ui/Button'
 
 export const metadata: Metadata = {
-  title: 'Preise | Webdesign Pakete & Leistungen',
-  description: 'Transparente Preise für professionelles Webdesign. Wählen Sie aus unseren maßgeschneiderten Paketen das passende für Ihr Projekt.',
+  title: 'Preise Webdesign für KMU | Transparente Pakete Österreich & Deutschland',
+  description: 'Transparente Preise für professionelles KMU Webdesign in Österreich & Deutschland. Wählen Sie aus unseren maßgeschneiderten Paketen das passende für Ihr Unternehmen.',
   openGraph: {
-    title: 'Preise | Webdesign Pakete & Leistungen',
-    description: 'Transparente Preise für professionelles Webdesign. Wählen Sie aus unseren maßgeschneiderten Paketen das passende für Ihr Projekt.',
+    title: 'Preise Webdesign für KMU | Transparente Pakete Österreich & Deutschland',
+    description: 'Transparente Preise für professionelles KMU Webdesign in Österreich & Deutschland. Wählen Sie aus unseren maßgeschneiderten Paketen das passende für Ihr Unternehmen.',
     url: 'https://simplewebdesign.at/preise-und-pakete',
     images: [
       {
@@ -22,8 +22,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Preise | Webdesign Pakete & Leistungen',
-    description: 'Transparente Preise für professionelles Webdesign.',
+    title: 'Preise Webdesign für KMU | Transparente Pakete Österreich & Deutschland',
+    description: 'Transparente Preise für professionelles KMU Webdesign in Österreich & Deutschland.',
     images: ['/img/pricing/packages.jpg']
   },
   alternates: {
@@ -151,14 +151,23 @@ export default function PricingPage() {
       <main className="flex-auto pb-24 sm:pb-32">
         {/* Hero Section */}
         <Container className="mt-24 sm:mt-32">
-          <div className="max-w-3xl">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-purple-50 dark:bg-purple-900/20 rounded-full border border-purple-200 dark:border-purple-800 mb-8">
+              <span className="text-purple-600 dark:text-purple-400 font-medium">💰 Transparente Preise</span>
+            </div>
             <h1 className="font-display text-5xl font-medium tracking-tight text-neutral-950 dark:text-white [text-wrap:balance] sm:text-7xl">
-              Transparente Preise
+              Preise Webdesign für KMU
             </h1>
-            <p className="mt-6 text-xl text-neutral-600 dark:text-neutral-400">
-              Wählen Sie das passende Paket für Ihr Projekt. Gemäß § 6 Abs. 1 Z
-              27 UStG wird keine Umsatzsteuer berechnet.
+            <p className="mt-6 text-xl text-neutral-600 dark:text-neutral-400 max-w-3xl mx-auto">
+              Wählen Sie das passende Paket für Ihr KMU-Projekt in Österreich & Deutschland. Transparente Preise für kleine und mittlere Unternehmen. Gemäß § 6 Abs. 1 Z 27 UStG wird keine Umsatzsteuer berechnet.
             </p>
+            <div className="mt-8 flex flex-wrap justify-center gap-4 text-sm text-neutral-500 dark:text-neutral-400">
+              <a href="/services/webdesign" className="hover:text-purple-600 dark:hover:text-purple-400 underline">Webdesign-Services</a>
+              <span>•</span>
+              <a href="/portfolio" className="hover:text-purple-600 dark:hover:text-purple-400 underline">Portfolio</a>
+              <span>•</span>
+              <a href="/ueber-uns" className="hover:text-purple-600 dark:hover:text-purple-400 underline">Über Uns</a>
+            </div>
           </div>
         </Container>
 
@@ -317,6 +326,33 @@ export default function PricingPage() {
                   Optimierung, CDN-Setup, Caching-Strategie
                 </p>
                 <p className="mt-4 text-3xl font-bold text-white">ab 990€</p>
+              </div>
+            </div>
+          </div>
+        </Container>
+
+        {/* Trust Signals */}
+        <Container className="mt-24 sm:mt-32">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold tracking-tight text-neutral-950 dark:text-white sm:text-4xl mb-8">
+              Warum KMU uns vertrauen
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-4 gap-6 max-w-4xl mx-auto">
+              <div className="flex flex-col items-center p-6 bg-slate-50 dark:bg-slate-800 rounded-xl">
+                <div className="text-3xl font-bold text-green-600 dark:text-green-400">50+</div>
+                <div className="text-sm text-slate-600 dark:text-slate-400">KMU-Projekte</div>
+              </div>
+              <div className="flex flex-col items-center p-6 bg-slate-50 dark:bg-slate-800 rounded-xl">
+                <div className="text-3xl font-bold text-blue-600 dark:text-blue-400">5+</div>
+                <div className="text-sm text-slate-600 dark:text-slate-400">Jahre Erfahrung</div>
+              </div>
+              <div className="flex flex-col items-center p-6 bg-slate-50 dark:bg-slate-800 rounded-xl">
+                <div className="text-3xl font-bold text-purple-600 dark:text-purple-400">100%</div>
+                <div className="text-sm text-slate-600 dark:text-slate-400">Zufriedenheit</div>
+              </div>
+              <div className="flex flex-col items-center p-6 bg-slate-50 dark:bg-slate-800 rounded-xl">
+                <div className="text-3xl font-bold text-orange-600 dark:text-orange-400">24/7</div>
+                <div className="text-sm text-slate-600 dark:text-slate-400">Support</div>
               </div>
             </div>
           </div>
