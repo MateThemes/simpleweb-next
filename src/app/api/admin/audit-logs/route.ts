@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { validateSession } from '@/lib/admin-auth';
 import { getAuditResult } from '@/lib/audit-storage';
 
 export async function GET(request: NextRequest) {
@@ -27,18 +26,18 @@ export async function GET(request: NextRequest) {
         if (auditData) {
           // Transform audit data to log format
           const logEntry = {
-            timestamp: auditData.timestamp,
-            email: auditData.email,
-            url: auditData.auditUrl,
-            score: auditData.psiResults?.performanceScore || 0,
-            newsletter: auditData.newsletter || false,
+            timestamp: (auditData as any).timestamp || new Date().toISOString(),
+            email: (auditData as any).email || '',
+            url: (auditData as any).auditUrl || '',
+            score: (auditData as any).psiResults?.performanceScore || 0,
+            newsletter: (auditData as any).newsletter || false,
             leadId: auditId,
             // Add more fields as needed
-            mobileScore: auditData.psiResults?.mobileScore || 0,
-            desktopScore: auditData.psiResults?.desktopScore || 0,
-            seoScore: auditData.pageAnalysis?.seoScore || 0,
-            accessibilityScore: auditData.pageAnalysis?.accessibilityScore || 0,
-            bestPracticesScore: auditData.pageAnalysis?.bestPracticesScore || 0
+            mobileScore: (auditData as any).psiResults?.mobileScore || 0,
+            desktopScore: (auditData as any).psiResults?.desktopScore || 0,
+            seoScore: (auditData as any).pageAnalysis?.seoScore || 0,
+            accessibilityScore: (auditData as any).pageAnalysis?.accessibilityScore || 0,
+            bestPracticesScore: (auditData as any).pageAnalysis?.bestPracticesScore || 0
           };
           allLogs.push(logEntry);
         }

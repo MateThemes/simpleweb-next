@@ -41,10 +41,6 @@ if (redisUrl && redisToken) {
 // In-memory cache for audit results (fallback for local development)
 const auditCache = new Map<string, unknown>();
 
-// Global audit storage for production (when Redis is not available)
-// This will persist for the lifetime of the server instance
-const globalAuditStorage = new Map<string, unknown>();
-
 // Simple file-based storage for Vercel (works in production)
 const AUDIT_STORAGE_FILE = '/tmp/audit-storage.json';
 
