@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { Container } from '../ui/Container'
 import { ClockIcon, CodeIcon, RouteIcon, ToolIcon, DeviceMobileIcon, SearchIcon } from '../icons'
 
@@ -85,12 +86,12 @@ export default function Faq() {
                       {item.answer}
                       {index === 3 && (
                         <span className="block mt-2">
-                          <a href="/services/seo" className="text-blue-600 hover:text-blue-700 underline">Lokale SEO Services →</a>
+                          <Link href="/services/seo" className="text-blue-600 hover:text-blue-700 underline">Lokale SEO Services →</Link>
                         </span>
                       )}
                       {index === 6 && (
                         <span className="block mt-2">
-                          <a href="/services/e-commerce-partner-fuer-shopify" className="text-blue-600 hover:text-blue-700 underline">Shopify E-Commerce →</a>
+                          <Link href="/services/e-commerce-partner-fuer-shopify" className="text-blue-600 hover:text-blue-700 underline">Shopify E-Commerce →</Link>
                         </span>
                       )}
                     </p>

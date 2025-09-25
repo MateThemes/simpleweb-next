@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { Container } from '../ui/Container'
 import { ClockIcon, CodeIcon, RouteIcon, ToolIcon } from '../icons'
 
@@ -116,6 +117,19 @@ export default function Process() {
               </div>
             )
           })}
+        </div>
+
+        {/* SEO Audit CTA */}
+        <div className="mt-16 text-center">
+          <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200">
+            <span>🎯 Starten Sie mit einer kostenlosen SEO-Analyse</span>
+            <Link 
+              href="/seo-audit" 
+              className="text-white hover:text-green-100 font-semibold underline decoration-2 underline-offset-2 hover:decoration-green-100 transition-colors"
+            >
+              Jetzt analysieren →
+            </Link>
+          </div>
         </div>
       </Container>
     </section>

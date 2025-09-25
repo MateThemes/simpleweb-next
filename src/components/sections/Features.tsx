@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { ChartArrowsIcon, ChartDotsIcon, TrendingUpIcon } from '../icons'
 import { Container } from '../ui/Container'
 import Stats from './Stats'
@@ -59,17 +60,17 @@ export default function Features() {
                       {feature.description}
                       {index === 0 && (
                         <span className="block mt-2">
-                          <a href="/services/seo" className="text-blue-600 hover:text-blue-700 underline">Mehr über lokale SEO →</a>
+                          <Link href="/services/seo" className="text-blue-600 hover:text-blue-700 underline">Mehr über lokale SEO →</Link>
                         </span>
                       )}
                       {index === 1 && (
                         <span className="block mt-2">
-                          <a href="/services/webdesign" className="text-blue-600 hover:text-blue-700 underline">Webdesign für KMU →</a>
+                          <Link href="/services/webdesign" className="text-blue-600 hover:text-blue-700 underline">Webdesign für KMU →</Link>
                         </span>
                       )}
                       {index === 2 && (
                         <span className="block mt-2">
-                          <a href="/services/marketing" className="text-blue-600 hover:text-blue-700 underline">Online Marketing →</a>
+                          <Link href="/services/marketing" className="text-blue-600 hover:text-blue-700 underline">Online Marketing →</Link>
                         </span>
                       )}
                     </p>
@@ -84,12 +85,12 @@ export default function Features() {
         <div className="mt-16 text-center">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-50 dark:bg-green-900/20 rounded-full border border-green-200 dark:border-green-800">
             <span className="text-green-600 dark:text-green-400 font-medium">🎯 Neugierig auf Ihre SEO-Performance?</span>
-            <a 
+            <Link 
               href="/seo-audit" 
               className="text-green-600 dark:text-green-400 hover:text-green-700 dark:hover:text-green-300 font-semibold underline decoration-2 underline-offset-2 hover:decoration-green-700 dark:hover:decoration-green-300 transition-colors"
             >
               Kostenlose Analyse starten
-            </a>
+            </Link>
           </div>
         </div>
 
@@ -97,12 +98,12 @@ export default function Features() {
         <div className="mt-12 text-center">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 dark:bg-blue-900/20 rounded-full border border-blue-200 dark:border-blue-800">
             <span className="text-blue-600 dark:text-blue-400 font-medium">📚 Tipps für KMU-Websites</span>
-            <a 
+            <Link 
               href="/blog" 
               className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-semibold underline decoration-2 underline-offset-2 hover:decoration-blue-700 dark:hover:decoration-blue-300 transition-colors"
             >
               Blog lesen
-            </a>
+            </Link>
           </div>
         </div>
         

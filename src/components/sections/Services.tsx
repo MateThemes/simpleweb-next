@@ -156,6 +156,26 @@ export default function Services() {
                 <div className="p-6 space-y-6">
                   <p className="text-base leading-relaxed text-gray-600 dark:text-gray-400">
                     {service.description}
+                    {service.id === 'webdesign' && (
+                      <span className="block mt-2">
+                        <a href="/services/performance" className="text-blue-600 hover:text-blue-700 underline">Performance optimieren →</a>
+                      </span>
+                    )}
+                    {service.id === 'seo' && (
+                      <span className="block mt-2">
+                        <a href="/seo-audit" className="text-green-600 hover:text-green-700 underline">Kostenlose SEO-Analyse →</a>
+                      </span>
+                    )}
+                    {service.id === 'marketing' && (
+                      <span className="block mt-2">
+                        <a href="/services/webdesign" className="text-blue-600 hover:text-blue-700 underline">Webdesign für Marketing →</a>
+                      </span>
+                    )}
+                    {service.id === 'hosting' && (
+                      <span className="block mt-2">
+                        <a href="/services/performance" className="text-orange-600 hover:text-orange-700 underline">Performance & Hosting →</a>
+                      </span>
+                    )}
                   </p>
                   
                   <ul className="space-y-3">
