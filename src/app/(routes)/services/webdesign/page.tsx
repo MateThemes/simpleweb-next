@@ -6,11 +6,11 @@ import { PaletteIcon, CheckIcon } from '@/components/icons'
 import { PriceCard } from '@/components/ui/PriceCard'
 
 export const metadata: Metadata = {
-  title: 'Webdesign Agentur Niederösterreich | Responsive Websites & UI/UX Design',
-  description: 'Professionelles Webdesign in Niederösterreich. Responsive Websites, moderne UI/UX und Conversion-optimiertes Design. Starter-Pakete ab 1.490€.',
+  title: 'Webdesign Agentur für KMU | Responsive Websites & UI/UX Design Österreich & Deutschland',
+  description: 'Professionelles Webdesign für KMU in Österreich & Deutschland. Responsive Websites, moderne UI/UX und Conversion-optimiertes Design. Starter-Pakete ab 1.490€.',
   openGraph: {
-    title: 'Webdesign Agentur Niederösterreich | Responsive Websites & UI/UX Design',
-    description: 'Professionelles Webdesign in Niederösterreich. Responsive Websites, moderne UI/UX und Conversion-optimiertes Design. Starter-Pakete ab 1.490€.',
+    title: 'Webdesign Agentur für KMU | Responsive Websites & UI/UX Design Österreich & Deutschland',
+    description: 'Professionelles Webdesign für KMU in Österreich & Deutschland. Responsive Websites, moderne UI/UX und Conversion-optimiertes Design. Starter-Pakete ab 1.490€.',
     url: 'https://simplewebdesign.at/services/webdesign',
     images: [
       {
@@ -23,8 +23,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Webdesign Agentur Niederösterreich | Responsive Websites & UI/UX Design',
-    description: 'Professionelles Webdesign in Niederösterreich. Responsive Websites, moderne UI/UX und Conversion-optimiertes Design.',
+    title: 'Webdesign Agentur für KMU | Responsive Websites & UI/UX Design Österreich & Deutschland',
+    description: 'Professionelles Webdesign für KMU in Österreich & Deutschland. Responsive Websites, moderne UI/UX und Conversion-optimiertes Design.',
     images: ['/img/services/webdesign.jpg']
   },
   alternates: {
@@ -221,10 +221,10 @@ export default function WebdesignPage() {
             <div className="lg:flex lg:items-center lg:gap-x-10">
               <div className="max-w-2xl lg:max-w-lg">
                 <h1 className="font-display text-5xl font-medium tracking-tight text-neutral-950 dark:text-white [text-wrap:balance] sm:text-7xl">
-                  Webdesign Agentur Niederösterreich
+                  Webdesign Agentur für KMU
                 </h1>
                 <p className="mt-6 text-xl text-neutral-600 dark:text-neutral-300">
-                  Professionelles Webdesign in Niederösterreich, das Ihre Zielgruppe begeistert und Ihre Geschäftsziele unterstützt. Responsive Websites mit modernem UI/UX Design. Starter-Pakete ab 1.490€.
+                  Professionelles Webdesign für KMU in Wien, München, Waldviertel und ganz Österreich & Deutschland. Responsive Websites mit modernem UI/UX Design. Starter-Pakete ab 1.490€.
                 </p>
                 <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-400">
                   Gemäß § 6 Abs. 1 Z 27 UStG wird keine Umsatzsteuer berechnet.
@@ -267,7 +267,7 @@ export default function WebdesignPage() {
                 Alles was Sie brauchen
               </h2>
               <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-300">
-                Von der ersten Konzeption bis zum fertigen Projekt - wir begleiten Sie durch den gesamten Webdesign-Prozess in Niederösterreich.
+                Von der ersten Konzeption bis zum fertigen Projekt - wir begleiten Sie durch den gesamten Webdesign-Prozess. Kombinieren Sie dies mit unserem <a href="/services/seo" className="text-blue-600 hover:text-blue-500 underline">SEO-Service</a> und <a href="/services/performance" className="text-blue-600 hover:text-blue-500 underline">Performance-Optimierung</a> für maximale Online-Sichtbarkeit.
               </p>
             </div>
             <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 sm:mt-20 lg:max-w-none lg:grid-cols-2">
@@ -383,7 +383,7 @@ export default function WebdesignPage() {
                     Ihre Vorteile
                   </h2>
                   <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-300">
-                    Mit unserem Webdesign-Service erhalten Sie eine maßgeschneiderte Lösung, die genau auf Ihre Bedürfnisse zugeschnitten ist. Kombinieren Sie dies mit unserem <a href="/services/seo" className="text-blue-600 hover:text-blue-500 underline">SEO-Service</a> und <a href="/services/marketing" className="text-blue-600 hover:text-blue-500 underline">Marketing-Service</a> für maximale Online-Sichtbarkeit.
+                    Mit unserem Webdesign-Service erhalten Sie eine maßgeschneiderte Lösung, die genau auf Ihre Bedürfnisse zugeschnitten ist. Kombinieren Sie dies mit unserem <a href="/services/seo" className="text-blue-600 hover:text-blue-500 underline">SEO-Service</a>, <a href="/services/marketing" className="text-blue-600 hover:text-blue-500 underline">Marketing-Service</a> und <a href="/services/performance" className="text-blue-600 hover:text-blue-500 underline">Performance-Optimierung</a> für maximale Online-Sichtbarkeit.
                   </p>
                 </div>
                 <div className="mt-16 grid grid-cols-1 gap-8 lg:grid-cols-2">

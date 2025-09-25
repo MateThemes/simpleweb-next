@@ -6,12 +6,12 @@ import { RocketIcon, CheckIcon } from '@/components/icons'
 import { serviceSchema } from '@/app/schema'
 
 export const metadata: Metadata = {
-  title: 'Website Performance Optimierung | Schnellere Websites | Shopify Performance',
-  description: 'Professionelle Website Performance Optimierung für alle Websites und Online-Shops. Spezielle Shopify Performance Optimierung, Core Web Vitals & PageSpeed für besseres Ranking.',
+  title: 'Website Performance Optimierung für KMU | Schnellere Websites | Shopify Performance Österreich & Deutschland',
+  description: 'Professionelle Website Performance Optimierung für KMU in Österreich & Deutschland. Spezielle Shopify Performance Optimierung, Core Web Vitals & PageSpeed für besseres Ranking.',
   keywords: 'Website Performance, Performance Optimierung, Core Web Vitals, PageSpeed, Shopify Performance, E-Commerce Performance, Website Speed, Performance Österreich, SEO Performance',
   openGraph: {
-    title: 'Website Performance Optimierung | Schnellere Websites | Shopify Performance',
-    description: 'Professionelle Website Performance Optimierung für alle Websites und Online-Shops. Spezielle Shopify Performance Optimierung, Core Web Vitals & PageSpeed für besseres Ranking.',
+    title: 'Website Performance Optimierung für KMU | Schnellere Websites | Shopify Performance Österreich & Deutschland',
+    description: 'Professionelle Website Performance Optimierung für KMU in Österreich & Deutschland. Spezielle Shopify Performance Optimierung, Core Web Vitals & PageSpeed für besseres Ranking.',
     url: 'https://simplewebdesign.at/services/performance',
     type: 'website',
     locale: 'de_AT',
@@ -26,8 +26,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Website Performance Optimierung | Schnellere Websites | Shopify Performance',
-    description: 'Professionelle Website Performance Optimierung für alle Websites und Online-Shops. Spezielle Shopify Performance Optimierung.',
+    title: 'Website Performance Optimierung für KMU | Schnellere Websites | Shopify Performance Österreich & Deutschland',
+    description: 'Professionelle Website Performance Optimierung für KMU in Österreich & Deutschland. Spezielle Shopify Performance Optimierung.',
     images: ['/img/services/performance.jpg']
   },
   alternates: {
@@ -96,10 +96,10 @@ export default function PerformancePage() {
             <div className="lg:flex lg:items-center lg:gap-x-10">
               <div className="max-w-2xl lg:max-w-lg">
                 <h1 className="font-display text-5xl font-medium tracking-tight text-neutral-950 dark:text-white [text-wrap:balance] sm:text-7xl">
-                  Performance & Speed
+                  Performance & Speed für KMU
                 </h1>
                 <p className="mt-6 text-xl text-neutral-600 dark:text-neutral-300">
-                  Optimieren Sie die Geschwindigkeit Ihrer Website für bessere Rankings und zufriedenere Besucher.
+                  Optimieren Sie die Geschwindigkeit Ihrer Website in Wien, München, Waldviertel und ganz Österreich & Deutschland für bessere Rankings und zufriedenere Besucher.
                 </p>
                 <div className="mt-8 flex gap-4">
                   <Button href="/seo-audit">Performance Audit</Button>
@@ -137,7 +137,7 @@ export default function PerformancePage() {
                 Umfassende Optimierung
               </h2>
               <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-300">
-                Von Core Web Vitals bis zur Server-Optimierung - wir machen Ihre Website spürbar schneller.
+                Von Core Web Vitals bis zur Server-Optimierung - wir machen Ihre Website spürbar schneller. Kombinieren Sie dies mit unserem <a href="/services/seo" className="text-orange-600 hover:text-orange-500 underline">SEO-Service</a> und <a href="/services/webdesign" className="text-orange-600 hover:text-orange-500 underline">Webdesign</a> für maximale Online-Performance.
               </p>
             </div>
             <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 sm:mt-20 lg:max-w-none lg:grid-cols-2">

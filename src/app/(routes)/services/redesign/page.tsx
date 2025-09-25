@@ -7,11 +7,11 @@ import { serviceSchema } from '@/app/schema'
 import { PriceCard } from '@/components/ui/PriceCard'
 
 export const metadata: Metadata = {
-  title: 'Website Redesign | Moderne Website Neugestaltung',
-  description: 'Professionelles Website Redesign für einen modernen, benutzerfreundlichen Webauftritt. Wir modernisieren Ihre Website mit aktuellem Design und Technologie.',
+  title: 'Website Redesign für KMU | Moderne Website Neugestaltung Österreich & Deutschland',
+  description: 'Professionelles Website Redesign für KMU in Österreich & Deutschland. Wir modernisieren Ihre Website mit aktuellem Design und Technologie für bessere Conversion.',
   openGraph: {
-    title: 'Website Redesign | Moderne Website Neugestaltung',
-    description: 'Professionelles Website Redesign für einen modernen, benutzerfreundlichen Webauftritt. Wir modernisieren Ihre Website mit aktuellem Design und Technologie.',
+    title: 'Website Redesign für KMU | Moderne Website Neugestaltung Österreich & Deutschland',
+    description: 'Professionelles Website Redesign für KMU in Österreich & Deutschland. Wir modernisieren Ihre Website mit aktuellem Design und Technologie für bessere Conversion.',
     url: 'https://simplewebdesign.at/services/redesign',
     images: [
       {
@@ -24,8 +24,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Website Redesign | Moderne Website Neugestaltung',
-    description: 'Professionelles Website Redesign für einen modernen, benutzerfreundlichen Webauftritt.',
+    title: 'Website Redesign für KMU | Moderne Website Neugestaltung Österreich & Deutschland',
+    description: 'Professionelles Website Redesign für KMU in Österreich & Deutschland. Wir modernisieren Ihre Website mit aktuellem Design und Technologie.',
     images: ['/img/services/redesign.jpg']
   },
   alternates: {
@@ -131,10 +131,10 @@ export default function RedesignPage() {
             <div className="lg:flex lg:items-center lg:gap-x-10">
               <div className="max-w-2xl lg:max-w-lg">
                 <h1 className="font-display text-5xl font-medium tracking-tight text-neutral-950 dark:text-white [text-wrap:balance] sm:text-7xl">
-                  Website Redesign
+                  Website Redesign für KMU
                 </h1>
                 <p className="mt-6 text-xl text-neutral-600 dark:text-neutral-300">
-                  Modernisieren Sie Ihren bestehenden Webauftritt und nutzen Sie die Chancen der Digitalisierung mit einem zeitgemäßen Design.
+                  Modernisieren Sie Ihren bestehenden Webauftritt in Wien, München, Waldviertel und ganz Österreich & Deutschland mit einem zeitgemäßen Design für bessere Conversion.
                 </p>
                 <div className="mt-8 flex gap-4">
                   <Button href="/kontakt">Redesign Beratung</Button>
@@ -172,7 +172,7 @@ export default function RedesignPage() {
                 Ihr Weg zum modernen Web
               </h2>
               <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-300">
-                Wir transformieren Ihre bestehende Website in einen zeitgemäßen und erfolgreichen Webauftritt.
+                Wir transformieren Ihre bestehende Website in einen zeitgemäßen und erfolgreichen Webauftritt. Kombinieren Sie dies mit unserem <a href="/services/seo" className="text-purple-600 hover:text-purple-500 underline">SEO-Service</a> und <a href="/services/performance" className="text-purple-600 hover:text-purple-500 underline">Performance-Optimierung</a> für maximale Online-Sichtbarkeit.
               </p>
             </div>
             <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 sm:mt-20 lg:max-w-none lg:grid-cols-2">
