@@ -69,6 +69,44 @@ async function saveAuditStorage(storage: Map<string, unknown>): Promise<void> {
   }
 }
 
+// Get all audit IDs from storage
+export async function getAllAuditIds(): Promise<string[]> {
+  const auditIds: string[] = [];
+  
+  try {
+    // Try Redis first
+    if (redis && redisAvailable) {
+      try {
+        const keys = await redis.keys('audit:*');
+        const ids = keys.map(key => key.replace('audit:', ''));
+        auditIds.push(...ids);
+        console.log(`[DEBUG] Found ${ids.length} audit IDs in Redis`);
+      } catch (error) {
+        console.log(`[DEBUG] Error getting Redis keys:`, error);
+      }
+    }
+    
+    // Try file storage
+    try {
+      const fileData = await loadAuditStorage();
+      const fileIds = Object.keys(fileData);
+      auditIds.push(...fileIds);
+      console.log(`[DEBUG] Found ${fileIds.length} audit IDs in file storage`);
+    } catch (error) {
+      console.log(`[DEBUG] Error loading file storage:`, error);
+    }
+    
+    // Remove duplicates and return
+    const uniqueIds = [...new Set(auditIds)];
+    console.log(`[DEBUG] Total unique audit IDs: ${uniqueIds.length}`);
+    return uniqueIds;
+    
+  } catch (error) {
+    console.error(`[DEBUG] Error getting all audit IDs:`, error);
+    return [];
+  }
+}
+
 export async function getAuditResult(auditId: string) {
   console.log(`[DEBUG] getAuditResult called for: ${auditId}`);
   console.log(`[DEBUG] Environment: ${process.env.NODE_ENV}`);

@@ -116,10 +116,6 @@ export default function AuditResult({
 
           <Section style={footer}>
             <Text style={footerText}>
-              <Link href="https://simplewebdesign.at/impressum" style={footerLink}>
-                Impressum
-              </Link>
-              {' • '}
               {shareableUrl && (
                 <>
                   <Link href={shareableUrl} style={footerLink}>
