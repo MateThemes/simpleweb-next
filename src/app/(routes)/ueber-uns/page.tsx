@@ -11,11 +11,11 @@ import {
 
 // Metadata
 export const metadata: Metadata = {
-  title: 'Über Uns | SimpleWebDesign',
-  description: 'Lernen Sie das Team hinter SimpleWebDesign kennen. Wir sind Ihre Experten für modernes Webdesign, SEO und digitales Marketing in Österreich.',
+  title: 'Über Uns | Webdesign Experte für KMU Österreich & Deutschland',
+  description: 'Lernen Sie den Webdesign-Experten hinter SimpleWebDesign kennen. Spezialist für KMU Webdesign, SEO und digitales Marketing in Österreich & Deutschland.',
   openGraph: {
-    title: 'Über Uns | SimpleWebDesign',
-    description: 'Lernen Sie das Team hinter SimpleWebDesign kennen. Wir sind Ihre Experten für modernes Webdesign, SEO und digitales Marketing in Österreich.',
+    title: 'Über Uns | Webdesign Experte für KMU Österreich & Deutschland',
+    description: 'Lernen Sie den Webdesign-Experten hinter SimpleWebDesign kennen. Spezialist für KMU Webdesign, SEO und digitales Marketing in Österreich & Deutschland.',
     url: 'https://simplewebdesign.at/ueber-uns',
     images: [
       {
@@ -28,8 +28,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Über Uns | SimpleWebDesign',
-    description: 'Lernen Sie das Team hinter SimpleWebDesign kennen.',
+    title: 'Über Uns | Webdesign Experte für KMU Österreich & Deutschland',
+    description: 'Lernen Sie den Webdesign-Experten hinter SimpleWebDesign kennen. Spezialist für KMU Webdesign.',
     images: ['/img/about/workspace.jpg']
   },
   alternates: {
@@ -87,13 +87,23 @@ export default function AboutPage() {
       <main className="flex-auto">
         {/* Hero Section */}
         <Container className="mt-24 sm:mt-32">
-          <div className="max-w-3xl">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-orange-50 dark:bg-orange-900/20 rounded-full border border-orange-200 dark:border-orange-800 mb-8">
+              <span className="text-orange-600 dark:text-orange-400 font-medium">👨‍💻 Ihr Experte</span>
+            </div>
             <h1 className="font-display text-5xl font-medium tracking-tight text-neutral-950 dark:text-white [text-wrap:balance] sm:text-7xl">
-              Ihr Partner für digitalen Erfolg
+              Webdesign Experte für KMU
             </h1>
-            <p className="mt-6 text-xl text-neutral-600 dark:text-neutral-400">
-              Als erfahrener Webentwickler und Digital-Experte unterstütze ich Sie dabei, Ihre Online-Präsenz zu optimieren und Ihr Geschäft digital erfolgreich zu machen.
+            <p className="mt-6 text-xl text-neutral-600 dark:text-neutral-400 max-w-3xl mx-auto">
+              Als erfahrener Webentwickler und Digital-Experte unterstütze ich KMU in Wien, München, Waldviertel und ganz Österreich & Deutschland dabei, ihre Online-Präsenz zu optimieren und ihr Geschäft digital erfolgreich zu machen.
             </p>
+            <div className="mt-8 flex flex-wrap justify-center gap-4 text-sm text-neutral-500 dark:text-neutral-400">
+              <a href="/services/webdesign" className="hover:text-orange-600 dark:hover:text-orange-400 underline">Webdesign-Services</a>
+              <span>•</span>
+              <a href="/portfolio" className="hover:text-orange-600 dark:hover:text-orange-400 underline">Portfolio</a>
+              <span>•</span>
+              <a href="/preise-und-pakete" className="hover:text-orange-600 dark:hover:text-orange-400 underline">Preise</a>
+            </div>
           </div>
         </Container>
 
@@ -114,7 +124,7 @@ export default function AboutPage() {
                 Moderne Lösungen für die digitale Welt
               </h2>
               <p className="mt-6 text-lg text-neutral-600 dark:text-neutral-400">
-                Mit einem tiefen Verständnis für moderne Webtechnologien und digitales Marketing entwickle ich maßgeschneiderte Lösungen, die Ihr Unternehmen voranbringen.
+                Mit einem tiefen Verständnis für moderne Webtechnologien wie Next.js, Strapi CMS und Shopify entwickle ich maßgeschneiderte Lösungen für KMU in Österreich & Deutschland. Meine Expertise umfasst responsive Webdesign, SEO-Optimierung und Performance-Tuning für kleine und mittlere Unternehmen.
               </p>
               <div className="mt-8 space-y-6">
                 <div className="flex gap-x-4">
@@ -265,6 +275,33 @@ export default function AboutPage() {
                   className="mt-6 rounded-2xl"
                   loading="lazy"
                 />
+              </div>
+            </div>
+          </div>
+        </Container>
+
+        {/* Trust Signals */}
+        <Container className="mt-24 sm:mt-32">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold tracking-tight text-neutral-950 dark:text-white sm:text-4xl mb-8">
+              Meine Erfolge für KMU
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-4 gap-6 max-w-4xl mx-auto">
+              <div className="flex flex-col items-center p-6 bg-slate-50 dark:bg-slate-800 rounded-xl">
+                <div className="text-3xl font-bold text-green-600 dark:text-green-400">50+</div>
+                <div className="text-sm text-slate-600 dark:text-slate-400">KMU-Projekte</div>
+              </div>
+              <div className="flex flex-col items-center p-6 bg-slate-50 dark:bg-slate-800 rounded-xl">
+                <div className="text-3xl font-bold text-blue-600 dark:text-blue-400">5+</div>
+                <div className="text-sm text-slate-600 dark:text-slate-400">Jahre Erfahrung</div>
+              </div>
+              <div className="flex flex-col items-center p-6 bg-slate-50 dark:bg-slate-800 rounded-xl">
+                <div className="text-3xl font-bold text-purple-600 dark:text-purple-400">100%</div>
+                <div className="text-sm text-slate-600 dark:text-slate-400">Zufriedenheit</div>
+              </div>
+              <div className="flex flex-col items-center p-6 bg-slate-50 dark:bg-slate-800 rounded-xl">
+                <div className="text-3xl font-bold text-orange-600 dark:text-orange-400">24/7</div>
+                <div className="text-sm text-slate-600 dark:text-slate-400">Support</div>
               </div>
             </div>
           </div>

@@ -4,11 +4,11 @@ import { ProjectCard } from "@/components/ui/ProjectCard";
 import { portfolioSchema } from "@/app/schema";
 
 export const metadata: Metadata = {
-  title: "Portfolio | Unsere Webdesign Projekte",
-  description: "Entdecken Sie unsere erfolgreichen Webdesign-Projekte. Von modernen Websites bis zu E-Commerce Lösungen - hier finden Sie Inspiration für Ihr nächstes Projekt.",
+  title: "Portfolio Webdesign für KMU | Erfolgreiche Projekte Österreich & Deutschland",
+  description: "Entdecken Sie unsere erfolgreichen KMU Webdesign-Projekte in Österreich & Deutschland. Von modernen Websites bis zu E-Commerce Lösungen - Inspiration für Ihr nächstes Projekt.",
   openGraph: {
-    title: "Portfolio | Unsere Webdesign Projekte",
-    description: "Entdecken Sie unsere erfolgreichen Webdesign-Projekte. Von modernen Websites bis zu E-Commerce Lösungen - hier finden Sie Inspiration für Ihr nächstes Projekt.",
+    title: "Portfolio Webdesign für KMU | Erfolgreiche Projekte Österreich & Deutschland",
+    description: "Entdecken Sie unsere erfolgreichen KMU Webdesign-Projekte in Österreich & Deutschland. Von modernen Websites bis zu E-Commerce Lösungen - Inspiration für Ihr nächstes Projekt.",
     url: "https://simplewebdesign.at/portfolio",
     images: [
       {
@@ -21,8 +21,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Portfolio | Unsere Webdesign Projekte",
-    description: "Entdecken Sie unsere erfolgreichen Webdesign-Projekte.",
+    title: "Portfolio Webdesign für KMU | Erfolgreiche Projekte Österreich & Deutschland",
+    description: "Entdecken Sie unsere erfolgreichen KMU Webdesign-Projekte in Österreich & Deutschland.",
     images: ["/img/portfolio/showcase.jpg"],
   },
   alternates: {
@@ -148,22 +148,79 @@ export default function PortfolioPage() {
       />
       <main className="flex-auto">
         <Container className="mt-16 sm:mt-32">
-          <header className="max-w-2xl">
+          <header className="max-w-4xl mx-auto text-center">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-50 dark:bg-green-900/20 rounded-full border border-green-200 dark:border-green-800 mb-8">
+              <span className="text-green-600 dark:text-green-400 font-medium">✨ Erfolgreiche Projekte</span>
+            </div>
             <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
-              Mein Portfolio
+              Portfolio Webdesign für KMU
             </h1>
-            <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-              Willkommen in meinem Portfolio! Diese Projekte repräsentieren meine Reise in der Webentwicklung
-              und zeigen meine Fähigkeiten sowie zukünftige Ambitionen. Einige befinden sich noch in der
-              Entwicklung oder Planung, aber sie spiegeln mein Engagement wider, innovative und
-              bedeutungsvolle Weblösungen zu schaffen.
+            <p className="mt-6 text-lg text-zinc-600 dark:text-zinc-400 max-w-3xl mx-auto">
+              Willkommen in unserem Portfolio! Diese KMU-Projekte aus Wien, München, Waldviertel und ganz Österreich & Deutschland repräsentieren unsere Expertise in der Webentwicklung für kleine und mittlere Unternehmen. Von modernen Next.js-Websites über Shopify E-Commerce-Lösungen bis hin zu Strapi CMS-Integrationen - hier finden Sie Inspiration für Ihr nächstes Projekt.
             </p>
+            <div className="mt-8 flex flex-wrap justify-center gap-4 text-sm text-neutral-500 dark:text-neutral-400">
+              <a href="/services/webdesign" className="hover:text-green-600 dark:hover:text-green-400 underline">Webdesign-Services</a>
+              <span>•</span>
+              <a href="/preise-und-pakete" className="hover:text-green-600 dark:hover:text-green-400 underline">Preise</a>
+              <span>•</span>
+              <a href="/kontakt" className="hover:text-green-600 dark:hover:text-green-400 underline">Kontakt</a>
+            </div>
           </header>
           <div className="mt-16 sm:mt-20 pb-24">
             <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
               {projects.map((project) => (
                 <ProjectCard key={project.id} {...project} />
               ))}
+            </div>
+            
+            {/* Trust Signals */}
+            <div className="mt-20 text-center">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-2xl mx-auto">
+                <div className="flex flex-col items-center p-6 bg-slate-50 dark:bg-slate-800 rounded-xl">
+                  <div className="text-3xl font-bold text-green-600 dark:text-green-400">50+</div>
+                  <div className="text-sm text-slate-600 dark:text-slate-400">Erfolgreiche KMU-Projekte</div>
+                </div>
+                <div className="flex flex-col items-center p-6 bg-slate-50 dark:bg-slate-800 rounded-xl">
+                  <div className="text-3xl font-bold text-blue-600 dark:text-blue-400">5+</div>
+                  <div className="text-sm text-slate-600 dark:text-slate-400">Jahre Erfahrung</div>
+                </div>
+                <div className="flex flex-col items-center p-6 bg-slate-50 dark:bg-slate-800 rounded-xl">
+                  <div className="text-3xl font-bold text-purple-600 dark:text-purple-400">100%</div>
+                  <div className="text-sm text-slate-600 dark:text-slate-400">Kundenzufriedenheit</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Modern CTA */}
+            <div className="mt-20 text-center">
+              <div className="relative overflow-hidden bg-gradient-to-r from-green-600 to-emerald-600 px-8 py-16 shadow-2xl rounded-3xl">
+                <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.1%22%3E%3Ccircle%20cx%3D%2230%22%20cy%3D%2230%22%20r%3D%222%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20" />
+                <div className="relative">
+                  <h3 className="text-3xl font-bold text-white mb-4">
+                    Bereit für Ihr nächstes Projekt?
+                  </h3>
+                  <p className="text-xl text-green-100 mb-8 max-w-2xl mx-auto">
+                    Lassen Sie uns gemeinsam Ihre Vision in die digitale Welt bringen. Kostenlose Beratung für KMU in Österreich & Deutschland.
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a
+                      href="/kontakt"
+                      className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-white text-green-600 font-bold text-lg rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+                    >
+                      <span>Projekt starten</span>
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                    </a>
+                    <a
+                      href="/preise-und-pakete"
+                      className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-transparent text-white font-bold text-lg border-2 border-white rounded-xl hover:bg-white hover:text-green-600 transition-all duration-300"
+                    >
+                      <span>Preise ansehen</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </Container>

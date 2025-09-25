@@ -93,10 +93,10 @@ export default function SeoAuditPage() {
     <Container size="small" className="py-16">
       <div className="text-center mb-12">
         <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-          Kostenloses SEO-Audit
+          Kostenloses SEO-Audit für KMU
         </h1>
         <p className="text-xl text-gray-600 dark:text-gray-300">
-          Sofort-Analyse für Performance, On-Page & Indexierbarkeit.
+          Sofort-Analyse für Performance, On-Page & Indexierbarkeit. Speziell für KMU in Österreich & Deutschland optimiert.
         </p>
       </div>
 

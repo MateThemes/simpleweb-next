@@ -4,11 +4,11 @@ import { ContactForm } from '@/components/ui/ContactForm'
 import { contactSchema } from '@/app/schema'
 
 export const metadata: Metadata = {
-  title: 'Kontakt | Webdesign Anfrage',
-  description: 'Kontaktieren Sie uns für Ihr Webdesign-Projekt. Wir beraten Sie gerne und erstellen ein individuelles Angebot.',
+  title: 'Kontakt für KMU Webdesign | Beratung Österreich & Deutschland',
+  description: 'Kontaktieren Sie uns für Ihr KMU Webdesign-Projekt in Österreich & Deutschland. Kostenlose Beratung und individuelles Angebot für kleine und mittlere Unternehmen.',
   openGraph: {
-    title: 'Kontakt | Webdesign Anfrage',
-    description: 'Kontaktieren Sie uns für Ihr Webdesign-Projekt. Wir beraten Sie gerne und erstellen ein individuelles Angebot.',
+    title: 'Kontakt für KMU Webdesign | Beratung Österreich & Deutschland',
+    description: 'Kontaktieren Sie uns für Ihr KMU Webdesign-Projekt in Österreich & Deutschland. Kostenlose Beratung und individuelles Angebot für kleine und mittlere Unternehmen.',
     url: 'https://simplewebdesign.at/kontakt',
     images: [
       {
@@ -21,8 +21,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Kontakt | Webdesign Anfrage',
-    description: 'Kontaktieren Sie uns für Ihr Webdesign-Projekt.',
+    title: 'Kontakt für KMU Webdesign | Beratung Österreich & Deutschland',
+    description: 'Kontaktieren Sie uns für Ihr KMU Webdesign-Projekt in Österreich & Deutschland.',
     images: ['/img/contact/office.jpg']
   },
   alternates: {
@@ -55,13 +55,23 @@ export default function ContactPage() {
       />
       <main className="flex-auto">
         <Container className="mt-24 sm:mt-32">
-          <div className="max-w-3xl mx-auto">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 dark:bg-blue-900/20 rounded-full border border-blue-200 dark:border-blue-800 mb-8">
+              <span className="text-blue-600 dark:text-blue-400 font-medium">📞 Kostenlose Beratung</span>
+            </div>
             <h1 className="font-display text-5xl font-medium tracking-tight text-neutral-950 dark:text-white [text-wrap:balance] sm:text-7xl">
-              Kontaktieren Sie uns
+              Kontakt für KMU Webdesign
             </h1>
-            <p className="mt-6 text-xl text-neutral-600 dark:text-neutral-400">
-              Erzählen Sie uns von Ihrem Projekt. Wir freuen uns darauf, Ihre Vision kennenzulernen und gemeinsam die beste Lösung zu entwickeln.
+            <p className="mt-6 text-xl text-neutral-600 dark:text-neutral-400 max-w-3xl mx-auto">
+              Erzählen Sie uns von Ihrem KMU-Projekt in Wien, München, Waldviertel oder ganz Österreich & Deutschland. Wir freuen uns darauf, Ihre Vision kennenzulernen und gemeinsam die beste Webdesign-Lösung zu entwickeln.
             </p>
+            <div className="mt-8 flex flex-wrap justify-center gap-4 text-sm text-neutral-500 dark:text-neutral-400">
+              <a href="/services/webdesign" className="hover:text-blue-600 dark:hover:text-blue-400 underline">Webdesign-Services</a>
+              <span>•</span>
+              <a href="/preise-und-pakete" className="hover:text-blue-600 dark:hover:text-blue-400 underline">Preise</a>
+              <span>•</span>
+              <a href="/portfolio" className="hover:text-blue-600 dark:hover:text-blue-400 underline">Portfolio</a>
+            </div>
           </div>
         </Container>
 

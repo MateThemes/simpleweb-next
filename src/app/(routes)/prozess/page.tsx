@@ -5,11 +5,11 @@ import { Container } from '@/components/ui/Container'
 import { processSchema } from '@/app/schema'
 
 export const metadata: Metadata = {
-  title: 'Unser Prozess | Webdesign Workflow',
-  description: 'Erfahren Sie mehr über unseren bewährten Webdesign-Prozess. Von der ersten Konzeption bis zum Launch Ihrer Website - transparent und effizient.',
+  title: 'Unser Prozess | KMU Webdesign Workflow Österreich & Deutschland',
+  description: 'Erfahren Sie mehr über unseren bewährten KMU Webdesign-Prozess. Von der ersten Konzeption bis zum Launch Ihrer Website - transparent und effizient für kleine und mittlere Unternehmen.',
   openGraph: {
-    title: 'Unser Prozess | Webdesign Workflow',
-    description: 'Erfahren Sie mehr über unseren bewährten Webdesign-Prozess. Von der ersten Konzeption bis zum Launch Ihrer Website - transparent und effizient.',
+    title: 'Unser Prozess | KMU Webdesign Workflow Österreich & Deutschland',
+    description: 'Erfahren Sie mehr über unseren bewährten KMU Webdesign-Prozess. Von der ersten Konzeption bis zum Launch Ihrer Website - transparent und effizient für kleine und mittlere Unternehmen.',
     url: 'https://simplewebdesign.at/prozess',
     images: [
       {
@@ -22,8 +22,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Unser Prozess | Webdesign Workflow',
-    description: 'Erfahren Sie mehr über unseren bewährten Webdesign-Prozess.',
+    title: 'Unser Prozess | KMU Webdesign Workflow Österreich & Deutschland',
+    description: 'Erfahren Sie mehr über unseren bewährten KMU Webdesign-Prozess für kleine und mittlere Unternehmen.',
     images: ['/img/process/workflow.jpg']
   },
   alternates: {
@@ -73,13 +73,23 @@ export default function ProcessPage() {
       <main className="flex-auto">
         {/* Hero Section */}
         <Container className="mt-24 sm:mt-32">
-          <div className="max-w-3xl">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 dark:bg-teal-900/20 rounded-full border border-teal-200 dark:border-teal-800 mb-8">
+              <span className="text-teal-600 dark:text-teal-400 font-medium">🔄 Strukturierter Prozess</span>
+            </div>
             <h1 className="font-display text-5xl font-medium tracking-tight text-neutral-950 dark:text-white [text-wrap:balance] sm:text-7xl">
-              Unser Prozess
+              Unser KMU Webdesign-Prozess
             </h1>
-            <p className="mt-6 text-xl text-neutral-600 dark:text-neutral-400">
-              Von der ersten Idee bis zum erfolgreichen Launch - wir begleiten Sie durch jeden Schritt.
+            <p className="mt-6 text-xl text-neutral-600 dark:text-neutral-400 max-w-3xl mx-auto">
+              Von der ersten Idee bis zum erfolgreichen Launch - wir begleiten KMU in Österreich & Deutschland durch jeden Schritt des Webdesign-Prozesses. Mit modernen Technologien wie Next.js, Strapi CMS und Shopify entwickeln wir maßgeschneiderte Lösungen für kleine und mittlere Unternehmen.
             </p>
+            <div className="mt-8 flex flex-wrap justify-center gap-4 text-sm text-neutral-500 dark:text-neutral-400">
+              <a href="/services/webdesign" className="hover:text-teal-600 dark:hover:text-teal-400 underline">Webdesign-Services</a>
+              <span>•</span>
+              <a href="/preise-und-pakete" className="hover:text-teal-600 dark:hover:text-teal-400 underline">Preise</a>
+              <span>•</span>
+              <a href="/portfolio" className="hover:text-teal-600 dark:hover:text-teal-400 underline">Portfolio</a>
+            </div>
           </div>
         </Container>
 
@@ -140,6 +150,24 @@ export default function ProcessPage() {
                 <span>Termingerechte Fertigstellung Ihres Projekts</span>
               </li>
             </ul>
+          </div>
+          
+          {/* Trust Signals */}
+          <div className="mt-20 text-center">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-2xl mx-auto">
+              <div className="flex flex-col items-center p-6 bg-slate-50 dark:bg-slate-800 rounded-xl">
+                <div className="text-3xl font-bold text-green-600 dark:text-green-400">50+</div>
+                <div className="text-sm text-slate-600 dark:text-slate-400">KMU-Projekte</div>
+              </div>
+              <div className="flex flex-col items-center p-6 bg-slate-50 dark:bg-slate-800 rounded-xl">
+                <div className="text-3xl font-bold text-blue-600 dark:text-blue-400">5+</div>
+                <div className="text-sm text-slate-600 dark:text-slate-400">Jahre Erfahrung</div>
+              </div>
+              <div className="flex flex-col items-center p-6 bg-slate-50 dark:bg-slate-800 rounded-xl">
+                <div className="text-3xl font-bold text-purple-600 dark:text-purple-400">100%</div>
+                <div className="text-sm text-slate-600 dark:text-slate-400">Zufriedenheit</div>
+              </div>
+            </div>
           </div>
         </Container>
       </main>
