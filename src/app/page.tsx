@@ -6,7 +6,7 @@ import Features from '@/components/sections/Features'
 import Process from '@/components/sections/Process'
 import WorkingPrinciples from '@/components/sections/WorkingPrinciples'
 import Faq from '@/components/sections/Faq'
-import Cta from '@/components/sections/Cta'
+import CtaV1 from '@/components/sections/CtaV1'
 
 export const metadata: Metadata = {
   title: 'Das perfekte Design für deine Webseite',
@@ -185,7 +185,7 @@ export default function Home() {
         <Process />
         <WorkingPrinciples />
         <Faq />
-        <Cta />
+        <CtaV1 />
       </div>
     </div>
   )
