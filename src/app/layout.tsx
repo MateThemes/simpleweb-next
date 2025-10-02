@@ -4,7 +4,6 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { CookieConsent } from "@/components/cookie/CookieConsent";
 import { CookieSettingsButton } from "@/components/cookie/CookieSettingsButton";
-import { GoogleTagManagerLazy } from "@/components/analytics/GoogleTagManagerLazy";
 import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
 import { getCanonicalMetadata } from "@/lib/canonical";
@@ -60,7 +59,19 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        {/* Google Tag Manager (noscript) - for better tracking when JavaScript is disabled */}
+        {/* Google Tag Manager */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+              })(window,document,'script','dataLayer','GTM-TNK6X4Q5');
+            `,
+          }}
+        />
+        {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe 
             src="https://www.googletagmanager.com/ns.html?id=GTM-TNK6X4Q5"
@@ -71,7 +82,6 @@ export default function RootLayout({
         </noscript>
       </head>
       <body className="flex min-h-screen flex-col bg-white dark:bg-gray-950">
-        <GoogleTagManagerLazy />
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Header />
           <main className="flex-1">
