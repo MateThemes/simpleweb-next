@@ -17,6 +17,10 @@ export function CookiePreferences({ open, onClose }: CookiePreferencesProps) {
   const handleSave = () => {
     setCookiePreferences(preferences)
     onClose()
+    // Dispatch custom event to notify other components
+    window.dispatchEvent(new CustomEvent('cookieConsentUpdated', {
+      detail: { analytics: preferences.analytics, marketing: preferences.marketing }
+    }))
   }
 
   return (

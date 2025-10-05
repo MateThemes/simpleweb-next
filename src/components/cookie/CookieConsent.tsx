@@ -36,6 +36,10 @@ export function CookieConsent() {
       marketing: true,
     })
     setShowBanner(false)
+    // Dispatch custom event to notify other components
+    window.dispatchEvent(new CustomEvent('cookieConsentUpdated', {
+      detail: { analytics: true, marketing: true }
+    }))
   }
 
   const handleAcceptNecessary = () => {
@@ -44,6 +48,10 @@ export function CookieConsent() {
       marketing: false,
     })
     setShowBanner(false)
+    // Dispatch custom event to notify other components
+    window.dispatchEvent(new CustomEvent('cookieConsentUpdated', {
+      detail: { analytics: false, marketing: false }
+    }))
   }
 
   const handleShowPreferences = () => {

@@ -4,7 +4,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { CookieConsent } from "@/components/cookie/CookieConsent";
 import { CookieSettingsButton } from "@/components/cookie/CookieSettingsButton";
-import { Analytics } from "@vercel/analytics/react";
+import { GoogleTagManager } from "@/components/analytics/GoogleTagManager";
 import type { Metadata } from "next";
 import { getCanonicalMetadata } from "@/lib/canonical";
 import "./globals.css";
@@ -62,27 +62,22 @@ export default function RootLayout({
         {/* Google Site Verification */}
         <meta name="google-site-verification" content="DF5fLBHgCmP3fGWh_C86kV5DWFzFRBwm2xZadx2om9k" />
         
-        {/* Google Tag Manager */}
+        {/* Consent Mode 2 Default Initialization */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
-              (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-              })(window,document,'script','dataLayer','GTM-TNK6X4Q5');
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('consent', 'default', {
+                'analytics_storage': 'denied',
+                'ad_storage': 'denied',
+                'ad_user_data': 'denied',
+                'ad_personalization': 'denied',
+                'wait_for_update': 2000
+              });
             `,
           }}
         />
-        {/* Google Tag Manager (noscript) */}
-        <noscript>
-          <iframe 
-            src="https://www.googletagmanager.com/ns.html?id=GTM-TNK6X4Q5"
-            height="0" 
-            width="0" 
-            style={{ display: 'none', visibility: 'hidden' }}
-          />
-        </noscript>
       </head>
       <body className="flex min-h-screen flex-col bg-white dark:bg-gray-950">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
@@ -93,7 +88,7 @@ export default function RootLayout({
           <Footer />
           <CookieConsent />
           <CookieSettingsButton />
-          <Analytics />
+          <GoogleTagManager />
         </ThemeProvider>
       </body>
     </html>

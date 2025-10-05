@@ -3,7 +3,7 @@
 import Script from 'next/script'
 import { useEffect } from 'react'
 import { usePathname } from 'next/navigation'
-import { getCookiePreferences } from '../cookie/CookieStore'
+import { getCookiePreferences, defaultPreferences } from '../cookie/CookieStore'
 import type { ConsentEvent, GTMEvent } from '@/types/gtm'
 
 const GTM_ID = 'GTM-TNK6X4Q5'
@@ -18,15 +18,37 @@ export function GoogleTagManager() {
     // Get current cookie preferences
     const preferences = getCookiePreferences()
     
-    // Push consent event based on current preferences
-    const consentEvent: ConsentEvent = {
-      consent: 'default',
-      analytics_storage: preferences.analytics ? 'granted' : 'denied',
-      ad_storage: preferences.marketing ? 'granted' : 'denied',
-      ad_user_data: preferences.marketing ? 'granted' : 'denied',
-      ad_personalization: preferences.marketing ? 'granted' : 'denied'
+    // Push consent update event based on current preferences
+    // This will only be called if user has already made a choice
+    if (preferences.lastUpdated !== defaultPreferences.lastUpdated) {
+      const consentEvent: ConsentEvent = {
+        consent: 'update',
+        analytics_storage: preferences.analytics ? 'granted' : 'denied',
+        ad_storage: preferences.marketing ? 'granted' : 'denied',
+        ad_user_data: preferences.marketing ? 'granted' : 'denied',
+        ad_personalization: preferences.marketing ? 'granted' : 'denied'
+      }
+      window.dataLayer.push(consentEvent)
     }
-    window.dataLayer.push(consentEvent)
+
+    // Listen for cookie consent updates
+    const handleCookieConsentUpdate = (event: CustomEvent) => {
+      const { analytics, marketing } = event.detail
+      const consentEvent: ConsentEvent = {
+        consent: 'update',
+        analytics_storage: analytics ? 'granted' : 'denied',
+        ad_storage: marketing ? 'granted' : 'denied',
+        ad_user_data: marketing ? 'granted' : 'denied',
+        ad_personalization: marketing ? 'granted' : 'denied'
+      }
+      window.dataLayer.push(consentEvent)
+    }
+
+    window.addEventListener('cookieConsentUpdated', handleCookieConsentUpdate as EventListener)
+
+    return () => {
+      window.removeEventListener('cookieConsentUpdated', handleCookieConsentUpdate as EventListener)
+    }
   }, [])
 
   // Track page views for GA4

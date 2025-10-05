@@ -81,6 +81,7 @@ type GTMEvent = {
 declare global {
   interface Window {
     dataLayer: GTMEvent[];
+    gtag: (...args: any[]) => void;
   }
 }
 
@@ -94,6 +95,16 @@ function enableAnalytics() {
     ad_personalization: 'denied'
   }
   window.dataLayer.push(consentEvent)
+  
+  // Also push gtag consent update for GA4
+  if (typeof window !== 'undefined' && window.gtag) {
+    window.gtag('consent', 'update', {
+      'analytics_storage': 'granted',
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied'
+    })
+  }
 }
 
 function disableAnalytics() {
@@ -106,6 +117,17 @@ function disableAnalytics() {
     ad_personalization: 'denied'
   }
   window.dataLayer.push(consentEvent)
+  
+  // Also push gtag consent update for GA4
+  if (typeof window !== 'undefined' && window.gtag) {
+    window.gtag('consent', 'update', {
+      'analytics_storage': 'denied',
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied'
+    })
+  }
+  
   // Remove analytics cookies
   Cookies.remove('_ga', { path: '/' })
   Cookies.remove('_gid', { path: '/' })
@@ -122,6 +144,16 @@ function enableMarketing() {
     ad_personalization: 'granted'
   }
   window.dataLayer.push(consentEvent)
+  
+  // Also push gtag consent update for GA4
+  if (typeof window !== 'undefined' && window.gtag) {
+    window.gtag('consent', 'update', {
+      'analytics_storage': 'granted',
+      'ad_storage': 'granted',
+      'ad_user_data': 'granted',
+      'ad_personalization': 'granted'
+    })
+  }
 }
 
 function disableMarketing() {
@@ -134,6 +166,17 @@ function disableMarketing() {
     ad_personalization: 'denied'
   }
   window.dataLayer.push(consentEvent)
+  
+  // Also push gtag consent update for GA4
+  if (typeof window !== 'undefined' && window.gtag) {
+    window.gtag('consent', 'update', {
+      'analytics_storage': 'denied',
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied'
+    })
+  }
+  
   // Remove marketing cookies
   Cookies.remove('_gcl_au', { path: '/' })
   Cookies.remove('_gac_', { path: '/' })
