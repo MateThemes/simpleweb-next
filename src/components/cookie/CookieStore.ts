@@ -78,10 +78,17 @@ type GTMEvent = {
   event?: string;
 } | ConsentEvent
 
+type ConsentConfig = {
+  analytics_storage: 'granted' | 'denied';
+  ad_storage: 'granted' | 'denied';
+  ad_user_data: 'granted' | 'denied';
+  ad_personalization: 'granted' | 'denied';
+}
+
 declare global {
   interface Window {
     dataLayer: GTMEvent[];
-    gtag: (...args: any[]) => void;
+    gtag: (command: 'consent', action: 'default' | 'update', config?: ConsentConfig) => void;
   }
 }
 
@@ -99,10 +106,10 @@ function enableAnalytics() {
   // Also push gtag consent update for GA4
   if (typeof window !== 'undefined' && window.gtag) {
     window.gtag('consent', 'update', {
-      'analytics_storage': 'granted',
-      'ad_storage': 'denied',
-      'ad_user_data': 'denied',
-      'ad_personalization': 'denied'
+      analytics_storage: 'granted',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied'
     })
   }
 }
@@ -121,10 +128,10 @@ function disableAnalytics() {
   // Also push gtag consent update for GA4
   if (typeof window !== 'undefined' && window.gtag) {
     window.gtag('consent', 'update', {
-      'analytics_storage': 'denied',
-      'ad_storage': 'denied',
-      'ad_user_data': 'denied',
-      'ad_personalization': 'denied'
+      analytics_storage: 'denied',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied'
     })
   }
   
@@ -148,10 +155,10 @@ function enableMarketing() {
   // Also push gtag consent update for GA4
   if (typeof window !== 'undefined' && window.gtag) {
     window.gtag('consent', 'update', {
-      'analytics_storage': 'granted',
-      'ad_storage': 'granted',
-      'ad_user_data': 'granted',
-      'ad_personalization': 'granted'
+      analytics_storage: 'granted',
+      ad_storage: 'granted',
+      ad_user_data: 'granted',
+      ad_personalization: 'granted'
     })
   }
 }
@@ -170,10 +177,10 @@ function disableMarketing() {
   // Also push gtag consent update for GA4
   if (typeof window !== 'undefined' && window.gtag) {
     window.gtag('consent', 'update', {
-      'analytics_storage': 'denied',
-      'ad_storage': 'denied',
-      'ad_user_data': 'denied',
-      'ad_personalization': 'denied'
+      analytics_storage: 'denied',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied'
     })
   }
   
