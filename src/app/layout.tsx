@@ -24,7 +24,7 @@ const outfit = Outfit({
 export const metadata: Metadata = {
   // CHANGE: Define metadataBase so Next.js can resolve relative Open Graph/Twitter image URLs without warnings.
   // Uses NEXT_PUBLIC_SITE_URL in production, with a sensible localhost fallback for development.
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://simplewebdesign.at'),
   title: "SimpleWebDesign | Professional Web Design and Development",
   description: "Professional Web Design and Development Services in Deutschland. Wir erstellen moderne, performante und SEO-optimierte Websites.",
   alternates: {
