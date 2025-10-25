@@ -140,6 +140,7 @@ export default function Services() {
                     fill
                     sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                     className="object-cover transform group-hover:scale-105 transition-transform duration-300"
+                    quality={60}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                   <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
