@@ -90,7 +90,7 @@ export function getDublinCoreMetadata(metadata: Partial<DublinCoreMetadata>): Re
     type: metadata.type || 'Text',
     identifier: metadata.identifier || 'https://simplewebdesign.at',
     language: metadata.language || 'de',
-    creator: metadata.creator || 'Gerald Böhm',
+    creator: metadata.creator || 'Gerald Schandl',
     publisher: metadata.publisher || 'SimpleWebDesign',
     rights: metadata.rights || '© SimpleWebDesign. Alle Rechte vorbehalten.',
     ...metadata
@@ -156,7 +156,7 @@ export function getServicePageDC(params: {
     type: DublinCoreTypes.SERVICE,
     identifier: params.url,
     language: 'de',
-    creator: 'Gerald Böhm',
+    creator: 'Gerald Schandl',
     publisher: 'SimpleWebDesign',
     rights: '© SimpleWebDesign. Alle Rechte vorbehalten.',
   });
@@ -176,7 +176,7 @@ export function getWebPageDC(params: {
     type: DublinCoreTypes.TEXT,
     identifier: params.url,
     language: 'de',
-    creator: 'Gerald Böhm',
+    creator: 'Gerald Schandl',
     publisher: 'SimpleWebDesign',
     rights: '© SimpleWebDesign. Alle Rechte vorbehalten.',
   });

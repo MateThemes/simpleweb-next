@@ -54,7 +54,7 @@ export const metadata: Metadata = {
       type: DublinCoreTypes.SERVICE,
       identifier: "https://simplewebdesign.at",
       language: "de",
-      creator: "Gerald Böhm",
+      creator: "Gerald Schandl",
       publisher: "SimpleWebDesign",
       subject: "Webdesign, SEO, Web Development, Online Marketing",
       coverage: "Austria, Germany",

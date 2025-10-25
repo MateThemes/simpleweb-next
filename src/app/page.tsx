@@ -36,6 +36,9 @@ const WebsiteSchema = {
   url: 'https://simplewebdesign.at',
   address: {
     '@type': 'PostalAddress',
+    streetAddress: 'Sonnleite 20',
+    addressLocality: 'Vitis',
+    postalCode: '3902',
     addressRegion: 'Niederösterreich',
     addressCountry: 'AT'
   },
@@ -60,6 +63,9 @@ const LocalBusinessSchema = {
   email: 'info@simplewebdesign.at',
   address: {
     '@type': 'PostalAddress',
+    streetAddress: 'Sonnleite 20',
+    addressLocality: 'Vitis',
+    postalCode: '3902',
     addressRegion: 'Niederösterreich',
     addressCountry: 'AT'
   },
@@ -136,6 +142,9 @@ const OrganizationSchema = {
   email: 'info@simplewebdesign.at',
   address: {
     '@type': 'PostalAddress',
+    streetAddress: 'Sonnleite 20',
+    addressLocality: 'Vitis',
+    postalCode: '3902',
     addressRegion: 'Niederösterreich',
     addressCountry: 'AT'
   },

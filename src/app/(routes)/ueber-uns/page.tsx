@@ -68,17 +68,17 @@ export default function AboutPage() {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(
             aboutSchema({
-              name: 'SimpleWeb Design',
+              name: 'SimpleWebDesign',
               description: 'Wir sind Ihre Experten für modernes Webdesign, SEO und digitales Marketing in Österreich.',
               image: '/img/about/workspace.jpg',
               foundingDate: '2020',
-              founders: ['Gerald Böhm'],
+              founders: ['Gerald Schandl'],
               address: {
-                streetAddress: 'Musterstraße 123',
-                addressLocality: 'München',
-                addressRegion: 'BY',
-                postalCode: '80331',
-                addressCountry: 'DE'
+                streetAddress: 'Sonnleite 20',
+                addressLocality: 'Vitis',
+                addressRegion: 'Niederösterreich',
+                postalCode: '3902',
+                addressCountry: 'AT'
               }
             })
           )
