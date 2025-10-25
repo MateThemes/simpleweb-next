@@ -3,6 +3,8 @@ import { Container } from '@/components/ui/Container';
 import { BlogCard } from '@/components/blog';
 import { PaginationControls } from '@/components/blog';
 import { getAllPosts } from '@/lib/mdx';
+import { breadcrumbSchema, webPageSchema } from '@/app/schema';
+import { getWebPageDC } from '@/lib/dublinCore';
 
 export const metadata: Metadata = {
   title: 'Blog Webdesign & SEO für KMU | Tipps Österreich & Deutschland | SimpleWebDesign',
@@ -20,6 +22,14 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: 'https://simplewebdesign.at/blog',
+  },
+  // Dublin Core Metadata
+  other: {
+    ...getWebPageDC({
+      title: 'Blog Webdesign & SEO für KMU | Tipps Österreich & Deutschland',
+      description: 'Aktuelle Artikel und Insights zu KMU Webdesign, SEO und Online Marketing.',
+      url: 'https://simplewebdesign.at/blog',
+    }),
   },
 }
 
@@ -41,8 +51,35 @@ export default async function BlogPage({
     currentPage * POSTS_PER_PAGE
   );
 
+  // Schema.org Structured Data
+  const schemas = [
+    // WebPage Schema
+    webPageSchema({
+      name: 'Blog Webdesign & SEO für KMU',
+      description: 'Aktuelle Artikel und Insights zu KMU Webdesign, SEO und Online Marketing in Österreich & Deutschland.',
+      url: 'https://simplewebdesign.at/blog',
+      image: 'https://simplewebdesign.at/img/og-image.jpg',
+    }),
+    // Breadcrumb Schema
+    breadcrumbSchema({
+      items: [
+        { name: 'Home', url: 'https://simplewebdesign.at' },
+        { name: 'Blog', url: 'https://simplewebdesign.at/blog' },
+      ],
+    }),
+  ];
+
   return (
     <main>
+      {/* Schema.org JSON-LD */}
+      {schemas.map((schema, index) => (
+        <script
+          key={index}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      ))}
+
       <Container className="mt-24 sm:mt-32 lg:mt-40 pb-16 sm:pb-24 lg:pb-32">
         <div className="mx-auto max-w-5xl">
           <header className="text-center">

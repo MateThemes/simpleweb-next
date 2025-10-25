@@ -203,3 +203,191 @@ export function contactSchema({ name, email, phone, address, openingHours, image
     }))
   };
 }
+
+// Article Schema for Blog Posts
+interface ArticleSchemaProps {
+  title: string;
+  description: string;
+  image: string;
+  datePublished: string;
+  dateModified?: string;
+  author: string;
+  url: string;
+  category?: string;
+}
+
+export function articleSchema({ 
+  title, 
+  description, 
+  image, 
+  datePublished, 
+  dateModified, 
+  author, 
+  url,
+  category 
+}: ArticleSchemaProps) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": title,
+    "description": description,
+    "image": image,
+    "datePublished": datePublished,
+    "dateModified": dateModified || datePublished,
+    "author": {
+      "@type": "Person",
+      "name": author
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "SimpleWebDesign",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://simplewebdesign.at/img/logo.png"
+      }
+    },
+    "url": url,
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": url
+    },
+    ...(category && {
+      "articleSection": category,
+      "keywords": category
+    })
+  };
+}
+
+// BreadcrumbList Schema
+interface BreadcrumbItem {
+  name: string;
+  url: string;
+}
+
+interface BreadcrumbSchemaProps {
+  items: BreadcrumbItem[];
+}
+
+export function breadcrumbSchema({ items }: BreadcrumbSchemaProps) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": items.map((item, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "name": item.name,
+      "item": item.url
+    }))
+  };
+}
+
+// FAQ Schema
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+interface FAQSchemaProps {
+  faqs: FAQItem[];
+}
+
+export function faqSchema({ faqs }: FAQSchemaProps) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  };
+}
+
+// WebPage Schema
+interface WebPageSchemaProps {
+  name: string;
+  description: string;
+  url: string;
+  image?: string;
+  datePublished?: string;
+  dateModified?: string;
+}
+
+export function webPageSchema({ 
+  name, 
+  description, 
+  url, 
+  image, 
+  datePublished, 
+  dateModified 
+}: WebPageSchemaProps) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": name,
+    "description": description,
+    "url": url,
+    ...(image && { "image": image }),
+    ...(datePublished && { "datePublished": datePublished }),
+    ...(dateModified && { "dateModified": dateModified }),
+    "publisher": {
+      "@type": "Organization",
+      "name": "SimpleWebDesign",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://simplewebdesign.at/img/logo.png"
+      }
+    }
+  };
+}
+
+// Professional Service Schema (erweitert für Dienstleistungen)
+interface ProfessionalServiceSchemaProps {
+  name: string;
+  description: string;
+  url: string;
+  image: string;
+  priceRange?: string;
+  areaServed?: string[];
+}
+
+export function professionalServiceSchema({ 
+  name, 
+  description, 
+  url, 
+  image, 
+  priceRange, 
+  areaServed 
+}: ProfessionalServiceSchemaProps) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": name,
+    "description": description,
+    "url": url,
+    "image": image,
+    ...(priceRange && { "priceRange": priceRange }),
+    "provider": {
+      "@type": "Organization",
+      "name": "SimpleWebDesign",
+      "url": "https://simplewebdesign.at",
+      "logo": "https://simplewebdesign.at/img/logo.png",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+43-664-518-26-96",
+        "contactType": "customer service",
+        "email": "info@simplewebdesign.at",
+        "availableLanguage": ["German", "English"]
+      }
+    },
+    ...(areaServed && {
+      "areaServed": areaServed.map(area => ({
+        "@type": "Country",
+        "name": area
+      }))
+    })
+  };
+}

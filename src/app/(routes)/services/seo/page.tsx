@@ -3,7 +3,8 @@ import Image from 'next/image'
 import { Container } from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
 import { ChartBarIcon, CheckIcon } from '@/components/icons'
-import { serviceSchema } from '@/app/schema'
+import { serviceSchema, professionalServiceSchema, breadcrumbSchema } from '@/app/schema'
+import { getServicePageDC } from '@/lib/dublinCore'
 
 export const metadata: Metadata = {
   title: 'SEO Optimierung | Suchmaschinenoptimierung',
@@ -29,7 +30,15 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: 'https://simplewebdesign.at/services/seo'
-  }
+  },
+  // Dublin Core Metadata
+  other: {
+    ...getServicePageDC({
+      title: 'SEO Optimierung | Suchmaschinenoptimierung',
+      description: 'Professionelle SEO Optimierung für bessere Google Rankings.',
+      url: 'https://simplewebdesign.at/services/seo',
+    }),
+  },
 }
 
 const features = [
@@ -61,20 +70,43 @@ const benefits = [
 ]
 
 export default function SeoPage() {
+  // Schema.org Structured Data
+  const schemas = [
+    // ProfessionalService Schema
+    professionalServiceSchema({
+      name: "SEO Optimierung für KMU",
+      description: "Professionelle SEO Optimierung für bessere Google Rankings. Steigern Sie Ihre Sichtbarkeit in den Suchergebnissen.",
+      url: "https://simplewebdesign.at/services/seo",
+      image: "https://simplewebdesign.at/img/services/seo.jpg",
+      priceRange: "€500 - €2.000",
+      areaServed: ["Austria", "Germany"],
+    }),
+    // Breadcrumb Schema
+    breadcrumbSchema({
+      items: [
+        { name: "Home", url: "https://simplewebdesign.at" },
+        { name: "Services", url: "https://simplewebdesign.at/services/seo" },
+        { name: "SEO Optimierung", url: "https://simplewebdesign.at/services/seo" },
+      ],
+    }),
+    // Original Service Schema
+    serviceSchema({
+      name: 'SEO Optimierung',
+      description: 'Professionelle SEO Optimierung für bessere Google Rankings. Steigern Sie Ihre Sichtbarkeit in den Suchergebnissen mit unserer SEO Expertise.',
+      image: '/img/services/seo.jpg'
+    }),
+  ];
+
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(
-            serviceSchema({
-              name: 'SEO Optimierung',
-              description: 'Professionelle SEO Optimierung für bessere Google Rankings. Steigern Sie Ihre Sichtbarkeit in den Suchergebnissen mit unserer SEO Expertise.',
-              image: '/img/services/seo.jpg'
-            })
-          )
-        }}
-      />
+      {/* Schema.org JSON-LD */}
+      {schemas.map((schema, index) => (
+        <script
+          key={index}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      ))}
       <main className="flex-auto">
         {/* Hero Section */}
         <div className="relative py-20 sm:py-24 lg:py-32 overflow-hidden">

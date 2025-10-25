@@ -7,6 +7,7 @@ import { CookieSettingsButton } from "@/components/cookie/CookieSettingsButton";
 import { GoogleTagManager } from "@/components/analytics/GoogleTagManager";
 import type { Metadata } from "next";
 import { getCanonicalMetadata } from "@/lib/canonical";
+import { getDublinCoreMetadata, DublinCoreTypes } from "@/lib/dublinCore";
 import "./globals.css";
 
 const inter = Inter({
@@ -45,6 +46,21 @@ export const metadata: Metadata = {
     ],
   },
   manifest: '/img/favicon/site.webmanifest',
+  // Dublin Core Metadata
+  other: {
+    ...getDublinCoreMetadata({
+      title: "SimpleWebDesign | Professional Web Design and Development",
+      description: "Professional Web Design and Development Services in Deutschland. Wir erstellen moderne, performante und SEO-optimierte Websites.",
+      type: DublinCoreTypes.SERVICE,
+      identifier: "https://simplewebdesign.at",
+      language: "de",
+      creator: "Gerald Böhm",
+      publisher: "SimpleWebDesign",
+      subject: "Webdesign, SEO, Web Development, Online Marketing",
+      coverage: "Austria, Germany",
+      rights: "© SimpleWebDesign. Alle Rechte vorbehalten.",
+    }),
+  },
 }
 
 export default function RootLayout({

@@ -17,25 +17,29 @@ if (redisUrl && redisToken) {
       token: redisToken,
     });
     
-    // Test Redis connection synchron
-    try {
-      await redis.ping();
+    // Test Redis connection asynchronously (only in production)
+    if (process.env.NODE_ENV === 'production') {
+      try {
+        await redis.ping();
+        redisAvailable = true;
+        console.log('✓ Redis/Upstash connected successfully');
+      } catch (error) {
+        console.warn('⚠ Redis/Upstash connection failed, using file storage fallback');
+        redisAvailable = false;
+      }
+    } else {
+      // In development, assume Redis works if credentials are set
       redisAvailable = true;
-      console.log('[DEBUG] Redis client initialized and tested successfully');
-    } catch (error) {
-      console.log('[DEBUG] Redis connection test failed:', error);
-      redisAvailable = false;
     }
   } catch (error) {
-    console.log('[DEBUG] Failed to initialize Redis client:', error);
+    console.warn('⚠ Failed to initialize Redis client, using file storage fallback');
     redisAvailable = false;
   }
 } else {
-  console.log('[DEBUG] Redis credentials not available');
-  console.log('[DEBUG] KV_REST_API_URL:', process.env.KV_REST_API_URL ? 'SET' : 'NOT SET');
-  console.log('[DEBUG] KV_REST_API_TOKEN:', process.env.KV_REST_API_TOKEN ? 'SET' : 'NOT SET');
-  console.log('[DEBUG] UPSTASH_REDIS_REST_URL:', process.env.UPSTASH_REDIS_REST_URL ? 'SET' : 'NOT SET');
-  console.log('[DEBUG] UPSTASH_REDIS_REST_TOKEN:', process.env.UPSTASH_REDIS_REST_TOKEN ? 'SET' : 'NOT SET');
+  // Nur in Development-Mode ausgeben
+  if (process.env.NODE_ENV === 'development') {
+    console.log('ℹ Redis credentials not set, using file storage for SEO audits');
+  }
 }
 
 // In-memory cache for audit results (fallback for local development)
@@ -76,38 +80,47 @@ export async function getAllAuditIds(): Promise<string[]> {
         const keys = await redis.keys('audit:*');
         const ids = keys.map(key => key.replace('audit:', ''));
         auditIds.push(...ids);
-        console.log(`[DEBUG] Found ${ids.length} audit IDs in Redis`);
+        if (process.env.NODE_ENV === 'development') {
+          console.log(`Found ${ids.length} audit IDs in Redis`);
+        }
       } catch (error) {
-        console.log(`[DEBUG] Error getting Redis keys:`, error);
+        if (process.env.NODE_ENV === 'development') {
+          console.log(`Error getting Redis keys:`, error);
+        }
       }
     }
     
     // Try file storage
     try {
       const fileData = await loadAuditStorage();
-      const fileIds = Object.keys(fileData);
+      const fileIds = Array.from(fileData.keys());
       auditIds.push(...fileIds);
-      console.log(`[DEBUG] Found ${fileIds.length} audit IDs in file storage`);
+      if (process.env.NODE_ENV === 'development') {
+        console.log(`Found ${fileIds.length} audit IDs in file storage`);
+      }
     } catch (error) {
-      console.log(`[DEBUG] Error loading file storage:`, error);
+      if (process.env.NODE_ENV === 'development') {
+        console.log(`Error loading file storage:`, error);
+      }
     }
     
     // Remove duplicates and return
     const uniqueIds = [...new Set(auditIds)];
-    console.log(`[DEBUG] Total unique audit IDs: ${uniqueIds.length}`);
+    if (process.env.NODE_ENV === 'development') {
+      console.log(`Total unique audit IDs: ${uniqueIds.length}`);
+    }
     return uniqueIds;
     
   } catch (error) {
-    console.error(`[DEBUG] Error getting all audit IDs:`, error);
+    console.error(`Error getting all audit IDs:`, error);
     return [];
   }
 }
 
 export async function getAuditResult(auditId: string) {
-  console.log(`[DEBUG] getAuditResult called for: ${auditId}`);
-  console.log(`[DEBUG] Environment: ${process.env.NODE_ENV}`);
-  console.log(`[DEBUG] Redis available: ${redis ? 'YES' : 'NO'}`);
-  console.log(`[DEBUG] Cache size: ${auditCache.size}`);
+  if (process.env.NODE_ENV === 'development') {
+    console.log(`Getting audit result for: ${auditId}`);
+  }
   
   try {
     // Try to get from local cache first (fastest)
@@ -115,29 +128,24 @@ export async function getAuditResult(auditId: string) {
     
     auditData = auditCache.get(auditId);
     if (auditData) {
-      console.log(`[DEBUG] Audit ${auditId} found in local cache`);
       return auditData;
     }
-    console.log(`[DEBUG] Audit ${auditId} NOT found in local cache`);
     
     // Try to get from Upstash Redis (production) - only if Redis is available
     if (redis && redisAvailable) {
       try {
-        console.log(`[DEBUG] Trying to get ${auditId} from Redis...`);
         auditData = await redis.get(`audit:${auditId}`);
         if (auditData) {
-          console.log(`[DEBUG] Audit ${auditId} found in Redis`);
           // Cache it locally for faster access
           auditCache.set(auditId, auditData);
           return auditData;
         }
-        console.log(`[DEBUG] Audit ${auditId} NOT found in Redis`);
       } catch (error) {
-        console.log(`[DEBUG] Redis error: ${error}`);
+        if (process.env.NODE_ENV === 'development') {
+          console.log(`Redis error: ${error}`);
+        }
         redisAvailable = false; // Mark Redis as unavailable
       }
-    } else {
-      console.log(`[DEBUG] Redis not available or not tested`);
     }
     
     // If not in cache or Redis, try file-based storage
@@ -146,16 +154,16 @@ export async function getAuditResult(auditId: string) {
         const fileStorage = await loadAuditStorage();
         auditData = fileStorage.get(auditId);
         if (auditData) {
-          console.log(`[DEBUG] Audit ${auditId} found in file storage`);
           // Cache it for faster access
           auditCache.set(auditId, auditData);
           return auditData;
         }
       } catch (error) {
-        console.warn(`[DEBUG] Failed to load file storage:`, error);
+        if (process.env.NODE_ENV === 'development') {
+          console.warn(`Failed to load file storage:`, error);
+        }
       }
       
-      console.log(`[DEBUG] Audit ${auditId} not found in Redis, cache, or file storage`);
       return null;
     }
     
@@ -188,23 +196,23 @@ export async function getAuditResult(auditId: string) {
 
 // Store audit result
 export async function storeAuditResult(auditId: string, auditData: unknown) {
-  console.log(`[DEBUG] storeAuditResult called for: ${auditId}`);
-  console.log(`[DEBUG] Environment: ${process.env.NODE_ENV}`);
-  console.log(`[DEBUG] Redis available: ${redis ? 'YES' : 'NO'}`);
+  if (process.env.NODE_ENV === 'development') {
+    console.log(`Storing audit result for: ${auditId}`);
+  }
   
   try {
     // Store in local cache first (always available)
     auditCache.set(auditId, auditData);
-    console.log(`[DEBUG] Audit ${auditId} stored in local cache`);
     
     // Store in file-based storage (works in Vercel)
     try {
       const fileStorage = await loadAuditStorage();
       fileStorage.set(auditId, auditData);
       await saveAuditStorage(fileStorage);
-      console.log(`[DEBUG] Audit ${auditId} stored in file storage`);
     } catch (error) {
-      console.warn(`[DEBUG] Failed to store in file storage:`, error);
+      if (process.env.NODE_ENV === 'development') {
+        console.warn(`Failed to store in file storage:`, error);
+      }
     }
     
     // Clean up old entries from file storage (keep only last 100)
@@ -221,24 +229,26 @@ export async function storeAuditResult(auditId: string, auditData: unknown) {
         
         const cleanedStorage = new Map(sortedEntries.slice(0, 100));
         await saveAuditStorage(cleanedStorage);
-        console.log(`[DEBUG] Cleaned up file storage, kept ${cleanedStorage.size} entries`);
+        if (process.env.NODE_ENV === 'development') {
+          console.log(`Cleaned up file storage, kept ${cleanedStorage.size} entries`);
+        }
       }
     } catch (error) {
-      console.warn(`[DEBUG] Failed to cleanup file storage:`, error);
+      if (process.env.NODE_ENV === 'development') {
+        console.warn(`Failed to cleanup file storage:`, error);
+      }
     }
     
     // Store in Upstash Redis (production) with 7-day expiration - only if Redis is available
     if (redis && redisAvailable) {
       try {
-        console.log(`[DEBUG] Storing ${auditId} in Redis...`);
         await redis.setex(`audit:${auditId}`, 7 * 24 * 60 * 60, JSON.stringify(auditData)); // 7 days in seconds
-        console.log(`[DEBUG] Audit ${auditId} stored in Upstash Redis`);
       } catch (error) {
-        console.log(`[DEBUG] Redis storage error: ${error}`);
+        if (process.env.NODE_ENV === 'development') {
+          console.log(`Redis storage error: ${error}`);
+        }
         redisAvailable = false; // Mark Redis as unavailable
       }
-    } else {
-      console.log(`[DEBUG] Redis not available (redis: ${!!redis}, redisAvailable: ${redisAvailable}), using file storage only`);
     }
     
     // Store in file for persistence (only in development)

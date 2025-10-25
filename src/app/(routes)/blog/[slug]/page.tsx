@@ -6,6 +6,8 @@ import { BlogContent } from '@/components/blog/BlogContent'
 import { getPostBySlug } from '@/lib/mdx'
 import { formatDate } from '@/lib/utils'
 import { Post } from '@/lib/types'
+import { articleSchema, breadcrumbSchema, webPageSchema } from '@/app/schema'
+import { getBlogArticleDC } from '@/lib/dublinCore'
 
 // Temporarily disabled static generation due to React version conflict
 // export async function generateStaticParams(): Promise<PageParams[]> {
@@ -60,6 +62,17 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     alternates: {
       canonical: `https://simplewebdesign.at/blog/${slug}`,
     },
+    // Dublin Core Metadata
+    other: {
+      ...getBlogArticleDC({
+        title: post.title,
+        description: post.description,
+        author: post.author,
+        date: post.date,
+        url: `https://simplewebdesign.at/blog/${slug}`,
+        category: post.category,
+      }),
+    },
   }
 }
 
@@ -76,8 +89,42 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
     notFound()
   }
 
+  const blogUrl = `https://simplewebdesign.at/blog/${slug}`;
+  
+  // Schema.org Structured Data
+  const schemas = [
+    // Article Schema
+    articleSchema({
+      title: post.title,
+      description: post.description,
+      image: post.image || 'https://simplewebdesign.at/img/og-image.jpg',
+      datePublished: post.date,
+      dateModified: post.date,
+      author: post.author,
+      url: blogUrl,
+      category: post.category,
+    }),
+    // Breadcrumb Schema
+    breadcrumbSchema({
+      items: [
+        { name: 'Home', url: 'https://simplewebdesign.at' },
+        { name: 'Blog', url: 'https://simplewebdesign.at/blog' },
+        { name: post.title, url: blogUrl },
+      ],
+    }),
+  ];
+
   return (
     <main>
+      {/* Schema.org JSON-LD */}
+      {schemas.map((schema, index) => (
+        <script
+          key={index}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      ))}
+
       <Container className="mt-16 lg:mt-32 pb-16 sm:pb-24 lg:pb-32">
         <div className="xl:relative">
           <div className="mx-auto max-w-2xl">
