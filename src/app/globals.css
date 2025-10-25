@@ -2,6 +2,9 @@
 
 @source "../**/*.{js,ts,jsx,tsx,mdx}";
 
+/* Enable class-based dark mode for next-themes */
+@variant dark (&:where(.dark, .dark *));
+
 @theme {
   /* Custom Colors */
   --color-background: #ffffff;
