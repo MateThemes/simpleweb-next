@@ -1,22 +1,69 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@source "../**/*.{js,ts,jsx,tsx,mdx}";
+
+@theme {
+  /* Custom Colors */
+  --color-background: #ffffff;
+  --color-foreground: #171717;
+  
+  /* Font Families */
+  --font-family-sans: var(--font-inter), system-ui, sans-serif;
+  --font-family-display: var(--font-outfit), system-ui, sans-serif;
+  
+  /* Custom Font Sizes */
+  --font-size-2xs: 0.75rem;
+  --font-size-2xs--line-height: 1.25rem;
+  --font-size-xs: 0.8125rem;
+  --font-size-xs--line-height: 1.5rem;
+  --font-size-sm: 0.875rem;
+  --font-size-sm--line-height: 1.5rem;
+  --font-size-base: 1rem;
+  --font-size-base--line-height: 1.75rem;
+  --font-size-lg: 1.125rem;
+  --font-size-lg--line-height: 1.75rem;
+  --font-size-xl: 1.25rem;
+  --font-size-xl--line-height: 1.75rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-2xl--line-height: 2rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-3xl--line-height: 2.25rem;
+  --font-size-4xl: 2.25rem;
+  --font-size-4xl--line-height: 2.5rem;
+  --font-size-5xl: 3rem;
+  --font-size-5xl--line-height: 3.5rem;
+  --font-size-6xl: 3.75rem;
+  --font-size-6xl--line-height: 4.5rem;
+  --font-size-7xl: 4.5rem;
+  --font-size-7xl--line-height: 5.25rem;
+  
+  /* Custom Spacing */
+  --spacing-section-sm: 3rem;
+  --spacing-section-md: 4rem;
+  --spacing-section-lg: 5rem;
+  --spacing-section-xl: 6rem;
+  --spacing-section-2xl: 8rem;
+  
+  /* Letter Spacing */
+  --letter-spacing-tight: -0.02em;
+  --letter-spacing-tighter: -0.04em;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  @theme {
+    --color-background: #0a0a0a;
+    --color-foreground: #ededed;
   }
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
+  color: var(--color-foreground);
+  background: var(--color-background);
+}
+
+/* Custom utilities for font families */
+@utility font-display {
+  font-family: var(--font-family-display);
 }
 
 /* Blog content styling */
