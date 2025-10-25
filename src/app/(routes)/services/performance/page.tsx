@@ -6,7 +6,7 @@ import { RocketIcon, CheckIcon } from '@/components/icons'
 import { serviceSchema } from '@/app/schema'
 
 export const metadata: Metadata = {
-  title: 'Website Performance Optimierung für KMU | Schnellere Websites | Shopify Performance Österreich & Deutschland',
+  title: 'Website Performance Optimierung für KMU | Schnellere Websites | SimpleWebDesign',
   description: 'Professionelle Website Performance Optimierung für KMU in Österreich & Deutschland. Spezielle Shopify Performance Optimierung, Core Web Vitals & PageSpeed für besseres Ranking.',
   keywords: 'Website Performance, Performance Optimierung, Core Web Vitals, PageSpeed, Shopify Performance, E-Commerce Performance, Website Speed, Performance Österreich, SEO Performance',
   openGraph: {

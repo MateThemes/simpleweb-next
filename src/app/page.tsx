@@ -11,7 +11,7 @@ import { breadcrumbSchema, webPageSchema } from '@/app/schema'
 import { getWebPageDC } from '@/lib/dublinCore'
 
 export const metadata: Metadata = {
-  title: 'Webdesign Agentur für KMU | Moderne Websites Österreich & Deutschland',
+  title: 'Webdesign Agentur für KMU | Moderne Websites Österreich & Deutschland | SimpleWebDesign',
   description: 'Professionelle Webdesign Agentur für KMU in Österreich & Deutschland. Moderne Websites, SEO-Optimierung, E-Commerce & Online-Marketing. Kostenlose Beratung für kleine und mittlere Unternehmen.',
   openGraph: {
     images: '/img/og-image.jpg',

@@ -6,7 +6,7 @@ import Button from '@/components/ui/Button'
 import { ChartBarIcon, CheckIcon } from '@/components/icons'
 
 export const metadata: Metadata = {
-  title: 'Digital Marketing Agentur für KMU | Social Media & Performance Marketing Österreich & Deutschland',
+  title: 'Digital Marketing Agentur für KMU | Social Media & Performance Marketing | SimpleWebDesign',
   description: 'Social Media, Content & Performance Marketing für KMU in Österreich & Deutschland. Steigern Sie Ihre Reichweite, Leads und ROI mit maßgeschneiderten Marketing-Strategien.',
   openGraph: {
     title: 'Digital Marketing Agentur für KMU | Social Media & Performance Marketing Österreich & Deutschland',

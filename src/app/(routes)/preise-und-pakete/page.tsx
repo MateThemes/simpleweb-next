@@ -5,7 +5,7 @@ import { pricingSchema } from '@/app/schema'
 import Button from '@/components/ui/Button'
 
 export const metadata: Metadata = {
-  title: 'Preise Webdesign für KMU | Transparente Pakete Österreich & Deutschland',
+  title: 'Preise Webdesign für KMU | Transparente Pakete | SimpleWebDesign',
   description: 'Transparente Preise für professionelles KMU Webdesign in Österreich & Deutschland. Wählen Sie aus unseren maßgeschneiderten Paketen das passende für Ihr Unternehmen.',
   openGraph: {
     title: 'Preise Webdesign für KMU | Transparente Pakete Österreich & Deutschland',

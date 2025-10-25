@@ -5,7 +5,7 @@ import { Container } from '@/components/ui/Container'
 import { processSchema } from '@/app/schema'
 
 export const metadata: Metadata = {
-  title: 'Unser Prozess | KMU Webdesign Workflow Österreich & Deutschland',
+  title: 'Unser Prozess | KMU Webdesign Workflow | SimpleWebDesign',
   description: 'Erfahren Sie mehr über unseren bewährten KMU Webdesign-Prozess. Von der ersten Konzeption bis zum Launch Ihrer Website - transparent und effizient für kleine und mittlere Unternehmen.',
   openGraph: {
     title: 'Unser Prozess | KMU Webdesign Workflow Österreich & Deutschland',

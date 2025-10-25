@@ -4,7 +4,7 @@ import { ProjectCard } from "@/components/ui/ProjectCard";
 import { portfolioSchema } from "@/app/schema";
 
 export const metadata: Metadata = {
-  title: "Portfolio Webdesign für KMU | Erfolgreiche Projekte Österreich & Deutschland",
+  title: "Portfolio Webdesign für KMU | Erfolgreiche Projekte | SimpleWebDesign",
   description: "Entdecken Sie unsere erfolgreichen KMU Webdesign-Projekte in Österreich & Deutschland. Von modernen Websites bis zu E-Commerce Lösungen - Inspiration für Ihr nächstes Projekt.",
   openGraph: {
     title: "Portfolio Webdesign für KMU | Erfolgreiche Projekte Österreich & Deutschland",
