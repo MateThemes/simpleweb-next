@@ -6,7 +6,7 @@ import { ServerIcon, CheckIcon } from '@/components/icons'
 import { serviceSchema } from '@/app/schema'
 
 export const metadata: Metadata = {
-  title: 'Hosting-Beratung für KMU | Professionelle Hosting-Lösungen Österreich & Deutschland',
+  title: 'Hosting-Beratung für KMU | Professionelle Hosting-Lösungen | SimpleWebDesign',
   description: 'Professionelle Hosting-Beratung für KMU in Österreich & Deutschland. Wir finden die optimale Hosting-Lösung für Ihr Projekt mit Fokus auf Performance und Sicherheit.',
   openGraph: {
     title: 'Hosting-Beratung für KMU | Professionelle Hosting-Lösungen Österreich & Deutschland',

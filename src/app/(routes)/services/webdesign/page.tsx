@@ -8,7 +8,7 @@ import { professionalServiceSchema, breadcrumbSchema } from '@/app/schema'
 import { getServicePageDC } from '@/lib/dublinCore'
 
 export const metadata: Metadata = {
-  title: 'Webdesign Agentur für KMU | Responsive Websites & UI/UX Design Österreich & Deutschland',
+  title: 'Webdesign Agentur für KMU | Responsive Websites & UI/UX Design | SimpleWebDesign',
   description: 'Professionelles Webdesign für KMU in Österreich & Deutschland. Responsive Websites, moderne UI/UX und Conversion-optimiertes Design. Starter-Pakete ab 1.490€.',
   openGraph: {
     title: 'Webdesign Agentur für KMU | Responsive Websites & UI/UX Design Österreich & Deutschland',

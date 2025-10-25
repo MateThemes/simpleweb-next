@@ -4,7 +4,7 @@ import { ContactForm } from '@/components/ui/ContactForm'
 import { contactSchema } from '@/app/schema'
 
 export const metadata: Metadata = {
-  title: 'Kontakt für KMU Webdesign | Beratung Österreich & Deutschland',
+  title: 'Kontakt für KMU Webdesign | Beratung Österreich & Deutschland | SimpleWebDesign',
   description: 'Kontaktieren Sie uns für Ihr KMU Webdesign-Projekt in Österreich & Deutschland. Kostenlose Beratung und individuelles Angebot für kleine und mittlere Unternehmen.',
   openGraph: {
     title: 'Kontakt für KMU Webdesign | Beratung Österreich & Deutschland',

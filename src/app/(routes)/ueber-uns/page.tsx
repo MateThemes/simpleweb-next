@@ -11,10 +11,10 @@ import {
 
 // Metadata
 export const metadata: Metadata = {
-  title: 'Über Uns | Webdesign Experte für KMU Österreich & Deutschland',
+  title: 'Über Uns | Webdesign Experte für KMU Österreich & Deutschland | SimpleWebDesign',
   description: 'Lernen Sie den Webdesign-Experten hinter SimpleWebDesign kennen. Spezialist für KMU Webdesign, SEO und digitales Marketing in Österreich & Deutschland.',
   openGraph: {
-    title: 'Über Uns | Webdesign Experte für KMU Österreich & Deutschland',
+    title: 'Über Uns | Webdesign Experte für KMU Österreich & Deutschland | SimpleWebDesign',
     description: 'Lernen Sie den Webdesign-Experten hinter SimpleWebDesign kennen. Spezialist für KMU Webdesign, SEO und digitales Marketing in Österreich & Deutschland.',
     url: 'https://simplewebdesign.at/ueber-uns',
     images: [
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Über Uns | Webdesign Experte für KMU Österreich & Deutschland',
+    title: 'Über Uns | Webdesign Experte für KMU Österreich & Deutschland | SimpleWebDesign',
     description: 'Lernen Sie den Webdesign-Experten hinter SimpleWebDesign kennen. Spezialist für KMU Webdesign.',
     images: ['/img/about/workspace.jpg']
   },

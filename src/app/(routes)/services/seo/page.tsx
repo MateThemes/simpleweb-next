@@ -7,10 +7,10 @@ import { serviceSchema, professionalServiceSchema, breadcrumbSchema } from '@/ap
 import { getServicePageDC } from '@/lib/dublinCore'
 
 export const metadata: Metadata = {
-  title: 'SEO Optimierung | Suchmaschinenoptimierung',
+  title: 'SEO Optimierung | Suchmaschinenoptimierung | SimpleWebDesign',
   description: 'Professionelle SEO Optimierung für bessere Google Rankings. Steigern Sie Ihre Sichtbarkeit in den Suchergebnissen mit unserer SEO Expertise.',
   openGraph: {
-    title: 'SEO Optimierung | Suchmaschinenoptimierung',
+    title: 'SEO Optimierung | Suchmaschinenoptimierung | SimpleWebDesign',
     description: 'Professionelle SEO Optimierung für bessere Google Rankings. Steigern Sie Ihre Sichtbarkeit in den Suchergebnissen mit unserer SEO Expertise.',
     url: 'https://simplewebdesign.at/services/seo',
     images: [
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'SEO Optimierung | Suchmaschinenoptimierung',
+    title: 'SEO Optimierung | Suchmaschinenoptimierung | SimpleWebDesign',
     description: 'Professionelle SEO Optimierung für bessere Google Rankings.',
     images: ['/img/services/seo.jpg']
   },

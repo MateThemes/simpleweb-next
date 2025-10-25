@@ -7,7 +7,7 @@ import { serviceSchema } from '@/app/schema'
 import { PriceCard } from '@/components/ui/PriceCard'
 
 export const metadata: Metadata = {
-  title: 'Website Redesign für KMU | Moderne Website Neugestaltung Österreich & Deutschland',
+  title: 'Website Redesign für KMU | Moderne Website Neugestaltung | SimpleWebDesign',
   description: 'Professionelles Website Redesign für KMU in Österreich & Deutschland. Wir modernisieren Ihre Website mit aktuellem Design und Technologie für bessere Conversion.',
   openGraph: {
     title: 'Website Redesign für KMU | Moderne Website Neugestaltung Österreich & Deutschland',
