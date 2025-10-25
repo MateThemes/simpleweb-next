@@ -37,14 +37,13 @@ export default function ModernHero() {
             {/* Headline */}
             <div className="space-y-4">
               <h1 className="text-4xl lg:text-6xl font-bold tracking-tight text-slate-900 dark:text-white">
-                Webdesign für KMU
+                Ihre Website.
                 <span className="block bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-                  Moderne Websites Österreich
+                  Ihr Wachstum.
                 </span>
               </h1>
               <p className="text-xl text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl">
-                Professionelle Websites für KMU in Wien, München, Waldviertel und ganz Österreich. 
-                Mit modernster Technologie und bewährten <Link href="/services/seo" className="text-blue-600 hover:text-blue-700 underline">SEO-Strategien</Link>.
+                Moderne Websites für KMU in Österreich & Deutschland – schnell, sicher und suchmaschinenoptimiert.
               </p>
             </div>
 
