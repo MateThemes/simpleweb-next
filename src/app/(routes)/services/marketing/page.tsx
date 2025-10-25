@@ -216,6 +216,8 @@ export default function MarketingPage() {
                     alt="Marketing Analytics und Performance Tracking für Digital Marketing in Niederösterreich"
                     fill
                     className="rounded-2xl object-cover shadow-xl"
+                    quality={60}
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                   />
                 </div>
               </div>

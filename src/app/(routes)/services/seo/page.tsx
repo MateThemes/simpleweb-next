@@ -203,6 +203,8 @@ export default function SeoPage() {
                     alt="SEO Growth Analytics"
                     fill
                     className="rounded-2xl object-cover shadow-xl"
+                    quality={60}
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                   />
                 </div>
               </div>
