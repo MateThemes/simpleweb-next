@@ -104,6 +104,8 @@ export default function ModernHero() {
                   width={600}
                   height={400}
                   className="w-full h-auto"
+                  quality={60}
+                  sizes="(max-width: 768px) 100vw, 600px"
                   priority
                 />
                 {/* Overlay gradient */}
