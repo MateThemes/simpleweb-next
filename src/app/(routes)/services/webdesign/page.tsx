@@ -4,6 +4,8 @@ import { Container } from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
 import { PaletteIcon, CheckIcon } from '@/components/icons'
 import { PriceCard } from '@/components/ui/PriceCard'
+import { professionalServiceSchema, breadcrumbSchema } from '@/app/schema'
+import { getServicePageDC } from '@/lib/dublinCore'
 
 export const metadata: Metadata = {
   title: 'Webdesign Agentur für KMU | Responsive Websites & UI/UX Design Österreich & Deutschland',
@@ -29,7 +31,15 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: 'https://simplewebdesign.at/services/webdesign'
-  }
+  },
+  // Dublin Core Metadata
+  other: {
+    ...getServicePageDC({
+      title: 'Webdesign Agentur für KMU | Responsive Websites & UI/UX Design',
+      description: 'Professionelles Webdesign für KMU in Österreich & Deutschland. Responsive Websites, moderne UI/UX und Conversion-optimiertes Design.',
+      url: 'https://simplewebdesign.at/services/webdesign',
+    }),
+  },
 }
 
 const features = [
@@ -132,12 +142,27 @@ const packages = [
 ]
 
 export default function WebdesignPage() {
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
+  // Schema.org Structured Data
+  const schemas = [
+    // ProfessionalService Schema (erweitert)
+    professionalServiceSchema({
+      name: "Webdesign Agentur für KMU",
+      description: "Professionelles Webdesign für KMU in Österreich & Deutschland. Responsive Websites, moderne UI/UX und Conversion-optimiertes Design. Starter-Pakete ab 1.490€.",
+      url: "https://simplewebdesign.at/services/webdesign",
+      image: "https://simplewebdesign.at/img/services/webdesign.jpg",
+      priceRange: "€1.490 - €4.990",
+      areaServed: ["Austria", "Germany"],
+    }),
+    // Breadcrumb Schema
+    breadcrumbSchema({
+      items: [
+        { name: "Home", url: "https://simplewebdesign.at" },
+        { name: "Services", url: "https://simplewebdesign.at/services/webdesign" },
+        { name: "Webdesign", url: "https://simplewebdesign.at/services/webdesign" },
+      ],
+    }),
+    // Bestehende detaillierte Service Schema
+    {
             "@context": "https://schema.org",
             "@type": "Service",
             "name": "Webdesign Agentur Niederösterreich",
@@ -211,9 +236,19 @@ export default function WebdesignPage() {
                 "description": "Full-Service mit laufender Betreuung"
               }
             ]
-          })
-        }}
-      />
+    },
+  ];
+
+  return (
+    <>
+      {/* Schema.org JSON-LD */}
+      {schemas.map((schema, index) => (
+        <script
+          key={index}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      ))}
       <main className="flex-auto">
         {/* Hero Section */}
         <div className="relative py-20 sm:py-24 lg:py-32 overflow-hidden">

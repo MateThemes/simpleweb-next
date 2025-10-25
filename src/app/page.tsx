@@ -7,6 +7,8 @@ import Process from '@/components/sections/Process'
 import WorkingPrinciples from '@/components/sections/WorkingPrinciples'
 import Faq from '@/components/sections/Faq'
 import CtaV1 from '@/components/sections/CtaV1'
+import { breadcrumbSchema, webPageSchema } from '@/app/schema'
+import { getWebPageDC } from '@/lib/dublinCore'
 
 export const metadata: Metadata = {
   title: 'Webdesign Agentur für KMU | Moderne Websites Österreich & Deutschland',
@@ -14,6 +16,14 @@ export const metadata: Metadata = {
   openGraph: {
     images: '/img/og-image.jpg',
     type: 'website',
+  },
+  // Dublin Core Metadata
+  other: {
+    ...getWebPageDC({
+      title: 'Webdesign Agentur für KMU | Moderne Websites Österreich & Deutschland',
+      description: 'Professionelle Webdesign Agentur für KMU in Österreich & Deutschland. Moderne Websites, SEO-Optimierung, E-Commerce & Online-Marketing.',
+      url: 'https://simplewebdesign.at',
+    }),
   },
 }
 
@@ -26,6 +36,9 @@ const WebsiteSchema = {
   url: 'https://simplewebdesign.at',
   address: {
     '@type': 'PostalAddress',
+    streetAddress: 'Sonnleite 20',
+    addressLocality: 'Vitis',
+    postalCode: '3902',
     addressRegion: 'Niederösterreich',
     addressCountry: 'AT'
   },
@@ -50,6 +63,9 @@ const LocalBusinessSchema = {
   email: 'info@simplewebdesign.at',
   address: {
     '@type': 'PostalAddress',
+    streetAddress: 'Sonnleite 20',
+    addressLocality: 'Vitis',
+    postalCode: '3902',
     addressRegion: 'Niederösterreich',
     addressCountry: 'AT'
   },
@@ -126,6 +142,9 @@ const OrganizationSchema = {
   email: 'info@simplewebdesign.at',
   address: {
     '@type': 'PostalAddress',
+    streetAddress: 'Sonnleite 20',
+    addressLocality: 'Vitis',
+    postalCode: '3902',
     addressRegion: 'Niederösterreich',
     addressCountry: 'AT'
   },
@@ -160,6 +179,23 @@ const OrganizationSchema = {
 }
 
 export default function Home() {
+  // Erweiterte Schemas
+  const additionalSchemas = [
+    // WebPage Schema
+    webPageSchema({
+      name: 'Webdesign Agentur für KMU | SimpleWebDesign',
+      description: 'Professionelle Webdesign Agentur für KMU in Österreich & Deutschland.',
+      url: 'https://simplewebdesign.at',
+      image: 'https://simplewebdesign.at/img/og-image.jpg',
+    }),
+    // Breadcrumb Schema
+    breadcrumbSchema({
+      items: [
+        { name: 'Home', url: 'https://simplewebdesign.at' },
+      ],
+    }),
+  ];
+
   return (
     <div>
       {/* Add JSON-LD Scripts */}
@@ -175,6 +211,14 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(OrganizationSchema) }}
       />
+      {/* Additional Schemas */}
+      {additionalSchemas.map((schema, index) => (
+        <script
+          key={`additional-${index}`}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      ))}
       
       {/* Main content sections */}
       <div>
