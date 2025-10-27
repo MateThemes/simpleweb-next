@@ -3,7 +3,7 @@
 @source "../**/*.{js,ts,jsx,tsx,mdx}";
 
 /* Enable class-based dark mode for next-themes */
-@variant dark (&:where(.dark, .dark *));
+@variant dark (.dark &);
 
 @theme {
   /* Custom Colors */
@@ -52,16 +52,8 @@
   --letter-spacing-tighter: -0.04em;
 }
 
-@media (prefers-color-scheme: dark) {
-  @theme {
-    --color-background: #0a0a0a;
-    --color-foreground: #ededed;
-  }
-}
-
 body {
-  color: var(--color-foreground);
-  background: var(--color-background);
+  @apply bg-white text-gray-900 dark:bg-slate-950 dark:text-gray-100;
 }
 
 /* Custom utilities for font families */
