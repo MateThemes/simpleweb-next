@@ -14,7 +14,8 @@ import {
   ArrowTrendingUpIcon,
   RocketLaunchIcon,
   PaintBrushIcon,
-  ServerIcon
+  ServerIcon,
+  SparklesIcon
 } from '../icons'
 
 export function Header() {
@@ -361,6 +362,25 @@ export function Header() {
                           </p>
                         </div>
                       </div>
+                      {/* KI-Automatisierung */}
+                      <div className="group relative flex items-center gap-x-6 rounded-lg p-4 hover:bg-gray-50 dark:hover:bg-slate-800">
+                        <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 dark:bg-slate-800 group-hover:bg-white dark:group-hover:bg-slate-700">
+                          <SparklesIcon className="h-6 w-6 text-gray-600 dark:text-gray-400 group-hover:text-indigo-600" aria-hidden="true" />
+                        </div>
+                        <div>
+                          <Link
+                            href="/ki-automatisierung"
+                            className="font-display text-lg font-medium text-gray-900 dark:text-white"
+                            onClick={() => setIsServicesOpen(false)}
+                          >
+                            KI-Automatisierung
+                            <span className="absolute inset-0" />
+                          </Link>
+                          <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                            Automatisierung von Routineaufgaben für KMU
+                          </p>
+                        </div>
+                      </div>
                       </div>
                     </div>
                   </div>
@@ -562,6 +582,14 @@ export function Header() {
                       >
                         <ServerIcon className="h-5 w-5 text-green-600" />
                         Shopify Experte
+                      </Link>
+                      <Link
+                        href="/ki-automatisierung"
+                        className="flex items-center gap-3 px-3 py-3 rounded-md text-base font-medium text-gray-600 hover:text-gray-900 dark:text-white dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        <SparklesIcon className="h-5 w-5 text-indigo-600" />
+                        KI-Automatisierung
                       </Link>
                     </div>
                   </div>
