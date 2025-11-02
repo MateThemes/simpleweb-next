@@ -7,6 +7,7 @@ interface ProjectCardProps {
   imageUrl: string;
   status: string;
   websiteUrl?: string;
+  imageAlt?: string;
 }
 
 export function ProjectCard({
@@ -16,6 +17,7 @@ export function ProjectCard({
   imageUrl,
   status,
   websiteUrl,
+  imageAlt,
 }: ProjectCardProps) {
   return (
     <div className="group relative flex flex-col overflow-hidden rounded-lg border border-zinc-200 bg-white dark:border-zinc-700 dark:bg-zinc-800">
@@ -23,7 +25,7 @@ export function ProjectCard({
         {imageUrl ? (
           <Image
             src={imageUrl}
-            alt={`${title} project screenshot`}
+            alt={imageAlt || `${title} project screenshot`}
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             className="object-cover"
@@ -72,6 +74,21 @@ export function ProjectCard({
             </div>
           </div>
         </div>
+        {websiteUrl && (
+          <div className="mt-6 pt-4 border-t border-zinc-200 dark:border-zinc-700">
+            <a
+              href={websiteUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center w-full gap-2 px-4 py-2 text-sm font-medium text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900/20 rounded-lg hover:bg-indigo-100 dark:hover:bg-indigo-900/30 transition-colors"
+            >
+              Projekt ansehen
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+          </div>
+        )}
       </div>
     </div>
   );
