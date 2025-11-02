@@ -185,8 +185,49 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Send email if RESEND_API_KEY is configured
-    if (process.env.RESEND_API_KEY) {
+    // Prepare lead data for Make.com webhook and email
+    const leadData = {
+      name: body.name,
+      email: body.email,
+      company: body.company,
+      phone: body.phone || '',
+      message: body.message,
+      timestamp: new Date().toISOString(),
+      source: 'ki-automatisierung',
+      ip: hashIP(ip), // Hashed IP for GDPR compliance
+    }
+
+    // Send to Make.com webhook if configured
+    if (process.env.MAKE_WEBHOOK_URL) {
+      try {
+        const webhookResponse = await fetch(process.env.MAKE_WEBHOOK_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(leadData),
+        })
+
+        if (!webhookResponse.ok) {
+          console.error('Make.com webhook error:', webhookResponse.status, await webhookResponse.text())
+          await logError(ip, `Make.com webhook failed: ${webhookResponse.status}`, body)
+        } else {
+          console.log('KI-Automatisierung Lead sent to Make.com:', {
+            name: body.name,
+            email: body.email,
+            timestamp: leadData.timestamp,
+          })
+        }
+      } catch (webhookError) {
+        console.error('Failed to send to Make.com webhook:', webhookError)
+        await logError(ip, 'Make.com webhook error', body)
+        // Continue even if webhook fails - try email fallback
+      }
+    }
+
+    // Send email if RESEND_API_KEY is configured (fallback if Make.com handles email)
+    // You can disable this if Make.com sends all emails
+    if (process.env.RESEND_API_KEY && !process.env.MAKE_WEBHOOK_URL) {
       try {
         const emailHtml = await render(
           KIAutomatisierungLeadEmail({
@@ -224,20 +265,11 @@ export async function POST(request: NextRequest) {
         })
       } catch (emailError) {
         console.error('Failed to send KI-Automatisierung lead email:', emailError)
-        // Continue even if email fails - log the lead
         await logError(ip, 'Email send failed', body)
       }
-    } else {
+    } else if (!process.env.MAKE_WEBHOOK_URL) {
       // Log lead even if email is not configured
-      console.log('KI-Automatisierung Lead (email not configured):', {
-        name: body.name,
-        email: body.email,
-        company: body.company,
-        phone: body.phone,
-        message: body.message,
-        timestamp: new Date().toISOString(),
-        source: 'ki-automatisierung',
-      })
+      console.log('KI-Automatisierung Lead (no webhook/email configured):', leadData)
     }
 
     // Return success response
