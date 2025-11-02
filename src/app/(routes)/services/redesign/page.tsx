@@ -63,7 +63,7 @@ const benefits = [
 
 const packages = [
   {
-    name: 'Standard Redesign',
+    name: 'Redesign Standard',
     description: 'Perfekt für kleine Unternehmen und Selbstständige',
     price: '1.490',
     features: [
@@ -78,7 +78,7 @@ const packages = [
     popular: false
   },
   {
-    name: 'Premium Redesign',
+    name: 'Redesign Premium',
     description: 'Ideal für wachsende Unternehmen',
     price: '2.990',
     features: [
@@ -93,7 +93,7 @@ const packages = [
     popular: true
   },
   {
-    name: 'Komplett Redesign',
+    name: 'Redesign Komplett',
     description: 'Full-Service mit laufender Betreuung',
     price: '4.990',
     features: [

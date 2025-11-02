@@ -124,6 +124,14 @@ const LocalBusinessSchema = {
           name: 'E-Commerce mit Shopify',
           description: 'Online-Shops für KMU mit Shopify und individuellen E-Commerce-Lösungen'
         }
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'KI-Automatisierung für KMU',
+          description: 'Automatisierung von Routineaufgaben für Handwerker & lokale Dienstleister'
+        }
       }
     ]
   },
@@ -169,7 +177,9 @@ const OrganizationSchema = {
     'Strapi CMS',
     'Lokale SEO',
     'Google My Business',
-    'Responsive Design'
+    'Responsive Design',
+    'KI-Automatisierung',
+    'Workflow-Automatisierung'
   ],
   serviceType: 'Webdesign Agentur',
   foundingDate: '2020',

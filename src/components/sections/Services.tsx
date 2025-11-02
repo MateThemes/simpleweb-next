@@ -11,7 +11,8 @@ import {
   RocketIcon,
   CheckIcon,
   ArrowRightIcon,
-  ServerIcon
+  ServerIcon,
+  SparklesIcon
 } from '../icons'
 
 const services = [
@@ -104,6 +105,21 @@ const services = [
       'SSL-Zertifikate & Sicherheit',
       '24/7 Monitoring & Support'
     ]
+  },
+  {
+    id: 'ki-automatisierung',
+    title: 'KI-Automatisierung für KMU',
+    description: 'Automatisierung von Routineaufgaben – von Anfrage-Antworten bis Angebots-Vorbereitung. Speziell für Handwerker & lokale Dienstleister.',
+    icon: SparklesIcon,
+    bgColor: 'bg-indigo-600',
+    image: '/img/services/ki-automatisierung.jpg',
+    link: '/ki-automatisierung',
+    features: [
+      'Workflow-Automatisierung',
+      'Chatbot & Telegram-Bot',
+      'Angebotsgenerator mit KI',
+      'DSGVO-konform & effizient'
+    ]
   }
 ]
 
@@ -175,6 +191,11 @@ export default function Services() {
                     {service.id === 'hosting' && (
                       <span className="block mt-2">
                         <a href="/services/performance" className="text-orange-600 hover:text-orange-700 underline">Performance & Hosting →</a>
+                      </span>
+                    )}
+                    {service.id === 'ki-automatisierung' && (
+                      <span className="block mt-2">
+                        <a href="/preise-und-pakete#ki-automatisierung" className="text-indigo-600 hover:text-indigo-700 underline">KI-Preise & Pakete →</a>
                       </span>
                     )}
                   </p>
