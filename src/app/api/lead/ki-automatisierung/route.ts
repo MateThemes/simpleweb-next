@@ -136,7 +136,7 @@ export async function POST(request: NextRequest) {
 
     // Check honeypot
     if (body._honeypot) {
-      await logError(ip, 'Honeypot detected', body as Record<string, unknown>)
+      await logError(ip, 'Honeypot detected', body as unknown as Record<string, unknown>)
       return NextResponse.json(
         { error: 'Spam detected' },
         { status: 400 }
@@ -149,7 +149,7 @@ export async function POST(request: NextRequest) {
       isSpam(body.name) ||
       isSpam(body.company)
     ) {
-      await logError(ip, 'Spam detected', body as Record<string, unknown>)
+      await logError(ip, 'Spam detected', body as unknown as Record<string, unknown>)
       return NextResponse.json(
         { error: 'Spam detected' },
         { status: 400 }
@@ -159,7 +159,7 @@ export async function POST(request: NextRequest) {
     // Basic email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     if (!emailRegex.test(body.email)) {
-      await logError(ip, 'Invalid email format', body as Record<string, unknown>)
+      await logError(ip, 'Invalid email format', body as unknown as Record<string, unknown>)
       return NextResponse.json(
         { error: 'Ungültige E-Mail-Adresse.' },
         { status: 400 }
@@ -171,14 +171,14 @@ export async function POST(request: NextRequest) {
     try {
       const addresses = await dns.resolveMx(emailDomain)
       if (!addresses || addresses.length === 0) {
-        await logError(ip, 'Invalid email domain', body as Record<string, unknown>)
+        await logError(ip, 'Invalid email domain', body as unknown as Record<string, unknown>)
         return NextResponse.json(
           { error: 'Ungültige E-Mail-Adresse.' },
           { status: 400 }
         )
       }
     } catch {
-      await logError(ip, 'Invalid email domain', body as Record<string, unknown>)
+      await logError(ip, 'Invalid email domain', body as unknown as Record<string, unknown>)
       return NextResponse.json(
         { error: 'Ungültige E-Mail-Adresse.' },
         { status: 400 }
@@ -210,7 +210,7 @@ export async function POST(request: NextRequest) {
 
         if (!webhookResponse.ok) {
           console.error('Make.com webhook error:', webhookResponse.status, await webhookResponse.text())
-          await logError(ip, `Make.com webhook failed: ${webhookResponse.status}`, body as Record<string, unknown>)
+          await logError(ip, `Make.com webhook failed: ${webhookResponse.status}`, body as unknown as Record<string, unknown>)
         } else {
           console.log('KI-Automatisierung Lead sent to Make.com:', {
             name: body.name,
@@ -220,7 +220,7 @@ export async function POST(request: NextRequest) {
         }
       } catch (webhookError) {
         console.error('Failed to send to Make.com webhook:', webhookError)
-        await logError(ip, 'Make.com webhook error', body as Record<string, unknown>)
+        await logError(ip, 'Make.com webhook error', body as unknown as Record<string, unknown>)
         // Continue even if webhook fails - try email fallback
       }
     }
@@ -265,7 +265,7 @@ export async function POST(request: NextRequest) {
         })
       } catch (emailError) {
         console.error('Failed to send KI-Automatisierung lead email:', emailError)
-        await logError(ip, 'Email send failed', body as Record<string, unknown>)
+        await logError(ip, 'Email send failed', body as unknown as Record<string, unknown>)
       }
     } else if (!process.env.MAKE_WEBHOOK_URL) {
       // Log lead even if email is not configured
