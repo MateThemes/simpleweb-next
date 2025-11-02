@@ -23,7 +23,7 @@ if (redisUrl && redisToken) {
         await redis.ping();
         redisAvailable = true;
         console.log('✓ Redis/Upstash connected successfully');
-      } catch (error) {
+      } catch {
         console.warn('⚠ Redis/Upstash connection failed, using file storage fallback');
         redisAvailable = false;
       }
@@ -31,7 +31,7 @@ if (redisUrl && redisToken) {
       // In development, assume Redis works if credentials are set
       redisAvailable = true;
     }
-  } catch (error) {
+  } catch {
     console.warn('⚠ Failed to initialize Redis client, using file storage fallback');
     redisAvailable = false;
   }

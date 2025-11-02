@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { Container } from '../ui/Container'
-import { SparklesIcon, ClockIcon, ShieldCheckIcon, CheckIcon, ArrowRightIcon } from '../icons'
+import { SparklesIcon, ClockIcon, ShieldCheckIcon, ArrowRightIcon } from '../icons'
 
 const benefits = [
   {

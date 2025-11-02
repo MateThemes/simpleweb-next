@@ -6,7 +6,7 @@ import { BlogContent } from '@/components/blog/BlogContent'
 import { getPostBySlug } from '@/lib/mdx'
 import { formatDate } from '@/lib/utils'
 import { Post } from '@/lib/types'
-import { articleSchema, breadcrumbSchema, webPageSchema } from '@/app/schema'
+import { articleSchema, breadcrumbSchema } from '@/app/schema'
 import { getBlogArticleDC } from '@/lib/dublinCore'
 
 // Temporarily disabled static generation due to React version conflict

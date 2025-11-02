@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { Container } from '@/components/ui/Container'
-import Button from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
 import { Accordion } from '@/components/ui/Accordion'
 import { PriceCard } from '@/components/ui/PriceCard'
