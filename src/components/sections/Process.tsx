@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { Container } from '../ui/Container'
-import { ClockIcon, CodeIcon, RouteIcon, ToolIcon } from '../icons'
+import { SearchIcon, PaletteIcon, CodeIcon, RocketLaunchIcon } from '../icons'
 
 interface ProcessStep {
   title: string
@@ -13,48 +13,48 @@ interface ProcessStep {
 
 const processSteps: ProcessStep[] = [
   {
-    title: 'Analyse & Strategie',
-    description: 'Wir analysieren Ihre Anforderungen und entwickeln eine maßgeschneiderte Strategie.',
+    title: 'Analyse & Planung',
+    description: 'Wir analysieren Ihre Anforderungen, Ziele und Zielgruppen gründlich. Zusammen entwickeln wir eine maßgeschneiderte Strategie, die perfekt auf Ihr KMU zugeschnitten ist.',
     features: [
       'Zielgruppenanalyse',
       'Wettbewerbsanalyse',
       'SEO-Audit',
-      'Marketing-Strategie'
+      'Strategieentwicklung'
     ],
-    icon: ClockIcon
+    icon: SearchIcon
   },
   {
-    title: 'Design & UX',
-    description: 'Wir gestalten das perfekte Design für Ihre digitale Präsenz.',
+    title: 'Design & Konzeption',
+    description: 'Basierend auf der Analyse erstellen wir ein modernes, benutzerfreundliches Design-Konzept. Ihr Corporate Design wird dabei berücksichtigt, um eine einheitliche Markenpräsenz zu gewährleisten.',
     features: [
       'Responsive Design',
       'User Experience (UX)',
+      'Corporate Design Integration',
+      'Konzeptentwicklung'
+    ],
+    icon: PaletteIcon
+  },
+  {
+    title: 'Entwicklung',
+    description: 'Mit modernsten Technologien wie Next.js entwickeln wir Ihre Website leistungsstark und SEO-optimiert. Dabei setzen wir auf sauberen Code, schnelle Ladezeiten und mobile Optimierung.',
+    features: [
+      'Frontend-Entwicklung',
+      'On-Page SEO',
       'Performance-Optimierung',
-      'Conversion-Optimierung'
+      'Mobile-First Ansatz'
     ],
     icon: CodeIcon
   },
   {
-    title: 'Entwicklung & SEO',
-    description: 'Wir setzen Ihr Projekt technisch perfekt und suchmaschinenoptimiert um.',
+    title: 'Testing & Launch',
+    description: 'Umfangreiche Tests stellen sicher, dass alle Funktionen einwandfrei arbeiten und die Website auf allen Geräten perfekt dargestellt wird. Nach dem Launch bieten wir kontinuierlichen Support.',
     features: [
-      'Frontend-Entwicklung',
-      'On-Page SEO',
-      'Content-Optimierung',
-      'Performance-Tuning'
+      'Umfassende Tests',
+      'Cross-Browser Testing',
+      'Performance-Testing',
+      'Launch & Support'
     ],
-    icon: RouteIcon
-  },
-  {
-    title: 'Marketing & Support',
-    description: 'Wir sorgen für digitales Wachstum und kontinuierliche Betreuung.',
-    features: [
-      'Online Marketing',
-      'SEO-Monitoring',
-      'Performance-Tracking',
-      'Laufende Optimierung'
-    ],
-    icon: ToolIcon
+    icon: RocketLaunchIcon
   }
 ]
 
@@ -67,10 +67,10 @@ export default function Process() {
       <Container>
         <div className="text-center max-w-3xl mx-auto mb-section-lg">
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-gray-900 dark:text-white mb-6">
-            Unser Prozess
+            Unser strukturierter Webdesign-Prozess
           </h2>
           <p className="text-lg sm:text-xl leading-relaxed text-gray-600 dark:text-gray-400">
-            Von der ersten Idee bis zur fertigen Website - wir begleiten Sie durch den gesamten Prozess
+            Von der Idee bis zum erfolgreichen Launch – so begleiten wir KMU in Österreich & Deutschland durch jeden Schritt des Webdesign-Prozesses.
           </p>
         </div>
 

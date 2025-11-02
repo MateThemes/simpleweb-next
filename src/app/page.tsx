@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import ModernHero from '@/components/sections/ModernHero'
 import Banner from '@/components/sections/Banner'
 import Services from '@/components/sections/Services'
+import KIAutomatisierung from '@/components/sections/KIAutomatisierung'
 import Features from '@/components/sections/Features'
 import Process from '@/components/sections/Process'
 import WorkingPrinciples from '@/components/sections/WorkingPrinciples'
@@ -225,6 +226,7 @@ export default function Home() {
         <ModernHero />
         <Banner />
         <Services />
+        <KIAutomatisierung />
         <Features />
         <Process />
         <WorkingPrinciples />
