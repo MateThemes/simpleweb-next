@@ -320,28 +320,21 @@ export function KIAutomatisierungContent() {
               Dienstleister.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                href="#contact-form"
-                variant="primary"
-                className="text-lg px-8 py-4"
-                onClick={(e) => {
-                  e.preventDefault()
-                  scrollToSection('contact-form')
-                }}
+              <button
+                type="button"
+                onClick={() => scrollToSection('contact-form')}
+                className="inline-flex items-center justify-center gap-2 rounded-lg px-8 py-4 text-lg font-medium transition bg-blue-600 text-white hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600"
               >
                 Kostenlosen KI-Check anfordern
                 <ArrowRightIcon className="w-5 h-5" />
-              </Button>
-              <Button
-                variant="secondary"
-                className="text-lg px-8 py-4"
-                onClick={(e) => {
-                  e.preventDefault()
-                  scrollToSection('use-cases')
-                }}
+              </button>
+              <button
+                type="button"
+                onClick={() => scrollToSection('use-cases')}
+                className="inline-flex items-center justify-center gap-2 rounded-lg px-8 py-4 text-lg font-medium transition bg-gray-100 text-gray-900 hover:bg-gray-200 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700"
               >
                 Beispiele ansehen
-              </Button>
+              </button>
             </div>
             <p className="mt-6 text-sm text-neutral-500 dark:text-neutral-400">
               DSGVO-bedacht • Erprobt für kleine Betriebe • Schnelle Umsetzung
