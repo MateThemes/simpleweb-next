@@ -7,4 +7,5 @@ export interface Post {
   category: string;
   author: string;
   content?: string;
+  seoTitle?: string;
 }

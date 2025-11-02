@@ -3,7 +3,7 @@ import { getAllPosts, getAllCategories } from '@/lib/mdx'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://simplewebdesign.at'
-  const lastModified = new Date('2025-09-19')
+  const lastModified = new Date('2025-11-02')
 
   // Define all service pages
   const servicePages = [
@@ -34,7 +34,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     'preise-und-pakete',
     'prozess',
     'ueber-uns',
-    'seo-audit'
+    'seo-audit',
+    'ki-automatisierung'
   ]
 
   // Generate main page entries

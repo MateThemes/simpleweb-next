@@ -29,9 +29,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 
   const hasImage = typeof post.image === 'string' && post.image.length > 0;
+  const metaTitle = post.seoTitle || `${post.title} | Blog`;
 
   return {
-    title: `${post.title} | Blog`,
+    title: metaTitle,
     description: post.description,
     openGraph: {
       title: post.title,
