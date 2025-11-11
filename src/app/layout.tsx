@@ -5,6 +5,7 @@ import { Footer } from "@/components/layout/Footer";
 import { CookieConsent } from "@/components/cookie/CookieConsent";
 import { CookieSettingsButton } from "@/components/cookie/CookieSettingsButton";
 import { GoogleTagManager } from "@/components/analytics/GoogleTagManager";
+import { Analytics } from '@vercel/analytics/react';
 import type { Metadata } from "next";
 import { getCanonicalMetadata } from "@/lib/canonical";
 import { getDublinCoreMetadata, DublinCoreTypes } from "@/lib/dublinCore";
@@ -105,6 +106,7 @@ export default function RootLayout({
           <CookieConsent />
           <CookieSettingsButton />
           <GoogleTagManager />
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>
