@@ -1,49 +1,81 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { getAuditResult } from '@/lib/audit-storage';
+import { NextRequest, NextResponse } from 'next/server'
+import { getAuditResult } from '@/lib/audit-storage'
+import { validateSession } from '@/lib/admin-auth'
 
 // Type definition for audit data
 interface AuditData {
-  timestamp?: string;
-  email?: string;
-  auditUrl?: string;
-  newsletter?: boolean;
+  timestamp?: string
+  email?: string
+  auditUrl?: string
+  newsletter?: boolean
   psiResults?: {
-    performanceScore?: number;
-    mobileScore?: number;
-    desktopScore?: number;
-  };
+    performanceScore?: number
+    mobileScore?: number
+    desktopScore?: number
+  }
   pageAnalysis?: {
-    seoScore?: number;
-    accessibilityScore?: number;
-    bestPracticesScore?: number;
-  };
+    seoScore?: number
+    accessibilityScore?: number
+    bestPracticesScore?: number
+  }
+}
+
+// Simple rate limit to avoid abuse of the listing endpoint
+const auditRate = new Map<string, { count: number; ts: number }>()
+const AUDIT_WINDOW_MS = 10 * 60 * 1000 // 10 minutes
+const AUDIT_MAX = 60
+
+function getClientIp(request: NextRequest): string {
+  const forwardedFor = request.headers.get('x-forwarded-for')
+  return forwardedFor?.split(',')[0].trim() || request.headers.get('x-real-ip') || 'unknown'
+}
+
+function checkAuditRateLimit(ip: string): boolean {
+  const now = Date.now()
+  const rec = auditRate.get(ip)
+  if (!rec || now - rec.ts > AUDIT_WINDOW_MS) {
+    auditRate.set(ip, { count: 1, ts: now })
+    return true
+  }
+  if (rec.count >= AUDIT_MAX) return false
+  rec.count += 1
+  return true
 }
 
 export async function GET(request: NextRequest) {
   try {
-    // Validate session token (temporarily disabled for debugging)
-    // if (!validateSession(request)) {
-    //   return NextResponse.json(
-    //     { error: 'Unauthorized' },
-    //     { status: 401 }
-    //   );
-    // }
+    // Validate session token
+    if (!validateSession(request)) {
+      return NextResponse.json(
+        { error: 'Unauthorized' },
+        { status: 401 },
+      )
+    }
+
+    // Rate limit
+    const ip = getClientIp(request)
+    if (!checkAuditRateLimit(ip)) {
+      return NextResponse.json(
+        { error: 'Too many requests' },
+        { status: 429 },
+      )
+    }
 
     // Get all audit IDs from Redis/file storage
-    const { getAllAuditIds } = await import('@/lib/audit-storage');
-    const auditIds = await getAllAuditIds();
+    const { getAllAuditIds } = await import('@/lib/audit-storage')
+    const auditIds = await getAllAuditIds()
     
-    console.log(`[DEBUG] Found ${auditIds.length} audit IDs in storage`);
+    console.log(`[DEBUG] Found ${auditIds.length} audit IDs in storage`)
     
-    const allLogs: Array<{ timestamp: string; [key: string]: unknown }> = [];
+    const allLogs: Array<{ timestamp: string; [key: string]: unknown }> = []
     
     // Fetch each audit result
     for (const auditId of auditIds) {
       try {
-        const auditData = await getAuditResult(auditId);
+        const auditData = await getAuditResult(auditId)
         if (auditData) {
           // Transform audit data to log format
-          const audit = auditData as AuditData;
+          const audit = auditData as AuditData
           const logEntry = {
             timestamp: audit.timestamp || new Date().toISOString(),
             email: audit.email || '',
@@ -56,27 +88,27 @@ export async function GET(request: NextRequest) {
             desktopScore: audit.psiResults?.desktopScore || 0,
             seoScore: audit.pageAnalysis?.seoScore || 0,
             accessibilityScore: audit.pageAnalysis?.accessibilityScore || 0,
-            bestPracticesScore: audit.pageAnalysis?.bestPracticesScore || 0
-          };
-          allLogs.push(logEntry);
+            bestPracticesScore: audit.pageAnalysis?.bestPracticesScore || 0,
+          }
+          allLogs.push(logEntry)
         }
       } catch (error) {
-        console.error(`Error fetching audit ${auditId}:`, error);
+        console.error(`Error fetching audit ${auditId}:`, error)
       }
     }
     
     // Sort by timestamp descending (newest first)
     allLogs.sort((a, b) => 
-      new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime()
-    );
+      new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime(),
+    )
       
     // Parse query parameters for filtering
-    const searchParams = request.nextUrl.searchParams;
-    const email = searchParams.get('email');
-    const url = searchParams.get('url');
-    const score = searchParams.get('score');
-    const newsletter = searchParams.get('newsletter');
-    const limit = searchParams.get('limit');
+    const searchParams = request.nextUrl.searchParams
+    const email = searchParams.get('email')
+    const url = searchParams.get('url')
+    const score = searchParams.get('score')
+    const newsletter = searchParams.get('newsletter')
+    const limit = searchParams.get('limit')
     
     let filteredLogs = allLogs;
     
@@ -112,21 +144,21 @@ export async function GET(request: NextRequest) {
     
     // Apply limit
     if (limit) {
-      const limitNum = parseInt(limit);
-      filteredLogs = filteredLogs.slice(0, limitNum);
+      const limitNum = parseInt(limit)
+      filteredLogs = filteredLogs.slice(0, limitNum)
     }
     
     return NextResponse.json({ 
       logs: filteredLogs,
       total: allLogs.length,
-      filtered: filteredLogs.length
-    });
+      filtered: filteredLogs.length,
+    })
     
   } catch (error) {
-    console.error('Error in audit logs API:', error);
+    console.error('Error in audit logs API:', error)
     return NextResponse.json(
       { error: 'Internal Server Error' },
-      { status: 500 }
-    );
+      { status: 500 },
+    )
   }
 }
