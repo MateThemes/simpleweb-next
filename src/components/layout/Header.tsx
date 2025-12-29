@@ -424,7 +424,7 @@ export function Header() {
         <div className="flex items-center justify-end xl:w-1/4">
           <Link
             href="/kontakt"
-            className="hidden xl:flex items-center justify-center rounded-md px-3 py-2 text-sm font-semibold text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:bg-slate-800 mr-2"
+            className="hidden xl:flex items-center justify-center rounded-lg px-4 py-2.5 text-sm font-semibold bg-blue-600 text-white hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 shadow-sm hover:shadow-md transition-all duration-200 mr-2"
           >
             Kontakt
           </Link>

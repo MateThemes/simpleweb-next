@@ -1,15 +1,21 @@
 /** @type {import('next').NextConfig} */
+// In development, Next.js requires 'unsafe-eval' for HMR and Fast Refresh
+const isDevelopment = process.env.NODE_ENV === 'development'
+const scriptSrc = isDevelopment
+  ? "'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://va.vercel-scripts.com"
+  : "'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://va.vercel-scripts.com"
+
 const securityHeaders = [
   {
     key: 'Content-Security-Policy',
     // Basic CSP; adjust domains if third-party embeds are added
     value: [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com",
+      `script-src ${scriptSrc}`,
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' data: blob: https: https://www.googletagmanager.com https://www.google-analytics.com",
       "font-src 'self' data:",
-      "connect-src 'self' https://vitals.vercel-insights.com https://api.resend.com https://www.google-analytics.com https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com",
+      "connect-src 'self' https://vitals.vercel-insights.com https://va.vercel-scripts.com https://api.resend.com https://www.google-analytics.com https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com",
       "frame-src 'self' https://www.googletagmanager.com",
       "frame-ancestors 'none'",
       "form-action 'self'",
