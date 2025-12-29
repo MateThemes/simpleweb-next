@@ -5,11 +5,12 @@ const securityHeaders = [
     // Basic CSP; adjust domains if third-party embeds are added
     value: [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline'",
+      "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com",
       "style-src 'self' 'unsafe-inline'",
-      "img-src 'self' data: blob: https:",
+      "img-src 'self' data: blob: https: https://www.googletagmanager.com https://www.google-analytics.com",
       "font-src 'self' data:",
-      "connect-src 'self' https://vitals.vercel-insights.com https://api.resend.com",
+      "connect-src 'self' https://vitals.vercel-insights.com https://api.resend.com https://www.google-analytics.com https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com",
+      "frame-src 'self' https://www.googletagmanager.com",
       "frame-ancestors 'none'",
       "form-action 'self'",
       "base-uri 'self'",
