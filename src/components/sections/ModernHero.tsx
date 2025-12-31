@@ -5,11 +5,18 @@ import Image from 'next/image'
 import { ArrowRightIcon, CheckCircleIcon, SparklesIcon } from '@heroicons/react/24/outline'
 import { Container } from '../ui/Container'
 
+const handleScrollToKlarheit = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  e.preventDefault()
+  const element = document.getElementById('klarheit')
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+}
+
 const features = [
-  'SEO-optimiert',
-  'Mobile-first',
-  'Performance-optimiert',
-  'Moderne Technologien'
+  'Klarer Fokus: Wer ist hier richtig – und warum?',
+  'Struktur, die Besucher führt (statt informiert).',
+  'Messbar: Anfragen, Termine oder Verkäufe – je nach Ziel.'
 ]
 
 export default function ModernHero() {
@@ -30,66 +37,30 @@ export default function ModernHero() {
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-blue-200 dark:border-slate-700">
               <SparklesIcon className="h-4 w-4 text-blue-600" />
               <span className="text-sm font-medium text-blue-900 dark:text-blue-100">
-                Moderne Webentwicklung
+                Websites, die Entscheidungen erleichtern – nicht nur gut aussehen.
               </span>
             </div>
 
             {/* Headline */}
             <div className="space-y-4">
               <h1 className="text-4xl lg:text-6xl font-bold tracking-tight text-slate-900 dark:text-white">
-                Ihre Website.
-                <span className="block bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-                  Ihr Wachstum.
-                </span>
+                Viele Websites sehen gut aus – und bringen trotzdem keine Anfragen.
               </h1>
               <p className="text-xl text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl">
-                Moderne Websites für KMU in Österreich & Deutschland – schnell, sicher und suchmaschinenoptimiert.
+                Das Problem ist selten Design oder Technik. Meist fehlt Klarheit.
               </p>
             </div>
 
-            {/* Features */}
-            <div className="grid grid-cols-2 gap-3">
-              {features.map((feature, index) => (
-                <div key={index} className="flex items-center gap-2">
-                  <CheckCircleIcon className="h-5 w-5 text-green-500 flex-shrink-0" />
-                  <span className="text-slate-700 dark:text-slate-300 font-medium">{feature}</span>
-                </div>
-              ))}
-            </div>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4">
+            {/* Primary CTA */}
+            <div>
               <Link
-                href="/seo-audit"
+                href="#klarheit"
+                onClick={handleScrollToKlarheit}
                 className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200"
               >
-                <span>Kostenlose SEO-Analyse</span>
+                <span>Woran du erkennst, ob deine Website arbeitet</span>
                 <ArrowRightIcon className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Link>
-              <Link
-                href="/kontakt"
-                className="inline-flex items-center justify-center px-8 py-4 bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-semibold rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors duration-200"
-              >
-                Beratung anfragen
-              </Link>
-            </div>
-
-            {/* Phone CTA */}
-            <div className="mt-4 text-center">
-              <a 
-                href="tel:+436645182696" 
-                className="inline-flex items-center gap-2 text-lg font-semibold text-green-600 hover:text-green-700 dark:text-green-400 dark:hover:text-green-300 transition-colors"
-              >
-                📞 +43 664 518 26 96
-              </a>
-              <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">Direkt anrufen für schnelle Beratung</p>
-            </div>
-
-            {/* Trust indicators */}
-            <div className="pt-4 border-t border-slate-200 dark:border-slate-700">
-              <p className="text-sm text-slate-500 dark:text-slate-400">
-                ✓ Über 50 erfolgreiche Projekte ✓ 100% Kundenzufriedenheit ✓ Schnelle Umsetzung
-              </p>
             </div>
           </div>
 
@@ -101,11 +72,11 @@ export default function ModernHero() {
                 <Image
                   src="/img/hero-image-optimized.jpg"
                   alt="Webdesign Agentur für KMU - Moderne Websites Österreich Deutschland"
-                  width={600}
-                  height={400}
+                  width={800}
+                  height={600}
                   className="w-full h-auto"
                   quality={60}
-                  sizes="(max-width: 768px) 100vw, 600px"
+                  sizes="(max-width: 768px) 100vw, 800px"
                   priority
                 />
                 {/* Overlay gradient */}
@@ -122,11 +93,52 @@ export default function ModernHero() {
               </div>
 
               <div className="absolute -bottom-4 -left-4 bg-white dark:bg-slate-800 rounded-xl shadow-lg p-4 border border-slate-200 dark:border-slate-700">
-                <div className="text-2xl font-bold text-blue-600">98%</div>
-                <p className="text-xs text-slate-500 dark:text-slate-400">Performance Score</p>
+                <p className="text-sm font-medium text-slate-700 dark:text-slate-300">Websites, die Orientierung geben.</p>
               </div>
             </div>
           </div>
+        </div>
+      </Container>
+
+      {/* Nachgelagerter Container mit Bulletpoints, Trust-Line und Secondary CTA */}
+      <Container className="relative pt-12 pb-8">
+        <div className="space-y-8">
+          {/* Features/Bulletpoints */}
+          <div className="space-y-3 max-w-2xl">
+            {features.map((feature, index) => (
+              <div key={index} className="flex items-start gap-2">
+                <CheckCircleIcon className="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5" />
+                <span className="text-slate-700 dark:text-slate-300 font-medium">{feature}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* Trust indicators und Secondary CTA */}
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-6 border-t border-slate-200 dark:border-slate-700">
+            <p className="text-sm text-slate-500 dark:text-slate-400">
+              ✓ 50+ erfolgreiche Projekte ✓ 100% Kundenzufriedenheit ✓ Schnelle Umsetzung
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Link
+                href="/seo-audit"
+                className="inline-flex items-center justify-center px-6 py-3 bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-medium rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors duration-200"
+              >
+                Kostenlose SEO-Analyse
+              </Link>
+              <p className="text-sm text-slate-600 dark:text-slate-400 sm:hidden">
+                Wenn du direkt sprechen willst:{' '}
+                <Link href="/kontakt" className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 underline">
+                  Beratung anfragen
+                </Link>
+              </p>
+            </div>
+          </div>
+          <p className="text-sm text-slate-600 dark:text-slate-400 hidden sm:block">
+            Wenn du direkt sprechen willst:{' '}
+            <Link href="/kontakt" className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 underline">
+              Beratung anfragen
+            </Link>
+          </p>
         </div>
       </Container>
     </section>

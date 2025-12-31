@@ -1,13 +1,21 @@
 import { Metadata } from 'next'
 import ModernHero from '@/components/sections/ModernHero'
-import Banner from '@/components/sections/Banner'
-import Services from '@/components/sections/Services'
-import KIAutomatisierung from '@/components/sections/KIAutomatisierung'
-import Features from '@/components/sections/Features'
-import Process from '@/components/sections/Process'
-import WorkingPrinciples from '@/components/sections/WorkingPrinciples'
-import Faq from '@/components/sections/Faq'
-import CtaV1 from '@/components/sections/CtaV1'
+import Klarheit from '@/components/sections/Klarheit'
+import Ansatz from '@/components/sections/Ansatz'
+import WasDarausEntsteht from '@/components/sections/WasDarausEntsteht'
+import WieWirHelfen from '@/components/sections/WieWirHelfen'
+import Zusammenarbeit from '@/components/sections/Zusammenarbeit'
+import Einordnung from '@/components/sections/Einordnung'
+import Erfahrungen from '@/components/sections/Erfahrungen'
+// Alte Sections - nur von Startseite entfernt, Components bleiben im Projekt erhalten
+// import Banner from '@/components/sections/Banner'
+// import Services from '@/components/sections/Services'
+// import KIAutomatisierung from '@/components/sections/KIAutomatisierung'
+// import Features from '@/components/sections/Features'
+// import Process from '@/components/sections/Process'
+// import WorkingPrinciples from '@/components/sections/WorkingPrinciples'
+// import Faq from '@/components/sections/Faq'
+// import CtaV1 from '@/components/sections/CtaV1'
 import { breadcrumbSchema, webPageSchema } from '@/app/schema'
 import { getWebPageDC } from '@/lib/dublinCore'
 
@@ -231,17 +239,25 @@ export default function Home() {
         />
       ))}
       
-      {/* Main content sections */}
+      {/* Main content sections - problemorientierter Flow */}
       <div>
         <ModernHero />
-        <Banner />
-        <Services />
-        <KIAutomatisierung />
-        <Features />
-        <Process />
-        <WorkingPrinciples />
-        <Faq />
-        <CtaV1 />
+        <Klarheit />
+        <Ansatz />
+        <WasDarausEntsteht />
+        <WieWirHelfen />
+        <Zusammenarbeit />
+        <Einordnung />
+        <Erfahrungen />
+        {/* Alte Sections - nur von Startseite entfernt, Components bleiben im Projekt erhalten */}
+        {/* <Banner /> */}
+        {/* <Services /> */}
+        {/* <KIAutomatisierung /> */}
+        {/* <Features /> */}
+        {/* <Process /> */}
+        {/* <WorkingPrinciples /> */}
+        {/* <Faq /> */}
+        {/* <CtaV1 /> */}
       </div>
     </div>
   )
