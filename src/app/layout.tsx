@@ -40,6 +40,7 @@ export const metadata: Metadata = {
     siteName: 'SimpleWebDesign',
     type: 'website',
     locale: 'de_AT',
+    alternateLocale: ['de_DE'],
   },
   twitter: {
     card: 'summary_large_image',

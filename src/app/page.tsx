@@ -36,6 +36,7 @@ export const metadata: Metadata = {
     siteName: 'SimpleWebDesign',
     type: 'website',
     locale: 'de_AT',
+    alternateLocale: ['de_DE'],
     images: [
       {
         url: '/img/og-image.jpg',
