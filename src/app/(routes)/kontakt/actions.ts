@@ -84,7 +84,7 @@ export async function sendEmail(formData: {
   phone: string
   company: string
   projectType: 'website' | 'shop' | 'seo' | 'marketing' | 'other'
-  budget: '' | 'small' | 'medium' | 'large' | 'xlarge'
+  budget: '' | 'unclear' | 'small' | 'medium' | 'large' | 'xlarge'
   timeline: '' | 'urgent' | 'month' | 'quarter' | 'flexible'
   description: string
   _honeypot: string

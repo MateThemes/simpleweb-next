@@ -12,7 +12,7 @@ interface FormData {
   phone: string
   company: string
   projectType: 'website' | 'shop' | 'seo' | 'marketing' | 'other'
-  budget: '' | 'small' | 'medium' | 'large' | 'xlarge'
+  budget: '' | 'unclear' | 'small' | 'medium' | 'large' | 'xlarge'
   timeline: '' | 'urgent' | 'month' | 'quarter' | 'flexible'
   description: string
   privacyAccepted: boolean
@@ -74,11 +74,13 @@ export function ContactForm({ className }: ContactFormProps) {
     const newErrors: FormErrors = {}
 
     if (!formData.firstName) newErrors.firstName = 'Bitte geben Sie Ihren Vornamen ein'
-    if (!formData.lastName) newErrors.lastName = 'Bitte geben Sie Ihren Nachnamen ein'
     if (!formData.email) {
       newErrors.email = 'Bitte geben Sie Ihre E-Mail-Adresse ein'
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       newErrors.email = 'Bitte geben Sie eine gültige E-Mail-Adresse ein'
+    }
+    if (!formData.description || formData.description.trim().length === 0) {
+      newErrors.description = 'Bitte beschreiben Sie kurz Ihr Anliegen'
     }
     if (!formData.privacyAccepted) {
       newErrors.privacyAccepted = 'Bitte akzeptieren Sie die Datenschutzerklärung'
@@ -141,13 +143,12 @@ export function ContactForm({ className }: ContactFormProps) {
         required
       />
       <Input
-        label="Nachname"
+        label="Nachname (optional)"
         name="lastName"
         type="text"
         value={formData.lastName}
         onChange={handleChange}
         error={errors.lastName}
-        required
       />
 
       {/* 2. Email, Phone - 2 fields */}
@@ -184,7 +185,7 @@ export function ContactForm({ className }: ContactFormProps) {
       {/* 4. Project Type, Budget - 2 fields */}
       <div>
         <label className="block text-sm font-semibold text-gray-900 dark:text-gray-100">
-          Projektart
+          Projektart (optional)
         </label>
         <select
           name="projectType"
@@ -201,7 +202,7 @@ export function ContactForm({ className }: ContactFormProps) {
       </div>
       <div>
         <label className="block text-sm font-semibold text-gray-900 dark:text-gray-100">
-          Budget
+          Investitionsrahmen (optional)
         </label>
         <select
           name="budget"
@@ -210,6 +211,7 @@ export function ContactForm({ className }: ContactFormProps) {
           className="mt-2 block w-full rounded-md border-0 py-2.5 text-neutral-950 shadow-sm ring-1 ring-inset ring-neutral-200 focus:ring-2 focus:ring-inset focus:ring-neutral-950 dark:bg-white/5 dark:text-white dark:ring-neutral-800 dark:focus:ring-white"
         >
           <option value="">Bitte wählen</option>
+          <option value="unclear">Noch unklar</option>
           <option value="small">bis 5.000€</option>
           <option value="medium">5.000€ - 10.000€</option>
           <option value="large">10.000€ - 20.000€</option>
@@ -239,16 +241,20 @@ export function ContactForm({ className }: ContactFormProps) {
       {/* 6. Project Description - 1 field */}
       <div className="sm:col-span-2">
         <label className="block text-sm font-semibold text-gray-900 dark:text-gray-100">
-          Projektbeschreibung
+          Projektbeschreibung <span className="text-red-500">*</span>
         </label>
         <textarea
           name="description"
           value={formData.description}
           onChange={handleChange}
           rows={4}
-          placeholder="Beschreiben Sie Ihr Projekt und Ihre Ziele..."
+          placeholder="Beschreibe kurz, wo du stehst und was du dir vorstellst..."
+          required
           className="mt-2 block w-full rounded-md border-0 px-4 py-3.5 text-base text-neutral-950 shadow-sm ring-1 ring-inset ring-neutral-200 placeholder:text-neutral-500 focus:ring-2 focus:ring-inset focus:ring-neutral-950 dark:bg-white/5 dark:text-white dark:ring-neutral-800 dark:placeholder:text-neutral-400 dark:focus:ring-white"
         />
+        {errors.description && (
+          <p className="mt-1 text-sm text-red-600">{errors.description}</p>
+        )}
       </div>
 
       {/* Honeypot field - hidden from real users */}
@@ -296,7 +302,7 @@ export function ContactForm({ className }: ContactFormProps) {
 
       {/* Submit Button and Status Messages */}
       <div className="sm:col-span-2 flex flex-col space-y-4">
-        <div className="flex gap-4">
+        <div className="flex gap-4 items-center">
           <button
             type="submit"
             disabled={isSubmitting}
@@ -305,7 +311,7 @@ export function ContactForm({ className }: ContactFormProps) {
               isSubmitting && 'opacity-50 cursor-not-allowed'
             )}
           >
-            {isSubmitting ? 'Wird gesendet...' : 'Projekt anfragen'}
+            {isSubmitting ? 'Wird gesendet...' : 'Einschätzung anfragen'}
           </button>
           <button
             type="button"
@@ -314,16 +320,24 @@ export function ContactForm({ className }: ContactFormProps) {
               setErrors({})
               setSubmitStatus(null)
             }}
-            className="px-8 py-4 text-base font-semibold rounded-md bg-gray-100 text-gray-900 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-100 dark:hover:bg-gray-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-600 transition-colors duration-200"
+            className="px-4 py-2 text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-400 transition-colors duration-200"
           >
             Zurücksetzen
           </button>
         </div>
+        
+        {/* Trust Microcopy */}
+        <div className="mt-4 text-sm text-gray-500 dark:text-gray-400 space-y-1">
+          <p>Antwort in 1–2 Werktagen.</p>
+          <p>Kein Spam. Kein Newsletter.</p>
+          <p>Wenn es nicht passt, sagen wir es ehrlich.</p>
+        </div>
+
         {submitStatus === 'success' && (
-          <p className="text-sm text-green-600">Ihre Nachricht wurde erfolgreich gesendet!</p>
+          <p className="text-sm text-green-600 dark:text-green-400">Ihre Nachricht wurde erfolgreich gesendet!</p>
         )}
         {submitStatus === 'error' && (
-          <p className="text-sm text-red-600">{errorMessage}</p>
+          <p className="text-sm text-red-600 dark:text-red-400">{errorMessage}</p>
         )}
       </div>
     </form>
