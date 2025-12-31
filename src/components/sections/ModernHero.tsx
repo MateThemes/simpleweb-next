@@ -95,7 +95,7 @@ export default function ModernHero() {
               {/* Main image */}
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/img/hero-image-optimized.jpg"
+                  src="/img/hero.png"
                   alt="Webdesign Agentur für KMU - Moderne Websites Österreich Deutschland"
                   width={800}
                   height={600}
