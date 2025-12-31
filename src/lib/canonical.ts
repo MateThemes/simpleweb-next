@@ -12,8 +12,13 @@ export function generateCanonicalUrl(pathname: string): string {
   // Ensure pathname starts with /
   const cleanPathname = pathname.startsWith('/') ? pathname : `/${pathname}`;
   
-  // Remove trailing slash from pathname (except for root)
-  const finalPathname = cleanPathname === '/' ? '/' : cleanPathname.replace(/\/$/, '');
+  // For root path, always return with trailing slash
+  if (cleanPathname === '/') {
+    return `${cleanBaseUrl}/`;
+  }
+  
+  // Remove trailing slash from pathname for other paths
+  const finalPathname = cleanPathname.replace(/\/$/, '');
   
   return `${cleanBaseUrl}${finalPathname}`;
 }

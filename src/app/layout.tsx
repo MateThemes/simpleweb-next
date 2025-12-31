@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   openGraph: {
     siteName: 'SimpleWebDesign',
     type: 'website',
-    locale: 'de_DE',
+    locale: 'de_AT',
   },
   twitter: {
     card: 'summary_large_image',
