@@ -1,6 +1,12 @@
 'use client'
 
 import { Container } from '../ui/Container'
+import { motion } from 'framer-motion'
+
+const fadeInUp = {
+  hidden: { opacity: 0, y: 10 },
+  visible: { opacity: 1, y: 0 }
+}
 
 const testimonials = [
   {
@@ -42,8 +48,13 @@ export default function Erfahrungen() {
           {/* 3 Stimmen als editorial quotes */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mb-12">
             {testimonials.map((testimonial, index) => (
-              <div
+              <motion.div
                 key={index}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: false, amount: 0.4 }}
+                variants={fadeInUp}
+                transition={{ duration: 0.5, ease: 'easeOut' }}
                 className="relative py-6 border-l-2 border-slate-200 dark:border-slate-700 pl-6 md:pl-8"
               >
                 {/* Optional: Dezente Anführungszeichen als Background-Element */}
@@ -56,7 +67,7 @@ export default function Erfahrungen() {
                 <p className="text-sm text-slate-500 dark:text-slate-400">
                   {testimonial.attribution}
                 </p>
-              </div>
+              </motion.div>
             ))}
           </div>
 

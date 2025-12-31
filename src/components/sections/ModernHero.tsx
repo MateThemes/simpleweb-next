@@ -4,6 +4,17 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowRightIcon, CheckCircleIcon, SparklesIcon } from '@heroicons/react/24/outline'
 import { Container } from '../ui/Container'
+import { motion } from 'framer-motion'
+
+const fadeInUp = {
+  hidden: { opacity: 0, y: 12 },
+  visible: { opacity: 1, y: 0 }
+}
+
+const scaleIn = {
+  hidden: { opacity: 0, scale: 0.98 },
+  visible: { opacity: 1, scale: 1 }
+}
 
 const handleScrollToKlarheit = (e: React.MouseEvent<HTMLAnchorElement>) => {
   e.preventDefault()
@@ -21,7 +32,14 @@ const features = [
 
 export default function ModernHero() {
   return (
-    <section className="relative bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-slate-900 dark:via-slate-800 dark:to-indigo-900 py-24 lg:py-32">
+    <motion.section
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: false, amount: 0.4 }}
+      variants={fadeInUp}
+      transition={{ duration: 0.6, ease: 'easeOut' }}
+      className="relative bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-slate-900 dark:via-slate-800 dark:to-indigo-900 py-24 lg:py-32"
+    >
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-400/20 rounded-full blur-3xl"></div>
@@ -66,7 +84,14 @@ export default function ModernHero() {
 
           {/* Visual */}
           <div className="relative">
-            <div className="relative">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.4 }}
+              variants={scaleIn}
+              transition={{ duration: 0.6, ease: 'easeOut', delay: 0.2 }}
+              className="relative"
+            >
               {/* Main image */}
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                 <Image
@@ -83,19 +108,11 @@ export default function ModernHero() {
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 to-transparent"></div>
               </div>
 
-              {/* Floating cards */}
-              <div className="absolute -top-4 -right-4 bg-white dark:bg-slate-800 rounded-xl shadow-lg p-4 border border-slate-200 dark:border-slate-700">
-                <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                  <span className="text-sm font-medium text-slate-900 dark:text-white">Live</span>
-                </div>
-                <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Website online</p>
-              </div>
-
+              {/* Floating card */}
               <div className="absolute -bottom-4 -left-4 bg-white dark:bg-slate-800 rounded-xl shadow-lg p-4 border border-slate-200 dark:border-slate-700">
                 <p className="text-sm font-medium text-slate-700 dark:text-slate-300">Websites, die Orientierung geben.</p>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </Container>
@@ -116,7 +133,7 @@ export default function ModernHero() {
           {/* Trust indicators und Secondary CTA */}
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-6 border-t border-slate-200 dark:border-slate-700">
             <p className="text-sm text-slate-500 dark:text-slate-400">
-              ✓ 50+ erfolgreiche Projekte ✓ 100% Kundenzufriedenheit ✓ Schnelle Umsetzung
+              ✓ 50+ erfolgreiche Projekte ✓ Zufriedene Kunden ✓ Schnelle Umsetzung
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
               <Link
@@ -125,15 +142,9 @@ export default function ModernHero() {
               >
                 Kostenlose SEO-Analyse
               </Link>
-              <p className="text-sm text-slate-600 dark:text-slate-400 sm:hidden">
-                Wenn du direkt sprechen willst:{' '}
-                <Link href="/kontakt" className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 underline">
-                  Beratung anfragen
-                </Link>
-              </p>
             </div>
           </div>
-          <p className="text-sm text-slate-600 dark:text-slate-400 hidden sm:block">
+          <p className="text-sm text-slate-600 dark:text-slate-400">
             Wenn du direkt sprechen willst:{' '}
             <Link href="/kontakt" className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 underline">
               Beratung anfragen
@@ -141,6 +152,6 @@ export default function ModernHero() {
           </p>
         </div>
       </Container>
-    </section>
+    </motion.section>
   )
 }
