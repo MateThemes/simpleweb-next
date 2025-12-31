@@ -1,6 +1,12 @@
 'use client'
 
 import { Container } from '../ui/Container'
+import { motion } from 'framer-motion'
+
+const fadeInUp = {
+  hidden: { opacity: 0, y: 16 },
+  visible: { opacity: 1, y: 0 }
+}
 
 const outcomes = [
   {
@@ -45,8 +51,13 @@ export default function WasDarausEntsteht() {
           {/* Outcomes Rows */}
           <div className="space-y-0 mb-12">
             {outcomes.map((outcome, index) => (
-              <div
+              <motion.div
                 key={index}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: false, amount: 0.4 }}
+                variants={fadeInUp}
+                transition={{ duration: 0.5, ease: 'easeOut', delay: index * 0.12 }}
                 className="py-8 border-b border-slate-200 dark:border-slate-700 last:border-b-0"
               >
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
@@ -71,7 +82,7 @@ export default function WasDarausEntsteht() {
                     </p>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
 
