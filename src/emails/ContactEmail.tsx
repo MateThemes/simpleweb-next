@@ -18,12 +18,13 @@ interface ContactEmailProps {
   phone: string
   company: string
   projectType: 'website' | 'shop' | 'seo' | 'marketing' | 'other'
-  budget: '' | 'small' | 'medium' | 'large' | 'xlarge'
+  budget: '' | 'unclear' | 'small' | 'medium' | 'large' | 'xlarge'
   timeline: '' | 'urgent' | 'month' | 'quarter' | 'flexible'
   description: string
 }
 
 const budgetMap: Record<Exclude<ContactEmailProps['budget'], ''>, string> = {
+  unclear: 'Noch unklar',
   small: 'Bis 2.000 €',
   medium: '2.000 € - 5.000 €',
   large: '5.000 € - 10.000 €',
