@@ -27,8 +27,23 @@ export const metadata: Metadata = {
   // CHANGE: Define metadataBase so Next.js can resolve relative Open Graph/Twitter image URLs without warnings.
   // Uses NEXT_PUBLIC_SITE_URL in production, with a sensible localhost fallback for development.
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://simplewebdesign.at'),
-  title: "SimpleWebDesign | Professional Web Design and Development",
-  description: "Professional Web Design and Development Services in Deutschland. Wir erstellen moderne, performante und SEO-optimierte Websites.",
+  title: {
+    default: 'SimpleWebDesign | Webdesign für KMU',
+    template: '%s | SimpleWebDesign',
+  },
+  description: 'Professionelles Webdesign für KMU in Österreich & Deutschland.',
+  robots: {
+    index: true,
+    follow: true,
+  },
+  openGraph: {
+    siteName: 'SimpleWebDesign',
+    type: 'website',
+    locale: 'de_DE',
+  },
+  twitter: {
+    card: 'summary_large_image',
+  },
   alternates: {
     canonical: getCanonicalMetadata('/').alternates.canonical,
   },
@@ -50,8 +65,8 @@ export const metadata: Metadata = {
   // Dublin Core Metadata
   other: {
     ...getDublinCoreMetadata({
-      title: "SimpleWebDesign | Professional Web Design and Development",
-      description: "Professional Web Design and Development Services in Deutschland. Wir erstellen moderne, performante und SEO-optimierte Websites.",
+      title: "SimpleWebDesign | Webdesign für KMU",
+      description: "Professionelles Webdesign für KMU in Österreich & Deutschland.",
       type: DublinCoreTypes.SERVICE,
       identifier: "https://simplewebdesign.at",
       language: "de",
