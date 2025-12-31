@@ -48,7 +48,7 @@ export default function Erfahrungen() {
               >
                 {/* Optional: Dezente Anführungszeichen als Background-Element */}
                 <div className="absolute -left-2 top-0 text-6xl font-serif text-slate-200 dark:text-slate-700 leading-none pointer-events-none">
-                  "
+                  &ldquo;
                 </div>
                 <blockquote className="relative text-lg leading-7 text-gray-900 dark:text-white mb-4">
                   {testimonial.quote}
