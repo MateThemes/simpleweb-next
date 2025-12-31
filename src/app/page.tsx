@@ -20,17 +20,41 @@ import { breadcrumbSchema, webPageSchema } from '@/app/schema'
 import { getWebPageDC } from '@/lib/dublinCore'
 
 export const metadata: Metadata = {
-  title: 'Webdesign Agentur für KMU | Moderne Websites Österreich & Deutschland | SimpleWebDesign',
-  description: 'Professionelle Webdesign Agentur für KMU in Österreich & Deutschland. Moderne Websites, SEO-Optimierung, E-Commerce & Online-Marketing. Kostenlose Beratung für kleine und mittlere Unternehmen.',
+  title: 'Webdesign für KMU in Österreich & Deutschland | SimpleWebDesign',
+  description: 'Viele Websites sehen gut aus, bringen aber keine Anfragen. Wir schaffen Klarheit, Struktur und messbare Wirkung – für KMU in Österreich & Deutschland.',
+  alternates: {
+    canonical: 'https://simplewebdesign.at/',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
   openGraph: {
-    images: '/img/og-image.jpg',
+    title: 'Webdesign für KMU in Österreich & Deutschland | SimpleWebDesign',
+    description: 'Viele Websites sehen gut aus, bringen aber keine Anfragen. Wir schaffen Klarheit, Struktur und messbare Wirkung – für KMU in Österreich & Deutschland.',
+    url: 'https://simplewebdesign.at/',
+    siteName: 'SimpleWebDesign',
     type: 'website',
+    images: [
+      {
+        url: '/img/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'SimpleWebDesign - Webdesign für KMU',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Webdesign für KMU in Österreich & Deutschland | SimpleWebDesign',
+    description: 'Viele Websites sehen gut aus, bringen aber keine Anfragen. Wir schaffen Klarheit, Struktur und messbare Wirkung – für KMU in Österreich & Deutschland.',
+    images: ['/img/og-image.jpg'],
   },
   // Dublin Core Metadata
   other: {
     ...getWebPageDC({
-      title: 'Webdesign Agentur für KMU | Moderne Websites Österreich & Deutschland',
-      description: 'Professionelle Webdesign Agentur für KMU in Österreich & Deutschland. Moderne Websites, SEO-Optimierung, E-Commerce & Online-Marketing.',
+      title: 'Webdesign für KMU in Österreich & Deutschland | SimpleWebDesign',
+      description: 'Viele Websites sehen gut aus, bringen aber keine Anfragen. Wir schaffen Klarheit, Struktur und messbare Wirkung – für KMU in Österreich & Deutschland.',
       url: 'https://simplewebdesign.at',
     }),
   },
@@ -43,28 +67,19 @@ const WebsiteSchema = {
   name: 'SimpleWebDesign',
   description: 'Professionelles Webdesign mit Fokus auf SEO, Performance und Nutzerfreundlichkeit.',
   url: 'https://simplewebdesign.at',
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: 'Sonnleite 20',
-    addressLocality: 'Vitis',
-    postalCode: '3902',
-    addressRegion: 'Niederösterreich',
-    addressCountry: 'AT'
-  },
-  areaServed: {
-    '@type': 'GeoCircle',
-    geoMidpoint: {
-      '@type': 'GeoCoordinates',
-      latitude: 48.4474,
-      longitude: 15.6066
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: {
+      '@type': 'EntryPoint',
+      urlTemplate: 'https://simplewebdesign.at/?s={search_term_string}',
     },
-    geoRadius: '100000'
-  }
+    'query-input': 'required name=search_term_string',
+  },
 }
 
 const LocalBusinessSchema = {
   '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
+  '@type': 'ProfessionalService',
   name: 'SimpleWebDesign',
   description: 'Webdesign Agentur für KMU in Österreich und Deutschland - Professionelle Websites mit Fokus auf SEO, Performance und Nutzerfreundlichkeit.',
   url: 'https://simplewebdesign.at',
@@ -88,15 +103,7 @@ const LocalBusinessSchema = {
       name: 'Germany'
     }
   ],
-  serviceArea: {
-    '@type': 'GeoCircle',
-    geoMidpoint: {
-      '@type': 'GeoCoordinates',
-      latitude: 48.4474,
-      longitude: 15.6066
-    },
-    geoRadius: '500000'
-  },
+  serviceType: ['Webdesign', 'SEO', 'Online Marketing'],
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
     name: 'Webdesign Services für KMU',
@@ -190,7 +197,7 @@ const OrganizationSchema = {
     'Workflow-Automatisierung'
   ],
   serviceType: 'Webdesign Agentur',
-  foundingDate: '2020',
+  foundingDate: '2016',
   numberOfEmployees: '1-10',
   sameAs: [
     'https://simplewebdesign.at'
@@ -202,8 +209,8 @@ export default function Home() {
   const additionalSchemas = [
     // WebPage Schema
     webPageSchema({
-      name: 'Webdesign Agentur für KMU | SimpleWebDesign',
-      description: 'Professionelle Webdesign Agentur für KMU in Österreich & Deutschland.',
+      name: 'Webdesign für KMU in Österreich & Deutschland | SimpleWebDesign',
+      description: 'Viele Websites sehen gut aus, bringen aber keine Anfragen. Wir schaffen Klarheit, Struktur und messbare Wirkung – für KMU in Österreich & Deutschland.',
       url: 'https://simplewebdesign.at',
       image: 'https://simplewebdesign.at/img/og-image.jpg',
     }),
