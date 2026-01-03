@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import ModernHero from '@/components/sections/ModernHero'
 import Klarheit from '@/components/sections/Klarheit'
+import ParallaxBreak from '@/components/sections/ParallaxBreak'
 import Ansatz from '@/components/sections/Ansatz'
 import WasDarausEntsteht from '@/components/sections/WasDarausEntsteht'
 import WieWirHelfen from '@/components/sections/WieWirHelfen'
@@ -252,6 +253,7 @@ export default function Home() {
       <div>
         <ModernHero />
         <Klarheit />
+        <ParallaxBreak />
         <Ansatz />
         <WasDarausEntsteht />
         <WieWirHelfen />

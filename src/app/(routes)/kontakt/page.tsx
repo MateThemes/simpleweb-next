@@ -56,22 +56,19 @@ export default function ContactPage() {
       <main className="flex-auto">
         <Container className="mt-24 sm:mt-32">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 dark:bg-blue-900/20 rounded-full border border-blue-200 dark:border-blue-800 mb-8">
-              <span className="text-blue-600 dark:text-blue-400 font-medium">📞 Kostenlose Beratung</span>
+            <div className="mb-6">
+              <span className="inline-block px-3 py-1 text-sm font-medium text-blue-900 dark:text-blue-100 bg-blue-100 dark:bg-blue-900/30 rounded-full">
+                Kontakt
+              </span>
             </div>
             <h1 className="font-display text-5xl font-medium tracking-tight text-neutral-950 dark:text-white [text-wrap:balance] sm:text-7xl">
-              Kontakt für KMU Webdesign
+              Lass uns klären, ob deine Website arbeiten soll.
             </h1>
             <p className="mt-6 text-xl text-neutral-600 dark:text-neutral-400 max-w-3xl mx-auto">
-              Erzählen Sie uns von Ihrem KMU-Projekt in Wien, München, Waldviertel oder ganz Österreich & Deutschland. Wir freuen uns darauf, Ihre Vision kennenzulernen und gemeinsam die beste Webdesign-Lösung zu entwickeln.
+              Wenn du das Gefühl hast, dass online zu wenig passiert, ist das meist kein Design-Problem.
+              <br />
+              Schreib uns kurz, wo du stehst – wir melden uns mit einer klaren Einschätzung.
             </p>
-            <div className="mt-8 flex flex-wrap justify-center gap-4 text-sm text-neutral-500 dark:text-neutral-400">
-              <a href="/services/webdesign" className="hover:text-blue-600 dark:hover:text-blue-400 underline">Webdesign-Services</a>
-              <span>•</span>
-              <a href="/preise-und-pakete" className="hover:text-blue-600 dark:hover:text-blue-400 underline">Preise</a>
-              <span>•</span>
-              <a href="/portfolio" className="hover:text-blue-600 dark:hover:text-blue-400 underline">Portfolio</a>
-            </div>
           </div>
         </Container>
 
