@@ -91,27 +91,69 @@ const fits = {
 }
 
 export default function AboutPage() {
+  // Enhanced JSON-LD schemas for About page
+  const aboutPageSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'AboutPage',
+    name: 'Über SimpleWebDesign',
+    description: 'Gerald Schandl betreibt SimpleWebDesign und baut Websites für KMU, die messbare Anfragen bringen.',
+    url: 'https://simplewebdesign.at/ueber-uns',
+    mainEntity: {
+      '@type': 'Person',
+      name: 'Gerald Schandl',
+      jobTitle: 'Webdesigner & Gründer',
+      description: 'Webdesigner mit Fokus auf Klarheit, Struktur und messbare Wirkung für KMU in Österreich & Deutschland.',
+      knowsAbout: [
+        'Webdesign',
+        'User Experience (UX)',
+        'Conversion-Optimierung',
+        'SEO Grundlagen',
+        'Website-Struktur',
+        'Online Marketing für KMU'
+      ],
+      worksFor: {
+        '@type': 'Organization',
+        name: 'SimpleWebDesign',
+        url: 'https://simplewebdesign.at',
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: 'Sonnleite 20',
+          addressLocality: 'Vitis',
+          postalCode: '3902',
+          addressRegion: 'Niederösterreich',
+          addressCountry: 'AT'
+        }
+      }
+    }
+  };
+
+  const organizationSchema = aboutSchema({
+    name: 'SimpleWebDesign',
+    description: 'Websites mit Klarheit, Struktur und messbarer Wirkung für KMU in Österreich & Deutschland.',
+    image: '/img/about/workspace.jpg',
+    foundingDate: '2020',
+    founders: ['Gerald Schandl'],
+    address: {
+      streetAddress: 'Sonnleite 20',
+      addressLocality: 'Vitis',
+      addressRegion: 'Niederösterreich',
+      postalCode: '3902',
+      addressCountry: 'AT'
+    }
+  });
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(
-            aboutSchema({
-              name: 'SimpleWebDesign',
-              description: 'Websites mit Klarheit, Struktur und messbarer Wirkung für KMU in Österreich & Deutschland.',
-              image: '/img/about/workspace.jpg',
-              foundingDate: '2020',
-              founders: ['Gerald Schandl'],
-              address: {
-                streetAddress: 'Sonnleite 20',
-                addressLocality: 'Vitis',
-                addressRegion: 'Niederösterreich',
-                postalCode: '3902',
-                addressCountry: 'AT'
-              }
-            })
-          )
+          __html: JSON.stringify(aboutPageSchema)
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(organizationSchema)
         }}
       />
       <main className="flex-auto">
@@ -124,6 +166,12 @@ export default function AboutPage() {
             <h1 className="font-display text-5xl font-medium tracking-tight text-neutral-950 dark:text-white [text-wrap:balance] sm:text-7xl">
               Websites, die Entscheidungen erleichtern – nicht nur gut aussehen.
             </h1>
+            {/* LLM-friendly summary block */}
+            <div className="mt-6 text-lg text-neutral-700 dark:text-neutral-300 max-w-3xl bg-neutral-50 dark:bg-neutral-900 p-6 rounded-lg border border-neutral-200 dark:border-neutral-800">
+              <p>
+                Gerald Schandl betreibt SimpleWebDesign und baut Websites für KMU, die nicht nur gut aussehen, sondern messbare Anfragen bringen. Fokus auf Klarheit, Struktur und ehrliche Beratung – ohne Agentur-Sprech.
+              </p>
+            </div>
             <p className="mt-6 text-xl text-neutral-600 dark:text-neutral-400 max-w-3xl">
               Ich bin Gerald. Ich baue Websites anders als viele Agenturen.
               Nicht, weil Design oder Technik unwichtig sind – sondern weil das Problem selten dort liegt.
