@@ -124,14 +124,12 @@ export default function AboutPage() {
               Websites, die Entscheidungen erleichtern – nicht nur gut aussehen.
             </h1>
             <p className="mt-6 text-xl text-neutral-600 dark:text-neutral-400 max-w-3xl">
-              Ich bin Gerald, und ich baue Websites anders als die meisten Agenturen. 
-              Nicht, weil ich gegen Design oder Technik bin – sondern weil ich gelernt habe, 
-              dass das Problem selten dort liegt.
+              Ich bin Gerald. Ich baue Websites anders als viele Agenturen.
+              Nicht, weil Design oder Technik unwichtig sind – sondern weil das Problem selten dort liegt.
             </p>
             <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-400 max-w-3xl">
-              Die meisten Websites scheitern an fehlender Klarheit. An unklarer Zielgruppe. 
-              An fehlender Struktur. Das sieht man nicht sofort – aber man spürt es in den 
-              Anfragen (oder ihrem Ausbleiben).
+              Die meisten Websites scheitern an fehlender Klarheit, unklarer Zielgruppe und fehlender Struktur. 
+              Das sieht man nicht sofort – aber man spürt es in den Anfragen (oder ihrem Ausbleiben).
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
               <Button href="/kontakt" variant="primary">
@@ -327,7 +325,7 @@ export default function AboutPage() {
               </p>
               <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
                 <Button href="/kontakt" variant="primary">
-                  Unverbindlich Kontakt aufnehmen
+                  Einschätzung anfragen
                 </Button>
               </div>
               <p className="mt-6 text-sm text-neutral-500 dark:text-neutral-400">
@@ -346,9 +344,8 @@ export default function AboutPage() {
               </summary>
               <p className="mt-4 leading-relaxed">
                 Ich arbeite hauptsächlich mit Next.js, React, Tailwind CSS und Shopify. 
-                Hosting läuft meist über Vercel oder cloudbasierte Lösungen. 
-                Aber ehrlich: Die Technologie ist selten das Problem. 
-                Wichtiger ist, dass die Website tut, was sie soll.
+                Hosting läuft über Vercel (oder Hetzner, je nach Projekt). 
+                Die Technologie ist selten das Problem – wichtiger ist, dass die Website tut, was sie soll.
               </p>
             </details>
           </div>
