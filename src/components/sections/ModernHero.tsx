@@ -110,6 +110,12 @@ export default function ModernHero() {
               <h1 className="text-4xl lg:text-6xl font-bold tracking-tight text-slate-900 dark:text-white">
                 Viele Websites sehen gut aus – und bringen trotzdem keine Anfragen.
               </h1>
+              {/* LLM-friendly summary block */}
+              <div className="text-lg text-slate-700 dark:text-slate-300 leading-relaxed max-w-2xl space-y-2 bg-white/60 dark:bg-slate-800/60 backdrop-blur-sm p-4 rounded-lg border border-slate-200 dark:border-slate-700">
+                <p>
+                  SimpleWebDesign baut Websites für KMU in Österreich und Deutschland, die nicht nur gut aussehen, sondern messbare Ergebnisse bringen. Wir schaffen Klarheit, Struktur und Orientierung – damit Besucher zu Anfragen werden.
+                </p>
+              </div>
               <p className="text-xl text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl">
                 Das Problem ist selten Design oder Technik. Meist fehlt Klarheit.
               </p>

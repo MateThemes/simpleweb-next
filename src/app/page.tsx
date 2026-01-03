@@ -8,6 +8,7 @@ import WieWirHelfen from '@/components/sections/WieWirHelfen'
 import Zusammenarbeit from '@/components/sections/Zusammenarbeit'
 import Einordnung from '@/components/sections/Einordnung'
 import Erfahrungen from '@/components/sections/Erfahrungen'
+import HomeFaq from '@/components/sections/HomeFaq'
 // Alte Sections - nur von Startseite entfernt, Components bleiben im Projekt erhalten
 // import Banner from '@/components/sections/Banner'
 // import Services from '@/components/sections/Services'
@@ -17,7 +18,7 @@ import Erfahrungen from '@/components/sections/Erfahrungen'
 // import WorkingPrinciples from '@/components/sections/WorkingPrinciples'
 // import Faq from '@/components/sections/Faq'
 // import CtaV1 from '@/components/sections/CtaV1'
-import { breadcrumbSchema, webPageSchema } from '@/app/schema'
+import { breadcrumbSchema, webPageSchema, faqSchema } from '@/app/schema'
 import { getWebPageDC } from '@/lib/dublinCore'
 
 export const metadata: Metadata = {
@@ -208,6 +209,34 @@ const OrganizationSchema = {
 }
 
 export default function Home() {
+  // FAQ data for schema
+  const faqData = [
+    {
+      question: 'Warum bringt meine Website keine Anfragen?',
+      answer: 'Meist fehlt Klarheit: Besucher verstehen nicht sofort, wer hier richtig ist und warum. Eine Website muss Orientierung geben, nicht nur informieren.'
+    },
+    {
+      question: 'Was unterscheidet SimpleWebDesign von klassischen Agenturen?',
+      answer: 'Wir beginnen nicht mit Design oder Technik, sondern mit Einordnung: Was soll die Website leisten? Erst dann folgen Struktur, Design und Umsetzung.'
+    },
+    {
+      question: 'Wie lange dauert ein Website-Projekt?',
+      answer: 'Je nach Umfang 3–8 Wochen. Wichtiger als Geschwindigkeit ist, dass die Website am Ende das tut, wofür sie gebaut wurde.'
+    },
+    {
+      question: 'Arbeitet ihr nur mit KMU in Österreich?',
+      answer: 'Nein, wir arbeiten mit KMU in ganz Österreich und Deutschland. Remote-Projekte sind für uns Standard.'
+    },
+    {
+      question: 'Was kostet eine professionelle Website?',
+      answer: 'Das hängt vom Umfang ab. Wir geben erst eine Einschätzung, nachdem wir dein Projekt verstanden haben – ohne Verpflichtung.'
+    },
+    {
+      question: 'Kann ich meine bestehende Website optimieren lassen?',
+      answer: 'Ja. Oft bringt eine klare Struktur-Überarbeitung mehr als ein kompletter Relaunch. Wir schauen uns deine Website an und sagen ehrlich, was Sinn macht.'
+    }
+  ];
+
   // Erweiterte Schemas
   const additionalSchemas = [
     // WebPage Schema
@@ -222,6 +251,10 @@ export default function Home() {
       items: [
         { name: 'Home', url: 'https://simplewebdesign.at' },
       ],
+    }),
+    // FAQ Schema
+    faqSchema({
+      faqs: faqData,
     }),
   ];
 
@@ -260,6 +293,7 @@ export default function Home() {
         <Zusammenarbeit />
         <Einordnung />
         <Erfahrungen />
+        <HomeFaq />
         {/* Alte Sections - nur von Startseite entfernt, Components bleiben im Projekt erhalten */}
         {/* <Banner /> */}
         {/* <Services /> */}

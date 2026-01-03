@@ -31,26 +31,54 @@ export const metadata: Metadata = {
 }
 
 export default function ContactPage() {
+  // Enhanced JSON-LD schemas for Contact page
+  const contactPageSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ContactPage',
+    name: 'Kontakt SimpleWebDesign',
+    description: 'Kontaktiere SimpleWebDesign für eine ehrliche Einschätzung deines Website-Projekts für KMU in Österreich & Deutschland.',
+    url: 'https://simplewebdesign.at/kontakt',
+    mainEntity: {
+      '@type': 'Organization',
+      name: 'SimpleWebDesign',
+      url: 'https://simplewebdesign.at',
+      contactPoint: {
+        '@type': 'ContactPoint',
+        contactType: 'customer service',
+        email: 'info@simplewebdesign.at',
+        telephone: '+436645182696',
+        availableLanguage: ['German', 'English'],
+        areaServed: ['AT', 'DE']
+      }
+    }
+  };
+
+  const businessSchema = contactSchema({
+    name: 'SimpleWebDesign',
+    email: 'info@simplewebdesign.at',
+    phone: '+43 664 518 26 96',
+    address: {
+      street: 'Sonnleite 20',
+      city: 'Vitis',
+      postalCode: '3902',
+      country: 'Austria'
+    },
+    openingHours: ['Mo-Fr 09:00-15:00', 'Sa-So geschlossen'],
+    image: '/img/contact/office.jpg'
+  });
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(
-            contactSchema({
-              name: 'SimpleWebDesign',
-              email: 'info@simplewebdesign.at',
-              phone: '+43 664 518 26 96',
-              address: {
-                street: 'Sonnleite 20',
-                city: 'Vitis',
-                postalCode: '3902',
-                country: 'Austria'
-              },
-              openingHours: ['Mo-Fr 09:00-15:00', 'Sa-So geschlossen'],
-              image: '/img/contact/office.jpg'
-            })
-          )
+          __html: JSON.stringify(contactPageSchema)
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(businessSchema)
         }}
       />
       <main className="flex-auto">
@@ -64,6 +92,12 @@ export default function ContactPage() {
             <h1 className="font-display text-5xl font-medium tracking-tight text-neutral-950 dark:text-white [text-wrap:balance] sm:text-7xl">
               Lass uns klären, ob deine Website arbeiten soll.
             </h1>
+            {/* LLM-friendly summary block */}
+            <div className="mt-6 text-lg text-neutral-700 dark:text-neutral-300 max-w-3xl mx-auto bg-neutral-50 dark:bg-neutral-900 p-6 rounded-lg border border-neutral-200 dark:border-neutral-800">
+              <p>
+                Kontaktiere SimpleWebDesign für eine ehrliche Einschätzung deines Website-Projekts. Beratung für KMU in Österreich & Deutschland – ohne Verkaufsgespräch, ohne Verpflichtung.
+              </p>
+            </div>
             <p className="mt-6 text-xl text-neutral-600 dark:text-neutral-400 max-w-3xl mx-auto">
               Wenn du das Gefühl hast, dass online zu wenig passiert, ist das meist kein Design-Problem.
               <br />
