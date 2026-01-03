@@ -7,11 +7,12 @@ import { aboutSchema } from '@/app/schema'
 // Metadata
 export const metadata: Metadata = {
   title: 'Über mich | Websites, die Entscheidungen erleichtern | SimpleWebDesign',
-  description: 'Warum ich Websites anders baue: Klarheit vor Design. Struktur vor Features. Wirkung vor Buzzwords. Für KMU in Österreich & Deutschland.',
+  description: 'Ich bin Gerald. Ich baue Websites, die Entscheidungen erleichtern – mit Klarheit, Struktur und messbarer Wirkung. Für KMU in Österreich & Deutschland.',
   openGraph: {
     title: 'Über mich | Websites, die Entscheidungen erleichtern | SimpleWebDesign',
-    description: 'Warum ich Websites anders baue: Klarheit vor Design. Struktur vor Features. Wirkung vor Buzzwords. Für KMU in Österreich & Deutschland.',
+    description: 'Ich bin Gerald. Ich baue Websites, die Entscheidungen erleichtern – mit Klarheit, Struktur und messbarer Wirkung. Für KMU in Österreich & Deutschland.',
     url: 'https://simplewebdesign.at/ueber-uns',
+    type: 'website',
     images: [
       {
         url: '/img/about/workspace.jpg',
@@ -24,7 +25,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Über mich | Websites, die Entscheidungen erleichtern | SimpleWebDesign',
-    description: 'Warum ich Websites anders baue: Klarheit vor Design. Struktur vor Features. Wirkung vor Buzzwords.',
+    description: 'Ich bin Gerald. Ich baue Websites, die Entscheidungen erleichtern – mit Klarheit, Struktur und messbarer Wirkung. Für KMU in Österreich & Deutschland.',
     images: ['/img/about/workspace.jpg']
   },
   alternates: {
