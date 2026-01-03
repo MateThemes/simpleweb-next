@@ -18,7 +18,6 @@ import HomeFaq from '@/components/sections/HomeFaq'
 // import WorkingPrinciples from '@/components/sections/WorkingPrinciples'
 // import Faq from '@/components/sections/Faq'
 // import CtaV1 from '@/components/sections/CtaV1'
-import { breadcrumbSchema, webPageSchema, faqSchema } from '@/app/schema'
 import { getWebPageDC } from '@/lib/dublinCore'
 
 export const metadata: Metadata = {
@@ -64,149 +63,179 @@ export const metadata: Metadata = {
   },
 }
 
-// JSON-LD Script components
-const WebsiteSchema = {
+// Unified JSON-LD Schema with @graph
+const UnifiedSchema = (faqData: Array<{question: string; answer: string}>) => ({
   '@context': 'https://schema.org',
-  '@type': 'WebSite',
-  name: 'SimpleWebDesign',
-  description: 'Professionelles Webdesign mit Fokus auf SEO, Performance und Nutzerfreundlichkeit.',
-  url: 'https://simplewebdesign.at',
-  potentialAction: {
-    '@type': 'SearchAction',
-    target: {
-      '@type': 'EntryPoint',
-      urlTemplate: 'https://simplewebdesign.at/?s={search_term_string}',
-    },
-    'query-input': 'required name=search_term_string',
-  },
-}
-
-const LocalBusinessSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'ProfessionalService',
-  name: 'SimpleWebDesign',
-  description: 'Webdesign Agentur für KMU in Österreich und Deutschland - Professionelle Websites mit Fokus auf SEO, Performance und Nutzerfreundlichkeit.',
-  url: 'https://simplewebdesign.at',
-  telephone: '+436645182696',
-  email: 'info@simplewebdesign.at',
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: 'Sonnleite 20',
-    addressLocality: 'Vitis',
-    postalCode: '3902',
-    addressRegion: 'Niederösterreich',
-    addressCountry: 'AT'
-  },
-  areaServed: [
+  '@graph': [
+    // Organization
     {
-      '@type': 'Country',
-      name: 'Austria'
+      '@type': 'Organization',
+      '@id': 'https://simplewebdesign.at/#organization',
+      name: 'SimpleWebDesign',
+      description: 'Webdesign Agentur für KMU in Österreich und Deutschland - Spezialisiert auf moderne Websites, SEO und E-Commerce für kleine und mittlere Unternehmen.',
+      url: 'https://simplewebdesign.at',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://simplewebdesign.at/img/logo.png'
+      },
+      telephone: '+436645182696',
+      email: 'info@simplewebdesign.at',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Sonnleite 20',
+        addressLocality: 'Vitis',
+        postalCode: '3902',
+        addressRegion: 'Niederösterreich',
+        addressCountry: 'AT'
+      },
+      areaServed: [
+        {
+          '@type': 'Country',
+          name: 'Austria'
+        },
+        {
+          '@type': 'Country',
+          name: 'Germany'
+        }
+      ],
+      foundingDate: '2016',
+      numberOfEmployees: '1-10'
     },
+    // ProfessionalService
     {
-      '@type': 'Country',
-      name: 'Germany'
-    }
-  ],
-  serviceType: ['Webdesign', 'SEO', 'Online Marketing'],
-  hasOfferCatalog: {
-    '@type': 'OfferCatalog',
-    name: 'Webdesign Services für KMU',
-    itemListElement: [
-      {
-        '@type': 'Offer',
-        itemOffered: {
-          '@type': 'Service',
-          name: 'Responsive Webdesign für KMU',
-          description: 'Moderne, responsive Websites speziell für kleine und mittlere Unternehmen'
-        }
+      '@type': 'ProfessionalService',
+      '@id': 'https://simplewebdesign.at/#organization',
+      name: 'SimpleWebDesign',
+      description: 'Webdesign Agentur für KMU in Österreich und Deutschland - Professionelle Websites mit Fokus auf SEO, Performance und Nutzerfreundlichkeit.',
+      url: 'https://simplewebdesign.at',
+      telephone: '+436645182696',
+      email: 'info@simplewebdesign.at',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Sonnleite 20',
+        addressLocality: 'Vitis',
+        postalCode: '3902',
+        addressRegion: 'Niederösterreich',
+        addressCountry: 'AT'
       },
-      {
-        '@type': 'Offer',
-        itemOffered: {
-          '@type': 'Service',
-          name: 'Lokale SEO für Handwerker',
-          description: 'Suchmaschinenoptimierung für lokale Suchergebnisse und Google My Business'
+      areaServed: [
+        {
+          '@type': 'Country',
+          name: 'Austria'
+        },
+        {
+          '@type': 'Country',
+          name: 'Germany'
         }
-      },
-      {
-        '@type': 'Offer',
-        itemOffered: {
-          '@type': 'Service',
-          name: 'Online Marketing für KMU',
-          description: 'Digitales Marketing und Social Media Management für kleine Unternehmen'
-        }
-      },
-      {
-        '@type': 'Offer',
-        itemOffered: {
-          '@type': 'Service',
-          name: 'E-Commerce mit Shopify',
-          description: 'Online-Shops für KMU mit Shopify und individuellen E-Commerce-Lösungen'
-        }
-      },
-      {
-        '@type': 'Offer',
-        itemOffered: {
-          '@type': 'Service',
-          name: 'KI-Automatisierung für KMU',
-          description: 'Automatisierung von Routineaufgaben für Handwerker & lokale Dienstleister'
-        }
+      ],
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: 'Webdesign Services für KMU',
+        itemListElement: [
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'Responsive Webdesign',
+              description: 'Moderne, responsive Websites für kleine und mittlere Unternehmen'
+            }
+          },
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'SEO-Optimierung',
+              description: 'Suchmaschinenoptimierung für mehr Sichtbarkeit und organischen Traffic'
+            }
+          },
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'E-Commerce mit Shopify',
+              description: 'Online-Shops für KMU mit Shopify und maßgeschneiderten E-Commerce-Lösungen'
+            }
+          },
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'Website Redesign',
+              description: 'Optimierung und Neugestaltung bestehender Websites für bessere Performance'
+            }
+          }
+        ]
       }
-    ]
-  },
-  sameAs: [
-    'https://simplewebdesign.at'
-  ]
-}
-
-const OrganizationSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Organization',
-  name: 'SimpleWebDesign',
-  description: 'Webdesign Agentur für KMU in Österreich und Deutschland - Spezialisiert auf moderne Websites, SEO und Online-Marketing für kleine und mittlere Unternehmen.',
-  url: 'https://simplewebdesign.at',
-  logo: 'https://simplewebdesign.at/img/logo.png',
-  telephone: '+436645182696',
-  email: 'info@simplewebdesign.at',
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: 'Sonnleite 20',
-    addressLocality: 'Vitis',
-    postalCode: '3902',
-    addressRegion: 'Niederösterreich',
-    addressCountry: 'AT'
-  },
-  areaServed: [
-    {
-      '@type': 'Country',
-      name: 'Austria'
     },
+    // WebSite
     {
-      '@type': 'Country',
-      name: 'Germany'
+      '@type': 'WebSite',
+      '@id': 'https://simplewebdesign.at/#website',
+      name: 'SimpleWebDesign',
+      description: 'Professionelles Webdesign mit Fokus auf SEO, Performance und Nutzerfreundlichkeit.',
+      url: 'https://simplewebdesign.at',
+      publisher: {
+        '@id': 'https://simplewebdesign.at/#organization'
+      },
+      potentialAction: {
+        '@type': 'SearchAction',
+        target: {
+          '@type': 'EntryPoint',
+          urlTemplate: 'https://simplewebdesign.at/?s={search_term_string}'
+        },
+        'query-input': 'required name=search_term_string'
+      }
+    },
+    // WebPage (Homepage)
+    {
+      '@type': 'WebPage',
+      '@id': 'https://simplewebdesign.at/#webpage',
+      url: 'https://simplewebdesign.at',
+      name: 'Webdesign für KMU in Österreich & Deutschland',
+      description: 'Viele Websites sehen gut aus, bringen aber keine Anfragen. Wir schaffen Klarheit, Struktur und messbare Wirkung – für KMU in Österreich & Deutschland.',
+      isPartOf: {
+        '@id': 'https://simplewebdesign.at/#website'
+      },
+      about: {
+        '@id': 'https://simplewebdesign.at/#organization'
+      },
+      publisher: {
+        '@id': 'https://simplewebdesign.at/#organization'
+      },
+      inLanguage: 'de-AT',
+      image: {
+        '@type': 'ImageObject',
+        url: 'https://simplewebdesign.at/img/og-image.jpg'
+      }
+    },
+    // BreadcrumbList
+    {
+      '@type': 'BreadcrumbList',
+      '@id': 'https://simplewebdesign.at/#breadcrumb',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Home',
+          item: 'https://simplewebdesign.at'
+        }
+      ]
+    },
+    // FAQPage
+    {
+      '@type': 'FAQPage',
+      '@id': 'https://simplewebdesign.at/#faq',
+      mainEntity: faqData.map(faq => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.answer
+        }
+      }))
     }
-  ],
-  knowsAbout: [
-    'Webdesign',
-    'SEO-Optimierung',
-    'Online Marketing',
-    'E-Commerce',
-    'Shopify',
-    'Next.js',
-    'Strapi CMS',
-    'Lokale SEO',
-    'Google My Business',
-    'Responsive Design',
-    'KI-Automatisierung',
-    'Workflow-Automatisierung'
-  ],
-  serviceType: 'Webdesign Agentur',
-  foundingDate: '2016',
-  numberOfEmployees: '1-10',
-  sameAs: [
-    'https://simplewebdesign.at'
   ]
-}
+});
 
 export default function Home() {
   // FAQ data for schema
@@ -237,50 +266,13 @@ export default function Home() {
     }
   ];
 
-  // Erweiterte Schemas
-  const additionalSchemas = [
-    // WebPage Schema
-    webPageSchema({
-      name: 'Webdesign für KMU in Österreich & Deutschland | SimpleWebDesign',
-      description: 'Viele Websites sehen gut aus, bringen aber keine Anfragen. Wir schaffen Klarheit, Struktur und messbare Wirkung – für KMU in Österreich & Deutschland.',
-      url: 'https://simplewebdesign.at',
-      image: 'https://simplewebdesign.at/img/og-image.jpg',
-    }),
-    // Breadcrumb Schema
-    breadcrumbSchema({
-      items: [
-        { name: 'Home', url: 'https://simplewebdesign.at' },
-      ],
-    }),
-    // FAQ Schema
-    faqSchema({
-      faqs: faqData,
-    }),
-  ];
-
   return (
     <div>
-      {/* Add JSON-LD Scripts */}
+      {/* Unified JSON-LD with @graph */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(WebsiteSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(UnifiedSchema(faqData)) }}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(LocalBusinessSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(OrganizationSchema) }}
-      />
-      {/* Additional Schemas */}
-      {additionalSchemas.map((schema, index) => (
-        <script
-          key={`additional-${index}`}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-        />
-      ))}
       
       {/* Main content sections - problemorientierter Flow */}
       <div>
