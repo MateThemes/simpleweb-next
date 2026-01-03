@@ -90,11 +90,11 @@ const fits = {
 }
 
 export default function AboutPage() {
-  // Unified JSON-LD with @graph - referencing global Organization and WebSite
+  // Unified JSON-LD with @graph - AboutPage + Person Entity
   const unifiedSchema = {
     '@context': 'https://schema.org',
     '@graph': [
-      // AboutPage/WebPage Entity
+      // AboutPage Entity
       {
         '@type': 'AboutPage',
         '@id': 'https://simplewebdesign.at/ueber-uns#webpage',
@@ -105,7 +105,7 @@ export default function AboutPage() {
           '@id': 'https://simplewebdesign.at/#website'
         },
         about: {
-          '@id': 'https://simplewebdesign.at/#organization'
+          '@id': 'https://simplewebdesign.at/#person'
         },
         publisher: {
           '@id': 'https://simplewebdesign.at/#organization'
@@ -114,9 +114,6 @@ export default function AboutPage() {
         image: {
           '@type': 'ImageObject',
           url: 'https://simplewebdesign.at/img/about/workspace.jpg'
-        },
-        mainEntity: {
-          '@id': 'https://simplewebdesign.at/#person'
         }
       },
       // Person Entity
@@ -125,18 +122,17 @@ export default function AboutPage() {
         '@id': 'https://simplewebdesign.at/#person',
         name: 'Gerald Schandl',
         jobTitle: 'Webdesigner & Gründer',
-        description: 'Webdesigner mit Fokus auf Klarheit, Struktur und messbare Wirkung für KMU in Österreich & Deutschland.',
+        worksFor: {
+          '@id': 'https://simplewebdesign.at/#organization'
+        },
+        url: 'https://simplewebdesign.at/ueber-uns',
         knowsAbout: [
           'Webdesign',
           'User Experience (UX)',
           'Conversion-Optimierung',
           'SEO Grundlagen',
           'Website-Struktur'
-        ],
-        worksFor: {
-          '@id': 'https://simplewebdesign.at/#organization'
-        },
-        url: 'https://simplewebdesign.at/ueber-uns'
+        ]
       }
     ]
   };
