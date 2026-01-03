@@ -3,33 +3,28 @@ import Image from 'next/image'
 import { Container } from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
 import { aboutSchema } from '@/app/schema'
-import { 
-  CodeBracketIcon, 
-  RocketLaunchIcon, 
-  LightBulbIcon 
-} from '@/components/icons'
 
 // Metadata
 export const metadata: Metadata = {
-  title: 'Über Uns | Webdesign Experte für KMU Österreich & Deutschland | SimpleWebDesign',
-  description: 'Lernen Sie den Webdesign-Experten hinter SimpleWebDesign kennen. Spezialist für KMU Webdesign, SEO und digitales Marketing in Österreich & Deutschland.',
+  title: 'Über mich | Websites, die Entscheidungen erleichtern | SimpleWebDesign',
+  description: 'Warum ich Websites anders baue: Klarheit vor Design. Struktur vor Features. Wirkung vor Buzzwords. Für KMU in Österreich & Deutschland.',
   openGraph: {
-    title: 'Über Uns | Webdesign Experte für KMU Österreich & Deutschland | SimpleWebDesign',
-    description: 'Lernen Sie den Webdesign-Experten hinter SimpleWebDesign kennen. Spezialist für KMU Webdesign, SEO und digitales Marketing in Österreich & Deutschland.',
+    title: 'Über mich | Websites, die Entscheidungen erleichtern | SimpleWebDesign',
+    description: 'Warum ich Websites anders baue: Klarheit vor Design. Struktur vor Features. Wirkung vor Buzzwords. Für KMU in Österreich & Deutschland.',
     url: 'https://simplewebdesign.at/ueber-uns',
     images: [
       {
         url: '/img/about/workspace.jpg',
         width: 1200,
         height: 630,
-        alt: 'SimpleWeb Design Team'
+        alt: 'SimpleWeb Design - Websites mit Klarheit'
       }
     ]
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Über Uns | Webdesign Experte für KMU Österreich & Deutschland | SimpleWebDesign',
-    description: 'Lernen Sie den Webdesign-Experten hinter SimpleWebDesign kennen. Spezialist für KMU Webdesign.',
+    title: 'Über mich | Websites, die Entscheidungen erleichtern | SimpleWebDesign',
+    description: 'Warum ich Websites anders baue: Klarheit vor Design. Struktur vor Features. Wirkung vor Buzzwords.',
     images: ['/img/about/workspace.jpg']
   },
   alternates: {
@@ -37,28 +32,62 @@ export const metadata: Metadata = {
   }
 }
 
-const values = [
+const principles = [
   {
-    name: 'Expertise',
-    description: 'Mit jahrelanger Erfahrung in Webentwicklung und digitalem Marketing biete ich Ihnen professionelle Lösungen auf höchstem Niveau.',
-    icon: CodeBracketIcon,
+    title: 'Einordnung',
+    description: 'Bevor ich etwas baue, kläre ich mit dir, was die Website eigentlich leisten soll – und für wen.'
   },
   {
-    name: 'Innovation',
-    description: 'Ich bleibe stets am Puls der Zeit und setze die neuesten Technologien und Trends ein, um Ihren Online-Auftritt zukunftssicher zu gestalten.',
-    icon: LightBulbIcon,
+    title: 'Struktur',
+    description: 'Websites funktionieren nicht durch Design oder Features, sondern durch klare Seitenlogik, die Besucher führt.'
   },
   {
-    name: 'Performance',
-    description: 'Schnelle Ladezeiten und optimale Benutzerfreundlichkeit sind für mich keine Option, sondern Standard.',
-    icon: RocketLaunchIcon,
+    title: 'Wirkung',
+    description: 'Erfolg messe ich nicht an Klicks oder Traffic, sondern an messbaren Ergebnissen: Anfragen, Termine oder Verkäufe.'
   },
   {
-    name: 'Persönliche Betreuung',
-    description: 'Als Ihr direkter Ansprechpartner garantiere ich Ihnen kurze Kommunikationswege und individuelle Betreuung.',
-    icon: RocketLaunchIcon,
+    title: 'Ehrliche Kommunikation',
+    description: 'Kein Agentur-Sprech, keine Buzzwords. Wenn etwas nicht passt, sage ich das offen – bevor Zeit und Budget investiert werden.'
   },
 ]
+
+const phases = [
+  {
+    number: '01',
+    title: 'Einordnung',
+    text: 'Wir klären zuerst, was die Website leisten soll – und was nicht.'
+  },
+  {
+    number: '02',
+    title: 'Struktur',
+    text: 'Wir bauen eine klare Seitenlogik, die Besucher führt.'
+  },
+  {
+    number: '03',
+    title: 'Umsetzung',
+    text: 'Design und Technik folgen der Struktur – nicht umgekehrt.'
+  },
+  {
+    number: '04',
+    title: 'Wirkung',
+    text: 'Wir prüfen gemeinsam, ob die Website das tut, wofür sie gebaut wurde.'
+  }
+]
+
+const fits = {
+  good: [
+    'Du merkst, dass deine Website nicht klar arbeitet',
+    'Du suchst Orientierung, bevor du investierst',
+    'Du hast keine Lust auf Agentur-Sprech',
+    'Du willst verstehen, warum etwas gemacht wird'
+  ],
+  notGood: [
+    'Du brauchst nur schnell „eine Website"',
+    'Du willst primär Preise vergleichen',
+    'Du suchst eine reine Umsetzungsagentur',
+    'Du willst Entscheidungen komplett abgeben'
+  ]
+}
 
 export default function AboutPage() {
   return (
@@ -69,7 +98,7 @@ export default function AboutPage() {
           __html: JSON.stringify(
             aboutSchema({
               name: 'SimpleWebDesign',
-              description: 'Wir sind Ihre Experten für modernes Webdesign, SEO und digitales Marketing in Österreich.',
+              description: 'Websites mit Klarheit, Struktur und messbarer Wirkung für KMU in Österreich & Deutschland.',
               image: '/img/about/workspace.jpg',
               foundingDate: '2020',
               founders: ['Gerald Schandl'],
@@ -87,33 +116,41 @@ export default function AboutPage() {
       <main className="flex-auto">
         {/* Hero Section */}
         <Container className="mt-24 sm:mt-32">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-orange-50 dark:bg-orange-900/20 rounded-full border border-orange-200 dark:border-orange-800 mb-8">
-              <span className="text-orange-600 dark:text-orange-400 font-medium">👨‍💻 Ihr Experte</span>
+          <div className="max-w-4xl mx-auto">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 dark:bg-blue-900/20 rounded-full border border-blue-200 dark:border-blue-800 mb-8">
+              <span className="text-blue-600 dark:text-blue-400 font-medium">Über mich</span>
             </div>
             <h1 className="font-display text-5xl font-medium tracking-tight text-neutral-950 dark:text-white [text-wrap:balance] sm:text-7xl">
-              Webdesign Experte für KMU
+              Websites, die Entscheidungen erleichtern – nicht nur gut aussehen.
             </h1>
-            <p className="mt-6 text-xl text-neutral-600 dark:text-neutral-400 max-w-3xl mx-auto">
-              Als erfahrener Webentwickler und Digital-Experte unterstütze ich KMU in Wien, München, Waldviertel und ganz Österreich & Deutschland dabei, ihre Online-Präsenz zu optimieren und ihr Geschäft digital erfolgreich zu machen.
+            <p className="mt-6 text-xl text-neutral-600 dark:text-neutral-400 max-w-3xl">
+              Ich bin Gerald, und ich baue Websites anders als die meisten Agenturen. 
+              Nicht, weil ich gegen Design oder Technik bin – sondern weil ich gelernt habe, 
+              dass das Problem selten dort liegt.
             </p>
-            <div className="mt-8 flex flex-wrap justify-center gap-4 text-sm text-neutral-500 dark:text-neutral-400">
-              <a href="/services/webdesign" className="hover:text-orange-600 dark:hover:text-orange-400 underline">Webdesign-Services</a>
-              <span>•</span>
-              <a href="/portfolio" className="hover:text-orange-600 dark:hover:text-orange-400 underline">Portfolio</a>
-              <span>•</span>
-              <a href="/preise-und-pakete" className="hover:text-orange-600 dark:hover:text-orange-400 underline">Preise</a>
+            <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-400 max-w-3xl">
+              Die meisten Websites scheitern an fehlender Klarheit. An unklarer Zielgruppe. 
+              An fehlender Struktur. Das sieht man nicht sofort – aber man spürt es in den 
+              Anfragen (oder ihrem Ausbleiben).
+            </p>
+            <div className="mt-10 flex flex-wrap gap-4">
+              <Button href="/kontakt" variant="primary">
+                Einschätzung anfragen
+              </Button>
+              <Button href="/prozess" variant="secondary">
+                Wie ich arbeite
+              </Button>
             </div>
           </div>
         </Container>
 
-        {/* About Section with Image */}
+        {/* Image + Story Section */}
         <Container className="mt-24 sm:mt-32">
           <div className="grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:gap-x-12">
             <div className="relative h-[400px] lg:h-[600px] overflow-hidden rounded-2xl">
               <Image
                 src="/img/about/workspace.jpg"
-                alt="Modern workspace with computer setup"
+                alt="Modern workspace - Websites mit klarer Struktur"
                 fill
                 className="object-cover"
                 priority
@@ -121,61 +158,47 @@ export default function AboutPage() {
             </div>
             <div className="flex flex-col justify-center">
               <h2 className="font-display text-3xl font-medium tracking-tight text-neutral-950 dark:text-white sm:text-4xl">
-                Moderne Lösungen für die digitale Welt
+                Warum ich so arbeite
               </h2>
-              <p className="mt-6 text-lg text-neutral-600 dark:text-neutral-400">
-                Mit einem tiefen Verständnis für moderne Webtechnologien wie Next.js, Strapi CMS und Shopify entwickle ich maßgeschneiderte Lösungen für KMU in Österreich & Deutschland. Meine Expertise umfasst responsive Webdesign, SEO-Optimierung und Performance-Tuning für kleine und mittlere Unternehmen.
-              </p>
-              <div className="mt-8 space-y-6">
-                <div className="flex gap-x-4">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-blue-600">
-                    <CodeBracketIcon className="h-6 w-6 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-neutral-950 dark:text-white">Technische Expertise</h3>
-                    <p className="mt-2 text-neutral-600 dark:text-neutral-400">
-                      Modernste Webtechnologien und bewährte Entwicklungspraktiken für optimale Performance.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex gap-x-4">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-blue-600">
-                    <RocketLaunchIcon className="h-6 w-6 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-neutral-950 dark:text-white">Schnelle Umsetzung</h3>
-                    <p className="mt-2 text-neutral-600 dark:text-neutral-400">
-                      Effiziente Projektabwicklung mit klarer Kommunikation und schnellen Reaktionszeiten.
-                    </p>
-                  </div>
-                </div>
+              <div className="mt-6 space-y-6 text-lg text-neutral-600 dark:text-neutral-400">
+                <p>
+                  Ich habe zu oft gesehen, wie Unternehmen viel Geld in schöne Websites 
+                  investieren – die dann nicht liefern. Weil niemand vorher gefragt hat: 
+                  Was soll diese Website eigentlich tun?
+                </p>
+                <p>
+                  Deshalb beginne ich jedes Projekt mit Einordnung. Wir klären gemeinsam, 
+                  für wen die Website ist, was sie leisten soll – und was nicht. Erst dann 
+                  baue ich die Struktur. Und erst dann kommt Design und Technik.
+                </p>
+                <p>
+                  Das ist kein klassisches Agentur-Vorgehen. Aber es funktioniert besser – 
+                  vor allem für KMU, die keine Zeit für Experimente haben.
+                </p>
               </div>
             </div>
           </div>
         </Container>
 
-        {/* Values Section */}
+        {/* Principles / Values Section */}
         <Container className="mt-24 sm:mt-32">
           <div className="mx-auto max-w-2xl lg:max-w-none">
             <div className="max-w-2xl">
               <h2 className="font-display text-3xl font-medium tracking-tight text-neutral-950 dark:text-white sm:text-4xl">
-                Unsere Werte
+                Wie ich arbeite
               </h2>
               <p className="mt-6 text-lg text-neutral-600 dark:text-neutral-400">
-                Diese Grundsätze leiten unsere tägliche Arbeit und garantieren Ihnen erstklassige Ergebnisse.
+                Diese Prinzipien leiten meine Arbeit – und unterscheiden sie von klassischen Web-Projekten.
               </p>
             </div>
-            <div className="mt-16 grid grid-cols-1 gap-8 lg:grid-cols-3">
-              {values.map((value) => (
-                <div key={value.name} className="flex flex-col">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-blue-600">
-                    <value.icon className="h-6 w-6 text-white" />
-                  </div>
-                  <h3 className="mt-6 font-display text-xl font-medium text-neutral-950 dark:text-white">
-                    {value.name}
+            <div className="mt-16 grid grid-cols-1 gap-8 lg:grid-cols-2">
+              {principles.map((principle) => (
+                <div key={principle.title} className="flex flex-col">
+                  <h3 className="font-display text-xl font-medium text-neutral-950 dark:text-white">
+                    {principle.title}
                   </h3>
                   <p className="mt-4 text-base text-neutral-600 dark:text-neutral-400">
-                    {value.description}
+                    {principle.description}
                   </p>
                 </div>
               ))}
@@ -183,144 +206,151 @@ export default function AboutPage() {
           </div>
         </Container>
 
-        {/* Services Overview */}
+        {/* Process Section - 4 Steps */}
         <Container className="mt-24 sm:mt-32">
           <div className="relative overflow-hidden bg-neutral-50 dark:bg-neutral-900 rounded-3xl px-6 py-20 sm:px-12 sm:py-28">
-            <div className="relative mx-auto max-w-2xl text-center">
+            <div className="relative mx-auto max-w-3xl">
+              <div className="mb-12">
+                <h2 className="font-display text-3xl font-medium tracking-tight text-neutral-950 dark:text-white sm:text-4xl">
+                  Wie die Zusammenarbeit abläuft
+                </h2>
+                <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-400">
+                  Ein klarer Ablauf – ohne Agentur-Theater.
+                </p>
+              </div>
+              
+              <div className="space-y-8">
+                {phases.map((phase, index) => (
+                  <div key={index} className="flex gap-6">
+                    <div className="flex-shrink-0">
+                      <span className="inline-block text-2xl font-light text-neutral-300 dark:text-neutral-600 w-12">
+                        {phase.number}
+                      </span>
+                    </div>
+                    <div className="flex-1 pb-8 border-b border-neutral-200 dark:border-neutral-800 last:border-b-0">
+                      <h3 className="text-xl font-semibold text-neutral-950 dark:text-white mb-2">
+                        {phase.title}
+                      </h3>
+                      <p className="text-base text-neutral-600 dark:text-neutral-400">
+                        {phase.text}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-12 pt-8 border-t border-neutral-200 dark:border-neutral-800">
+                <p className="text-lg text-neutral-700 dark:text-neutral-300">
+                  Du musst nicht alles wissen. Aber du solltest jederzeit verstehen, warum etwas passiert.
+                </p>
+              </div>
+            </div>
+          </div>
+        </Container>
+
+        {/* Fit Section - Passt gut / Passt nicht */}
+        <Container className="mt-24 sm:mt-32">
+          <div className="mx-auto max-w-4xl">
+            <div className="mb-12">
               <h2 className="font-display text-3xl font-medium tracking-tight text-neutral-950 dark:text-white sm:text-4xl">
-                Mein Leistungsangebot
+                Passt das für dich?
               </h2>
               <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-400">
-                Von der Konzeption bis zur Umsetzung - ich begleite Sie durch den gesamten Prozess.
+                Eine ehrliche Einordnung – nicht jedes Projekt passt zu meiner Arbeitsweise.
               </p>
             </div>
-            <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-              <div className="flex flex-col rounded-3xl bg-white dark:bg-neutral-800 px-6 py-8">
-                <h3 className="font-display text-xl font-medium text-neutral-950 dark:text-white">Webdesign</h3>
-                <p className="mt-2 text-base text-neutral-600 dark:text-neutral-400">
-                  Responsive Websites mit modernem Design und optimaler Benutzerführung.
-                </p>
-                <Image
-                  src="/img/about/webdesign.jpg"
-                  alt="Webdesign Service"
-                  width={300}
-                  height={200}
-                  className="mt-6 rounded-2xl"
-                  loading="lazy"
-                />
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+              {/* Passt gut */}
+              <div>
+                <h3 className="text-xl font-semibold text-neutral-950 dark:text-white mb-6">
+                  Passt gut, wenn …
+                </h3>
+                <ul className="space-y-3">
+                  {fits.good.map((item, index) => (
+                    <li key={index} className="flex items-start gap-3">
+                      <span className="text-green-600 dark:text-green-400 mt-1">✓</span>
+                      <span className="text-base text-neutral-600 dark:text-neutral-400">
+                        {item}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <div className="flex flex-col rounded-3xl bg-white dark:bg-neutral-800 px-6 py-8">
-                <h3 className="font-display text-xl font-medium text-neutral-950 dark:text-white">SEO</h3>
-                <p className="mt-2 text-base text-neutral-600 dark:text-neutral-400">
-                  Optimierung für Suchmaschinen und bessere Online-Sichtbarkeit.
-                </p>
-                <Image
-                  src="/img/services/seo.jpg"
-                  alt="SEO Service"
-                  width={300}
-                  height={200}
-                  className="mt-6 rounded-2xl"
-                />
-              </div>
-              <div className="flex flex-col rounded-3xl bg-white dark:bg-neutral-800 px-6 py-8">
-                <h3 className="font-display text-xl font-medium text-neutral-950 dark:text-white">Marketing</h3>
-                <p className="mt-2 text-base text-neutral-600 dark:text-neutral-400">
-                  Digitale Marketing-Strategien für nachhaltiges Wachstum.
-                </p>
-                <Image
-                  src="/img/about/marketing.jpg"
-                  alt="Marketing Service"
-                  width={300}
-                  height={200}
-                  className="mt-6 rounded-2xl"
-                  loading="lazy"
-                />
-              </div>
-              <div className="flex flex-col rounded-3xl bg-white dark:bg-neutral-800 px-6 py-8">
-                <h3 className="font-display text-xl font-medium text-neutral-950 dark:text-white">Redesign</h3>
-                <p className="mt-2 text-base text-neutral-600 dark:text-neutral-400">
-                  Modernisierung bestehender Websites für zeitgemäßen Auftritt.
-                </p>
-                <Image
-                  src="/img/services/redesign.jpg"
-                  alt="Redesign Service"
-                  width={300}
-                  height={200}
-                  className="mt-6 rounded-2xl"
-                />
-              </div>
-              <div className="flex flex-col rounded-3xl bg-white dark:bg-neutral-800 px-6 py-8">
-                <h3 className="font-display text-xl font-medium text-neutral-950 dark:text-white">Hosting</h3>
-                <p className="mt-2 text-base text-neutral-600 dark:text-neutral-400">
-                  Zuverlässiges Hosting mit erstklassigem Support.
-                </p>
-                <Image
-                  src="/img/services/hosting.jpg"
-                  alt="Hosting Service"
-                  width={300}
-                  height={200}
-                  className="mt-6 rounded-2xl"
-                />
-              </div>
-              <div className="flex flex-col rounded-3xl bg-white dark:bg-neutral-800 px-6 py-8">
-                <h3 className="font-display text-xl font-medium text-neutral-950 dark:text-white">Performance</h3>
-                <p className="mt-2 text-base text-neutral-600 dark:text-neutral-400">
-                  Optimierung der Ladezeiten und Website-Performance.
-                </p>
-                <Image
-                  src="/img/services/performance.jpg"
-                  alt="Performance Service"
-                  width={300}
-                  height={200}
-                  className="mt-6 rounded-2xl"
-                  loading="lazy"
-                />
+
+              {/* Passt eher nicht */}
+              <div>
+                <h3 className="text-xl font-semibold text-neutral-950 dark:text-white mb-6">
+                  Passt eher nicht, wenn …
+                </h3>
+                <ul className="space-y-3">
+                  {fits.notGood.map((item, index) => (
+                    <li key={index} className="flex items-start gap-3">
+                      <span className="text-neutral-400 dark:text-neutral-600 mt-1">–</span>
+                      <span className="text-base text-neutral-600 dark:text-neutral-400">
+                        {item}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           </div>
         </Container>
 
-        {/* Trust Signals */}
+        {/* Simple Stats */}
         <Container className="mt-24 sm:mt-32">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold tracking-tight text-neutral-950 dark:text-white sm:text-4xl mb-8">
-              Meine Erfolge für KMU
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-4 gap-6 max-w-4xl mx-auto">
-              <div className="flex flex-col items-center p-6 bg-slate-50 dark:bg-slate-800 rounded-xl">
-                <div className="text-3xl font-bold text-green-600 dark:text-green-400">50+</div>
-                <div className="text-sm text-slate-600 dark:text-slate-400">KMU-Projekte</div>
+          <div className="text-center">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
+              <div className="flex flex-col items-center p-6 bg-neutral-50 dark:bg-neutral-900 rounded-xl">
+                <div className="text-3xl font-bold text-blue-600 dark:text-blue-400">50+</div>
+                <div className="text-sm text-neutral-600 dark:text-neutral-400">Erfolgreich umgesetzte Projekte</div>
               </div>
-              <div className="flex flex-col items-center p-6 bg-slate-50 dark:bg-slate-800 rounded-xl">
-                <div className="text-3xl font-bold text-blue-600 dark:text-blue-400">5+</div>
-                <div className="text-sm text-slate-600 dark:text-slate-400">Jahre Erfahrung</div>
-              </div>
-              <div className="flex flex-col items-center p-6 bg-slate-50 dark:bg-slate-800 rounded-xl">
-                <div className="text-3xl font-bold text-purple-600 dark:text-purple-400">100%</div>
-                <div className="text-sm text-slate-600 dark:text-slate-400">Zufriedenheit</div>
-              </div>
-              <div className="flex flex-col items-center p-6 bg-slate-50 dark:bg-slate-800 rounded-xl">
-                <div className="text-3xl font-bold text-orange-600 dark:text-orange-400">24/7</div>
-                <div className="text-sm text-slate-600 dark:text-slate-400">Support</div>
+              <div className="flex flex-col items-center p-6 bg-neutral-50 dark:bg-neutral-900 rounded-xl">
+                <div className="text-3xl font-bold text-blue-600 dark:text-blue-400">1–2 Tage</div>
+                <div className="text-sm text-neutral-600 dark:text-neutral-400">Durchschnittliche Antwortzeit</div>
               </div>
             </div>
           </div>
         </Container>
 
-        {/* CTA Section */}
+        {/* CTA Section - Calm & Clear */}
         <Container className="mt-24 sm:mt-32 mb-24 sm:mb-32">
-          <div className="relative overflow-hidden bg-gradient-to-br from-blue-600 to-indigo-700 dark:from-blue-900 dark:to-indigo-950 px-6 py-24 shadow-2xl rounded-3xl sm:px-24 xl:py-32">
-            <h2 className="mx-auto max-w-2xl text-center text-3xl font-bold tracking-tight text-white sm:text-4xl">
-              Lassen Sie uns gemeinsam Ihr Projekt verwirklichen
-            </h2>
-            <p className="mx-auto mt-4 max-w-xl text-center text-lg leading-8 text-white/90 dark:text-neutral-300">
-              Ich freue mich darauf, Sie kennenzulernen und Ihre Ideen in die digitale Welt zu bringen.
-            </p>
-            <div className="mt-8 flex justify-center">
-              <Button href="/kontakt" variant="primary">
-                Kontakt aufnehmen
-              </Button>
+          <div className="relative overflow-hidden bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20 px-6 py-16 rounded-3xl sm:px-12 sm:py-20 border border-blue-100 dark:border-blue-900">
+            <div className="relative max-w-2xl mx-auto text-center">
+              <h2 className="text-3xl font-bold tracking-tight text-neutral-950 dark:text-white sm:text-4xl">
+                Lass uns schauen, ob es passt.
+              </h2>
+              <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-400">
+                Kein Verkaufsgespräch. Keine Verpflichtung. Nur eine ehrliche Einschätzung, 
+                ob meine Arbeitsweise zu deinem Projekt passt.
+              </p>
+              <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
+                <Button href="/kontakt" variant="primary">
+                  Unverbindlich Kontakt aufnehmen
+                </Button>
+              </div>
+              <p className="mt-6 text-sm text-neutral-500 dark:text-neutral-400">
+                Antwort in 1–2 Werktagen. Kein Spam. Wenn es nicht passt, sagen wir&apos;s offen.
+              </p>
             </div>
+          </div>
+        </Container>
+
+        {/* Tech Note - Small, at the end */}
+        <Container className="mb-24">
+          <div className="max-w-2xl mx-auto">
+            <details className="text-sm text-neutral-500 dark:text-neutral-400">
+              <summary className="cursor-pointer hover:text-neutral-700 dark:hover:text-neutral-300">
+                Tech-Stack (für die, die es interessiert)
+              </summary>
+              <p className="mt-4 leading-relaxed">
+                Ich arbeite hauptsächlich mit Next.js, React, Tailwind CSS und Shopify. 
+                Hosting läuft meist über Vercel oder cloudbasierte Lösungen. 
+                Aber ehrlich: Die Technologie ist selten das Problem. 
+                Wichtiger ist, dass die Website tut, was sie soll.
+              </p>
+            </details>
           </div>
         </Container>
       </main>
