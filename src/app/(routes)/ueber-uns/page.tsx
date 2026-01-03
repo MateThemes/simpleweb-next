@@ -1,6 +1,5 @@
 import { Metadata } from 'next'
 import Image from 'next/image'
-import Link from 'next/link'
 import { Container } from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
 import { aboutSchema } from '@/app/schema'
@@ -332,7 +331,7 @@ export default function AboutPage() {
                 </Button>
               </div>
               <p className="mt-6 text-sm text-neutral-500 dark:text-neutral-400">
-                Antwort in 1–2 Werktagen. Kein Spam. Wenn es nicht passt, sagen wir's offen.
+                Antwort in 1–2 Werktagen. Kein Spam. Wenn es nicht passt, sagen wir&apos;s offen.
               </p>
             </div>
           </div>
