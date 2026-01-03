@@ -104,7 +104,7 @@ const UnifiedSchema = (faqData: Array<{question: string; answer: string}>) => ({
     // ProfessionalService
     {
       '@type': 'ProfessionalService',
-      '@id': 'https://simplewebdesign.at/#organization',
+      '@id': 'https://simplewebdesign.at/#localbusiness',
       name: 'SimpleWebDesign',
       description: 'Webdesign Agentur für KMU in Österreich und Deutschland - Professionelle Websites mit Fokus auf SEO, Performance und Nutzerfreundlichkeit.',
       url: 'https://simplewebdesign.at',
@@ -117,6 +117,9 @@ const UnifiedSchema = (faqData: Array<{question: string; answer: string}>) => ({
         postalCode: '3902',
         addressRegion: 'Niederösterreich',
         addressCountry: 'AT'
+      },
+      parentOrganization: {
+        '@id': 'https://simplewebdesign.at/#organization'
       },
       areaServed: [
         {
@@ -176,14 +179,6 @@ const UnifiedSchema = (faqData: Array<{question: string; answer: string}>) => ({
       url: 'https://simplewebdesign.at',
       publisher: {
         '@id': 'https://simplewebdesign.at/#organization'
-      },
-      potentialAction: {
-        '@type': 'SearchAction',
-        target: {
-          '@type': 'EntryPoint',
-          urlTemplate: 'https://simplewebdesign.at/?s={search_term_string}'
-        },
-        'query-input': 'required name=search_term_string'
       }
     },
     // WebPage (Homepage)
