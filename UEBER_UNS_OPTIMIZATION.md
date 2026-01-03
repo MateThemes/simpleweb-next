@@ -1,172 +1,174 @@
-# Über-Uns Seite Optimierung
+# Über-uns-Seite (/ueber-uns) Optimierung – Abgeschlossen
 
-## Datum: 3. Januar 2026
-
-### Ziel
-Die /ueber-uns Seite wurde optimiert, um Ton & Struktur der neuen Startseite zu entsprechen (Klarheit → Struktur → Wirkung).
+**Datum:** 3. Januar 2026  
+**Route:** `/ueber-uns`  
+**Status:** ✅ Abgeschlossen
 
 ---
 
-## ✅ Durchgeführte Änderungen
+## Durchgeführte Änderungen
 
-### 1. Hero-Section
-**Vorher:**
-- "👨‍💻 Ihr Experte" Badge
-- "Webdesign Experte für KMU"
-- Städte-Aufzählung (Wien, München, Waldviertel, etc.)
-- Tech-fokussierte Beschreibung
+### 1. Bannertext entfernt ✅
 
-**Nachher:**
-- "Über mich" Badge (neutral, blue)
-- "Websites, die Entscheidungen erleichtern – nicht nur gut aussehen"
-- Persönliche Einleitung: "Ich bin Gerald..."
-- Fokus auf Klarheit statt Technik
-- CTAs: "Einschätzung anfragen" (primary) + "Wie ich arbeite" (secondary)
+Der LLM-friendly summary block mit folgendem Text wurde **komplett entfernt**:
 
-### 2. Entfernte Sektionen
-✅ **"Moderne Lösungen..."** - Tech-Stack-Fokus entfernt
-✅ **"Unsere Werte"** (alte Version mit Buzzwords wie "Expertise", "Innovation")
-✅ **"Mein Leistungsangebot"** - 6 Service-Karten mit langen Beschreibungen entfernt
-✅ **Trust Signals** - "100% Zufriedenheit" und "24/7 Support" entfernt
-
-### 3. Neue Sektionen
-
-#### a) "Warum ich so arbeite" (Image + Story)
-- Bild links, Text rechts
-- Erklärt die Philosophie: Einordnung vor Design
-- Persönlicher Ton, authentisch
-
-#### b) "Wie ich arbeite" (Prinzipien)
-- 4 Prinzipien in 2-Spalten-Grid:
-  - Einordnung
-  - Struktur
-  - Wirkung
-  - Ehrliche Kommunikation
-- Ersetzt die alten "Werte" mit Buzzwords
-
-#### c) "Wie die Zusammenarbeit abläuft"
-- 4 Phasen (01-04):
-  1. Einordnung
-  2. Struktur
-  3. Umsetzung
-  4. Wirkung
-- Identisch zur Startseite (Zusammenarbeit-Sektion)
-
-#### d) "Passt das für dich?" (Fit-Sektion)
-- Zwei Spalten:
-  - **Passt gut, wenn ...**
-    - Du merkst, dass deine Website nicht klar arbeitet
-    - Du suchst Orientierung, bevor du investierst
-    - Du hast keine Lust auf Agentur-Sprech
-    - Du willst verstehen, warum etwas gemacht wird
-  
-  - **Passt eher nicht, wenn ...**
-    - Du brauchst nur schnell „eine Website"
-    - Du willst primär Preise vergleichen
-    - Du suchst eine reine Umsetzungsagentur
-    - Du willst Entscheidungen komplett abgeben
-
-#### e) Vereinfachte Zahlen
-- Nur noch 2 Stats (statt 4):
-  - 50+ Projekte (realistisch)
-  - 1-2 Tage Antwortzeit (unkritisch)
-- Entfernt: "100% Zufriedenheit", "24/7 Support"
-
-#### f) Ruhiger CTA-Abschluss
-- "Lass uns schauen, ob es passt."
-- Microcopy: "Antwort in 1–2 Werktagen. Kein Spam. Wenn es nicht passt, sagen wir's offen."
-- Button: "Unverbindlich Kontakt aufnehmen"
-
-#### g) Tech-Stack als Details/Accordion
-- Am Ende, klein, ausklappbar
-- Für die, die es interessiert
-- Ehrlich: "Die Technologie ist selten das Problem"
-
-### 4. SEO-Optimierung
-
-**Title:**
-```
-Über mich | Websites, die Entscheidungen erleichtern | SimpleWebDesign
+```html
+<div className="mt-6 text-lg text-neutral-700 dark:text-neutral-300 max-w-3xl bg-neutral-50 dark:bg-neutral-900 p-6 rounded-lg border border-neutral-200 dark:border-neutral-800">
+  <p>
+    Gerald Schandl betreibt SimpleWebDesign und baut Websites für KMU, die nicht nur gut aussehen, sondern messbare Anfragen bringen. Fokus auf Klarheit, Struktur und ehrliche Beratung – ohne Agentur-Sprech.
+  </p>
+</div>
 ```
 
-**Description:**
+**Verbleibende Struktur:**
+- ✅ Eyebrow Badge ("Über mich")
+- ✅ H1 Headline ("Websites, die Entscheidungen erleichtern...")
+- ✅ Zwei nachfolgende Absätze
+- ✅ CTA Buttons
+
+---
+
+### 2. JSON-LD Structured Data bereinigt ✅
+
+#### Vorher (2 separate Scripts):
+- `AboutPage` Schema mit eigenem Organization-Block
+- `Organization` Schema (generiert via `aboutSchema()`) mit `foundingDate: 2020`
+
+#### Nachher (1 unified @graph):
+
+```json
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "AboutPage",
+      "@id": "https://simplewebdesign.at/ueber-uns#webpage",
+      "url": "https://simplewebdesign.at/ueber-uns",
+      "name": "Über mich | SimpleWebDesign",
+      "description": "Ich bin Gerald. Ich baue Websites für KMU, die Entscheidungen erleichtern – mit Klarheit, Struktur und ehrlicher Einordnung.",
+      "isPartOf": {
+        "@id": "https://simplewebdesign.at/#website"
+      },
+      "about": {
+        "@id": "https://simplewebdesign.at/#organization"
+      },
+      "publisher": {
+        "@id": "https://simplewebdesign.at/#organization"
+      },
+      "inLanguage": "de-AT",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://simplewebdesign.at/img/about/workspace.jpg"
+      },
+      "mainEntity": {
+        "@id": "https://simplewebdesign.at/#person"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://simplewebdesign.at/#person",
+      "name": "Gerald Schandl",
+      "jobTitle": "Webdesigner & Gründer",
+      "description": "Webdesigner mit Fokus auf Klarheit, Struktur und messbare Wirkung für KMU in Österreich & Deutschland.",
+      "knowsAbout": [
+        "Webdesign",
+        "User Experience (UX)",
+        "Conversion-Optimierung",
+        "SEO Grundlagen",
+        "Website-Struktur"
+      ],
+      "worksFor": {
+        "@id": "https://simplewebdesign.at/#organization"
+      },
+      "url": "https://simplewebdesign.at/ueber-uns"
+    }
+  ]
+}
 ```
-Warum ich Websites anders baue: Klarheit vor Design. Struktur vor Features. 
-Wirkung vor Buzzwords. Für KMU in Österreich & Deutschland.
-```
-
-**Schema:**
-- aboutSchema beibehalten, Description aktualisiert
-
-### 5. Design-System
-✅ Alle Farben, Spacing, Typo unverändert
-✅ Dark/Light Mode funktioniert
-✅ Container, Buttons, Typography konsistent zur Homepage
 
 ---
 
-## 🗑️ Was wurde entfernt?
+## Wichtige Schema-Verbesserungen
 
-1. **"Webdesign Experte" Wording** - komplett entfernt
-2. **Städte-Aufzählung** (Wien, München, Waldviertel)
-3. **Tech-Stack als Hauptfeature** - nur noch als Details am Ende
-4. **6 Service-Karten** (Webdesign, SEO, Marketing, Redesign, Hosting, Performance)
-5. **Buzzword-Werte** (Expertise, Innovation, Performance, Persönliche Betreuung)
-6. **Icons** (CodeBracketIcon, RocketLaunchIcon, LightBulbIcon)
-7. **Unrealistische Claims** (100% Zufriedenheit, 24/7 Support)
-8. **Agentur-Sprache** und übertriebene Versprechen
+### ✅ Keine Duplikate mehr
+- Kein separates Organization Schema auf `/ueber-uns`
+- Organization wird global über ID referenziert: `https://simplewebdesign.at/#organization`
+- WebSite wird global über ID referenziert: `https://simplewebdesign.at/#website`
 
----
+### ✅ Korrekte Entity-Verlinkung
+- **AboutPage** → `mainEntity` zeigt auf Person
+- **Person** → `worksFor` zeigt auf Organization (via @id)
+- **AboutPage** → `isPartOf` zeigt auf WebSite (via @id)
+- **AboutPage** → `about` und `publisher` zeigen auf Organization (via @id)
 
-## 📊 Content-Struktur (Neu)
-
-1. **Hero** - Wer ich bin, warum anders
-2. **Bild + Story** - Warum ich so arbeite
-3. **Prinzipien** - Wie ich arbeite (4 Punkte)
-4. **Prozess** - Wie die Zusammenarbeit abläuft (4 Schritte)
-5. **Fit-Check** - Passt gut / Passt eher nicht
-6. **Stats** - 50+ Projekte, 1-2 Tage Antwortzeit
-7. **CTA** - Ruhig, ehrlich, mit Microcopy
-8. **Tech-Stack** - Details/Accordion am Ende
-
----
-
-## 🎯 Erreichte Ziele
-
-✅ Klarheit vor Design-Buzzwords
-✅ Struktur wie Startseite (Einordnung → Struktur → Wirkung)
-✅ Ehrliche Kommunikation (Passt/Passt nicht)
-✅ Keine doppelten Inhalte (Services-Liste entfernt)
-✅ Persönlicher Ton ("Ich bin Gerald...")
-✅ Abgrenzung von Agenturen
-✅ Design-System konsistent
-✅ SEO optimiert ohne "Experte"-Wording
-
----
-
-## 🔧 Technische Fixes
-
-- Entfernt: Unused import `Link`
-- Escaped: Apostrophe in "wir's" → "wir&apos;s"
-- Button variant: "outline" → "secondary" (TypeScript fix)
-
----
-
-## 📝 Nächste Schritte (Optional)
-
-- [ ] A/B Test: Conversion-Rate messen
-- [ ] User-Feedback zur neuen Tonalität
-- [ ] Ggf. Testimonials hinzufügen (mit echten Zitaten)
-- [ ] Foto von Gerald ergänzen?
+### ✅ Bereinigt
+- ❌ Kein `foundingDate: 2020` mehr (Konflikt mit globalem `foundingDate: 2016`)
+- ❌ Keine redundanten Address-Blöcke
+- ✅ Absolute URLs für Bilder (`https://simplewebdesign.at/img/about/workspace.jpg`)
+- ✅ Konsistente @id Pattern
 
 ---
 
 ## Datei-Änderungen
 
-**Geändert:**
-- `src/app/(routes)/ueber-uns/page.tsx` (komplett neu strukturiert)
+**Geänderte Datei:**
+- `src/app/(routes)/ueber-uns/page.tsx`
 
-**Keine Änderungen:**
-- Design-System (Container, Button, Colors, Spacing)
-- Dark/Light Mode
-- Responsive Breakpoints
+**Entfernte Dependencies:**
+- Import von `aboutSchema` aus `@/app/schema` (nicht mehr benötigt)
+
+---
+
+## Schema-Hierarchie
+
+```
+Homepage (/)
+├── Organization (@id: #organization) [GLOBAL]
+├── WebSite (@id: #website) [GLOBAL]
+└── WebPage (@id: #webpage)
+
+Über-uns (/ueber-uns)
+├── AboutPage (@id: #webpage) → references Organization + WebSite
+└── Person (@id: #person) → references Organization
+```
+
+---
+
+## Validierung
+
+**Schema Testing:**
+- ✅ Google Rich Results Test: https://search.google.com/test/rich-results
+- ✅ Schema.org Validator: https://validator.schema.org/
+
+**Checkliste:**
+- [x] Bannertext komplett entfernt
+- [x] Zwei separate JSON-LD Scripts → ein unified @graph
+- [x] Organization wird nicht dupliziert (nur via @id referenziert)
+- [x] Person Entity mit eigenem @id
+- [x] AboutPage mainEntity zeigt auf Person
+- [x] Absolute URLs für alle Bilder
+- [x] Keine foundingDate=2020 Konflikte
+- [x] Konsistente @id Pattern mit Homepage
+- [x] Build erfolgreich
+
+---
+
+## Output: Finaler JSON-LD Block
+
+Der finale JSON-LD Block ist im obigen Abschnitt dargestellt.
+
+**Keine weiteren Änderungen erforderlich.**
+
+---
+
+## Notizen
+
+- Route bleibt `/ueber-uns` (keine Änderung)
+- Kein Redesign, kein Refactor
+- Nur die angeforderten Änderungen durchgeführt
+- Alle anderen Seiteninhalte unverändert
+- TypeScript Errors behoben (aboutSchema Import entfernt)
+
+---
+
+**✅ Optimierung abgeschlossen**

@@ -2,7 +2,6 @@ import { Metadata } from 'next'
 import Image from 'next/image'
 import { Container } from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
-import { aboutSchema } from '@/app/schema'
 
 // Metadata
 export const metadata: Metadata = {
@@ -91,69 +90,63 @@ const fits = {
 }
 
 export default function AboutPage() {
-  // Enhanced JSON-LD schemas for About page
-  const aboutPageSchema = {
+  // Unified JSON-LD with @graph - referencing global Organization and WebSite
+  const unifiedSchema = {
     '@context': 'https://schema.org',
-    '@type': 'AboutPage',
-    name: 'Über SimpleWebDesign',
-    description: 'Gerald Schandl betreibt SimpleWebDesign und baut Websites für KMU, die messbare Anfragen bringen.',
-    url: 'https://simplewebdesign.at/ueber-uns',
-    mainEntity: {
-      '@type': 'Person',
-      name: 'Gerald Schandl',
-      jobTitle: 'Webdesigner & Gründer',
-      description: 'Webdesigner mit Fokus auf Klarheit, Struktur und messbare Wirkung für KMU in Österreich & Deutschland.',
-      knowsAbout: [
-        'Webdesign',
-        'User Experience (UX)',
-        'Conversion-Optimierung',
-        'SEO Grundlagen',
-        'Website-Struktur',
-        'Online Marketing für KMU'
-      ],
-      worksFor: {
-        '@type': 'Organization',
-        name: 'SimpleWebDesign',
-        url: 'https://simplewebdesign.at',
-        address: {
-          '@type': 'PostalAddress',
-          streetAddress: 'Sonnleite 20',
-          addressLocality: 'Vitis',
-          postalCode: '3902',
-          addressRegion: 'Niederösterreich',
-          addressCountry: 'AT'
+    '@graph': [
+      // AboutPage/WebPage Entity
+      {
+        '@type': 'AboutPage',
+        '@id': 'https://simplewebdesign.at/ueber-uns#webpage',
+        url: 'https://simplewebdesign.at/ueber-uns',
+        name: 'Über mich | SimpleWebDesign',
+        description: 'Ich bin Gerald. Ich baue Websites für KMU, die Entscheidungen erleichtern – mit Klarheit, Struktur und ehrlicher Einordnung.',
+        isPartOf: {
+          '@id': 'https://simplewebdesign.at/#website'
+        },
+        about: {
+          '@id': 'https://simplewebdesign.at/#organization'
+        },
+        publisher: {
+          '@id': 'https://simplewebdesign.at/#organization'
+        },
+        inLanguage: 'de-AT',
+        image: {
+          '@type': 'ImageObject',
+          url: 'https://simplewebdesign.at/img/about/workspace.jpg'
+        },
+        mainEntity: {
+          '@id': 'https://simplewebdesign.at/#person'
         }
+      },
+      // Person Entity
+      {
+        '@type': 'Person',
+        '@id': 'https://simplewebdesign.at/#person',
+        name: 'Gerald Schandl',
+        jobTitle: 'Webdesigner & Gründer',
+        description: 'Webdesigner mit Fokus auf Klarheit, Struktur und messbare Wirkung für KMU in Österreich & Deutschland.',
+        knowsAbout: [
+          'Webdesign',
+          'User Experience (UX)',
+          'Conversion-Optimierung',
+          'SEO Grundlagen',
+          'Website-Struktur'
+        ],
+        worksFor: {
+          '@id': 'https://simplewebdesign.at/#organization'
+        },
+        url: 'https://simplewebdesign.at/ueber-uns'
       }
-    }
+    ]
   };
-
-  const organizationSchema = aboutSchema({
-    name: 'SimpleWebDesign',
-    description: 'Websites mit Klarheit, Struktur und messbarer Wirkung für KMU in Österreich & Deutschland.',
-    image: '/img/about/workspace.jpg',
-    foundingDate: '2020',
-    founders: ['Gerald Schandl'],
-    address: {
-      streetAddress: 'Sonnleite 20',
-      addressLocality: 'Vitis',
-      addressRegion: 'Niederösterreich',
-      postalCode: '3902',
-      addressCountry: 'AT'
-    }
-  });
 
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(aboutPageSchema)
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(organizationSchema)
+          __html: JSON.stringify(unifiedSchema)
         }}
       />
       <main className="flex-auto">
@@ -166,12 +159,6 @@ export default function AboutPage() {
             <h1 className="font-display text-5xl font-medium tracking-tight text-neutral-950 dark:text-white [text-wrap:balance] sm:text-7xl">
               Websites, die Entscheidungen erleichtern – nicht nur gut aussehen.
             </h1>
-            {/* LLM-friendly summary block */}
-            <div className="mt-6 text-lg text-neutral-700 dark:text-neutral-300 max-w-3xl bg-neutral-50 dark:bg-neutral-900 p-6 rounded-lg border border-neutral-200 dark:border-neutral-800">
-              <p>
-                Gerald Schandl betreibt SimpleWebDesign und baut Websites für KMU, die nicht nur gut aussehen, sondern messbare Anfragen bringen. Fokus auf Klarheit, Struktur und ehrliche Beratung – ohne Agentur-Sprech.
-              </p>
-            </div>
             <p className="mt-6 text-xl text-neutral-600 dark:text-neutral-400 max-w-3xl">
               Ich bin Gerald. Ich baue Websites anders als viele Agenturen.
               Nicht, weil Design oder Technik unwichtig sind – sondern weil das Problem selten dort liegt.
