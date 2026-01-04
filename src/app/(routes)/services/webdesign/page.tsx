@@ -45,51 +45,51 @@ export const metadata: Metadata = {
 const features = [
   {
     title: 'Responsive Design',
-    description: 'Ihre Website passt sich automatisch an alle Bildschirmgrößen an - vom Smartphone bis zum Desktop-PC.',
+    description: 'Ihre Website passt sich automatisch an alle Bildschirmgrößen an - vom Smartphone bis zum Desktop-PC. Struktur, die Besucher führt statt nur informiert.',
   },
   {
     title: 'Moderne Designprinzipien',
-    description: 'Klares, zeitgemäßes Design das Ihre Marke perfekt repräsentiert und Besucher begeistert.',
+    description: 'Klares, zeitgemäßes Design das Ihre Marke perfekt repräsentiert. Klarheit, die Besucher sofort verstehen lässt: Wer ist hier richtig – und warum?',
   },
   {
     title: 'Optimierte Performance',
-    description: 'Schnelle Ladezeiten und optimale Performance für ein hervorragendes Nutzererlebnis.',
+    description: 'Schnelle Ladezeiten und optimale Performance für ein hervorragendes Nutzererlebnis. Technik im Dienst der Wirkung.',
   },
   {
     title: 'SEO-Optimiert',
-    description: 'Von Grund auf für Suchmaschinen optimiert, damit Sie besser gefunden werden.',
+    description: 'Von Grund auf für Suchmaschinen optimiert, damit Sie besser gefunden werden. Messbar: Anfragen, Termine oder Verkäufe – je nach Ziel.',
   },
 ]
 
 const benefits = [
-  'Maßgeschneiderte Designlösungen',
-  'Mobile-First Ansatz',
-  'Intuitive Benutzerführung',
-  'Conversion-optimiert',
-  'Barrierefrei nach WCAG',
-  'Regelmäßige Updates',
+  'Klarheit: In Sekunden klar, wer hier richtig ist – und warum',
+  'Struktur, die Besucher führt statt nur informiert',
+  'Wirkung, die messbar wird: Anfragen, Termine oder Verkäufe',
+  'Positionierung, die sofort sitzt',
+  'Orientierung statt Informationsüberflutung',
+  'Messbare Ergebnisse statt nur gutes Gefühl',
 ]
 
 const process = [
   {
-    title: 'Analyse',
-    description: 'Wir analysieren Ihre Ziele und Bedürfnisse, um eine maßgeschneiderte Lösung zu entwickeln.',
+    title: 'Einordnung',
+    description: 'Wir klären, was die Website leisten soll und wer hier richtig ist. Erst dann folgen Design und Technik.',
   },
   {
-    title: 'Konzeption',
-    description: 'Wir entwickeln ein Konzept, das Ihre Marke perfekt repräsentiert und Ihre Ziele unterstützt.',
+    title: 'Struktur',
+    description: 'Wir entwickeln eine Struktur, die Besucher führt statt nur informiert. Der nächste Schritt ist logisch.',
   },
   {
     title: 'Design',
-    description: 'Wir erstellen ein modernes, responsives Design, das Ihre Website zum Leben erweckt.',
+    description: 'Wir erstellen ein modernes, responsives Design, das Klarheit schafft und Orientierung gibt.',
   },
   {
     title: 'Umsetzung',
-    description: 'Wir setzen Ihr Projekt um und stellen sicher, dass alles reibungslos funktioniert.',
+    description: 'Wir setzen Ihr Projekt um und stellen sicher, dass alles reibungslos funktioniert und messbar wird.',
   },
   {
-    title: 'Launch',
-    description: 'Wir bringen Ihre neue Website online und unterstützen Sie bei der weiteren Entwicklung.',
+    title: 'Launch & Wirkung',
+    description: 'Wir bringen Ihre neue Website online und sorgen dafür, dass Anfragen, Termine oder Verkäufe kommen – je nach Ziel.',
   },
 ]
 
@@ -97,6 +97,7 @@ const packages = [
   {
     name: 'Standard',
     description: 'Perfekt für kleine Unternehmen und Selbstständige',
+    targetAudience: 'Für wen? Kleine Unternehmen und Selbstständige, die online sichtbar werden wollen.',
     price: '1.490',
     features: [
       { name: 'Modernes responsives Design', included: true },
@@ -112,6 +113,7 @@ const packages = [
   {
     name: 'Premium',
     description: 'Ideal für wachsende Unternehmen',
+    targetAudience: 'Für wen? Wachsende Unternehmen, die mehr Struktur und Orientierung brauchen.',
     price: '2.990',
     features: [
       { name: 'Alles aus Standard, plus:', included: true },
@@ -127,6 +129,7 @@ const packages = [
   {
     name: 'Komplett',
     description: 'Full-Service mit laufender Betreuung',
+    targetAudience: 'Für wen? Unternehmen, die messbare Wirkung und laufende Optimierung brauchen.',
     price: '4.990',
     features: [
       { name: 'Alles aus Premium, plus:', included: true },
@@ -259,13 +262,13 @@ export default function WebdesignPage() {
                   Webdesign Agentur für KMU
                 </h1>
                 <p className="mt-6 text-xl text-neutral-600 dark:text-neutral-300">
-                  Professionelles Webdesign für KMU in Wien, München, Waldviertel und ganz Österreich & Deutschland. Responsive Websites mit modernem UI/UX Design. Starter-Pakete ab 1.490€.
+                  SimpleWebDesign baut Websites für KMU in Österreich und Deutschland, die nicht nur gut aussehen, sondern messbare Ergebnisse bringen. Wir schaffen Klarheit, Struktur und Orientierung – damit Besucher zu Anfragen werden.
                 </p>
                 <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-400">
                   Gemäß § 6 Abs. 1 Z 27 UStG wird keine Umsatzsteuer berechnet.
                 </p>
                 <div className="mt-8 flex gap-4">
-                  <Button href="/kontakt">Kostenlose Beratung</Button>
+                  <Button href="/kontakt">Kostenlose Einordnung</Button>
                   <Button href="#features" variant="secondary">Mehr erfahren</Button>
                 </div>
               </div>
@@ -302,7 +305,7 @@ export default function WebdesignPage() {
                 Alles was Sie brauchen
               </h2>
               <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-300">
-                Von der ersten Konzeption bis zum fertigen Projekt - wir begleiten Sie durch den gesamten Webdesign-Prozess. Kombinieren Sie dies mit unserem <a href="/services/seo" className="text-blue-600 hover:text-blue-500 underline">SEO-Service</a> und <a href="/services/performance" className="text-blue-600 hover:text-blue-500 underline">Performance-Optimierung</a> für maximale Online-Sichtbarkeit.
+                Wir beginnen nicht mit Design oder Technik, sondern mit Einordnung: Was soll die Website leisten? Erst dann folgen Struktur, Design und Umsetzung. Kombinieren Sie dies mit unserem <a href="/services/seo" className="text-blue-600 hover:text-blue-500 underline">SEO-Service</a> und <a href="/services/performance" className="text-blue-600 hover:text-blue-500 underline">Performance-Optimierung</a> für maximale Online-Sichtbarkeit.
               </p>
             </div>
             <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 sm:mt-20 lg:max-w-none lg:grid-cols-2">
@@ -366,7 +369,7 @@ export default function WebdesignPage() {
                   Unser Prozess
                 </h2>
                 <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-300">
-                  Wir unterstützen Sie bei jedem Schritt des Webdesign-Prozesses in Niederösterreich, um sicherzustellen, dass Ihr Projekt erfolgreich ist.
+                  Wir beginnen nicht mit Design oder Technik, sondern mit Einordnung: Was soll die Website leisten? Erst dann folgen Struktur, Design und Umsetzung – bis zur messbaren Wirkung.
                 </p>
               </div>
               <div className="mt-16 grid grid-cols-1 gap-8 lg:grid-cols-3">
@@ -397,7 +400,12 @@ export default function WebdesignPage() {
             </div>
             <div className="mx-auto mt-16 grid grid-cols-1 gap-8 lg:grid-cols-3">
               {packages.map((pkg) => (
-                <PriceCard key={pkg.name} {...pkg} />
+                <PriceCard 
+                  key={pkg.name} 
+                  {...pkg} 
+                  ctaText="Kostenlose Einordnung anfragen"
+                  ctaLink="/kontakt"
+                />
               ))}
             </div>
             <div className="mt-16 flex justify-center">
@@ -461,11 +469,11 @@ export default function WebdesignPage() {
                 Bereit für Ihre neue Website?
               </h2>
               <p className="mt-4 text-lg text-blue-100">
-                Lassen Sie uns gemeinsam Ihr Projekt besprechen und Ihre Vision Realität werden.
+                Wenn du das Gefühl hast, dass online zu wenig passiert, ist das meist kein Design-Problem. Meist fehlt Klarheit. Lass uns klären, ob deine Website arbeiten soll.
               </p>
               <div className="mt-8">
                 <Button href="/kontakt" variant="secondary" className="text-blue-600 border-blue-600 hover:bg-blue-600 hover:text-white dark:text-white dark:border-white dark:hover:bg-white dark:hover:text-blue-600">
-                  Jetzt Beratungsgespräch vereinbaren
+                  Kostenlose Einordnung anfragen
                 </Button>
               </div>
             </div>

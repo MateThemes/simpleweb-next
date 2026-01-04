@@ -14,6 +14,7 @@ interface PriceCardProps {
   popular?: boolean
   ctaText?: string
   ctaLink?: string
+  targetAudience?: string
 }
 
 export function PriceCard({
@@ -24,6 +25,7 @@ export function PriceCard({
   popular = false,
   ctaText = 'Jetzt starten',
   ctaLink = '/kontakt',
+  targetAudience,
 }: PriceCardProps) {
   return (
     <div
@@ -41,6 +43,9 @@ export function PriceCard({
       <div className="mb-8">
         <h3 className="text-xl font-semibold text-gray-900 dark:text-white">{name}</h3>
         <p className="mt-4 text-sm text-gray-500 dark:text-gray-400">{description}</p>
+        {targetAudience && (
+          <p className="mt-2 text-xs text-gray-600 dark:text-gray-500 italic">{targetAudience}</p>
+        )}
       </div>
 
       <div className="mt-2 mb-8">
