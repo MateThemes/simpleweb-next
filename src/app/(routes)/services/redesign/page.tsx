@@ -7,11 +7,11 @@ import { serviceSchema } from '@/app/schema'
 import { PriceCard } from '@/components/ui/PriceCard'
 
 export const metadata: Metadata = {
-  title: 'Website Redesign für KMU | Moderne Website Neugestaltung | SimpleWebDesign',
-  description: 'Professionelles Website Redesign für KMU in Österreich & Deutschland. Wir modernisieren Ihre Website mit aktuellem Design und Technologie für bessere Conversion.',
+  title: 'Website Redesign für KMU: Klarheit statt nur neues Design | SimpleWebDesign',
+  description: 'Ihre Website existiert, bringt aber keine Anfragen? Wir schaffen Klarheit, Struktur und messbare Wirkung – für KMU in Österreich & Deutschland. Ab 1.490 €.',
   openGraph: {
-    title: 'Website Redesign für KMU | Moderne Website Neugestaltung Österreich & Deutschland',
-    description: 'Professionelles Website Redesign für KMU in Österreich & Deutschland. Wir modernisieren Ihre Website mit aktuellem Design und Technologie für bessere Conversion.',
+    title: 'Website Redesign für KMU: Klarheit statt nur neues Design | SimpleWebDesign',
+    description: 'Ihre Website existiert, bringt aber keine Anfragen? Wir schaffen Klarheit, Struktur und messbare Wirkung – für KMU in Österreich & Deutschland. Ab 1.490 €.',
     url: 'https://simplewebdesign.at/services/redesign',
     images: [
       {
@@ -24,8 +24,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Website Redesign für KMU | Moderne Website Neugestaltung Österreich & Deutschland',
-    description: 'Professionelles Website Redesign für KMU in Österreich & Deutschland. Wir modernisieren Ihre Website mit aktuellem Design und Technologie.',
+    title: 'Website Redesign für KMU: Klarheit statt nur neues Design | SimpleWebDesign',
+    description: 'Ihre Website existiert, bringt aber keine Anfragen? Wir schaffen Klarheit, Struktur und messbare Wirkung – für KMU in Österreich & Deutschland.',
     images: ['/img/services/redesign.jpg']
   },
   alternates: {
@@ -36,35 +36,36 @@ export const metadata: Metadata = {
 const features = [
   {
     title: 'Moderne Neugestaltung',
-    description: 'Frisches, zeitgemäßes Design das Ihre Marke optimal präsentiert und Besucher begeistert.',
+    description: 'Frisches, zeitgemäßes Design das Klarheit schafft. In Sekunden klar: Wer ist hier richtig – und warum?',
   },
   {
     title: 'Verbesserte Conversion',
-    description: 'Optimierung der User Journey für höhere Conversion-Rates und mehr Leads.',
+    description: 'Struktur, die Besucher führt statt nur informiert. Messbar: Anfragen, Termine oder Verkäufe – je nach Ziel.',
   },
   {
     title: 'Optimierte Nutzerführung',
-    description: 'Intuitive Navigation und klare Strukturen für beste Benutzererfahrung.',
+    description: 'Weniger Scrollen, mehr Orientierung. Der nächste Schritt ist logisch – nicht nur schön.',
   },
   {
     title: 'Technische Modernisierung',
-    description: 'Aktuellste Technologien für bessere Performance und Sicherheit.',
+    description: 'Saubere Technik im Dienst der Wirkung. Performance, die messbare Ergebnisse bringt.',
   },
 ]
 
 const benefits = [
-  'Bessere Conversion-Rates',
-  'Moderneres Erscheinungsbild',
-  'Optimierte Mobile Nutzung',
-  'Schnellere Ladezeiten',
-  'Verbesserte Usability',
-  'Zukunftssichere Technologie',
+  'Klarheit: In Sekunden klar, wer hier richtig ist – und warum',
+  'Struktur, die Besucher führt statt nur informiert',
+  'Wirkung, die messbar wird: Anfragen, Termine oder Verkäufe',
+  'Positionierung, die sofort sitzt',
+  'Orientierung statt Informationsüberflutung',
+  'Messbare Ergebnisse statt nur gutes Gefühl',
 ]
 
 const packages = [
   {
     name: 'Redesign Standard',
     description: 'Perfekt für kleine Unternehmen und Selbstständige',
+    targetAudience: 'Wann sinnvoll? Wenn die Website existiert, aber kaum Anfragen bringt.',
     price: '1.490',
     features: [
       { name: 'Modernes responsives Design', included: true },
@@ -80,6 +81,7 @@ const packages = [
   {
     name: 'Redesign Premium',
     description: 'Ideal für wachsende Unternehmen',
+    targetAudience: 'Wann sinnvoll? Wenn mehr Struktur und Orientierung fehlen, um Besucher zu führen.',
     price: '2.990',
     features: [
       { name: 'Alles aus Standard, plus:', included: true },
@@ -95,6 +97,7 @@ const packages = [
   {
     name: 'Redesign Komplett',
     description: 'Full-Service mit laufender Betreuung',
+    targetAudience: 'Wann sinnvoll? Wenn messbare Wirkung und laufende Optimierung wichtig sind.',
     price: '4.990',
     features: [
       { name: 'Alles aus Premium, plus:', included: true },
@@ -134,10 +137,10 @@ export default function RedesignPage() {
                   Website Redesign für KMU
                 </h1>
                 <p className="mt-6 text-xl text-neutral-600 dark:text-neutral-300">
-                  Modernisieren Sie Ihren bestehenden Webauftritt in Wien, München, Waldviertel und ganz Österreich & Deutschland mit einem zeitgemäßen Design für bessere Conversion.
+                  Ihre Website existiert, bringt aber keine Anfragen? Das Problem ist selten Design oder Technik. Meist fehlt Klarheit. Wir schaffen Struktur und Orientierung – damit Besucher zu Anfragen werden.
                 </p>
                 <div className="mt-8 flex gap-4">
-                  <Button href="/kontakt">Redesign Beratung</Button>
+                  <Button href="/kontakt">Kostenlose Einordnung</Button>
                   <Button href="#features" variant="secondary">Mehr erfahren</Button>
                 </div>
               </div>
@@ -172,7 +175,7 @@ export default function RedesignPage() {
                 Ihr Weg zum modernen Web
               </h2>
               <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-300">
-                Wir transformieren Ihre bestehende Website in einen zeitgemäßen und erfolgreichen Webauftritt. Kombinieren Sie dies mit unserem <a href="/services/seo" className="text-purple-600 hover:text-purple-500 underline">SEO-Service</a> und <a href="/services/performance" className="text-purple-600 hover:text-purple-500 underline">Performance-Optimierung</a> für maximale Online-Sichtbarkeit.
+                Wir beginnen nicht mit Design oder Technik, sondern mit Einordnung: Was soll die Website leisten? Erst dann folgen Struktur, Design und Umsetzung – bis zur messbaren Wirkung. Kombinieren Sie dies mit unserem <a href="/services/seo" className="text-purple-600 hover:text-purple-500 underline">SEO-Service</a> und <a href="/services/performance" className="text-purple-600 hover:text-purple-500 underline">Performance-Optimierung</a> für maximale Online-Sichtbarkeit.
               </p>
             </div>
             <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 sm:mt-20 lg:max-w-none lg:grid-cols-2">
@@ -201,7 +204,7 @@ export default function RedesignPage() {
                     Ihre Vorteile
                   </h2>
                   <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-300">
-                    Ein professionelles Redesign bringt Ihre Website auf den neuesten Stand und verbessert die User Experience.
+                    Wenn Ihre Website existiert, aber zu wenig passiert, liegt das meist nicht am Design. Meist fehlt Klarheit. Wir schaffen Struktur und Orientierung – damit Besucher zu Anfragen werden. Kombinieren Sie dies mit unserem <a href="/services/seo" className="text-purple-600 hover:text-purple-500 underline">SEO-Service</a>, <a href="/services/marketing" className="text-purple-600 hover:text-purple-500 underline">Marketing-Service</a> und <a href="/services/performance" className="text-purple-600 hover:text-purple-500 underline">Performance-Optimierung</a> für maximale Online-Sichtbarkeit.
                   </p>
                 </div>
                 <div className="mt-16 grid grid-cols-1 gap-8 lg:grid-cols-2">
@@ -240,7 +243,12 @@ export default function RedesignPage() {
             </div>
             <div className="mx-auto mt-16 grid grid-cols-1 gap-8 lg:grid-cols-3">
               {packages.map((pkg) => (
-                <PriceCard key={pkg.name} {...pkg} />
+                <PriceCard 
+                  key={pkg.name} 
+                  {...pkg} 
+                  ctaText="Kostenlose Einordnung anfragen"
+                  ctaLink="/kontakt"
+                />
               ))}
             </div>
             <div className="mt-16 flex justify-center">
@@ -265,17 +273,17 @@ export default function RedesignPage() {
           <Container className="relative">
             <div className="mx-auto max-w-2xl text-center">
               <h2 className="font-display text-3xl tracking-tight text-white sm:text-4xl">
-                Bereit für einen neuen Look?
+                Bereit für eine Website, die arbeitet?
               </h2>
               <p className="mt-4 text-lg text-purple-100">
-                Professionelles Redesign ab 1.490€. Lassen Sie uns gemeinsam Ihre Website in einen modernen und erfolgreichen Webauftritt verwandeln.
+                Wenn du das Gefühl hast, dass online zu wenig passiert, ist das meist kein Design-Problem. Meist fehlt Klarheit. Lass uns klären, ob deine Website arbeiten soll.
               </p>
               <p className="mt-2 text-sm text-purple-100">
                 Gemäß § 6 Abs. 1 Z 27 UStG wird keine Umsatzsteuer berechnet.
               </p>
               <div className="mt-8">
                 <Button href="/kontakt" variant="secondary" className="text-purple-600 border-purple-600 hover:bg-purple-600 hover:text-white dark:text-white dark:border-white dark:hover:bg-white dark:hover:text-purple-600">
-                  Jetzt Redesign Beratung vereinbaren
+                  Kostenlose Einordnung anfragen
                 </Button>
               </div>
             </div>
