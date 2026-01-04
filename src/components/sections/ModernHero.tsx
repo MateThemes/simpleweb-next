@@ -69,11 +69,18 @@ export default function ModernHero() {
     restDelta: 0.001,
   })
 
-  // Transform: translateY from 0 to -16px (subtle upward movement)
+  // Transform: translateY from 0 to -10px (subtle upward movement, scroll-safe)
   const yTransform = useTransform(
     smoothProgress,
     [0, 1],
-    isReducedMotion || isMobile ? [0, 0] : [0, -16]
+    isReducedMotion || isMobile ? [0, 0] : [0, -10]
+  )
+
+  // Scale transform: use motion value for better performance
+  const scaleTransform = useTransform(
+    smoothProgress,
+    [0, 1],
+    isReducedMotion || isMobile ? [1, 1] : [1, 1.02]
   )
 
   return (
@@ -81,7 +88,7 @@ export default function ModernHero() {
       ref={heroRef}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: false, amount: 0.4 }}
+      viewport={{ once: true, amount: 0.4 }}
       variants={fadeInUp}
       transition={{ duration: 0.6, ease: 'easeOut' }}
       className="relative bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-slate-900 dark:via-slate-800 dark:to-indigo-900 py-24 lg:py-32"
@@ -139,7 +146,7 @@ export default function ModernHero() {
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: false, amount: 0.4 }}
+              viewport={{ once: true, amount: 0.4 }}
               variants={scaleIn}
               transition={{ duration: 0.6, ease: 'easeOut', delay: 0.2 }}
               className="relative w-full"
@@ -149,7 +156,7 @@ export default function ModernHero() {
                 className="relative w-full rounded-2xl overflow-hidden md:shadow-2xl shadow-xl"
                 style={{
                   y: yTransform,
-                  scale: isReducedMotion || isMobile ? 1 : 1.02,
+                  scale: scaleTransform,
                 }}
               >
                 <Image
@@ -158,7 +165,7 @@ export default function ModernHero() {
                   width={920}
                   height={520}
                   priority
-                  sizes="100vw"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                   className="h-auto w-full rounded-2xl"
                 />
                 {/* Overlay gradient */}
