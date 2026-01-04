@@ -88,9 +88,9 @@ export default function ModernHero() {
     >
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-400/20 rounded-full blur-3xl"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-indigo-400/20 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-blue-400/10 to-indigo-400/10 rounded-full blur-3xl"></div>
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-400/20 rounded-full blur-sm md:blur-3xl"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-indigo-400/20 rounded-full blur-sm md:blur-3xl"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-blue-400/10 to-indigo-400/10 rounded-full blur-sm md:blur-3xl"></div>
       </div>
 
       <Container className="relative">
@@ -98,7 +98,7 @@ export default function ModernHero() {
           {/* Content */}
           <div className="space-y-8">
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 dark:bg-slate-800/80 md:backdrop-blur-sm border border-blue-200 dark:border-slate-700">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 dark:bg-slate-800/80 backdrop-blur-[1px] md:backdrop-blur-sm border border-blue-200 dark:border-slate-700">
               <SparklesIcon className="h-4 w-4 text-blue-600" />
               <span className="text-sm font-medium text-blue-900 dark:text-blue-100">
                 Websites, die Entscheidungen erleichtern – nicht nur gut aussehen.
@@ -111,7 +111,7 @@ export default function ModernHero() {
                 Viele Websites sehen gut aus – und bringen trotzdem keine Anfragen.
               </h1>
               {/* LLM-friendly summary block */}
-              <div className="text-lg text-slate-700 dark:text-slate-300 leading-relaxed max-w-2xl space-y-2 bg-white/60 dark:bg-slate-800/60 md:backdrop-blur-sm p-4 rounded-lg border border-slate-200 dark:border-slate-700">
+              <div className="text-lg text-slate-700 dark:text-slate-300 leading-relaxed max-w-2xl space-y-2 bg-white/60 dark:bg-slate-800/60 backdrop-blur-[1px] md:backdrop-blur-sm p-4 rounded-lg border border-slate-200 dark:border-slate-700">
                 <p>
                   SimpleWebDesign baut Websites für KMU in Österreich und Deutschland, die nicht nur gut aussehen, sondern messbare Ergebnisse bringen. Wir schaffen Klarheit, Struktur und Orientierung – damit Besucher zu Anfragen werden.
                 </p>
@@ -144,26 +144,28 @@ export default function ModernHero() {
               transition={{ duration: 0.6, ease: 'easeOut', delay: 0.2 }}
               className="relative"
             >
-              {/* Main image with parallax */}
-              <motion.div
-                className="relative rounded-2xl overflow-hidden md:shadow-2xl shadow-xl"
-                style={{
-                  y: yTransform,
-                  scale: isReducedMotion || isMobile ? 1 : 1.02,
-                }}
-              >
-                <Image
-                  src="/img/hero.png"
-                  alt="Webdesign Agentur für KMU - Moderne Websites Österreich Deutschland"
-                  width={920}
-                  height={520}
-                  priority
-                  sizes="(max-width: 768px) 100vw, 920px"
-                  className="h-auto w-full rounded-2xl"
-                />
-                {/* Overlay gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 to-transparent"></div>
-              </motion.div>
+              {/* Main image with parallax - stable container dimensions to prevent CLS */}
+              <div className="relative w-full" style={{ aspectRatio: '920/520' }}>
+                <motion.div
+                  className="relative rounded-2xl overflow-hidden md:shadow-2xl shadow-xl w-full h-full"
+                  style={{
+                    y: yTransform,
+                    scale: isReducedMotion || isMobile ? 1 : 1.02,
+                  }}
+                >
+                  <Image
+                    src="/img/hero.png"
+                    alt="Webdesign Agentur für KMU - Moderne Websites Österreich Deutschland"
+                    width={920}
+                    height={520}
+                    priority
+                    sizes="(max-width: 768px) 100vw, 920px"
+                    className="h-auto w-full rounded-2xl"
+                  />
+                  {/* Overlay gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 to-transparent"></div>
+                </motion.div>
+              </div>
 
               {/* Floating card */}
               <div className="absolute -bottom-4 -left-4 bg-white dark:bg-slate-800 rounded-xl shadow-lg p-4 border border-slate-200 dark:border-slate-700">
