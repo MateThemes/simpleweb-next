@@ -1,17 +1,8 @@
-'use client'
-
 import Link from 'next/link'
-import Image from 'next/image'
-import { ArrowRightIcon, CheckCircleIcon, SparklesIcon } from '@heroicons/react/24/outline'
+import { CheckCircleIcon, SparklesIcon } from '@heroicons/react/24/outline'
 import { Container } from '../ui/Container'
-
-const handleScrollToKlarheit = (e: React.MouseEvent<HTMLAnchorElement>) => {
-  e.preventDefault()
-  const element = document.getElementById('klarheit')
-  if (element) {
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' })
-  }
-}
+import HeroVisualStatic from './HeroVisualStatic'
+import { HeroCtaLink } from './HeroCtaLink.client'
 
 const features = [
   'Klarer Fokus: Wer ist hier richtig – und warum?',
@@ -61,43 +52,12 @@ export default function ModernHero() {
 
             {/* Primary CTA */}
             <div>
-              <Link
-                href="#klarheit"
-                onClick={handleScrollToKlarheit}
-                className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200"
-              >
-                <span>Woran du erkennst, ob deine Website arbeitet</span>
-                <ArrowRightIcon className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </Link>
+              <HeroCtaLink />
             </div>
           </div>
 
           {/* Visual */}
-          <div className="relative w-full">
-            <div
-              className="relative w-full"
-            >
-              {/* Main image - container controls layout width */}
-              <div className="relative w-full rounded-2xl overflow-hidden md:shadow-2xl shadow-xl">
-                <Image
-                  src="/img/hero.png"
-                  alt="Webdesign Agentur für KMU - Moderne Websites Österreich Deutschland"
-                  width={920}
-                  height={520}
-                  priority
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="h-auto w-full rounded-2xl"
-                />
-                {/* Overlay gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 to-transparent"></div>
-              </div>
-
-              {/* Floating card */}
-              <div className="absolute -bottom-4 -left-4 bg-white dark:bg-slate-800 rounded-xl shadow-lg p-4 border border-slate-200 dark:border-slate-700">
-                <p className="text-sm font-medium text-slate-700 dark:text-slate-300">Websites, die Orientierung geben.</p>
-              </div>
-            </div>
-          </div>
+          <HeroVisualStatic />
         </div>
       </Container>
 
