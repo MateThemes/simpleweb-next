@@ -9,10 +9,10 @@ import { getServicePageDC } from '@/lib/dublinCore'
 
 export const metadata: Metadata = {
   title: 'Webdesign für KMU: Klarheit, Struktur, Anfragen | SimpleWebDesign',
-  description: 'Webdesign für KMU in Österreich & Deutschland: Websites, die Besucher führen und Anfragen bringen – mit Klarheit, Struktur & sauberer Technik. Ab 1.490€.',
+  description: 'Webdesign für KMU in Österreich & Deutschland: Websites, die Besucher führen und Anfragen bringen – mit Klarheit, Struktur & sauberer Technik. Ab 1.490 €.',
   openGraph: {
     title: 'Webdesign für KMU: Klarheit, Struktur, Anfragen | SimpleWebDesign',
-    description: 'Webdesign für KMU in Österreich & Deutschland: Websites, die Besucher führen und Anfragen bringen – mit Klarheit, Struktur & sauberer Technik. Ab 1.490€.',
+    description: 'Webdesign für KMU in Österreich & Deutschland: Websites, die Besucher führen und Anfragen bringen – mit Klarheit, Struktur & sauberer Technik. Ab 1.490 €.',
     url: 'https://simplewebdesign.at/services/webdesign',
     images: [
       {
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Webdesign für KMU: Klarheit, Struktur, Anfragen | SimpleWebDesign',
-    description: 'Webdesign für KMU in Österreich & Deutschland: Websites, die Besucher führen und Anfragen bringen – mit Klarheit, Struktur & sauberer Technik. Ab 1.490€.',
+    description: 'Webdesign für KMU in Österreich & Deutschland: Websites, die Besucher führen und Anfragen bringen – mit Klarheit, Struktur & sauberer Technik. Ab 1.490 €.',
     images: ['/img/services/webdesign.jpg']
   },
   alternates: {
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   other: {
     ...getServicePageDC({
       title: 'Webdesign für KMU: Klarheit, Struktur, Anfragen | SimpleWebDesign',
-      description: 'Webdesign für KMU in Österreich & Deutschland: Websites, die Besucher führen und Anfragen bringen – mit Klarheit, Struktur & sauberer Technik. Ab 1.490€.',
+      description: 'Webdesign für KMU in Österreich & Deutschland: Websites, die Besucher führen und Anfragen bringen – mit Klarheit, Struktur & sauberer Technik. Ab 1.490 €.',
       url: 'https://simplewebdesign.at/services/webdesign',
     }),
   },
@@ -158,7 +158,7 @@ export default function WebdesignPage() {
     // WebPage Schema
     webPageSchema({
       name: "Webdesign für KMU: Klarheit, Struktur, Anfragen",
-      description: "Webdesign für KMU in Österreich & Deutschland: Websites, die Besucher führen und Anfragen bringen – mit Klarheit, Struktur & sauberer Technik. Ab 1.490€.",
+      description: "Webdesign für KMU in Österreich & Deutschland: Websites, die Besucher führen und Anfragen bringen – mit Klarheit, Struktur & sauberer Technik. Ab 1.490 €.",
       url: "https://simplewebdesign.at/services/webdesign",
       image: "https://simplewebdesign.at/img/services/webdesign.jpg",
     }),
