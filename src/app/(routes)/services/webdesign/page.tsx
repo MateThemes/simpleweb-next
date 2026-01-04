@@ -4,15 +4,15 @@ import { Container } from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
 import { PaletteIcon, CheckIcon } from '@/components/icons'
 import { PriceCard } from '@/components/ui/PriceCard'
-import { professionalServiceSchema, breadcrumbSchema } from '@/app/schema'
+import { breadcrumbSchema, webPageSchema } from '@/app/schema'
 import { getServicePageDC } from '@/lib/dublinCore'
 
 export const metadata: Metadata = {
-  title: 'Webdesign Agentur für KMU | Responsive Websites & UI/UX Design | SimpleWebDesign',
-  description: 'Professionelles Webdesign für KMU in Österreich & Deutschland. Responsive Websites, moderne UI/UX und Conversion-optimiertes Design. Starter-Pakete ab 1.490€.',
+  title: 'Webdesign für KMU: Klarheit, Struktur, Anfragen | SimpleWebDesign',
+  description: 'Webdesign für KMU in Österreich & Deutschland: Websites, die Besucher führen und Anfragen bringen – mit Klarheit, Struktur & sauberer Technik. Ab 1.490€.',
   openGraph: {
-    title: 'Webdesign Agentur für KMU | Responsive Websites & UI/UX Design Österreich & Deutschland',
-    description: 'Professionelles Webdesign für KMU in Österreich & Deutschland. Responsive Websites, moderne UI/UX und Conversion-optimiertes Design. Starter-Pakete ab 1.490€.',
+    title: 'Webdesign für KMU: Klarheit, Struktur, Anfragen | SimpleWebDesign',
+    description: 'Webdesign für KMU in Österreich & Deutschland: Websites, die Besucher führen und Anfragen bringen – mit Klarheit, Struktur & sauberer Technik. Ab 1.490€.',
     url: 'https://simplewebdesign.at/services/webdesign',
     images: [
       {
@@ -25,8 +25,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Webdesign Agentur für KMU | Responsive Websites & UI/UX Design Österreich & Deutschland',
-    description: 'Professionelles Webdesign für KMU in Österreich & Deutschland. Responsive Websites, moderne UI/UX und Conversion-optimiertes Design.',
+    title: 'Webdesign für KMU: Klarheit, Struktur, Anfragen | SimpleWebDesign',
+    description: 'Webdesign für KMU in Österreich & Deutschland: Websites, die Besucher führen und Anfragen bringen – mit Klarheit, Struktur & sauberer Technik. Ab 1.490€.',
     images: ['/img/services/webdesign.jpg']
   },
   alternates: {
@@ -35,8 +35,8 @@ export const metadata: Metadata = {
   // Dublin Core Metadata
   other: {
     ...getServicePageDC({
-      title: 'Webdesign Agentur für KMU | Responsive Websites & UI/UX Design',
-      description: 'Professionelles Webdesign für KMU in Österreich & Deutschland. Responsive Websites, moderne UI/UX und Conversion-optimiertes Design.',
+      title: 'Webdesign für KMU: Klarheit, Struktur, Anfragen | SimpleWebDesign',
+      description: 'Webdesign für KMU in Österreich & Deutschland: Websites, die Besucher führen und Anfragen bringen – mit Klarheit, Struktur & sauberer Technik. Ab 1.490€.',
       url: 'https://simplewebdesign.at/services/webdesign',
     }),
   },
@@ -147,98 +147,55 @@ const packages = [
 export default function WebdesignPage() {
   // Schema.org Structured Data
   const schemas = [
-    // ProfessionalService Schema (erweitert)
-    professionalServiceSchema({
-      name: "Webdesign Agentur für KMU",
-      description: "Professionelles Webdesign für KMU in Österreich & Deutschland. Responsive Websites, moderne UI/UX und Conversion-optimiertes Design. Starter-Pakete ab 1.490€.",
-      url: "https://simplewebdesign.at/services/webdesign",
-      image: "https://simplewebdesign.at/img/services/webdesign.jpg",
-      priceRange: "€1.490 - €4.990",
-      areaServed: ["Austria", "Germany"],
-    }),
-    // Breadcrumb Schema
+    // BreadcrumbList Schema
     breadcrumbSchema({
       items: [
         { name: "Home", url: "https://simplewebdesign.at" },
-        { name: "Services", url: "https://simplewebdesign.at/services/webdesign" },
+        { name: "Services", url: "https://simplewebdesign.at/services" },
         { name: "Webdesign", url: "https://simplewebdesign.at/services/webdesign" },
       ],
     }),
-    // Bestehende detaillierte Service Schema
+    // WebPage Schema
+    webPageSchema({
+      name: "Webdesign für KMU: Klarheit, Struktur, Anfragen",
+      description: "Webdesign für KMU in Österreich & Deutschland: Websites, die Besucher führen und Anfragen bringen – mit Klarheit, Struktur & sauberer Technik. Ab 1.490€.",
+      url: "https://simplewebdesign.at/services/webdesign",
+      image: "https://simplewebdesign.at/img/services/webdesign.jpg",
+    }),
+    // Service Schema
     {
-            "@context": "https://schema.org",
-            "@type": "Service",
-            "name": "Webdesign Agentur Niederösterreich",
-            "description": "Professionelles Webdesign in Niederösterreich. Responsive Websites, moderne UI/UX und Conversion-optimiertes Design. Starter-Pakete ab 1.490€.",
-            "image": "/img/services/webdesign.jpg",
-            "provider": {
-              "@type": "Organization",
-              "name": "SimpleWebDesign",
-              "url": "https://simplewebdesign.at",
-              "logo": "https://simplewebdesign.at/img/logo.png"
-            },
-            "areaServed": {
-              "@type": "State",
-              "name": "Niederösterreich"
-            },
-            "serviceType": ["Webdesign", "Responsive Design", "UI/UX Design", "Website Development", "Conversion Optimization"],
-            "hasOfferCatalog": {
-              "@type": "OfferCatalog",
-              "name": "Webdesign Services",
-              "itemListElement": [
-                {
-                  "@type": "Offer",
-                  "itemOffered": {
-                    "@type": "Service",
-                    "name": "Responsive Webdesign"
-                  }
-                },
-                {
-                  "@type": "Offer",
-                  "itemOffered": {
-                    "@type": "Service",
-                    "name": "UI/UX Design"
-                  }
-                },
-                {
-                  "@type": "Offer",
-                  "itemOffered": {
-                    "@type": "Service",
-                    "name": "Website Development"
-                  }
-                },
-                {
-                  "@type": "Offer",
-                  "itemOffered": {
-                    "@type": "Service",
-                    "name": "Conversion Optimization"
-                  }
-                }
-              ]
-            },
-            "offers": [
-              {
-                "@type": "Offer",
-                "name": "Standard Webdesign",
-                "price": "1490",
-                "priceCurrency": "EUR",
-                "description": "Perfekt für kleine Unternehmen und Selbstständige"
-              },
-              {
-                "@type": "Offer",
-                "name": "Premium Webdesign",
-                "price": "2990",
-                "priceCurrency": "EUR",
-                "description": "Ideal für wachsende Unternehmen"
-              },
-              {
-                "@type": "Offer",
-                "name": "Komplett Webdesign",
-                "price": "4990",
-                "priceCurrency": "EUR",
-                "description": "Full-Service mit laufender Betreuung"
-              }
-            ]
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Webdesign",
+      "description": "Webdesign für KMU in Österreich & Deutschland: Websites, die Besucher führen und Anfragen bringen – mit Klarheit, Struktur & sauberer Technik.",
+      "url": "https://simplewebdesign.at/services/webdesign",
+      "image": "https://simplewebdesign.at/img/services/webdesign.jpg",
+      "provider": {
+        "@type": "Organization",
+        "name": "SimpleWebDesign",
+        "url": "https://simplewebdesign.at",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://simplewebdesign.at/img/logo.png"
+        }
+      },
+      "areaServed": [
+        {
+          "@type": "Country",
+          "name": "Austria"
+        },
+        {
+          "@type": "Country",
+          "name": "Germany"
+        }
+      ],
+      "serviceType": ["Webdesign", "Responsive Design", "UI/UX Design", "Website Development"],
+      "offers": {
+        "@type": "Offer",
+        "price": "1490",
+        "priceCurrency": "EUR",
+        "description": "Webdesign-Pakete ab 1.490€"
+      }
     },
   ];
 
