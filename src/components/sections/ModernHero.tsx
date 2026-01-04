@@ -135,37 +135,35 @@ export default function ModernHero() {
           </div>
 
           {/* Visual */}
-          <div className="relative">
+          <div className="relative w-full">
             <motion.div
               initial="hidden"
               whileInView="visible"
               viewport={{ once: false, amount: 0.4 }}
               variants={scaleIn}
               transition={{ duration: 0.6, ease: 'easeOut', delay: 0.2 }}
-              className="relative"
+              className="relative w-full"
             >
-              {/* Main image with parallax - stable container dimensions to prevent CLS */}
-              <div className="relative w-full" style={{ aspectRatio: '920/520' }}>
-                <motion.div
-                  className="relative rounded-2xl overflow-hidden md:shadow-2xl shadow-xl w-full h-full"
-                  style={{
-                    y: yTransform,
-                    scale: isReducedMotion || isMobile ? 1 : 1.02,
-                  }}
-                >
-                  <Image
-                    src="/img/hero.png"
-                    alt="Webdesign Agentur für KMU - Moderne Websites Österreich Deutschland"
-                    width={920}
-                    height={520}
-                    priority
-                    sizes="(max-width: 768px) 100vw, 920px"
-                    className="h-auto w-full rounded-2xl"
-                  />
-                  {/* Overlay gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 to-transparent"></div>
-                </motion.div>
-              </div>
+              {/* Main image with parallax - container controls layout width */}
+              <motion.div
+                className="relative w-full rounded-2xl overflow-hidden md:shadow-2xl shadow-xl"
+                style={{
+                  y: yTransform,
+                  scale: isReducedMotion || isMobile ? 1 : 1.02,
+                }}
+              >
+                <Image
+                  src="/img/hero.png"
+                  alt="Webdesign Agentur für KMU - Moderne Websites Österreich Deutschland"
+                  width={920}
+                  height={520}
+                  priority
+                  sizes="100vw"
+                  className="h-auto w-full rounded-2xl"
+                />
+                {/* Overlay gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 to-transparent"></div>
+              </motion.div>
 
               {/* Floating card */}
               <div className="absolute -bottom-4 -left-4 bg-white dark:bg-slate-800 rounded-xl shadow-lg p-4 border border-slate-200 dark:border-slate-700">
