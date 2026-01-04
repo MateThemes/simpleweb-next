@@ -4,8 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowRightIcon, CheckCircleIcon, SparklesIcon } from '@heroicons/react/24/outline'
 import { Container } from '../ui/Container'
-import { motion, useScroll, useTransform, useSpring } from 'framer-motion'
-import { useRef, useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 12 },
@@ -32,60 +31,8 @@ const features = [
 ]
 
 export default function ModernHero() {
-  const heroRef = useRef<HTMLElement>(null)
-  const [isReducedMotion, setIsReducedMotion] = useState(false)
-  const [isMobile, setIsMobile] = useState(false)
-
-  // Check for reduced motion preference
-  useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
-    setIsReducedMotion(mediaQuery.matches)
-
-    const handleChange = (e: MediaQueryListEvent) => setIsReducedMotion(e.matches)
-    mediaQuery.addEventListener('change', handleChange)
-    return () => mediaQuery.removeEventListener('change', handleChange)
-  }, [])
-
-  // Check for mobile
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 1024) // lg breakpoint
-    }
-    checkMobile()
-    window.addEventListener('resize', checkMobile)
-    return () => window.removeEventListener('resize', checkMobile)
-  }, [])
-
-  // Scroll-based parallax
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ['start end', 'end start'],
-  })
-
-  // Smooth spring for parallax
-  const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001,
-  })
-
-  // Transform: translateY from 0 to -10px (subtle upward movement, scroll-safe)
-  const yTransform = useTransform(
-    smoothProgress,
-    [0, 1],
-    isReducedMotion || isMobile ? [0, 0] : [0, -10]
-  )
-
-  // Scale transform: use motion value for better performance
-  const scaleTransform = useTransform(
-    smoothProgress,
-    [0, 1],
-    isReducedMotion || isMobile ? [1, 1] : [1, 1.02]
-  )
-
   return (
     <motion.section
-      ref={heroRef}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.4 }}
@@ -151,14 +98,8 @@ export default function ModernHero() {
               transition={{ duration: 0.6, ease: 'easeOut', delay: 0.2 }}
               className="relative w-full"
             >
-              {/* Main image with parallax - container controls layout width */}
-              <motion.div
-                className="relative w-full rounded-2xl overflow-hidden md:shadow-2xl shadow-xl"
-                style={{
-                  y: yTransform,
-                  scale: scaleTransform,
-                }}
-              >
+              {/* Main image - container controls layout width */}
+              <div className="relative w-full rounded-2xl overflow-hidden md:shadow-2xl shadow-xl">
                 <Image
                   src="/img/hero.png"
                   alt="Webdesign Agentur für KMU - Moderne Websites Österreich Deutschland"
@@ -170,7 +111,7 @@ export default function ModernHero() {
                 />
                 {/* Overlay gradient */}
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 to-transparent"></div>
-              </motion.div>
+              </div>
 
               {/* Floating card */}
               <div className="absolute -bottom-4 -left-4 bg-white dark:bg-slate-800 rounded-xl shadow-lg p-4 border border-slate-200 dark:border-slate-700">
