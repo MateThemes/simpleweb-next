@@ -4,17 +4,6 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowRightIcon, CheckCircleIcon, SparklesIcon } from '@heroicons/react/24/outline'
 import { Container } from '../ui/Container'
-import { motion } from 'framer-motion'
-
-const fadeInUp = {
-  hidden: { opacity: 0, y: 12 },
-  visible: { opacity: 1, y: 0 }
-}
-
-const scaleIn = {
-  hidden: { opacity: 0, scale: 0.98 },
-  visible: { opacity: 1, scale: 1 }
-}
 
 const handleScrollToKlarheit = (e: React.MouseEvent<HTMLAnchorElement>) => {
   e.preventDefault()
@@ -32,12 +21,7 @@ const features = [
 
 export default function ModernHero() {
   return (
-    <motion.section
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.4 }}
-      variants={fadeInUp}
-      transition={{ duration: 0.6, ease: 'easeOut' }}
+    <section
       className="relative bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-slate-900 dark:via-slate-800 dark:to-indigo-900 py-24 lg:py-32"
     >
       {/* Background decoration */}
@@ -90,12 +74,7 @@ export default function ModernHero() {
 
           {/* Visual */}
           <div className="relative w-full">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.4 }}
-              variants={scaleIn}
-              transition={{ duration: 0.6, ease: 'easeOut', delay: 0.2 }}
+            <div
               className="relative w-full"
             >
               {/* Main image - container controls layout width */}
@@ -117,7 +96,7 @@ export default function ModernHero() {
               <div className="absolute -bottom-4 -left-4 bg-white dark:bg-slate-800 rounded-xl shadow-lg p-4 border border-slate-200 dark:border-slate-700">
                 <p className="text-sm font-medium text-slate-700 dark:text-slate-300">Websites, die Orientierung geben.</p>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </Container>
@@ -157,6 +136,6 @@ export default function ModernHero() {
           </p>
         </div>
       </Container>
-    </motion.section>
+    </section>
   )
 }
