@@ -98,7 +98,7 @@ export default function ModernHero() {
           {/* Content */}
           <div className="space-y-8">
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-blue-200 dark:border-slate-700">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 dark:bg-slate-800/80 md:backdrop-blur-sm border border-blue-200 dark:border-slate-700">
               <SparklesIcon className="h-4 w-4 text-blue-600" />
               <span className="text-sm font-medium text-blue-900 dark:text-blue-100">
                 Websites, die Entscheidungen erleichtern – nicht nur gut aussehen.
@@ -111,7 +111,7 @@ export default function ModernHero() {
                 Viele Websites sehen gut aus – und bringen trotzdem keine Anfragen.
               </h1>
               {/* LLM-friendly summary block */}
-              <div className="text-lg text-slate-700 dark:text-slate-300 leading-relaxed max-w-2xl space-y-2 bg-white/60 dark:bg-slate-800/60 backdrop-blur-sm p-4 rounded-lg border border-slate-200 dark:border-slate-700">
+              <div className="text-lg text-slate-700 dark:text-slate-300 leading-relaxed max-w-2xl space-y-2 bg-white/60 dark:bg-slate-800/60 md:backdrop-blur-sm p-4 rounded-lg border border-slate-200 dark:border-slate-700">
                 <p>
                   SimpleWebDesign baut Websites für KMU in Österreich und Deutschland, die nicht nur gut aussehen, sondern messbare Ergebnisse bringen. Wir schaffen Klarheit, Struktur und Orientierung – damit Besucher zu Anfragen werden.
                 </p>
@@ -146,7 +146,7 @@ export default function ModernHero() {
             >
               {/* Main image with parallax */}
               <motion.div
-                className="relative rounded-2xl overflow-hidden shadow-2xl"
+                className="relative rounded-2xl overflow-hidden md:shadow-2xl shadow-xl"
                 style={{
                   y: yTransform,
                   scale: isReducedMotion || isMobile ? 1 : 1.02,
@@ -155,12 +155,11 @@ export default function ModernHero() {
                 <Image
                   src="/img/hero.png"
                   alt="Webdesign Agentur für KMU - Moderne Websites Österreich Deutschland"
-                  width={800}
-                  height={600}
-                  className="w-full h-auto"
-                  quality={60}
-                  sizes="(max-width: 768px) 100vw, 800px"
+                  width={920}
+                  height={520}
                   priority
+                  sizes="(max-width: 768px) 100vw, 920px"
+                  className="h-auto w-full rounded-2xl"
                 />
                 {/* Overlay gradient */}
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 to-transparent"></div>
