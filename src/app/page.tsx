@@ -21,7 +21,7 @@ import HomeFaq from '@/components/sections/HomeFaq'
 import { getWebPageDC } from '@/lib/dublinCore'
 
 export const metadata: Metadata = {
-  title: 'Webdesign für KMU in Österreich & Deutschland | SimpleWebDesign',
+  title: 'Webdesign für KMU in Österreich & Deutschland',
   description: 'Viele Websites sehen gut aus, bringen aber keine Anfragen. Wir schaffen Klarheit, Struktur und messbare Wirkung – für KMU in Österreich & Deutschland.',
   alternates: {
     canonical: 'https://simplewebdesign.at/',
