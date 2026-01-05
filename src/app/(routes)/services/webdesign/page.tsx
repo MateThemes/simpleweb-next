@@ -373,6 +373,49 @@ export default function WebdesignPage() {
           </Container>
         </div>
 
+        {/* Security & Technology Section */}
+        <div className="py-24 bg-neutral-50 dark:bg-neutral-900">
+          <Container>
+            <div className="mx-auto max-w-4xl">
+              <div className="rounded-2xl bg-white dark:bg-neutral-800 p-8 sm:p-12 shadow-sm border border-neutral-200 dark:border-neutral-700">
+                <h2 className="font-display text-4xl font-medium tracking-tight text-neutral-950 dark:text-white sm:text-5xl">
+                  Sicherheit & Technik – bewusst geprüft, sauber umgesetzt
+                </h2>
+                <p className="mt-6 text-xl text-neutral-600 dark:text-neutral-300">
+                  Bei einem Website-Redesign geht es nicht nur um Design und Performance.
+                  Auch technische Sauberkeit und grundlegende Sicherheitsaspekte spielen eine Rolle – insbesondere bei bestehenden Websites.
+                </p>
+                <ul className="mt-10 space-y-5 text-neutral-600 dark:text-neutral-300">
+                  <li className="flex gap-4">
+                    <CheckIcon className="h-6 w-6 text-blue-600 flex-shrink-0 mt-0.5" />
+                    <span className="text-lg">Schonende technische Checks ohne Exploits oder Angriffe</span>
+                  </li>
+                  <li className="flex gap-4">
+                    <CheckIcon className="h-6 w-6 text-blue-600 flex-shrink-0 mt-0.5" />
+                    <span className="text-lg">Keine Umgehung bestehender Schutzmechanismen</span>
+                  </li>
+                  <li className="flex gap-4">
+                    <CheckIcon className="h-6 w-6 text-blue-600 flex-shrink-0 mt-0.5" />
+                    <span className="text-lg">Niedrige Zugriffslast, keine automatisierten Angriffsmuster</span>
+                  </li>
+                  <li className="flex gap-4">
+                    <CheckIcon className="h-6 w-6 text-blue-600 flex-shrink-0 mt-0.5" />
+                    <span className="text-lg">Fokus auf Konfiguration, Prävention und Einordnung</span>
+                  </li>
+                </ul>
+                <p className="mt-10 text-xl text-neutral-600 dark:text-neutral-300">
+                  Reagieren Schutzsysteme wie Firewalls oder Sicherheits-Plugins, wird der Check bewusst beendet.
+                  Das ist kein Fehler, sondern ein positives Zeichen: Die Schutzmechanismen greifen.
+                </p>
+                <p className="mt-8 text-base text-neutral-500 dark:text-neutral-400">
+                  Dieser Sicherheits-Check ersetzt keinen Penetrationstest.
+                  Für weitergehende Tests sind abgestimmte Prüfungen mit Freigabe erforderlich.
+                </p>
+              </div>
+            </div>
+          </Container>
+        </div>
+
         {/* Benefits Section with Image */}
         <div className="py-24">
           <Container>
