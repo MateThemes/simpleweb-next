@@ -382,7 +382,7 @@ export default function WebdesignPage() {
                   Sicherheit & Technik – bewusst geprüft, sauber umgesetzt
                 </h2>
                 <p className="mt-6 text-xl text-neutral-600 dark:text-neutral-300">
-                  Bei einem Website-Redesign geht es nicht nur um Design und Performance.
+                  Ob neue Website oder <a href="/services/redesign" className="text-blue-600 hover:text-blue-500 underline">Redesign</a>: Es geht nicht nur um Design und <a href="/services/performance" className="text-blue-600 hover:text-blue-500 underline">Performance</a>.
                   Auch technische Sauberkeit und grundlegende Sicherheitsaspekte spielen eine Rolle – insbesondere bei bestehenden Websites.
                 </p>
                 <ul className="mt-10 space-y-5 text-neutral-600 dark:text-neutral-300">
