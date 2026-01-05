@@ -5,13 +5,14 @@ import { Container } from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
 import { ChartBarIcon, CheckIcon } from '@/components/icons'
 import { breadcrumbSchema, webPageSchema, servicePageSchema } from '@/app/schema'
+import { getServicePageDC } from '@/lib/dublinCore'
 
 export const metadata: Metadata = {
-  title: 'Digital Marketing Agentur für KMU | Social Media & Performance Marketing',
-  description: 'Social Media, Content & Performance Marketing für KMU in Österreich & Deutschland. Steigern Sie Ihre Reichweite, Leads und ROI mit maßgeschneiderten Marketing-Strategien.',
+  title: 'Digital Marketing für KMU: Klarheit, Botschaft, Wirkung | SimpleWebDesign',
+  description: 'Marketing für KMU in Österreich & Deutschland: Kein Posting-Aktionismus, sondern System aus Einordnung, Botschaft, Kanalwahl und Messung. Reichweite wird zu Anfragen – messbar und nachvollziehbar.',
   openGraph: {
-    title: 'Digital Marketing Agentur für KMU | Social Media & Performance Marketing Österreich & Deutschland',
-    description: 'Social Media, Content & Performance Marketing für KMU in Österreich & Deutschland. Steigern Sie Ihre Reichweite, Leads und ROI mit maßgeschneiderten Marketing-Strategien.',
+    title: 'Digital Marketing für KMU: Klarheit, Botschaft, Wirkung | SimpleWebDesign',
+    description: 'Marketing für KMU in Österreich & Deutschland: Kein Posting-Aktionismus, sondern System aus Einordnung, Botschaft, Kanalwahl und Messung. Reichweite wird zu Anfragen – messbar und nachvollziehbar.',
     url: 'https://simplewebdesign.at/services/marketing',
     images: [
       {
@@ -24,41 +25,70 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Digital Marketing Agentur für KMU | Social Media & Performance Marketing Österreich & Deutschland',
-    description: 'Social Media, Content & Performance Marketing für KMU in Österreich & Deutschland. Steigern Sie Ihre Reichweite, Leads und ROI.',
+    title: 'Digital Marketing für KMU: Klarheit, Botschaft, Wirkung | SimpleWebDesign',
+    description: 'Marketing für KMU in Österreich & Deutschland: Kein Posting-Aktionismus, sondern System aus Einordnung, Botschaft, Kanalwahl und Messung.',
     images: ['/img/services/marketing.jpg']
   },
   alternates: {
     canonical: 'https://simplewebdesign.at/services/marketing'
-  }
+  },
+  // Dublin Core Metadata
+  other: {
+    ...getServicePageDC({
+      title: 'Digital Marketing für KMU: Klarheit, Botschaft, Wirkung | SimpleWebDesign',
+      description: 'Marketing für KMU in Österreich & Deutschland: Kein Posting-Aktionismus, sondern System aus Einordnung, Botschaft, Kanalwahl und Messung. Reichweite wird zu Anfragen – messbar und nachvollziehbar.',
+      url: 'https://simplewebdesign.at/services/marketing',
+    }),
+  },
 }
 
 const features = [
   {
     title: 'Social Media Marketing',
-    description: 'Professionelle Betreuung Ihrer Social Media Kanäle für maximale Reichweite und Engagement.',
+    description: 'Klarer Content, der Positionierung stärkt – statt nur Reichweite.',
   },
   {
     title: 'Content Marketing',
-    description: 'Wertvoller Content der Ihre Zielgruppe begeistert und zu mehr Conversions führt.',
+    description: 'Inhalte, die erklären und überzeugen – nicht nur füllen.',
   },
   {
     title: 'Performance Marketing',
-    description: 'Datengetriebene Werbekampagnen für messbare Ergebnisse und ROI.',
+    description: 'Ads als Verstärker für funktionierende Botschaften – datenbasiert.',
   },
   {
     title: 'E-Mail Marketing',
-    description: 'Aufbau und Pflege von E-Mail-Listen für langfristige Kundenbeziehungen.',
+    description: 'Beziehungen aufbauen, statt nur Traffic einkaufen.',
   },
 ]
 
 const benefits = [
-  'Höhere Markenbekanntheit',
-  'Mehr qualifizierte Leads',
-  'Bessere Conversion-Rates',
-  'Messbarer ROI',
-  'Zielgruppenspezifische Ansprache',
-  'Kontinuierliche Optimierung',
+  'Klarere Botschaft statt nur Reichweite',
+  'Qualifizierte Anfragen statt nur Klicks',
+  'Messbarkeit statt Bauchgefühl',
+  'System statt Einzelmaßnahmen',
+]
+
+const process = [
+  {
+    title: 'Einordnung',
+    description: 'Ziele, Zielgruppe, Angebot, Botschaft – wir klären, wer erreicht werden soll und warum.',
+  },
+  {
+    title: 'Positionierung',
+    description: 'Klare Kernbotschaft & Nutzenversprechen – damit Besucher sofort verstehen, wer hier richtig ist.',
+  },
+  {
+    title: 'Kanalwahl',
+    description: 'Welche Kanäle Sinn ergeben – nicht alles, sondern das Passende.',
+  },
+  {
+    title: 'Umsetzung',
+    description: 'Content, Ads, E-Mail im passenden Mix – konsistent zur Botschaft.',
+  },
+  {
+    title: 'Messung & Weiterentwicklung',
+    description: 'Was wirkt, was nicht, nächste Schritte – messbar, nachvollziehbar, transparent.',
+  },
 ]
 
 export default function MarketingPage() {
@@ -74,15 +104,15 @@ export default function MarketingPage() {
     }),
     // WebPage Schema
     webPageSchema({
-      name: "Digital Marketing Agentur für KMU | Social Media & Performance Marketing",
-      description: "Social Media, Content & Performance Marketing für KMU in Österreich & Deutschland. Steigern Sie Ihre Reichweite, Leads und ROI mit maßgeschneiderten Marketing-Strategien.",
+      name: "Digital Marketing für KMU: Klarheit, Botschaft, Wirkung",
+      description: "Marketing für KMU in Österreich & Deutschland: Kein Posting-Aktionismus, sondern System aus Einordnung, Botschaft, Kanalwahl und Messung. Reichweite wird zu Anfragen – messbar und nachvollziehbar.",
       url: "https://simplewebdesign.at/services/marketing",
       image: "https://simplewebdesign.at/img/services/marketing.jpg",
     }),
     // Service Schema
     servicePageSchema({
       name: "Digital Marketing",
-      description: "Social Media, Content & Performance Marketing für KMU in Österreich & Deutschland. Steigern Sie Ihre Reichweite, Leads und ROI mit maßgeschneiderten Marketing-Strategien.",
+      description: "Marketing für KMU in Österreich & Deutschland: Kein Posting-Aktionismus, sondern System aus Einordnung, Botschaft, Kanalwahl und Messung.",
       url: "https://simplewebdesign.at/services/marketing",
       image: "https://simplewebdesign.at/img/services/marketing.jpg",
       serviceType: ["Digital Marketing", "Social Media Marketing", "Content Marketing", "Performance Marketing", "Email Marketing"],
@@ -106,10 +136,11 @@ export default function MarketingPage() {
             <div className="lg:flex lg:items-center lg:gap-x-10">
               <div className="max-w-2xl lg:max-w-lg">
                 <h1 className="font-display text-5xl font-medium tracking-tight text-neutral-950 dark:text-white [text-wrap:balance] sm:text-7xl">
-                  Digital Marketing Agentur für KMU
+                  Digital Marketing für KMU
                 </h1>
                 <p className="mt-6 text-xl text-neutral-600 dark:text-neutral-300">
-                  Steigern Sie Ihre digitale Reichweite in Wien, München, Waldviertel und ganz Österreich & Deutschland mit maßgeschneiderten Marketing-Strategien für KMU.
+                  Marketing beginnt nicht mit Postings oder Ads, sondern mit Klarheit: Wer soll erreicht werden – und warum?
+                  Wir entwickeln Botschaften, Kanäle und Maßnahmen so, dass Reichweite zu Anfragen wird – messbar und nachvollziehbar.
                 </p>
                 <div className="mt-8 flex gap-4">
                   <Button href="/kontakt">Strategie-Gespräch</Button>
@@ -147,7 +178,7 @@ export default function MarketingPage() {
                 Ganzheitliches Marketing
               </h2>
               <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-300">
-                Von Social Media bis Performance Marketing - wir entwickeln die perfekte Marketing-Strategie für KMU. Kombinieren Sie dies mit unserem <a href="/services/seo" className="text-indigo-600 hover:text-indigo-500 underline">SEO-Service</a> und <a href="/services/webdesign" className="text-indigo-600 hover:text-indigo-500 underline">Webdesign</a> für maximale Online-Sichtbarkeit.
+                Marketing ist kein Posting-Aktionismus, sondern ein System: Strategie → Botschaft → Umsetzung → Messung. Wir entwickeln Maßnahmen, die zur Botschaft passen und messbar sind. Kombinieren Sie dies mit unserem <a href="/services/webdesign" className="text-indigo-600 hover:text-indigo-500 underline">Webdesign</a>, <a href="/services/seo" className="text-indigo-600 hover:text-indigo-500 underline">SEO</a> und <a href="/services/performance" className="text-indigo-600 hover:text-indigo-500 underline">Performance-Optimierung</a> für maximale Online-Sichtbarkeit.
               </p>
             </div>
             <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 sm:mt-20 lg:max-w-none lg:grid-cols-2">
@@ -166,6 +197,67 @@ export default function MarketingPage() {
           </Container>
         </div>
 
+        {/* Process Section */}
+        <div className="py-24">
+          <Container>
+            <div className="mx-auto max-w-2xl lg:max-w-none">
+              <div className="max-w-2xl">
+                <h2 className="font-display text-4xl font-medium tracking-tight text-neutral-950 dark:text-white sm:text-5xl">
+                  Unser Marketing-Prozess
+                </h2>
+                <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-300">
+                  Wir beginnen nicht mit Postings oder Ads, sondern mit Einordnung: Wer soll erreicht werden? Erst dann folgen Botschaft, Kanalwahl und Umsetzung – bis zur messbaren Wirkung.
+                </p>
+              </div>
+              <div className="mt-16 grid grid-cols-1 gap-8 lg:grid-cols-3">
+                {process.map((step, index) => (
+                  <div key={index} className="flex gap-4">
+                    <CheckIcon className="h-8 w-8 text-indigo-600" />
+                    <div>
+                      <h3 className="font-display text-xl font-semibold text-neutral-950 dark:text-white">{step.title}</h3>
+                      <p className="mt-2 text-neutral-600 dark:text-neutral-300">{step.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Container>
+        </div>
+
+        {/* Marketing Trust Section */}
+        <div className="py-24 bg-neutral-50 dark:bg-neutral-900">
+          <Container>
+            <div className="mx-auto max-w-4xl">
+              <div className="rounded-2xl bg-white dark:bg-neutral-800 p-8 sm:p-12 shadow-sm border border-neutral-200 dark:border-neutral-700">
+                <h2 className="font-display text-4xl font-medium tracking-tight text-neutral-950 dark:text-white sm:text-5xl">
+                  Marketing – sauber, strategisch, messbar
+                </h2>
+                <p className="mt-6 text-xl text-neutral-600 dark:text-neutral-300">
+                  Kein Aktionismus, keine leeren Versprechen. Wir arbeiten mit Klarheit, konsistenter Botschaft und messbaren Signalen – damit Marketing zu Anfragen führt.
+                </p>
+                <ul className="mt-10 space-y-5 text-neutral-600 dark:text-neutral-300">
+                  <li className="flex gap-4">
+                    <CheckIcon className="h-6 w-6 text-indigo-600 flex-shrink-0 mt-0.5" />
+                    <span className="text-lg">Keine &ldquo;mehr Reichweite&rdquo;-Versprechen ohne Strategie</span>
+                  </li>
+                  <li className="flex gap-4">
+                    <CheckIcon className="h-6 w-6 text-indigo-600 flex-shrink-0 mt-0.5" />
+                    <span className="text-lg">Maßnahmen nur, wenn sie zur Botschaft passen</span>
+                  </li>
+                  <li className="flex gap-4">
+                    <CheckIcon className="h-6 w-6 text-indigo-600 flex-shrink-0 mt-0.5" />
+                    <span className="text-lg">Messbar, nachvollziehbar, transparent</span>
+                  </li>
+                  <li className="flex gap-4">
+                    <CheckIcon className="h-6 w-6 text-indigo-600 flex-shrink-0 mt-0.5" />
+                    <span className="text-lg">Fokus auf Anfragen statt Vanity Metrics</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </Container>
+        </div>
+
         {/* Benefits Section with Image */}
         <div className="py-24">
           <Container>
@@ -175,9 +267,9 @@ export default function MarketingPage() {
                   <h2 className="font-display text-4xl font-medium tracking-tight text-neutral-950 dark:text-white sm:text-5xl">
                     Ihre Vorteile
                   </h2>
-                                  <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-300">
-                  Mit unseren Marketing-Strategien erreichen Sie Ihre Zielgruppe effektiv und steigern nachhaltig Ihren Erfolg. Kombinieren Sie dies mit unserem <Link href="/services/seo" className="text-indigo-600 hover:text-indigo-500 underline">SEO-Service</Link> für maximale Online-Sichtbarkeit.
-                </p>
+                  <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-300">
+                    Mit unseren Marketing-Strategien erreichen Sie Ihre Zielgruppe effektiv und steigern nachhaltig Ihren Erfolg. Kombinieren Sie dies mit unserem <Link href="/services/webdesign" className="text-indigo-600 hover:text-indigo-500 underline">Webdesign</Link>, <Link href="/services/seo" className="text-indigo-600 hover:text-indigo-500 underline">SEO</Link> und <Link href="/services/performance" className="text-indigo-600 hover:text-indigo-500 underline">Performance-Optimierung</Link> für maximale Online-Sichtbarkeit.
+                  </p>
                 </div>
                 <div className="mt-16 grid grid-cols-1 gap-8 lg:grid-cols-2">
                   {benefits.map((benefit, index) => (
@@ -218,10 +310,10 @@ export default function MarketingPage() {
           <Container className="relative">
             <div className="mx-auto max-w-2xl text-center">
               <h2 className="font-display text-3xl tracking-tight text-white sm:text-4xl">
-                Bereit für mehr Reichweite?
+                Bereit für Marketing, das zu Anfragen führt?
               </h2>
               <p className="mt-4 text-lg text-indigo-100">
-                Lassen Sie uns gemeinsam Ihre Marketing-Strategie entwickeln und Ihre Ziele erreichen.
+                Lass uns kurz einordnen, welche Kanäle für dich wirklich Sinn ergeben.
               </p>
               <div className="mt-8">
                 <Button href="/kontakt" variant="secondary" className="text-indigo-600 border-indigo-600 hover:bg-indigo-600 hover:text-white dark:text-white dark:border-white dark:hover:bg-white dark:hover:text-indigo-600">
