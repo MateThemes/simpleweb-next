@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { Container } from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
 import { ChartBarIcon, CheckIcon } from '@/components/icons'
-import { breadcrumbSchema, webPageSchema, servicePageSchema } from '@/app/schema'
+import { breadcrumbSchema } from '@/app/schema'
 import { getServicePageDC } from '@/lib/dublinCore'
 
 export const metadata: Metadata = {
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   // Dublin Core Metadata
   other: {
     ...getServicePageDC({
-      title: 'Digital Marketing für KMU: Klarheit, Botschaft, Wirkung | SimpleWebDesign',
+      title: 'Digital Marketing für KMU: Klarheit, Botschaft, Wirkung',
       description: 'Marketing für KMU in Österreich & Deutschland: Kein Posting-Aktionismus, sondern System aus Einordnung, Botschaft, Kanalwahl und Messung. Reichweite wird zu Anfragen – messbar und nachvollziehbar.',
       url: 'https://simplewebdesign.at/services/marketing',
     }),
@@ -103,20 +103,45 @@ export default function MarketingPage() {
       ],
     }),
     // WebPage Schema
-    webPageSchema({
-      name: "Digital Marketing für KMU: Klarheit, Botschaft, Wirkung",
-      description: "Marketing für KMU in Österreich & Deutschland: Kein Posting-Aktionismus, sondern System aus Einordnung, Botschaft, Kanalwahl und Messung. Reichweite wird zu Anfragen – messbar und nachvollziehbar.",
-      url: "https://simplewebdesign.at/services/marketing",
-      image: "https://simplewebdesign.at/img/services/marketing.jpg",
-    }),
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "@id": "https://simplewebdesign.at/services/marketing#webpage",
+      "name": "Digital Marketing für KMU: Klarheit, Botschaft, Wirkung",
+      "description": "Marketing für KMU in Österreich & Deutschland: Kein Posting-Aktionismus, sondern System aus Einordnung, Botschaft, Kanalwahl und Messung. Reichweite wird zu Anfragen – messbar und nachvollziehbar.",
+      "url": "https://simplewebdesign.at/services/marketing",
+      "image": "https://simplewebdesign.at/img/services/marketing.jpg",
+      "publisher": {
+        "@id": "https://simplewebdesign.at/#org",
+        "@type": "Organization",
+        "name": "SimpleWebDesign",
+        "url": "https://simplewebdesign.at",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://simplewebdesign.at/img/logo.png"
+        }
+      }
+    },
     // Service Schema
-    servicePageSchema({
-      name: "Digital Marketing",
-      description: "Marketing für KMU in Österreich & Deutschland: Kein Posting-Aktionismus, sondern System aus Einordnung, Botschaft, Kanalwahl und Messung.",
-      url: "https://simplewebdesign.at/services/marketing",
-      image: "https://simplewebdesign.at/img/services/marketing.jpg",
-      serviceType: ["Digital Marketing", "Social Media Marketing", "Content Marketing", "Performance Marketing", "Email Marketing"],
-    }),
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "@id": "https://simplewebdesign.at/services/marketing#service",
+      "name": "Digital Marketing",
+      "serviceType": "Digital Marketing",
+      "url": "https://simplewebdesign.at/services/marketing",
+      "provider": {
+        "@id": "https://simplewebdesign.at/#org",
+        "@type": "Organization",
+        "name": "SimpleWebDesign",
+        "url": "https://simplewebdesign.at",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://simplewebdesign.at/img/logo.png"
+        }
+      },
+      "areaServed": ["AT", "DE"]
+    },
   ];
 
   return (
