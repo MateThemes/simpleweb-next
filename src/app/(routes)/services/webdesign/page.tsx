@@ -4,11 +4,11 @@ import { Container } from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
 import { PaletteIcon, CheckIcon } from '@/components/icons'
 import { PriceCard } from '@/components/ui/PriceCard'
-import { breadcrumbSchema, webPageSchema } from '@/app/schema'
+import { breadcrumbSchema, webPageSchema, servicePageSchema } from '@/app/schema'
 import { getServicePageDC } from '@/lib/dublinCore'
 
 export const metadata: Metadata = {
-  title: 'Webdesign für KMU: Klarheit, Struktur, Anfragen | SimpleWebDesign',
+  title: 'Webdesign für KMU: Klarheit, Struktur, Anfragen',
   description: 'Webdesign für KMU in Österreich & Deutschland: Websites, die Besucher führen und Anfragen bringen – mit Klarheit, Struktur & sauberer Technik. Ab 1.490 €.',
   openGraph: {
     title: 'Webdesign für KMU: Klarheit, Struktur, Anfragen | SimpleWebDesign',
@@ -163,40 +163,13 @@ export default function WebdesignPage() {
       image: "https://simplewebdesign.at/img/services/webdesign.jpg",
     }),
     // Service Schema
-    {
-      "@context": "https://schema.org",
-      "@type": "Service",
-      "name": "Webdesign",
-      "description": "Webdesign für KMU in Österreich & Deutschland: Websites, die Besucher führen und Anfragen bringen – mit Klarheit, Struktur & sauberer Technik.",
-      "url": "https://simplewebdesign.at/services/webdesign",
-      "image": "https://simplewebdesign.at/img/services/webdesign.jpg",
-      "provider": {
-        "@type": "Organization",
-        "name": "SimpleWebDesign",
-        "url": "https://simplewebdesign.at",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://simplewebdesign.at/img/logo.png"
-        }
-      },
-      "areaServed": [
-        {
-          "@type": "Country",
-          "name": "Austria"
-        },
-        {
-          "@type": "Country",
-          "name": "Germany"
-        }
-      ],
-      "serviceType": ["Webdesign", "Responsive Design", "UI/UX Design", "Website Development"],
-      "offers": {
-        "@type": "Offer",
-        "price": "1490",
-        "priceCurrency": "EUR",
-        "description": "Webdesign-Pakete ab 1.490€"
-      }
-    },
+    servicePageSchema({
+      name: "Webdesign",
+      description: "Webdesign für KMU in Österreich & Deutschland: Websites, die Besucher führen und Anfragen bringen – mit Klarheit, Struktur & sauberer Technik.",
+      url: "https://simplewebdesign.at/services/webdesign",
+      image: "https://simplewebdesign.at/img/services/webdesign.jpg",
+      serviceType: ["Webdesign", "Responsive Design", "UI/UX Design", "Website Development"],
+    }),
   ];
 
   return (

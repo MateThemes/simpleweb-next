@@ -4,9 +4,10 @@ import Link from 'next/link'
 import { Container } from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
 import { ChartBarIcon, CheckIcon } from '@/components/icons'
+import { breadcrumbSchema, webPageSchema, servicePageSchema } from '@/app/schema'
 
 export const metadata: Metadata = {
-  title: 'Digital Marketing Agentur für KMU | Social Media & Performance Marketing | SimpleWebDesign',
+  title: 'Digital Marketing Agentur für KMU | Social Media & Performance Marketing',
   description: 'Social Media, Content & Performance Marketing für KMU in Österreich & Deutschland. Steigern Sie Ihre Reichweite, Leads und ROI mit maßgeschneiderten Marketing-Strategien.',
   openGraph: {
     title: 'Digital Marketing Agentur für KMU | Social Media & Performance Marketing Österreich & Deutschland',
@@ -61,65 +62,43 @@ const benefits = [
 ]
 
 export default function MarketingPage() {
+  // Schema.org Structured Data
+  const schemas = [
+    // BreadcrumbList Schema
+    breadcrumbSchema({
+      items: [
+        { name: "Home", url: "https://simplewebdesign.at" },
+        { name: "Services", url: "https://simplewebdesign.at/services" },
+        { name: "Marketing", url: "https://simplewebdesign.at/services/marketing" },
+      ],
+    }),
+    // WebPage Schema
+    webPageSchema({
+      name: "Digital Marketing Agentur für KMU | Social Media & Performance Marketing",
+      description: "Social Media, Content & Performance Marketing für KMU in Österreich & Deutschland. Steigern Sie Ihre Reichweite, Leads und ROI mit maßgeschneiderten Marketing-Strategien.",
+      url: "https://simplewebdesign.at/services/marketing",
+      image: "https://simplewebdesign.at/img/services/marketing.jpg",
+    }),
+    // Service Schema
+    servicePageSchema({
+      name: "Digital Marketing",
+      description: "Social Media, Content & Performance Marketing für KMU in Österreich & Deutschland. Steigern Sie Ihre Reichweite, Leads und ROI mit maßgeschneiderten Marketing-Strategien.",
+      url: "https://simplewebdesign.at/services/marketing",
+      image: "https://simplewebdesign.at/img/services/marketing.jpg",
+      serviceType: ["Digital Marketing", "Social Media Marketing", "Content Marketing", "Performance Marketing", "Email Marketing"],
+    }),
+  ];
+
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Service",
-            "name": "Digital Marketing Agentur Niederösterreich",
-            "description": "Social Media, Content & Performance Marketing in Niederösterreich. Steigern Sie Ihre Reichweite, Leads und ROI mit maßgeschneiderten Marketing-Strategien.",
-            "image": "/img/services/marketing.jpg",
-            "provider": {
-              "@type": "Organization",
-              "name": "SimpleWebDesign",
-              "url": "https://simplewebdesign.at",
-              "logo": "https://simplewebdesign.at/img/logo.png"
-            },
-            "areaServed": {
-              "@type": "State",
-              "name": "Niederösterreich"
-            },
-            "serviceType": ["Digital Marketing", "Social Media Marketing", "Content Marketing", "Performance Marketing", "Email Marketing"],
-            "hasOfferCatalog": {
-              "@type": "OfferCatalog",
-              "name": "Marketing Services",
-              "itemListElement": [
-                {
-                  "@type": "Offer",
-                  "itemOffered": {
-                    "@type": "Service",
-                    "name": "Social Media Marketing"
-                  }
-                },
-                {
-                  "@type": "Offer",
-                  "itemOffered": {
-                    "@type": "Service",
-                    "name": "Content Marketing"
-                  }
-                },
-                {
-                  "@type": "Offer",
-                  "itemOffered": {
-                    "@type": "Service",
-                    "name": "Performance Marketing"
-                  }
-                },
-                {
-                  "@type": "Offer",
-                  "itemOffered": {
-                    "@type": "Service",
-                    "name": "Email Marketing"
-                  }
-                }
-              ]
-            }
-          })
-        }}
-      />
+      {/* Schema.org JSON-LD */}
+      {schemas.map((schema, index) => (
+        <script
+          key={index}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      ))}
       <main className="flex-auto">
         {/* Hero Section */}
         <div className="relative py-20 sm:py-24 lg:py-32 overflow-hidden">

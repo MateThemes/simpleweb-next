@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { Container } from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
 import { RocketIcon, CheckIcon } from '@/components/icons'
-import { serviceSchema } from '@/app/schema'
+import { breadcrumbSchema, webPageSchema, servicePageSchema } from '@/app/schema'
 
 export const metadata: Metadata = {
   title: 'Website Wartung & Support | Professionelle Betreuung',
@@ -61,20 +61,43 @@ const benefits = [
 ]
 
 export default function WartungPage() {
+  // Schema.org Structured Data
+  const schemas = [
+    // BreadcrumbList Schema
+    breadcrumbSchema({
+      items: [
+        { name: "Home", url: "https://simplewebdesign.at" },
+        { name: "Services", url: "https://simplewebdesign.at/services" },
+        { name: "Wartung", url: "https://simplewebdesign.at/services/wartung" },
+      ],
+    }),
+    // WebPage Schema
+    webPageSchema({
+      name: "Website Wartung & Support | Professionelle Betreuung",
+      description: "Professionelle Website-Wartung und technischer Support. Wir kümmern uns um Updates, Sicherheit und Performance Ihrer Website.",
+      url: "https://simplewebdesign.at/services/wartung",
+      image: "https://simplewebdesign.at/img/services/wartung.jpg",
+    }),
+    // Service Schema
+    servicePageSchema({
+      name: "Website Wartung & Support",
+      description: "Professionelle Website-Wartung und technischer Support. Wir kümmern uns um Updates, Sicherheit und Performance Ihrer Website.",
+      url: "https://simplewebdesign.at/services/wartung",
+      image: "https://simplewebdesign.at/img/services/wartung.jpg",
+      serviceType: ["Website Maintenance", "Technical Support", "Website Updates", "Website Security"],
+    }),
+  ];
+
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(
-            serviceSchema({
-              name: 'Website Wartung & Support',
-              description: 'Professionelle Website-Wartung und technischer Support. Wir kümmern uns um Updates, Sicherheit und Performance Ihrer Website.',
-              image: '/img/services/wartung.jpg'
-            })
-          )
-        }}
-      />
+      {/* Schema.org JSON-LD */}
+      {schemas.map((schema, index) => (
+        <script
+          key={index}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      ))}
       <main className="flex-auto">
         {/* Hero Section */}
         <div className="relative py-20 sm:py-24 lg:py-32 overflow-hidden">

@@ -96,6 +96,54 @@ export function serviceSchema({ name, description, image }: ServiceSchemaProps) 
   };
 }
 
+// Service Schema for Service Pages (unified structure)
+interface ServicePageSchemaProps {
+  name: string;
+  description: string;
+  url: string;
+  image: string;
+  serviceType: string[];
+}
+
+export function servicePageSchema({ 
+  name, 
+  description, 
+  url, 
+  image, 
+  serviceType 
+}: ServicePageSchemaProps) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": url,
+    "name": name,
+    "description": description,
+    "url": url,
+    "image": image,
+    "serviceType": serviceType,
+    "provider": {
+      "@id": "https://simplewebdesign.at/#org",
+      "@type": "Organization",
+      "name": "SimpleWebDesign",
+      "url": "https://simplewebdesign.at",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://simplewebdesign.at/img/logo.png"
+      }
+    },
+    "areaServed": [
+      {
+        "@type": "Country",
+        "name": "Austria"
+      },
+      {
+        "@type": "Country",
+        "name": "Germany"
+      }
+    ]
+  };
+}
+
 export function aboutSchema({ name, description, image, foundingDate, founders, address }: AboutSchemaProps) {
   return {
     "@context": "https://schema.org",
@@ -327,6 +375,7 @@ export function webPageSchema({
   return {
     "@context": "https://schema.org",
     "@type": "WebPage",
+    "@id": url,
     "name": name,
     "description": description,
     "url": url,
@@ -334,6 +383,7 @@ export function webPageSchema({
     ...(datePublished && { "datePublished": datePublished }),
     ...(dateModified && { "dateModified": dateModified }),
     "publisher": {
+      "@id": "https://simplewebdesign.at/#org",
       "@type": "Organization",
       "name": "SimpleWebDesign",
       "logo": {

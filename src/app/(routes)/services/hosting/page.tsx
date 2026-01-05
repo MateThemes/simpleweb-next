@@ -3,10 +3,10 @@ import Image from 'next/image'
 import { Container } from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
 import { ServerIcon, CheckIcon } from '@/components/icons'
-import { serviceSchema } from '@/app/schema'
+import { breadcrumbSchema, webPageSchema, servicePageSchema } from '@/app/schema'
 
 export const metadata: Metadata = {
-  title: 'Hosting-Beratung für KMU | Professionelle Hosting-Lösungen | SimpleWebDesign',
+  title: 'Hosting-Beratung für KMU | Professionelle Hosting-Lösungen',
   description: 'Professionelle Hosting-Beratung für KMU in Österreich & Deutschland. Wir finden die optimale Hosting-Lösung für Ihr Projekt mit Fokus auf Performance und Sicherheit.',
   openGraph: {
     title: 'Hosting-Beratung für KMU | Professionelle Hosting-Lösungen Österreich & Deutschland',
@@ -61,20 +61,43 @@ const benefits = [
 ]
 
 export default function HostingPage() {
+  // Schema.org Structured Data
+  const schemas = [
+    // BreadcrumbList Schema
+    breadcrumbSchema({
+      items: [
+        { name: "Home", url: "https://simplewebdesign.at" },
+        { name: "Services", url: "https://simplewebdesign.at/services" },
+        { name: "Hosting", url: "https://simplewebdesign.at/services/hosting" },
+      ],
+    }),
+    // WebPage Schema
+    webPageSchema({
+      name: "Hosting-Beratung für KMU | Professionelle Hosting-Lösungen",
+      description: "Professionelle Hosting-Beratung für KMU in Österreich & Deutschland. Wir finden die optimale Hosting-Lösung für Ihr Projekt mit Fokus auf Performance und Sicherheit.",
+      url: "https://simplewebdesign.at/services/hosting",
+      image: "https://simplewebdesign.at/img/services/hosting.jpg",
+    }),
+    // Service Schema
+    servicePageSchema({
+      name: "Hosting-Beratung",
+      description: "Professionelle Hosting-Beratung und Service. Wir finden die optimale Hosting-Lösung für Ihr Projekt.",
+      url: "https://simplewebdesign.at/services/hosting",
+      image: "https://simplewebdesign.at/img/services/hosting.jpg",
+      serviceType: ["Hosting", "Web Hosting", "Hosting Consultation", "Server Management"],
+    }),
+  ];
+
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(
-            serviceSchema({
-              name: 'Hosting-Beratung',
-              description: 'Professionelle Hosting-Beratung und Service. Wir finden die optimale Hosting-Lösung für Ihr Projekt.',
-              image: '/img/services/hosting.jpg'
-            })
-          )
-        }}
-      />
+      {/* Schema.org JSON-LD */}
+      {schemas.map((schema, index) => (
+        <script
+          key={index}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      ))}
       <main className="flex-auto">
         {/* Hero Section */}
         <div className="relative py-20 sm:py-24 lg:py-32 overflow-hidden">
