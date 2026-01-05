@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { Container } from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
 import { CheckIcon, StarIcon, MapPinIcon, PhoneIcon, CalendarIcon } from '@/components/icons'
+import { breadcrumbSchema, webPageSchema, servicePageSchema, faqSchema } from '@/app/schema'
 
 export const metadata: Metadata = {
   title: 'Webdesign für Handwerker | Moderne Websites, lokale Sichtbarkeit, mehr Anfragen',
@@ -114,64 +115,50 @@ const faqs = [
 ]
 
 export default function WebdesignHandwerkerPage() {
+  // Schema.org Structured Data
+  const schemas = [
+    // BreadcrumbList Schema
+    breadcrumbSchema({
+      items: [
+        { name: "Home", url: "https://simplewebdesign.at" },
+        { name: "Services", url: "https://simplewebdesign.at/services" },
+        { name: "Webdesign für Handwerker", url: "https://simplewebdesign.at/services/webdesign-handwerker" },
+      ],
+    }),
+    // WebPage Schema
+    webPageSchema({
+      name: "Webdesign für Handwerker | Moderne Websites, lokale Sichtbarkeit, mehr Anfragen",
+      description: "Professionelles Webdesign für Handwerker in Österreich & Deutschland. Schnelle, mobile Websites, lokale SEO, DSGVO & Support.",
+      url: "https://simplewebdesign.at/services/webdesign-handwerker",
+      image: "https://simplewebdesign.at/img/services/webdesign-handwerker.jpg",
+    }),
+    // Service Schema
+    servicePageSchema({
+      name: "Webdesign für Handwerker",
+      description: "Professionelles Webdesign für Handwerker in Österreich & Deutschland. Schnelle, mobile Websites, lokale SEO, DSGVO & Support.",
+      url: "https://simplewebdesign.at/services/webdesign-handwerker",
+      image: "https://simplewebdesign.at/img/services/webdesign-handwerker.jpg",
+      serviceType: ["Web Design", "Local SEO", "Website Development", "Mobile Design", "Handwerker Websites"],
+    }),
+    // FAQPage Schema
+    faqSchema({
+      faqs: faqs.map(faq => ({
+        question: faq.question,
+        answer: faq.answer
+      }))
+    }),
+  ];
+
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Service",
-            "name": "Webdesign für Handwerker",
-            "description": "Professionelles Webdesign für Handwerker in Österreich & Deutschland. Schnelle, mobile Websites, lokale SEO, DSGVO & Support.",
-            "image": "/img/services/webdesign-handwerker.jpg",
-            "provider": {
-              "@type": "Organization",
-              "name": "SimpleWebDesign",
-              "url": "https://simplewebdesign.at",
-              "logo": "https://simplewebdesign.at/img/logo.png"
-            },
-            "areaServed": [
-              {
-                "@type": "Country",
-                "name": "Austria"
-              },
-              {
-                "@type": "Country", 
-                "name": "Germany"
-              }
-            ],
-            "serviceType": ["Web Design", "Local SEO", "Website Development", "Mobile Design", "Handwerker Websites"],
-            "hasOfferCatalog": {
-              "@type": "OfferCatalog",
-              "name": "Handwerker Webdesign Services",
-              "itemListElement": [
-                {
-                  "@type": "Offer",
-                  "itemOffered": {
-                    "@type": "Service",
-                    "name": "One-Page Website für Handwerker"
-                  }
-                },
-                {
-                  "@type": "Offer",
-                  "itemOffered": {
-                    "@type": "Service",
-                    "name": "Mehrseitige Website für Handwerker"
-                  }
-                },
-                {
-                  "@type": "Offer",
-                  "itemOffered": {
-                    "@type": "Service",
-                    "name": "Lokale SEO-Optimierung"
-                  }
-                }
-              ]
-            }
-          })
-        }}
-      />
+      {/* Schema.org JSON-LD */}
+      {schemas.map((schema, index) => (
+        <script
+          key={index}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      ))}
       <main className="flex-auto">
         {/* Hero Section */}
         <div className="relative py-20 sm:py-24 lg:py-32 overflow-hidden">

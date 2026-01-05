@@ -3,11 +3,11 @@ import Image from 'next/image'
 import { Container } from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
 import { PaintBrushIcon, CheckIcon } from '@/components/icons'
-import { serviceSchema } from '@/app/schema'
+import { breadcrumbSchema, webPageSchema, servicePageSchema } from '@/app/schema'
 import { PriceCard } from '@/components/ui/PriceCard'
 
 export const metadata: Metadata = {
-  title: 'Website Redesign für KMU: Klarheit statt nur neues Design | SimpleWebDesign',
+  title: 'Website Redesign für KMU: Klarheit statt nur neues Design',
   description: 'Ihre Website existiert, bringt aber keine Anfragen? Wir schaffen Klarheit, Struktur und messbare Wirkung – für KMU in Österreich & Deutschland. Ab 1.490 €.',
   openGraph: {
     title: 'Website Redesign für KMU: Klarheit statt nur neues Design | SimpleWebDesign',
@@ -113,20 +113,43 @@ const packages = [
 ]
 
 export default function RedesignPage() {
+  // Schema.org Structured Data
+  const schemas = [
+    // BreadcrumbList Schema
+    breadcrumbSchema({
+      items: [
+        { name: "Home", url: "https://simplewebdesign.at" },
+        { name: "Services", url: "https://simplewebdesign.at/services" },
+        { name: "Redesign", url: "https://simplewebdesign.at/services/redesign" },
+      ],
+    }),
+    // WebPage Schema
+    webPageSchema({
+      name: "Website Redesign für KMU: Klarheit statt nur neues Design",
+      description: "Ihre Website existiert, bringt aber keine Anfragen? Wir schaffen Klarheit, Struktur und messbare Wirkung – für KMU in Österreich & Deutschland.",
+      url: "https://simplewebdesign.at/services/redesign",
+      image: "https://simplewebdesign.at/img/services/redesign.jpg",
+    }),
+    // Service Schema
+    servicePageSchema({
+      name: "Website Redesign",
+      description: "Professionelles Website Redesign für einen modernen, benutzerfreundlichen Webauftritt. Wir modernisieren Ihre Website mit aktuellem Design und Technologie.",
+      url: "https://simplewebdesign.at/services/redesign",
+      image: "https://simplewebdesign.at/img/services/redesign.jpg",
+      serviceType: ["Website Redesign", "Web Design", "UI/UX Design", "Website Modernization"],
+    }),
+  ];
+
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(
-            serviceSchema({
-              name: 'Website Redesign',
-              description: 'Professionelles Website Redesign für einen modernen, benutzerfreundlichen Webauftritt. Wir modernisieren Ihre Website mit aktuellem Design und Technologie.',
-              image: '/img/services/redesign.jpg'
-            })
-          )
-        }}
-      />
+      {/* Schema.org JSON-LD */}
+      {schemas.map((schema, index) => (
+        <script
+          key={index}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      ))}
       <main className="flex-auto">
         {/* Hero Section */}
         <div className="relative py-20 sm:py-24 lg:py-32 overflow-hidden">

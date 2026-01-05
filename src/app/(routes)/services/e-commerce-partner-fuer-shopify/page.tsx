@@ -45,36 +45,80 @@ export const metadata: Metadata = {
   }
 }
 
-export default function ShopifyPartnerPage() {
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "Shopify Experte Agentur Österreich & Deutschland",
-    "description": "Professioneller Shopify Experte für erfolgreiche Online-Shops in Österreich & Deutschland. Shopify Agentur mit Expertise in Shopify Webdesign, Setup, DSGVO, SEO & Support.",
-    "provider": {
-      "@type": "Organization",
-      "name": "SimpleWebDesign",
-      "url": "https://simplewebdesign.at",
-      "address": {
-        "@type": "PostalAddress",
-        "addressCountry": "AT"
-      }
-    },
-    "areaServed": ["Österreich", "Deutschland"],
-    "serviceType": "E-Commerce Entwicklung",
-    "offers": {
-      "@type": "Offer",
-      "description": "Shopify Shop Entwicklung und Betreuung",
-      "priceCurrency": "EUR"
-    }
+import { breadcrumbSchema, webPageSchema, servicePageSchema, faqSchema } from '@/app/schema'
+
+const faqs = [
+  {
+    question: "Was kostet ein Shopify Shop Setup in Österreich?",
+    answer: "Die Kosten für ein Shopify Shop Setup variieren je nach Anforderungen. Ein Standard-Setup beginnt bei €2.500, während komplexe Enterprise-Lösungen bis zu €15.000 kosten können."
+  },
+  {
+    question: "Wie lange dauert die Entwicklung eines Shopify Shops?",
+    answer: "Ein Standard Shopify Shop ist in 2-4 Wochen fertig entwickelt. Komplexe Custom-Lösungen benötigen 6-12 Wochen. Die genaue Dauer hängt von der Komplexität ab."
+  },
+  {
+    question: "Ist Shopify DSGVO-konform für österreichische und deutsche Unternehmen?",
+    answer: "Shopify bietet DSGVO-konforme Funktionen. Wir unterstützen Sie bei der technischen Umsetzung von Cookie-Bannern und Datenschutzeinstellungen. Für rechtliche Beratung empfehlen wir einen spezialisierten Anwalt."
+  },
+  {
+    question: "Welche Zahlungsanbieter können integriert werden?",
+    answer: "Wir integrieren alle gängigen österreichischen und deutschen Zahlungsanbieter: SEPA, PayPal, Klarna, Stripe, Mollie und viele mehr."
+  },
+  {
+    question: "Bieten Sie auch laufenden Support für Shopify Shops?",
+    answer: "Ja, wir bieten umfassenden Support: 24/7 Monitoring, regelmäßige Updates, Performance-Optimierung und technischen Support."
+  },
+  {
+    question: "Kann ich meinen Shopify Shop später erweitern?",
+    answer: "Absolut! Shopify ist sehr skalierbar. Wir können Ihren Shop jederzeit um neue Features, Produkte oder Funktionen erweitern."
   }
+]
+
+export default function ShopifyPartnerPage() {
+  // Schema.org Structured Data
+  const schemas = [
+    // BreadcrumbList Schema
+    breadcrumbSchema({
+      items: [
+        { name: "Home", url: "https://simplewebdesign.at" },
+        { name: "Services", url: "https://simplewebdesign.at/services" },
+        { name: "Shopify Experte", url: "https://simplewebdesign.at/services/e-commerce-partner-fuer-shopify" },
+      ],
+    }),
+    // WebPage Schema
+    webPageSchema({
+      name: "Shopify Experte Österreich & Deutschland | Shopify Agentur | E-Commerce Experten 2025",
+      description: "Professioneller Shopify Experte für erfolgreiche Online-Shops in Österreich & Deutschland. Shopify Agentur mit Expertise in Shopify Webdesign, Setup, DSGVO, SEO & Support.",
+      url: "https://simplewebdesign.at/services/e-commerce-partner-fuer-shopify",
+      image: "https://simplewebdesign.at/img/og-image.jpg",
+    }),
+    // Service Schema
+    servicePageSchema({
+      name: "Shopify Experte Agentur",
+      description: "Professioneller Shopify Experte für erfolgreiche Online-Shops in Österreich & Deutschland. Shopify Agentur mit Expertise in Shopify Webdesign, Setup, DSGVO, SEO & Support.",
+      url: "https://simplewebdesign.at/services/e-commerce-partner-fuer-shopify",
+      image: "https://simplewebdesign.at/img/og-image.jpg",
+      serviceType: ["E-Commerce Development", "Shopify Development", "Shopify Setup", "Shopify Design", "E-Commerce Consulting"],
+    }),
+    // FAQPage Schema
+    faqSchema({
+      faqs: faqs.map(faq => ({
+        question: faq.question,
+        answer: faq.answer
+      }))
+    }),
+  ];
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-      />
+      {/* Schema.org JSON-LD */}
+      {schemas.map((schema, index) => (
+        <script
+          key={index}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      ))}
       <main className="flex-auto">
         {/* Hero Section */}
         <div className="relative py-20 sm:py-24 lg:py-32 overflow-hidden">

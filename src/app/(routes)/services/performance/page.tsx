@@ -3,10 +3,10 @@ import Image from 'next/image'
 import { Container } from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
 import { RocketIcon, CheckIcon } from '@/components/icons'
-import { serviceSchema } from '@/app/schema'
+import { breadcrumbSchema, webPageSchema, servicePageSchema } from '@/app/schema'
 
 export const metadata: Metadata = {
-  title: 'Website Performance Optimierung für KMU | Schnellere Websites | SimpleWebDesign',
+  title: 'Website Performance Optimierung für KMU | Schnellere Websites',
   description: 'Professionelle Website Performance Optimierung für KMU in Österreich & Deutschland. Spezielle Shopify Performance Optimierung, Core Web Vitals & PageSpeed für besseres Ranking.',
   keywords: 'Website Performance, Performance Optimierung, Core Web Vitals, PageSpeed, Shopify Performance, E-Commerce Performance, Website Speed, Performance Österreich, SEO Performance',
   openGraph: {
@@ -75,20 +75,43 @@ const benefits = [
 ]
 
 export default function PerformancePage() {
+  // Schema.org Structured Data
+  const schemas = [
+    // BreadcrumbList Schema
+    breadcrumbSchema({
+      items: [
+        { name: "Home", url: "https://simplewebdesign.at" },
+        { name: "Services", url: "https://simplewebdesign.at/services" },
+        { name: "Performance", url: "https://simplewebdesign.at/services/performance" },
+      ],
+    }),
+    // WebPage Schema
+    webPageSchema({
+      name: "Website Performance Optimierung für KMU | Schnellere Websites",
+      description: "Professionelle Website Performance Optimierung für KMU in Österreich & Deutschland. Spezielle Shopify Performance Optimierung, Core Web Vitals & PageSpeed für besseres Ranking.",
+      url: "https://simplewebdesign.at/services/performance",
+      image: "https://simplewebdesign.at/img/services/performance.jpg",
+    }),
+    // Service Schema
+    servicePageSchema({
+      name: "Website Performance Optimierung",
+      description: "Professionelle Website Performance Optimierung. Verbessern Sie Ihre Core Web Vitals und PageSpeed für besseres Ranking und Conversion.",
+      url: "https://simplewebdesign.at/services/performance",
+      image: "https://simplewebdesign.at/img/services/performance.jpg",
+      serviceType: ["Performance Optimization", "Core Web Vitals", "PageSpeed Optimization", "Shopify Performance"],
+    }),
+  ];
+
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(
-            serviceSchema({
-              name: 'Website Performance Optimierung',
-              description: 'Professionelle Website Performance Optimierung. Verbessern Sie Ihre Core Web Vitals und PageSpeed für besseres Ranking und Conversion.',
-              image: '/img/services/performance.jpg'
-            })
-          )
-        }}
-      />
+      {/* Schema.org JSON-LD */}
+      {schemas.map((schema, index) => (
+        <script
+          key={index}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      ))}
       <main className="flex-auto">
         {/* Hero Section */}
         <div className="relative py-20 sm:py-24 lg:py-32 overflow-hidden">

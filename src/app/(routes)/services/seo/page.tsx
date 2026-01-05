@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { Container } from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
 import { ChartBarIcon, CheckIcon, SearchIcon, CodeIcon, MapPinIcon } from '@/components/icons'
-import { breadcrumbSchema, webPageSchema } from '@/app/schema'
+import { breadcrumbSchema, webPageSchema, servicePageSchema } from '@/app/schema'
 import { getServicePageDC } from '@/lib/dublinCore'
 
 export const metadata: Metadata = {
@@ -111,34 +111,13 @@ export default function SeoPage() {
       image: "https://simplewebdesign.at/img/services/seo.jpg",
     }),
     // Service Schema
-    {
-      "@context": "https://schema.org",
-      "@type": "Service",
-      "name": "SEO",
-      "description": "SEO für KMU in Österreich & Deutschland: Nachhaltige Suchmaschinenoptimierung, die auf Klarheit und Struktur aufbaut.",
-      "url": "https://simplewebdesign.at/services/seo",
-      "image": "https://simplewebdesign.at/img/services/seo.jpg",
-      "provider": {
-        "@type": "Organization",
-        "name": "SimpleWebDesign",
-        "url": "https://simplewebdesign.at",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://simplewebdesign.at/img/logo.png"
-        }
-      },
-      "areaServed": [
-        {
-          "@type": "Country",
-          "name": "Austria"
-        },
-        {
-          "@type": "Country",
-          "name": "Germany"
-        }
-      ],
-      "serviceType": ["SEO", "Search Engine Optimization", "Local SEO", "Technical SEO"],
-    },
+    servicePageSchema({
+      name: "SEO",
+      description: "SEO für KMU in Österreich & Deutschland: Nachhaltige Suchmaschinenoptimierung, die auf Klarheit und Struktur aufbaut.",
+      url: "https://simplewebdesign.at/services/seo",
+      image: "https://simplewebdesign.at/img/services/seo.jpg",
+      serviceType: ["SEO", "Search Engine Optimization", "Local SEO", "Technical SEO"],
+    }),
   ];
 
   return (
