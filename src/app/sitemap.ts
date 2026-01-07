@@ -14,6 +14,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     'redesign',
     'hosting',
     'performance',
+    'security-check',
     'wartung',
     'e-commerce-partner-fuer-shopify'
   ]
