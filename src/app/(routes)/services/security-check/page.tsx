@@ -330,7 +330,7 @@ export default function SecurityCheckPage() {
         <div className="relative py-24 bg-green-600 overflow-hidden">
           <div className="absolute inset-0 mix-blend-multiply opacity-40">
             <Image
-              src="/img/services/security-check.webp"
+              src="/img/services/security-check.jpg"
               alt="Background Pattern"
               fill
               className="object-cover"
