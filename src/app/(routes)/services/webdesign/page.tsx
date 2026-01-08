@@ -205,7 +205,7 @@ export default function WebdesignPage() {
               <div className="mt-16 lg:mt-0">
                 <div className="relative">
                   <Image
-                    src="/img/services/responsive.webp"
+                    src="/img/services/responsive.jpg"
                     alt="Webdesign Services Niederösterreich - Responsive Webdesign Showcase mit modernem UI/UX"
                     width={600}
                     height={400}

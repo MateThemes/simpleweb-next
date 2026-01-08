@@ -175,7 +175,7 @@ export default function MarketingPage() {
               <div className="mt-16 lg:mt-0">
                 <div className="relative">
                   <Image
-                    src="/img/services/marketing.webp"
+                    src="/img/services/marketing.jpg"
                     alt="Digital Marketing Services Niederösterreich - Marketing Dashboard mit Analytics"
                     width={600}
                     height={400}
