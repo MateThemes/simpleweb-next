@@ -114,7 +114,7 @@ const redesignPackages = [
   {
     name: "Redesign Premium",
     description: "Erweiterte Funktionen & SEO für bessere Sichtbarkeit.",
-    valueLine: "Mehr Leistung und Sichtbarkeit.",
+    valueLine: "Mehr Leistung und Struktur.",
     price: "2.990",
     features: [
       { name: "Alles aus Standard-Paket", included: true },
@@ -149,8 +149,8 @@ const kiPackages = [
   {
     name: "KI Basic",
     description:
-      "Einfache Automatisierung für den Einstieg – perfekt für erste Schritte in die Digitalisierung.",
-    valueLine: "Einstieg in die Automatisierung.",
+      "Einfache Prozesse, die Zeit sparen und wiederkehrende Aufgaben zuverlässig abbilden.",
+    valueLine: "Einstieg in strukturierte Automatisierung für KMU.",
     price: "690",
     features: [
       { name: "Einfache Automatisierung", included: true },
