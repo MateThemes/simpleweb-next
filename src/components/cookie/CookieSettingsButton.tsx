@@ -1,28 +1,30 @@
 'use client'
 
-import { useState } from 'react'
-import clsx from 'clsx'
+import { useState, useEffect } from 'react'
 import { CookiePreferences } from './CookiePreferences'
+
+export const OPEN_COOKIE_SETTINGS_EVENT = 'openCookieSettings'
 
 export function CookieSettingsButton() {
   const [showPreferences, setShowPreferences] = useState(false)
 
+  useEffect(() => {
+    const open = () => setShowPreferences(true)
+    window.addEventListener(OPEN_COOKIE_SETTINGS_EVENT, open)
+    return () => window.removeEventListener(OPEN_COOKIE_SETTINGS_EVENT, open)
+  }, [])
+
+  const openPreferences = () => setShowPreferences(true)
+
   return (
     <>
       <button
-        onClick={() => setShowPreferences(true)}
-        className={clsx(
-          'fixed bottom-4 right-4 z-40',
-          'flex items-center justify-center rounded-full w-12 h-12',
-          'bg-white dark:bg-gray-800 shadow-lg',
-          'hover:bg-gray-50 dark:hover:bg-gray-700',
-          'transition-all duration-200 ease-in-out',
-          'focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500'
-        )}
+        onClick={openPreferences}
+        className="fixed bottom-4 right-4 z-40 flex items-center justify-center rounded-full w-12 h-12 bg-[var(--surface)] border border-[var(--border)] shadow-[var(--shadow-3)] hover:bg-[var(--surface-2)] transition-colors duration-[var(--duration-normal)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--ring-offset)]"
         aria-label="Cookie-Einstellungen öffnen"
       >
         <svg
-          className="w-6 h-6 text-gray-600 dark:text-gray-300"
+          className="w-6 h-6 text-[var(--muted-foreground)]"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"

@@ -1,9 +1,16 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { Container } from '@/components/ui/Container'
-import { PriceCard } from '@/components/ui/PriceCard'
-import Button from '@/components/ui/Button'
-import { SparklesIcon, DeviceLaptopIcon, PaintBrushIcon, ArrowRightIcon } from '@/components/icons'
+import { PricingCard } from '@/components/ui/PricingCard'
+import {
+  PricingSection,
+  PricingSectionHeader,
+  SectionNav,
+  RatesTable,
+  ServiceCardGrid,
+} from '@/components/sections/pricing'
+import { ArrowRightIcon } from '@/components/icons'
+import { cn } from '@/lib/utils'
 
 export const metadata: Metadata = {
   title: 'Preise & Pakete – Webdesign & KI-Automatisierung für KMU | SimpleWebDesign',
@@ -13,29 +20,23 @@ export const metadata: Metadata = {
     description: 'Transparente Preise für modernes Webdesign, SEO und KI-Automatisierung. Fixpreise & individuelle Pakete für KMU in Österreich & Deutschland.',
     url: 'https://simplewebdesign.at/preise-und-pakete',
     images: [
-      {
-        url: '/img/pricing/packages.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'SimpleWebDesign Preise & Pakete'
-      }
-    ]
+      { url: '/img/pricing/packages.jpg', width: 1200, height: 630, alt: 'SimpleWebDesign Preise & Pakete' },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Preise & Pakete – Webdesign & KI-Automatisierung für KMU',
     description: 'Transparente Preise für modernes Webdesign, SEO und KI-Automatisierung.',
-    images: ['/img/pricing/packages.jpg']
+    images: ['/img/pricing/packages.jpg'],
   },
-  alternates: {
-    canonical: 'https://simplewebdesign.at/preise-und-pakete'
-  }
+  alternates: { canonical: 'https://simplewebdesign.at/preise-und-pakete' },
 }
 
 const websitePackages = [
   {
     name: 'Standard',
     description: 'Perfekt für kleine Unternehmen und Selbstständige – moderne Website mit allen wichtigen Funktionen.',
+    valueLine: 'Kleine Unternehmen & Selbstständige.',
     price: '1.490',
     features: [
       { name: 'Modernes responsives Design', included: true },
@@ -44,13 +45,14 @@ const websitePackages = [
       { name: 'Grundlegende SEO-Optimierung', included: true },
       { name: 'SSL-Verschlüsselung', included: true },
       { name: 'DSGVO-konforme Umsetzung', included: true },
-      { name: '1 Jahr Hosting & Domain', included: true }
+      { name: '1 Jahr Hosting & Domain', included: true },
     ],
-    popular: false
+    popular: false,
   },
   {
     name: 'Premium',
     description: 'Ideal für wachsende Unternehmen – erweiterte Features und bessere SEO-Performance.',
+    valueLine: 'Wachsende Unternehmen mit höheren Ansprüchen.',
     price: '2.990',
     features: [
       { name: 'Alles aus Standard, plus:', included: true },
@@ -59,14 +61,15 @@ const websitePackages = [
       { name: 'Bis zu 10 Unterseiten', included: true },
       { name: 'Blog-System & News-Bereich', included: true },
       { name: 'Individuelle Funktionen', included: true },
-      { name: 'Premium Support', included: true }
+      { name: 'Premium Support', included: true },
     ],
     popular: true,
-    kiNote: 'Optional mit KI-Automatisierung Ihrer Anfragen oder Formularprozesse kombinierbar.'
+    footnote: 'Optional mit KI-Automatisierung deiner Anfragen oder Formularprozesse kombinierbar.',
   },
   {
     name: 'Komplett',
     description: 'Full-Service mit laufender Betreuung – maximale Performance und kontinuierliche Optimierung.',
+    valueLine: 'Maximale Performance mit laufender Betreuung.',
     price: '4.990',
     features: [
       { name: 'Alles aus Premium, plus:', included: true },
@@ -75,17 +78,18 @@ const websitePackages = [
       { name: 'Content-Marketing & Blog-Artikel', included: true },
       { name: 'Performance-Monitoring', included: true },
       { name: 'Monatliche Reports', included: true },
-      { name: 'Priority Support', included: true }
+      { name: 'Priority Support', included: true },
     ],
     popular: false,
-    kiNote: 'Optional mit KI-Automatisierung Ihrer Anfragen oder Formularprozesse kombinierbar.'
-  }
+    footnote: 'Optional mit KI-Automatisierung deiner Anfragen oder Formularprozesse kombinierbar.',
+  },
 ]
 
 const redesignPackages = [
   {
     name: 'Redesign Standard',
-    description: 'Ideale Basis für eine moderne Website – Ihre bestehende Seite wird auf den neuesten Stand gebracht.',
+    description: 'Ideale Basis für eine moderne Website – deine bestehende Seite wird auf den neuesten Stand gebracht.',
+    valueLine: 'Bestehende Seite modernisieren.',
     price: '1.490',
     features: [
       { name: 'Modernes responsives Design', included: true },
@@ -94,13 +98,14 @@ const redesignPackages = [
       { name: 'Grundlegende SEO', included: true },
       { name: 'DSGVO-konform', included: true },
       { name: 'Performance-Optimierung', included: true },
-      { name: 'Content-Migration', included: true }
+      { name: 'Content-Migration', included: true },
     ],
-    popular: false
+    popular: false,
   },
   {
     name: 'Redesign Premium',
-    description: 'Erweiterte Funktionen & SEO – mehr Leistung und bessere Sichtbarkeit für Ihr Unternehmen.',
+    description: 'Erweiterte Funktionen & SEO – mehr Leistung und bessere Sichtbarkeit für dein Unternehmen.',
+    valueLine: 'Mehr Leistung und Sichtbarkeit.',
     price: '2.990',
     features: [
       { name: 'Alles aus Standard-Paket', included: true },
@@ -109,13 +114,14 @@ const redesignPackages = [
       { name: 'Mehr Unterseiten', included: true },
       { name: 'Individuelle Funktionen', included: true },
       { name: 'Content-Überarbeitung', included: true },
-      { name: 'Analytics-Setup', included: true }
+      { name: 'Analytics-Setup', included: true },
     ],
-    popular: true
+    popular: true,
   },
   {
     name: 'Redesign Komplett',
     description: 'All-inclusive mit Betreuung – kontinuierliche Optimierung und laufende Wartung.',
+    valueLine: 'All-inclusive mit laufender Betreuung.',
     price: '4.990',
     features: [
       { name: 'Alles aus Premium-Paket', included: true },
@@ -124,29 +130,31 @@ const redesignPackages = [
       { name: 'Blog-Artikel & Content', included: true },
       { name: 'Performance-Monitoring', included: true },
       { name: 'Monatliches Reporting', included: true },
-      { name: 'Optionales Monatspaket (250-500€)', included: true }
+      { name: 'Optionales Monatspaket (250-500€)', included: true },
     ],
-    popular: false
-  }
+    popular: false,
+  },
 ]
 
 const kiPackages = [
   {
     name: 'KI Basic',
     description: 'Einfache Automatisierung für den Einstieg – perfekt für erste Schritte in die Digitalisierung.',
+    valueLine: 'Einstieg in die Automatisierung.',
     price: '690',
     features: [
       { name: 'Einfache Automatisierung', included: true },
       { name: 'E-Mail → Google Sheet', included: true },
       { name: 'Kontaktformular → CRM', included: true },
       { name: 'Einrichtung mit n8n/Make/Zapier', included: true },
-      { name: 'Basis-Dokumentation', included: true }
+      { name: 'Basis-Dokumentation', included: true },
     ],
-    popular: false
+    popular: false,
   },
   {
     name: 'KI Advanced',
     description: 'Mehrstufige Automatisierungen mit Workflow-Management – für komplexere Prozesse.',
+    valueLine: 'Komplexere Prozesse, mehrstufig.',
     price: '1.290',
     features: [
       { name: 'Mehrstufige Automatisierungen', included: true },
@@ -154,13 +162,14 @@ const kiPackages = [
       { name: 'Angebotsworkflow', included: true },
       { name: 'Automatische Benachrichtigungen', included: true },
       { name: 'GPT-Integration möglich', included: true },
-      { name: 'Dokumentation & Einweisung', included: true }
+      { name: 'Dokumentation & Einweisung', included: true },
     ],
-    popular: true
+    popular: true,
   },
   {
     name: 'KI Komplettsystem',
     description: 'Individuelle KI-Lösungen mit Schulung – für anspruchsvolle Automatisierungsprojekte.',
+    valueLine: 'Individuelle KI-Lösungen inkl. Schulung.',
     price: '2.490',
     features: [
       { name: 'Individuelle KI-Lösungen', included: true },
@@ -168,161 +177,211 @@ const kiPackages = [
       { name: 'Angebotsgenerator mit KI', included: true },
       { name: 'Schulung & Onboarding', included: true },
       { name: 'Laufender Support (3 Monate)', included: true },
-      { name: 'Monitoring-Dashboard', included: true }
+      { name: 'Monitoring-Dashboard', included: true },
     ],
-    popular: false
-  }
+    popular: false,
+  },
 ]
 
-// JSON-LD Schema für Produkte
+const ratesRows = [
+  { area: 'KI-Beratung & Automatisierung', description: 'Prozessanalyse, Umsetzung & Tests', price: '130 €/h' },
+  { area: 'Beratung & Konzeption', description: 'Strategieberatung, Konzeptentwicklung, Workshops', price: '150 €/h' },
+  { area: 'Entwicklung', description: 'Programmierung, Debugging, Technische Anpassungen', price: '130 €/h' },
+  { area: 'Design', description: 'UI/UX Design, Grafikdesign, Prototyping', price: '120 €/h' },
+  { area: 'Support & Wartung', description: 'Technischer Support, Updates, Wartungsarbeiten', price: '100 €/h' },
+]
+
+const serviceCards = [
+  {
+    title: 'Performance & Hosting Beratung',
+    items: [
+      'Hosting-Analyse & Empfehlung',
+      'Performance-Optimierung nach Aufwand',
+      'Server-Setup Beratung',
+      'Technischer Support: 90–120 €/Stunde',
+    ],
+    href: '/services/performance',
+    linkText: 'Details ansehen',
+  },
+  {
+    title: 'SEO & Marketing',
+    items: [
+      'SEO-Audit & Analyse: 490 €',
+      'Monatliche SEO-Betreuung ab 390 €',
+      'Content-Marketing nach Aufwand',
+      'Local SEO & Google Business',
+    ],
+    href: '/services/seo',
+    linkText: 'Details ansehen',
+  },
+  {
+    title: 'Wartung & Support',
+    items: [
+      'Basis-Wartung ab 49 €/Monat',
+      'Updates & Sicherheit',
+      'Backup & Monitoring',
+      'Express-Support verfügbar',
+    ],
+    href: '/services/wartung',
+    linkText: 'Details ansehen',
+  },
+  {
+    title: 'KI-Beratung & Strategie',
+    items: [
+      'Analyse bestehender Prozesse',
+      'Automatisierungspotenziale aufdecken',
+      'Einrichtung von KI-Tools (ChatGPT, n8n, Make etc.)',
+      'Schulung & Support ab 120 €/h',
+    ],
+    href: '/ki-automatisierung',
+    linkText: 'Details ansehen',
+  },
+]
+
 function generateProductSchema() {
   const allProducts = [
-    ...websitePackages.map(pkg => ({
+    ...websitePackages.map((pkg) => ({
       '@type': 'Product' as const,
       name: `Webdesign ${pkg.name}`,
       description: pkg.description,
-      offers: {
-        '@type': 'Offer' as const,
-        price: pkg.price,
-        priceCurrency: 'EUR'
-      }
+      offers: { '@type': 'Offer' as const, price: pkg.price, priceCurrency: 'EUR' },
     })),
-    ...redesignPackages.map(pkg => ({
+    ...redesignPackages.map((pkg) => ({
       '@type': 'Product' as const,
       name: `Redesign ${pkg.name}`,
       description: pkg.description,
-      offers: {
-        '@type': 'Offer' as const,
-        price: pkg.price,
-        priceCurrency: 'EUR'
-      }
+      offers: { '@type': 'Offer' as const, price: pkg.price, priceCurrency: 'EUR' },
     })),
-    ...kiPackages.map(pkg => ({
+    ...kiPackages.map((pkg) => ({
       '@type': 'Product' as const,
       name: `KI-Automatisierung ${pkg.name}`,
       description: pkg.description,
-      offers: {
-        '@type': 'Offer' as const,
-        price: pkg.price,
-        priceCurrency: 'EUR'
-      }
-    }))
+      offers: { '@type': 'Offer' as const, price: pkg.price, priceCurrency: 'EUR' },
+    })),
   ]
-
   return {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
     itemListElement: allProducts.map((product, index) => ({
       '@type': 'ListItem',
       position: index + 1,
-      item: product
-    }))
+      item: product,
+    })),
   }
 }
+
+const trustItems = ['KMU in AT & DE', 'klare Pakete', 'DSGVO-konform']
 
 export default function PricingPage() {
   return (
     <>
-      {/* JSON-LD Structured Data */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(generateProductSchema())
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(generateProductSchema()) }}
       />
 
-      <main className="flex-auto pb-24 sm:pb-32">
-        {/* 🧭 Hero Section */}
-        <section className="relative bg-gradient-to-b from-slate-50 via-blue-50 to-indigo-100 dark:from-slate-900 dark:via-slate-800 dark:to-indigo-900 py-24 lg:py-32">
-          <Container className="mt-24 sm:mt-32">
+      <main className="flex-auto">
+        {/* Hero */}
+        <section
+          className="relative bg-[var(--background)] pt-24 sm:pt-28 lg:pt-32 pb-16 lg:pb-20"
+          aria-labelledby="pricing-hero-heading"
+        >
+          <Container className="relative">
             <div className="max-w-4xl mx-auto text-center">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-50 dark:bg-indigo-900/20 rounded-full border border-indigo-200 dark:border-indigo-800 mb-8">
-                <span className="text-indigo-600 dark:text-indigo-400 font-medium">💰 Transparente Preise</span>
-              </div>
-              <h1 className="font-display text-5xl font-medium tracking-tight text-neutral-950 dark:text-white [text-wrap:balance] sm:text-7xl">
+              <span className="inline-block px-3 py-1.5 text-sm font-medium text-[var(--primary)] bg-[var(--surface-2)] rounded-full border border-[var(--border)] mb-6">
+                Transparente Preise
+              </span>
+              <h1
+                id="pricing-hero-heading"
+                className={cn(
+                  'font-display font-bold tracking-tight text-[var(--foreground)] leading-[1.08]',
+                  'text-4xl sm:text-5xl lg:text-6xl'
+                )}
+              >
                 Transparente Preise für Webdesign & KI-Automatisierung
               </h1>
-              <p className="mt-6 text-xl text-neutral-600 dark:text-neutral-400 max-w-3xl mx-auto">
+              <p className="mt-6 text-xl text-[var(--muted-foreground)] max-w-3xl mx-auto leading-relaxed">
                 Von der Website-Erstellung bis zur intelligenten Prozessautomatisierung – alle Leistungen für KMU aus einer Hand, klar kalkuliert und DSGVO-konform.
               </p>
               <div className="mt-8">
-                <Button
+                <Link
                   href="/kontakt"
-                  variant="primary"
-                  className="text-lg px-8 py-4"
+                  className={cn(
+                    'inline-flex items-center justify-center gap-2 h-[52px] px-8 rounded-xl font-semibold text-base',
+                    'bg-[var(--primary)] text-[var(--primary-foreground)]',
+                    'hover:opacity-95 transition-opacity duration-[var(--duration-normal)]',
+                    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--ring-offset)]'
+                  )}
                 >
                   Kostenlose Erstberatung sichern
-                  <ArrowRightIcon className="w-5 h-5" />
-                </Button>
+                  <ArrowRightIcon className="w-5 h-5" aria-hidden />
+                </Link>
               </div>
-              <div className="mt-6 flex flex-wrap justify-center gap-4 text-sm text-neutral-500 dark:text-neutral-400">
-                <Link href="/services/webdesign" className="hover:text-indigo-600 dark:hover:text-indigo-400 underline">Webdesign-Services</Link>
-                <span>•</span>
-                <Link href="/portfolio" className="hover:text-indigo-600 dark:hover:text-indigo-400 underline">Portfolio</Link>
-                <span>•</span>
-                <Link href="/ki-automatisierung" className="hover:text-indigo-600 dark:hover:text-indigo-400 underline">KI-Automatisierung</Link>
+              <div
+                className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 mt-8 pt-2 text-[var(--muted-foreground)] text-sm tracking-wide"
+                role="list"
+                aria-label="Vertrauen und Reichweite"
+              >
+                {trustItems.map((item, i) => (
+                  <span key={i} className="inline-flex items-center" role="listitem">
+                    <span className="uppercase tracking-wider font-medium">{item}</span>
+                    {i < trustItems.length - 1 && (
+                      <span className="mx-2 text-[var(--border)]" aria-hidden>·</span>
+                    )}
+                  </span>
+                ))}
+              </div>
+              <div className="mt-6 flex flex-wrap justify-center gap-x-4 gap-y-1 text-sm text-[var(--muted-foreground)]">
+                <Link href="/services/webdesign" className="hover:text-[var(--foreground)] underline underline-offset-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2 rounded">Webdesign-Services</Link>
+                <span aria-hidden>·</span>
+                <Link href="/portfolio" className="hover:text-[var(--foreground)] underline underline-offset-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2 rounded">Portfolio</Link>
+                <span aria-hidden>·</span>
+                <Link href="/ki-automatisierung" className="hover:text-[var(--foreground)] underline underline-offset-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2 rounded">KI-Automatisierung</Link>
               </div>
             </div>
           </Container>
         </section>
 
-        {/* 💻 Website-Pakete Section */}
-        <Container className="mt-16">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 mb-4">
-              <DeviceLaptopIcon className="w-6 h-6 text-indigo-600 dark:text-indigo-400" />
-              <h2 className="text-3xl font-bold tracking-tight text-neutral-950 dark:text-white sm:text-4xl">
-                Webdesign-Pakete für KMU
-              </h2>
-            </div>
-            <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
-              Professionelle Webseiten-Pakete für Ihren Online-Auftritt – von der einfachen Unternehmens-Website bis zur vollständigen Lösung mit laufender Betreuung.
-            </p>
-          </div>
+        <SectionNav />
 
-          <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-3">
+        {/* Webdesign-Pakete */}
+        <PricingSection id="webdesign-pakete" variant="surface-2">
+          <PricingSectionHeader
+            title="Webdesign-Pakete für KMU"
+            description="Professionelle Webseiten-Pakete für deinen Online-Auftritt – von der einfachen Unternehmens-Website bis zur vollständigen Lösung mit laufender Betreuung."
+          />
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-3 lg:gap-10">
             {websitePackages.map((pkg) => (
-              <div key={pkg.name} className="relative">
-                <PriceCard
-                  name={pkg.name}
-                  price={pkg.price}
-                  description={pkg.description}
-                  features={pkg.features}
-                  popular={pkg.popular}
-                  ctaText="Angebot anfragen"
-                  ctaLink="/kontakt"
-                />
-                {pkg.kiNote && (
-                  <p className="mt-4 text-xs text-neutral-500 dark:text-neutral-400 italic text-center">
-                    {pkg.kiNote}
-                  </p>
-                )}
-              </div>
-            ))}
-          </div>
-        </Container>
-
-        {/* 🔄 Redesign-Pakete Section */}
-        <Container className="mt-24 sm:mt-32">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 mb-4">
-              <PaintBrushIcon className="w-6 h-6 text-indigo-600 dark:text-indigo-400" />
-              <h2 className="text-3xl font-bold tracking-tight text-neutral-950 dark:text-white sm:text-4xl">
-                Website Redesign-Pakete
-              </h2>
-            </div>
-            <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
-              Modernisieren Sie Ihre bestehende Website mit neuen Funktionen & Performance – Ihre Inhalte bleiben erhalten, die Technik wird erneuert.
-            </p>
-          </div>
-
-          <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-3">
-            {redesignPackages.map((pkg) => (
-              <PriceCard
+              <PricingCard
                 key={pkg.name}
                 name={pkg.name}
                 price={pkg.price}
                 description={pkg.description}
+                valueLine={pkg.valueLine}
+                features={pkg.features}
+                popular={pkg.popular}
+                ctaText="Angebot anfragen"
+                ctaLink="/kontakt"
+                footnote={pkg.footnote}
+              />
+            ))}
+          </div>
+        </PricingSection>
+
+        {/* Redesign-Pakete */}
+        <PricingSection id="redesign-pakete" variant="background">
+          <PricingSectionHeader
+            title="Website Redesign-Pakete"
+            description="Bestehende Website? Struktur & Technik modernisieren – Inhalte bleiben."
+          />
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-3 lg:gap-10">
+            {redesignPackages.map((pkg) => (
+              <PricingCard
+                key={pkg.name}
+                name={pkg.name}
+                price={pkg.price}
+                description={pkg.description}
+                valueLine={pkg.valueLine}
                 features={pkg.features}
                 popular={pkg.popular}
                 ctaText="Angebot anfragen"
@@ -330,232 +389,93 @@ export default function PricingPage() {
               />
             ))}
           </div>
+          <p className="mt-10 text-center text-sm text-[var(--muted-foreground)]">
+            Auch als Kombination mit KI-Automatisierung möglich – z. B. zur Automatisierung von Kontakt- oder Anfrageprozessen.
+          </p>
+        </PricingSection>
 
-          <div className="mt-8 text-center">
-            <p className="text-sm text-neutral-600 dark:text-neutral-400">
-              Auch als Kombination mit KI-Automatisierung möglich – z. B. zur Automatisierung von Kontakt- oder Anfrageprozessen.
-            </p>
+        {/* KI-Automatisierung */}
+        <PricingSection id="ki-automatisierung" variant="surface-2">
+          <PricingSectionHeader
+            title="KI-Automatisierung – Digitale Abläufe, die Zeit sparen"
+            description="Wir helfen KMU, wiederkehrende Aufgaben zu automatisieren – von der E-Mail-Verarbeitung über Angebotsvorlagen bis hin zu Chatbots oder Prozessverknüpfungen. DSGVO-konform, effizient und individuell auf dein Unternehmen abgestimmt."
+          />
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-3 lg:gap-10">
+            {kiPackages.map((pkg) => (
+              <PricingCard
+                key={pkg.name}
+                name={pkg.name}
+                price={pkg.price}
+                description={pkg.description}
+                valueLine={pkg.valueLine}
+                features={pkg.features}
+                popular={pkg.popular}
+                ctaText="KI-Potenzial prüfen"
+                ctaLink="/ki-automatisierung"
+              />
+            ))}
           </div>
-        </Container>
+          <div className="mt-10 text-center">
+            <Link
+              href="/ki-automatisierung"
+              className={cn(
+                'inline-flex items-center justify-center gap-2 h-[52px] px-6 rounded-xl font-medium text-base',
+                'bg-transparent text-[var(--foreground)] border-2 border-[var(--border)]',
+                'hover:border-[var(--muted-foreground)] hover:bg-[var(--surface)] transition-colors duration-[var(--duration-fast)]',
+                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--ring-offset)]'
+              )}
+            >
+              Mehr über KI-Automatisierung erfahren
+              <ArrowRightIcon className="w-5 h-5" aria-hidden />
+            </Link>
+          </div>
+        </PricingSection>
 
-        {/* 🤖 KI-Automatisierung Section */}
-        <section className="mt-24 sm:mt-32 py-16 bg-gradient-to-b from-indigo-50 to-purple-50 dark:from-indigo-950/20 dark:to-purple-950/20">
+        {/* Weitere Dienstleistungen */}
+        <ServiceCardGrid
+          title="Weitere Dienstleistungen"
+          description="Für technische Services und Hosting bieten wir flexible Abrechnungsmodelle nach Aufwand."
+          cards={serviceCards}
+          className="bg-[var(--background)]"
+        />
+
+        {/* Stundensätze */}
+        <PricingSection id="stundensaetze" variant="surface">
+          <PricingSectionHeader
+            title="Stundensätze & Beratung"
+            description="Für individuelle Anforderungen, Beratung und Wartung bieten wir flexible Stundensätze."
+          />
+          <RatesTable rows={ratesRows} className="max-w-4xl mx-auto" />
+        </PricingSection>
+
+        {/* Final CTA */}
+        <section
+          className="py-[var(--spacing-section-lg)] lg:py-[var(--spacing-section-xl)] bg-[var(--surface-2)]"
+          aria-labelledby="pricing-cta-heading"
+        >
           <Container>
-            <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 mb-4">
-                <SparklesIcon className="w-6 h-6 text-indigo-600 dark:text-indigo-400" />
-                <h2 className="text-3xl font-bold tracking-tight text-neutral-950 dark:text-white sm:text-4xl">
-                  KI-Automatisierung – Digitale Abläufe, die Zeit sparen
-                </h2>
-              </div>
-              <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-400 max-w-3xl mx-auto">
-                Wir helfen KMU, wiederkehrende Aufgaben zu automatisieren – von der E-Mail-Verarbeitung über Angebotsvorlagen bis hin zu Chatbots oder Prozessverknüpfungen. DSGVO-konform, effizient und individuell auf Ihr Unternehmen abgestimmt.
-              </p>
-            </div>
-
-            <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-3">
-              {kiPackages.map((pkg) => (
-                <PriceCard
-                  key={pkg.name}
-                  name={pkg.name}
-                  price={pkg.price}
-                  description={pkg.description}
-                  features={pkg.features}
-                  popular={pkg.popular}
-                  ctaText="KI-Potenzial prüfen"
-                  ctaLink="/ki-automatisierung"
-                />
-              ))}
-            </div>
-
-            <div className="mt-8 text-center">
-              <Button
-                href="/ki-automatisierung"
-                variant="secondary"
-                className="inline-flex items-center gap-2"
+            <div className="max-w-[720px] mx-auto text-center">
+              <h2
+                id="pricing-cta-heading"
+                className="font-display text-4xl lg:text-5xl font-bold tracking-tight text-[var(--foreground)] mb-6"
               >
-                Mehr über KI-Automatisierung erfahren
-                <ArrowRightIcon className="w-5 h-5" />
-              </Button>
-            </div>
-          </Container>
-        </section>
-
-        {/* ⚙️ Weitere Dienstleistungen Section */}
-        <div className="py-24 mt-16">
-          <Container>
-            <div className="mx-auto max-w-2xl lg:max-w-none">
-              <div className="mx-auto max-w-2xl sm:text-center">
-                <h2 className="font-display text-4xl font-medium tracking-tight text-neutral-950 dark:text-white sm:text-5xl">
-                  Weitere Dienstleistungen
-                </h2>
-                <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-300">
-                  Für technische Services und Hosting bieten wir flexible Abrechnungsmodelle nach Aufwand.
-                </p>
-              </div>
-              <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 lg:max-w-none lg:grid-cols-2">
-                <div className="flex gap-6 rounded-2xl bg-white dark:bg-neutral-800 p-8 shadow-sm">
-                  <div>
-                    <h3 className="font-display text-xl font-semibold text-neutral-950 dark:text-white">
-                      Performance & Hosting Beratung
-                    </h3>
-                    <ul className="mt-6 space-y-4 text-base text-neutral-600 dark:text-neutral-300">
-                      <li>• Hosting-Analyse & Empfehlung</li>
-                      <li>• Performance-Optimierung nach Aufwand</li>
-                      <li>• Server-Setup Beratung</li>
-                      <li>• Technischer Support: €90-120/Stunde</li>
-                    </ul>
-                    <div className="mt-8">
-                      <Button href="/services/performance" variant="secondary">
-                        Details ansehen
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-                <div className="flex gap-6 rounded-2xl bg-white dark:bg-neutral-800 p-8 shadow-sm">
-                  <div>
-                    <h3 className="font-display text-xl font-semibold text-neutral-950 dark:text-white">
-                      SEO & Marketing
-                    </h3>
-                    <ul className="mt-6 space-y-4 text-base text-neutral-600 dark:text-neutral-300">
-                      <li>• SEO-Audit & Analyse: €490</li>
-                      <li>• Monatliche SEO-Betreuung ab €390</li>
-                      <li>• Content-Marketing nach Aufwand</li>
-                      <li>• Local SEO & Google Business</li>
-                    </ul>
-                    <div className="mt-8">
-                      <Button href="/services/seo" variant="secondary">
-                        Details ansehen
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-                <div className="flex gap-6 rounded-2xl bg-white dark:bg-neutral-800 p-8 shadow-sm">
-                  <div>
-                    <h3 className="font-display text-xl font-semibold text-neutral-950 dark:text-white">
-                      Wartung & Support
-                    </h3>
-                    <ul className="mt-6 space-y-4 text-base text-neutral-600 dark:text-neutral-300">
-                      <li>• Basis-Wartung ab €49/Monat</li>
-                      <li>• Updates & Sicherheit</li>
-                      <li>• Backup & Monitoring</li>
-                      <li>• Express-Support verfügbar</li>
-                    </ul>
-                    <div className="mt-8">
-                      <Button href="/services/wartung" variant="secondary">
-                        Details ansehen
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-                <div className="flex gap-6 rounded-2xl bg-white dark:bg-neutral-800 p-8 shadow-sm">
-                  <div>
-                    <h3 className="font-display text-xl font-semibold text-neutral-950 dark:text-white">
-                      KI-Beratung & Strategie
-                    </h3>
-                    <ul className="mt-6 space-y-4 text-base text-neutral-600 dark:text-neutral-300">
-                      <li>• Analyse bestehender Prozesse</li>
-                      <li>• Automatisierungspotenziale aufdecken</li>
-                      <li>• Einrichtung von KI-Tools (ChatGPT, n8n, Make etc.)</li>
-                      <li>• Schulung & Support ab 120 €/h</li>
-                    </ul>
-                    <div className="mt-8">
-                      <Button href="/ki-automatisierung" variant="secondary">
-                        Details ansehen
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </Container>
-        </div>
-
-        {/* 💰 Stundensätze & Beratung Section */}
-        <Container className="mt-24 sm:mt-32">
-          <div>
-            <h2 className="text-3xl font-bold tracking-tight text-neutral-950 dark:text-white sm:text-4xl">
-              Stundensätze & Beratung
-            </h2>
-            <p className="mt-6 text-lg text-neutral-600 dark:text-neutral-400">
-              Für individuelle Anforderungen, Beratung und Wartung bieten wir flexible Stundensätze:
-            </p>
-
-            <div className="mt-10 overflow-hidden rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-sm">
-              <table className="w-full">
-                <thead className="bg-gray-50 dark:bg-gray-800">
-                  <tr>
-                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900 dark:text-white">Bereich</th>
-                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900 dark:text-white">Beschreibung</th>
-                    <th className="px-6 py-4 text-right text-sm font-semibold text-gray-900 dark:text-white">Preis</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-gray-200 dark:divide-gray-800">
-                  <tr className="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
-                    <td className="px-6 py-4 text-sm font-medium text-gray-900 dark:text-white">KI-Beratung & Automatisierung</td>
-                    <td className="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">Prozessanalyse, Umsetzung & Tests</td>
-                    <td className="px-6 py-4 text-sm font-semibold text-gray-900 dark:text-white text-right">130 €/h</td>
-                  </tr>
-                  <tr className="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
-                    <td className="px-6 py-4 text-sm font-medium text-gray-900 dark:text-white">Beratung & Konzeption</td>
-                    <td className="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">Strategieberatung, Konzeptentwicklung, Workshops</td>
-                    <td className="px-6 py-4 text-sm font-semibold text-gray-900 dark:text-white text-right">150 €/h</td>
-                  </tr>
-                  <tr className="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
-                    <td className="px-6 py-4 text-sm font-medium text-gray-900 dark:text-white">Entwicklung</td>
-                    <td className="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">Programmierung, Debugging, Technische Anpassungen</td>
-                    <td className="px-6 py-4 text-sm font-semibold text-gray-900 dark:text-white text-right">130 €/h</td>
-                  </tr>
-                  <tr className="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
-                    <td className="px-6 py-4 text-sm font-medium text-gray-900 dark:text-white">Design</td>
-                    <td className="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">UI/UX Design, Grafikdesign, Prototyping</td>
-                    <td className="px-6 py-4 text-sm font-semibold text-gray-900 dark:text-white text-right">120 €/h</td>
-                  </tr>
-                  <tr className="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
-                    <td className="px-6 py-4 text-sm font-medium text-gray-900 dark:text-white">Support & Wartung</td>
-                    <td className="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">Technischer Support, Updates, Wartungsarbeiten</td>
-                    <td className="px-6 py-4 text-sm font-semibold text-gray-900 dark:text-white text-right">100 €/h</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </Container>
-
-        {/* 💬 Final CTA Section */}
-        <section className="mt-24 sm:mt-32 py-16 bg-gradient-to-r from-indigo-600 to-purple-600">
-          <Container>
-            <div className="max-w-3xl mx-auto text-center">
-              <h2 className="text-3xl font-bold text-white sm:text-4xl mb-6">
-                Egal, ob neue Website, Redesign oder KI-Automatisierung – wir erstellen Ihnen ein maßgeschneidertes Angebot.
+                Egal, ob neue Website, Redesign oder KI-Automatisierung – wir erstellen dir ein maßgeschneidertes Angebot.
               </h2>
-              <p className="text-lg text-indigo-100 mb-8">
-                Sprechen Sie mit uns über Ihr Projekt. Wir beraten Sie gerne kostenlos und unverbindlich.
+              <p className="text-lg text-[var(--muted-foreground)] mb-10 leading-relaxed">
+                Ein Gespräch – unverbindlich, ohne Verkaufsdruck.
               </p>
-              <Button
+              <Link
                 href="/kontakt"
-                variant="primary"
-                className="bg-white text-indigo-600 hover:bg-gray-100 text-lg px-8 py-4"
+                className={cn(
+                  'inline-flex items-center justify-center gap-2 h-14 px-10 rounded-2xl',
+                  'bg-[var(--primary)] text-[var(--primary-foreground)] font-semibold text-lg',
+                  'transition-opacity duration-[var(--duration-normal)] hover:opacity-95',
+                  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--ring-offset)]'
+                )}
               >
                 Jetzt Beratung vereinbaren
-                <ArrowRightIcon className="w-5 h-5" />
-              </Button>
-
-              {/* Trust Indicators */}
-              <div className="mt-12 flex flex-wrap justify-center gap-8 text-sm text-indigo-100">
-                <div className="flex flex-col items-center">
-                  <div className="text-2xl font-bold text-white">50+</div>
-                  <div className="text-indigo-100">KMU-Projekte</div>
-                </div>
-                <div className="flex flex-col items-center">
-                  <div className="text-2xl font-bold text-white">5+</div>
-                  <div className="text-indigo-100">Jahre Erfahrung</div>
-                </div>
-                <div className="flex flex-col items-center">
-                  <div className="text-2xl font-bold text-white">100%</div>
-                  <div className="text-indigo-100">Zufriedenheit</div>
-                </div>
-              </div>
+                <ArrowRightIcon className="w-5 h-5" aria-hidden />
+              </Link>
             </div>
           </Container>
         </section>

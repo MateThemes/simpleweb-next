@@ -11,9 +11,9 @@ export function Container({ className, children, size = 'default' }: ContainerPr
   return (
     <div 
       className={cn(
-        'mx-auto px-4 sm:px-6 lg:px-8',
+        'mx-auto px-6 md:px-8',
         {
-          'max-w-7xl': size === 'default',
+          'max-w-[1280px]': size === 'default',
           'max-w-5xl': size === 'small',
           'max-w-screen-2xl': size === 'large',
         },

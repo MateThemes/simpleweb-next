@@ -32,9 +32,30 @@ export function Header() {
   const triggerRef = useRef<HTMLButtonElement>(null) // CHANGE: store trigger to return focus
   const panelRef = useRef<HTMLDivElement>(null) // CHANGE: reference to the panel for focus trap
   const previouslyFocusedRef = useRef<HTMLElement | null>(null) // CHANGE: remember previously focused element
+  const headerRef = useRef<HTMLElement>(null)
 
   // After mounting, we have access to the theme
   useEffect(() => setMounted(true), [])
+
+  // Header-Höhe als CSS-Variable setzen (Desktop vs. Tablet unterschiedlich), für Section-Nav auf /preise-und-pakete
+  useEffect(() => {
+    const header = headerRef.current
+    if (!header) return
+    const setHeight = () => {
+      const h = Math.ceil(header.getBoundingClientRect().height)
+      document.documentElement.style.setProperty('--header-height', `${h > 0 ? h : 72}px`)
+    }
+    setHeight()
+    const ro = new ResizeObserver(setHeight)
+    ro.observe(header)
+    window.addEventListener('resize', setHeight)
+    window.addEventListener('load', setHeight)
+    return () => {
+      ro.disconnect()
+      window.removeEventListener('resize', setHeight)
+      window.removeEventListener('load', setHeight)
+    }
+  }, [mounted])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -138,19 +159,20 @@ export function Header() {
   }
 
   return (
-    <header 
-      className={`w-full bg-white dark:bg-slate-950 border-b border-gray-200 dark:border-gray-800 sticky top-0 z-40 transition-transform duration-300 ${
+    <header
+      ref={headerRef}
+      className={`w-full sticky top-0 z-40 transition-transform duration-[var(--duration-normal)] ${
         isScrollingDown ? '-translate-y-full' : ''
-      }`}
+      } bg-[var(--surface)]/95 dark:bg-[var(--surface)]/90 border-b border-[var(--border)] backdrop-blur-md supports-[backdrop-filter]:bg-[var(--surface)]/80`}
     >
-      <nav className="mx-auto flex max-w-7xl items-center justify-between p-4 lg:px-8" aria-label="Main navigation">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between p-4 lg:px-8" aria-label="Hauptnavigation">
         {/* Mobile menu button */}
         <div className="flex xl:hidden">
           <button
             ref={triggerRef} // CHANGE: keep reference to restore focus when closing
             onClick={() => setIsOpen(!isOpen)}
             type="button"
-            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 dark:text-gray-200"
+            className="-m-2.5 inline-flex items-center justify-center rounded-[var(--radius-md)] p-2.5 text-[var(--foreground)] hover:bg-[var(--surface-2)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2"
             aria-expanded={isOpen}
             aria-controls="mobile-menu-dialog" // CHANGE: link trigger with dialog
           >
@@ -167,7 +189,7 @@ export function Header() {
         <div className="absolute left-1/2 -translate-x-1/2 xl:static xl:left-auto xl:translate-x-0 xl:w-1/4">
           <Link href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">SimpleWebDesign</span>
-            <h1 className="font-display text-2xl font-bold text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-200 tracking-tight">
+            <h1 className="font-display text-2xl font-bold text-[var(--foreground)] hover:opacity-80 tracking-tight">
               SimpleWebDesign
             </h1>
           </Link>
@@ -178,7 +200,7 @@ export function Header() {
           <div className="flex items-center gap-x-8">
             <Link
               href="/"
-              className="text-base font-medium leading-6 text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-200"
+              className="text-base font-medium leading-6 text-[var(--foreground)] hover:text-[var(--muted-foreground)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2 rounded"
             >
               Home
             </Link>
@@ -186,12 +208,12 @@ export function Header() {
               <button
                 onClick={() => setIsServicesOpen(!isServicesOpen)}
                 type="button"
-                className="flex items-center gap-x-1 text-base font-medium leading-6 text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-200"
+                className="flex items-center gap-x-1 text-base font-medium leading-6 text-[var(--foreground)] hover:text-[var(--muted-foreground)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2 rounded"
                 aria-expanded={isServicesOpen}
               >
                 Services
                 <svg
-                  className={`h-5 w-5 flex-none text-gray-400 dark:text-gray-500 transition-transform ${
+                  className={`h-5 w-5 flex-none text-[var(--muted-foreground)] transition-transform duration-[var(--duration-normal)] ${
                     isServicesOpen ? 'rotate-180' : ''
                   }`}
                   viewBox="0 0 20 20"
@@ -208,195 +230,195 @@ export function Header() {
 
               {isServicesOpen && (
                 <div className="absolute left-1/2 z-10 mt-3 w-screen max-w-4xl -translate-x-1/2 transform px-2">
-                  <div className="overflow-hidden rounded-xl bg-white dark:bg-slate-900 shadow-lg ring-1 ring-gray-900/5 dark:ring-white/10">
+                  <div className="overflow-hidden rounded-[var(--radius-2xl)] bg-[var(--surface)] border border-[var(--border)] shadow-[var(--shadow-4)]">
                     <div className="p-4">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       {/* Services Menu Items */}
-                      <div className="group relative flex items-center gap-x-6 rounded-lg p-4 hover:bg-gray-50 dark:hover:bg-slate-800">
-                        <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 dark:bg-slate-800 group-hover:bg-white dark:group-hover:bg-slate-700">
-                          <ComputerDesktopIcon className="h-6 w-6 text-gray-600 dark:text-gray-400 group-hover:text-blue-600" aria-hidden="true" />
+                      <div className="group relative flex items-center gap-x-6 rounded-[var(--radius-lg)] p-4 hover:bg-[var(--surface-2)]">
+                        <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-[var(--radius-lg)] bg-[var(--surface-2)] group-hover:bg-[var(--surface-elevated)]">
+                          <ComputerDesktopIcon className="h-6 w-6 text-[var(--muted-foreground)] group-hover:text-[var(--primary)]" aria-hidden="true" />
                         </div>
                         <div>
                           <Link
                             href="/services/webdesign"
-                            className="font-display text-lg font-medium text-gray-900 dark:text-white"
+                            className="font-display text-lg font-medium text-[var(--foreground)]"
                             onClick={() => setIsServicesOpen(false)}
                           >
                             Webdesign
                             <span className="absolute inset-0" />
                           </Link>
-                          <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                          <p className="mt-1 text-sm text-[var(--muted-foreground)]">
                             Professionelle Websites für Ihren Erfolg
                           </p>
                         </div>
                       </div>
                       {/* SEO */}
-                      <div className="group relative flex items-center gap-x-6 rounded-lg p-4 hover:bg-gray-50 dark:hover:bg-slate-800">
-                        <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 dark:bg-slate-800 group-hover:bg-white dark:group-hover:bg-slate-700">
-                          <ArrowTrendingUpIcon className="h-6 w-6 text-gray-600 dark:text-gray-400 group-hover:text-green-600" aria-hidden="true" />
+                      <div className="group relative flex items-center gap-x-6 rounded-lg p-4 hover:bg-[var(--surface-2)]">
+                        <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-[var(--radius-lg)] bg-[var(--surface-2)] group-hover:bg-[var(--surface-elevated)]">
+                          <ArrowTrendingUpIcon className="h-6 w-6 text-[var(--muted-foreground)] group-hover:text-[var(--primary)]green-600" aria-hidden="true" />
                         </div>
                         <div>
                           <Link
                             href="/services/seo"
-                            className="font-display text-lg font-medium text-gray-900 dark:text-white"
+                            className="font-display text-lg font-medium text-[var(--foreground)]"
                             onClick={() => setIsServicesOpen(false)}
                           >
                             SEO
                             <span className="absolute inset-0" />
                           </Link>
-                          <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                          <p className="mt-1 text-sm text-[var(--muted-foreground)]">
                             Suchmaschinenoptimierung für Ihren Erfolg
                           </p>
                         </div>
                       </div>
                       {/* Marketing */}
-                      <div className="group relative flex items-center gap-x-6 rounded-lg p-4 hover:bg-gray-50 dark:hover:bg-slate-800">
-                        <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 dark:bg-slate-800 group-hover:bg-white dark:group-hover:bg-slate-700">
-                          <ChartBarIcon className="h-6 w-6 text-gray-600 dark:text-gray-400 group-hover:text-indigo-600" aria-hidden="true" />
+                      <div className="group relative flex items-center gap-x-6 rounded-lg p-4 hover:bg-[var(--surface-2)]">
+                        <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-[var(--radius-lg)] bg-[var(--surface-2)] group-hover:bg-[var(--surface-elevated)]">
+                          <ChartBarIcon className="h-6 w-6 text-[var(--muted-foreground)] group-hover:text-[var(--primary)]indigo-600" aria-hidden="true" />
                         </div>
                         <div>
                           <Link
                             href="/services/marketing"
-                            className="font-display text-lg font-medium text-gray-900 dark:text-white"
+                            className="font-display text-lg font-medium text-[var(--foreground)]"
                             onClick={() => setIsServicesOpen(false)}
                           >
                             Marketing
                             <span className="absolute inset-0" />
                           </Link>
-                          <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                          <p className="mt-1 text-sm text-[var(--muted-foreground)]">
                             Klarheit, Botschaft, Wirkung – System statt Aktionismus
                           </p>
                         </div>
                       </div>
                       {/* Redesign */}
-                      <div className="group relative flex items-center gap-x-6 rounded-lg p-4 hover:bg-gray-50 dark:hover:bg-slate-800">
-                        <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 dark:bg-slate-800 group-hover:bg-white dark:group-hover:bg-slate-700">
-                          <PaintBrushIcon className="h-6 w-6 text-gray-600 dark:text-gray-400 group-hover:text-purple-600" aria-hidden="true" />
+                      <div className="group relative flex items-center gap-x-6 rounded-lg p-4 hover:bg-[var(--surface-2)]">
+                        <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-[var(--radius-lg)] bg-[var(--surface-2)] group-hover:bg-[var(--surface-elevated)]">
+                          <PaintBrushIcon className="h-6 w-6 text-[var(--muted-foreground)] group-hover:text-[var(--primary)]purple-600" aria-hidden="true" />
                         </div>
                         <div>
                           <Link
                             href="/services/redesign"
-                            className="font-display text-lg font-medium text-gray-900 dark:text-white"
+                            className="font-display text-lg font-medium text-[var(--foreground)]"
                             onClick={() => setIsServicesOpen(false)}
                           >
                             Redesign
                             <span className="absolute inset-0" />
                           </Link>
-                          <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                          <p className="mt-1 text-sm text-[var(--muted-foreground)]">
                             Professionelles Redesign für Ihren Erfolg
                           </p>
                         </div>
                       </div>
                       {/* Performance */}
-                      <div className="group relative flex items-center gap-x-6 rounded-lg p-4 hover:bg-gray-50 dark:hover:bg-slate-800">
-                        <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 dark:bg-slate-800 group-hover:bg-white dark:group-hover:bg-slate-700">
-                          <RocketLaunchIcon className="h-6 w-6 text-gray-600 dark:text-gray-400 group-hover:text-orange-600" aria-hidden="true" />
+                      <div className="group relative flex items-center gap-x-6 rounded-lg p-4 hover:bg-[var(--surface-2)]">
+                        <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-[var(--radius-lg)] bg-[var(--surface-2)] group-hover:bg-[var(--surface-elevated)]">
+                          <RocketLaunchIcon className="h-6 w-6 text-[var(--muted-foreground)] group-hover:text-[var(--primary)]orange-600" aria-hidden="true" />
                         </div>
                         <div>
                           <Link
                             href="/services/performance"
-                            className="font-display text-lg font-medium text-gray-900 dark:text-white"
+                            className="font-display text-lg font-medium text-[var(--foreground)]"
                             onClick={() => setIsServicesOpen(false)}
                           >
                             Performance
                             <span className="absolute inset-0" />
                           </Link>
-                          <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                          <p className="mt-1 text-sm text-[var(--muted-foreground)]">
                             Professionelle Performanceoptimierung für Ihren Erfolg
                           </p>
                         </div>
                       </div>
                       {/* Security Check */}
-                      <div className="group relative flex items-center gap-x-6 rounded-lg p-4 hover:bg-gray-50 dark:hover:bg-slate-800">
-                        <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 dark:bg-slate-800 group-hover:bg-white dark:group-hover:bg-slate-700">
-                          <ShieldCheckIcon className="h-6 w-6 text-gray-600 dark:text-gray-400 group-hover:text-green-600" aria-hidden="true" />
+                      <div className="group relative flex items-center gap-x-6 rounded-lg p-4 hover:bg-[var(--surface-2)]">
+                        <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-[var(--radius-lg)] bg-[var(--surface-2)] group-hover:bg-[var(--surface-elevated)]">
+                          <ShieldCheckIcon className="h-6 w-6 text-[var(--muted-foreground)] group-hover:text-[var(--primary)]green-600" aria-hidden="true" />
                         </div>
                         <div>
                           <Link
                             href="/services/security-check"
-                            className="font-display text-lg font-medium text-gray-900 dark:text-white"
+                            className="font-display text-lg font-medium text-[var(--foreground)]"
                             onClick={() => setIsServicesOpen(false)}
                           >
                             Security Check
                             <span className="absolute inset-0" />
                           </Link>
-                          <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                          <p className="mt-1 text-sm text-[var(--muted-foreground)]">
                             Website Sicherheitsprüfung für KMU – legal, kontrolliert, transparent
                           </p>
                         </div>
                       </div>
                       {/* Hosting */}
-                      <div className="group relative flex items-center gap-x-6 rounded-lg p-4 hover:bg-gray-50 dark:hover:bg-slate-800">
-                        <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 dark:bg-slate-800 group-hover:bg-white dark:group-hover:bg-slate-700">
-                          <ServerIcon className="h-6 w-6 text-gray-600 dark:text-gray-400 group-hover:text-teal-600" aria-hidden="true" />
+                      <div className="group relative flex items-center gap-x-6 rounded-lg p-4 hover:bg-[var(--surface-2)]">
+                        <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-[var(--radius-lg)] bg-[var(--surface-2)] group-hover:bg-[var(--surface-elevated)]">
+                          <ServerIcon className="h-6 w-6 text-[var(--muted-foreground)] group-hover:text-[var(--primary)]teal-600" aria-hidden="true" />
                         </div>
                         <div>
                           <Link
                             href="/services/hosting"
-                            className="font-display text-lg font-medium text-gray-900 dark:text-white"
+                            className="font-display text-lg font-medium text-[var(--foreground)]"
                             onClick={() => setIsServicesOpen(false)}
                           >
                             Hosting
                             <span className="absolute inset-0" />
                           </Link>
-                          <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                          <p className="mt-1 text-sm text-[var(--muted-foreground)]">
                             Professionelle Hosting-Beratung für Ihren Erfolg
                           </p>
                         </div>
                       </div>
                       {/* Wartung & Support */}
-                      <div className="group relative flex items-center gap-x-6 rounded-lg p-4 hover:bg-gray-50 dark:hover:bg-slate-800">
-                        <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 dark:bg-slate-800 group-hover:bg-white dark:group-hover:bg-slate-700">
-                          <RocketLaunchIcon className="h-6 w-6 text-gray-600 dark:text-gray-400 group-hover:text-yellow-600" aria-hidden="true" />
+                      <div className="group relative flex items-center gap-x-6 rounded-lg p-4 hover:bg-[var(--surface-2)]">
+                        <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-[var(--radius-lg)] bg-[var(--surface-2)] group-hover:bg-[var(--surface-elevated)]">
+                          <RocketLaunchIcon className="h-6 w-6 text-[var(--muted-foreground)] group-hover:text-[var(--primary)]yellow-600" aria-hidden="true" />
                         </div>
                         <div>
                           <Link
                             href="/services/wartung"
-                            className="font-display text-lg font-medium text-gray-900 dark:text-white"
+                            className="font-display text-lg font-medium text-[var(--foreground)]"
                             onClick={() => setIsServicesOpen(false)}
                           >
                             Wartung & Support
                             <span className="absolute inset-0" />
                           </Link>
-                          <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                          <p className="mt-1 text-sm text-[var(--muted-foreground)]">
                             Professionelle Wartung und technischer Support
                           </p>
                         </div>
                       </div>
                       {/* Shopify Experte */}
-                      <div className="group relative flex items-center gap-x-6 rounded-lg p-4 hover:bg-gray-50 dark:hover:bg-slate-800">
-                        <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 dark:bg-slate-800 group-hover:bg-white dark:group-hover:bg-slate-700">
-                          <ServerIcon className="h-6 w-6 text-gray-600 dark:text-gray-400 group-hover:text-green-600" aria-hidden="true" />
+                      <div className="group relative flex items-center gap-x-6 rounded-lg p-4 hover:bg-[var(--surface-2)]">
+                        <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-[var(--radius-lg)] bg-[var(--surface-2)] group-hover:bg-[var(--surface-elevated)]">
+                          <ServerIcon className="h-6 w-6 text-[var(--muted-foreground)] group-hover:text-[var(--primary)]green-600" aria-hidden="true" />
                         </div>
                         <div>
                           <Link
                             href="/services/e-commerce-partner-fuer-shopify"
-                            className="font-display text-lg font-medium text-gray-900 dark:text-white"
+                            className="font-display text-lg font-medium text-[var(--foreground)]"
                             onClick={() => setIsServicesOpen(false)}
                           >
                             Shopify Experte
                             <span className="absolute inset-0" />
                           </Link>
-                          <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                          <p className="mt-1 text-sm text-[var(--muted-foreground)]">
                             Professionelle Shopify Agentur für E-Commerce
                           </p>
                         </div>
                       </div>
                       {/* KI-Automatisierung */}
-                      <div className="group relative flex items-center gap-x-6 rounded-lg p-4 hover:bg-gray-50 dark:hover:bg-slate-800">
-                        <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 dark:bg-slate-800 group-hover:bg-white dark:group-hover:bg-slate-700">
-                          <SparklesIcon className="h-6 w-6 text-gray-600 dark:text-gray-400 group-hover:text-indigo-600" aria-hidden="true" />
+                      <div className="group relative flex items-center gap-x-6 rounded-lg p-4 hover:bg-[var(--surface-2)]">
+                        <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-[var(--radius-lg)] bg-[var(--surface-2)] group-hover:bg-[var(--surface-elevated)]">
+                          <SparklesIcon className="h-6 w-6 text-[var(--muted-foreground)] group-hover:text-[var(--primary)]indigo-600" aria-hidden="true" />
                         </div>
                         <div>
                           <Link
                             href="/ki-automatisierung"
-                            className="font-display text-lg font-medium text-gray-900 dark:text-white"
+                            className="font-display text-lg font-medium text-[var(--foreground)]"
                             onClick={() => setIsServicesOpen(false)}
                           >
                             KI-Automatisierung
                             <span className="absolute inset-0" />
                           </Link>
-                          <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                          <p className="mt-1 text-sm text-[var(--muted-foreground)]">
                             Automatisierung von Routineaufgaben für KMU
                           </p>
                         </div>
@@ -409,31 +431,31 @@ export function Header() {
             </div>
             <Link
               href="/preise-und-pakete"
-              className="text-base font-medium leading-6 text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-200"
+              className="text-base font-medium leading-6 text-[var(--foreground)] hover:text-[var(--muted-foreground)]"
             >
               Preise
             </Link>
             <Link
               href="/prozess"
-              className="text-base font-medium leading-6 text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-200"
+              className="text-base font-medium leading-6 text-[var(--foreground)] hover:text-[var(--muted-foreground)]"
             >
               Prozess
             </Link>
             <Link
               href="/portfolio"
-              className="text-base font-medium leading-6 text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-200"
+              className="text-base font-medium leading-6 text-[var(--foreground)] hover:text-[var(--muted-foreground)]"
             >
               Portfolio
             </Link>
             <Link
               href="/ueber-uns"
-              className="text-base font-medium leading-6 text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-200"
+              className="text-base font-medium leading-6 text-[var(--foreground)] hover:text-[var(--muted-foreground)]"
             >
               Über mich
             </Link>
             <Link
               href="/blog"
-              className="text-base font-medium leading-6 text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-200"
+              className="text-base font-medium leading-6 text-[var(--foreground)] hover:text-[var(--muted-foreground)]"
             >
               Blog
             </Link>
@@ -444,14 +466,14 @@ export function Header() {
         <div className="flex items-center justify-end xl:w-1/4">
           <Link
             href="/kontakt"
-            className="hidden xl:flex items-center justify-center rounded-lg px-4 py-2.5 text-sm font-semibold bg-blue-600 text-white hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 shadow-sm hover:shadow-md transition-all duration-200 mr-2"
+            className="hidden xl:flex items-center justify-center rounded-[var(--radius-xl)] px-4 py-2.5 text-sm font-semibold bg-[var(--primary)] text-[var(--primary-foreground)] hover:opacity-95 transition-opacity duration-[var(--duration-normal)] mr-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2"
           >
             Kontakt
           </Link>
           <button
             type="button"
             onClick={toggleTheme}
-            className="rounded-md p-2 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-slate-800"
+            className="rounded-[var(--radius-md)] p-2 text-[var(--muted-foreground)] hover:bg-[var(--surface-2)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2"
           >
             <span className="sr-only">Toggle theme</span>
             {theme === 'dark' ? (
@@ -481,19 +503,19 @@ export function Header() {
               aria-label="Hauptmenü"
               ref={panelRef}
               tabIndex={-1} // CHANGE: make focusable container for focus trap start
-              className="fixed right-0 top-0 z-[60] h-[100dvh] min-h-svh w-[min(90vw,24rem)] bg-white dark:bg-slate-950 shadow-xl outline-none flex flex-col"
+              className="fixed right-0 top-0 z-[60] h-[100dvh] min-h-svh w-[min(90vw,24rem)] bg-[var(--surface)] shadow-[var(--shadow-4)] outline-none flex flex-col"
             >
               {/* Header inside the panel */}
-              <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-800">
+              <div className="flex items-center justify-between p-4 border-b border-[var(--border)]">
                 <Link href="/" className="-m-1.5 p-1.5" onClick={() => setIsOpen(false)}>
                   <span className="sr-only">SimpleWebDesign</span>
-                  <h2 className="font-display text-2xl font-bold text-gray-900 dark:text-white">
+                  <h2 className="font-display text-2xl font-bold text-[var(--foreground)]">
                     SimpleWebDesign
                   </h2>
                 </Link>
                 <button
                   type="button"
-                  className="-m-2.5 rounded-md p-2.5 text-gray-700 dark:text-gray-200"
+                  className="-m-2.5 rounded-md p-2.5 text-[var(--foreground)]"
                   onClick={() => setIsOpen(false)}
                 >
                   <span className="sr-only">Close menu</span>
@@ -506,7 +528,7 @@ export function Header() {
                 <div className="flex flex-col gap-y-4">
                   <Link
                     href="/"
-                    className="block px-3 py-3 rounded-md text-lg font-medium text-gray-600 hover:text-gray-900 dark:text-white dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
+                    className="block px-3 py-3 rounded-md text-lg font-medium text-gray-600 hover:text-[var(--foreground)] dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
                     onClick={() => setIsOpen(false)}
                   >
                     Home
@@ -516,13 +538,13 @@ export function Header() {
                   <div>
                     <button
                       onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
-                      className="w-full flex items-center justify-between px-3 py-3 rounded-md text-lg font-medium text-gray-600 hover:text-gray-900 dark:text-white dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
+                      className="w-full flex items-center justify-between px-3 py-3 rounded-md text-lg font-medium text-gray-600 hover:text-[var(--foreground)] dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
                       aria-expanded={isMobileServicesOpen} // CHANGE: a11y state for accordion
                       aria-controls="mobile-services-submenu" // CHANGE: link to submenu
                     >
                       <span>Services</span>
                       <svg
-                        className={`h-5 w-5 flex-none text-gray-400 dark:text-gray-500 transition-transform ${
+                        className={`h-5 w-5 flex-none text-[var(--muted-foreground)] transition-transform ${
                           isMobileServicesOpen ? 'rotate-180' : ''
                         }`}
                         viewBox="0 0 20 20"
@@ -541,7 +563,7 @@ export function Header() {
                     <div id="mobile-services-submenu" className={`space-y-1 pl-3 ${isMobileServicesOpen ? '' : 'hidden'}`}>
                       <Link
                         href="/services/webdesign"
-                        className="flex items-center gap-3 px-3 py-3 rounded-md text-base font-medium text-gray-600 hover:text-gray-900 dark:text-white dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
+                        className="flex items-center gap-3 px-3 py-3 rounded-md text-base font-medium text-gray-600 hover:text-[var(--foreground)] dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
                         onClick={() => setIsOpen(false)}
                       >
                         <ComputerDesktopIcon className="h-5 w-5 text-blue-600" />
@@ -549,7 +571,7 @@ export function Header() {
                       </Link>
                       <Link
                         href="/services/seo"
-                        className="flex items-center gap-3 px-3 py-3 rounded-md text-base font-medium text-gray-600 hover:text-gray-900 dark:text-white dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
+                        className="flex items-center gap-3 px-3 py-3 rounded-md text-base font-medium text-gray-600 hover:text-[var(--foreground)] dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
                         onClick={() => setIsOpen(false)}
                       >
                         <ArrowTrendingUpIcon className="h-5 w-5 text-green-600" />
@@ -557,7 +579,7 @@ export function Header() {
                       </Link>
                       <Link
                         href="/services/marketing"
-                        className="flex items-center gap-3 px-3 py-3 rounded-md text-base font-medium text-gray-600 hover:text-gray-900 dark:text-white dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
+                        className="flex items-center gap-3 px-3 py-3 rounded-md text-base font-medium text-gray-600 hover:text-[var(--foreground)] dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
                         onClick={() => setIsOpen(false)}
                       >
                         <ChartBarIcon className="h-5 w-5 text-indigo-600" />
@@ -565,7 +587,7 @@ export function Header() {
                       </Link>
                       <Link
                         href="/services/redesign"
-                        className="flex items-center gap-3 px-3 py-3 rounded-md text-base font-medium text-gray-600 hover:text-gray-900 dark:text-white dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
+                        className="flex items-center gap-3 px-3 py-3 rounded-md text-base font-medium text-gray-600 hover:text-[var(--foreground)] dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
                         onClick={() => setIsOpen(false)}
                       >
                         <PaintBrushIcon className="h-5 w-5 text-purple-600" />
@@ -573,7 +595,7 @@ export function Header() {
                       </Link>
                       <Link
                         href="/services/performance"
-                        className="flex items-center gap-3 px-3 py-3 rounded-md text-base font-medium text-gray-600 hover:text-gray-900 dark:text-white dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
+                        className="flex items-center gap-3 px-3 py-3 rounded-md text-base font-medium text-gray-600 hover:text-[var(--foreground)] dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
                         onClick={() => setIsOpen(false)}
                       >
                         <RocketLaunchIcon className="h-5 w-5 text-orange-600" />
@@ -581,7 +603,7 @@ export function Header() {
                       </Link>
                       <Link
                         href="/services/security-check"
-                        className="flex items-center gap-3 px-3 py-3 rounded-md text-base font-medium text-gray-600 hover:text-gray-900 dark:text-white dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
+                        className="flex items-center gap-3 px-3 py-3 rounded-md text-base font-medium text-gray-600 hover:text-[var(--foreground)] dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
                         onClick={() => setIsOpen(false)}
                       >
                         <ShieldCheckIcon className="h-5 w-5 text-green-600" />
@@ -589,7 +611,7 @@ export function Header() {
                       </Link>
                       <Link
                         href="/services/hosting"
-                        className="flex items-center gap-3 px-3 py-3 rounded-md text-base font-medium text-gray-600 hover:text-gray-900 dark:text-white dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
+                        className="flex items-center gap-3 px-3 py-3 rounded-md text-base font-medium text-gray-600 hover:text-[var(--foreground)] dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
                         onClick={() => setIsOpen(false)}
                       >
                         <ServerIcon className="h-5 w-5 text-teal-600" />
@@ -597,7 +619,7 @@ export function Header() {
                       </Link>
                       <Link
                         href="/services/wartung"
-                        className="flex items-center gap-3 px-3 py-3 rounded-md text-base font-medium text-gray-600 hover:text-gray-900 dark:text-white dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
+                        className="flex items-center gap-3 px-3 py-3 rounded-md text-base font-medium text-gray-600 hover:text-[var(--foreground)] dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
                         onClick={() => setIsOpen(false)}
                       >
                         <RocketLaunchIcon className="h-5 w-5 text-yellow-600" />
@@ -605,7 +627,7 @@ export function Header() {
                       </Link>
                       <Link
                         href="/services/e-commerce-partner-fuer-shopify"
-                        className="flex items-center gap-3 px-3 py-3 rounded-md text-base font-medium text-gray-600 hover:text-gray-900 dark:text-white dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
+                        className="flex items-center gap-3 px-3 py-3 rounded-md text-base font-medium text-gray-600 hover:text-[var(--foreground)] dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
                         onClick={() => setIsOpen(false)}
                       >
                         <ServerIcon className="h-5 w-5 text-green-600" />
@@ -613,7 +635,7 @@ export function Header() {
                       </Link>
                       <Link
                         href="/ki-automatisierung"
-                        className="flex items-center gap-3 px-3 py-3 rounded-md text-base font-medium text-gray-600 hover:text-gray-900 dark:text-white dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
+                        className="flex items-center gap-3 px-3 py-3 rounded-md text-base font-medium text-gray-600 hover:text-[var(--foreground)] dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
                         onClick={() => setIsOpen(false)}
                       >
                         <SparklesIcon className="h-5 w-5 text-indigo-600" />
@@ -624,7 +646,7 @@ export function Header() {
 
                   <Link
                     href="/preise-und-pakete"
-                    className="block px-3 py-3 rounded-md text-lg font-medium text-gray-600 hover:text-gray-900 dark:text-white dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
+                    className="block px-3 py-3 rounded-md text-lg font-medium text-gray-600 hover:text-[var(--foreground)] dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
                     onClick={() => setIsOpen(false)}
                   >
                     Preise
@@ -632,7 +654,7 @@ export function Header() {
 
                   <Link
                     href="/prozess"
-                    className="block px-3 py-3 rounded-md text-lg font-medium text-gray-600 hover:text-gray-900 dark:text-white dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
+                    className="block px-3 py-3 rounded-md text-lg font-medium text-gray-600 hover:text-[var(--foreground)] dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
                     onClick={() => setIsOpen(false)}
                   >
                     Prozess
@@ -640,7 +662,7 @@ export function Header() {
 
                   <Link
                     href="/portfolio"
-                    className="block px-3 py-3 rounded-md text-lg font-medium text-gray-600 hover:text-gray-900 dark:text-white dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
+                    className="block px-3 py-3 rounded-md text-lg font-medium text-gray-600 hover:text-[var(--foreground)] dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
                     onClick={() => setIsOpen(false)}
                   >
                     Portfolio
@@ -648,7 +670,7 @@ export function Header() {
 
                   <Link
                     href="/ueber-uns"
-                    className="block px-3 py-3 rounded-md text-lg font-medium text-gray-600 hover:text-gray-900 dark:text-white dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
+                    className="block px-3 py-3 rounded-md text-lg font-medium text-gray-600 hover:text-[var(--foreground)] dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
                     onClick={() => setIsOpen(false)}
                   >
                     Über mich
@@ -656,7 +678,7 @@ export function Header() {
 
                   <Link
                     href="/blog"
-                    className="block px-3 py-3 rounded-md text-lg font-medium text-gray-600 hover:text-gray-900 dark:text-white dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
+                    className="block px-3 py-3 rounded-md text-lg font-medium text-gray-600 hover:text-[var(--foreground)] dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
                     onClick={() => setIsOpen(false)}
                   >
                     Blog
@@ -668,7 +690,7 @@ export function Header() {
               <div className="sticky bottom-0 left-0 right-0 border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-slate-950 p-4">
                 <Link
                   href="/kontakt"
-                  className="flex w-full items-center justify-center rounded-full bg-gray-900 dark:bg-white px-4 py-3 text-base font-semibold text-white dark:text-gray-900 hover:bg-gray-700 dark:hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-900 dark:focus:ring-white focus:ring-offset-2"
+                  className="flex w-full items-center justify-center rounded-full bg-[var(--primary)] px-4 py-3 text-base font-semibold text-[var(--primary-foreground)] hover:opacity-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2"
                   onClick={() => setIsOpen(false)}
                 >
                   Kontaktiere uns
