@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Container } from '@/components/ui/Container'
 import { PricingCard } from '@/components/ui/PricingCard'
 import {
@@ -492,35 +493,68 @@ export default function PricingPage() {
 
         {/* Final CTA */}
         <section
-          className="py-[var(--spacing-section-lg)] lg:py-[var(--spacing-section-xl)] bg-[var(--surface-2)]"
+          className="relative w-full min-h-[420px] overflow-hidden"
           aria-labelledby="pricing-cta-heading"
         >
-          <Container>
-            <div className="max-w-[720px] mx-auto text-center">
-              <h2
-                id="pricing-cta-heading"
-                className="font-display text-4xl lg:text-5xl font-bold tracking-tight text-[var(--foreground)] mb-6"
-              >
-                Egal, ob neue Website, Redesign oder KI-Automatisierung – wir
-                erstellen dir ein maßgeschneidertes Angebot.
-              </h2>
-              <p className="text-lg text-[var(--muted-foreground)] mb-10 leading-relaxed">
-                Ein Gespräch – unverbindlich, ohne Verkaufsdruck.
-              </p>
-              <Link
-                href="/kontakt"
-                className={cn(
-                  "inline-flex items-center justify-center gap-2 h-14 px-10 rounded-2xl",
-                  "bg-[var(--primary)] text-[var(--primary-foreground)] font-semibold text-lg",
-                  "transition-opacity duration-[var(--duration-normal)] hover:opacity-95",
-                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--ring-offset)]",
-                )}
-              >
-                Jetzt Beratung vereinbaren
-                <ArrowRightIcon className="w-5 h-5" aria-hidden />
-              </Link>
-            </div>
-          </Container>
+          {/* Background image */}
+          <div className="absolute inset-0">
+            <Image
+              src="/img/cta-pricing-bg.jpg"
+              fill
+              className="object-cover object-[55%_50%]"
+              alt=""
+              sizes="100vw"
+            />
+          </div>
+          {/* Dark overlay – AAA contrast */}
+          <div
+            className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/60"
+            aria-hidden
+          />
+          {/* Subtle top blend from previous section */}
+          <div
+            className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-black/25 to-transparent pointer-events-none"
+            aria-hidden
+          />
+          {/* Subtle vignette */}
+          <div
+            className="absolute inset-0 pointer-events-none opacity-80"
+            style={{
+              background:
+                "radial-gradient(ellipse 80% 70% at 50% 50%, transparent 30%, rgba(0,0,0,0.35) 100%)",
+            }}
+            aria-hidden
+          />
+          {/* Content */}
+          <div className="relative z-10 flex items-center justify-center py-24 lg:py-28 min-h-[420px]">
+            <Container>
+              <div className="max-w-[720px] mx-auto text-center">
+                <h2
+                  id="pricing-cta-heading"
+                  className="font-display text-4xl lg:text-5xl font-bold tracking-tight text-white mb-8"
+                >
+                  Egal, ob neue Website, Redesign oder KI-Automatisierung – wir
+                  erstellen dir ein maßgeschneidertes Angebot.
+                </h2>
+                <p className="text-lg lg:text-xl text-white/80 mb-10 leading-relaxed">
+                  Ein Gespräch – unverbindlich, ohne Verkaufsdruck.
+                </p>
+                <Link
+                  href="/kontakt"
+                  className={cn(
+                    "inline-flex items-center justify-center gap-2 h-14 px-10 rounded-2xl",
+                    "bg-white text-gray-900 font-semibold text-lg",
+                    "transition-all duration-200",
+                    "hover:-translate-y-0.5 hover:shadow-lg",
+                    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-transparent",
+                  )}
+                >
+                  Jetzt Beratung vereinbaren
+                  <ArrowRightIcon className="w-5 h-5" aria-hidden />
+                </Link>
+              </div>
+            </Container>
+          </div>
         </section>
       </main>
     </>
