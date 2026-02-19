@@ -12,22 +12,23 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement | HTMLTe
 export const Input = forwardRef<HTMLInputElement | HTMLTextAreaElement, InputProps>(
   ({ className, label, error, type = 'text', rows = 4, required, ...props }, ref) => {
     const inputClasses = clsx(
-      'block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm',
-      'ring-1 ring-inset ring-gray-300',
-      'placeholder:text-gray-400',
-      'focus:ring-2 focus:ring-inset focus:ring-blue-600',
-      'dark:bg-slate-800 dark:text-white dark:ring-slate-700 dark:placeholder:text-slate-400',
-      'dark:focus:ring-blue-500',
-      error && 'ring-red-300 focus:ring-red-500 dark:ring-red-500/50 dark:focus:ring-red-500',
+      'block w-full min-h-[3rem] rounded-xl border border-[var(--border)] bg-[var(--background)] px-4 py-3',
+      'text-[var(--foreground)] placeholder:text-[var(--muted-foreground)]',
+      'transition-[box-shadow,border-color] duration-[var(--duration-normal)]',
+      'hover:border-[var(--muted-foreground)]/40',
+      'focus:outline-none focus:border-[var(--ring)] focus:ring-2 focus:ring-[var(--ring)] focus:ring-offset-2 focus:ring-offset-[var(--ring-offset)]',
+      'disabled:cursor-not-allowed disabled:opacity-60 disabled:bg-[var(--surface-2)]',
+      error && 'border-[var(--danger)] focus:border-[var(--danger)] focus:ring-[var(--danger)]',
+      type === 'textarea' && 'min-h-[8rem] resize-y',
       className
     )
 
     const labelClasses = clsx(
-      'block text-sm font-medium leading-6 text-gray-900 dark:text-slate-200 mb-2'
+      'block text-sm font-medium text-[var(--foreground)] mb-2'
     )
 
     const errorClasses = clsx(
-      'mt-2 text-sm text-red-600 dark:text-red-400'
+      'mt-1.5 text-sm text-[var(--danger)]'
     )
 
     return (
@@ -35,7 +36,7 @@ export const Input = forwardRef<HTMLInputElement | HTMLTextAreaElement, InputPro
         {label && (
           <label htmlFor={props.id} className={labelClasses}>
             {label}
-            {required && <span className="text-red-500 ml-1" aria-hidden="true">*</span>}
+            {required && <span className="text-[var(--danger)] ml-1" aria-hidden="true">*</span>}
           </label>
         )}
         <div className="relative">
@@ -43,14 +44,14 @@ export const Input = forwardRef<HTMLInputElement | HTMLTextAreaElement, InputPro
             <textarea
               ref={ref as React.RefObject<HTMLTextAreaElement>}
               rows={rows}
-              className={inputClasses}
+              className={clsx(inputClasses, 'py-3')}
               {...(props as React.TextareaHTMLAttributes<HTMLTextAreaElement>)}
             />
           ) : (
             <input
               ref={ref as React.RefObject<HTMLInputElement>}
               type={type}
-              className={inputClasses}
+              className={clsx(inputClasses, 'h-12 min-h-0')}
               {...props}
             />
           )}

@@ -130,6 +130,24 @@ export function ContactForm({ className }: ContactFormProps) {
     }
   }
 
+  const selectClasses = clsx(
+    'select-arrow-spaced',
+    'block w-full h-12 rounded-xl border border-[var(--border)] bg-[var(--background)] pl-4 pr-12 py-3',
+    'text-[var(--foreground)] transition-[box-shadow,border-color] duration-[var(--duration-normal)]',
+    'hover:border-[var(--muted-foreground)]/40',
+    'focus:outline-none focus:border-[var(--ring)] focus:ring-2 focus:ring-[var(--ring)] focus:ring-offset-2 focus:ring-offset-[var(--ring-offset)]',
+    'disabled:cursor-not-allowed disabled:opacity-60'
+  )
+  const labelClasses = 'block text-sm font-medium text-[var(--foreground)] mb-2'
+  const textareaClasses = clsx(
+    'block w-full min-h-[8.5rem] rounded-xl border border-[var(--border)] bg-[var(--background)] px-4 py-3.5',
+    'text-[var(--foreground)] placeholder:text-[var(--muted-foreground)] resize-y',
+    'transition-[box-shadow,border-color] duration-[var(--duration-normal)]',
+    'hover:border-[var(--muted-foreground)]/40',
+    'focus:outline-none focus:border-[var(--ring)] focus:ring-2 focus:ring-[var(--ring)] focus:ring-offset-2 focus:ring-offset-[var(--ring-offset)]',
+    'disabled:cursor-not-allowed disabled:opacity-60'
+  )
+
   return (
     <form onSubmit={handleSubmit} className={clsx('grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2', className)}>
       {/* 1. First Name, Last Name - 2 fields */}
@@ -153,7 +171,7 @@ export function ContactForm({ className }: ContactFormProps) {
 
       {/* 2. Email, Phone - 2 fields */}
       <Input
-        label="Email"
+        label="E-Mail"
         name="email"
         type="email"
         value={formData.email}
@@ -184,14 +202,15 @@ export function ContactForm({ className }: ContactFormProps) {
 
       {/* 4. Project Type, Budget - 2 fields */}
       <div>
-        <label className="block text-sm font-semibold text-gray-900 dark:text-gray-100">
+        <label htmlFor="projectType" className={labelClasses}>
           Projektart (optional)
         </label>
         <select
+          id="projectType"
           name="projectType"
           value={formData.projectType}
           onChange={handleChange}
-          className="mt-2 block w-full rounded-md border-0 py-2.5 text-neutral-950 shadow-sm ring-1 ring-inset ring-neutral-200 focus:ring-2 focus:ring-inset focus:ring-neutral-950 dark:bg-white/5 dark:text-white dark:ring-neutral-800 dark:focus:ring-white"
+          className={selectClasses}
         >
           <option value="website">Website</option>
           <option value="shop">Online-Shop</option>
@@ -201,14 +220,15 @@ export function ContactForm({ className }: ContactFormProps) {
         </select>
       </div>
       <div>
-        <label className="block text-sm font-semibold text-gray-900 dark:text-gray-100">
+        <label htmlFor="budget" className={labelClasses}>
           Investitionsrahmen (optional)
         </label>
         <select
+          id="budget"
           name="budget"
           value={formData.budget}
           onChange={handleChange}
-          className="mt-2 block w-full rounded-md border-0 py-2.5 text-neutral-950 shadow-sm ring-1 ring-inset ring-neutral-200 focus:ring-2 focus:ring-inset focus:ring-neutral-950 dark:bg-white/5 dark:text-white dark:ring-neutral-800 dark:focus:ring-white"
+          className={selectClasses}
         >
           <option value="">Bitte wählen</option>
           <option value="unclear">Noch unklar</option>
@@ -221,14 +241,15 @@ export function ContactForm({ className }: ContactFormProps) {
 
       {/* 5. Timeline - 1 field */}
       <div className="sm:col-span-2">
-        <label className="block text-sm font-semibold text-gray-900 dark:text-gray-100">
+        <label htmlFor="timeline" className={labelClasses}>
           Zeitrahmen
         </label>
         <select
+          id="timeline"
           name="timeline"
           value={formData.timeline}
           onChange={handleChange}
-          className="mt-2 block w-full rounded-md border-0 py-2.5 text-neutral-950 shadow-sm ring-1 ring-inset ring-neutral-200 focus:ring-2 focus:ring-inset focus:ring-neutral-950 dark:bg-white/5 dark:text-white dark:ring-neutral-800 dark:focus:ring-white"
+          className={selectClasses}
         >
           <option value="">Bitte wählen</option>
           <option value="urgent">Dringend</option>
@@ -240,20 +261,21 @@ export function ContactForm({ className }: ContactFormProps) {
 
       {/* 6. Project Description - 1 field */}
       <div className="sm:col-span-2">
-        <label className="block text-sm font-semibold text-gray-900 dark:text-gray-100">
-          Projektbeschreibung <span className="text-red-500">*</span>
+        <label htmlFor="description" className={labelClasses}>
+          Projektbeschreibung <span className="text-[var(--danger)]" aria-hidden="true">*</span>
         </label>
         <textarea
+          id="description"
           name="description"
           value={formData.description}
           onChange={handleChange}
           rows={4}
           placeholder="Beschreibe kurz, wo du stehst und was du dir vorstellst..."
           required
-          className="mt-2 block w-full rounded-md border-0 px-4 py-3.5 text-base text-neutral-950 shadow-sm ring-1 ring-inset ring-neutral-200 placeholder:text-neutral-500 focus:ring-2 focus:ring-inset focus:ring-neutral-950 dark:bg-white/5 dark:text-white dark:ring-neutral-800 dark:placeholder:text-neutral-400 dark:focus:ring-white"
+          className={clsx(textareaClasses, errors.description && 'border-[var(--danger)] focus:border-[var(--danger)] focus:ring-[var(--danger)]')}
         />
         {errors.description && (
-          <p className="mt-1 text-sm text-red-600">{errors.description}</p>
+          <p className="mt-1.5 text-sm text-[var(--danger)]">{errors.description}</p>
         )}
       </div>
 
@@ -273,42 +295,62 @@ export function ContactForm({ className }: ContactFormProps) {
 
       {/* Privacy Policy Checkbox */}
       <div className="sm:col-span-2">
-        <div className="flex items-start">
-          <div className="flex items-center h-6">
+        <div className="flex items-start gap-3">
+          <div className="flex items-center h-6 flex-shrink-0 pt-0.5">
             <input
               id="privacy"
               name="privacyAccepted"
               type="checkbox"
               checked={formData.privacyAccepted}
-              onChange={(e) => handleChange({ 
-                target: { 
-                  name: 'privacyAccepted', 
-                  value: e.target.checked 
-                } 
+              onChange={(e) => handleChange({
+                target: {
+                  name: 'privacyAccepted',
+                  value: e.target.checked
+                }
               })}
-              className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-600 dark:border-gray-600 dark:focus:ring-blue-600"
+              className={clsx(
+                'h-4 w-4 rounded border-2 border-[var(--border)] bg-[var(--background)] text-[var(--primary)]',
+                'transition-colors duration-[var(--duration-normal)]',
+                'hover:border-[var(--muted-foreground)]/60',
+                'focus:outline-none focus:ring-2 focus:ring-[var(--ring)] focus:ring-offset-2 focus:ring-offset-[var(--ring-offset)]',
+                'disabled:cursor-not-allowed disabled:opacity-60',
+                errors.privacyAccepted && 'border-[var(--danger)]'
+              )}
             />
           </div>
-          <div className="ml-3">
-            <label htmlFor="privacy" className="text-sm text-gray-600 dark:text-gray-400">
-              Ich stimme der Datenverarbeitung gemäß <a href="/datenschutz" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline dark:text-blue-400">Datenschutzerklärung</a> zu.
+          <div className="min-w-0">
+            <label htmlFor="privacy" className="text-sm text-[var(--muted-foreground)] leading-relaxed cursor-pointer">
+              Ich stimme der Datenverarbeitung gemäß{' '}
+              <a
+                href="/datenschutz"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[var(--primary)] underline underline-offset-2 hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--ring-offset)] rounded"
+              >
+                Datenschutzerklärung
+              </a>{' '}
+              zu.
             </label>
             {errors.privacyAccepted && (
-              <p className="mt-1 text-sm text-red-600">{errors.privacyAccepted}</p>
+              <p className="mt-1.5 text-sm text-[var(--danger)]">{errors.privacyAccepted}</p>
             )}
           </div>
         </div>
       </div>
 
       {/* Submit Button and Status Messages */}
-      <div className="sm:col-span-2 flex flex-col space-y-4">
-        <div className="flex gap-4 items-center">
+      <div className="sm:col-span-2 flex flex-col gap-4">
+        <div className="flex flex-wrap gap-4 items-center">
           <button
             type="submit"
             disabled={isSubmitting}
             className={clsx(
-              'flex-1 rounded-md bg-blue-600 px-8 py-4 text-base font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-colors duration-200',
-              isSubmitting && 'opacity-50 cursor-not-allowed'
+              'inline-flex items-center justify-center gap-2 h-[52px] px-6 rounded-xl font-semibold text-base',
+              'bg-[var(--primary)] text-[var(--primary-foreground)]',
+              'hover:opacity-95 transition-opacity duration-[var(--duration-normal)]',
+              'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--ring-offset)]',
+              'disabled:opacity-60 disabled:cursor-not-allowed',
+              'min-w-[200px] flex-1'
             )}
           >
             {isSubmitting ? 'Wird gesendet...' : 'Einschätzung anfragen'}
@@ -320,24 +362,29 @@ export function ContactForm({ className }: ContactFormProps) {
               setErrors({})
               setSubmitStatus(null)
             }}
-            className="px-4 py-2 text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-400 transition-colors duration-200"
+            className={clsx(
+              'inline-flex items-center justify-center gap-2 h-[52px] px-6 rounded-xl font-medium text-base',
+              'bg-transparent text-[var(--foreground)] border-2 border-[var(--border)]',
+              'hover:border-[var(--muted-foreground)] hover:bg-[var(--surface-2)] transition-colors duration-[var(--duration-normal)]',
+              'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--ring-offset)]'
+            )}
           >
             Zurücksetzen
           </button>
         </div>
-        
+
         {/* Trust Microcopy */}
-        <div className="mt-4 text-sm text-gray-500 dark:text-gray-400 space-y-1">
+        <div className="text-sm text-[var(--muted-foreground)] space-y-1 pt-1">
           <p>Antwort in 1–2 Werktagen.</p>
           <p>Kein Spam. Kein Newsletter.</p>
           <p>Wenn es nicht passt, sagen wir es ehrlich.</p>
         </div>
 
         {submitStatus === 'success' && (
-          <p className="text-sm text-green-600 dark:text-green-400">Ihre Nachricht wurde erfolgreich gesendet!</p>
+          <p className="text-sm text-[var(--success)]">Ihre Nachricht wurde erfolgreich gesendet!</p>
         )}
         {submitStatus === 'error' && (
-          <p className="text-sm text-red-600 dark:text-red-400">{errorMessage}</p>
+          <p className="text-sm text-[var(--danger)]">{errorMessage}</p>
         )}
       </div>
     </form>

@@ -4,11 +4,11 @@ import { ContactForm } from '@/components/ui/ContactForm'
 import { contactSchema } from '@/app/schema'
 
 export const metadata: Metadata = {
-  title: 'Kontakt für KMU Webdesign | Beratung Österreich & Deutschland | SimpleWebDesign',
-  description: 'Kontaktieren Sie uns für Ihr KMU Webdesign-Projekt in Österreich & Deutschland. Kostenlose Beratung und individuelles Angebot für kleine und mittlere Unternehmen.',
+  title: 'Kontakt für KMU Webdesign | Beratung Österreich & Deutschland',
+  description: 'Kontakt für eine ehrliche Einschätzung deines Website-Projekts. Beratung für KMU in Österreich & Deutschland – ohne Verkaufsdruck.',
   openGraph: {
     title: 'Kontakt für KMU Webdesign | Beratung Österreich & Deutschland',
-    description: 'Kontaktieren Sie uns für Ihr KMU Webdesign-Projekt in Österreich & Deutschland. Kostenlose Beratung und individuelles Angebot für kleine und mittlere Unternehmen.',
+    description: 'Kontakt für eine ehrliche Einschätzung deines Website-Projekts. Beratung für KMU in Österreich & Deutschland – ohne Verkaufsdruck.',
     url: 'https://simplewebdesign.at/kontakt',
     images: [
       {
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Kontakt für KMU Webdesign | Beratung Österreich & Deutschland',
-    description: 'Kontaktieren Sie uns für Ihr KMU Webdesign-Projekt in Österreich & Deutschland.',
+    description: 'Kontakt für eine ehrliche Einschätzung deines Website-Projekts. Beratung für KMU in Österreich & Deutschland – ohne Verkaufsdruck.',
     images: ['/img/contact/office.jpg']
   },
   alternates: {
@@ -82,33 +82,42 @@ export default function ContactPage() {
         }}
       />
       <main className="flex-auto">
-        <Container className="mt-24 sm:mt-32">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="mb-6">
-              <span className="inline-block px-3 py-1 text-sm font-medium text-blue-900 dark:text-blue-100 bg-blue-100 dark:bg-blue-900/30 rounded-full">
-                Kontakt
-              </span>
-            </div>
-            <h1 className="font-display text-5xl font-medium tracking-tight text-neutral-950 dark:text-white [text-wrap:balance] sm:text-7xl">
-              Lass uns klären, ob deine Website arbeiten soll.
-            </h1>
-            {/* LLM-friendly summary block */}
-            <div className="mt-6 text-lg text-neutral-700 dark:text-neutral-300 max-w-3xl mx-auto bg-neutral-50 dark:bg-neutral-900 p-6 rounded-lg border border-neutral-200 dark:border-neutral-800">
-              <p>
-                Kontaktiere SimpleWebDesign für eine ehrliche Einschätzung deines Website-Projekts. Beratung für KMU in Österreich & Deutschland – ohne Verkaufsgespräch, ohne Verpflichtung.
+        <section
+          className="relative bg-[var(--background)] pt-24 sm:pt-28 lg:pt-32 pb-16 lg:pb-20"
+          aria-labelledby="kontakt-heading"
+        >
+          <Container>
+            <div className="max-w-4xl mx-auto text-center">
+              <div className="mb-6">
+                <span className="inline-block px-3 py-1.5 text-sm font-medium text-[var(--primary)] bg-[var(--surface-2)] rounded-full border border-[var(--border)]">
+                  Kontakt
+                </span>
+              </div>
+              <h1
+                id="kontakt-heading"
+                className="font-display font-bold tracking-tight text-[var(--foreground)] leading-[1.08] text-4xl sm:text-5xl lg:text-6xl [text-wrap:balance]"
+              >
+                Lass uns klären, ob deine Website arbeiten soll.
+              </h1>
+              <div className="mt-6 text-lg text-[var(--muted-foreground)] max-w-3xl mx-auto rounded-[var(--radius-2xl)] bg-[var(--surface)] p-6 lg:p-8 border border-[var(--border)] shadow-elev-1">
+                <p className="leading-relaxed">
+                  Kontaktiere SimpleWebDesign für eine ehrliche Einschätzung deines Website-Projekts. Beratung für KMU in Österreich & Deutschland – ohne Verkaufsdruck, ohne Verpflichtung.
+                </p>
+              </div>
+              <p className="mt-6 text-xl text-[var(--muted-foreground)] max-w-3xl mx-auto leading-relaxed">
+                Wenn du das Gefühl hast, dass online zu wenig passiert, ist das meist kein Design-Problem.
+                <br />
+                Schreib uns kurz, wo du stehst – wir melden uns mit einer ehrlichen Einschätzung.
               </p>
             </div>
-            <p className="mt-6 text-xl text-neutral-600 dark:text-neutral-400 max-w-3xl mx-auto">
-              Wenn du das Gefühl hast, dass online zu wenig passiert, ist das meist kein Design-Problem.
-              <br />
-              Schreib uns kurz, wo du stehst – wir melden uns mit einer klaren Einschätzung.
-            </p>
-          </div>
-        </Container>
+          </Container>
+        </section>
 
-        <Container className="mt-16 sm:mt-20 pb-24">
+        <Container className="pb-24 lg:pb-28">
           <div className="max-w-3xl mx-auto">
-            <ContactForm className="mt-8 text-left" />
+            <div className="rounded-[24px] bg-[var(--surface)] p-8 lg:p-10 border border-[var(--border)] shadow-elev-2">
+              <ContactForm className="text-left" />
+            </div>
           </div>
         </Container>
       </main>
