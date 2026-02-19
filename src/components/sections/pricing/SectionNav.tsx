@@ -5,8 +5,8 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
 
-/** Puffer unter dem Header (CSS --header-height wird vom Layout-Header gesetzt). Verhindert Rest-Versatz auf Tablet/Desktop. */
-const HEADER_OFFSET_BUFFER_PX = 16
+/** Optionaler Puffer unter dem Header; 0 = nur gemessene --header-height (vom Layout-Header). */
+const HEADER_OFFSET_BUFFER_PX = 0
 
 export const PRICING_SECTION_IDS = [
   { id: 'webdesign-pakete', label: 'Webdesign' },
