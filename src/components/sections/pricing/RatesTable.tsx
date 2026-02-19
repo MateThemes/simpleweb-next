@@ -20,7 +20,11 @@ export function RatesTable({ rows, className }: RatesTableProps) {
         className
       )}
     >
-      <div className="overflow-x-auto">
+      <div className="relative overflow-x-auto">
+        <div
+          className="pointer-events-none absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-[var(--surface)] to-transparent z-[1]"
+          aria-hidden
+        />
         <table className="w-full min-w-[480px]">
           <thead>
             <tr className="border-b border-[var(--border)] bg-[var(--surface-2)]">

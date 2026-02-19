@@ -195,7 +195,7 @@ export default function Services() {
                     )}
                     {service.id === 'ki-automatisierung' && (
                       <span className="block mt-2">
-                        <a href="/preise-und-pakete#ki-automatisierung" className="text-indigo-600 hover:text-indigo-700 underline">KI-Preise & Pakete →</a>
+                        <a href="/preise-und-pakete#ki" className="text-indigo-600 hover:text-indigo-700 underline">KI-Preise & Pakete →</a>
                       </span>
                     )}
                   </p>

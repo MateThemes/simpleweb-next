@@ -54,7 +54,7 @@ export function ServiceCardGrid({
               <h3 className="font-display text-xl font-semibold text-[var(--foreground)] mb-6">
                 {card.title}
               </h3>
-              <ul className="space-y-3 flex-1 text-[var(--muted-foreground)] text-base leading-relaxed">
+              <ul className="list-disc list-inside space-y-2 flex-1 text-[var(--muted-foreground)] text-base leading-relaxed">
                 {card.items.map((item, i) => (
                   <li key={i}>{item}</li>
                 ))}
