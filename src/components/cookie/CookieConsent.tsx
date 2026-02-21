@@ -66,29 +66,29 @@ export function CookieConsent() {
       {showBanner && (
         <div className="fixed inset-x-0 bottom-0 z-50 pb-2 sm:pb-5">
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-            <div className="rounded-lg bg-white p-2 shadow-lg sm:p-3 dark:bg-gray-800">
-              <div className="flex flex-wrap items-center justify-between">
-                <div className="flex w-0 flex-1 items-center">
-                  <p className="ml-3 truncate font-medium text-gray-900 dark:text-gray-100">
+            <div className="rounded-2xl bg-[var(--surface)] border border-[var(--border)] p-4 shadow-[var(--shadow-3)] sm:p-5">
+              <div className="flex flex-wrap items-center justify-between gap-4">
+                <div className="flex min-w-0 flex-1 items-center">
+                  <p className="ml-0 truncate font-medium text-[var(--foreground)] sm:ml-3">
                     <span className="inline">
                       Diese Website verwendet Cookies, um Ihre Erfahrung zu verbessern.{' '}
                       <Link
                         href="/datenschutz"
-                        className="font-bold text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300"
+                        className="font-semibold text-[var(--primary)] hover:opacity-90 transition-opacity"
                       >
                         Mehr erfahren
                       </Link>
                     </span>
                   </p>
                 </div>
-                <div className="mt-2 w-full flex-shrink-0 sm:mt-0 sm:w-auto">
-                  <div className="flex space-x-2">
+                <div className="w-full flex-shrink-0 sm:w-auto">
+                  <div className="flex flex-wrap gap-2">
                     <button
                       onClick={handleAcceptAll}
                       className={clsx(
-                        'flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium',
-                        'bg-blue-600 text-white hover:bg-blue-500',
-                        'focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2'
+                        'inline-flex items-center justify-center rounded-xl px-4 py-2.5 text-sm font-semibold',
+                        'bg-[var(--primary)] text-[var(--primary-foreground)] hover:opacity-95 transition-opacity',
+                        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--ring-offset)]'
                       )}
                     >
                       Alle akzeptieren
@@ -96,10 +96,9 @@ export function CookieConsent() {
                     <button
                       onClick={handleAcceptNecessary}
                       className={clsx(
-                        'flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium',
-                        'bg-gray-100 text-gray-900 hover:bg-gray-200',
-                        'dark:bg-gray-700 dark:text-gray-100 dark:hover:bg-gray-600',
-                        'focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2'
+                        'inline-flex items-center justify-center rounded-xl px-4 py-2.5 text-sm font-medium',
+                        'bg-[var(--surface-2)] text-[var(--foreground)] border border-[var(--border)] hover:bg-[var(--surface)]',
+                        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--ring-offset)]'
                       )}
                     >
                       Nur notwendige
@@ -107,10 +106,9 @@ export function CookieConsent() {
                     <button
                       onClick={handleShowPreferences}
                       className={clsx(
-                        'flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium',
-                        'bg-gray-100 text-gray-900 hover:bg-gray-200',
-                        'dark:bg-gray-700 dark:text-gray-100 dark:hover:bg-gray-600',
-                        'focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2'
+                        'inline-flex items-center justify-center rounded-xl px-4 py-2.5 text-sm font-medium',
+                        'bg-[var(--surface-2)] text-[var(--foreground)] border border-[var(--border)] hover:bg-[var(--surface)]',
+                        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--ring-offset)]'
                       )}
                     >
                       Einstellungen
