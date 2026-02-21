@@ -30,7 +30,7 @@ export function PriceCard({
   return (
     <div
       className={clsx(
-        'relative rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-8 shadow-sm flex flex-col',
+        'relative rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-8 shadow-sm flex flex-col h-full min-h-0',
         popular && 'border-2 border-blue-500 dark:border-blue-400'
       )}
     >
