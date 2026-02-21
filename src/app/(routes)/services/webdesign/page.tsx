@@ -279,8 +279,8 @@ export default function WebdesignPage() {
                 >
                   <div className="aspect-square relative">
                     <Image
-                      src="/img/services/services-webdesign.jpg"
-                      alt="Webdesign – strategische Website-Struktur für KMU (Responsive Showcase)"
+                      src="/img/services/website-services-hero.jpg"
+                      alt="Abstrakte digitale Illustration eines Laptops mit stilisierten Interface-Elementen und leuchtenden Linien über einer Karte von Österreich und Deutschland."
                       fill
                       priority
                       sizes="(max-width: 1024px) 100vw, 50vw"
