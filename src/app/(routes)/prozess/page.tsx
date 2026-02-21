@@ -2,129 +2,121 @@ import { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Container } from '@/components/ui/Container'
-import Button from '@/components/ui/Button'
-import { 
-  SearchIcon, 
-  PaletteIcon, 
-  CodeIcon, 
+import {
+  SearchIcon,
+  PaletteIcon,
+  CodeIcon,
   RocketLaunchIcon,
   CheckIcon,
-  ChatBubbleIcon,
-  ClockIcon,
-  ShieldCheckIcon,
-  ArrowRightIcon
+  ArrowRightIcon,
 } from '@/components/icons'
 import { processSchema, breadcrumbSchema, webPageSchema } from '@/app/schema'
 
 export const metadata: Metadata = {
   title: 'Webdesign Prozess für KMU | SimpleWebDesign Österreich & Deutschland',
-  description: 'Erfahren Sie, wie SimpleWebDesign KMU durch Analyse, Design, Entwicklung und Launch begleitet – mit klarer Struktur, moderner Technik & messbarem Erfolg.',
+  description:
+    'Erfahre, wie wir dein KMU-Projekt in klaren Phasen begleiten: Analyse, Struktur, Design, Umsetzung und Launch – mit messbarer Wirkung, ohne Agentur-Theater.',
   openGraph: {
     title: 'Webdesign Prozess für KMU | SimpleWebDesign Österreich & Deutschland',
-    description: 'Erfahren Sie, wie SimpleWebDesign KMU durch Analyse, Design, Entwicklung und Launch begleitet – mit klarer Struktur, moderner Technik & messbarem Erfolg.',
+    description:
+      'Erfahre, wie wir dein KMU-Projekt in klaren Phasen begleiten: Analyse, Struktur, Design, Umsetzung und Launch – mit messbarer Wirkung, ohne Agentur-Theater.',
     url: 'https://simplewebdesign.at/prozess',
     images: [
       {
         url: '/img/process/workflow.jpg',
         width: 1200,
         height: 630,
-        alt: 'SimpleWebDesign Webdesign-Prozess für KMU in Österreich & Deutschland'
-      }
-    ]
+        alt: 'SimpleWebDesign Webdesign-Prozess für KMU in Österreich & Deutschland',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Webdesign Prozess für KMU | SimpleWebDesign Österreich & Deutschland',
-    description: 'Erfahren Sie, wie SimpleWebDesign KMU durch Analyse, Design, Entwicklung und Launch begleitet – mit klarer Struktur, moderner Technik & messbarem Erfolg.',
-    images: ['/img/process/workflow.jpg']
+    description:
+      'Erfahre, wie wir dein KMU-Projekt in klaren Phasen begleiten: Analyse, Struktur, Design, Umsetzung und Launch – mit messbarer Wirkung, ohne Agentur-Theater.',
+    images: ['/img/process/workflow.jpg'],
   },
   alternates: {
-    canonical: 'https://simplewebdesign.at/prozess'
-  }
+    canonical: 'https://simplewebdesign.at/prozess',
+  },
 }
 
-// Process steps data
 const processSteps = [
   {
-    name: 'Analyse & Planung',
-    description: 'Wir analysieren Ihre Anforderungen, Ziele und Zielgruppen gründlich. Zusammen entwickeln wir eine maßgeschneiderte Strategie, die perfekt auf Ihr KMU zugeschnitten ist. Diese fundierte Analyse bildet die Basis für ein erfolgreiches Projekt.',
+    name: 'Einordnung',
+    description:
+      'Wir klären zuerst, was die Website leisten soll – und für wen. Ohne Einordnung entsteht nur Oberfläche.',
     image: '/img/process/analysis.jpg',
-    icon: SearchIcon
+    icon: SearchIcon,
   },
   {
-    name: 'Design & Konzeption',
-    description: 'Basierend auf der Analyse erstellen wir ein modernes, benutzerfreundliches Design-Konzept. Ihr Corporate Design wird dabei berücksichtigt, um eine einheitliche Markenpräsenz zu gewährleisten. Sie sehen erste Entwürfe und können frühzeitig Feedback geben.',
+    name: 'Struktur',
+    description:
+      'Aus der Einordnung entsteht eine klare Seitenlogik. Besucher verstehen sofort, wer hier richtig ist – und was der nächste Schritt ist.',
     image: '/img/process/design.jpg',
-    icon: PaletteIcon
+    icon: PaletteIcon,
   },
   {
-    name: 'Entwicklung',
-    description: 'Mit modernsten Technologien wie Next.js entwickeln wir Ihre Website leistungsstark und SEO-optimiert. Dabei setzen wir auf sauberen Code, schnelle Ladezeiten und mobile Optimierung – alles für die bestmögliche Nutzererfahrung.',
+    name: 'Design',
+    description:
+      'Design folgt der Struktur. Modern, ruhig und funktional – damit Orientierung entsteht, nicht nur Eindruck.',
+    image: '/img/process/design.jpg',
+    icon: PaletteIcon,
+  },
+  {
+    name: 'Umsetzung',
+    description:
+      'Technisch sauber umgesetzt mit Fokus auf Performance, Stabilität und Wartbarkeit.',
     image: '/img/process/development.jpg',
-    icon: CodeIcon
+    icon: CodeIcon,
   },
   {
-    name: 'Testing & Launch',
-    description: 'Umfangreiche Tests stellen sicher, dass alle Funktionen einwandfrei arbeiten und die Website auf allen Geräten perfekt dargestellt wird. Nach dem Launch bieten wir kontinuierlichen Support und stehen Ihnen bei Fragen zur Verfügung.',
+    name: 'Launch & Wirkung',
+    description:
+      'Nach dem Launch prüfen wir gemeinsam, ob die Website das tut, wofür sie gebaut wurde: Anfragen, Termine oder Verkäufe.',
     image: '/img/process/launch.jpg',
-    icon: RocketLaunchIcon
-  }
+    icon: RocketLaunchIcon,
+  },
 ]
 
-// Benefits data
-const benefits = [
-  {
-    title: 'Transparente Kommunikation',
-    description: 'Regelmäßige Updates und klare Absprachen in jeder Projektphase',
-    icon: ChatBubbleIcon
-  },
-  {
-    title: 'Effiziente Projektabwicklung',
-    description: 'Strukturierter Workflow ohne unnötige Verzögerungen',
-    icon: ClockIcon
-  },
-  {
-    title: 'Qualitätssicherung',
-    description: 'Regelmäßige Reviews und Tests für höchste Qualitätsstandards',
-    icon: ShieldCheckIcon
-  },
-  {
-    title: 'Termingerechte Fertigstellung',
-    description: 'Zuverlässige Einhaltung von Deadlines und Projektzeiten',
-    icon: CheckIcon
-  }
+const benefitsList = [
+  'Klare Entscheidungen statt Endlos-Schleifen',
+  'Strukturierter Ablauf ohne Chaos',
+  'Qualität vor Geschwindigkeit',
+  'Transparenz in jeder Phase',
 ]
 
 export default function ProcessPage() {
-  // Schema.org Structured Data
   const schemas = [
     processSchema({
       name: 'SimpleWebDesign Webdesign-Prozess',
-      description: 'Unser strukturierter Webdesign-Prozess von der Analyse bis zum Launch für KMU in Österreich & Deutschland.',
+      description:
+        'Unser strukturierter Webdesign-Prozess von der Einordnung bis zum Launch für KMU in Österreich & Deutschland.',
       image: '/img/process/workflow.jpg',
-      steps: processSteps.map(step => ({
+      steps: processSteps.map((step) => ({
         name: step.name,
         description: step.description,
-        image: step.image
-      }))
+        image: step.image,
+      })),
     }),
     breadcrumbSchema({
       items: [
         { name: 'Home', url: 'https://simplewebdesign.at' },
-        { name: 'Prozess', url: 'https://simplewebdesign.at/prozess' }
-      ]
+        { name: 'Prozess', url: 'https://simplewebdesign.at/prozess' },
+      ],
     }),
     webPageSchema({
       name: 'Webdesign Prozess für KMU',
-      description: 'Erfahren Sie, wie SimpleWebDesign KMU durch Analyse, Design, Entwicklung und Launch begleitet – mit klarer Struktur, moderner Technik & messbarem Erfolg.',
+      description:
+        'Erfahre, wie wir dein KMU-Projekt in klaren Phasen begleiten: Analyse, Struktur, Design, Umsetzung und Launch – mit messbarer Wirkung, ohne Agentur-Theater.',
       url: 'https://simplewebdesign.at/prozess',
-      image: 'https://simplewebdesign.at/img/process/workflow.jpg'
-    })
+      image: 'https://simplewebdesign.at/img/process/workflow.jpg',
+    }),
   ]
 
   return (
     <>
-      {/* Schema.org JSON-LD */}
       {schemas.map((schema, index) => (
         <script
           key={index}
@@ -134,72 +126,145 @@ export default function ProcessPage() {
       ))}
 
       <main className="flex-auto">
-        {/* Hero Section */}
-        <section className="py-16 lg:py-24 bg-gradient-to-b from-white to-gray-50 dark:from-slate-950 dark:to-slate-900">
-          <Container className="max-w-5xl mx-auto">
-            <div className="text-center">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-50 dark:bg-indigo-900/20 rounded-full border border-indigo-200 dark:border-indigo-800 mb-8">
-                <span className="text-indigo-600 dark:text-indigo-400 font-medium">🔄 Strukturierter Prozess</span>
+        {/* Hero — aligned with webdesign hero (typography rhythm, trust strip, CTA) */}
+        <section
+          className="relative bg-[var(--background)] pt-24 sm:pt-28 lg:pt-32 pb-20 lg:pb-28"
+          aria-labelledby="prozess-hero-heading"
+        >
+          <Container className="relative">
+            <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+              <div className="relative">
+                <div
+                  className="absolute -inset-x-8 top-1/2 -translate-y-1/2 h-[120%] w-[140%] max-w-none pointer-events-none opacity-[0.04] dark:opacity-[0.06] hidden lg:block"
+                  aria-hidden
+                  style={{
+                    background:
+                      'radial-gradient(ellipse 70% 60% at 30% 50%, var(--foreground), transparent 70%)',
+                  }}
+                />
+                <div className="relative space-y-6">
+                  <p className="text-sm font-medium uppercase tracking-wider text-[var(--muted-foreground)]">
+                    Webdesign Prozess für KMU
+                  </p>
+                  <h1
+                    id="prozess-hero-heading"
+                    className="font-display font-bold tracking-tight text-[var(--foreground)] leading-[1.08] text-4xl sm:text-5xl lg:text-6xl"
+                  >
+                    Struktur statt Zufall.
+                  </h1>
+                  <p className="text-base text-[var(--muted-foreground-strong)] leading-relaxed max-w-[650px]">
+                    Ein klarer Ablauf von Einordnung bis Wirkung – ohne
+                    Agentur-Theater.
+                  </p>
+                  <p className="text-base text-[var(--muted-foreground)] leading-relaxed max-w-[650px]">
+                    Wir begleiten dein Projekt in klaren Phasen: Analyse,
+                    Struktur, Design, Umsetzung und Launch. Nicht schneller.
+                    Sondern sinnvoller.
+                  </p>
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-4 mt-8">
+                    <Link
+                      href="/kontakt"
+                      className="inline-flex items-center justify-center gap-2 h-[52px] px-6 rounded-xl font-semibold text-base bg-[var(--primary)] text-[var(--primary-foreground)] hover:opacity-95 transition-opacity duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--ring-offset)]"
+                    >
+                      Kostenlose Einordnung
+                    </Link>
+                  </div>
+                  <div
+                    className="flex flex-wrap items-center gap-x-2 gap-y-1 mt-8 pt-2 text-[var(--muted-foreground)] text-sm tracking-wide"
+                    role="list"
+                    aria-label="Erfahrung und Reichweite"
+                  >
+                    <span
+                      className="uppercase tracking-wider font-medium"
+                      role="listitem"
+                    >
+                      50+ Projekte
+                    </span>
+                    <span
+                      className="mx-2 text-[var(--border)] dark:text-[var(--muted-foreground)]"
+                      aria-hidden
+                    >
+                      ·
+                    </span>
+                    <span
+                      className="uppercase tracking-wider font-medium"
+                      role="listitem"
+                    >
+                      AT & DE
+                    </span>
+                    <span
+                      className="mx-2 text-[var(--border)] dark:text-[var(--muted-foreground)]"
+                      aria-hidden
+                    >
+                      ·
+                    </span>
+                    <span
+                      className="uppercase tracking-wider font-medium"
+                      role="listitem"
+                    >
+                      Antwort in 1–2 Werktagen
+                    </span>
+                  </div>
+                </div>
               </div>
-              <h1 className="font-display text-5xl font-medium tracking-tight text-neutral-950 dark:text-white [text-wrap:balance] sm:text-7xl">
-                Unser strukturierter Webdesign-Prozess
-              </h1>
-              <p className="mt-6 text-xl text-neutral-600 dark:text-neutral-400 max-w-3xl mx-auto">
-                Von der Idee bis zum erfolgreichen Launch – so begleiten wir KMU in Österreich & Deutschland durch jeden Schritt des Webdesign-Prozesses. Mit klarer Struktur, moderner Technik und messbarem Erfolg.
-              </p>
-              <div className="mt-8">
-                <Button 
-                  href="/kontakt"
-                  variant="primary"
-                  className="text-lg px-8 py-4"
+              <div className="relative w-full lg:pt-8">
+                <div
+                  className="relative w-full overflow-hidden rounded-[24px] bg-[var(--surface-2)] border border-[var(--border)]"
+                  style={{
+                    boxShadow:
+                      '0 4px 6px -1px rgb(0 0 0 / 0.06), 0 2px 4px -2px rgb(0 0 0 / 0.04)',
+                  }}
                 >
-                  Kostenlose Erstberatung sichern
-                  <ArrowRightIcon className="w-5 h-5" />
-                </Button>
+                  <div className="aspect-square relative">
+                    <Image
+                      src="/img/process/workflow.jpg"
+                      alt=""
+                      aria-hidden
+                      fill
+                      priority
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      className="object-cover object-center brightness-[0.92] contrast-[1.02]"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           </Container>
         </section>
 
-        {/* Process Steps Section */}
-        <section className="py-16 lg:py-24">
+        {/* Process Steps — 5 steps, M3 surfaces */}
+        <section className="py-24 lg:py-28 bg-[var(--background)]">
           <Container className="max-w-5xl mx-auto">
             <div className="space-y-16 lg:space-y-24">
               {processSteps.map((step, index) => {
                 const IconComponent = step.icon
                 return (
                   <div key={step.name} className="relative">
-                    {/* Step 1 – Analyse & Planung */}
-                    {/* Step 2 – Design & Konzeption */}
-                    {/* Step 3 – Entwicklung */}
-                    {/* Step 4 – Testing & Launch */}
-                    <div className={`grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
-                      {/* Content */}
+                    <div
+                      className={`grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}
+                    >
                       <div className={index % 2 === 1 ? 'lg:order-2' : ''}>
                         <div className="flex items-center gap-4 mb-6">
-                          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400">
-                            <IconComponent className="w-6 h-6" />
+                          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[var(--surface)] border-2 border-[var(--border)] text-[var(--foreground)]">
+                            <IconComponent className="w-5 h-5 text-[var(--primary)]" />
                           </div>
-                          <div className="flex items-center gap-2">
-                            <span className="text-sm font-semibold text-indigo-600 dark:text-indigo-400">
-                              Schritt {index + 1}
-                            </span>
-                          </div>
+                          <span className="text-sm font-semibold uppercase tracking-wider text-[var(--muted-foreground)]">
+                            Schritt {index + 1}
+                          </span>
                         </div>
-                        <h2 className="text-3xl font-semibold tracking-tight text-neutral-950 dark:text-white mb-4">
+                        <h2 className="font-display text-2xl font-semibold tracking-tight text-[var(--foreground)] sm:text-3xl mb-4">
                           {step.name}
                         </h2>
-                        <p className="text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed">
+                        <p className="text-[var(--muted-foreground)] leading-relaxed">
                           {step.description}
                         </p>
                       </div>
-
-                      {/* Image */}
                       <div className={index % 2 === 1 ? 'lg:order-1' : ''}>
-                        <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-neutral-100 dark:bg-neutral-800">
+                        <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-[var(--surface-2)] border border-[var(--border)]">
                           <Image
                             src={step.image}
-                            alt={step.name}
+                            alt=""
+                            aria-hidden
                             fill
                             sizes="(min-width: 1024px) 50vw, 100vw"
                             className="object-cover"
@@ -215,88 +280,120 @@ export default function ProcessPage() {
           </Container>
         </section>
 
-        {/* Benefits Section */}
-        <section className="py-16 lg:py-24 bg-gray-50 dark:bg-slate-900">
+        {/* Was du erwarten kannst — M3 card style */}
+        <section className="py-24 lg:py-28 bg-[var(--surface-2)]">
           <Container className="max-w-5xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-semibold tracking-tight text-neutral-950 dark:text-white sm:text-4xl mb-4">
-                Ihre Vorteile
+            <div className="mx-auto max-w-2xl sm:text-center mb-12">
+              <h2 className="font-display text-3xl font-semibold tracking-tight text-[var(--foreground)] sm:text-4xl lg:text-5xl mb-4">
+                Was du erwarten kannst
               </h2>
-              <p className="text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
-                Unser strukturierter Prozess garantiert Ihnen höchste Qualität und Zuverlässigkeit in jeder Phase.
+              <p className="text-lg text-[var(--muted-foreground)] leading-relaxed">
+                Ein Prozess, der Klarheit schafft – ohne Endlos-Schleifen und
+                ohne Chaos.
               </p>
             </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {benefits.map((benefit) => {
-                const IconComponent = benefit.icon
-                return (
-                  <div
-                    key={benefit.title}
-                    className="flex gap-4 p-6 bg-white dark:bg-slate-800 rounded-xl border border-gray-200 dark:border-slate-700"
-                  >
-                    <div className="flex-shrink-0">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400">
-                        <IconComponent className="w-5 h-5" />
-                      </div>
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-semibold text-neutral-950 dark:text-white mb-2">
-                        {benefit.title}
-                      </h3>
-                      <p className="text-neutral-600 dark:text-neutral-400">
-                        {benefit.description}
-                      </p>
-                    </div>
-                  </div>
-                )
-              })}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+              {benefitsList.map((benefit, index) => (
+                <div
+                  key={index}
+                  className="flex gap-4 rounded-2xl bg-[var(--surface)] border border-[var(--border)] p-6 lg:p-8 transition-shadow duration-200 hover:shadow-md"
+                >
+                  <CheckIcon className="h-6 w-6 text-[var(--primary)] flex-shrink-0 mt-0.5" />
+                  <span className="text-base font-medium text-[var(--foreground)] leading-snug">
+                    {benefit}
+                  </span>
+                </div>
+              ))}
             </div>
           </Container>
         </section>
 
-        {/* Statistics Section */}
-        <section className="py-16 lg:py-24">
+        {/* Statistics — M3 surfaces */}
+        <section className="py-24 lg:py-28 bg-[var(--background)]">
           <Container className="max-w-5xl mx-auto">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-2xl mx-auto">
-              <div className="flex flex-col items-center p-6 bg-slate-50 dark:bg-slate-800 rounded-xl">
-                <div className="text-3xl font-bold text-green-600 dark:text-green-400">50+</div>
-                <div className="text-sm text-slate-600 dark:text-slate-400 mt-2">KMU-Projekte</div>
+              <div className="flex flex-col items-center p-6 rounded-2xl bg-[var(--surface)] border border-[var(--border)]">
+                <div className="text-3xl font-bold text-[var(--primary)]">
+                  50+
+                </div>
+                <div className="text-sm text-[var(--muted-foreground)] mt-2">
+                  KMU-Projekte
+                </div>
               </div>
-              <div className="flex flex-col items-center p-6 bg-slate-50 dark:bg-slate-800 rounded-xl">
-                <div className="text-3xl font-bold text-blue-600 dark:text-blue-400">5+</div>
-                <div className="text-sm text-slate-600 dark:text-slate-400 mt-2">Jahre Erfahrung</div>
+              <div className="flex flex-col items-center p-6 rounded-2xl bg-[var(--surface)] border border-[var(--border)]">
+                <div className="text-3xl font-bold text-[var(--primary)]">
+                  5+
+                </div>
+                <div className="text-sm text-[var(--muted-foreground)] mt-2">
+                  Jahre Erfahrung
+                </div>
               </div>
-              <div className="flex flex-col items-center p-6 bg-slate-50 dark:bg-slate-800 rounded-xl">
-                <div className="text-3xl font-bold text-purple-600 dark:text-purple-400">100%</div>
-                <div className="text-sm text-slate-600 dark:text-slate-400 mt-2">Zufriedenheit</div>
+              <div className="flex flex-col items-center p-6 rounded-2xl bg-[var(--surface)] border border-[var(--border)]">
+                <div className="text-3xl font-bold text-[var(--primary)]">
+                  100%
+                </div>
+                <div className="text-sm text-[var(--muted-foreground)] mt-2">
+                  Zufriedenheit
+                </div>
               </div>
             </div>
           </Container>
         </section>
 
-        {/* CTA Section */}
-        <section className="py-16 lg:py-24 bg-gradient-to-r from-indigo-600 to-purple-600">
-          <Container className="max-w-5xl mx-auto">
-            <div className="relative overflow-hidden rounded-3xl px-8 py-16 lg:px-16 lg:py-20">
-              <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.1%22%3E%3Ccircle%20cx%3D%2230%22%20cy%3D%2230%22%20r%3D%222%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20" />
-              <div className="relative text-center">
-                <h2 className="text-3xl font-bold text-white mb-4 sm:text-4xl">
-                  Bereit, Ihr Projekt zu starten?
+        {/* Final CTA — match webdesign CTA style */}
+        <section
+          className="relative w-full min-h-[420px] overflow-hidden"
+          aria-labelledby="prozess-cta-heading"
+        >
+          <div className="absolute inset-0">
+            <Image
+              src="/img/cta-home-bg.jpg"
+              fill
+              className="object-cover object-[55%_50%]"
+              alt=""
+              aria-hidden
+              quality={60}
+              sizes="100vw"
+            />
+          </div>
+          <div
+            className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/60"
+            aria-hidden
+          />
+          <div
+            className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-black/25 to-transparent pointer-events-none"
+            aria-hidden
+          />
+          <div
+            className="absolute inset-0 pointer-events-none opacity-80"
+            style={{
+              background:
+                'radial-gradient(ellipse 80% 70% at 50% 50%, transparent 30%, rgba(0,0,0,0.35) 100%)',
+            }}
+            aria-hidden
+          />
+          <div className="relative z-10 flex items-center justify-center py-24 lg:py-28 min-h-[420px]">
+            <Container>
+              <div className="max-w-[720px] mx-auto text-center">
+                <h2
+                  id="prozess-cta-heading"
+                  className="font-display text-4xl lg:text-5xl font-bold tracking-tight text-white mb-6"
+                >
+                  Lass uns dein Projekt einordnen.
                 </h2>
-                <p className="text-xl text-indigo-100 mb-8 max-w-2xl mx-auto">
-                  Lassen Sie uns gemeinsam Ihre Website zum Erfolg führen.
+                <p className="text-lg lg:text-xl text-white/80 mb-10 leading-relaxed">
+                  Ohne Verkaufsdruck. Ohne Verpflichtung.
                 </p>
                 <Link
                   href="/kontakt"
-                  className="group inline-flex items-center justify-center gap-3 px-8 py-4 bg-white text-gray-900 font-bold text-lg rounded-xl hover:bg-gray-50 transition-all duration-200 shadow-lg hover:shadow-xl"
+                  className="inline-flex items-center justify-center gap-2 h-14 px-10 rounded-2xl bg-white text-gray-900 font-semibold text-lg transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
                 >
-                  <span>Kostenlose Erstberatung buchen</span>
-                  <ArrowRightIcon className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  Kostenlose Einordnung anfragen
+                  <ArrowRightIcon className="w-5 h-5" />
                 </Link>
               </div>
-            </div>
-          </Container>
+            </Container>
+          </div>
         </section>
       </main>
     </>
