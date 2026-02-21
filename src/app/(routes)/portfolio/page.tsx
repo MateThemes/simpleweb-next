@@ -220,7 +220,7 @@ export default function PortfolioPage() {
                 >
                   <div className="aspect-square relative">
                     <Image
-                      src="/img/services/website-services-hero.jpg"
+                      src="/img/portfolio/portfolio-hero.jpg"
                       alt=""
                       fill
                       priority

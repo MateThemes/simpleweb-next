@@ -10,26 +10,36 @@ export function PaginationControls({
   totalPages,
 }: PaginationControlsProps) {
   return (
-    <div className="flex justify-center items-center space-x-2">
+    <nav
+      className="flex justify-center items-center gap-1"
+      aria-label="Blog-Seitennavigation"
+    >
       {currentPage > 1 && (
         <Link
           href={`/blog?page=${currentPage - 1}`}
-          className="px-4 py-2 text-sm font-medium text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white"
+          className="inline-flex items-center justify-center min-w-[2.75rem] h-10 px-3 rounded-lg text-sm font-medium text-[var(--foreground)] bg-[var(--surface)] border border-[var(--border)] hover:bg-[var(--surface-2)] transition-colors duration-[var(--duration-fast)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--ring-offset)]"
+          aria-label="Vorherige Seite"
         >
           Zurück
         </Link>
       )}
 
-      <div className="flex space-x-1">
+      <div
+        className="inline-flex items-center rounded-xl bg-[var(--surface-2)] border border-[var(--border)] p-1 gap-0.5"
+        role="group"
+        aria-label="Seitennummern"
+      >
         {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNum) => (
           <Link
             key={pageNum}
             href={`/blog?page=${pageNum}`}
-            className={`px-3 py-2 text-sm font-medium rounded-md ${
+            className={`inline-flex items-center justify-center min-w-[2.25rem] h-8 px-2 rounded-lg text-sm font-medium transition-colors duration-[var(--duration-fast)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--ring-offset)] ${
               pageNum === currentPage
-                ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900'
-                : 'text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white'
+                ? 'bg-[var(--surface)] text-[var(--foreground)] shadow-sm border border-[var(--border)]'
+                : 'text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-[var(--surface)]/60'
             }`}
+            aria-label={`Seite ${pageNum}`}
+            aria-current={pageNum === currentPage ? 'page' : undefined}
           >
             {pageNum}
           </Link>
@@ -39,11 +49,12 @@ export function PaginationControls({
       {currentPage < totalPages && (
         <Link
           href={`/blog?page=${currentPage + 1}`}
-          className="px-4 py-2 text-sm font-medium text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white"
+          className="inline-flex items-center justify-center min-w-[2.75rem] h-10 px-3 rounded-lg text-sm font-medium text-[var(--foreground)] bg-[var(--surface)] border border-[var(--border)] hover:bg-[var(--surface-2)] transition-colors duration-[var(--duration-fast)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--ring-offset)]"
+          aria-label="Nächste Seite"
         >
           Weiter
         </Link>
       )}
-    </div>
+    </nav>
   )
 }
