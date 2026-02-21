@@ -30,7 +30,7 @@ export function PriceCard({
   return (
     <div
       className={clsx(
-        'relative rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-8 shadow-sm flex flex-col',
+        'relative rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-8 shadow-sm flex flex-col h-full min-h-0',
         popular && 'border-2 border-blue-500 dark:border-blue-400'
       )}
     >
@@ -83,7 +83,7 @@ export function PriceCard({
       <a
         href={ctaLink}
         className={clsx(
-          'mt-8 block rounded-md px-3.5 py-2 text-center text-sm font-semibold leading-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2',
+          'mt-8 block rounded-md px-3.5 py-2 text-center text-sm font-semibold leading-6 focus-visible:outline-2 focus-visible:outline-offset-2',
           popular
             ? 'bg-blue-500 text-white hover:bg-blue-600 focus-visible:outline-blue-600'
             : 'bg-gray-900 text-white hover:bg-gray-800 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-100'

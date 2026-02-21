@@ -448,16 +448,17 @@ export default function WebdesignPage() {
                 Alle Preise sind Endpreise gemäß § 6 Abs. 1 Z 27 UStG.
               </p>
             </div>
-            <div className="mx-auto mt-16 grid grid-cols-1 gap-8 lg:grid-cols-3 lg:gap-6">
+            <div className="mx-auto mt-16 grid grid-cols-1 gap-8 lg:grid-cols-3 lg:gap-6 lg:items-stretch">
               {packages.map((pkg) => (
                 <div
                   key={pkg.name}
                   className={
-                    pkg.name === "Standard"
+                    "h-full flex flex-col " +
+                    (pkg.name === "Standard"
                       ? "rounded-2xl"
                       : pkg.name === "Premium"
                         ? "rounded-2xl ring-2 ring-[var(--primary)]/20 shadow-md"
-                        : "rounded-2xl ring-2 ring-[var(--primary)]/30 shadow-elev-3"
+                        : "rounded-2xl ring-2 ring-[var(--primary)]/30 shadow-elev-3")
                   }
                 >
                   <PriceCard
@@ -583,7 +584,7 @@ export default function WebdesignPage() {
                   </h2>
                   <p className="mt-4 text-lg text-[var(--muted-foreground)] leading-relaxed">
                     Eine Website, die zu deinem Ziel passt: Klarheit für
-                    Besucher, Struktur die führt, Wirkung die du messen kannst –
+                    Besucher, Struktur, die führt, Wirkung die du messen kannst –
                     kein generisches Agency-Template.
                   </p>
                 </div>
