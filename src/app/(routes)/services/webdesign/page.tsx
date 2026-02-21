@@ -441,7 +441,8 @@ export default function WebdesignPage() {
                 Unsere Webdesign-Pakete
               </h2>
               <p className="mt-4 text-lg text-[var(--muted-foreground)]">
-                Wähle das passende Paket für deinen Bedarf – transparent und ohne versteckte Kosten.
+                Wähle das passende Paket für deinen Bedarf – transparent und
+                ohne versteckte Kosten.
               </p>
               <p className="mt-2 text-sm text-[var(--muted-foreground)]">
                 Alle Preise sind Endpreise gemäß § 6 Abs. 1 Z 27 UStG.
@@ -600,8 +601,8 @@ export default function WebdesignPage() {
               <div className="mt-16 lg:mt-0 lg:flex-1">
                 <div className="relative aspect-square rounded-2xl overflow-hidden border border-[var(--border)] shadow-elev-2 bg-[var(--surface)]">
                   <Image
-                    src="/img/services/performance.jpg"
-                    alt="Performance und Monitoring – Webdesign mit Fokus auf Ladezeit und Nutzererlebnis"
+                    src="/img/services/website-services-performance.jpg"
+                    alt="Abstrakte digitale Grafik mit leuchtenden Farbverläufen und aufsteigender Linie auf stilisierten Interface-Elementen."
                     fill
                     className="object-cover"
                   />
