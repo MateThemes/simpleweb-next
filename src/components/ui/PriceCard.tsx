@@ -83,7 +83,7 @@ export function PriceCard({
       <a
         href={ctaLink}
         className={clsx(
-          'mt-8 block rounded-md px-3.5 py-2 text-center text-sm font-semibold leading-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2',
+          'mt-8 block rounded-md px-3.5 py-2 text-center text-sm font-semibold leading-6 focus-visible:outline-2 focus-visible:outline-offset-2',
           popular
             ? 'bg-blue-500 text-white hover:bg-blue-600 focus-visible:outline-blue-600'
             : 'bg-gray-900 text-white hover:bg-gray-800 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-100'
