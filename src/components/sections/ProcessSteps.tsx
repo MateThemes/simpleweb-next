@@ -4,7 +4,7 @@ const steps = [
   { title: 'Einordnung', text: 'Was soll die Website leisten – und was nicht?' },
   { title: 'Struktur', text: 'Klare Seitenlogik, die Besucher führt.' },
   { title: 'Umsetzung', text: 'Design und Technik folgen der Struktur.' },
-  { title: 'Wirkung', text: 'Prüfen, ob die Website das tut, wofür sie gebaut wurde.' },
+  { title: 'Wirkung', text: 'Wir prüfen gemeinsam, ob die Website wirklich wirkt.' },
 ]
 
 export default function ProcessSteps() {

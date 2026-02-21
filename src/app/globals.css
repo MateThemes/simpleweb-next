@@ -97,6 +97,22 @@
   }
 }
 
+/* Hero: subtle floating motion (disabled when reduced motion preferred) */
+@keyframes hero-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hero-visual-motion {
+    animation: hero-float 8s ease-in-out infinite;
+  }
+}
+
 @theme {
   /* Map tokens to Tailwind */
   --color-background: var(--background);

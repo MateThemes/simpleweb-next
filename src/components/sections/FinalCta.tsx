@@ -51,7 +51,7 @@ export default function FinalCta() {
               id="final-cta-heading"
               className="font-display text-4xl lg:text-5xl font-bold tracking-tight text-white mb-8"
             >
-              Bereit für Klarheit?
+              Lass uns dein Projekt einordnen.
             </h2>
             <p className="text-lg lg:text-xl text-white/80 mb-10 leading-relaxed">
               Ein Gespräch – unverbindlich, ohne Verkaufsdruck.

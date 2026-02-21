@@ -74,7 +74,7 @@ export default function FitChecklist() {
           </div>
 
           <p className="mt-12 pt-10 border-t border-[var(--border)] text-[var(--muted-foreground-strong)] text-lg">
-            Wenn du dich in der ersten Spalte wiederfindest, lohnt sich ein Gespräch – ohne Verkaufsdruck.
+            Wenn du dich hier wiederfindest, lohnt sich ein Gespräch – ohne Verkaufsdruck.
           </p>
           <Link
             href="/kontakt"

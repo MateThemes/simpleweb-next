@@ -32,7 +32,7 @@ export default function ProblemSignalsGrid() {
             id="problem-heading"
             className="font-display text-3xl lg:text-4xl font-bold tracking-tight text-[var(--foreground)] max-w-[650px] mb-14 lg:mb-16"
           >
-            Die meisten Websites sind nicht falsch. Sie sind nur unklar.
+            Die meisten Websites scheitern nicht am Design – sondern an fehlender Klarheit.
           </h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">

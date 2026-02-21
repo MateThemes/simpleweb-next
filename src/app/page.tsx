@@ -9,7 +9,6 @@ import Testimonials from '@/components/sections/Testimonials'
 import FinalCta from '@/components/sections/FinalCta'
 import FaqSection from '@/components/sections/FaqSection'
 import { getWebPageDC } from '@/lib/dublinCore'
-import { SITE_NAME } from '@/lib/site'
 
 const HOMEPAGE_FAQ_SCHEMA: Array<{ question: string; answer: string }> = [
   { question: 'Warum bringt meine Website keine Anfragen?', answer: 'Meist fehlt Klarheit: Besucher verstehen nicht sofort, wer hier richtig ist und warum. Eine Website muss Orientierung geben, nicht nur informieren.' },
@@ -20,11 +19,13 @@ const HOMEPAGE_FAQ_SCHEMA: Array<{ question: string; answer: string }> = [
   { question: 'Kann ich meine bestehende Website optimieren lassen?', answer: 'Ja. Oft bringt eine klare Struktur-Überarbeitung mehr als ein kompletter Relaunch. Wir schauen uns deine Website an und sagen ehrlich, was Sinn macht.' },
 ]
 
-const PAGE_TITLE = 'Webdesign für KMU in Österreich & Deutschland – Strategische Websites'
+const PAGE_TITLE = 'Webdesign für KMU in Österreich & Deutschland | Entscheidungsarchitektur'
+const PAGE_DESCRIPTION =
+  'Webdesign für KMU in Österreich & Deutschland. Strategische Websites mit klarer Struktur, Entscheidungsarchitektur und messbarer Wirkung. Kostenlose Analyse & unverbindliches Gespräch.'
 
 export const metadata: Metadata = {
-  title: `${PAGE_TITLE} | ${SITE_NAME}`,
-  description: 'Webdesign für KMU in Österreich & Deutschland: Wir entwickeln strategische Websites mit klarer Struktur und messbarer Wirkung. Kostenlose Analyse & unverbindliches Gespräch.',
+  title: PAGE_TITLE,
+  description: PAGE_DESCRIPTION,
   alternates: {
     canonical: 'https://simplewebdesign.at/',
   },
@@ -33,7 +34,7 @@ export const metadata: Metadata = {
     follow: true,
   },
   openGraph: {
-    description: 'Webdesign für KMU in Österreich & Deutschland: Wir entwickeln strategische Websites mit klarer Struktur und messbarer Wirkung. Kostenlose Analyse & unverbindliches Gespräch.',
+    description: PAGE_DESCRIPTION,
     url: 'https://simplewebdesign.at/',
     type: 'website',
     locale: 'de_AT',
@@ -49,13 +50,13 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    description: 'Webdesign für KMU in Österreich & Deutschland: Wir entwickeln strategische Websites mit klarer Struktur und messbarer Wirkung. Kostenlose Analyse & unverbindliches Gespräch.',
+    description: PAGE_DESCRIPTION,
     images: ['/img/og-image.jpg'],
   },
   other: {
     ...getWebPageDC({
       title: PAGE_TITLE,
-      description: 'Webdesign für KMU in Österreich & Deutschland: Wir entwickeln strategische Websites mit klarer Struktur und messbarer Wirkung. Kostenlose Analyse & unverbindliches Gespräch.',
+      description: PAGE_DESCRIPTION,
       url: 'https://simplewebdesign.at',
     }),
   },

@@ -31,10 +31,10 @@ export default function Outcomes() {
                 id="thinking-heading"
                 className="font-display text-3xl lg:text-4xl font-bold tracking-tight text-[var(--foreground)] mb-6"
               >
-                Wir bauen Entscheidungsarchitektur.
+                Wir entwickeln Entscheidungsarchitektur.
               </h2>
               <p className="text-[var(--muted-foreground)] text-lg leading-relaxed max-w-[650px] mb-2">
-                Klarheit, Struktur und messbare Wirkung – keine Dekoration, sondern System.
+                Websites als System – klar strukturiert und messbar wirksam.
               </p>
               <ul className="mt-6 space-y-2 text-[var(--muted-foreground)]" aria-hidden>
                 <li className="flex items-center gap-2">
