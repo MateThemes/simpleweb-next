@@ -200,15 +200,15 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
           <BlogContent
             content={post.content}
             className={`
-              prose prose-neutral dark:prose-invert max-w-3xl mx-auto
+              blog-content prose prose-neutral dark:prose-invert max-w-3xl mx-auto
               prose-headings:font-display prose-headings:tracking-tight prose-headings:text-[var(--foreground)]
-              prose-h2:text-3xl prose-h2:sm:text-4xl prose-h2:font-semibold prose-h2:mt-14 prose-h2:mb-4 prose-h2:leading-tight
-              prose-h3:text-xl prose-h3:sm:text-2xl prose-h3:font-semibold prose-h3:mt-10 prose-h3:mb-3
-              prose-p:leading-relaxed prose-p:my-5
-              prose-ul:my-6 prose-ul:pl-6 prose-li:my-1.5 prose-li:leading-relaxed
-              prose-ol:my-6 prose-ol:pl-6
+              prose-h2:text-3xl prose-h2:sm:text-4xl prose-h2:font-semibold prose-h2:mt-16 prose-h2:mb-5 prose-h2:leading-tight
+              prose-h3:text-xl prose-h3:sm:text-2xl prose-h3:font-semibold prose-h3:mt-12 prose-h3:mb-4
+              prose-p:leading-[1.75] prose-p:mt-6 prose-p:mb-6
+              prose-ul:my-7 prose-ul:pl-6 prose-ul:space-y-2 prose-li:leading-[1.75]
+              prose-ol:my-7 prose-ol:pl-6 prose-ol:space-y-2
               prose-blockquote:bg-[var(--muted)]/40 prose-blockquote:rounded-xl prose-blockquote:py-6 prose-blockquote:px-6 prose-blockquote:border prose-blockquote:border-[var(--border)]/40 prose-blockquote:not-italic prose-blockquote:my-8 prose-blockquote:font-normal prose-blockquote:text-[var(--foreground)]
-              prose-a:text-[var(--primary)] prose-a:no-underline hover:prose-a:underline
+              prose-a:text-[var(--primary)] prose-a:underline prose-a:decoration-[var(--primary)]/50 prose-a:underline-offset-2 hover:prose-a:decoration-[var(--primary)]
             `}
           />
         </Container>
