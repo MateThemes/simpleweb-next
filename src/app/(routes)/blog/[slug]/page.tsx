@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
+import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { Container } from '@/components/ui/Container'
 import { BlogContent } from '@/components/blog/BlogContent'
@@ -91,7 +92,8 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
   }
 
   const blogUrl = `https://simplewebdesign.at/blog/${slug}`;
-  
+  const categorySlug = post.category.toLowerCase();
+
   // Schema.org Structured Data
   const schemas = [
     // Article Schema
@@ -116,7 +118,7 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
   ];
 
   return (
-    <main>
+    <main className="flex-auto">
       {/* Schema.org JSON-LD */}
       {schemas.map((schema, index) => (
         <script
@@ -126,45 +128,125 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
         />
       ))}
 
-      <Container className="mt-16 lg:mt-32 pb-16 sm:pb-24 lg:pb-32">
-        <div className="xl:relative">
-          <div className="mx-auto max-w-2xl">
+      {/* Hero — single title, eyebrow, lead, image */}
+      <section
+        className="relative bg-[var(--background)] pt-24 sm:pt-28 lg:pt-32 pb-16 sm:pb-20 lg:pb-24"
+        aria-labelledby="article-heading"
+      >
+        <Container className="relative">
+          <div className="mx-auto max-w-3xl">
+            {/* Back to blog */}
+            <Link
+              href="/blog"
+              className="inline-flex items-center gap-1.5 text-sm text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors mb-8"
+            >
+              <span aria-hidden>←</span>
+              Zurück zum Blog
+            </Link>
+
             <article>
               <header className="flex flex-col">
-                <h1 className="font-display mt-6 text-4xl font-bold tracking-tight text-neutral-950 dark:text-white sm:text-5xl">
+                {/* Eyebrow: category chip + date */}
+                <div className="flex flex-wrap items-center gap-3 mb-4">
+                  <Link
+                    href={`/blog/kategorie/${categorySlug}`}
+                    className="inline-flex items-center rounded-full bg-[var(--muted)]/60 border border-[var(--border)]/60 px-3.5 py-1.5 text-sm font-medium text-[var(--foreground)] hover:bg-[var(--muted)]/80 transition-colors"
+                  >
+                    {post.category}
+                  </Link>
+                  <time
+                    dateTime={post.date}
+                    className="text-sm text-[var(--muted-foreground)]"
+                  >
+                    {formatDate(post.date)}
+                  </time>
+                </div>
+
+                <h1
+                  id="article-heading"
+                  className="font-display text-4xl font-bold tracking-tight text-[var(--foreground)] leading-[1.12] sm:text-5xl"
+                >
                   {post.title}
                 </h1>
-                <time
-                  dateTime={post.date}
-                  className="order-first flex items-center text-base text-neutral-600 dark:text-neutral-400"
-                >
-                  {formatDate(post.date)}
-                </time>
-                <p className="mt-8 font-display text-xl text-neutral-600 dark:text-neutral-400">
+
+                <p className="mt-6 text-lg sm:text-xl text-[var(--muted-foreground)] leading-relaxed">
                   {post.description}
                 </p>
               </header>
-              
+
               {post.image ? (
-                <div className="mt-8 relative aspect-[16/9] w-full overflow-hidden rounded-2xl bg-neutral-100 dark:bg-neutral-800">
+                <div className="mt-10 relative aspect-[16/9] w-full overflow-hidden rounded-2xl bg-[var(--surface-2)] border border-[var(--border)]/60 shadow-[var(--shadow-3)]">
                   <Image
                     src={post.image}
                     alt={post.title}
                     fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 80vw"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 48rem"
                     className="object-cover"
                     priority
                   />
                 </div>
               ) : null}
-
-              <div className="mt-8 prose prose-neutral dark:prose-invert max-w-none">
-                <BlogContent content={post.content} />
-              </div>
             </article>
           </div>
-        </div>
-      </Container>
+        </Container>
+      </section>
+
+      {/* Divider */}
+      <div className="border-t border-[var(--border)]" aria-hidden />
+
+      {/* Article body — prose, max-w-3xl, enhanced typography */}
+      <section className="py-12 sm:py-16 lg:py-20 bg-[var(--background)]">
+        <Container>
+          <BlogContent
+            content={post.content}
+            className={`
+              prose prose-neutral dark:prose-invert max-w-3xl mx-auto
+              prose-headings:font-display prose-headings:tracking-tight prose-headings:text-[var(--foreground)]
+              prose-h2:text-3xl prose-h2:sm:text-4xl prose-h2:font-semibold prose-h2:mt-14 prose-h2:mb-4 prose-h2:leading-tight
+              prose-h3:text-xl prose-h3:sm:text-2xl prose-h3:font-semibold prose-h3:mt-10 prose-h3:mb-3
+              prose-p:leading-relaxed prose-p:my-5
+              prose-ul:my-6 prose-ul:pl-6 prose-li:my-1.5 prose-li:leading-relaxed
+              prose-ol:my-6 prose-ol:pl-6
+              prose-blockquote:bg-[var(--muted)]/40 prose-blockquote:rounded-xl prose-blockquote:py-6 prose-blockquote:px-6 prose-blockquote:border prose-blockquote:border-[var(--border)]/40 prose-blockquote:not-italic prose-blockquote:my-8 prose-blockquote:font-normal prose-blockquote:text-[var(--foreground)]
+              prose-a:text-[var(--primary)] prose-a:no-underline hover:prose-a:underline
+            `}
+          />
+        </Container>
+      </section>
+
+      {/* CTA — M3 surface panel, du-tone */}
+      <section
+        className="py-16 sm:py-20 lg:py-24 bg-[var(--background)]"
+        aria-labelledby="blog-cta-heading"
+      >
+        <Container>
+          <div className="mx-auto max-w-4xl rounded-3xl bg-[var(--surface)]/60 border border-[var(--border)]/60 p-8 sm:p-10 shadow-[var(--shadow-2)]">
+            <h2
+              id="blog-cta-heading"
+              className="font-display text-2xl sm:text-3xl font-semibold tracking-tight text-[var(--foreground)]"
+            >
+              Lass uns deine Website einordnen.
+            </h2>
+            <p className="mt-4 text-[var(--muted-foreground)] leading-relaxed max-w-2xl">
+              Wenn deine Website gut aussieht, aber zu wenig Anfragen bringt, liegt es oft an der Struktur. In einer kurzen Einordnung zeigen wir dir die nächsten sinnvollen Schritte.
+            </p>
+            <div className="mt-8 flex flex-col sm:flex-row gap-4">
+              <Link
+                href="/kontakt"
+                className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-xl font-semibold text-base bg-[var(--primary)] text-[var(--primary-foreground)] hover:opacity-95 transition-opacity duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--ring-offset)]"
+              >
+                Kostenlose Einordnung
+              </Link>
+              <Link
+                href="/services/webdesign"
+                className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-xl font-medium text-base bg-transparent text-[var(--foreground)] border-2 border-[var(--border)] hover:border-[var(--muted-foreground)] hover:bg-[var(--surface-2)] transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--ring-offset)]"
+              >
+                Webdesign ansehen
+              </Link>
+            </div>
+          </div>
+        </Container>
+      </section>
     </main>
   )
 }
