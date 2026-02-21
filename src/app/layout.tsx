@@ -9,6 +9,7 @@ import { Analytics } from '@vercel/analytics/react';
 import type { Metadata } from "next";
 import { getCanonicalMetadata } from "@/lib/canonical";
 import { getDublinCoreMetadata, DublinCoreTypes } from "@/lib/dublinCore";
+import { SITE_NAME } from "@/lib/site";
 import "./globals.css";
 
 const inter = Inter({
@@ -28,8 +29,8 @@ export const metadata: Metadata = {
   // Uses NEXT_PUBLIC_SITE_URL in production, with a sensible localhost fallback for development.
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://simplewebdesign.at'),
   title: {
-    default: 'SimpleWebDesign | Webdesign für KMU',
-    template: '%s | SimpleWebDesign',
+    default: `${SITE_NAME} | Webdesign für KMU`,
+    template: `%s | ${SITE_NAME}`,
   },
   description: 'Professionelles Webdesign für KMU in Österreich & Deutschland.',
   robots: {
@@ -37,7 +38,7 @@ export const metadata: Metadata = {
     follow: true,
   },
   openGraph: {
-    siteName: 'SimpleWebDesign',
+    siteName: SITE_NAME,
     type: 'website',
     locale: 'de_AT',
     alternateLocale: ['de_DE'],
@@ -66,7 +67,7 @@ export const metadata: Metadata = {
   // Dublin Core Metadata
   other: {
     ...getDublinCoreMetadata({
-      title: "SimpleWebDesign | Webdesign für KMU",
+      title: `${SITE_NAME} | Webdesign für KMU`,
       description: "Professionelles Webdesign für KMU in Österreich & Deutschland.",
       type: DublinCoreTypes.SERVICE,
       identifier: "https://simplewebdesign.at",
@@ -114,8 +115,11 @@ export default function RootLayout({
       </head>
       <body className="flex min-h-screen flex-col">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <a href="#main-content" className="skip-link">
+            Zum Inhalt springen
+          </a>
           <Header />
-          <main className="flex-1">
+          <main id="main-content" className="flex-1" tabIndex={-1}>
             {children}
           </main>
           <Footer />

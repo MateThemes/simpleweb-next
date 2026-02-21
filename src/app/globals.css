@@ -5,16 +5,135 @@
 /* Enable class-based dark mode for next-themes */
 @variant dark (.dark &);
 
+/* ==========================================================================
+   M3-inspired design tokens (brand-led, not generic Material)
+   ========================================================================== */
+
+:root {
+  /* Surfaces & background */
+  --background: #fafaf9;
+  --surface: #ffffff;
+  --surface-2: #f5f5f4;
+  --surface-elevated: #ffffff;
+
+  /* Foreground & text */
+  --foreground: #1c1917;
+  --muted: #f5f5f4;
+  --muted-foreground: #57534e;
+  --muted-foreground-strong: #44403c;
+
+  /* Brand & UI */
+  --primary: #1e3a5f;
+  --primary-foreground: #ffffff;
+  --primary-hover: #16304d;
+  --secondary: #e7e5e4;
+  --secondary-foreground: #1c1917;
+  --border: #e7e5e4;
+  --ring: #1e3a5f;
+  --ring-offset: #fafaf9;
+
+  /* Semantic */
+  --danger: #b91c1c;
+  --success: #166534;
+
+  /* Radius scale (generous but not bubbly) */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.25rem;
+  --radius-3xl: 1.5rem;
+
+  /* Elevations (subtle, layered) */
+  --shadow-1: 0 1px 2px 0 rgb(0 0 0 / 0.04);
+  --shadow-2: 0 1px 3px 0 rgb(0 0 0 / 0.06), 0 1px 2px -1px rgb(0 0 0 / 0.04);
+  --shadow-3: 0 4px 6px -1px rgb(0 0 0 / 0.06), 0 2px 4px -2px rgb(0 0 0 / 0.04);
+  --shadow-4: 0 10px 15px -3px rgb(0 0 0 / 0.06), 0 4px 6px -4px rgb(0 0 0 / 0.04);
+  --shadow-5: 0 20px 25px -5px rgb(0 0 0 / 0.06), 0 8px 10px -6px rgb(0 0 0 / 0.04);
+
+  /* Motion */
+  --duration-fast: 150ms;
+  --duration-normal: 200ms;
+  --duration-slow: 250ms;
+  --ease-out: cubic-bezier(0.33, 1, 0.68, 1);
+
+  /* Set by Header.tsx at runtime (Desktop vs. Tablet); Fallback für SSRs/ersten Frame */
+  --header-height: 72px;
+}
+
+.dark {
+  --background: #0c0a09;
+  --surface: #1c1917;
+  --surface-2: #292524;
+  --surface-elevated: #292524;
+
+  --foreground: #fafaf9;
+  --muted: #292524;
+  --muted-foreground: #a8a29e;
+  --muted-foreground-strong: #d6d3d1;
+
+  --primary: #7dd3fc;
+  --primary-foreground: #0c0a09;
+  --primary-hover: #bae6fd;
+  --secondary: #292524;
+  --secondary-foreground: #fafaf9;
+  --border: #292524;
+  --ring: #7dd3fc;
+  --ring-offset: #0c0a09;
+
+  --shadow-1: 0 1px 2px 0 rgb(0 0 0 / 0.2);
+  --shadow-2: 0 1px 3px 0 rgb(0 0 0 / 0.25), 0 1px 2px -1px rgb(0 0 0 / 0.2);
+  --shadow-3: 0 4px 6px -1px rgb(0 0 0 / 0.25), 0 2px 4px -2px rgb(0 0 0 / 0.2);
+  --shadow-4: 0 10px 15px -3px rgb(0 0 0 / 0.25), 0 4px 6px -4px rgb(0 0 0 / 0.2);
+  --shadow-5: 0 20px 25px -5px rgb(0 0 0 / 0.25), 0 8px 10px -6px rgb(0 0 0 / 0.2);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0ms;
+    --duration-normal: 0ms;
+    --duration-slow: 0ms;
+  }
+}
+
+/* Hero: subtle floating motion (disabled when reduced motion preferred) */
+@keyframes hero-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hero-visual-motion {
+    animation: hero-float 8s ease-in-out infinite;
+  }
+}
+
 @theme {
-  /* Custom Colors */
-  --color-background: #ffffff;
-  --color-foreground: #171717;
-  
-  /* Font Families */
-  --font-family-sans: var(--font-inter), system-ui, sans-serif;
-  --font-family-display: var(--font-outfit), system-ui, sans-serif;
-  
-  /* Custom Font Sizes */
+  /* Map tokens to Tailwind */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --color-danger: var(--danger);
+  --color-success: var(--success);
+
+  --font-family-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-family-display: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+
   --font-size-2xs: 0.75rem;
   --font-size-2xs--line-height: 1.25rem;
   --font-size-xs: 0.8125rem;
@@ -36,58 +155,148 @@
   --font-size-5xl: 3rem;
   --font-size-5xl--line-height: 3.5rem;
   --font-size-6xl: 3.75rem;
-  --font-size-6xl--line-height: 4.5rem;
+  --font-size-6xl--line-height: 4.25rem;
   --font-size-7xl: 4.5rem;
-  --font-size-7xl--line-height: 5.25rem;
-  
-  /* Custom Spacing */
-  --spacing-section-sm: 3rem;
-  --spacing-section-md: 4rem;
-  --spacing-section-lg: 5rem;
-  --spacing-section-xl: 6rem;
-  --spacing-section-2xl: 8rem;
-  
-  /* Letter Spacing */
+  --font-size-7xl--line-height: 5rem;
+  --font-size-8xl: 5.5rem;
+  --font-size-8xl--line-height: 1.1;
+  --font-size-9xl: 6.5rem;
+  --font-size-9xl--line-height: 1.05;
+
+  --spacing-section-sm: 4rem;
+  --spacing-section-md: 5rem;
+  --spacing-section-lg: 6rem;
+  --spacing-section-xl: 8rem;
+  --spacing-section-2xl: 10rem;
+  --spacing-section-3xl: 12rem;
+
   --letter-spacing-tight: -0.02em;
   --letter-spacing-tighter: -0.04em;
+
+  /* Radius (literal values for Tailwind utilities) */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.25rem;
+  --radius-3xl: 1.5rem;
 }
 
 html {
   scroll-behavior: smooth;
 }
 
-body {
-  @apply bg-white text-gray-900 dark:bg-slate-950 dark:text-gray-100;
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
-/* Custom utilities for font families */
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-feature-settings: "rlig" 1, "calt" 1;
+}
+
+/* Focus ring (WCAG-friendly, visible) */
+:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+/* Skip link for a11y */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0.5rem;
+  z-index: 100;
+  padding: 0.75rem 1rem;
+  background: var(--primary);
+  color: var(--primary-foreground);
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  transition: top var(--duration-normal) var(--ease-out);
+}
+.skip-link:focus {
+  top: 0.5rem;
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
 @utility font-display {
   font-family: var(--font-family-display);
 }
 
-/* Blog content styling */
+/* Elevation utilities */
+@utility shadow-elev-1 {
+  box-shadow: var(--shadow-1);
+}
+@utility shadow-elev-2 {
+  box-shadow: var(--shadow-2);
+}
+@utility shadow-elev-3 {
+  box-shadow: var(--shadow-3);
+}
+@utility shadow-elev-4 {
+  box-shadow: var(--shadow-4);
+}
+@utility shadow-elev-5 {
+  box-shadow: var(--shadow-5);
+}
+
+/* Autofill: keep theme surfaces so browser default yellow doesn't break design */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 100vmax var(--surface-2) inset;
+  box-shadow: 0 0 0 100vmax var(--surface-2) inset;
+  -webkit-text-fill-color: var(--foreground);
+}
+
+/* Native select: Browser-Pfeil sitzt am Rand und ignoriert Padding → eigenes Chevron mit Abstand */
+.select-arrow-spaced {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2357534e' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-position: right 1rem center;
+  background-repeat: no-repeat;
+  background-size: 1.25rem;
+}
+.dark .select-arrow-spaced {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23a8a29e' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+}
+
+/* Blog content styling (unchanged structure) */
 .blog-content h1 {
-  @apply mt-8 font-display text-3xl font-bold tracking-tight text-neutral-950 dark:text-white;
+  @apply mt-8 font-display text-3xl font-bold tracking-tight text-[var(--foreground)];
 }
 
 .blog-content h2 {
-  @apply mt-8 font-display text-2xl font-semibold tracking-tight text-neutral-950 dark:text-white;
+  @apply mt-8 font-display text-2xl font-semibold tracking-tight text-[var(--foreground)];
 }
 
 .blog-content h3 {
-  @apply mt-6 font-display text-xl font-semibold tracking-tight text-neutral-950 dark:text-white;
+  @apply mt-6 font-display text-xl font-semibold tracking-tight text-[var(--foreground)];
 }
 
 .blog-content p {
-  @apply mt-6 text-base leading-7 text-neutral-600 dark:text-neutral-400;
+  @apply mt-6 text-base leading-7 text-[var(--muted-foreground)];
 }
 
 .blog-content ul {
-  @apply mt-6 list-disc list-inside text-neutral-600 dark:text-neutral-400;
+  @apply mt-6 list-disc list-inside text-[var(--muted-foreground)];
 }
 
 .blog-content ol {
-  @apply mt-6 list-decimal list-inside text-neutral-600 dark:text-neutral-400;
+  @apply mt-6 list-decimal list-inside text-[var(--muted-foreground)];
 }
 
 .blog-content li {
@@ -95,19 +304,19 @@ body {
 }
 
 .blog-content a {
-  @apply text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300;
+  @apply text-[var(--primary)] hover:underline;
 }
 
 .blog-content blockquote {
-  @apply mt-6 border-l-4 border-neutral-200 pl-4 italic text-neutral-600 dark:border-neutral-700 dark:text-neutral-400;
+  @apply mt-6 border-l-4 border-[var(--border)] pl-4 italic text-[var(--muted-foreground)];
 }
 
 .blog-content pre {
-  @apply mt-6 overflow-x-auto rounded-lg bg-neutral-900 p-4 text-sm text-white;
+  @apply mt-6 overflow-x-auto rounded-lg bg-[var(--surface-2)] p-4 text-sm text-[var(--foreground)];
 }
 
 .blog-content code {
-  @apply rounded bg-neutral-100 px-1 py-0.5 text-neutral-800 dark:bg-neutral-800 dark:text-neutral-200;
+  @apply rounded bg-[var(--surface-2)] px-1 py-0.5 text-[var(--foreground)];
 }
 
 .blog-content img {
@@ -115,7 +324,7 @@ body {
 }
 
 .blog-content strong {
-  @apply font-semibold text-neutral-950 dark:text-white;
+  @apply font-semibold text-[var(--foreground)];
 }
 
 .blog-content em {
