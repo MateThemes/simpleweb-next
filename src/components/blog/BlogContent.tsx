@@ -55,7 +55,16 @@ function MarkdownImage({ src, alt, width, height }: { src: string; alt?: string;
   }
 }
 
-export function BlogContent({ content }: { content: string }) {
+const defaultProseClass =
+  'blog-content prose prose-neutral dark:prose-invert max-w-none'
+
+export function BlogContent({
+  content,
+  className,
+}: {
+  content: string
+  className?: string
+}) {
   // marked returns string synchronously when used with setOptions
   const htmlContent = marked(content) as string
   const $ = cheerio.load(htmlContent, { xml: { decodeEntities: false } })
@@ -83,7 +92,7 @@ export function BlogContent({ content }: { content: string }) {
   const parts = processedHtml.split(/(__IMAGE_PLACEHOLDER_\d+__)/)
   
   return (
-    <div className="blog-content prose prose-neutral dark:prose-invert max-w-none">
+    <div className={className ?? defaultProseClass}>
       {parts.map((part, i) => {
         // Check if this part is an image placeholder
         const imageMatch = part.match(/^__IMAGE_PLACEHOLDER_(\d+)__$/)
