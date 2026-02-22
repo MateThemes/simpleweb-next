@@ -484,67 +484,71 @@ export function Header() {
           </button>
         </div>
 
-        {/* Mobile menu */}
+        {/* Mobile menu: fullscreen flyover (modal overlay) */}
         {isOpen && (
-          <div className="fixed inset-0 z-50">
-            {/* CHANGE: Clickable, non-through overlay to close the panel */}
+          <div className="fixed inset-0 z-50 h-[100vh] w-full" aria-hidden="false">
+            {/* Backdrop: fullscreen, bg-background/95, backdrop-blur-sm */}
             <button
               type="button"
-              aria-label="Close menu"
-              className="fixed inset-0 bg-black/40 z-50 cursor-default"
+              aria-label="Menü schließen"
+              className="mobile-menu-backdrop-in fixed inset-0 z-50 h-full w-full cursor-default bg-[var(--background)]/95 backdrop-blur-sm"
               onClick={() => setIsOpen(false)}
             />
 
-            {/* CHANGE: Right-side fixed panel acts as its own scroll container */}
+            {/* Fullscreen panel: dialog, safe-area aware */}
             <div
               id="mobile-menu-dialog"
-              role="dialog" // CHANGE: a11y role
-              aria-modal="true" // CHANGE: prevent background from being considered
+              role="dialog"
+              aria-modal="true"
               aria-label="Hauptmenü"
               ref={panelRef}
-              tabIndex={-1} // CHANGE: make focusable container for focus trap start
-              className="fixed right-0 top-0 z-[60] h-[100dvh] min-h-svh w-[min(90vw,24rem)] bg-[var(--surface)] shadow-[var(--shadow-4)] outline-none flex flex-col"
+              tabIndex={-1}
+              className="mobile-menu-panel-in fixed inset-0 z-[60] flex h-[100vh] w-full flex-col bg-[var(--surface)] pt-[max(env(safe-area-inset-top),1.25rem)] outline-none"
             >
-              {/* Header inside the panel */}
-              <div className="flex items-center justify-between p-4 border-b border-[var(--border)]">
-                <Link href="/" className="-m-1.5 p-1.5" onClick={() => setIsOpen(false)}>
+              {/* Top bar: logo left, close right */}
+              <div className="flex shrink-0 items-center justify-between border-b border-[var(--border)] px-4 pt-5 pb-4 sm:px-6 sm:pt-6 sm:pb-4">
+                <Link
+                  href="/"
+                  className="-m-1.5 p-1.5 font-display text-xl font-bold text-[var(--foreground)] hover:opacity-80 sm:text-2xl"
+                  onClick={() => setIsOpen(false)}
+                >
                   <span className="sr-only">SimpleWebDesign</span>
-                  <h2 className="font-display text-2xl font-bold text-[var(--foreground)]">
-                    SimpleWebDesign
-                  </h2>
+                  SimpleWebDesign
                 </Link>
                 <button
                   type="button"
-                  className="-m-2.5 rounded-md p-2.5 text-[var(--foreground)]"
+                  className="-m-2.5 flex h-10 w-10 items-center justify-center rounded-[var(--radius-md)] text-[var(--foreground)] hover:bg-[var(--surface-2)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2"
                   onClick={() => setIsOpen(false)}
+                  aria-label="Menü schließen"
                 >
-                  <span className="sr-only">Close menu</span>
                   <XMarkIcon className="h-6 w-6" aria-hidden="true" />
                 </button>
               </div>
 
-              {/* CHANGE: Make the menu list scrollable only within the panel */}
-              <div className="flex-1 overflow-y-auto overscroll-contain px-4 py-6">
-                <div className="flex flex-col gap-y-4">
+              {/* Scrollable nav: mobile = stack, tablet = 2-col grid */}
+              <div className="flex-1 overflow-y-auto overscroll-contain px-4 py-6 sm:px-6">
+                <nav className="mx-auto grid max-w-xl grid-cols-1 gap-6 md:max-w-2xl md:grid-cols-2" aria-label="Seitennavigation">
                   <Link
                     href="/"
-                    className="block px-3 py-3 rounded-md text-lg font-medium text-gray-600 hover:text-[var(--foreground)] dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
+                    className="flex min-h-[3.5rem] items-center rounded-[var(--radius-xl)] px-4 py-3 text-xl font-medium text-[var(--foreground)] hover:bg-[var(--surface-2)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-inset sm:text-2xl"
                     onClick={() => setIsOpen(false)}
                   >
                     Home
                   </Link>
 
-                  {/* Mobile Services Accordion */}
-                  <div>
+                  {/* Services: collapsible accordion, spans full width on tablet */}
+                  <div className="rounded-[var(--radius-xl)] md:col-span-2">
                     <button
+                      type="button"
                       onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
-                      className="w-full flex items-center justify-between px-3 py-3 rounded-md text-lg font-medium text-gray-600 hover:text-[var(--foreground)] dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
-                      aria-expanded={isMobileServicesOpen} // CHANGE: a11y state for accordion
-                      aria-controls="mobile-services-submenu" // CHANGE: link to submenu
+                      className="flex min-h-[3.5rem] w-full items-center justify-between rounded-[var(--radius-xl)] px-4 py-3 text-left text-xl font-medium text-[var(--foreground)] hover:bg-[var(--surface-2)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-inset sm:text-2xl"
+                      aria-expanded={isMobileServicesOpen}
+                      aria-controls="mobile-services-submenu"
+                      aria-label={isMobileServicesOpen ? 'Services einklappen' : 'Services aufklappen'}
                     >
                       <span>Services</span>
                       <svg
-                        className={`h-5 w-5 flex-none text-[var(--muted-foreground)] transition-transform ${
+                        className={`h-5 w-5 shrink-0 text-[var(--muted-foreground)] transition-transform duration-[var(--duration-normal)] ${
                           isMobileServicesOpen ? 'rotate-180' : ''
                         }`}
                         viewBox="0 0 20 20"
@@ -558,143 +562,152 @@ export function Header() {
                         />
                       </svg>
                     </button>
-
-                    {/* Services Submenu */}
-                    <div id="mobile-services-submenu" className={`space-y-1 pl-3 ${isMobileServicesOpen ? '' : 'hidden'}`}>
-                      <Link
-                        href="/services/webdesign"
-                        className="flex items-center gap-3 px-3 py-3 rounded-md text-base font-medium text-gray-600 hover:text-[var(--foreground)] dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
-                        onClick={() => setIsOpen(false)}
-                      >
-                        <ComputerDesktopIcon className="h-5 w-5 text-blue-600" />
-                        Webdesign
-                      </Link>
-                      <Link
-                        href="/services/seo"
-                        className="flex items-center gap-3 px-3 py-3 rounded-md text-base font-medium text-gray-600 hover:text-[var(--foreground)] dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
-                        onClick={() => setIsOpen(false)}
-                      >
-                        <ArrowTrendingUpIcon className="h-5 w-5 text-green-600" />
-                        SEO
-                      </Link>
-                      <Link
-                        href="/services/marketing"
-                        className="flex items-center gap-3 px-3 py-3 rounded-md text-base font-medium text-gray-600 hover:text-[var(--foreground)] dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
-                        onClick={() => setIsOpen(false)}
-                      >
-                        <ChartBarIcon className="h-5 w-5 text-indigo-600" />
-                        Marketing
-                      </Link>
-                      <Link
-                        href="/services/redesign"
-                        className="flex items-center gap-3 px-3 py-3 rounded-md text-base font-medium text-gray-600 hover:text-[var(--foreground)] dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
-                        onClick={() => setIsOpen(false)}
-                      >
-                        <PaintBrushIcon className="h-5 w-5 text-purple-600" />
-                        Redesign
-                      </Link>
-                      <Link
-                        href="/services/performance"
-                        className="flex items-center gap-3 px-3 py-3 rounded-md text-base font-medium text-gray-600 hover:text-[var(--foreground)] dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
-                        onClick={() => setIsOpen(false)}
-                      >
-                        <RocketLaunchIcon className="h-5 w-5 text-orange-600" />
-                        Performance
-                      </Link>
-                      <Link
-                        href="/services/security-check"
-                        className="flex items-center gap-3 px-3 py-3 rounded-md text-base font-medium text-gray-600 hover:text-[var(--foreground)] dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
-                        onClick={() => setIsOpen(false)}
-                      >
-                        <ShieldCheckIcon className="h-5 w-5 text-green-600" />
-                        Security Check
-                      </Link>
-                      <Link
-                        href="/services/hosting"
-                        className="flex items-center gap-3 px-3 py-3 rounded-md text-base font-medium text-gray-600 hover:text-[var(--foreground)] dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
-                        onClick={() => setIsOpen(false)}
-                      >
-                        <ServerIcon className="h-5 w-5 text-teal-600" />
-                        Hosting
-                      </Link>
-                      <Link
-                        href="/services/wartung"
-                        className="flex items-center gap-3 px-3 py-3 rounded-md text-base font-medium text-gray-600 hover:text-[var(--foreground)] dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
-                        onClick={() => setIsOpen(false)}
-                      >
-                        <RocketLaunchIcon className="h-5 w-5 text-yellow-600" />
-                        Wartung & Support
-                      </Link>
-                      <Link
-                        href="/services/e-commerce-partner-fuer-shopify"
-                        className="flex items-center gap-3 px-3 py-3 rounded-md text-base font-medium text-gray-600 hover:text-[var(--foreground)] dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
-                        onClick={() => setIsOpen(false)}
-                      >
-                        <ServerIcon className="h-5 w-5 text-green-600" />
-                        Shopify Experte
-                      </Link>
-                      <Link
-                        href="/ki-automatisierung"
-                        className="flex items-center gap-3 px-3 py-3 rounded-md text-base font-medium text-gray-600 hover:text-[var(--foreground)] dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
-                        onClick={() => setIsOpen(false)}
-                      >
-                        <SparklesIcon className="h-5 w-5 text-indigo-600" />
-                        KI-Automatisierung
-                      </Link>
+                    <div
+                      id="mobile-services-submenu"
+                      className={`overflow-hidden transition-[height] duration-[var(--duration-normal)] ${isMobileServicesOpen ? 'visible' : 'hidden'}`}
+                      hidden={!isMobileServicesOpen}
+                    >
+                      <div className="space-y-0.5 py-2 pl-2">
+                        <Link
+                          href="/services/webdesign"
+                          className="flex items-center gap-3 rounded-[var(--radius-lg)] px-4 py-3 text-base font-medium text-[var(--muted-foreground)] hover:bg-[var(--surface-2)] hover:text-[var(--foreground)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-inset"
+                          onClick={() => setIsOpen(false)}
+                        >
+                          <ComputerDesktopIcon className="h-5 w-5 shrink-0 text-[var(--primary)]" aria-hidden="true" />
+                          Webdesign
+                        </Link>
+                        <Link
+                          href="/services/seo"
+                          className="flex items-center gap-3 rounded-[var(--radius-lg)] px-4 py-3 text-base font-medium text-[var(--muted-foreground)] hover:bg-[var(--surface-2)] hover:text-[var(--foreground)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-inset"
+                          onClick={() => setIsOpen(false)}
+                        >
+                          <ArrowTrendingUpIcon className="h-5 w-5 shrink-0 text-[var(--primary)]" aria-hidden="true" />
+                          SEO
+                        </Link>
+                        <Link
+                          href="/services/marketing"
+                          className="flex items-center gap-3 rounded-[var(--radius-lg)] px-4 py-3 text-base font-medium text-[var(--muted-foreground)] hover:bg-[var(--surface-2)] hover:text-[var(--foreground)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-inset"
+                          onClick={() => setIsOpen(false)}
+                        >
+                          <ChartBarIcon className="h-5 w-5 shrink-0 text-[var(--primary)]" aria-hidden="true" />
+                          Marketing
+                        </Link>
+                        <Link
+                          href="/services/redesign"
+                          className="flex items-center gap-3 rounded-[var(--radius-lg)] px-4 py-3 text-base font-medium text-[var(--muted-foreground)] hover:bg-[var(--surface-2)] hover:text-[var(--foreground)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-inset"
+                          onClick={() => setIsOpen(false)}
+                        >
+                          <PaintBrushIcon className="h-5 w-5 shrink-0 text-[var(--primary)]" aria-hidden="true" />
+                          Redesign
+                        </Link>
+                        <Link
+                          href="/services/performance"
+                          className="flex items-center gap-3 rounded-[var(--radius-lg)] px-4 py-3 text-base font-medium text-[var(--muted-foreground)] hover:bg-[var(--surface-2)] hover:text-[var(--foreground)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-inset"
+                          onClick={() => setIsOpen(false)}
+                        >
+                          <RocketLaunchIcon className="h-5 w-5 shrink-0 text-[var(--primary)]" aria-hidden="true" />
+                          Performance
+                        </Link>
+                        <Link
+                          href="/services/security-check"
+                          className="flex items-center gap-3 rounded-[var(--radius-lg)] px-4 py-3 text-base font-medium text-[var(--muted-foreground)] hover:bg-[var(--surface-2)] hover:text-[var(--foreground)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-inset"
+                          onClick={() => setIsOpen(false)}
+                        >
+                          <ShieldCheckIcon className="h-5 w-5 shrink-0 text-[var(--primary)]" aria-hidden="true" />
+                          Security Check
+                        </Link>
+                        <Link
+                          href="/services/hosting"
+                          className="flex items-center gap-3 rounded-[var(--radius-lg)] px-4 py-3 text-base font-medium text-[var(--muted-foreground)] hover:bg-[var(--surface-2)] hover:text-[var(--foreground)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-inset"
+                          onClick={() => setIsOpen(false)}
+                        >
+                          <ServerIcon className="h-5 w-5 shrink-0 text-[var(--primary)]" aria-hidden="true" />
+                          Hosting
+                        </Link>
+                        <Link
+                          href="/services/wartung"
+                          className="flex items-center gap-3 rounded-[var(--radius-lg)] px-4 py-3 text-base font-medium text-[var(--muted-foreground)] hover:bg-[var(--surface-2)] hover:text-[var(--foreground)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-inset"
+                          onClick={() => setIsOpen(false)}
+                        >
+                          <RocketLaunchIcon className="h-5 w-5 shrink-0 text-[var(--primary)]" aria-hidden="true" />
+                          Wartung & Support
+                        </Link>
+                        <Link
+                          href="/services/e-commerce-partner-fuer-shopify"
+                          className="flex items-center gap-3 rounded-[var(--radius-lg)] px-4 py-3 text-base font-medium text-[var(--muted-foreground)] hover:bg-[var(--surface-2)] hover:text-[var(--foreground)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-inset"
+                          onClick={() => setIsOpen(false)}
+                        >
+                          <ServerIcon className="h-5 w-5 shrink-0 text-[var(--primary)]" aria-hidden="true" />
+                          Shopify Experte
+                        </Link>
+                        <Link
+                          href="/ki-automatisierung"
+                          className="flex items-center gap-3 rounded-[var(--radius-lg)] px-4 py-3 text-base font-medium text-[var(--muted-foreground)] hover:bg-[var(--surface-2)] hover:text-[var(--foreground)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-inset"
+                          onClick={() => setIsOpen(false)}
+                        >
+                          <SparklesIcon className="h-5 w-5 shrink-0 text-[var(--primary)]" aria-hidden="true" />
+                          KI-Automatisierung
+                        </Link>
+                      </div>
                     </div>
                   </div>
 
                   <Link
                     href="/preise-und-pakete"
-                    className="block px-3 py-3 rounded-md text-lg font-medium text-gray-600 hover:text-[var(--foreground)] dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
+                    className="flex min-h-[3.5rem] items-center rounded-[var(--radius-xl)] px-4 py-3 text-xl font-medium text-[var(--foreground)] hover:bg-[var(--surface-2)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-inset sm:text-2xl"
                     onClick={() => setIsOpen(false)}
                   >
                     Preise
                   </Link>
-
                   <Link
                     href="/prozess"
-                    className="block px-3 py-3 rounded-md text-lg font-medium text-gray-600 hover:text-[var(--foreground)] dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
+                    className="flex min-h-[3.5rem] items-center rounded-[var(--radius-xl)] px-4 py-3 text-xl font-medium text-[var(--foreground)] hover:bg-[var(--surface-2)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-inset sm:text-2xl"
                     onClick={() => setIsOpen(false)}
                   >
                     Prozess
                   </Link>
-
                   <Link
                     href="/portfolio"
-                    className="block px-3 py-3 rounded-md text-lg font-medium text-gray-600 hover:text-[var(--foreground)] dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
+                    className="flex min-h-[3.5rem] items-center rounded-[var(--radius-xl)] px-4 py-3 text-xl font-medium text-[var(--foreground)] hover:bg-[var(--surface-2)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-inset sm:text-2xl"
                     onClick={() => setIsOpen(false)}
                   >
                     Portfolio
                   </Link>
-
                   <Link
                     href="/ueber-uns"
-                    className="block px-3 py-3 rounded-md text-lg font-medium text-gray-600 hover:text-[var(--foreground)] dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
+                    className="flex min-h-[3.5rem] items-center rounded-[var(--radius-xl)] px-4 py-3 text-xl font-medium text-[var(--foreground)] hover:bg-[var(--surface-2)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-inset sm:text-2xl"
                     onClick={() => setIsOpen(false)}
                   >
                     Über mich
                   </Link>
-
                   <Link
                     href="/blog"
-                    className="block px-3 py-3 rounded-md text-lg font-medium text-gray-600 hover:text-[var(--foreground)] dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
+                    className="flex min-h-[3.5rem] items-center rounded-[var(--radius-xl)] px-4 py-3 text-xl font-medium text-[var(--foreground)] hover:bg-[var(--surface-2)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-inset sm:text-2xl"
                     onClick={() => setIsOpen(false)}
                   >
                     Blog
                   </Link>
-                </div>
+                </nav>
               </div>
 
-              {/* Footer button inside the panel (sticky) */}
-              <div className="sticky bottom-0 left-0 right-0 border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-slate-950 p-4">
-                <Link
-                  href="/kontakt"
-                  className="flex w-full items-center justify-center rounded-full bg-[var(--primary)] px-4 py-3 text-base font-semibold text-[var(--primary-foreground)] hover:opacity-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Kontaktiere uns
-                </Link>
+              {/* Sticky bottom CTA section: safe-area aware */}
+              <div className="sticky bottom-0 left-0 right-0 shrink-0 border-t border-[var(--border)] bg-[var(--surface)] p-4 pb-[max(1rem,env(safe-area-inset-bottom))] sm:px-6 sm:py-5 sm:pb-[max(1.25rem,env(safe-area-inset-bottom))]">
+                <div className="flex flex-col gap-3">
+                  <Link
+                    href="/kontakt"
+                    className="flex min-h-[3rem] w-full items-center justify-center rounded-[var(--radius-xl)] bg-[var(--primary)] px-4 py-3 text-base font-semibold text-[var(--primary-foreground)] hover:opacity-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Strategie-Gespräch anfragen
+                  </Link>
+                  <Link
+                    href="/preise-und-pakete"
+                    className="flex min-h-[3rem] w-full items-center justify-center rounded-[var(--radius-xl)] border border-[var(--border)] bg-transparent px-4 py-3 text-base font-semibold text-[var(--foreground)] hover:bg-[var(--surface-2)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Preise ansehen
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
