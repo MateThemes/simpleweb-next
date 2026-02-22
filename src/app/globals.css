@@ -97,6 +97,34 @@
   }
 }
 
+/* Mobile nav fullscreen overlay: subtle entrance */
+@keyframes mobile-menu-backdrop-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes mobile-menu-panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .mobile-menu-backdrop-in {
+    animation: mobile-menu-backdrop-in 180ms var(--ease-out) forwards;
+  }
+  .mobile-menu-panel-in {
+    animation: mobile-menu-panel-in 200ms var(--ease-out) forwards;
+  }
+}
+
 /* Hero: subtle floating motion (disabled when reduced motion preferred) */
 @keyframes hero-float {
   0%,
