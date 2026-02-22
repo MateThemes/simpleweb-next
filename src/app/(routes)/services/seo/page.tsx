@@ -1,75 +1,105 @@
 import { Metadata } from 'next'
 import Image from 'next/image'
+import Link from 'next/link'
 import { Container } from '@/components/ui/Container'
-import Button from '@/components/ui/Button'
-import { ChartBarIcon, CheckIcon, SearchIcon, CodeIcon, MapPinIcon } from '@/components/icons'
-import { breadcrumbSchema, webPageSchema, servicePageSchema } from '@/app/schema'
+import { ChartBarIcon, CheckIcon, CodeIcon, MapPinIcon, SearchIcon } from '@/components/icons'
+import { Accordion } from '@/components/ui/Accordion'
+import {
+  breadcrumbSchema,
+  webPageSchema,
+  servicePageSchema,
+  faqSchema,
+} from '@/app/schema'
 import { getServicePageDC } from '@/lib/dublinCore'
 
 export const metadata: Metadata = {
   title: 'SEO für KMU: Klarheit, Struktur, Sichtbarkeit | SimpleWebDesign',
-  description: 'SEO für KMU in Österreich & Deutschland: Nachhaltige Suchmaschinenoptimierung, die auf Klarheit und Struktur aufbaut. Google-konform, messbar, langfristig wirksam.',
+  description:
+    'SEO für KMU in Österreich & Deutschland: Nachhaltige Suchmaschinenoptimierung, die auf Klarheit und Struktur aufbaut. Google-konform, messbar, langfristig wirksam.',
   openGraph: {
     title: 'SEO für KMU: Klarheit, Struktur, Sichtbarkeit | SimpleWebDesign',
-    description: 'SEO für KMU in Österreich & Deutschland: Nachhaltige Suchmaschinenoptimierung, die auf Klarheit und Struktur aufbaut. Google-konform, messbar, langfristig wirksam.',
+    description:
+      'SEO für KMU in Österreich & Deutschland: Nachhaltige Suchmaschinenoptimierung, die auf Klarheit und Struktur aufbaut. Google-konform, messbar, langfristig wirksam.',
     url: 'https://simplewebdesign.at/services/seo',
     images: [
       {
         url: '/img/services/seo.jpg',
         width: 1200,
         height: 630,
-        alt: 'SEO Services Niederösterreich - Nachhaltige Suchmaschinenoptimierung'
-      }
-    ]
+        alt: 'SEO für KMU – Nachhaltige Suchmaschinenoptimierung in Österreich und Deutschland',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'SEO für KMU: Klarheit, Struktur, Sichtbarkeit | SimpleWebDesign',
-    description: 'SEO für KMU in Österreich & Deutschland: Nachhaltige Suchmaschinenoptimierung, die auf Klarheit und Struktur aufbaut.',
-    images: ['/img/services/seo.jpg']
+    description:
+      'SEO für KMU in Österreich & Deutschland: Nachhaltige Suchmaschinenoptimierung, die auf Klarheit und Struktur aufbaut.',
+    images: ['/img/services/seo.jpg'],
   },
   alternates: {
-    canonical: 'https://simplewebdesign.at/services/seo'
+    canonical: 'https://simplewebdesign.at/services/seo',
   },
-  // Dublin Core Metadata
   other: {
     ...getServicePageDC({
       title: 'SEO für KMU: Klarheit, Struktur, Sichtbarkeit | SimpleWebDesign',
-      description: 'SEO für KMU in Österreich & Deutschland: Nachhaltige Suchmaschinenoptimierung, die auf Klarheit und Struktur aufbaut.',
+      description:
+        'SEO für KMU in Österreich & Deutschland: Nachhaltige Suchmaschinenoptimierung, die auf Klarheit und Struktur aufbaut.',
       url: 'https://simplewebdesign.at/services/seo',
     }),
   },
 }
 
-const features = [
+const problemBullets = [
+  'Plugins und Tools ohne klare Einordnung – wer soll gefunden werden?',
+  'Keyword-Fokus ohne Struktur – Suchmaschinen verstehen Kontext nicht.',
+  'Versprechen ohne Basis – Rankings in 30 Tagen gibt es nicht nachhaltig.',
+]
+
+const leistungen = [
   {
     title: 'Technisches SEO',
-    description: 'Saubere technische Grundlagen, die Suchmaschinen verstehen. Keine Tricks, keine Abkürzungen – nur solide Struktur.',
+    sentence:
+      'Saubere technische Grundlagen, damit Suchmaschinen Ihre Website erfassen und einordnen können.',
+    bullets: [
+      'Crawlbarkeit und Indexierung',
+      'Core Web Vitals und Ladezeiten',
+      'Strukturierte Daten (Schema)',
+    ],
   },
   {
     title: 'Struktur & Inhalte',
-    description: 'Klare Struktur, die Besucher führt und Suchmaschinen zeigt, wer hier richtig ist – und warum.',
+    sentence:
+      'Klare Seitenlogik und semantische Struktur, die Besucher führt und Suchmaschinen signalisiert, worum es geht.',
+    bullets: [
+      'Seitenlogik und Informationsarchitektur',
+      'Semantische Struktur (Überschriften, Abschnitte)',
+      'Keyword-Zuordnung auf Basis von Klarheit',
+    ],
   },
   {
     title: 'Lokale Sichtbarkeit',
-    description: 'Lokale SEO, die aufbaut auf klarer Positionierung und sauberer Struktur – nicht auf Keyword-Stuffing.',
+    sentence:
+      'Für KMU in Österreich und Deutschland: lokale Signale und regionale Relevanz – ohne Tricks.',
+    bullets: [
+      'Fokus AT & DE',
+      'Lokale Signale (Einträge, NAP)',
+      'Regionale Landingpages wo sinnvoll',
+    ],
   },
   {
     title: 'Messung & Weiterentwicklung',
-    description: 'Regelmäßige Einordnung: Was funktioniert? Was nicht? Wo liegt das Potenzial? Messbar, nachvollziehbar.',
+    sentence:
+      'Regelmäßige Einordnung, was wirkt – und was nicht. Transparent und iterativ.',
+    bullets: [
+      'Search Console und Auswertung',
+      'Tracking und Ziele',
+      'Iteration statt einmalige Aktion',
+    ],
   },
 ]
 
-const benefits = [
-  'Klarheit: Wer soll gefunden werden – und warum?',
-  'Struktur, die Suchmaschinen verstehen',
-  'Nachhaltige Wirkung statt kurzfristiger Tricks',
-  'Google-konform, keine Richtlinien-Umgehung',
-  'Messbare Ergebnisse statt Versprechen',
-  'Aufbauend auf Webdesign & Inhalt',
-]
-
-const process = [
+const processSteps = [
   {
     title: 'Einordnung',
     description: 'Wir klären, wer gefunden werden soll und warum. Erst dann folgen technische und inhaltliche Maßnahmen.',
@@ -92,37 +122,81 @@ const process = [
   },
 ]
 
+const fuerWenBullets = [
+  'Regionale Dienstleister und Handwerksbetriebe, die vor Ort gefunden werden sollen.',
+  'Unternehmen mit erklärungsbedürftigen Leistungen – wenn Klarheit im Web fehlt.',
+  'Bestehende Website, aber zu wenig Anfragen – und Sie wollen verstehen, wo das Potenzial liegt.',
+]
+
+const abgrenzungBullets = [
+  'Keine Ranking-Garantien – niemand kann Google-Platzierungen versprechen.',
+  'Kein Linkkauf oder künstliche Link-Netzwerke – wir arbeiten konform zu den Richtlinien.',
+  'Kein Black-Hat oder Grauzonen – keine Abkürzungen auf Kosten der langfristigen Sichtbarkeit.',
+  'Keine 30-Tage-Versprechen – SEO wirkt nachhaltig, nicht in wenigen Wochen.',
+]
+
+const faqItems = [
+  {
+    question: 'Wie lange dauert SEO, bis Ergebnisse sichtbar werden?',
+    answer:
+      'Erste Verbesserungen (z. B. Indexierung, technische Kennzahlen) können innerhalb von Wochen sichtbar werden. Sichtbare Ranking-Verbesserungen für wichtige Suchbegriffe brauchen in der Regel mehrere Monate – abhängig von Konkurrenz und Ausgangslage. Wir setzen auf nachhaltige Wirkung statt kurzfristige Spitzen.',
+  },
+  {
+    question: 'Was ist technisches SEO – und warum ist es wichtig?',
+    answer:
+      'Technisches SEO umfasst alles, was Suchmaschinen das Crawlen, Indexieren und Einordnen Ihrer Website erleichtert: Ladezeiten, mobile Darstellung, strukturierte Daten, saubere URLs und interne Verlinkung. Ohne solide technische Basis bringen inhaltliche Optimierungen oft weniger als sie könnten.',
+  },
+  {
+    question: 'Brauche ich SEO, wenn ich bereits Google Ads schalte?',
+    answer:
+      'Ads und SEO ergänzen sich: Ads bringen kurzfristig Sichtbarkeit für ausgewählte Begriffe; SEO baut langfristig organische Sichtbarkeit und Vertrauen auf. Gerade für KMU lohnt sich beides – wobei SEO ohne laufende Klickkosten wirkt und oft zu qualifizierteren Anfragen führt.',
+  },
+  {
+    question: 'Was kostet SEO für KMU?',
+    answer:
+      'Die Kosten hängen vom Umfang ab: Einmalige Einordnung und technische Basis-Optimierung, laufende Betreuung oder umfassendes Programm. Wir geben Ihnen nach einem ersten Gespräch eine transparente Einschätzung – ohne versteckte Pakete.',
+  },
+  {
+    question: 'Ist lokale SEO für mein Unternehmen relevant?',
+    answer:
+      'Wenn Sie regional in Österreich oder Deutschland Kunden suchen – z. B. Handwerk, Beratung, lokale Dienstleistungen –, ist lokale SEO sehr relevant. Wir sorgen dafür, dass Suchmaschinen und Nutzer Sie lokal einordnen können (z. B. über Einträge, NAP-Konsistenz und regionale Inhalte).',
+  },
+]
+
+const linkStyles =
+  'text-[var(--primary)] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2 rounded'
+
 export default function SeoPage() {
-  // Schema.org Structured Data
   const schemas = [
-    // BreadcrumbList Schema
     breadcrumbSchema({
       items: [
-        { name: "Home", url: "https://simplewebdesign.at" },
-        { name: "Services", url: "https://simplewebdesign.at/services" },
-        { name: "SEO", url: "https://simplewebdesign.at/services/seo" },
+        { name: 'Home', url: 'https://simplewebdesign.at' },
+        { name: 'Services', url: 'https://simplewebdesign.at/services' },
+        { name: 'SEO', url: 'https://simplewebdesign.at/services/seo' },
       ],
     }),
-    // WebPage Schema
     webPageSchema({
-      name: "SEO für KMU: Klarheit, Struktur, Sichtbarkeit",
-      description: "SEO für KMU in Österreich & Deutschland: Nachhaltige Suchmaschinenoptimierung, die auf Klarheit und Struktur aufbaut. Google-konform, messbar, langfristig wirksam.",
-      url: "https://simplewebdesign.at/services/seo",
-      image: "https://simplewebdesign.at/img/services/seo.jpg",
+      name: 'SEO für KMU: Klarheit, Struktur, Sichtbarkeit',
+      description:
+        'SEO für KMU in Österreich & Deutschland: Nachhaltige Suchmaschinenoptimierung, die auf Klarheit und Struktur aufbaut. Google-konform, messbar, langfristig wirksam.',
+      url: 'https://simplewebdesign.at/services/seo',
+      image: 'https://simplewebdesign.at/img/services/seo.jpg',
     }),
-    // Service Schema
     servicePageSchema({
-      name: "SEO",
-      description: "SEO für KMU in Österreich & Deutschland: Nachhaltige Suchmaschinenoptimierung, die auf Klarheit und Struktur aufbaut.",
-      url: "https://simplewebdesign.at/services/seo",
-      image: "https://simplewebdesign.at/img/services/seo.jpg",
-      serviceType: ["SEO", "Search Engine Optimization", "Local SEO", "Technical SEO"],
+      name: 'SEO',
+      description:
+        'SEO für KMU in Österreich & Deutschland: Nachhaltige Suchmaschinenoptimierung, die auf Klarheit und Struktur aufbaut.',
+      url: 'https://simplewebdesign.at/services/seo',
+      image: 'https://simplewebdesign.at/img/services/seo.jpg',
+      serviceType: ['SEO', 'Search Engine Optimization', 'Local SEO', 'Technical SEO'],
     }),
-  ];
+    faqSchema({
+      faqs: faqItems.map((item) => ({ question: item.question, answer: item.answer })),
+    }),
+  ]
 
   return (
     <>
-      {/* Schema.org JSON-LD */}
       {schemas.map((schema, index) => (
         <script
           key={index}
@@ -130,202 +204,401 @@ export default function SeoPage() {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
         />
       ))}
-      <main className="flex-auto">
-        {/* Hero Section */}
-        <div className="relative py-20 sm:py-24 lg:py-32 overflow-hidden">
+      <main className="flex-auto" id="main-content">
+        {/* Hero — exact match to webdesign */}
+        <section
+          className="relative bg-[var(--background)] pt-24 sm:pt-28 lg:pt-32 pb-20 lg:pb-28"
+          aria-labelledby="seo-hero-heading"
+        >
           <Container className="relative">
-            <div className="lg:flex lg:items-center lg:gap-x-10">
-              <div className="max-w-2xl lg:max-w-lg">
-                <h1 className="font-display text-5xl font-medium tracking-tight text-neutral-950 dark:text-white [text-wrap:balance] sm:text-7xl">
-                  SEO für KMU
-                </h1>
-                <p className="mt-6 text-xl text-neutral-600 dark:text-neutral-300">
-                  SEO beginnt nicht mit Keywords, sondern mit Klarheit darüber, wer gefunden werden soll – und warum. Wir bauen auf Struktur und Inhalt auf, nicht auf Tricks oder Abkürzungen.
-                </p>
-                <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-400">
-                  Gemäß § 6 Abs. 1 Z 27 UStG wird keine Umsatzsteuer berechnet.
-                </p>
-                <div className="mt-8 flex gap-4">
-                  <Button href="/kontakt">Kostenlose Einordnung</Button>
-                  <Button href="#features" variant="secondary">Mehr erfahren</Button>
+            <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-start">
+              <div className="relative">
+                <div
+                  className="absolute -inset-x-8 top-1/2 -translate-y-1/2 h-[120%] w-[140%] max-w-none pointer-events-none opacity-[0.04] dark:opacity-[0.06] hidden lg:block"
+                  aria-hidden
+                  style={{
+                    background:
+                      'radial-gradient(ellipse 70% 60% at 30% 50%, var(--foreground), transparent 70%)',
+                  }}
+                />
+                <div className="relative space-y-6">
+                  <p className="text-sm font-medium uppercase tracking-wider text-[var(--muted-foreground)]">
+                    SEO für KMU
+                  </p>
+                  <h1
+                    id="seo-hero-heading"
+                    className="font-display font-bold tracking-tight text-[var(--foreground)] leading-[1.08] text-4xl sm:text-5xl lg:text-6xl"
+                  >
+                    SEO für KMU in Österreich & Deutschland
+                  </h1>
+                  <p className="text-base text-[var(--muted-foreground-strong)] leading-relaxed max-w-[650px]">
+                    Nachhaltige Sichtbarkeit auf Basis klarer Struktur – nicht auf Basis von Tricks.
+                  </p>
+                  <p className="text-base text-[var(--muted-foreground)] leading-relaxed max-w-[650px]">
+                    Wir optimieren Websites technisch und inhaltlich so, dass Suchmaschinen verstehen, wer Sie sind – und warum Ihr Unternehmen relevant ist.
+                  </p>
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-4 mt-8">
+                    <Link
+                      href="/kontakt"
+                      className="inline-flex items-center justify-center gap-2 h-[52px] px-6 rounded-xl font-semibold text-base bg-[var(--primary)] text-[var(--primary-foreground)] hover:opacity-95 transition-opacity duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--ring-offset)]"
+                    >
+                      Kostenlose Einordnung
+                    </Link>
+                    <Link
+                      href="/prozess"
+                      className="inline-flex items-center justify-center gap-2 h-[52px] px-6 rounded-xl font-medium text-base bg-transparent text-[var(--foreground)] border-2 border-[var(--border)] hover:border-[var(--muted-foreground)] hover:bg-[var(--surface-2)] transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--ring-offset)]"
+                    >
+                      Wie wir arbeiten
+                    </Link>
+                  </div>
+                  <div
+                    className="flex flex-wrap items-center gap-x-2 gap-y-1 mt-8 pt-2 text-[var(--muted-foreground)] text-sm tracking-wide"
+                    role="list"
+                    aria-label="SEO-Prinzipien und Reichweite"
+                  >
+                    <span className="uppercase tracking-wider font-medium" role="listitem">
+                      Google-konform
+                    </span>
+                    <span
+                      className="mx-2 text-[var(--border)] dark:text-[var(--muted-foreground)]"
+                      aria-hidden
+                    >
+                      ·
+                    </span>
+                    <span className="uppercase tracking-wider font-medium" role="listitem">
+                      Messbar
+                    </span>
+                    <span
+                      className="mx-2 text-[var(--border)] dark:text-[var(--muted-foreground)]"
+                      aria-hidden
+                    >
+                      ·
+                    </span>
+                    <span className="uppercase tracking-wider font-medium" role="listitem">
+                      AT & DE
+                    </span>
+                  </div>
                 </div>
               </div>
-              <div className="mt-16 lg:mt-0">
-                <div className="relative">
-                  <Image
-                    src="/img/services/seo.jpg"
-                    alt="SEO Services Niederösterreich - Nachhaltige Suchmaschinenoptimierung"
-                    width={600}
-                    height={400}
-                    className="rounded-2xl shadow-xl"
-                    priority
-                  />
+              <div className="relative w-full lg:pt-8">
+                <div
+                  className="relative w-full overflow-hidden rounded-[24px] bg-[var(--surface-2)] border border-[var(--border)]"
+                  style={{
+                    boxShadow:
+                      '0 4px 6px -1px rgb(0 0 0 / 0.06), 0 2px 4px -2px rgb(0 0 0 / 0.04)',
+                  }}
+                >
+                  <div className="aspect-square relative">
+                    <Image
+                      src="/img/services/seo.jpg"
+                      alt="SEO für KMU – Klarheit, Struktur und Sichtbarkeit in Suchmaschinen"
+                      fill
+                      priority
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      className="object-cover object-center brightness-[0.92] contrast-[1.02]"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
           </Container>
-        </div>
+        </section>
 
-        {/* Features Section */}
-        <div id="features" className="py-24 bg-neutral-50 dark:bg-neutral-900">
+        {/* Problem / Klarheit — section intro pattern from webdesign */}
+        <section
+          id="problem"
+          className="py-24 lg:py-28 bg-[var(--surface-2)]"
+          aria-labelledby="problem-heading"
+        >
           <Container>
             <div className="mx-auto max-w-2xl sm:text-center">
-              <h2 className="font-display text-4xl font-medium tracking-tight text-neutral-950 dark:text-white sm:text-5xl">
-                Alles was Sie brauchen
+              <h2
+                id="problem-heading"
+                className="font-display text-3xl font-semibold tracking-tight text-[var(--foreground)] sm:text-4xl lg:text-5xl"
+              >
+                Warum SEO oft nicht wirkt
               </h2>
-              <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-300">
-                SEO ist kein isoliertes Tool, sondern ein Verstärker von Klarheit und Struktur. Wir bauen auf bestehendem <a href="/services/webdesign" className="text-blue-600 hover:text-blue-500 underline">Webdesign</a> und Inhalt auf und ergänzen mit technischer Optimierung und <a href="/services/performance" className="text-blue-600 hover:text-blue-500 underline">Performance</a>.
+              <p className="mt-4 text-lg text-[var(--muted-foreground)] leading-relaxed">
+                Ohne Klarheit bringen Plugins und Keywords wenig. SEO beginnt
+                nicht mit Tools – sondern mit Klarheit.
               </p>
             </div>
-            <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 sm:mt-20 lg:max-w-none lg:grid-cols-2">
-              {features.map((feature, index) => {
+            <ul className="mx-auto mt-16 max-w-2xl space-y-4 text-[var(--muted-foreground)]">
+              {problemBullets.map((bullet, i) => (
+                <li key={i} className="flex gap-3">
+                  <span
+                    className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--primary)]"
+                    aria-hidden
+                  />
+                  <span className="text-base leading-relaxed">{bullet}</span>
+                </li>
+              ))}
+            </ul>
+          </Container>
+        </section>
+
+        {/* Leistungen — same card system as webdesign features */}
+        <section
+          id="leistungen"
+          className="py-24 lg:py-28 bg-[var(--background)]"
+          aria-labelledby="leistungen-heading"
+        >
+          <Container>
+            <div className="mx-auto max-w-2xl sm:text-center">
+              <h2
+                id="leistungen-heading"
+                className="font-display text-3xl font-semibold tracking-tight text-[var(--foreground)] sm:text-4xl lg:text-5xl"
+              >
+                Unsere SEO-Leistungen
+              </h2>
+              <p className="mt-4 text-lg text-[var(--muted-foreground)] leading-relaxed">
+                Technisches SEO, Struktur & Inhalte, lokale Sichtbarkeit und
+                messbare Weiterentwicklung – auf Basis von Klarheit, nicht
+                Tricks.
+              </p>
+            </div>
+            <div className="mx-auto mt-16 grid grid-cols-1 gap-6 sm:mt-20 md:grid-cols-2">
+              {leistungen.map((item, index) => {
                 const icons = [CodeIcon, SearchIcon, MapPinIcon, ChartBarIcon]
-                const Icon = icons[index] || ChartBarIcon
+                const Icon = icons[index] ?? ChartBarIcon
                 return (
-                  <div key={index} className="flex gap-6 rounded-2xl bg-white dark:bg-neutral-800 p-8 shadow-sm">
-                    <Icon className="h-8 w-8 text-blue-600 flex-shrink-0" />
+                  <div
+                    key={item.title}
+                    className="flex gap-5 rounded-2xl bg-[var(--surface)]/40 border border-[var(--border)]/50 p-6 lg:p-8 transition-shadow duration-200 hover:shadow-md"
+                  >
+                    <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-[var(--muted)]/40">
+                      <Icon className="h-5 w-5 text-[var(--primary)]" aria-hidden />
+                    </div>
                     <div>
-                      <h3 className="font-display text-xl font-semibold text-neutral-950 dark:text-white">
-                        {feature.title}
+                      <h3 className="font-display text-lg font-semibold tracking-tight text-[var(--foreground)]">
+                        {item.title}
                       </h3>
-                      <p className="mt-2 text-neutral-600 dark:text-neutral-300">{feature.description}</p>
+                      <p className="mt-2 text-sm text-[var(--muted-foreground)] leading-relaxed">
+                        {item.sentence}
+                      </p>
+                      <ul className="mt-4 space-y-3 text-sm text-[var(--muted-foreground)] leading-relaxed">
+                        {item.bullets.map((b) => (
+                          <li key={b} className="flex gap-3">
+                            <CheckIcon
+                              className="h-5 w-5 text-[var(--primary)] flex-shrink-0 mt-0.5"
+                              aria-hidden
+                            />
+                            <span>{b}</span>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                   </div>
                 )
               })}
             </div>
           </Container>
-        </div>
+        </section>
 
-        {/* Process Section */}
-        <div className="py-24">
+        {/* Prozess — exact stepper from webdesign */}
+        <section
+          className="py-24 lg:py-28 bg-[var(--background)]"
+          aria-labelledby="process-heading"
+        >
           <Container>
             <div className="mx-auto max-w-2xl lg:max-w-none">
               <div className="max-w-2xl">
-                <h2 className="font-display text-4xl font-medium tracking-tight text-neutral-950 dark:text-white sm:text-5xl">
+                <h2
+                  id="process-heading"
+                  className="font-display text-3xl font-semibold tracking-tight text-[var(--foreground)] sm:text-4xl lg:text-5xl"
+                >
                   Unser Prozess
                 </h2>
-                <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-300">
-                  Wir beginnen nicht mit Keywords oder Tools, sondern mit Einordnung: Wer soll gefunden werden? Erst dann folgen technische und inhaltliche Maßnahmen – bis zur messbaren Wirkung.
+                <p className="mt-4 text-lg text-[var(--muted-foreground)] leading-relaxed">
+                  Wir beginnen nicht mit Keywords oder Tools, sondern mit
+                  Einordnung: Wer soll gefunden werden? Erst dann folgen
+                  technische und inhaltliche Maßnahmen – bis zur messbaren
+                  Wirkung.
                 </p>
               </div>
-              <div className="mt-16 grid grid-cols-1 gap-8 lg:grid-cols-3">
-                {process.map((step, index) => (
-                  <div key={index} className="flex gap-4">
-                    <CheckIcon className="h-8 w-8 text-blue-600" />
-                    <div>
-                      <h3 className="font-display text-xl font-semibold text-neutral-950 dark:text-white">{step.title}</h3>
-                      <p className="mt-2 text-neutral-600 dark:text-neutral-300">{step.description}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </Container>
-        </div>
-
-        {/* SEO Trust Section */}
-        <div className="py-24 bg-neutral-50 dark:bg-neutral-900">
-          <Container>
-            <div className="mx-auto max-w-4xl">
-              <div className="rounded-2xl bg-white dark:bg-neutral-800 p-8 sm:p-12 shadow-sm border border-neutral-200 dark:border-neutral-700">
-                <h2 className="font-display text-4xl font-medium tracking-tight text-neutral-950 dark:text-white sm:text-5xl">
-                  SEO – nachhaltig, sauber, nachvollziehbar
-                </h2>
-                <p className="mt-6 text-xl text-neutral-600 dark:text-neutral-300">
-                  SEO ist kein Sprint, sondern ein Marathon. Wir setzen auf langfristige Wirkung statt kurzfristige Tricks. Keine Abkürzungen, keine Richtlinien-Umgehung, keine Versprechen – nur saubere, Google-konforme Optimierung.
-                </p>
-                <ul className="mt-10 space-y-5 text-neutral-600 dark:text-neutral-300">
-                  <li className="flex gap-4">
-                    <CheckIcon className="h-6 w-6 text-blue-600 flex-shrink-0 mt-0.5" />
-                    <span className="text-lg">Keine Abkürzungen oder Tricks</span>
-                  </li>
-                  <li className="flex gap-4">
-                    <CheckIcon className="h-6 w-6 text-blue-600 flex-shrink-0 mt-0.5" />
-                    <span className="text-lg">Google-konform, keine Richtlinien-Umgehung</span>
-                  </li>
-                  <li className="flex gap-4">
-                    <CheckIcon className="h-6 w-6 text-blue-600 flex-shrink-0 mt-0.5" />
-                    <span className="text-lg">Fokus auf langfristige Wirkung</span>
-                  </li>
-                  <li className="flex gap-4">
-                    <CheckIcon className="h-6 w-6 text-blue-600 flex-shrink-0 mt-0.5" />
-                    <span className="text-lg">Messbar, nachvollziehbar, transparent</span>
-                  </li>
-                </ul>
-                <p className="mt-10 text-xl text-neutral-600 dark:text-neutral-300">
-                  SEO braucht Zeit. Wir versprechen keine Rankings in 30 Tagen, sondern arbeiten an nachhaltiger Sichtbarkeit, die auf Klarheit und Struktur aufbaut.
-                </p>
-              </div>
-            </div>
-          </Container>
-        </div>
-
-        {/* Benefits Section with Image */}
-        <div className="py-24">
-          <Container>
-            <div className="mx-auto max-w-2xl lg:max-w-none lg:flex lg:items-center lg:gap-x-16">
-              <div className="lg:flex-1">
-                <div className="max-w-2xl">
-                  <h2 className="font-display text-4xl font-medium tracking-tight text-neutral-950 dark:text-white sm:text-5xl">
-                    Ihre Vorteile
-                  </h2>
-                  <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-300">
-                    Mit unserem SEO-Service erhalten Sie eine nachhaltige Optimierung, die auf Klarheit und Struktur aufbaut. Ergänzend zu unserem <a href="/services/webdesign" className="text-blue-600 hover:text-blue-500 underline">Webdesign</a> und <a href="/services/performance" className="text-blue-600 hover:text-blue-500 underline">Performance-Optimierung</a> für maximale Online-Sichtbarkeit.
-                  </p>
-                </div>
-                <div className="mt-16 grid grid-cols-1 gap-8 lg:grid-cols-2">
-                  {benefits.map((benefit, index) => (
-                    <div key={index} className="flex gap-4">
-                      <CheckIcon className="h-8 w-8 text-blue-600 flex-shrink-0" />
-                      <span className="text-lg font-semibold text-neutral-950 dark:text-white">{benefit}</span>
-                    </div>
+              <div className="mt-16 lg:mt-20 relative">
+                <div
+                  className="absolute left-5 top-6 bottom-6 w-px border-l border-[var(--border)] hidden sm:block"
+                  aria-hidden
+                />
+                <ul className="space-y-0" role="list">
+                  {processSteps.map((step, index) => (
+                    <li
+                      key={step.title}
+                      className="relative flex gap-6 sm:gap-8 pb-12 last:pb-0"
+                    >
+                      <div className="relative z-10 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-[var(--surface)] border-2 border-[var(--border)] text-sm font-semibold text-[var(--foreground)]">
+                        {index + 1}
+                      </div>
+                      <div className="flex-1 min-w-0 pt-0.5">
+                        <h3 className="font-display text-xl font-semibold tracking-tight text-[var(--foreground)]">
+                          {step.title}
+                        </h3>
+                        <p className="mt-2 text-[var(--muted-foreground)] leading-relaxed">
+                          {step.description}
+                        </p>
+                      </div>
+                    </li>
                   ))}
-                </div>
-              </div>
-              <div className="mt-16 lg:mt-0 lg:flex-1">
-                <div className="relative aspect-square">
-                  <Image
-                    src="/img/services/marketing.jpg"
-                    alt="SEO Growth Analytics"
-                    fill
-                    className="rounded-2xl object-cover shadow-xl"
-                    quality={60}
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                  />
-                </div>
+                </ul>
               </div>
             </div>
           </Container>
-        </div>
+        </section>
 
-        {/* CTA Section */}
-        <div className="relative py-24 bg-blue-600 overflow-hidden">
-          <div className="absolute inset-0 mix-blend-multiply opacity-40">
+        {/* Für wen sinnvoll — section intro + list like webdesign benefits */}
+        <section
+          className="py-24 lg:py-28 bg-[var(--surface-2)]"
+          aria-labelledby="fuer-wen-heading"
+        >
+          <Container>
+            <div className="mx-auto max-w-2xl sm:text-center">
+              <h2
+                id="fuer-wen-heading"
+                className="font-display text-3xl font-semibold tracking-tight text-[var(--foreground)] sm:text-4xl lg:text-5xl"
+              >
+                Für wen SEO sinnvoll ist
+              </h2>
+              <p className="mt-4 text-lg text-[var(--muted-foreground)] leading-relaxed">
+                Regionale Anbieter, erklärungsbedürftige Leistungen oder
+                bestehende Website mit zu wenig Anfragen – wir ordnen ein, ob
+                SEO für Sie passt.
+              </p>
+            </div>
+            <div className="mx-auto mt-16 grid grid-cols-1 gap-6 lg:grid-cols-2 max-w-4xl">
+              {fuerWenBullets.map((bullet, i) => (
+                <div key={i} className="flex gap-4">
+                  <CheckIcon
+                    className="h-6 w-6 text-[var(--primary)] flex-shrink-0 mt-0.5"
+                    aria-hidden
+                  />
+                  <span className="text-base font-medium text-[var(--foreground)] leading-snug">
+                    {bullet}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </Container>
+        </section>
+
+        {/* Abgrenzung — section intro + list */}
+        <section
+          className="py-24 lg:py-28 bg-[var(--background)]"
+          aria-labelledby="abgrenzung-heading"
+        >
+          <Container>
+            <div className="mx-auto max-w-2xl sm:text-center">
+              <h2
+                id="abgrenzung-heading"
+                className="font-display text-3xl font-semibold tracking-tight text-[var(--foreground)] sm:text-4xl lg:text-5xl"
+              >
+                Was wir bewusst nicht machen
+              </h2>
+              <p className="mt-4 text-lg text-[var(--muted-foreground)] leading-relaxed">
+                Wir arbeiten Google-konform und langfristig – keine Garantien,
+                kein Linkkauf, keine Abkürzungen.
+              </p>
+            </div>
+            <ul className="mx-auto mt-16 max-w-2xl space-y-3 text-[var(--muted-foreground)]">
+              {abgrenzungBullets.map((bullet, i) => (
+                <li key={i} className="flex gap-3">
+                  <CheckIcon
+                    className="h-5 w-5 text-[var(--primary)] flex-shrink-0 mt-0.5"
+                    aria-hidden
+                  />
+                  <span className="text-base leading-relaxed">{bullet}</span>
+                </li>
+              ))}
+            </ul>
+          </Container>
+        </section>
+
+        {/* FAQ — section intro pattern */}
+        <section
+          className="py-24 lg:py-28 bg-[var(--surface-2)]"
+          aria-labelledby="faq-heading"
+        >
+          <Container>
+            <div className="mx-auto max-w-2xl sm:text-center">
+              <h2
+                id="faq-heading"
+                className="font-display text-3xl font-semibold tracking-tight text-[var(--foreground)] sm:text-4xl lg:text-5xl"
+              >
+                Häufige Fragen zu SEO
+              </h2>
+              <p className="mt-4 text-lg text-[var(--muted-foreground)] leading-relaxed">
+                Kurze Antworten für KMU in Österreich und Deutschland.
+              </p>
+            </div>
+            <div className="mx-auto mt-16 max-w-3xl">
+              <div className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-6 lg:p-8 shadow-elev-1">
+                <Accordion items={faqItems} />
+              </div>
+              <p className="mt-8 text-center text-[var(--muted-foreground)]">
+                Weitere Fragen?{' '}
+                <Link href="/kontakt" className={linkStyles}>
+                  Kontaktieren Sie uns
+                </Link>
+              </p>
+            </div>
+          </Container>
+        </section>
+
+        {/* CTA — exact block from webdesign (background image + overlay + white button) */}
+        <section
+          className="relative w-full min-h-[420px] overflow-hidden"
+          aria-labelledby="seo-cta-heading"
+        >
+          <div className="absolute inset-0">
             <Image
-              src="/img/services/seo.jpg"
-              alt="Background Pattern"
+              src="/img/cta-home-bg.jpg"
               fill
-              className="object-cover"
+              className="object-cover object-[55%_50%]"
+              alt=""
+              role="presentation"
               quality={60}
+              sizes="100vw"
             />
           </div>
-          <Container className="relative">
-            <div className="mx-auto max-w-2xl text-center">
-              <h2 className="font-display text-3xl tracking-tight text-white sm:text-4xl">
-                Bereit für mehr Sichtbarkeit?
-              </h2>
-              <p className="mt-4 text-lg text-blue-100">
-                Wenn du das Gefühl hast, dass online zu wenig passiert, ist das meist kein SEO-Problem. Meist fehlt Klarheit. Lass uns klären, ob SEO für dich sinnvoll ist.
-              </p>
-              <div className="mt-8">
-                <Button href="/kontakt" variant="secondary" className="text-blue-600 border-blue-600 hover:bg-blue-600 hover:text-white dark:text-white dark:border-white dark:hover:bg-white dark:hover:text-blue-600">
+          <div
+            className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/60"
+            aria-hidden
+          />
+          <div
+            className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-black/25 to-transparent pointer-events-none"
+            aria-hidden
+          />
+          <div
+            className="absolute inset-0 pointer-events-none opacity-80"
+            style={{
+              background:
+                'radial-gradient(ellipse 80% 70% at 50% 50%, transparent 30%, rgba(0,0,0,0.35) 100%)',
+            }}
+            aria-hidden
+          />
+          <div className="relative z-10 flex items-center justify-center py-24 lg:py-28 min-h-[420px]">
+            <Container>
+              <div className="max-w-[720px] mx-auto text-center">
+                <h2
+                  id="seo-cta-heading"
+                  className="font-display text-4xl lg:text-5xl font-bold tracking-tight text-white mb-6"
+                >
+                  Bereit für mehr Sichtbarkeit?
+                </h2>
+                <p className="text-lg lg:text-xl text-white/80 mb-10 leading-relaxed">
+                  Lassen Sie uns klären, ob SEO für Ihr Unternehmen sinnvoll ist –
+                  und wo das größte Potenzial liegt.
+                </p>
+                <Link
+                  href="/kontakt"
+                  className="inline-flex items-center justify-center gap-2 h-14 px-10 rounded-2xl bg-white text-gray-900 font-semibold text-lg transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
+                >
                   Kostenlose Einordnung anfragen
-                </Button>
+                </Link>
               </div>
-            </div>
-          </Container>
-        </div>
+            </Container>
+          </div>
+        </section>
       </main>
     </>
   )
