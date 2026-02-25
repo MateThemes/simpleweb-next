@@ -1,16 +1,20 @@
 import { Metadata } from 'next'
 import Image from 'next/image'
+import Link from 'next/link'
 import { Container } from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
-// Icons werden nicht verwendet in dieser Komponente
+
+const PAGE_TITLE = 'Shopify Experte Österreich & Deutschland | Shopify Agentur für KMU'
+const PAGE_DESCRIPTION =
+  'Shopify Experte für Österreich & Deutschland: Shopify Shop erstellen lassen, DSGVO-konforme Einrichtung und Conversion-Optimierung für KMU.'
 
 export const metadata: Metadata = {
-  title: 'Shopify Experte Österreich & Deutschland | Shopify Agentur | E-Commerce Experten 2025',
-  description: 'Professioneller Shopify Experte für erfolgreiche Online-Shops in Österreich & Deutschland. Shopify Agentur mit Expertise in Shopify Webdesign, Setup, DSGVO, SEO & Support. Kostenlose Beratung!',
-  keywords: 'Shopify Agentur, Shopify Experte, Shopify Webdesign, Shopify Shop erstellen lassen, Shopify Experte Österreich, Shopify Experte Deutschland, Shopify Setup, Shopify Theme Entwicklung, E-Commerce Experte, Shopify SEO, Shopify DSGVO, Shopify Marketing, Online Shop erstellen, E-Commerce Lösung',
+  title: PAGE_TITLE,
+  description: PAGE_DESCRIPTION,
+  keywords: 'Shopify Agentur, Shopify Experte, Shopify Shop erstellen lassen, Shopify Agentur Österreich, Shopify Agentur Deutschland, Shopify Setup für KMU, Shopify DSGVO, Shopify Shop optimieren',
   openGraph: {
-    title: 'Shopify Experte Österreich & Deutschland | Shopify Agentur | E-Commerce Experten 2025',
-    description: 'Professioneller Shopify Experte für erfolgreiche Online-Shops in Österreich & Deutschland. Shopify Agentur mit Expertise in Shopify Webdesign, Setup, DSGVO, SEO & Support. Kostenlose Beratung!',
+    title: PAGE_TITLE,
+    description: PAGE_DESCRIPTION,
     url: 'https://simplewebdesign.at/services/e-commerce-partner-fuer-shopify',
     type: 'website',
     locale: 'de_AT',
@@ -19,14 +23,14 @@ export const metadata: Metadata = {
         url: '/img/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Shopify Experte Österreich & Deutschland - Professionelle Shopify Agentur für E-Commerce'
+        alt: 'Shopify Experte Österreich & Deutschland – Shopify Agentur für KMU'
       }
     ]
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Shopify Experte Österreich & Deutschland | Shopify Agentur | E-Commerce Experten 2025',
-    description: 'Professioneller Shopify Experte für erfolgreiche Online-Shops in Österreich & Deutschland. Shopify Agentur mit Expertise in Shopify Webdesign, Setup, DSGVO, SEO & Support.',
+    title: PAGE_TITLE,
+    description: PAGE_DESCRIPTION,
     images: ['/img/og-image.jpg']
   },
   alternates: {
@@ -50,27 +54,27 @@ import { breadcrumbSchema, webPageSchema, servicePageSchema, faqSchema } from '@
 const faqs = [
   {
     question: "Was kostet ein Shopify Shop Setup in Österreich?",
-    answer: "Die Kosten für ein Shopify Shop Setup variieren je nach Anforderungen. Ein Standard-Setup beginnt bei €2.500, während komplexe Enterprise-Lösungen bis zu €15.000 kosten können."
+    answer: "Standard-Setup ab ca. €2.500; komplexere Projekte entsprechend mehr. Genaues Angebot nach Anforderungsklärung."
   },
   {
     question: "Wie lange dauert die Entwicklung eines Shopify Shops?",
-    answer: "Ein Standard Shopify Shop ist in 2-4 Wochen fertig entwickelt. Komplexe Custom-Lösungen benötigen 6-12 Wochen. Die genaue Dauer hängt von der Komplexität ab."
+    answer: "Standard-Shop: 2–4 Wochen. Komplexe Anpassungen: 6–12 Wochen – abhängig von Umfang und Integrationen."
   },
   {
-    question: "Ist Shopify DSGVO-konform für österreichische und deutsche Unternehmen?",
-    answer: "Shopify bietet DSGVO-konforme Funktionen. Wir unterstützen Sie bei der technischen Umsetzung von Cookie-Bannern und Datenschutzeinstellungen. Für rechtliche Beratung empfehlen wir einen spezialisierten Anwalt."
+    question: "Ist Shopify DSGVO-konform für Österreich und Deutschland?",
+    answer: "Shopify bietet die technischen Mittel. Wir setzen Cookie-Banner, Datenschutz und Rechtstexte für AT/DE um. Rechtliche Einzelfragen: Anwalt."
   },
   {
     question: "Welche Zahlungsanbieter können integriert werden?",
-    answer: "Wir integrieren alle gängigen österreichischen und deutschen Zahlungsanbieter: SEPA, PayPal, Klarna, Stripe, Mollie und viele mehr."
+    answer: "SEPA, PayPal, Klarna, Stripe, Mollie und weitere gängige Anbieter für AT & DE."
   },
   {
-    question: "Bieten Sie auch laufenden Support für Shopify Shops?",
-    answer: "Ja, wir bieten umfassenden Support: 24/7 Monitoring, regelmäßige Updates, Performance-Optimierung und technischen Support."
+    question: "Bieten Sie laufenden Support für Shopify Shops?",
+    answer: "Ja: Updates, Performance-Optimierung und technischer Support – optional mit Monitoring."
   },
   {
     question: "Kann ich meinen Shopify Shop später erweitern?",
-    answer: "Absolut! Shopify ist sehr skalierbar. Wir können Ihren Shop jederzeit um neue Features, Produkte oder Funktionen erweitern."
+    answer: "Ja. Shopify skaliert mit – wir erweitern um Features, Produkte und Märkte bei Bedarf."
   }
 ]
 
@@ -87,15 +91,15 @@ export default function ShopifyPartnerPage() {
     }),
     // WebPage Schema
     webPageSchema({
-      name: "Shopify Experte Österreich & Deutschland | Shopify Agentur | E-Commerce Experten 2025",
-      description: "Professioneller Shopify Experte für erfolgreiche Online-Shops in Österreich & Deutschland. Shopify Agentur mit Expertise in Shopify Webdesign, Setup, DSGVO, SEO & Support.",
+      name: PAGE_TITLE,
+      description: PAGE_DESCRIPTION,
       url: "https://simplewebdesign.at/services/e-commerce-partner-fuer-shopify",
       image: "https://simplewebdesign.at/img/og-image.jpg",
     }),
     // Service Schema
     servicePageSchema({
       name: "Shopify Experte Agentur",
-      description: "Professioneller Shopify Experte für erfolgreiche Online-Shops in Österreich & Deutschland. Shopify Agentur mit Expertise in Shopify Webdesign, Setup, DSGVO, SEO & Support.",
+      description: PAGE_DESCRIPTION,
       url: "https://simplewebdesign.at/services/e-commerce-partner-fuer-shopify",
       image: "https://simplewebdesign.at/img/og-image.jpg",
       serviceType: ["E-Commerce Development", "Shopify Development", "Shopify Setup", "Shopify Design", "E-Commerce Consulting"],
@@ -120,439 +124,390 @@ export default function ShopifyPartnerPage() {
         />
       ))}
       <main className="flex-auto">
-        {/* Hero Section */}
-        <div className="relative py-20 sm:py-24 lg:py-32 overflow-hidden">
+        {/* Hero — an Marketing-Seite angeglichen, mit Keyfacts */}
+        <section
+          className="relative bg-[var(--background)] pt-24 sm:pt-28 lg:pt-32 pb-20 lg:pb-28"
+          aria-labelledby="shopify-hero-heading"
+        >
           <Container className="relative">
-            <div className="lg:flex lg:items-center lg:gap-x-10">
-              <div className="max-w-2xl lg:max-w-lg">
-                <h1 className="font-display text-5xl font-medium tracking-tight text-neutral-950 dark:text-white [text-wrap:balance] sm:text-7xl">
-                  Shopify Experte Österreich & Deutschland
-                </h1>
-                <p className="mt-6 text-xl text-neutral-600 dark:text-neutral-300">
-                  Professionelle Shopify Agentur für erfolgreiche Online-Shops. Wir erstellen, optimieren und betreuen E-Commerce-Lösungen von der Konzeption bis zum laufenden Support.
-                </p>
-                <div className="mt-8 flex gap-4">
-                  <Button href="/kontakt">Kostenlose Shopify Beratung</Button>
-                  <Button href="#referenzen" variant="secondary">Referenzen ansehen</Button>
+            <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-start">
+              <div className="relative w-full">
+                <div
+                  className="absolute -inset-x-8 top-1/2 -translate-y-1/2 h-[120%] w-[140%] max-w-none pointer-events-none opacity-[0.04] dark:opacity-[0.06] hidden lg:block"
+                  aria-hidden
+                  style={{
+                    background:
+                      'radial-gradient(ellipse 70% 60% at 30% 50%, var(--foreground), transparent 70%)',
+                  }}
+                />
+                <div className="relative space-y-6 max-w-2xl mx-auto">
+                  <p className="text-sm font-medium uppercase tracking-wider text-[var(--muted-foreground)]">
+                    Shopify für KMU
+                  </p>
+                  <h1
+                    id="shopify-hero-heading"
+                    className="font-display font-bold tracking-tight text-[var(--foreground)] leading-[1.08] text-4xl sm:text-5xl lg:text-6xl"
+                  >
+                    Shopify Experte für Österreich & Deutschland
+                  </h1>
+                  <p className="mt-10 text-lg md:text-xl text-[var(--muted-foreground)] leading-relaxed max-w-xl">
+                    Strukturierte Shopify Shops für KMU – DSGVO-konform, conversion-optimiert und technisch sauber umgesetzt.
+                  </p>
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-4 mt-8">
+                    <Button href="/kontakt">Kostenlose Shopify Beratung</Button>
+                    <Link
+                      href="#referenzen"
+                      className="inline-flex items-center justify-center gap-2 h-[52px] px-6 rounded-xl font-medium text-base text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2"
+                    >
+                      Referenzen ansehen
+                    </Link>
+                  </div>
+                  <div
+                    className="flex flex-wrap items-center gap-x-2 gap-y-1 mt-8 pt-2 text-[var(--muted-foreground)] text-sm tracking-wide"
+                    role="list"
+                    aria-label="Shopify und Reichweite"
+                  >
+                    <span className="uppercase tracking-wider font-medium" role="listitem">
+                      50+ Projekte
+                    </span>
+                    <span className="mx-2 text-[var(--border)] dark:text-[var(--muted-foreground)]" aria-hidden>·</span>
+                    <span className="uppercase tracking-wider font-medium" role="listitem">
+                      AT & DE
+                    </span>
+                    <span className="mx-2 text-[var(--border)] dark:text-[var(--muted-foreground)]" aria-hidden>·</span>
+                    <span className="uppercase tracking-wider font-medium" role="listitem">
+                      Antwort in 1–2 Werktagen
+                    </span>
+                  </div>
                 </div>
               </div>
-              <div className="mt-16 lg:mt-0">
-                <div className="relative">
-                  <Image
-                    src="/img/services/shopify.png"
-                    alt="Shopify Experte Österreich & Deutschland - Professionelle E-Commerce Agentur"
-                    width={600}
-                    height={600}
-                    className="rounded-2xl shadow-xl"
-                    priority
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
-                  />
+              <div className="relative w-full lg:pt-8">
+                <div
+                  className="relative w-full overflow-hidden rounded-[24px] bg-[var(--surface-2)] border border-[var(--border)]"
+                  style={{
+                    boxShadow:
+                      '0 4px 6px -1px rgb(0 0 0 / 0.06), 0 2px 4px -2px rgb(0 0 0 / 0.04)',
+                  }}
+                >
+                  <div className="aspect-square relative">
+                    <Image
+                      src="/img/services/shopify.png"
+                      alt="Shopify Experte Österreich & Deutschland – Shopify Agentur für KMU"
+                      fill
+                      priority
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      className="object-contain object-center p-6"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
           </Container>
-        </div>
+        </section>
 
-        {/* Pain → Outcome Section */}
-        <div className="py-24 bg-neutral-50 dark:bg-neutral-900">
+        {/* Von Problemen zu Lösungen — M3 Cards, klare Hierarchie */}
+        <section className="py-24 lg:py-28 bg-[var(--surface-2)]" aria-labelledby="probleme-loesungen-heading">
           <Container>
             <div className="mx-auto max-w-2xl sm:text-center">
-              <h2 className="font-display text-4xl font-medium tracking-tight text-neutral-950 dark:text-white sm:text-5xl">
+              <h2 id="probleme-loesungen-heading" className="font-display text-3xl font-semibold tracking-tight text-[var(--foreground)] sm:text-4xl lg:text-5xl">
                 Von Problemen zu Lösungen
               </h2>
-              <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-300">
-                Wir lösen die typischen Herausforderungen beim E-Commerce Setup in Österreich und Deutschland.
+              <p className="mt-4 text-lg text-[var(--muted-foreground)] leading-relaxed">
+                Typische Herausforderungen beim Shopify Setup für KMU in Österreich und Deutschland – und wie wir sie lösen.
               </p>
             </div>
-            <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 sm:mt-20 lg:max-w-none lg:grid-cols-2">
-              <div className="rounded-2xl bg-white dark:bg-neutral-800 p-8 shadow-sm">
-                <h3 className="font-display text-xl font-semibold text-red-600 dark:text-red-400 mb-4">
-                  ❌ Typische Probleme
+            <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-6 sm:mt-20 lg:max-w-none md:grid-cols-2">
+              <div className="rounded-2xl bg-[var(--surface)]/80 border border-[var(--border)]/60 p-6 lg:p-8 transition-[box-shadow] duration-200 hover:shadow-[var(--shadow-3)]">
+                <h3 className="font-display text-lg font-semibold tracking-tight text-[var(--foreground)] mb-3">
+                  Typische Probleme
                 </h3>
-                <ul className="space-y-3 text-neutral-600 dark:text-neutral-300">
-                  <li className="flex items-start gap-3">
-                    <span className="text-red-500 mt-1">•</span>
-                    <span>Komplexe E-Commerce Setup ohne Expertise</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-red-500 mt-1">•</span>
-                    <span>DSGVO-Probleme bei Online-Shops</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-red-500 mt-1">•</span>
-                    <span>Schlechte Conversion-Raten</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-red-500 mt-1">•</span>
-                    <span>Hohe Wartungskosten und technische Probleme</span>
-                  </li>
+                <ul className="space-y-2 text-sm text-[var(--muted-foreground)] leading-relaxed">
+                  <li>Komplexes E-Commerce-Setup ohne Expertise</li>
+                  <li>DSGVO-Probleme bei Online-Shops</li>
+                  <li>Schlechte Conversion-Raten</li>
+                  <li>Hohe Wartungskosten und technische Schulden</li>
                 </ul>
               </div>
-              <div className="rounded-2xl bg-white dark:bg-neutral-800 p-8 shadow-sm">
-                <h3 className="font-display text-xl font-semibold text-green-600 dark:text-green-400 mb-4">
-                  ✅ Unsere Lösungen
+              <div className="rounded-2xl bg-[var(--surface)]/80 border border-[var(--border)]/60 p-6 lg:p-8 transition-[box-shadow] duration-200 hover:shadow-[var(--shadow-3)]">
+                <h3 className="font-display text-lg font-semibold tracking-tight text-[var(--foreground)] mb-3">
+                  Unsere Lösungen
                 </h3>
-                <ul className="space-y-3 text-neutral-600 dark:text-neutral-300">
-                  <li className="flex items-start gap-3">
-                    <span className="text-green-500 mt-1">•</span>
-                    <span>Professionelles Shopify Setup aus einer Hand</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-green-500 mt-1">•</span>
-                    <span>Vollständige DSGVO-Compliance</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-green-500 mt-1">•</span>
-                    <span>Optimierte Conversion-Raten</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-green-500 mt-1">•</span>
-                    <span>Laufender Support und Wartung</span>
-                  </li>
+                <ul className="space-y-2 text-sm text-[var(--muted-foreground)] leading-relaxed">
+                  <li>Shopify Setup für KMU aus einer Hand</li>
+                  <li>DSGVO-konforme Einrichtung für AT & DE</li>
+                  <li>Conversion-optimierte Shops</li>
+                  <li>Laufender Support und Wartung</li>
                 </ul>
               </div>
             </div>
           </Container>
-        </div>
+        </section>
 
 
-        {/* Services Section */}
-        <div className="py-24">
+        {/* Leistungen — 2-Spalten M3 Cards, max 2–3 Zeilen je Service */}
+        <section className="py-24 lg:py-28 bg-[var(--background)]" aria-labelledby="leistungen-heading">
           <Container>
             <div className="mx-auto max-w-2xl sm:text-center">
-              <h2 className="font-display text-4xl font-medium tracking-tight text-neutral-950 dark:text-white sm:text-5xl">
-                Unsere Shopify Experten Leistungen
+              <h2 id="leistungen-heading" className="font-display text-3xl font-semibold tracking-tight text-[var(--foreground)] sm:text-4xl lg:text-5xl">
+                Unsere Shopify-Leistungen
               </h2>
-              <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-300">
-                Alles was Sie für einen erfolgreichen Online-Shop brauchen - aus einer Hand.
+              <p className="mt-4 text-lg text-[var(--muted-foreground)] leading-relaxed">
+                Shopify Shop erstellen lassen oder bestehenden Shop optimieren – aus einer Hand für Österreich und Deutschland.
               </p>
             </div>
-            <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 sm:mt-20 lg:max-w-none lg:grid-cols-3">
-              <div className="flex flex-col gap-6 rounded-2xl bg-white dark:bg-neutral-800 p-8 shadow-sm border border-neutral-200 dark:border-neutral-700">
-                <div className="text-4xl">🛍️</div>
-                <div>
-                  <h3 className="font-display text-xl font-semibold text-neutral-950 dark:text-white">
-                    Shopify Setup & Theme-Entwicklung
+            <div className="mx-auto mt-16 grid grid-cols-1 gap-6 sm:mt-20 md:grid-cols-2">
+              <div className="flex gap-5 rounded-2xl bg-[var(--surface)]/80 border border-[var(--border)]/60 p-6 lg:p-8 transition-[box-shadow] duration-200 hover:shadow-[var(--shadow-3)]">
+                <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-[var(--muted)]/60 text-[var(--primary)] font-semibold text-sm">1</div>
+                <div className="min-w-0">
+                  <h3 className="font-display text-lg font-semibold tracking-tight text-[var(--foreground)]">
+                    Shopify Setup & Theme
                   </h3>
-                  <p className="mt-2 text-neutral-600 dark:text-neutral-300">
-                    Professionelle Einrichtung Ihres Shopify Shops mit maßgeschneidertem Design für österreichische und deutsche Unternehmen.
+                  <p className="mt-2 text-sm text-[var(--muted-foreground)] leading-relaxed">
+                    Einrichtung und maßgeschneidertes Design für KMU in AT & DE.
                   </p>
                 </div>
               </div>
-              <div className="flex flex-col gap-6 rounded-2xl bg-white dark:bg-neutral-800 p-8 shadow-sm border border-neutral-200 dark:border-neutral-700">
-                <div className="text-4xl">🛡️</div>
-                <div>
-                  <h3 className="font-display text-xl font-semibold text-neutral-950 dark:text-white">
-                    DSGVO-konforme Einrichtung
+              <div className="flex gap-5 rounded-2xl bg-[var(--surface)]/80 border border-[var(--border)]/60 p-6 lg:p-8 transition-[box-shadow] duration-200 hover:shadow-[var(--shadow-3)]">
+                <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-[var(--muted)]/60 text-[var(--primary)] font-semibold text-sm">2</div>
+                <div className="min-w-0">
+                  <h3 className="font-display text-lg font-semibold tracking-tight text-[var(--foreground)]">
+                    Shopify DSGVO
                   </h3>
-                  <p className="mt-2 text-neutral-600 dark:text-neutral-300">
-                    Cookies, Datenschutz, Rechtstexte - alles rechtssicher für den deutschen und österreichischen Markt.
+                  <p className="mt-2 text-sm text-[var(--muted-foreground)] leading-relaxed">
+                    Cookies, Datenschutz und Rechtstexte rechtssicher für AT & DE.
                   </p>
                 </div>
               </div>
-              <div className="flex flex-col gap-6 rounded-2xl bg-white dark:bg-neutral-800 p-8 shadow-sm border border-neutral-200 dark:border-neutral-700">
-                <div className="text-4xl">💳</div>
-                <div>
-                  <h3 className="font-display text-xl font-semibold text-neutral-950 dark:text-white">
-                    Payment & Versand Anbindung
+              <div className="flex gap-5 rounded-2xl bg-[var(--surface)]/80 border border-[var(--border)]/60 p-6 lg:p-8 transition-[box-shadow] duration-200 hover:shadow-[var(--shadow-3)]">
+                <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-[var(--muted)]/60 text-[var(--primary)] font-semibold text-sm">3</div>
+                <div className="min-w-0">
+                  <h3 className="font-display text-lg font-semibold tracking-tight text-[var(--foreground)]">
+                    Payment & Versand
                   </h3>
-                  <p className="mt-2 text-neutral-600 dark:text-neutral-300">
-                    Integration von österreichischen und deutschen Zahlungsanbietern sowie Versanddienstleistern.
+                  <p className="mt-2 text-sm text-[var(--muted-foreground)] leading-relaxed">
+                    Zahlungsanbieter und Versand für Österreich und Deutschland.
                   </p>
                 </div>
               </div>
-              <div className="flex flex-col gap-6 rounded-2xl bg-white dark:bg-neutral-800 p-8 shadow-sm border border-neutral-200 dark:border-neutral-700">
-                <div className="text-4xl">🎯</div>
-                <div>
-                  <h3 className="font-display text-xl font-semibold text-neutral-950 dark:text-white">
-                    Conversion-Optimierung & SEO
+              <div className="flex gap-5 rounded-2xl bg-[var(--surface)]/80 border border-[var(--border)]/60 p-6 lg:p-8 transition-[box-shadow] duration-200 hover:shadow-[var(--shadow-3)]">
+                <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-[var(--muted)]/60 text-[var(--primary)] font-semibold text-sm">4</div>
+                <div className="min-w-0">
+                  <h3 className="font-display text-lg font-semibold tracking-tight text-[var(--foreground)]">
+                    Conversion & SEO
                   </h3>
-                  <p className="mt-2 text-neutral-600 dark:text-neutral-300">
-                    Maximale Verkäufe durch optimierte User Experience und lokale Suchmaschinenoptimierung.
+                  <p className="mt-2 text-sm text-[var(--muted-foreground)] leading-relaxed">
+                    UX und Suchmaschinenoptimierung für mehr Verkäufe.
                   </p>
                 </div>
               </div>
-              <div className="flex flex-col gap-6 rounded-2xl bg-white dark:bg-neutral-800 p-8 shadow-sm border border-neutral-200 dark:border-neutral-700">
-                <div className="text-4xl">⚙️</div>
-                <div>
-                  <h3 className="font-display text-xl font-semibold text-neutral-950 dark:text-white">
-                    Laufende Betreuung & Support
+              <div className="flex gap-5 rounded-2xl bg-[var(--surface)]/80 border border-[var(--border)]/60 p-6 lg:p-8 transition-[box-shadow] duration-200 hover:shadow-[var(--shadow-3)]">
+                <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-[var(--muted)]/60 text-[var(--primary)] font-semibold text-sm">5</div>
+                <div className="min-w-0">
+                  <h3 className="font-display text-lg font-semibold tracking-tight text-[var(--foreground)]">
+                    Betreuung & Support
                   </h3>
-                  <p className="mt-2 text-neutral-600 dark:text-neutral-300">
-                    Kontinuierliche Wartung, Updates und technischer Support für Ihren Shopify Shop.
+                  <p className="mt-2 text-sm text-[var(--muted-foreground)] leading-relaxed">
+                    Wartung, Updates und technischer Support für Ihren Shop.
                   </p>
                 </div>
               </div>
-              <div className="flex flex-col gap-6 rounded-2xl bg-white dark:bg-neutral-800 p-8 shadow-sm border border-neutral-200 dark:border-neutral-700">
-                <div className="text-4xl">📊</div>
-                <div>
-                  <h3 className="font-display text-xl font-semibold text-neutral-950 dark:text-white">
+              <div className="flex gap-5 rounded-2xl bg-[var(--surface)]/80 border border-[var(--border)]/60 p-6 lg:p-8 transition-[box-shadow] duration-200 hover:shadow-[var(--shadow-3)]">
+                <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-[var(--muted)]/60 text-[var(--primary)] font-semibold text-sm">6</div>
+                <div className="min-w-0">
+                  <h3 className="font-display text-lg font-semibold tracking-tight text-[var(--foreground)]">
                     Analytics & Reporting
                   </h3>
-                  <p className="mt-2 text-neutral-600 dark:text-neutral-300">
-                    Detaillierte Verkaufsanalysen, Conversion-Tracking und monatliche Reports.
+                  <p className="mt-2 text-sm text-[var(--muted-foreground)] leading-relaxed">
+                    Verkaufsanalysen, Conversion-Tracking, Reports.
                   </p>
                 </div>
               </div>
             </div>
           </Container>
-        </div>
+        </section>
 
         {/* Process Section */}
-        <div className="py-24 bg-neutral-50 dark:bg-neutral-900">
+        <section className="py-24 lg:py-28 bg-[var(--background)]" aria-labelledby="process-heading">
           <Container>
             <div className="mx-auto max-w-2xl lg:max-w-none">
               <div className="max-w-2xl">
-                <h2 className="font-display text-4xl font-medium tracking-tight text-neutral-950 dark:text-white sm:text-5xl">
-                  Unser Shopify Experten Prozess
+                <h2 id="process-heading" className="font-display text-3xl font-semibold tracking-tight text-[var(--foreground)] sm:text-4xl lg:text-5xl">
+                  Unser Shopify-Prozess
                 </h2>
-                <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-300">
-                  Wir begleiten Sie Schritt für Schritt zu Ihrem erfolgreichen Online-Shop.
+                <p className="mt-4 text-lg text-[var(--muted-foreground)] leading-relaxed">
+                  Als Shopify Agentur Österreich und Shopify Agentur Deutschland begleiten wir Sie von der Beratung bis zum Go-Live und darüber hinaus.
                 </p>
               </div>
               <div className="mt-16 grid grid-cols-1 gap-8 lg:grid-cols-3">
                 <div className="flex gap-4">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-600 text-white font-semibold text-sm">
+                  <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-[var(--primary)] text-[var(--primary-foreground)] font-semibold text-sm">
                     1
                   </div>
                   <div>
-                    <h3 className="font-display text-xl font-semibold text-neutral-950 dark:text-white">Beratung & Konzeption</h3>
-                    <p className="mt-2 text-neutral-600 dark:text-neutral-300">Wir analysieren Ihre Anforderungen und entwickeln eine maßgeschneiderte E-Commerce-Strategie.</p>
+                    <h3 className="font-display text-lg font-semibold text-[var(--foreground)]">Beratung & Konzeption</h3>
+                    <p className="mt-2 text-sm text-[var(--muted-foreground)]">Anforderungen klären, E-Commerce-Strategie für Ihr KMU.</p>
                   </div>
                 </div>
                 <div className="flex gap-4">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-600 text-white font-semibold text-sm">
+                  <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-[var(--primary)] text-[var(--primary-foreground)] font-semibold text-sm">
                     2
                   </div>
                   <div>
-                    <h3 className="font-display text-xl font-semibold text-neutral-950 dark:text-white">Shopify Setup</h3>
-                    <p className="mt-2 text-neutral-600 dark:text-neutral-300">Professionelle Einrichtung Ihres Shopify Shops mit individueller Theme-Entwicklung.</p>
+                    <h3 className="font-display text-lg font-semibold text-[var(--foreground)]">Shopify Setup</h3>
+                    <p className="mt-2 text-sm text-[var(--muted-foreground)]">Einrichtung und Theme nach Ihren Vorgaben.</p>
                   </div>
                 </div>
                 <div className="flex gap-4">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-600 text-white font-semibold text-sm">
+                  <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-[var(--primary)] text-[var(--primary-foreground)] font-semibold text-sm">
                     3
                   </div>
                   <div>
-                    <h3 className="font-display text-xl font-semibold text-neutral-950 dark:text-white">Payment & DSGVO</h3>
-                    <p className="mt-2 text-neutral-600 dark:text-neutral-300">Integration von Zahlungsanbietern und vollständige DSGVO-konforme Einrichtung.</p>
+                    <h3 className="font-display text-lg font-semibold text-[var(--foreground)]">Payment & DSGVO</h3>
+                    <p className="mt-2 text-sm text-[var(--muted-foreground)]">Zahlung, Versand, DSGVO-konforme Einrichtung.</p>
                   </div>
                 </div>
                 <div className="flex gap-4">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-600 text-white font-semibold text-sm">
+                  <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-[var(--primary)] text-[var(--primary-foreground)] font-semibold text-sm">
                     4
                   </div>
                   <div>
-                    <h3 className="font-display text-xl font-semibold text-neutral-950 dark:text-white">SEO & Optimierung</h3>
-                    <p className="mt-2 text-neutral-600 dark:text-neutral-300">Suchmaschinenoptimierung und Conversion-Optimierung für maximale Verkäufe.</p>
+                    <h3 className="font-display text-lg font-semibold text-[var(--foreground)]">SEO & Optimierung</h3>
+                    <p className="mt-2 text-sm text-[var(--muted-foreground)]">SEO und Conversion-Optimierung.</p>
                   </div>
                 </div>
                 <div className="flex gap-4">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-600 text-white font-semibold text-sm">
+                  <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-[var(--primary)] text-[var(--primary-foreground)] font-semibold text-sm">
                     5
                   </div>
                   <div>
-                    <h3 className="font-display text-xl font-semibold text-neutral-950 dark:text-white">Go-Live</h3>
-                    <p className="mt-2 text-neutral-600 dark:text-neutral-300">Wir bringen Ihren Online-Shop online und testen alle Funktionen gründlich.</p>
+                    <h3 className="font-display text-lg font-semibold text-[var(--foreground)]">Go-Live</h3>
+                    <p className="mt-2 text-sm text-[var(--muted-foreground)]">Launch und Tests vor dem Livegang.</p>
                   </div>
                 </div>
                 <div className="flex gap-4">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-600 text-white font-semibold text-sm">
+                  <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-[var(--primary)] text-[var(--primary-foreground)] font-semibold text-sm">
                     6
                   </div>
                   <div>
-                    <h3 className="font-display text-xl font-semibold text-neutral-950 dark:text-white">Laufende Betreuung</h3>
-                    <p className="mt-2 text-neutral-600 dark:text-neutral-300">Kontinuierlicher Support, Updates und Performance-Monitoring für Ihren Erfolg.</p>
+                    <h3 className="font-display text-lg font-semibold text-[var(--foreground)]">Laufende Betreuung</h3>
+                    <p className="mt-2 text-sm text-[var(--muted-foreground)]">Support, Updates, Monitoring.</p>
                   </div>
                 </div>
               </div>
             </div>
           </Container>
-        </div>
+        </section>
 
-        {/* Why Shopify Section */}
-        <div id="referenzen" className="py-24 bg-neutral-50 dark:bg-neutral-900">
+        {/* Why Shopify — Fokus: Skalierbarkeit KMU, DSGVO AT/DE, Performance & Conversion */}
+        <section id="referenzen" className="py-24 lg:py-28 bg-[var(--surface-2)]" aria-labelledby="why-shopify-heading">
           <Container>
             <div className="mx-auto max-w-2xl sm:text-center">
-              <h2 className="font-display text-4xl font-medium tracking-tight text-neutral-950 dark:text-white sm:text-5xl">
-                Warum Shopify? Die führende E-Commerce-Plattform
+              <h2 id="why-shopify-heading" className="font-display text-3xl font-semibold tracking-tight text-[var(--foreground)] sm:text-4xl lg:text-5xl">
+                Warum Shopify für KMU?
               </h2>
-              <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-300">
-                Über 2 Millionen Unternehmen weltweit vertrauen auf Shopify für ihren Online-Erfolg.
+              <p className="mt-4 text-lg text-[var(--muted-foreground)] leading-relaxed">
+                Skalierbar, rechtssicher für Österreich und Deutschland, mit Fokus auf Performance und Conversion.
               </p>
             </div>
-            <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 sm:mt-20 lg:max-w-none lg:grid-cols-3">
-              <div className="rounded-2xl bg-white dark:bg-neutral-800 p-8 shadow-sm">
-                <div className="text-4xl mb-4">📈</div>
-                <h3 className="font-display text-xl font-semibold text-neutral-950 dark:text-white mb-3">
-                  Bewährte Skalierbarkeit
+            <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-6 sm:mt-20 lg:max-w-none md:grid-cols-3">
+              <div className="rounded-2xl bg-[var(--surface)]/80 border border-[var(--border)]/60 p-6 lg:p-8 transition-[box-shadow] duration-200 hover:shadow-[var(--shadow-3)]">
+                <h3 className="font-display text-lg font-semibold tracking-tight text-[var(--foreground)] mb-2">
+                  Skalierbarkeit für KMU
                 </h3>
-                <p className="text-neutral-600 dark:text-neutral-300 mb-4">
-                  Von Start-ups bis zu Enterprise-Unternehmen - Shopify wächst mit Ihrem Business mit. Über 2 Millionen aktive Shops weltweit.
+                <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
+                  Shopify wächst mit: vom ersten Shopify Setup für KMU bis zu mehr Produkten, Sprachen und Märkten – ohne Plattformwechsel.
                 </p>
-                <div className="text-sm text-neutral-500 dark:text-neutral-400">
-                  Von Shopify bis Shopify Plus
-                </div>
               </div>
-              <div className="rounded-2xl bg-white dark:bg-neutral-800 p-8 shadow-sm">
-                <div className="text-4xl mb-4">🔒</div>
-                <h3 className="font-display text-xl font-semibold text-neutral-950 dark:text-white mb-3">
-                  Höchste Sicherheitsstandards
+              <div className="rounded-2xl bg-[var(--surface)]/80 border border-[var(--border)]/60 p-6 lg:p-8 transition-[box-shadow] duration-200 hover:shadow-[var(--shadow-3)]">
+                <h3 className="font-display text-lg font-semibold tracking-tight text-[var(--foreground)] mb-2">
+                  DSGVO für AT & DE
                 </h3>
-                <p className="text-neutral-600 dark:text-neutral-300 mb-4">
-                  PCI DSS Level 1 zertifiziert, 99.98% Uptime und automatische Backups. Ihre Kundendaten sind bei Shopify sicher aufgehoben.
+                <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
+                  Shopify bietet die nötigen Bausteine für DSGVO-konforme Shops. Wir setzen Cookie-Banner, Datenschutz und Rechtstexte für den deutschsprachigen Raum um.
                 </p>
-                <div className="text-sm text-neutral-500 dark:text-neutral-400">
-                  Banken-Level Sicherheit
-                </div>
               </div>
-              <div className="rounded-2xl bg-white dark:bg-neutral-800 p-8 shadow-sm">
-                <div className="text-4xl mb-4">🌍</div>
-                <h3 className="font-display text-xl font-semibold text-neutral-950 dark:text-white mb-3">
-                  Globale E-Commerce-Lösung
+              <div className="rounded-2xl bg-[var(--surface)]/80 border border-[var(--border)]/60 p-6 lg:p-8 transition-[box-shadow] duration-200 hover:shadow-[var(--shadow-3)]">
+                <h3 className="font-display text-lg font-semibold tracking-tight text-[var(--foreground)] mb-2">
+                  Performance & Conversion
                 </h3>
-                <p className="text-neutral-600 dark:text-neutral-300 mb-4">
-                  Multi-Currency, Multi-Language und lokale Payment-Optionen. Perfekt für den österreichischen und deutschen Markt.
+                <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
+                  Schnelle Ladezeiten und klare Struktur unterstützen Suchmaschinen und Kaufentscheidungen. Wir optimieren Ihren Shopify Shop dafür.
                 </p>
-                <div className="text-sm text-neutral-500 dark:text-neutral-400">
-                  Über 175 Länder unterstützt
-                </div>
-              </div>
-            </div>
-            
-            {/* Trust Indicators */}
-            <div className="mt-16 text-center">
-              <p className="text-sm text-neutral-500 dark:text-neutral-400 mb-8">
-                Vertrauen Sie auf die gleiche Plattform wie diese erfolgreichen Marken:
-              </p>
-              <div className="flex flex-wrap justify-center items-center gap-8 opacity-60">
-                <div className="text-2xl font-bold text-neutral-400">Allbirds</div>
-                <div className="text-2xl font-bold text-neutral-400">Gymshark</div>
-                <div className="text-2xl font-bold text-neutral-400">Kylie Cosmetics</div>
-                <div className="text-2xl font-bold text-neutral-400">Tesla</div>
-                <div className="text-2xl font-bold text-neutral-400">Heinz</div>
               </div>
             </div>
           </Container>
-        </div>
+        </section>
 
-        {/* FAQ Section */}
-        <div className="py-24">
+        {/* FAQ — sprachlich scharf, direkt */}
+        <section className="py-24 lg:py-28 bg-[var(--background)]" aria-labelledby="faq-heading">
           <Container>
             <div className="mx-auto max-w-2xl sm:text-center">
-              <h2 className="font-display text-4xl font-medium tracking-tight text-neutral-950 dark:text-white sm:text-5xl">
+              <h2 id="faq-heading" className="font-display text-3xl font-semibold tracking-tight text-[var(--foreground)] sm:text-4xl lg:text-5xl">
                 Häufige Fragen
               </h2>
-              <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-300">
-                Antworten auf die wichtigsten Fragen zu Shopify Experte Services.
+              <p className="mt-4 text-lg text-[var(--muted-foreground)]">
+                Kurze Antworten zu Shopify Setup, DSGVO und Support.
               </p>
             </div>
-            <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 sm:mt-20 lg:max-w-none lg:grid-cols-2">
-              <div className="rounded-2xl bg-white dark:bg-neutral-800 p-8 shadow-sm border border-neutral-200 dark:border-neutral-700">
-                <h3 className="font-display text-xl font-semibold text-neutral-950 dark:text-white mb-4">
-                  Was kostet ein Shopify Shop Setup in Österreich?
-                </h3>
-                <p className="text-neutral-600 dark:text-neutral-300">
-                  Die Kosten für ein Shopify Shop Setup variieren je nach Anforderungen. Ein Standard-Setup beginnt bei €2.500, während komplexe Enterprise-Lösungen bis zu €15.000 kosten können.
-                </p>
-              </div>
-              <div className="rounded-2xl bg-white dark:bg-neutral-800 p-8 shadow-sm border border-neutral-200 dark:border-neutral-700">
-                <h3 className="font-display text-xl font-semibold text-neutral-950 dark:text-white mb-4">
-                  Wie lange dauert die Entwicklung eines Shopify Shops?
-                </h3>
-                <p className="text-neutral-600 dark:text-neutral-300">
-                  Ein Standard Shopify Shop ist in 2-4 Wochen fertig entwickelt. Komplexe Custom-Lösungen benötigen 6-12 Wochen. Die genaue Dauer hängt von der Komplexität ab.
-                </p>
-              </div>
-              <div className="rounded-2xl bg-white dark:bg-neutral-800 p-8 shadow-sm border border-neutral-200 dark:border-neutral-700">
-                <h3 className="font-display text-xl font-semibold text-neutral-950 dark:text-white mb-4">
-                  Ist Shopify DSGVO-konform für österreichische und deutsche Unternehmen?
-                </h3>
-                <p className="text-neutral-600 dark:text-neutral-300">
-                  Shopify bietet DSGVO-konforme Funktionen. Wir unterstützen Sie bei der technischen Umsetzung von Cookie-Bannern und Datenschutzeinstellungen. Für rechtliche Beratung empfehlen wir einen spezialisierten Anwalt.
-                </p>
-              </div>
-              <div className="rounded-2xl bg-white dark:bg-neutral-800 p-8 shadow-sm border border-neutral-200 dark:border-neutral-700">
-                <h3 className="font-display text-xl font-semibold text-neutral-950 dark:text-white mb-4">
-                  Welche Zahlungsanbieter können integriert werden?
-                </h3>
-                <p className="text-neutral-600 dark:text-neutral-300">
-                  Wir integrieren alle gängigen österreichischen und deutschen Zahlungsanbieter: SEPA, PayPal, Klarna, Stripe, Mollie und viele mehr.
-                </p>
-              </div>
-              <div className="rounded-2xl bg-white dark:bg-neutral-800 p-8 shadow-sm border border-neutral-200 dark:border-neutral-700">
-                <h3 className="font-display text-xl font-semibold text-neutral-950 dark:text-white mb-4">
-                  Bieten Sie auch laufenden Support für Shopify Shops?
-                </h3>
-                <p className="text-neutral-600 dark:text-neutral-300">
-                  Ja, wir bieten umfassenden Support: 24/7 Monitoring, regelmäßige Updates, Performance-Optimierung und technischen Support.
-                </p>
-              </div>
-              <div className="rounded-2xl bg-white dark:bg-neutral-800 p-8 shadow-sm border border-neutral-200 dark:border-neutral-700">
-                <h3 className="font-display text-xl font-semibold text-neutral-950 dark:text-white mb-4">
-                  Kann ich meinen Shopify Shop später erweitern?
-                </h3>
-                <p className="text-neutral-600 dark:text-neutral-300">
-                  Absolut! Shopify ist sehr skalierbar. Wir können Ihren Shop jederzeit um neue Features, Produkte oder Funktionen erweitern.
-                </p>
-              </div>
+            <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-6 sm:mt-20 lg:max-w-none md:grid-cols-2">
+              {faqs.map((faq, index) => (
+                <div
+                  key={index}
+                  className="rounded-2xl bg-[var(--surface)]/80 border border-[var(--border)]/60 p-6 lg:p-8"
+                >
+                  <h3 className="font-display text-lg font-semibold tracking-tight text-[var(--foreground)] mb-2">
+                    {faq.question}
+                  </h3>
+                  <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
+                    {faq.answer}
+                  </p>
+                </div>
+              ))}
             </div>
           </Container>
-        </div>
+        </section>
 
       {/* Related Services Section */}
-      <section className="py-24" aria-labelledby="related-services">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h2 id="related-services" className="text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl">
-              Weitere Services für Ihren Online-Erfolg
+      <section className="py-24 lg:py-28 bg-[var(--surface-2)]" aria-labelledby="related-services">
+        <Container>
+          <div className="mx-auto max-w-2xl sm:text-center">
+            <h2 id="related-services" className="font-display text-3xl font-semibold tracking-tight text-[var(--foreground)] sm:text-4xl lg:text-5xl">
+              Weitere Services
             </h2>
-            <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">
-              Ergänzen Sie Ihr E-Commerce-Projekt mit unseren zusätzlichen Services für maximale Performance.
+            <p className="mt-4 text-lg text-[var(--muted-foreground)]">
+              SEO, Marketing und Performance – passend zu Ihrem Shopify Shop optimieren und Aufbau.
             </p>
           </div>
-          <div className="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            <article className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow hover:shadow-lg transition-shadow duration-300">
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                <a href="/services/seo" className="hover:text-blue-600 transition-colors duration-200">
-                  SEO Optimierung
-                </a>
+          <div className="mt-16 grid grid-cols-1 gap-6 sm:mt-20 md:grid-cols-3">
+            <Link href="/services/seo" className="rounded-2xl bg-[var(--surface)]/80 border border-[var(--border)]/60 p-6 transition-[box-shadow] duration-200 hover:shadow-[var(--shadow-3)] block">
+              <h3 className="font-display text-lg font-semibold tracking-tight text-[var(--foreground)] mb-2">
+                SEO
               </h3>
-              <p className="text-gray-600 dark:text-gray-300 mb-4">
-                Professionelle Suchmaschinenoptimierung für Online-Shops. Verbessern Sie Ihre Sichtbarkeit in Google und steigern Sie organischen Traffic.
+              <p className="text-sm text-[var(--muted-foreground)] mb-4">
+                Sichtbarkeit in Google und organischer Traffic für Ihren Shop.
               </p>
-              <a href="/services/seo" className="text-blue-600 hover:text-blue-700 font-medium">
-                Mehr erfahren →
-              </a>
-            </article>
-            <article className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow hover:shadow-lg transition-shadow duration-300">
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                <a href="/services/marketing" className="hover:text-blue-600 transition-colors duration-200">
-                  E-Commerce Marketing
-                </a>
+              <span className="text-sm font-medium text-[var(--primary)]">Mehr erfahren →</span>
+            </Link>
+            <Link href="/services/marketing" className="rounded-2xl bg-[var(--surface)]/80 border border-[var(--border)]/60 p-6 transition-[box-shadow] duration-200 hover:shadow-[var(--shadow-3)] block">
+              <h3 className="font-display text-lg font-semibold tracking-tight text-[var(--foreground)] mb-2">
+                Marketing
               </h3>
-              <p className="text-gray-600 dark:text-gray-300 mb-4">
-                Professionelles Marketing für Online-Shops. Google Ads, Facebook Marketing und Conversion-Optimierung für mehr Verkäufe.
+              <p className="text-sm text-[var(--muted-foreground)] mb-4">
+                Ads und Content – messbar, zur Botschaft passend.
               </p>
-              <a href="/services/marketing" className="text-blue-600 hover:text-blue-700 font-medium">
-                Mehr erfahren →
-              </a>
-            </article>
-            <article className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow hover:shadow-lg transition-shadow duration-300">
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                <a href="/services/performance" className="hover:text-blue-600 transition-colors duration-200">
-                  Performance Optimierung
-                </a>
+              <span className="text-sm font-medium text-[var(--primary)]">Mehr erfahren →</span>
+            </Link>
+            <Link href="/services/performance" className="rounded-2xl bg-[var(--surface)]/80 border border-[var(--border)]/60 p-6 transition-[box-shadow] duration-200 hover:shadow-[var(--shadow-3)] block">
+              <h3 className="font-display text-lg font-semibold tracking-tight text-[var(--foreground)] mb-2">
+                Performance
               </h3>
-              <p className="text-gray-600 dark:text-gray-300 mb-4">
-                Schnellere Ladezeiten für bessere Conversion-Raten. Optimierung der Core Web Vitals für Ihren Online-Shop.
+              <p className="text-sm text-[var(--muted-foreground)] mb-4">
+                Ladezeiten und Core Web Vitals für bessere Conversion.
               </p>
-              <a href="/services/performance" className="text-blue-600 hover:text-blue-700 font-medium">
-                Mehr erfahren →
-              </a>
-            </article>
+              <span className="text-sm font-medium text-[var(--primary)]">Mehr erfahren →</span>
+            </Link>
           </div>
-        </div>
+        </Container>
       </section>
 
         {/* Final CTA Section */}
