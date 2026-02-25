@@ -21,7 +21,7 @@ const HOMEPAGE_FAQ_SCHEMA: Array<{ question: string; answer: string }> = [
 
 const PAGE_TITLE = 'Webdesign für KMU in Österreich & Deutschland | Conversion-optimierte Websites'
 const PAGE_DESCRIPTION =
-  'Website erstellen lassen für KMU in Österreich & Deutschland: strukturierte, conversion-optimierte Websites. Mehr Anfragen und Termine. Kostenlose Analyse & unverbindliches Strategiegespräch.'
+  'Website erstellen lassen für KMU in Österreich & Deutschland: strukturierte, conversion-optimierte Websites für mehr Anfragen und Termine. Kostenlose Analyse & unverbindliches Strategiegespräch.'
 
 export const metadata: Metadata = {
   title: PAGE_TITLE,
