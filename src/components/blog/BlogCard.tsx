@@ -15,7 +15,6 @@ interface BlogCardProps {
 
 export function BlogCard({
   title,
-  description,
   date,
   slug,
   image,

@@ -6,12 +6,16 @@ import {
   professionalServiceSchema,
 } from '@/app/schema'
 
+const PAGE_TITLE = 'KI-Automatisierung für KMU | Prozess- & Workflow-Automatisierung'
+const PAGE_DESCRIPTION =
+  'KI-Automatisierung für KMU in Österreich & Deutschland: Prozessautomatisierung, Angebotsautomatisierung und Workflows für Handwerker & Dienstleister.'
+
 export const metadata: Metadata = {
-  title: 'KI-Automatisierung für KMU | SimpleWebDesign',
-  description: 'Digitalisieren Sie Routineaufgaben mit KI: Automatische Anfrage-Antworten, Angebots-Vorbereitung & Workflows für Handwerker & lokale Dienstleister in Österreich & Deutschland.',
+  title: PAGE_TITLE,
+  description: PAGE_DESCRIPTION,
   openGraph: {
-    title: 'KI-Automatisierung für KMU | SimpleWebDesign Österreich & Deutschland',
-    description: 'Digitalisieren Sie Routineaufgaben mit KI: Automatische Anfrage-Antworten, Angebots-Vorbereitung & Workflows für Handwerker & lokale Dienstleister.',
+    title: PAGE_TITLE,
+    description: PAGE_DESCRIPTION,
     url: 'https://simplewebdesign.at/ki-automatisierung',
     type: 'website',
     images: [
@@ -25,8 +29,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'KI-Automatisierung für KMU | SimpleWebDesign',
-    description: 'Digitalisieren Sie Routineaufgaben mit KI: Automatische Anfrage-Antworten, Angebots-Vorbereitung & Workflows für Handwerker.',
+    title: PAGE_TITLE,
+    description: PAGE_DESCRIPTION,
     images: ['/og/ki-automatisierung.png'],
   },
   alternates: {
@@ -72,10 +76,10 @@ export default function KIAutomatisierungPage() {
     ],
   })
 
-  const serviceJsonLd = professionalServiceSchema({
+  const   serviceJsonLd = professionalServiceSchema({
     name: 'KI-Automatisierung für KMU',
     description:
-      'Digitalisierung von Routineaufgaben mit KI: Automatische Anfrage-Antworten, Angebots-Vorbereitung & Workflows für Handwerker & lokale Dienstleister.',
+      'KI-Automatisierung für KMU in Österreich & Deutschland: Prozessautomatisierung, Angebotsautomatisierung und Workflow-Automatisierung für Handwerker & Dienstleister.',
     url: 'https://simplewebdesign.at/ki-automatisierung',
     image: 'https://simplewebdesign.at/og/ki-automatisierung.png',
     priceRange: '490€ - 1490€',
