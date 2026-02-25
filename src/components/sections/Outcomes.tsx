@@ -4,15 +4,15 @@ import { Container } from '@/components/ui/Container'
 const blocks = [
   {
     title: 'Einordnung',
-    text: 'Was soll die Website leisten – und was nicht? Klarheit vor Struktur.',
+    text: 'Was soll die Website leisten – und was nicht? Klarheit vor Struktur. Für KMU in Österreich und Deutschland.',
   },
   {
     title: 'Struktur',
-    text: 'Seitenlogik, die Besucher führt. Orientierung statt Informationshaufen.',
+    text: 'Strukturierte Website: Seitenlogik, die Besucher führt und zu Anfragen oder Terminen leitet.',
   },
   {
     title: 'Wirkung',
-    text: 'Anfragen, Termine oder Verkäufe – je nach Ziel. Messbar.',
+    text: 'Mehr Anfragen, Termine oder Verkäufe – je nach Ziel. Messbar und nachvollziehbar.',
   },
 ]
 
@@ -31,15 +31,15 @@ export default function Outcomes() {
                 id="thinking-heading"
                 className="font-display text-3xl lg:text-4xl font-bold tracking-tight text-[var(--foreground)] mb-6"
               >
-                Wir entwickeln Entscheidungsarchitektur.
+                Conversion-optimierte Websites mit klarer Struktur.
               </h2>
               <p className="text-[var(--muted-foreground)] text-lg leading-relaxed max-w-[650px] mb-2">
-                Websites als System – klar strukturiert und messbar wirksam.
+                Website erstellen lassen oder Website Optimierung: Einordnung, Struktur, messbare Wirkung – mehr Anfragen und Termine.
               </p>
               <ul className="mt-6 space-y-2 text-[var(--muted-foreground)]" aria-hidden>
                 <li className="flex items-center gap-2">
                   <span className="size-1.5 rounded-full bg-[var(--foreground)]" aria-hidden />
-                  Einordnung · Struktur · Wirkung
+                  Einordnung · Struktur · Conversion
                 </li>
               </ul>
             </div>
@@ -48,7 +48,7 @@ export default function Outcomes() {
                 <div className="relative w-full aspect-video overflow-hidden rounded-2xl">
                   <Image
                     src="/img/decision-helper.jpg"
-                    alt="Strategische Entscheidungsarchitektur mit klarer Struktur und Wireframes"
+                    alt="Wireframe und Struktur einer conversion-optimierten Website: klare Seitenlogik für mehr Anfragen"
                     width={1200}
                     height={675}
                     className="object-cover w-full h-full"

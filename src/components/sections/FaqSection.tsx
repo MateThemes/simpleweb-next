@@ -8,32 +8,32 @@ export const faqData = [
   {
     question: 'Warum bringt meine Website keine Anfragen?',
     answer:
-      'Meist fehlt Klarheit: Besucher verstehen nicht sofort, wer hier richtig ist und warum. Eine Website muss Orientierung geben, nicht nur informieren.',
+      'Oft fehlt Klarheit: Besucher verstehen nicht sofort, wofür du da bist. Eine conversion-optimierte Website gibt Orientierung und führt zu Anfragen oder Terminen – nicht nur Information.',
   },
   {
-    question: 'Was unterscheidet SimpleWebDesign von klassischen Agenturen?',
+    question: 'Was kostet eine Website erstellen lassen?',
     answer:
-      'Wir beginnen nicht mit Design oder Technik, sondern mit Einordnung: Was soll die Website leisten? Erst dann folgen Struktur, Design und Umsetzung.',
+      'Abhängig vom Umfang. Wir geben eine Einschätzung erst nach dem Kennenlernen deines Ziels – unverbindlich. Webdesign für KMU in Österreich und Deutschland.',
   },
   {
-    question: 'Wie lange dauert ein Website-Projekt?',
+    question: 'Wie lange dauert ein Website-Projekt oder Website Relaunch?',
     answer:
-      'Je nach Umfang 3–8 Wochen. Wichtiger als Geschwindigkeit ist, dass die Website am Ende das tut, wofür sie gebaut wurde.',
+      'In der Regel 3–8 Wochen. Wichtiger als Tempo: dass die Website am Ende mehr Anfragen oder Termine bringt.',
   },
   {
-    question: 'Arbeitet ihr nur mit KMU in Österreich?',
+    question: 'Arbeitet ihr nur vor Ort oder auch remote?',
     answer:
-      'Nein, wir arbeiten mit KMU in ganz Österreich und Deutschland. Remote-Projekte sind für uns Standard.',
+      'Wir arbeiten mit KMU in Österreich (z.B. Niederösterreich) und Deutschland – remote ist Standard. Kein Standort-Nachteil.',
   },
   {
-    question: 'Was kostet eine professionelle Website?',
+    question: 'Website Optimierung oder kompletter Relaunch – was ist sinnvoll?',
     answer:
-      'Das hängt vom Umfang ab. Wir geben erst eine Einschätzung, nachdem wir dein Projekt verstanden haben – ohne Verpflichtung.',
+      'Oft reicht eine strukturierte Website-Optimierung; manchmal ist ein Website Relaunch sinnvoller. Wir schauen uns deine Website an und sagen ehrlich, was mehr bringt.',
   },
   {
-    question: 'Kann ich meine bestehende Website optimieren lassen?',
+    question: 'Was unterscheidet euch von einer klassischen Agentur?',
     answer:
-      'Ja. Oft bringt eine klare Struktur-Überarbeitung mehr als ein kompletter Relaunch. Wir schauen uns deine Website an und sagen ehrlich, was Sinn macht.',
+      'Wir starten mit Strategie und Einordnung: Was soll die Website leisten? Dann folgen Struktur und Umsetzung – für messbare Wirkung (mehr Anfragen, Termine).',
   },
 ]
 
@@ -53,7 +53,7 @@ export default function FaqSection() {
               Häufige Fragen
             </h2>
             <p className="mt-4 text-lg text-[var(--muted-foreground)]">
-              Klarheit vor dem ersten Gespräch.
+              Kurze Antworten auf typische Fragen zu Webdesign für KMU.
             </p>
           </div>
 

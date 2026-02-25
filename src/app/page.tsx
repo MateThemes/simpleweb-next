@@ -11,17 +11,17 @@ import FaqSection from '@/components/sections/FaqSection'
 import { getWebPageDC } from '@/lib/dublinCore'
 
 const HOMEPAGE_FAQ_SCHEMA: Array<{ question: string; answer: string }> = [
-  { question: 'Warum bringt meine Website keine Anfragen?', answer: 'Meist fehlt Klarheit: Besucher verstehen nicht sofort, wer hier richtig ist und warum. Eine Website muss Orientierung geben, nicht nur informieren.' },
-  { question: 'Was unterscheidet SimpleWebDesign von klassischen Agenturen?', answer: 'Wir beginnen nicht mit Design oder Technik, sondern mit Einordnung: Was soll die Website leisten? Erst dann folgen Struktur, Design und Umsetzung.' },
-  { question: 'Wie lange dauert ein Website-Projekt?', answer: 'Je nach Umfang 3–8 Wochen. Wichtiger als Geschwindigkeit ist, dass die Website am Ende das tut, wofür sie gebaut wurde.' },
-  { question: 'Arbeitet ihr nur mit KMU in Österreich?', answer: 'Nein, wir arbeiten mit KMU in ganz Österreich und Deutschland. Remote-Projekte sind für uns Standard.' },
-  { question: 'Was kostet eine professionelle Website?', answer: 'Das hängt vom Umfang ab. Wir geben erst eine Einschätzung, nachdem wir dein Projekt verstanden haben – ohne Verpflichtung.' },
-  { question: 'Kann ich meine bestehende Website optimieren lassen?', answer: 'Ja. Oft bringt eine klare Struktur-Überarbeitung mehr als ein kompletter Relaunch. Wir schauen uns deine Website an und sagen ehrlich, was Sinn macht.' },
+  { question: 'Warum bringt meine Website keine Anfragen?', answer: 'Oft fehlt Klarheit: Besucher verstehen nicht sofort, wofür du da bist. Eine conversion-optimierte Website gibt Orientierung und führt zu Anfragen oder Terminen – nicht nur Information.' },
+  { question: 'Was kostet eine Website erstellen lassen?', answer: 'Abhängig vom Umfang. Wir geben eine Einschätzung erst nach dem Kennenlernen deines Ziels – unverbindlich. Webdesign für KMU in Österreich und Deutschland.' },
+  { question: 'Wie lange dauert ein Website-Projekt oder Website Relaunch?', answer: 'In der Regel 3–8 Wochen. Wichtiger als Tempo: dass die Website am Ende mehr Anfragen oder Termine bringt.' },
+  { question: 'Arbeitet ihr nur vor Ort oder auch remote?', answer: 'Wir arbeiten mit KMU in Österreich (z.B. Niederösterreich) und Deutschland – remote ist Standard. Kein Standort-Nachteil.' },
+  { question: 'Website Optimierung oder kompletter Relaunch – was ist sinnvoll?', answer: 'Oft reicht eine strukturierte Website-Optimierung; manchmal ist ein Website Relaunch sinnvoller. Wir schauen uns deine Website an und sagen ehrlich, was mehr bringt.' },
+  { question: 'Was unterscheidet euch von einer klassischen Agentur?', answer: 'Wir starten mit Strategie und Einordnung: Was soll die Website leisten? Dann folgen Struktur und Umsetzung – für messbare Wirkung (mehr Anfragen, Termine).' },
 ]
 
-const PAGE_TITLE = 'Webdesign für KMU in Österreich & Deutschland | Entscheidungsarchitektur'
+const PAGE_TITLE = 'Webdesign für KMU in Österreich & Deutschland | Conversion-optimierte Websites'
 const PAGE_DESCRIPTION =
-  'Webdesign für KMU in Österreich & Deutschland. Strategische Websites mit klarer Struktur, Entscheidungsarchitektur und messbarer Wirkung. Kostenlose Analyse & unverbindliches Gespräch.'
+  'Website erstellen lassen für KMU in Österreich & Deutschland: strukturierte, conversion-optimierte Websites. Mehr Anfragen und Termine. Kostenlose Analyse & unverbindliches Strategiegespräch.'
 
 export const metadata: Metadata = {
   title: PAGE_TITLE,
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
         url: '/img/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'SimpleWebDesign - Strategic Partner für entscheidungsorientierte Websites',
+        alt: 'SimpleWebDesign – Webdesign für KMU in Österreich und Deutschland, conversion-optimierte Websites',
       },
     ],
   },
@@ -69,7 +69,7 @@ const UnifiedSchema = (faqData: Array<{ question: string; answer: string }>) => 
       '@type': 'Organization',
       '@id': 'https://simplewebdesign.at/#organization',
       name: 'SimpleWebDesign',
-      description: 'Webdesign Agentur für KMU in Österreich und Deutschland - Spezialisiert auf moderne Websites, SEO und E-Commerce für kleine und mittlere Unternehmen.',
+      description: 'Webdesign für KMU in Österreich und Deutschland – Website erstellen lassen, Website Relaunch und Website Optimierung. Conversion-optimierte Websites für mehr Anfragen und Termine.',
       url: 'https://simplewebdesign.at',
       logo: { '@type': 'ImageObject', url: 'https://simplewebdesign.at/img/logo.png' },
       telephone: '+436645182696',
@@ -90,7 +90,7 @@ const UnifiedSchema = (faqData: Array<{ question: string; answer: string }>) => 
       '@type': 'ProfessionalService',
       '@id': 'https://simplewebdesign.at/#localbusiness',
       name: 'SimpleWebDesign',
-      description: 'Webdesign Agentur für KMU in Österreich und Deutschland - Professionelle Websites mit Fokus auf SEO, Performance und Nutzerfreundlichkeit.',
+      description: 'Webdesign für KMU in Österreich und Deutschland – Professionelle Websites mit Fokus auf Conversion, Struktur und messbare Wirkung.',
       url: 'https://simplewebdesign.at',
       telephone: '+436645182696',
       email: 'info@simplewebdesign.at',
@@ -119,7 +119,7 @@ const UnifiedSchema = (faqData: Array<{ question: string; answer: string }>) => 
       '@type': 'WebSite',
       '@id': 'https://simplewebdesign.at/#website',
       name: 'SimpleWebDesign',
-      description: 'Professionelles Webdesign mit Fokus auf SEO, Performance und Nutzerfreundlichkeit.',
+      description: 'Webdesign für KMU in Österreich und Deutschland – conversion-optimierte Websites für mehr Anfragen und Termine.',
       url: 'https://simplewebdesign.at',
       publisher: { '@id': 'https://simplewebdesign.at/#organization' },
     },
@@ -127,8 +127,8 @@ const UnifiedSchema = (faqData: Array<{ question: string; answer: string }>) => 
       '@type': 'WebPage',
       '@id': 'https://simplewebdesign.at/#webpage',
       url: 'https://simplewebdesign.at',
-      name: 'Strategic Partner für entscheidungsorientierte Websites',
-      description: 'Websites, die Entscheidungen führen. Wir bauen Entscheidungsarchitektur für KMU in Österreich & Deutschland – Klarheit, Struktur, messbare Wirkung.',
+      name: 'Webdesign für KMU in Österreich & Deutschland',
+      description: 'Website erstellen lassen oder Website Optimierung: strukturierte, conversion-optimierte Websites für mehr Anfragen und Termine. Österreich & Deutschland.',
       isPartOf: { '@id': 'https://simplewebdesign.at/#website' },
       about: { '@id': 'https://simplewebdesign.at/#organization' },
       publisher: { '@id': 'https://simplewebdesign.at/#organization' },

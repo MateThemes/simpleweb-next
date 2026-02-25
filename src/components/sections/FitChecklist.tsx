@@ -6,16 +6,16 @@ const fits = {
   good: {
     title: 'Passt gut, wenn …',
     points: [
-      'du merkst, dass deine Website nicht klar arbeitet',
+      'deine Website zu wenig Anfragen oder Leads bringt',
+      'ein Website Relaunch oder eine Website Optimierung ansteht',
+      'deine Positionierung unklar ist – Besucher verstehen nicht, wofür du da bist',
       'du Orientierung suchst, bevor du investierst',
-      'du keine Lust auf Agentur-Sprech hast',
-      'du verstehen willst, warum etwas gemacht wird',
     ],
   },
   notGood: {
     title: 'Passt nicht, wenn …',
     points: [
-      'du nur schnell „eine Website" brauchst',
+      'du nur schnell „eine Website" brauchst, ohne Strategie',
       'du primär Preise vergleichen willst',
       'du eine reine Umsetzungsagentur suchst',
       'du Entscheidungen komplett abgeben willst',
@@ -35,7 +35,7 @@ export default function FitChecklist() {
             id="fit-heading"
             className="font-display text-3xl lg:text-4xl font-bold tracking-tight text-[var(--foreground)] max-w-[650px] mb-14 lg:mb-16"
           >
-            Passt das zu dir?
+            Passt Webdesign für KMU zu dir?
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-14">
@@ -74,7 +74,7 @@ export default function FitChecklist() {
           </div>
 
           <p className="mt-12 pt-10 border-t border-[var(--border)] text-[var(--muted-foreground-strong)] text-lg">
-            Wenn du dich hier wiederfindest, lohnt sich ein Gespräch – ohne Verkaufsdruck.
+            Wenn du dich hier wiederfindest, lohnt sich ein Strategiegespräch – unverbindlich, ohne Verkaufsdruck.
           </p>
           <Link
             href="/kontakt"
@@ -84,7 +84,7 @@ export default function FitChecklist() {
               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2 rounded'
             )}
           >
-            Unverbindlich Kontakt aufnehmen
+            Kostenloses Strategiegespräch anfragen
           </Link>
         </div>
       </Container>

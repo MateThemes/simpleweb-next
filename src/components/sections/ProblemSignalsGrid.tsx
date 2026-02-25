@@ -2,20 +2,20 @@ import { Container } from '@/components/ui/Container'
 
 const cards = [
   {
-    title: 'Besucher gehen – ohne etwas zu tun',
-    text: 'Aufrufe, aber kaum Anfragen, Termine oder Käufe.',
+    title: 'Besucher gehen – ohne Anfragen oder Termine',
+    text: 'Viele Aufrufe, aber kaum Leads, Anfragen oder Verkäufe.',
   },
   {
     title: 'Viel Text, wenig Führung',
-    text: 'Die Seite informiert – führt aber nicht zum nächsten Schritt.',
+    text: 'Die Website informiert – führt aber nicht zum nächsten Schritt.',
   },
   {
     title: 'Unklarer Nutzen auf den ersten Blick',
-    text: 'Man versteht nicht sofort, wofür Kunden euch bezahlen.',
+    text: 'Besucher verstehen nicht sofort, wofür sie euch buchen sollen.',
   },
   {
-    title: 'Änderungen bringen keine Wirkung',
-    text: 'Details verbessert, das Ergebnis bleibt: zu wenig.',
+    title: 'Website-Optimierung bringt keine Wirkung',
+    text: 'Details verbessert, das Ergebnis bleibt: zu wenig Anfragen.',
   },
 ]
 
@@ -32,7 +32,7 @@ export default function ProblemSignalsGrid() {
             id="problem-heading"
             className="font-display text-3xl lg:text-4xl font-bold tracking-tight text-[var(--foreground)] max-w-[650px] mb-14 lg:mb-16"
           >
-            Die meisten Websites scheitern nicht am Design – sondern an fehlender Klarheit.
+            Die meisten KMU-Websites scheitern nicht am Design – sondern an fehlender Klarheit.
           </h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
