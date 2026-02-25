@@ -1,17 +1,21 @@
 import { Metadata } from 'next'
 import Image from 'next/image'
+import Link from 'next/link'
 import { Container } from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
 import { RocketIcon, CheckIcon } from '@/components/icons'
 import { breadcrumbSchema, webPageSchema, servicePageSchema } from '@/app/schema'
 
+const PAGE_TITLE = 'Website Performance Optimierung für KMU | Core Web Vitals & Ladezeit verbessern'
+const PAGE_DESCRIPTION =
+  'Website schneller machen für KMU: Core Web Vitals Optimierung, Ladezeit verbessern und technische Performance steigern – für bessere Rankings und mehr Anfragen.'
+
 export const metadata: Metadata = {
-  title: 'Website Performance Optimierung für KMU | Schnellere Websites',
-  description: 'Professionelle Website Performance Optimierung für KMU in Österreich & Deutschland. Spezielle Shopify Performance Optimierung, Core Web Vitals & PageSpeed für besseres Ranking.',
-  keywords: 'Website Performance, Performance Optimierung, Core Web Vitals, PageSpeed, Shopify Performance, E-Commerce Performance, Website Speed, Performance Österreich, SEO Performance',
+  title: PAGE_TITLE,
+  description: PAGE_DESCRIPTION,
   openGraph: {
-    title: 'Website Performance Optimierung für KMU | Schnellere Websites | Shopify Performance Österreich & Deutschland',
-    description: 'Professionelle Website Performance Optimierung für KMU in Österreich & Deutschland. Spezielle Shopify Performance Optimierung, Core Web Vitals & PageSpeed für besseres Ranking.',
+    title: PAGE_TITLE,
+    description: PAGE_DESCRIPTION,
     url: 'https://simplewebdesign.at/services/performance',
     type: 'website',
     locale: 'de_AT',
@@ -20,14 +24,14 @@ export const metadata: Metadata = {
         url: '/img/services/performance.jpg',
         width: 1200,
         height: 630,
-        alt: 'Website Performance Optimierung - Schnellere Websites und Online-Shops'
+        alt: 'Website Performance Optimierung - Core Web Vitals und Ladezeit'
       }
     ]
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Website Performance Optimierung für KMU | Schnellere Websites | Shopify Performance Österreich & Deutschland',
-    description: 'Professionelle Website Performance Optimierung für KMU in Österreich & Deutschland. Spezielle Shopify Performance Optimierung.',
+    title: PAGE_TITLE,
+    description: PAGE_DESCRIPTION,
     images: ['/img/services/performance.jpg']
   },
   alternates: {
@@ -49,19 +53,19 @@ export const metadata: Metadata = {
 const features = [
   {
     title: 'Core Web Vitals',
-    description: 'Optimierung der wichtigsten Performance-Metriken für besseres Google-Ranking. LCP, FID und CLS Verbesserung.',
+    description: 'Core Web Vitals Optimierung: LCP, FID und CLS verbessern – für besseres Ranking und Nutzererlebnis.',
   },
   {
     title: 'Asset-Optimierung',
-    description: 'Komprimierung und Optimierung von Bildern, Scripts und Stylesheets für schnellere Ladezeiten.',
+    description: 'Bilder, Scripts und Styles komprimieren – Ladezeit verbessern ohne Qualitätsverlust.',
   },
   {
     title: 'Caching-Strategien',
-    description: 'Implementierung effektiver Caching-Mechanismen und CDN für globale Performance.',
+    description: 'Caching und CDN sinnvoll einsetzen, damit Ihre Website schneller lädt.',
   },
   {
-    title: 'Server-Optimierung',
-    description: 'Optimierung der Server-Konfiguration und Datenbank-Performance für alle Website-Typen.',
+    title: 'Server & technische SEO',
+    description: 'Server-Konfiguration und technische Struktur so anpassen, dass die Website schneller macht und Suchmaschinen klare Signale gibt.',
   },
 ]
 
@@ -87,18 +91,18 @@ export default function PerformancePage() {
     }),
     // WebPage Schema
     webPageSchema({
-      name: "Website Performance Optimierung für KMU | Schnellere Websites",
-      description: "Professionelle Website Performance Optimierung für KMU in Österreich & Deutschland. Spezielle Shopify Performance Optimierung, Core Web Vitals & PageSpeed für besseres Ranking.",
+      name: PAGE_TITLE,
+      description: PAGE_DESCRIPTION,
       url: "https://simplewebdesign.at/services/performance",
       image: "https://simplewebdesign.at/img/services/performance.jpg",
     }),
     // Service Schema
     servicePageSchema({
       name: "Website Performance Optimierung",
-      description: "Professionelle Website Performance Optimierung. Verbessern Sie Ihre Core Web Vitals und PageSpeed für besseres Ranking und Conversion.",
+      description: PAGE_DESCRIPTION,
       url: "https://simplewebdesign.at/services/performance",
       image: "https://simplewebdesign.at/img/services/performance.jpg",
-      serviceType: ["Performance Optimization", "Core Web Vitals", "PageSpeed Optimization", "Shopify Performance"],
+      serviceType: ["Performance Optimization", "Core Web Vitals", "Ladezeit verbessern", "Technische SEO"],
     }),
   ];
 
@@ -113,198 +117,301 @@ export default function PerformancePage() {
         />
       ))}
       <main className="flex-auto">
-        {/* Hero Section */}
-        <div className="relative py-20 sm:py-24 lg:py-32 overflow-hidden">
+        {/* Hero — Typo/Spacing wie Marketing-Seite */}
+        <section
+          className="relative bg-[var(--background)] pt-24 sm:pt-28 lg:pt-32 pb-20 lg:pb-28"
+          aria-labelledby="performance-hero-heading"
+        >
           <Container className="relative">
-            <div className="lg:flex lg:items-center lg:gap-x-10">
-              <div className="max-w-2xl lg:max-w-lg">
-                <h1 className="font-display text-5xl font-medium tracking-tight text-neutral-950 dark:text-white [text-wrap:balance] sm:text-7xl">
-                  Performance & Speed für KMU
-                </h1>
-                <p className="mt-6 text-xl text-neutral-600 dark:text-neutral-300">
-                  Optimieren Sie die Geschwindigkeit Ihrer Website in Wien, München, Waldviertel und ganz Österreich & Deutschland für bessere Rankings und zufriedenere Besucher.
-                </p>
-                <div className="mt-8 flex gap-4">
-                  <Button href="/seo-audit">Performance Audit</Button>
-                  <Button href="#features" variant="secondary">Mehr erfahren</Button>
+            <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-start">
+              <div className="relative w-full">
+                <div
+                  className="absolute -inset-x-8 top-1/2 -translate-y-1/2 h-[120%] w-[140%] max-w-none pointer-events-none opacity-[0.04] dark:opacity-[0.06] hidden lg:block"
+                  aria-hidden
+                  style={{
+                    background:
+                      'radial-gradient(ellipse 70% 60% at 30% 50%, var(--foreground), transparent 70%)',
+                  }}
+                />
+                <div className="relative space-y-6 max-w-2xl mx-auto">
+                  <p className="text-sm font-medium uppercase tracking-wider text-[var(--muted-foreground)]">
+                    Website Performance für KMU
+                  </p>
+                  <h1
+                    id="performance-hero-heading"
+                    className="font-display font-bold tracking-tight text-[var(--foreground)] leading-[1.08] text-4xl sm:text-5xl lg:text-6xl"
+                  >
+                    Website Performance Optimierung für KMU
+                  </h1>
+                  <p className="mt-10 text-lg md:text-xl text-[var(--muted-foreground)] leading-relaxed max-w-xl">
+                    Core Web Vitals, Ladezeit und technische Struktur – für bessere Rankings, niedrigere Absprungrate und mehr Anfragen.
+                  </p>
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-4 mt-8">
+                    <Link
+                      href="/seo-audit"
+                      className="inline-flex items-center justify-center gap-2 h-[52px] px-6 rounded-xl font-semibold text-base bg-[var(--primary)] text-[var(--primary-foreground)] hover:opacity-95 transition-opacity duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--ring-offset)]"
+                    >
+                      Performance Audit
+                    </Link>
+                    <Link
+                      href="#features"
+                      className="inline-flex items-center justify-center gap-2 h-[52px] px-6 rounded-xl font-medium text-base bg-transparent text-[var(--foreground)] border-2 border-[var(--border)] hover:border-[var(--muted-foreground)] hover:bg-[var(--surface-2)] transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--ring-offset)]"
+                    >
+                      Mehr erfahren
+                    </Link>
+                  </div>
+                  <div
+                    className="flex flex-wrap items-center gap-x-2 gap-y-1 mt-8 pt-2 text-[var(--muted-foreground)] text-sm tracking-wide"
+                    role="list"
+                    aria-label="Erfahrung und Reichweite"
+                  >
+                    <span
+                      className="uppercase tracking-wider font-medium"
+                      role="listitem"
+                    >
+                      50+ Projekte
+                    </span>
+                    <span
+                      className="mx-2 text-[var(--border)] dark:text-[var(--muted-foreground)]"
+                      aria-hidden
+                    >
+                      ·
+                    </span>
+                    <span
+                      className="uppercase tracking-wider font-medium"
+                      role="listitem"
+                    >
+                      AT & DE
+                    </span>
+                    <span
+                      className="mx-2 text-[var(--border)] dark:text-[var(--muted-foreground)]"
+                      aria-hidden
+                    >
+                      ·
+                    </span>
+                    <span
+                      className="uppercase tracking-wider font-medium"
+                      role="listitem"
+                    >
+                      Antwort in 1–2 Werktagen
+                    </span>
+                  </div>
                 </div>
               </div>
-              <div className="mt-16 lg:mt-0">
-                <div className="relative">
-                  <Image
-                    src="/img/services/performance.jpg"
-                    alt="Website Performance Dashboard"
-                    width={600}
-                    height={400}
-                    className="rounded-2xl shadow-xl"
-                    priority
-                  />
-                  <div className="absolute -bottom-8 -left-8">
-                    <div className="bg-orange-600 rounded-xl shadow-lg p-6 text-white">
-                      <RocketIcon className="h-8 w-8 mb-2" />
-                      <div className="text-2xl font-bold">0.8s</div>
-                      <div className="text-sm opacity-90">Ladezeit</div>
+              <div className="relative w-full lg:pt-8">
+                <div
+                  className="relative w-full overflow-hidden rounded-[24px] bg-[var(--surface-2)] border border-[var(--border)]"
+                  style={{
+                    boxShadow:
+                      '0 4px 6px -1px rgb(0 0 0 / 0.06), 0 2px 4px -2px rgb(0 0 0 / 0.04)',
+                  }}
+                >
+                  <div className="aspect-square relative">
+                    <Image
+                      src="/img/services/performance.jpg"
+                      alt="Website Performance Dashboard"
+                      fill
+                      priority
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      className="object-cover object-center brightness-[0.92] contrast-[1.02]"
+                    />
+                    <div
+                      className="absolute inset-0 bg-black/10 pointer-events-none"
+                      aria-hidden
+                    />
+                  </div>
+                  <div className="absolute bottom-5 left-5 right-5 sm:bottom-8 sm:left-6 sm:right-6 sm:w-auto pointer-events-none">
+                    <div
+                      className="rounded-xl bg-[var(--primary)] px-3.5 py-3 text-[var(--primary-foreground)] w-fit"
+                      style={{ boxShadow: 'var(--shadow-2)' }}
+                    >
+                      <RocketIcon className="h-5 w-5 mb-1 opacity-90" aria-hidden />
+                      <div className="text-lg font-bold leading-tight">0.8s</div>
+                      <div className="text-xs opacity-90">Ladezeit</div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </Container>
-        </div>
+        </section>
 
-        {/* Features Section */}
-        <div id="features" className="py-24 bg-neutral-50 dark:bg-neutral-900">
+        {/* Features — M3 Cards, wie Marketing Subservices */}
+        <section
+          id="features"
+          className="py-24 lg:py-28 bg-[var(--surface-2)]"
+          aria-labelledby="features-heading"
+        >
           <Container>
             <div className="mx-auto max-w-2xl sm:text-center">
-              <h2 className="font-display text-4xl font-medium tracking-tight text-neutral-950 dark:text-white sm:text-5xl">
+              <h2
+                id="features-heading"
+                className="font-display text-3xl font-semibold tracking-tight text-[var(--foreground)] sm:text-4xl lg:text-5xl"
+              >
                 Umfassende Optimierung
               </h2>
-              <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-300">
-                Von Core Web Vitals bis zur Server-Optimierung - wir machen Ihre Website spürbar schneller. Kombinieren Sie dies mit unserem <a href="/services/seo" className="text-orange-600 hover:text-orange-500 underline">SEO-Service</a> und <a href="/services/webdesign" className="text-orange-600 hover:text-orange-500 underline">Webdesign</a> für maximale Online-Performance.
+              <p className="mt-4 text-lg text-[var(--muted-foreground)] leading-relaxed">
+                Core Web Vitals Optimierung, Ladezeit verbessern, technische Struktur: Wir machen Ihre Website schneller – messbar. Kombination mit <a href="/services/seo" className="text-[var(--primary)] hover:underline">SEO</a> und <a href="/services/webdesign" className="text-[var(--primary)] hover:underline">Webdesign</a> möglich.
               </p>
             </div>
-            <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 sm:mt-20 lg:max-w-none lg:grid-cols-2">
+            <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-6 sm:mt-20 lg:max-w-none lg:grid-cols-2">
               {features.map((feature, index) => (
-                <div key={index} className="flex gap-6 rounded-2xl bg-white dark:bg-neutral-800 p-8 shadow-sm">
-                  <RocketIcon className="h-8 w-8 text-orange-600 flex-shrink-0" />
+                <div key={index} className="flex gap-5 rounded-2xl bg-[var(--surface)]/80 border border-[var(--border)]/60 p-6 lg:p-8 transition-[box-shadow] duration-200 hover:shadow-[var(--shadow-3)]">
+                  <RocketIcon className="h-8 w-8 text-[var(--primary)] flex-shrink-0" />
                   <div>
-                    <h3 className="font-display text-xl font-semibold text-neutral-950 dark:text-white">
+                    <h3 className="font-display text-lg font-semibold tracking-tight text-[var(--foreground)]">
                       {feature.title}
                     </h3>
-                    <p className="mt-2 text-neutral-600 dark:text-neutral-300">{feature.description}</p>
+                    <p className="mt-2 text-sm text-[var(--muted-foreground)] leading-relaxed">{feature.description}</p>
                   </div>
                 </div>
               ))}
             </div>
           </Container>
-        </div>
+        </section>
 
-        {/* Performance Stats Section */}
-        <div className="py-24">
+        {/* Performance Stats */}
+        <section
+          className="py-24 lg:py-28 bg-[var(--background)]"
+          aria-labelledby="stats-heading"
+        >
           <Container>
             <div className="mx-auto max-w-2xl sm:text-center">
-              <h2 className="font-display text-4xl font-medium tracking-tight text-neutral-950 dark:text-white sm:text-5xl">
+              <h2
+                id="stats-heading"
+                className="font-display text-3xl font-semibold tracking-tight text-[var(--foreground)] sm:text-4xl lg:text-5xl"
+              >
                 Warum Performance wichtig ist
               </h2>
-              <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-300">
-                Performance-Statistiken zeigen: Schnelle Websites performen besser.
+              <p className="mt-4 text-lg text-[var(--muted-foreground)] leading-relaxed">
+                Schnelle Websites halten Besucher länger und werden von Suchmaschinen bevorzugt – technische SEO und Ladezeit sind Ranking-Faktoren.
               </p>
             </div>
-            <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 sm:mt-20 lg:max-w-none lg:grid-cols-3">
-              <div className="rounded-2xl bg-white dark:bg-neutral-800 p-8 shadow-sm text-center">
-                <div className="text-4xl font-bold text-orange-600 mb-2">53%</div>
-                <h3 className="font-display text-xl font-semibold text-neutral-950 dark:text-white mb-2">
-                  Weniger Absprungrate
+            <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-6 sm:mt-20 lg:max-w-none lg:grid-cols-3">
+              <div className="rounded-2xl bg-[var(--surface)] border border-[var(--border)] p-6 lg:p-8 text-center">
+                <h3 className="font-display text-lg font-semibold tracking-tight text-[var(--foreground)] mb-2">
+                  Niedrigere Absprungrate
                 </h3>
-                <p className="text-neutral-600 dark:text-neutral-300">
-                  Bei Ladezeiten unter 3 Sekunden springen 53% weniger Besucher ab.
+                <p className="text-[var(--muted-foreground)] leading-relaxed text-sm">
+                  Liegt die Ladezeit unter wenigen Sekunden, bleiben deutlich mehr Besucher auf der Seite. Langsame Seiten verlieren Nutzer schon beim ersten Aufbau.
                 </p>
               </div>
-              <div className="rounded-2xl bg-white dark:bg-neutral-800 p-8 shadow-sm text-center">
-                <div className="text-4xl font-bold text-orange-600 mb-2">+27%</div>
-                <h3 className="font-display text-xl font-semibold text-neutral-950 dark:text-white mb-2">
-                  Höhere Conversion
+              <div className="rounded-2xl bg-[var(--surface)] border border-[var(--border)] p-6 lg:p-8 text-center">
+                <h3 className="font-display text-lg font-semibold tracking-tight text-[var(--foreground)] mb-2">
+                  Mehr Conversion
                 </h3>
-                <p className="text-neutral-600 dark:text-neutral-300">
-                  Jede Sekunde Ladezeit-Verbesserung steigert die Conversion-Rate um 27%.
+                <p className="text-[var(--muted-foreground)] leading-relaxed text-sm">
+                  Jede Verbesserung der Ladezeit kann sich in mehr Kontaktanfragen oder Verkäufen niederschlagen – Nutzer bleiben bei flüssigem Erlebnis eher dran.
                 </p>
               </div>
-              <div className="rounded-2xl bg-white dark:bg-neutral-800 p-8 shadow-sm text-center">
-                <div className="text-4xl font-bold text-orange-600 mb-2">+16%</div>
-                <h3 className="font-display text-xl font-semibold text-neutral-950 dark:text-white mb-2">
+              <div className="rounded-2xl bg-[var(--surface)] border border-[var(--border)] p-6 lg:p-8 text-center">
+                <h3 className="font-display text-lg font-semibold tracking-tight text-[var(--foreground)] mb-2">
                   Besseres Ranking
                 </h3>
-                <p className="text-neutral-600 dark:text-neutral-300">
-                  Google bevorzugt schnelle Websites - bessere Rankings durch Performance.
+                <p className="text-[var(--muted-foreground)] leading-relaxed text-sm">
+                  Google nutzt Core Web Vitals und Ladezeit als Signale. Eine schnellere Website unterstützt bessere Sichtbarkeit in den Suchergebnissen.
                 </p>
               </div>
             </div>
           </Container>
-        </div>
+        </section>
 
-        {/* Performance Metrics Section */}
-        <div className="py-24 bg-neutral-50 dark:bg-neutral-900">
+        {/* Benefits + Image — wie Marketing */}
+        <section
+          className="py-24 lg:py-28 bg-[var(--surface-2)]"
+          aria-labelledby="benefits-heading"
+        >
           <Container>
             <div className="mx-auto max-w-2xl lg:max-w-none lg:flex lg:items-center lg:gap-x-16">
               <div className="lg:flex-1">
                 <div className="max-w-2xl">
-                  <h2 className="font-display text-4xl font-medium tracking-tight text-neutral-950 dark:text-white sm:text-5xl">
+                  <h2
+                    id="benefits-heading"
+                    className="font-display text-3xl font-semibold tracking-tight text-[var(--foreground)] sm:text-4xl lg:text-5xl"
+                  >
                     Ihre Vorteile
                   </h2>
-                  <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-300">
-                    Eine schnelle Website verbessert nicht nur das Nutzererlebnis, sondern auch Ihr Google-Ranking.
+                  <p className="mt-4 text-lg text-[var(--muted-foreground)] leading-relaxed">
+                    Website schneller machen heißt: besseres Nutzererlebnis und stärkere technische SEO – beides wirkt auf Rankings und Anfragen.
                   </p>
                 </div>
-                <div className="mt-16 grid grid-cols-1 gap-8 lg:grid-cols-2">
+                <div className="mt-16 grid grid-cols-1 gap-6 lg:grid-cols-2">
                   {benefits.map((benefit, index) => (
                     <div key={index} className="flex gap-4">
-                      <CheckIcon className="h-8 w-8 text-orange-600 flex-shrink-0" />
-                      <span className="text-lg font-semibold text-neutral-950 dark:text-white">{benefit}</span>
+                      <CheckIcon className="h-8 w-8 text-[var(--primary)] flex-shrink-0" aria-hidden />
+                      <span className="text-lg font-semibold text-[var(--foreground)]">{benefit}</span>
                     </div>
                   ))}
                 </div>
               </div>
               <div className="mt-16 lg:mt-0 lg:flex-1">
-                <div className="relative aspect-square">
+                <div className="relative aspect-square overflow-hidden rounded-[var(--radius-2xl)] border border-[var(--border)] shadow-[var(--shadow-2)]">
                   <Image
                     src="/img/services/performance.jpg"
                     alt="Performance Metrics Dashboard"
                     fill
-                    className="rounded-2xl object-cover shadow-xl"
+                    className="object-cover object-center"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                   />
                 </div>
               </div>
             </div>
           </Container>
-        </div>
+        </section>
 
-        {/* Shopify Performance Section */}
-        <div className="py-24">
+        {/* Shopify Performance */}
+        <section
+          className="py-24 lg:py-28 bg-[var(--background)]"
+          aria-labelledby="shopify-heading"
+        >
           <Container>
             <div className="mx-auto max-w-2xl sm:text-center">
-              <h2 className="font-display text-4xl font-medium tracking-tight text-neutral-950 dark:text-white sm:text-5xl">
+              <h2
+                id="shopify-heading"
+                className="font-display text-3xl font-semibold tracking-tight text-[var(--foreground)] sm:text-4xl lg:text-5xl"
+              >
                 Spezielle Shopify Performance Optimierung
               </h2>
-              <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-300">
-                Wir optimieren auch speziell Shopify Online-Shops für maximale Performance und bessere Verkäufe.
+              <p className="mt-4 text-lg text-[var(--muted-foreground)] leading-relaxed">
+                Ladezeit verbessern und Core Web Vitals Optimierung auch für Shopify-Shops – für bessere Performance und Sichtbarkeit.
               </p>
             </div>
-            <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 sm:mt-20 lg:max-w-none lg:grid-cols-2">
-              <div className="rounded-2xl bg-white dark:bg-neutral-800 p-8 shadow-sm border border-neutral-200 dark:border-neutral-700">
-                <h3 className="font-display text-xl font-semibold text-neutral-950 dark:text-white mb-4">
+            <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-6 sm:mt-20 lg:max-w-none lg:grid-cols-2">
+              <div className="rounded-2xl bg-[var(--surface)] border border-[var(--border)] p-6 lg:p-8">
+                <h3 className="font-display text-lg font-semibold tracking-tight text-[var(--foreground)] mb-3">
                   Shopify Core Web Vitals
                 </h3>
-                <p className="text-neutral-600 dark:text-neutral-300 mb-4">
-                  Optimierung der wichtigsten Performance-Metriken speziell für Shopify Stores. LCP, FID und CLS Verbesserung für bessere Rankings.
+                <p className="text-[var(--muted-foreground)] text-sm leading-relaxed mb-3">
+                  Core Web Vitals Optimierung speziell für Shopify: LCP, FID, CLS – für bessere Ladezeit und Rankings.
                 </p>
-                <div className="text-sm text-orange-600 font-medium">Shopify-spezifisch</div>
+                <div className="text-sm text-[var(--primary)] font-medium">Shopify-spezifisch</div>
               </div>
-              <div className="rounded-2xl bg-white dark:bg-neutral-800 p-8 shadow-sm border border-neutral-200 dark:border-neutral-700">
-                <h3 className="font-display text-xl font-semibold text-neutral-950 dark:text-white mb-4">
+              <div className="rounded-2xl bg-[var(--surface)] border border-[var(--border)] p-6 lg:p-8">
+                <h3 className="font-display text-lg font-semibold tracking-tight text-[var(--foreground)] mb-3">
                   Shopify App-Optimierung
                 </h3>
-                <p className="text-neutral-600 dark:text-neutral-300 mb-4">
-                  Analyse und Optimierung von Shopify Apps, die die Performance beeinträchtigen. App-Performance-Monitoring und Optimierung.
+                <p className="text-[var(--muted-foreground)] text-sm leading-relaxed mb-3">
+                  Apps identifizieren, die die Ladezeit belasten – gezielte Optimierung für schnellere Shops.
                 </p>
-                <div className="text-sm text-orange-600 font-medium">Shopify-spezifisch</div>
+                <div className="text-sm text-[var(--primary)] font-medium">Shopify-spezifisch</div>
               </div>
-              <div className="rounded-2xl bg-white dark:bg-neutral-800 p-8 shadow-sm border border-neutral-200 dark:border-neutral-700">
-                <h3 className="font-display text-xl font-semibold text-neutral-950 dark:text-white mb-4">
+              <div className="rounded-2xl bg-[var(--surface)] border border-[var(--border)] p-6 lg:p-8">
+                <h3 className="font-display text-lg font-semibold tracking-tight text-[var(--foreground)] mb-3">
                   Shopify Asset-Optimierung
                 </h3>
-                <p className="text-neutral-600 dark:text-neutral-300 mb-4">
-                  Komprimierung von Produktbildern, Theme-Assets und Scripts für bessere Shopify Performance und schnellere Ladezeiten.
+                <p className="text-[var(--muted-foreground)] text-sm leading-relaxed mb-3">
+                  Bilder, Theme-Assets und Scripts komprimieren – Website schneller machen ohne Qualitätsverlust.
                 </p>
-                <div className="text-sm text-orange-600 font-medium">Shopify-spezifisch</div>
+                <div className="text-sm text-[var(--primary)] font-medium">Shopify-spezifisch</div>
               </div>
-              <div className="rounded-2xl bg-white dark:bg-neutral-800 p-8 shadow-sm border border-neutral-200 dark:border-neutral-700">
-                <h3 className="font-display text-xl font-semibold text-neutral-950 dark:text-white mb-4">
+              <div className="rounded-2xl bg-[var(--surface)] border border-[var(--border)] p-6 lg:p-8">
+                <h3 className="font-display text-lg font-semibold tracking-tight text-[var(--foreground)] mb-3">
                   Shopify Caching & CDN
                 </h3>
-                <p className="text-neutral-600 dark:text-neutral-300 mb-4">
-                  Implementierung von Shopify Plus CDN und optimierte Caching-Strategien für globale Performance und bessere Conversion-Raten.
+                <p className="text-[var(--muted-foreground)] text-sm leading-relaxed mb-3">
+                  Caching und CDN nutzen, damit Shops global schnell laden – technische SEO für E-Commerce.
                 </p>
-                <div className="text-sm text-orange-600 font-medium">Shopify-spezifisch</div>
+                <div className="text-sm text-[var(--primary)] font-medium">Shopify-spezifisch</div>
               </div>
             </div>
             <div className="mt-12 text-center">
@@ -313,38 +420,35 @@ export default function PerformancePage() {
               </Button>
             </div>
           </Container>
-        </div>
+        </section>
 
-        {/* CTA Section */}
-        <div className="relative py-24 bg-orange-600 overflow-hidden">
-          <div className="absolute inset-0 mix-blend-multiply opacity-40">
-            <Image
-              src="/img/services/performance.jpg"
-              alt="Background Pattern"
-              fill
-              className="object-cover"
-              quality={60}
-            />
-          </div>
-          <Container className="relative">
+        {/* CTA — tonal background, 1 primary CTA, wie Marketing */}
+        <section
+          className="py-24 lg:py-28 bg-[var(--surface-2)]"
+          aria-labelledby="performance-cta-heading"
+        >
+          <Container>
             <div className="mx-auto max-w-2xl text-center">
-              <h2 className="font-display text-3xl tracking-tight text-white sm:text-4xl">
-                Bereit für mehr Speed?
+              <h2
+                id="performance-cta-heading"
+                className="font-display text-3xl font-semibold tracking-tight text-[var(--foreground)] sm:text-4xl lg:text-5xl"
+              >
+                Bereit für eine schnellere Website?
               </h2>
-              <p className="mt-4 text-lg text-orange-100">
-                Performance-Optimierung nach Aufwand: €90-120/Stunde. Lassen Sie uns gemeinsam die Performance Ihrer Website analysieren und optimieren.
+              <p className="mt-4 text-lg text-[var(--muted-foreground)] leading-relaxed">
+                Wir analysieren Ihre Website und zeigen konkret, wo Performance verloren geht.
               </p>
-              <p className="mt-2 text-sm text-orange-100">
-                Gemäß § 6 Abs. 1 Z 27 UStG wird keine Umsatzsteuer berechnet.
-              </p>
-              <div className="mt-8">
-                <Button href="/kontakt" variant="secondary" className="text-orange-600 border-orange-600 hover:bg-orange-600 hover:text-white dark:text-white dark:border-white dark:hover:bg-white dark:hover:text-orange-600">
-                  Jetzt kostenloses Performance Audit
-                </Button>
+              <div className="mt-10">
+                <Link
+                  href="/seo-audit"
+                  className="inline-flex items-center justify-center gap-2 h-[52px] px-8 rounded-xl font-semibold text-base bg-[var(--primary)] text-[var(--primary-foreground)] hover:opacity-95 transition-opacity duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--ring-offset)]"
+                >
+                  Kostenloses Performance Audit
+                </Link>
               </div>
             </div>
           </Container>
-        </div>
+        </section>
       </main>
     </>
   )
