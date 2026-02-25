@@ -32,7 +32,7 @@ export default function Hero() {
               className="text-lg lg:text-xl text-[var(--muted-foreground)] leading-snug max-w-[40ch]"
               style={{ letterSpacing: '-0.01em' }}
             >
-              Strukturierte Websites, die mehr Anfragen und Termine bringen.
+              Strukturierte, conversion-optimierte Websites, die mehr Anfragen und Termine bringen.
             </p>
 
             <p className="text-xs uppercase tracking-[0.2em] text-[var(--muted-foreground)] font-medium opacity-80">

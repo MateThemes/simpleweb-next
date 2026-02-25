@@ -28,6 +28,7 @@ export function AccordionItem({
 
   return (
     <div className="border-b border-[var(--border)] last:border-b-0">
+      <h3 className="sr-only">{question}</h3>
       <button
         type="button"
         id={id}
