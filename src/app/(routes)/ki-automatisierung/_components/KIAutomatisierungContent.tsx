@@ -2,13 +2,12 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Container } from '@/components/ui/Container'
 import { Input } from '@/components/ui/Input'
 import { Accordion } from '@/components/ui/Accordion'
-import { PriceCard } from '@/components/ui/PriceCard'
-import { Card, CardHeader, CardContent } from '@/components/ui/Card'
+import { PricingCard } from '@/components/ui/PricingCard'
 import {
-  SparklesIcon,
   CheckIcon,
   ClockIcon,
   ShieldCheckIcon,
@@ -37,37 +36,31 @@ const solutions = [
   'KI-Offer: Richtwert-Angebote als Rohentwurf, Sie prüfen',
 ]
 
-// Leistungen Data
+// Leistungen Data – 4 Kernbereiche, ohne Tool-Nennung
 const services = [
   {
-    title: 'Anfrage-Workflow',
+    title: 'Anfrage- & Lead-Automatisierung',
     description:
-      'Formular/Website → Google Sheet/CRM → Sofort-Antwort per E-Mail/SMS',
+      'Eingehende Anfragen werden erfasst, ins CRM überführt und der Kunde erhält eine sofortige Bestätigung – Sie behalten die Übersicht.',
     icon: RouteIcon,
   },
   {
-    title: 'Richtwert-Angebote mit KI',
+    title: 'Angebots- & Dokument-Automatisierung',
     description:
-      'Rohtext + PDF-Entwurf basierend auf Kundendaten, Sie prüfen & finalisieren',
-    icon: SparklesIcon,
+      'Automatisierte Angebotserstellung als Rohentwurf aus Kundendaten, PDF-Vorlagen und Dokumente – Sie prüfen und finalisieren.',
+    icon: FileTextIcon,
   },
   {
-    title: 'Chatbot/Telegram-Bot',
+    title: 'Chatbot & Kommunikation',
     description:
-      '24/7 automatische Antworten, bei Bedarf Übergabe an menschlichen Ansprechpartner',
+      'Automatische Antworten auf häufige Fragen, bei Bedarf nahtlose Übergabe an Sie – auch außerhalb der Geschäftszeiten.',
     icon: ChatBubbleIcon,
   },
   {
-    title: 'Lead-Routing & Follow-ups',
+    title: 'CRM & Follow-up Automatisierung',
     description:
-      'Facebook/Website-Leads automatisch verteilen → E-Mail/SMS/WhatsApp-Benachrichtigungen',
+      'Lead-Routing, Terminerinnerungen und Follow-ups per E-Mail oder Nachricht – damit nichts liegen bleibt.',
     icon: RouteIcon,
-  },
-  {
-    title: 'Dokument-Automatisierung',
-    description:
-      'PDF-Erstellung, Vorlagen, E-Signaturen – alles automatisiert',
-    icon: FileTextIcon,
   },
 ]
 
@@ -110,7 +103,7 @@ const processSteps = [
   {
     title: 'Umsetzung',
     description:
-      'Wir setzen die Workflows und Bots um – mit modernen Tools wie n8n/Make und OpenAI.',
+      'Wir setzen die Workflows um – mit etablierten Workflow- und KI-Systemen, auf Wunsch EU-gehostet.',
     icon: CodeIcon,
   },
   {
@@ -188,7 +181,7 @@ const packages = [
       { name: 'Einfache Automatisierung', included: true },
       { name: 'E-Mail → Google Sheet', included: true },
       { name: 'Kontaktformular → CRM', included: true },
-      { name: 'Einrichtung mit n8n/Make/Zapier', included: true },
+      { name: 'Etablierte Workflow-Systeme', included: true },
       { name: 'Basis-Dokumentation', included: true },
     ],
     popular: false,
@@ -305,83 +298,139 @@ export function KIAutomatisierungContent() {
 
   return (
     <main className="flex-auto">
-      {/* Hero Section */}
-      <section className="py-16 lg:py-24 bg-gradient-to-b from-white to-gray-50 dark:from-slate-950 dark:to-slate-900">
-        <Container className="max-w-5xl mx-auto">
-          <div className="text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-50 dark:bg-indigo-900/20 rounded-full border border-indigo-200 dark:border-indigo-800 mb-8">
-              <SparklesIcon className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
-              <span className="text-indigo-600 dark:text-indigo-400 font-medium">
-                KI-Automatisierung
-              </span>
+      {/* Hero — Struktur wie /services/marketing, Keyfacts, dezente Caption */}
+      <section
+        className="relative bg-[var(--background)] pt-24 sm:pt-28 lg:pt-32 pb-20 lg:pb-28"
+        aria-labelledby="ki-hero-heading"
+      >
+        <Container className="relative">
+          <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-start">
+            <div className="relative w-full">
+              <div
+                className="absolute -inset-x-8 top-1/2 -translate-y-1/2 h-[120%] w-[140%] max-w-none pointer-events-none opacity-[0.04] dark:opacity-[0.06] hidden lg:block"
+                aria-hidden
+                style={{
+                  background:
+                    'radial-gradient(ellipse 70% 60% at 30% 50%, var(--foreground), transparent 70%)',
+                }}
+              />
+              <div className="relative space-y-6 max-w-2xl mx-auto">
+                <p className="text-sm font-medium uppercase tracking-wider text-[var(--muted-foreground)]">
+                  KI-Automatisierung für KMU
+                </p>
+                <h1
+                  id="ki-hero-heading"
+                  className="font-display font-bold tracking-tight text-[var(--foreground)] leading-[1.08] text-4xl sm:text-5xl lg:text-6xl"
+                >
+                  KI-Automatisierung für KMU in Österreich & Deutschland
+                </h1>
+                <p className="mt-10 text-lg md:text-xl text-[var(--muted-foreground)] leading-relaxed max-w-xl">
+                  Wir automatisieren Routineprozesse – von Anfrage bis Angebot – damit Sie Zeit sparen und strukturierter arbeiten.
+                </p>
+                <div className="flex flex-col sm:flex-row sm:items-center gap-4 mt-8">
+                  <button
+                    type="button"
+                    onClick={() => scrollToSection('contact-form')}
+                    className="inline-flex items-center justify-center gap-2 h-[52px] px-6 rounded-xl font-semibold text-base bg-[var(--primary)] text-[var(--primary-foreground)] hover:opacity-95 transition-opacity duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--ring-offset)]"
+                  >
+                    Kostenlosen KI-Check anfordern
+                    <ArrowRightIcon className="w-5 h-5" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => scrollToSection('use-cases')}
+                    className="inline-flex items-center justify-center gap-2 h-[52px] px-6 rounded-xl font-medium text-base bg-transparent text-[var(--foreground)] border-2 border-[var(--border)] hover:border-[var(--muted-foreground)] hover:bg-[var(--surface-2)] transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--ring-offset)]"
+                  >
+                    Beispiele ansehen
+                  </button>
+                </div>
+                <div
+                  className="flex flex-wrap items-center gap-x-2 gap-y-1 mt-8 pt-2 text-[var(--muted-foreground)] text-sm tracking-wide"
+                  role="list"
+                  aria-label="Erfahrung und Reichweite"
+                >
+                  <span className="uppercase tracking-wider font-medium" role="listitem">
+                    50+ Projekte
+                  </span>
+                  <span className="mx-2 text-[var(--border)] dark:text-[var(--muted-foreground)]" aria-hidden>·</span>
+                  <span className="uppercase tracking-wider font-medium" role="listitem">
+                    AT & DE
+                  </span>
+                  <span className="mx-2 text-[var(--border)] dark:text-[var(--muted-foreground)]" aria-hidden>·</span>
+                  <span className="uppercase tracking-wider font-medium" role="listitem">
+                    Antwort in 1–2 Werktagen
+                  </span>
+                </div>
+                <p className="mt-3 text-xs text-[var(--muted-foreground)]/90">
+                  DSGVO-bedacht · Erprobt für kleine Betriebe · Schnelle Umsetzung
+                </p>
+              </div>
             </div>
-            <h1 className="font-display text-5xl font-medium tracking-tight text-neutral-950 dark:text-white [text-wrap:balance] sm:text-7xl">
-              KI-Automatisierung für KMU: weniger Handarbeit, mehr Ergebnis.
-            </h1>
-            <p className="mt-6 text-xl text-neutral-600 dark:text-neutral-400 max-w-3xl mx-auto">
-              Wir digitalisieren Routineaufgaben – von Anfrage-Antworten bis
-              Angebots-Vorbereitung. Speziell für Handwerker & lokale
-              Dienstleister.
-            </p>
-            <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-              <button
-                type="button"
-                onClick={() => scrollToSection('contact-form')}
-                className="inline-flex items-center justify-center gap-2 rounded-lg px-8 py-4 text-lg font-medium transition bg-blue-600 text-white hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600"
+            <div className="relative w-full lg:pt-8">
+              <div
+                className="relative w-full overflow-hidden rounded-[24px] bg-[var(--surface-2)] border border-[var(--border)]"
+                style={{
+                  boxShadow:
+                    '0 4px 6px -1px rgb(0 0 0 / 0.06), 0 2px 4px -2px rgb(0 0 0 / 0.04)',
+                }}
               >
-                Kostenlosen KI-Check anfordern
-                <ArrowRightIcon className="w-5 h-5" />
-              </button>
-              <button
-                type="button"
-                onClick={() => scrollToSection('use-cases')}
-                className="inline-flex items-center justify-center gap-2 rounded-lg px-8 py-4 text-lg font-medium transition bg-gray-100 text-gray-900 hover:bg-gray-200 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700"
-              >
-                Beispiele ansehen
-              </button>
+                <div className="aspect-square relative">
+                  <Image
+                    src="/img/services/ki-automatisierung.jpg"
+                    alt="KI-Automatisierung und Prozessautomatisierung für KMU in Österreich und Deutschland"
+                    fill
+                    priority
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover object-center brightness-[0.92] contrast-[1.02]"
+                  />
+                  <div className="absolute inset-0 bg-black/10 pointer-events-none" aria-hidden />
+                </div>
+              </div>
             </div>
-            <p className="mt-6 text-sm text-neutral-500 dark:text-neutral-400">
-              DSGVO-bedacht • Erprobt für kleine Betriebe • Schnelle Umsetzung
-            </p>
           </div>
         </Container>
       </section>
 
-      {/* Problem → Lösung Section */}
-      <section className="py-16 lg:py-24 bg-gray-50 dark:bg-slate-900">
-        <Container className="max-w-5xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Probleme */}
-            <div>
-              <h2 className="text-3xl font-semibold tracking-tight text-neutral-950 dark:text-white mb-6">
-                Probleme, die wir lösen
-              </h2>
-              <ul className="space-y-4">
+      {/* Problem → Lösung — M3 Cards, klare Trennung, keine Emojis */}
+      <section
+        className="py-24 lg:py-28 bg-[var(--surface-2)]"
+        aria-labelledby="probleme-loesungen-heading"
+      >
+        <Container>
+          <div className="mx-auto max-w-2xl sm:text-center">
+            <h2
+              id="probleme-loesungen-heading"
+              className="font-display text-3xl font-semibold tracking-tight text-[var(--foreground)] sm:text-4xl lg:text-5xl"
+            >
+              Probleme, die wir lösen
+            </h2>
+            <p className="mt-4 text-lg text-[var(--muted-foreground)] leading-relaxed">
+              Typische Stolpersteine bei Prozessautomatisierung – und wie Workflow-Automatisierung hilft.
+            </p>
+          </div>
+          <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-6 sm:mt-20 lg:max-w-none md:grid-cols-2">
+            <div className="rounded-2xl bg-[var(--surface)]/80 border border-[var(--border)]/60 p-6 lg:p-8 transition-[box-shadow] duration-200 hover:shadow-[var(--shadow-3)]">
+              <h3 className="font-display text-lg font-semibold tracking-tight text-[var(--foreground)] mb-3">
+                Typische Probleme
+              </h3>
+              <ul className="space-y-2 text-sm text-[var(--muted-foreground)] leading-relaxed">
                 {problems.map((problem, index) => (
-                  <li key={index} className="flex gap-3">
-                    <span className="text-red-500 dark:text-red-400 flex-shrink-0 mt-1">
-                      ×
-                    </span>
-                    <span className="text-gray-700 dark:text-gray-300">
-                      {problem}
-                    </span>
+                  <li key={index} className="flex gap-2">
+                    <span className="text-red-600 dark:text-red-400 flex-shrink-0" aria-hidden>×</span>
+                    {problem}
                   </li>
                 ))}
               </ul>
             </div>
-
-            {/* Lösungen */}
-            <div>
-              <h2 className="text-3xl font-semibold tracking-tight text-neutral-950 dark:text-white mb-6">
+            <div className="rounded-2xl bg-[var(--surface)]/80 border border-[var(--border)]/60 p-6 lg:p-8 transition-[box-shadow] duration-200 hover:shadow-[var(--shadow-3)]">
+              <h3 className="font-display text-lg font-semibold tracking-tight text-[var(--foreground)] mb-3">
                 Unsere Lösungen
-              </h2>
-              <ul className="space-y-4">
+              </h3>
+              <ul className="space-y-2 text-sm text-[var(--muted-foreground)] leading-relaxed">
                 {solutions.map((solution, index) => (
-                  <li key={index} className="flex gap-3">
-                    <CheckIcon className="text-green-500 dark:text-green-400 flex-shrink-0 mt-1 w-5 h-5" />
-                    <span className="text-gray-700 dark:text-gray-300">
-                      {solution}
-                    </span>
+                  <li key={index} className="flex gap-2">
+                    <CheckIcon className="h-5 w-5 text-[var(--primary)] flex-shrink-0 mt-0.5" aria-hidden />
+                    {solution}
                   </li>
                 ))}
               </ul>
@@ -390,78 +439,87 @@ export function KIAutomatisierungContent() {
         </Container>
       </section>
 
-      {/* Leistungen Section */}
-      <section className="py-16 lg:py-24">
-        <Container className="max-w-5xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-semibold tracking-tight text-neutral-950 dark:text-white sm:text-4xl mb-4">
+      {/* Leistungen — 4 Kernbereiche, M3 Cards */}
+      <section
+        className="py-24 lg:py-28 bg-[var(--background)]"
+        aria-labelledby="leistungen-heading"
+      >
+        <Container>
+          <div className="mx-auto max-w-2xl sm:text-center">
+            <h2
+              id="leistungen-heading"
+              className="font-display text-3xl font-semibold tracking-tight text-[var(--foreground)] sm:text-4xl lg:text-5xl"
+            >
               Unsere Leistungen
             </h2>
-            <p className="text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
-              Automatisierungslösungen speziell für KMU in Österreich &
-              Deutschland
+            <p className="mt-4 text-lg text-[var(--muted-foreground)] leading-relaxed">
+              KI-Automatisierung für KMU in vier Kernbereichen – etablierte Workflow- und KI-Systeme, auf Wunsch EU-gehostet.
             </p>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="mx-auto mt-16 grid grid-cols-1 gap-6 sm:mt-20 md:grid-cols-2">
             {services.map((service, index) => {
               const IconComponent = service.icon
               return (
-                <Card key={index} variant="elevated" className="p-6">
-                  <CardHeader className="p-0 pb-4">
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400">
-                        <IconComponent className="w-5 h-5" />
-                      </div>
-                      <h3 className="text-xl font-semibold text-neutral-950 dark:text-white">
-                        {service.title}
-                      </h3>
-                    </div>
-                  </CardHeader>
-                  <CardContent className="p-0">
-                    <p className="text-neutral-600 dark:text-neutral-400">
+                <div
+                  key={index}
+                  className="flex gap-5 rounded-2xl bg-[var(--surface)]/80 border border-[var(--border)]/60 p-6 lg:p-8 transition-[box-shadow] duration-200 hover:shadow-[var(--shadow-3)]"
+                >
+                  <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-[var(--muted)]/60">
+                    <IconComponent className="h-5 w-5 text-[var(--primary)]" aria-hidden />
+                  </div>
+                  <div className="min-w-0">
+                    <h3 className="font-display text-lg font-semibold tracking-tight text-[var(--foreground)]">
+                      {service.title}
+                    </h3>
+                    <p className="mt-2 text-sm text-[var(--muted-foreground)] leading-relaxed">
                       {service.description}
                     </p>
-                  </CardContent>
-                </Card>
+                  </div>
+                </div>
               )
             })}
           </div>
         </Container>
       </section>
 
-      {/* Use-Cases Section */}
+      {/* Use-Cases — Anwendungsbeispiele, SEO: KI für Handwerker */}
       <section
         id="use-cases"
-        className="py-16 lg:py-24 bg-gray-50 dark:bg-slate-900"
+        className="py-24 lg:py-28 bg-[var(--surface-2)]"
+        aria-labelledby="use-cases-heading"
       >
-        <Container className="max-w-5xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-semibold tracking-tight text-neutral-950 dark:text-white sm:text-4xl mb-4">
+        <Container>
+          <div className="mx-auto max-w-2xl sm:text-center">
+            <h2
+              id="use-cases-heading"
+              className="font-display text-3xl font-semibold tracking-tight text-[var(--foreground)] sm:text-4xl lg:text-5xl"
+            >
               Anwendungsbeispiele
             </h2>
-            <p className="text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
-              So setzen Handwerker & Dienstleister KI-Automatisierung ein
+            <p className="mt-4 text-lg text-[var(--muted-foreground)] leading-relaxed">
+              KI für Handwerker & Dienstleister: von Workflow-Automatisierung bis Angebotsautomatisierung.
             </p>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="mx-auto mt-16 grid grid-cols-1 gap-6 sm:mt-20 md:grid-cols-3">
             {useCases.map((useCase, index) => {
               const IconComponent = useCase.icon
               return (
-                <Card key={index} variant="outlined" className="p-6">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400">
-                      <IconComponent className="w-5 h-5" />
+                <div
+                  key={index}
+                  className="flex flex-col gap-4 rounded-2xl bg-[var(--surface)]/80 border border-[var(--border)]/60 p-6 lg:p-8 transition-[box-shadow] duration-200 hover:shadow-[var(--shadow-3)]"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-[var(--muted)]/60">
+                      <IconComponent className="h-5 w-5 text-[var(--primary)]" aria-hidden />
                     </div>
-                    <h3 className="text-xl font-semibold text-neutral-950 dark:text-white">
+                    <h3 className="font-display text-lg font-semibold tracking-tight text-[var(--foreground)]">
                       {useCase.title}
                     </h3>
                   </div>
-                  <p className="text-neutral-600 dark:text-neutral-400">
+                  <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
                     {useCase.description}
                   </p>
-                </Card>
+                </div>
               )
             })}
           </div>
@@ -469,36 +527,42 @@ export function KIAutomatisierungContent() {
       </section>
 
       {/* Ablauf Section */}
-      <section className="py-16 lg:py-24">
-        <Container className="max-w-5xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-semibold tracking-tight text-neutral-950 dark:text-white sm:text-4xl mb-4">
+      <section
+        className="py-24 lg:py-28 bg-[var(--background)]"
+        aria-labelledby="ablauf-heading"
+      >
+        <Container>
+          <div className="mx-auto max-w-2xl sm:text-center">
+            <h2
+              id="ablauf-heading"
+              className="font-display text-3xl font-semibold tracking-tight text-[var(--foreground)] sm:text-4xl lg:text-5xl"
+            >
               Unser Vorgehen
             </h2>
-            <p className="text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
+            <p className="mt-4 text-lg text-[var(--muted-foreground)] leading-relaxed">
               Von der Analyse bis zur Implementierung – in 4 klaren Schritten
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="mx-auto mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 sm:mt-20">
             {processSteps.map((step, index) => {
               const IconComponent = step.icon
               return (
                 <div key={index} className="text-center">
                   <div className="flex items-center justify-center mb-4">
-                    <div className="flex h-16 w-16 items-center justify-center rounded-xl bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400">
-                      <IconComponent className="w-8 h-8" />
+                    <div className="flex h-16 w-16 items-center justify-center rounded-xl bg-[var(--muted)]/60 text-[var(--primary)]">
+                      <IconComponent className="w-8 h-8" aria-hidden />
                     </div>
                   </div>
                   <div className="mb-2">
-                    <span className="text-sm font-semibold text-indigo-600 dark:text-indigo-400">
+                    <span className="text-sm font-semibold text-[var(--primary)]">
                       Schritt {index + 1}
                     </span>
                   </div>
-                  <h3 className="text-xl font-semibold text-neutral-950 dark:text-white mb-2">
+                  <h3 className="font-display text-xl font-semibold tracking-tight text-[var(--foreground)] mb-2">
                     {step.title}
                   </h3>
-                  <p className="text-neutral-600 dark:text-neutral-400">
+                  <p className="text-[var(--muted-foreground)] text-sm leading-relaxed">
                     {step.description}
                   </p>
                 </div>
@@ -508,60 +572,69 @@ export function KIAutomatisierungContent() {
         </Container>
       </section>
 
-      {/* Vorteile Section */}
-      <section className="py-16 lg:py-24 bg-gray-50 dark:bg-slate-900">
-        <Container className="max-w-5xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-semibold tracking-tight text-neutral-950 dark:text-white sm:text-4xl mb-4">
+      {/* Vorteile Section — M3 Cards, SEO: Prozessautomatisierung */}
+      <section
+        className="py-24 lg:py-28 bg-[var(--surface-2)]"
+        aria-labelledby="vorteile-heading"
+      >
+        <Container>
+          <div className="mx-auto max-w-2xl sm:text-center">
+            <h2
+              id="vorteile-heading"
+              className="font-display text-3xl font-semibold tracking-tight text-[var(--foreground)] sm:text-4xl lg:text-5xl"
+            >
               Ihre Vorteile
             </h2>
-            <p className="text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
-              Warum KMU auf KI-Automatisierung setzen
+            <p className="mt-4 text-lg text-[var(--muted-foreground)] leading-relaxed">
+              Warum KMU auf Prozessautomatisierung und KI-Automatisierung setzen
             </p>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="mx-auto mt-16 grid grid-cols-1 gap-6 sm:mt-20 md:grid-cols-2 lg:grid-cols-3">
             {benefits.map((benefit, index) => {
               const IconComponent = benefit.icon
               return (
-                <Card key={index} variant="outlined" className="p-6">
-                  <div className="flex items-start gap-4">
-                    <div className="flex-shrink-0">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400">
-                        <IconComponent className="w-5 h-5" />
-                      </div>
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-semibold text-neutral-950 dark:text-white mb-2">
-                        {benefit.title}
-                      </h3>
-                      <p className="text-neutral-600 dark:text-neutral-400">
-                        {benefit.description}
-                      </p>
-                    </div>
+                <div
+                  key={index}
+                  className="flex gap-5 rounded-2xl bg-[var(--surface)]/80 border border-[var(--border)]/60 p-6 lg:p-8 transition-[box-shadow] duration-200 hover:shadow-[var(--shadow-3)]"
+                >
+                  <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-[var(--muted)]/60">
+                    <IconComponent className="h-5 w-5 text-[var(--primary)]" aria-hidden />
                   </div>
-                </Card>
+                  <div className="min-w-0">
+                    <h3 className="font-display text-lg font-semibold tracking-tight text-[var(--foreground)] mb-2">
+                      {benefit.title}
+                    </h3>
+                    <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
+                      {benefit.description}
+                    </p>
+                  </div>
+                </div>
               )
             })}
           </div>
         </Container>
       </section>
 
-      {/* Pakete & Preise Section */}
-      <section className="py-16 lg:py-24">
-        <Container className="max-w-5xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-semibold tracking-tight text-neutral-950 dark:text-white sm:text-4xl mb-4">
+      {/* Pakete & Preise — M3 Pricing Cards, Beliebt bei KI Advanced */}
+      <section
+        className="py-24 lg:py-28 bg-[var(--background)]"
+        aria-labelledby="pakete-heading"
+      >
+        <Container>
+          <div className="mx-auto max-w-2xl sm:text-center">
+            <h2
+              id="pakete-heading"
+              className="font-display text-3xl font-semibold tracking-tight text-[var(--foreground)] sm:text-4xl lg:text-5xl"
+            >
               Pakete & Preise
             </h2>
-            <p className="text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
+            <p className="mt-4 text-lg text-[var(--muted-foreground)] leading-relaxed">
               Wählen Sie das passende Paket für Ihr KMU
             </p>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+          <div className="mx-auto mt-16 grid grid-cols-1 gap-8 sm:mt-20 md:grid-cols-3 mb-8">
             {packages.map((pkg, index) => (
-              <PriceCard
+              <PricingCard
                 key={index}
                 name={pkg.name}
                 price={pkg.price}
@@ -573,43 +646,50 @@ export function KIAutomatisierungContent() {
               />
             ))}
           </div>
-
-          <p className="text-center text-sm text-neutral-600 dark:text-neutral-400">
+          <p className="text-center text-sm text-[var(--muted-foreground)]">
             Laufende Betreuung ab 59 €/Monat (Monitoring & kleine Anpassungen)
           </p>
         </Container>
       </section>
 
-      {/* FAQ Section */}
-      <section className="py-16 lg:py-24 bg-gray-50 dark:bg-slate-900">
+      {/* FAQ Section — Tools hier erwähnt */}
+      <section
+        className="py-24 lg:py-28 bg-[var(--surface-2)]"
+        aria-labelledby="faq-heading"
+      >
         <Container className="max-w-3xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-semibold tracking-tight text-neutral-950 dark:text-white sm:text-4xl mb-4">
+            <h2
+              id="faq-heading"
+              className="font-display text-3xl font-semibold tracking-tight text-[var(--foreground)] sm:text-4xl mb-4"
+            >
               Häufige Fragen
             </h2>
-            <p className="text-lg text-neutral-600 dark:text-neutral-400">
+            <p className="text-lg text-[var(--muted-foreground)]">
               Antworten auf die wichtigsten Fragen zur KI-Automatisierung
             </p>
           </div>
-
           <Accordion items={faqs} />
         </Container>
       </section>
 
-      {/* CTA / Kontakt Section */}
+      {/* CTA / Kontakt — Headline & Subline angepasst */}
       <section
         id="contact-form"
-        className="py-16 lg:py-24 bg-gradient-to-r from-indigo-600 to-purple-600"
+        className="py-24 lg:py-28 bg-[var(--surface-2)]"
+        aria-labelledby="cta-heading"
       >
         <Container className="max-w-2xl mx-auto">
-          <div className="bg-white dark:bg-gray-900 rounded-3xl p-8 lg:p-12 shadow-2xl">
+          <div className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-8 lg:p-12 shadow-[var(--shadow-1)]">
             <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold text-neutral-950 dark:text-white mb-4">
-                Jetzt kostenlosen KI-Check anfordern
+              <h2
+                id="cta-heading"
+                className="font-display text-3xl font-semibold tracking-tight text-[var(--foreground)] sm:text-4xl mb-4"
+              >
+                Wo verlieren Sie aktuell Zeit?
               </h2>
-              <p className="text-neutral-600 dark:text-neutral-400">
-                Wir analysieren Ihr Automatisierungspotenzial und zeigen
-                Ihnen, wo Sie Zeit sparen können.
+              <p className="text-lg text-[var(--muted-foreground)]">
+                Wir analysieren Ihre Prozesse und zeigen konkrete Automatisierungspotenziale – unverbindlich.
               </p>
             </div>
 
