@@ -19,6 +19,7 @@ import {
   RouteIcon,
   FileTextIcon,
   LightBulbIcon,
+  SparklesIcon,
 } from '@/components/icons'
 
 // Problem → Lösung Data
