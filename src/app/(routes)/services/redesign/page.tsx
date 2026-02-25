@@ -1,17 +1,22 @@
 import { Metadata } from 'next'
 import Image from 'next/image'
+import Link from 'next/link'
 import { Container } from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
 import { PaintBrushIcon, CheckIcon } from '@/components/icons'
 import { breadcrumbSchema, webPageSchema, servicePageSchema } from '@/app/schema'
 import { PriceCard } from '@/components/ui/PriceCard'
 
+const META_TITLE = 'Website Redesign & Relaunch für KMU | Website modernisieren lassen'
+const META_DESCRIPTION =
+  'Website Redesign für KMU: Website modernisieren oder Relaunch mit klarer Struktur, besserer Positionierung und mehr Anfragen. Kostenlose Einordnung.'
+
 export const metadata: Metadata = {
-  title: 'Website Redesign für KMU: Klarheit statt nur neues Design',
-  description: 'Ihre Website existiert, bringt aber keine Anfragen? Wir schaffen Klarheit, Struktur und messbare Wirkung – für KMU in Österreich & Deutschland. Ab 1.490 €.',
+  title: META_TITLE,
+  description: META_DESCRIPTION,
   openGraph: {
-    title: 'Website Redesign für KMU: Klarheit statt nur neues Design | SimpleWebDesign',
-    description: 'Ihre Website existiert, bringt aber keine Anfragen? Wir schaffen Klarheit, Struktur und messbare Wirkung – für KMU in Österreich & Deutschland. Ab 1.490 €.',
+    title: `${META_TITLE} | SimpleWebDesign`,
+    description: META_DESCRIPTION,
     url: 'https://simplewebdesign.at/services/redesign',
     images: [
       {
@@ -24,8 +29,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Website Redesign für KMU: Klarheit statt nur neues Design | SimpleWebDesign',
-    description: 'Ihre Website existiert, bringt aber keine Anfragen? Wir schaffen Klarheit, Struktur und messbare Wirkung – für KMU in Österreich & Deutschland.',
+    title: `${META_TITLE} | SimpleWebDesign`,
+    description: META_DESCRIPTION,
     images: ['/img/services/redesign.jpg']
   },
   alternates: {
@@ -64,7 +69,7 @@ const benefits = [
 const packages = [
   {
     name: 'Redesign Standard',
-    description: 'Perfekt für kleine Unternehmen und Selbstständige',
+    description: 'Mehr Anfragen durch klare Struktur und modernes Design.',
     targetAudience: 'Wann sinnvoll? Wenn die Website existiert, aber kaum Anfragen bringt.',
     price: '1.490',
     features: [
@@ -80,7 +85,7 @@ const packages = [
   },
   {
     name: 'Redesign Premium',
-    description: 'Ideal für wachsende Unternehmen',
+    description: 'Klarere Positionierung und messbare Wirkung – Besucher werden zu Kunden.',
     targetAudience: 'Wann sinnvoll? Wenn mehr Struktur und Orientierung fehlen, um Besucher zu führen.',
     price: '2.990',
     features: [
@@ -96,7 +101,7 @@ const packages = [
   },
   {
     name: 'Redesign Komplett',
-    description: 'Full-Service mit laufender Betreuung',
+    description: 'Messbare Wirkung und laufende Optimierung für dauerhaft mehr Anfragen.',
     targetAudience: 'Wann sinnvoll? Wenn messbare Wirkung und laufende Optimierung wichtig sind.',
     price: '4.990',
     features: [
@@ -125,18 +130,18 @@ export default function RedesignPage() {
     }),
     // WebPage Schema
     webPageSchema({
-      name: "Website Redesign für KMU: Klarheit statt nur neues Design",
-      description: "Ihre Website existiert, bringt aber keine Anfragen? Wir schaffen Klarheit, Struktur und messbare Wirkung – für KMU in Österreich & Deutschland.",
+      name: META_TITLE,
+      description: META_DESCRIPTION,
       url: "https://simplewebdesign.at/services/redesign",
       image: "https://simplewebdesign.at/img/services/redesign.jpg",
     }),
     // Service Schema
     servicePageSchema({
-      name: "Website Redesign",
-      description: "Professionelles Website Redesign für einen modernen, benutzerfreundlichen Webauftritt. Wir modernisieren Ihre Website mit aktuellem Design und Technologie.",
+      name: "Website Redesign & Relaunch",
+      description: META_DESCRIPTION,
       url: "https://simplewebdesign.at/services/redesign",
       image: "https://simplewebdesign.at/img/services/redesign.jpg",
-      serviceType: ["Website Redesign", "Web Design", "UI/UX Design", "Website Modernization"],
+      serviceType: ["Website Redesign", "Website Relaunch", "Website modernisieren", "Web Design", "UI/UX Design"],
     }),
   ];
 
@@ -151,44 +156,101 @@ export default function RedesignPage() {
         />
       ))}
       <main className="flex-auto">
-        {/* Hero Section */}
-        <div className="relative py-20 sm:py-24 lg:py-32 overflow-hidden">
+        {/* Hero — M3 + Keyfacts wie /services/marketing */}
+        <section
+          className="relative bg-[var(--background)] pt-24 sm:pt-28 lg:pt-32 pb-20 lg:pb-28"
+          aria-labelledby="redesign-hero-heading"
+        >
           <Container className="relative">
-            <div className="lg:flex lg:items-center lg:gap-x-10">
-              <div className="max-w-2xl lg:max-w-lg">
-                <h1 className="font-display text-5xl font-medium tracking-tight text-neutral-950 dark:text-white [text-wrap:balance] sm:text-7xl">
-                  Website Redesign für KMU
-                </h1>
-                <p className="mt-6 text-xl text-neutral-600 dark:text-neutral-300">
-                  Ihre Website existiert, bringt aber keine Anfragen? Das Problem ist selten Design oder Technik. Meist fehlt Klarheit. Wir schaffen Struktur und Orientierung – damit Besucher zu Anfragen werden.
-                </p>
-                <div className="mt-8 flex gap-4">
-                  <Button href="/kontakt">Kostenlose Einordnung</Button>
-                  <Button href="#features" variant="secondary">Mehr erfahren</Button>
+            <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-start">
+              <div className="relative w-full">
+                <div
+                  className="absolute -inset-x-8 top-1/2 -translate-y-1/2 h-[120%] w-[140%] max-w-none pointer-events-none opacity-[0.04] dark:opacity-[0.06] hidden lg:block"
+                  aria-hidden
+                  style={{
+                    background:
+                      'radial-gradient(ellipse 70% 60% at 30% 50%, var(--foreground), transparent 70%)',
+                  }}
+                />
+                <div className="relative space-y-6 max-w-2xl mx-auto">
+                  <p className="text-sm font-medium uppercase tracking-wider text-[var(--muted-foreground)]">
+                    Website Redesign & Relaunch
+                  </p>
+                  <h1
+                    id="redesign-hero-heading"
+                    className="font-display font-bold tracking-tight text-[var(--foreground)] leading-[1.08] text-4xl sm:text-5xl lg:text-6xl"
+                  >
+                    Website Redesign & Relaunch für KMU
+                  </h1>
+                  <p className="mt-10 text-lg md:text-xl text-[var(--muted-foreground)] leading-relaxed max-w-xl">
+                    Ihre Website existiert – bringt aber zu wenig Anfragen? Wir modernisieren Struktur, Positionierung und Design – damit Besucher zu Kunden werden.
+                  </p>
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-4 mt-8">
+                    <Link
+                      href="/kontakt"
+                      className="inline-flex items-center justify-center gap-2 h-[52px] px-6 rounded-xl font-semibold text-base bg-[var(--primary)] text-[var(--primary-foreground)] hover:opacity-95 transition-opacity duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--ring-offset)]"
+                    >
+                      Kostenlose Einordnung
+                    </Link>
+                    <Link
+                      href="#features"
+                      className="inline-flex items-center justify-center gap-2 h-[52px] px-6 rounded-xl font-medium text-base bg-transparent text-[var(--foreground)] border-2 border-[var(--border)] hover:border-[var(--muted-foreground)] hover:bg-[var(--surface-2)] transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--ring-offset)]"
+                    >
+                      Mehr erfahren
+                    </Link>
+                  </div>
+                  <div
+                    className="flex flex-wrap items-center gap-x-2 gap-y-1 mt-8 pt-2 text-[var(--muted-foreground)] text-sm tracking-wide"
+                    role="list"
+                    aria-label="Redesign und Relaunch"
+                  >
+                    <span className="uppercase tracking-wider font-medium" role="listitem">
+                      50+ Projekte
+                    </span>
+                    <span className="mx-2 text-[var(--border)] dark:text-[var(--muted-foreground)]" aria-hidden>·</span>
+                    <span className="uppercase tracking-wider font-medium" role="listitem">
+                      AT & DE
+                    </span>
+                    <span className="mx-2 text-[var(--border)] dark:text-[var(--muted-foreground)]" aria-hidden>·</span>
+                    <span className="uppercase tracking-wider font-medium" role="listitem">
+                      Antwort in 1–2 Werktagen
+                    </span>
+                  </div>
                 </div>
               </div>
-              <div className="mt-16 lg:mt-0">
-                <div className="relative">
-                  <Image
-                    src="/img/services/redesign.jpg"
-                    alt="Website Redesign Showcase"
-                    width={600}
-                    height={400}
-                    className="rounded-2xl shadow-xl"
-                    priority
-                  />
-                  <div className="absolute -bottom-8 -left-8">
-                    <div className="bg-purple-600 rounded-xl shadow-lg p-6 text-white">
-                      <PaintBrushIcon className="h-8 w-8 mb-2" />
-                      <div className="text-2xl font-bold">+198%</div>
-                      <div className="text-sm opacity-90">Mehr Conversions</div>
+              <div className="relative w-full lg:pt-8">
+                <div
+                  className="relative w-full overflow-hidden rounded-[24px] bg-[var(--surface-2)] border border-[var(--border)]"
+                  style={{
+                    boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.06), 0 2px 4px -2px rgb(0 0 0 / 0.04)',
+                  }}
+                >
+                  <div className="aspect-square relative">
+                    <Image
+                      src="/img/services/redesign.jpg"
+                      alt="Website Redesign und Relaunch für KMU – Struktur, Positionierung, Design"
+                      fill
+                      priority
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      className="object-cover object-center brightness-[0.92] contrast-[1.02]"
+                    />
+                    <div className="absolute inset-0 bg-black/10 pointer-events-none" aria-hidden />
+                  </div>
+                  <div className="absolute bottom-5 left-5 right-5 sm:bottom-8 sm:left-6 sm:right-6 sm:w-auto pointer-events-none">
+                    <div
+                      className="rounded-xl bg-[var(--primary)] px-3.5 py-3 text-[var(--primary-foreground)] w-fit"
+                      style={{ boxShadow: 'var(--shadow-2)' }}
+                    >
+                      <PaintBrushIcon className="h-5 w-5 mb-1 opacity-90" aria-hidden />
+                      <div className="text-lg font-bold leading-tight">+198%</div>
+                      <div className="text-xs opacity-90">Mehr Conversions</div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </Container>
-        </div>
+        </section>
 
         {/* Features Section */}
         <div id="features" className="py-24 bg-neutral-50 dark:bg-neutral-900">
@@ -198,9 +260,34 @@ export default function RedesignPage() {
                 Ihr Weg zum modernen Web
               </h2>
               <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-300">
-                Wir beginnen nicht mit Design oder Technik, sondern mit Einordnung: Was soll die Website leisten? Erst dann folgen Struktur, Design und Umsetzung – bis zur messbaren Wirkung. Kombinieren Sie dies mit unserem <a href="/services/seo" className="text-purple-600 hover:text-purple-500 underline">SEO-Service</a> und <a href="/services/performance" className="text-purple-600 hover:text-purple-500 underline">Performance-Optimierung</a> für maximale Online-Sichtbarkeit.
+                Wir beginnen nicht mit Design oder Technik, sondern mit Einordnung: Was soll die Website leisten? Erst dann folgen Struktur, Design und Umsetzung – bis zur messbaren Wirkung. Ein Website Relaunch oder die Entscheidung, die Website modernisieren zu lassen, lohnt sich, wenn die bestehende Seite zu wenig bringt. Kombinieren Sie dies mit unserem <a href="/services/seo" className="text-purple-600 hover:text-purple-500 underline">SEO-Service</a> und <a href="/services/performance" className="text-purple-600 hover:text-purple-500 underline">Performance-Optimierung</a> für maximale Online-Sichtbarkeit.
               </p>
             </div>
+
+            <div className="mx-auto mt-16 max-w-2xl">
+              <h2 className="font-display text-2xl font-semibold tracking-tight text-neutral-950 dark:text-white sm:text-3xl">
+                Wann ist ein Website Redesign oder Relaunch sinnvoll?
+              </h2>
+              <ul className="mt-4 space-y-3 text-neutral-600 dark:text-neutral-300">
+                <li className="flex gap-3">
+                  <CheckIcon className="h-5 w-5 text-purple-600 flex-shrink-0 mt-0.5" />
+                  <span><strong className="text-neutral-950 dark:text-white">Website bringt keine Anfragen:</strong> Die Seite läuft, aber Besucher werden nicht zu Kunden – oft fehlt Klarheit oder der nächste Schritt.</span>
+                </li>
+                <li className="flex gap-3">
+                  <CheckIcon className="h-5 w-5 text-purple-600 flex-shrink-0 mt-0.5" />
+                  <span><strong className="text-neutral-950 dark:text-white">Veraltetes Design oder Technik:</strong> Optik oder Technik wirken veraltet; ein Website neu gestalten lassen oder gezielt modernisieren steigert Vertrauen und Nutzbarkeit.</span>
+                </li>
+                <li className="flex gap-3">
+                  <CheckIcon className="h-5 w-5 text-purple-600 flex-shrink-0 mt-0.5" />
+                  <span><strong className="text-neutral-950 dark:text-white">Unklare Positionierung:</strong> Besucher verstehen nicht sofort, für wen die Website da ist und welchen Nutzen sie bieten – Struktur und Botschaft müssen schärfer werden.</span>
+                </li>
+                <li className="flex gap-3">
+                  <CheckIcon className="h-5 w-5 text-purple-600 flex-shrink-0 mt-0.5" />
+                  <span><strong className="text-neutral-950 dark:text-white">Wachstum oder neues Angebot:</strong> Unternehmen oder Leistungen haben sich geändert – die Website soll das abbilden und wieder klar führen.</span>
+                </li>
+              </ul>
+            </div>
+
             <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 sm:mt-20 lg:max-w-none lg:grid-cols-2">
               {features.map((feature, index) => (
                 <div key={index} className="flex gap-6 rounded-2xl bg-white dark:bg-neutral-800 p-8 shadow-sm">
@@ -228,6 +315,13 @@ export default function RedesignPage() {
                   </h2>
                   <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-300">
                     Wenn Ihre Website existiert, aber zu wenig passiert, liegt das meist nicht am Design. Meist fehlt Klarheit. Wir schaffen Struktur und Orientierung – damit Besucher zu Anfragen werden. Kombinieren Sie dies mit unserem <a href="/services/seo" className="text-purple-600 hover:text-purple-500 underline">SEO-Service</a>, <a href="/services/marketing" className="text-purple-600 hover:text-purple-500 underline">Marketing-Service</a> und <a href="/services/performance" className="text-purple-600 hover:text-purple-500 underline">Performance-Optimierung</a> für maximale Online-Sichtbarkeit.
+                  </p>
+
+                  <h2 className="font-display text-2xl font-semibold tracking-tight text-neutral-950 dark:text-white sm:text-3xl mt-12">
+                    Website modernisieren statt nur neu gestalten
+                  </h2>
+                  <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-300">
+                    Wer nur die Website neu gestalten lässt, bekommt oft nur ein neues Kleid. Wir setzen anders an: <strong className="text-neutral-950 dark:text-white">Struktur</strong> zuerst – welche Seiten, welche Botschaft, welcher nächste Schritt für den Besucher. Dann <strong className="text-neutral-950 dark:text-white">Klarheit</strong>: In Sekunden erkennbar, wer hier richtig ist und warum. Darauf aufbauend <strong className="text-neutral-950 dark:text-white">Wirkung</strong> – messbar durch mehr Anfragen, klarere Positionierung und eine Website, die arbeitet. So bringt Website modernisieren lassen echten Mehrwert, nicht nur ein neues Layout.
                   </p>
                 </div>
                 <div className="mt-16 grid grid-cols-1 gap-8 lg:grid-cols-2">
