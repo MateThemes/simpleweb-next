@@ -1,10 +1,10 @@
 import { Container } from '@/components/ui/Container'
 
 const steps = [
-  { title: 'Einordnung', text: 'Was soll die Website leisten – und was nicht?' },
-  { title: 'Struktur', text: 'Klare Seitenlogik, die Besucher führt.' },
-  { title: 'Umsetzung', text: 'Design und Technik folgen der Struktur.' },
-  { title: 'Wirkung', text: 'Wir prüfen gemeinsam, ob die Website wirklich wirkt.' },
+  { title: 'Einordnung', text: 'Was soll die Website leisten – mehr Anfragen, Termine, Verkäufe? Klarheit vor Umsetzung.' },
+  { title: 'Struktur', text: 'Strukturierte Website: Seitenlogik, die Besucher zum nächsten Schritt führt.' },
+  { title: 'Umsetzung', text: 'Design und Technik folgen der Struktur – conversion-optimiert.' },
+  { title: 'Wirkung', text: 'Gemeinsam prüfen wir, ob die Website wirklich mehr Anfragen bringt.' },
 ]
 
 export default function ProcessSteps() {
@@ -19,7 +19,7 @@ export default function ProcessSteps() {
             id="process-heading"
             className="font-display text-3xl lg:text-4xl font-bold tracking-tight text-[var(--foreground)] max-w-[650px] mb-14 lg:mb-16"
           >
-            Ein klarer Ablauf – ohne Agentur-Theater.
+            Website erstellen lassen: ein klarer Ablauf – ohne Agentur-Theater.
           </h2>
 
           <div className="space-y-0">

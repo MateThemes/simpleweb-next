@@ -5,16 +5,16 @@ const comparison = {
     title: 'Klassische Agentur',
     points: [
       'Startet mit Design & Funktionen',
-      'Optimiert Seiten, bevor das Ziel klar ist',
-      'Misst Erfolg an Technik & Features',
+      'Website Optimierung ohne klares Strategie-Ziel',
+      'Erfolg an Technik & Features gemessen, nicht an Conversion',
     ],
   },
   us: {
     title: 'SimpleWebDesign',
     points: [
-      'Startet mit Klarheit & Einordnung',
-      'Baut Struktur für Entscheidungen',
-      'Misst Erfolg an Wirkung (Anfragen, Termine, Verkäufe)',
+      'Startet mit Strategie & Einordnung',
+      'Baut strukturierte Website für mehr Anfragen und Termine',
+      'Erfolg an Wirkung: Anfragen, Termine, Verkäufe',
     ],
   },
 }
@@ -31,7 +31,7 @@ export default function ApproachComparison() {
             id="differentiation-heading"
             className="font-display text-3xl lg:text-4xl font-bold tracking-tight text-[var(--foreground)] max-w-[650px] mb-14 lg:mb-16"
           >
-            Klassische Agentur vs. SimpleWebDesign
+            Website erstellen lassen: Klassische Agentur vs. SimpleWebDesign
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
