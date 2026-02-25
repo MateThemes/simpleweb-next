@@ -7,6 +7,8 @@ export type BlogPost = {
   category: string
   image: string
   content: string
+  /** Optional SEO title (max 60 chars for meta title). */
+  seoTitle?: string
 }
 
 export type BlogCategory = {

@@ -40,6 +40,9 @@ export const metadata: Metadata = {
 
 const POSTS_PER_PAGE = 6;
 
+/** Always fetch latest post list so new articles appear without rebuild. */
+export const dynamic = 'force-dynamic';
+
 export default async function BlogPage({
   searchParams,
 }: {
