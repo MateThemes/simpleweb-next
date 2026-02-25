@@ -24,6 +24,24 @@ export function formatDate(date: string) {
   })
 }
 
+/** Strip markdown to plain text and count words (for reading time). */
+export function getWordCount(content: string): number {
+  const stripped = content
+    .replace(/^---[\s\S]*?---/, '')
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+    .replace(/[#*_`~]/g, '')
+    .replace(/!\[[^\]]*\]\([^)]+\)/g, '')
+    .replace(/\s+/g, ' ')
+    .trim()
+  return stripped ? stripped.split(' ').filter(Boolean).length : 0
+}
+
+/** Reading time in minutes (≈200 words/min). */
+export function getReadingTimeMinutes(content: string): number {
+  const words = getWordCount(content)
+  return Math.max(1, Math.round(words / 200))
+}
+
 export function getPlaceholderAvatar(name: string, options?: { style?: 'personas' }) {
   const style = options?.style || 'personas'
   const normalizedName = normalizeGermanChars(name)
