@@ -15,7 +15,7 @@ export default function FinalCta() {
           src="/img/cta-home-bg.jpg"
           fill
           className="object-cover object-[55%_50%]"
-          alt=""
+          alt="Hintergrund: Arbeitsumgebung für Webdesign und Strategiegespräche"
           priority
           sizes="100vw"
         />
@@ -51,10 +51,10 @@ export default function FinalCta() {
               id="final-cta-heading"
               className="font-display text-4xl lg:text-5xl font-bold tracking-tight text-white mb-8"
             >
-              Lass uns dein Projekt einordnen.
+              Website-Projekt einordnen – unverbindlich.
             </h2>
             <p className="text-lg lg:text-xl text-white/80 mb-10 leading-relaxed">
-              Ein Gespräch – unverbindlich, ohne Verkaufsdruck.
+              Kostenloses Strategiegespräch: ob Neubau, Website Relaunch oder Website Optimierung.
             </p>
             <Link
               href="/kontakt"
@@ -66,7 +66,7 @@ export default function FinalCta() {
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-transparent'
               )}
             >
-              Strategie-Gespräch anfragen
+              Kostenloses Strategiegespräch
             </Link>
           </div>
         </Container>

@@ -2,15 +2,15 @@ import { Container } from '@/components/ui/Container'
 
 const testimonials = [
   {
-    quote: 'Endlich war klar, was auf die Startseite gehört – und was nicht.',
+    quote: 'Endlich klar, was auf die Startseite gehört – seitdem mehr Anfragen.',
     attribution: 'KMU · Dienstleistung',
   },
   {
-    quote: 'Wir haben nicht „mehr Text" bekommen, sondern eine Struktur, die führt.',
+    quote: 'Nicht „mehr Text", sondern eine Struktur, die zu Terminen führt.',
     attribution: 'Handwerk · lokal',
   },
   {
-    quote: 'Die Website fühlt sich ruhiger an – und es kommt mehr rein.',
+    quote: 'Die Website wirkt ruhiger – und die Conversion ist spürbar besser.',
     attribution: 'Unternehmen · Region',
   },
 ]
@@ -27,7 +27,7 @@ export default function Testimonials() {
             id="testimonials-heading"
             className="font-display text-3xl lg:text-4xl font-bold tracking-tight text-[var(--foreground)] max-w-[650px] mb-14 lg:mb-16"
           >
-            Was Kunden danach sagen
+            Mehr Anfragen, klarere Startseite: was Kunden sagen
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">

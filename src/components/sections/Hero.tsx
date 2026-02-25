@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { Container } from '@/components/ui/Container'
 import { cn } from '@/lib/utils'
 
-const trustItems = ['50+ Projekte', 'AT & DE', 'Antwort in 1–2 Werktagen']
+const trustItems = ['50+ Projekte', 'Österreich & Deutschland', 'Antwort in 1–2 Werktagen']
 
 export default function Hero() {
   return (
@@ -25,18 +25,18 @@ export default function Hero() {
                 fontSize: 'clamp(2.75rem, 5.5vw + 1.5rem, 4.5rem)',
               }}
             >
-              Entscheidungs{'\u00AD'}architektur für KMU.
+              Webdesign für KMU in Österreich & Deutschland
             </h1>
 
             <p
               className="text-lg lg:text-xl text-[var(--muted-foreground)] leading-snug max-w-[40ch]"
               style={{ letterSpacing: '-0.01em' }}
             >
-              Websites, die nicht nur gut aussehen – sondern führen.
+              Strukturierte Websites, die mehr Anfragen und Termine bringen.
             </p>
 
             <p className="text-xs uppercase tracking-[0.2em] text-[var(--muted-foreground)] font-medium opacity-80">
-              Klarheit · Struktur · Wirkung
+              Klarheit · Struktur · Conversion
             </p>
 
             <div className="flex flex-col sm:flex-row sm:items-center gap-4 pt-2 flex-wrap">
@@ -49,7 +49,7 @@ export default function Hero() {
                   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--ring-offset)]'
                 )}
               >
-                Strategie-Gespräch anfragen
+                Kostenloses Strategiegespräch
               </Link>
               <Link
                 href="/seo-audit"
@@ -60,7 +60,7 @@ export default function Hero() {
                   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--ring-offset)]'
                 )}
               >
-                Kostenlose Analyse
+                Website-Analyse anfordern
               </Link>
             </div>
 

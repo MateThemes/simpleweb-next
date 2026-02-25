@@ -42,6 +42,15 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
+## Dokumentation
+
+- **docs/ADMIN_SECURITY.md** – Admin-Login, Passwörter, Notfall-Zugang
+- **docs/SEO_AUDIT.md** – SEO-Audit-Feature, API, Env-Variablen
+- **DEPLOYMENT_CHECKLIST.md** – Checkliste vor Go-Live
+- **COOKIE_BANNER_DOCUMENTATION.md** – Cookie-Banner & GTM
+- **SEO_STRUCTURED_DATA_DOCUMENTATION.md** – Schema.org & Dublin Core
+- **MAKECOM_SETUP.md**, **VERCEL_KV_SETUP.md** – Setup-Anleitungen
+
 ## Error Logging System
 
 The contact form includes a comprehensive error logging system to track and monitor spam attempts and form submission issues.
