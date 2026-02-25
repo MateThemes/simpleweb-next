@@ -109,7 +109,14 @@ export default async function BlogPage({
             <p className="mt-3 text-base text-[var(--muted-foreground)] leading-relaxed">
               Hier findest du Prinzipien, Checklisten und Beispiele, die dir
               helfen, online bessere Entscheidungen zu ermöglichen – und mehr
-              Anfragen zu bekommen.
+              Anfragen zu bekommen. Ein Einstieg:{' '}
+              <Link
+                href="/blog/website-bringt-keine-anfragen"
+                className="font-medium text-[var(--primary)] underline underline-offset-2 hover:no-underline"
+              >
+                Warum deine Website keine Anfragen bekommt
+              </Link>
+              .
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-2">
               <Link

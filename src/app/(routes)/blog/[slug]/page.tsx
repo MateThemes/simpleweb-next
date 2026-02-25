@@ -7,7 +7,7 @@ import { BlogContent } from '@/components/blog/BlogContent'
 import { getPostBySlug } from '@/lib/mdx'
 import { formatDate, getReadingTimeMinutes, getWordCount } from '@/lib/utils'
 import { Post } from '@/lib/types'
-import { articleSchema, breadcrumbSchema } from '@/app/schema'
+import { articleSchema, breadcrumbSchema, faqSchema } from '@/app/schema'
 import { getBlogArticleDC } from '@/lib/dublinCore'
 
 // Temporarily disabled static generation due to React version conflict
@@ -99,13 +99,35 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
   const wordCount = getWordCount(post.content ?? '');
   const readingTimeMin = getReadingTimeMinutes(post.content ?? '');
 
+  // FAQ JSON-LD only for the "website-bringt-keine-anfragen" article (matches FAQ block in content)
+  const articleFaq =
+    slug === 'website-bringt-keine-anfragen'
+      ? [
+          {
+            question: 'Warum bringt meine Website keine Anfragen?',
+            answer:
+              'Häufig fehlt Klarheit: Besucher erkennen nicht sofort, für wen die Seite da ist und welcher nächste Schritt sinnvoll ist. Oft sind es unklarer Nutzen, fehlende Führung oder ein unklarer Conversion-Pfad. Eine gezielte Einordnung zeigt, wo es hakt – und was zuerst angepackt werden sollte.',
+          },
+          {
+            question: 'Wann ist ein Website-Relaunch sinnvoll?',
+            answer:
+              'Sinnvoll ist ein Relaunch, wenn die Grundstruktur nicht mehr passt: falsche Zielgruppe, veraltete Technik oder keine Möglichkeit, Conversion und Inhalte sinnvoll zu verbessern. Wenn nur Texte oder einzelne Elemente fehlen, reicht meist eine Überarbeitung. Vor der Entscheidung hilft eine Einordnung, Prioritäten zu setzen.',
+          },
+          {
+            question: 'Reicht SEO alleine, um mehr Anfragen zu bekommen?',
+            answer:
+              'Nein. Sichtbarkeit in Google nützt wenig, wenn die gefundene Seite nicht überzeugt oder nicht zum Suchziel passt. SEO wirkt am besten gemeinsam mit klarer Struktur, Nutzen und einem erkennbaren nächsten Schritt. Ohne diese Basis bringt mehr Traffic oft keine zusätzlichen Anfragen.',
+          },
+        ]
+      : [];
+
   // Schema.org Structured Data
   const schemas = [
     // Article Schema
     articleSchema({
       title: post.title,
       description: post.description,
-      image: post.image || 'https://simplewebdesign.at/img/og-image.jpg',
+      image: post.image ? `https://simplewebdesign.at${post.image}` : 'https://simplewebdesign.at/img/og-image.jpg',
       datePublished: post.date,
       dateModified: post.date,
       author: post.author,
@@ -121,6 +143,7 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
         { name: post.title, url: blogUrl },
       ],
     }),
+    ...(articleFaq.length > 0 ? [faqSchema({ faqs: articleFaq })] : []),
   ];
 
   return (

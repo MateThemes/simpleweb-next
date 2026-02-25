@@ -271,7 +271,7 @@ export default function RedesignPage() {
               <ul className="mt-4 space-y-3 text-neutral-600 dark:text-neutral-300">
                 <li className="flex gap-3">
                   <CheckIcon className="h-5 w-5 text-purple-600 flex-shrink-0 mt-0.5" />
-                  <span><strong className="text-neutral-950 dark:text-white">Website bringt keine Anfragen:</strong> Die Seite läuft, aber Besucher werden nicht zu Kunden – oft fehlt Klarheit oder der nächste Schritt.</span>
+                  <span><strong className="text-neutral-950 dark:text-white"><Link href="/blog/website-bringt-keine-anfragen" className="text-purple-600 hover:text-purple-500 underline">Website bringt keine Anfragen</Link>:</strong> Die Seite läuft, aber Besucher werden nicht zu Kunden – oft fehlt Klarheit oder der nächste Schritt.</span>
                 </li>
                 <li className="flex gap-3">
                   <CheckIcon className="h-5 w-5 text-purple-600 flex-shrink-0 mt-0.5" />
