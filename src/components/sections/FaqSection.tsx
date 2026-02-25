@@ -66,13 +66,21 @@ export default function FaqSection() {
 
           <div className="mt-12 text-center">
             <p className="text-[var(--muted-foreground)]">
-              Weitere Fragen?{' '}
+              Unser Artikel{' '}
+              <Link
+                href="/blog/website-bringt-keine-anfragen"
+                className="font-medium text-[var(--primary)] underline underline-offset-2 hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2 rounded"
+              >
+                Warum deine Website keine Anfragen bekommt
+              </Link>
+              {' '}geht tiefer – oder{' '}
               <Link
                 href="/kontakt"
                 className="font-medium text-[var(--primary)] underline underline-offset-2 hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2 rounded"
               >
-                Schreib uns einfach
+                schreib uns einfach
               </Link>
+              .
             </p>
           </div>
         </div>

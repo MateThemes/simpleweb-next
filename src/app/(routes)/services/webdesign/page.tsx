@@ -306,7 +306,11 @@ export default function WebdesignPage() {
               <p className="mt-4 text-lg text-[var(--muted-foreground)] leading-relaxed">
                 Wir starten mit Einordnung: Was soll die Website leisten – und
                 für wen? Daraus entsteht eine klare Struktur, die Besucher
-                führt. Wenn sinnvoll, ergänzen wir{" "}
+                führt. Wenn deine Website keine Anfragen bringt, findest du{' '}
+                <Link href="/blog/website-bringt-keine-anfragen" className="text-[var(--primary)] underline underline-offset-2 hover:no-underline">
+                  hier die häufigsten Ursachen
+                </Link>
+                . Wenn sinnvoll, ergänzen wir{" "}
                 <a
                   href="/services/seo"
                   className="text-[var(--primary)] hover:underline"

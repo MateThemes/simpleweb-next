@@ -320,7 +320,11 @@ export default function SeoPage() {
               </h2>
               <p className="mt-4 text-lg text-[var(--muted-foreground)] leading-relaxed">
                 Ohne Klarheit bringen Plugins und Keywords wenig. SEO beginnt
-                nicht mit Tools – sondern mit Klarheit.
+                nicht mit Tools – sondern mit Klarheit. Warum viele Websites trotz Sichtbarkeit keine Anfragen bekommen:{' '}
+                <Link href="/blog/website-bringt-keine-anfragen" className="text-[var(--primary)] underline underline-offset-2 hover:no-underline">
+                  Website konvertiert nicht – Ursachen
+                </Link>
+                .
               </p>
             </div>
             <ul className="mx-auto mt-16 max-w-2xl space-y-4 text-[var(--muted-foreground)]">
