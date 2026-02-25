@@ -1,17 +1,17 @@
 import { Container } from '@/components/ui/Container'
 
-const testimonials = [
+const projectResults = [
   {
-    quote: 'Endlich klar, was auf die Startseite gehört – seitdem mehr Anfragen.',
-    attribution: 'KMU · Dienstleistung',
+    title: 'Klarer Nutzen auf den ersten Blick',
+    body: 'Startseite reduziert auf das Wesentliche. Besucher verstehen schneller, wofür ihr da seid – und was der nächste Schritt ist.',
   },
   {
-    quote: 'Nicht „mehr Text", sondern eine Struktur, die zu Terminen führt.',
-    attribution: 'Handwerk · lokal',
+    title: 'Struktur, die zu Anfragen führt',
+    body: 'Weniger erklären, mehr führen: Seitenlogik + klare CTAs. Ergebnis: mehr qualifizierte Kontaktanfragen.',
   },
   {
-    quote: 'Die Website wirkt ruhiger – und die Conversion ist spürbar besser.',
-    attribution: 'Unternehmen · Region',
+    title: 'Conversion statt nur Design',
+    body: 'Design folgt Strategie. Erfolg wird an Anfragen, Terminen oder Verkäufen gemessen – nicht an Features.',
   },
 ]
 
@@ -19,34 +19,40 @@ export default function Testimonials() {
   return (
     <section
       className="py-20 lg:py-24 bg-[var(--surface-2)]"
-      aria-labelledby="testimonials-heading"
+      aria-labelledby="project-results-heading"
     >
       <Container>
         <div className="max-w-[1280px] mx-auto">
-          <h2
-            id="testimonials-heading"
-            className="font-display text-3xl lg:text-4xl font-bold tracking-tight text-[var(--foreground)] max-w-[650px] mb-14 lg:mb-16"
-          >
-            Mehr Anfragen, klarere Startseite: was Kunden sagen
-          </h2>
+          <header className="max-w-[650px] mb-14 lg:mb-16">
+            <h2
+              id="project-results-heading"
+              className="font-display text-3xl lg:text-4xl font-bold tracking-tight text-[var(--foreground)] mb-4"
+            >
+              Mehr Anfragen durch klare Website-Struktur
+            </h2>
+            <p className="text-lg text-[var(--muted-foreground)] leading-relaxed">
+              Keine Floskeln – sondern wiederkehrende Ergebnisse aus Projekten
+              mit KMU in Österreich & Deutschland.
+            </p>
+          </header>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
-            {testimonials.map((testimonial, index) => (
-              <blockquote
+            {projectResults.map((item, index) => (
+              <article
                 key={index}
                 className="rounded-[var(--radius-2xl)] bg-[var(--surface)] p-8 lg:p-10 border border-[var(--border)] shadow-elev-1"
               >
-                <p className="font-display text-xl lg:text-2xl font-light text-[var(--foreground)] leading-snug mb-6">
-                  &ldquo;{testimonial.quote}&rdquo;
+                <h3 className="font-display text-lg lg:text-xl font-semibold tracking-tight text-[var(--foreground)] mb-4">
+                  {item.title}
+                </h3>
+                <p className="text-[var(--foreground)] text-[15px] lg:text-base leading-relaxed">
+                  {item.body}
                 </p>
-                <footer className="text-sm text-[var(--muted-foreground)]">
-                  {testimonial.attribution}
-                </footer>
-              </blockquote>
+              </article>
             ))}
           </div>
 
-          <p className="mt-14 pt-12 border-t border-[var(--border)] text-[var(--muted-foreground)] max-w-[650px]">
+          <p className="mt-12 pt-10 border-t border-[var(--border)] text-[13px] text-[var(--muted-foreground)]">
             Auf Wunsch senden wir Referenzen passend zu deiner Branche.
           </p>
         </div>
