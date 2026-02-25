@@ -5,7 +5,7 @@ import { notFound } from 'next/navigation'
 import { Container } from '@/components/ui/Container'
 import { BlogContent } from '@/components/blog/BlogContent'
 import { getPostBySlug } from '@/lib/mdx'
-import { formatDate } from '@/lib/utils'
+import { formatDate, getReadingTimeMinutes, getWordCount } from '@/lib/utils'
 import { Post } from '@/lib/types'
 import { articleSchema, breadcrumbSchema } from '@/app/schema'
 import { getBlogArticleDC } from '@/lib/dublinCore'
@@ -17,6 +17,9 @@ import { getBlogArticleDC } from '@/lib/dublinCore'
 //     slug: post.slug,
 //   }))
 // }
+
+/** Ensure each slug gets its own content (no shared cache across blog posts). */
+export const dynamic = 'force-dynamic';
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   // CHANGE: Next 15.3 sync dynamic APIs return Promise for params; await before using
@@ -93,6 +96,8 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
 
   const blogUrl = `https://simplewebdesign.at/blog/${slug}`;
   const categorySlug = post.category.toLowerCase();
+  const wordCount = getWordCount(post.content ?? '');
+  const readingTimeMin = getReadingTimeMinutes(post.content ?? '');
 
   // Schema.org Structured Data
   const schemas = [
@@ -106,6 +111,7 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
       author: post.author,
       url: blogUrl,
       category: post.category,
+      wordCount: wordCount > 0 ? wordCount : undefined,
     }),
     // Breadcrumb Schema
     breadcrumbSchema({
@@ -160,6 +166,9 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
                   >
                     {formatDate(post.date)}
                   </time>
+                  <span className="text-sm text-[var(--muted-foreground)]" aria-hidden>
+                    · {readingTimeMin} Min. Lesezeit
+                  </span>
                 </div>
 
                 <h1

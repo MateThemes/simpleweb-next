@@ -262,6 +262,7 @@ interface ArticleSchemaProps {
   author: string;
   url: string;
   category?: string;
+  wordCount?: number;
 }
 
 export function articleSchema({ 
@@ -272,7 +273,8 @@ export function articleSchema({
   dateModified, 
   author, 
   url,
-  category 
+  category,
+  wordCount
 }: ArticleSchemaProps) {
   return {
     "@context": "https://schema.org",
@@ -302,7 +304,8 @@ export function articleSchema({
     ...(category && {
       "articleSection": category,
       "keywords": category
-    })
+    }),
+    ...(wordCount != null && wordCount > 0 && { wordCount })
   };
 }
 
