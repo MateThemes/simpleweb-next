@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { Container } from '@/components/ui/Container'
 import { cn } from '@/lib/utils'
 
@@ -82,135 +83,22 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Right: abstract decision-architecture visual — contained, does not bleed left */}
+          {/* Right: hero image */}
           <div className="relative z-0 w-full overflow-hidden lg:col-span-6 xl:col-span-5 flex items-center justify-center min-h-[280px] sm:min-h-[320px] lg:min-h-0">
             <div
               className={cn(
-                'relative w-full max-w-[min(100%,22rem)] sm:max-w-md lg:max-w-none aspect-square rounded-[24px] p-8 lg:p-10',
-                'bg-[var(--surface-2)] dark:bg-[var(--surface)] border border-[var(--border)]',
-                'shadow-elev-2 dark:shadow-elev-3'
+                'relative w-full max-w-[min(100%,22rem)] sm:max-w-md lg:max-w-none aspect-square rounded-[24px] overflow-hidden',
+                'border border-[var(--border)] shadow-elev-2 dark:shadow-elev-3'
               )}
             >
-              {/* Subtle glow behind diagram — theme-aware (stärker in Light Mode für Sichtbarkeit) */}
-              <div
-                className="absolute inset-0 rounded-[24px] opacity-[0.22] dark:opacity-[0.25] pointer-events-none"
-                style={{
-                  background:
-                    'radial-gradient(ellipse 70% 60% at 50% 50%, var(--primary), transparent 70%)',
-                }}
-                aria-hidden
+              <Image
+                src="/img/hero-new-abstract.jpg"
+                alt="Webdesign für KMU – conversion-optimierte Websites in Österreich und Deutschland"
+                fill
+                sizes="(max-width: 640px) 22rem, (max-width: 1024px) 28rem, 50vw"
+                className="object-cover"
+                priority
               />
-
-              {/* Layered rectangles + connection lines (decision architecture) — currentColor for theme, Light Mode besser lesbar */}
-              <div className="relative w-full h-full flex items-center justify-center hero-visual-motion text-[var(--foreground)]">
-                <svg
-                  viewBox="0 0 280 280"
-                  fill="none"
-                  className="w-full h-full opacity-[0.2] dark:opacity-[0.12]"
-                  aria-hidden
-                >
-                  {/* Connection lines */}
-                  <path
-                    d="M70 80 L140 140 L210 80"
-                    stroke="currentColor"
-                    strokeWidth="0.75"
-                    strokeOpacity="0.4"
-                  />
-                  <path
-                    d="M70 200 L140 140 L210 200"
-                    stroke="currentColor"
-                    strokeWidth="0.75"
-                    strokeOpacity="0.25"
-                  />
-                  <path
-                    d="M140 60 L140 140"
-                    stroke="currentColor"
-                    strokeWidth="0.5"
-                    strokeOpacity="0.3"
-                  />
-                  <path
-                    d="M140 140 L140 220"
-                    stroke="currentColor"
-                    strokeWidth="0.5"
-                    strokeOpacity="0.2"
-                  />
-                  {/* Center node (decision) */}
-                  <rect
-                    x="110"
-                    y="115"
-                    width="60"
-                    height="50"
-                    rx="6"
-                    fill="currentColor"
-                    fillOpacity="0.06"
-                    stroke="currentColor"
-                    strokeOpacity="0.12"
-                    strokeWidth="0.75"
-                  />
-                  {/* Top layer */}
-                  <rect
-                    x="95"
-                    y="45"
-                    width="90"
-                    height="36"
-                    rx="4"
-                    fill="currentColor"
-                    fillOpacity="0.04"
-                    stroke="currentColor"
-                    strokeOpacity="0.08"
-                    strokeWidth="0.5"
-                  />
-                  {/* Side nodes */}
-                  <rect
-                    x="35"
-                    y="65"
-                    width="70"
-                    height="32"
-                    rx="4"
-                    fill="currentColor"
-                    fillOpacity="0.03"
-                    stroke="currentColor"
-                    strokeOpacity="0.06"
-                    strokeWidth="0.5"
-                  />
-                  <rect
-                    x="175"
-                    y="65"
-                    width="70"
-                    height="32"
-                    rx="4"
-                    fill="currentColor"
-                    fillOpacity="0.03"
-                    stroke="currentColor"
-                    strokeOpacity="0.06"
-                    strokeWidth="0.5"
-                  />
-                  <rect
-                    x="35"
-                    y="183"
-                    width="70"
-                    height="32"
-                    rx="4"
-                    fill="currentColor"
-                    fillOpacity="0.02"
-                    stroke="currentColor"
-                    strokeOpacity="0.05"
-                    strokeWidth="0.5"
-                  />
-                  <rect
-                    x="175"
-                    y="183"
-                    width="70"
-                    height="32"
-                    rx="4"
-                    fill="currentColor"
-                    fillOpacity="0.02"
-                    stroke="currentColor"
-                    strokeOpacity="0.05"
-                    strokeWidth="0.5"
-                  />
-                </svg>
-              </div>
             </div>
           </div>
         </div>
