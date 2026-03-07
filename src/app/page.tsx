@@ -6,6 +6,7 @@ import Outcomes from '@/components/sections/Outcomes'
 import ProcessSteps from '@/components/sections/ProcessSteps'
 import FitChecklist from '@/components/sections/FitChecklist'
 import Testimonials from '@/components/sections/Testimonials'
+import ProjectTestimonial from '@/components/sections/ProjectTestimonial'
 import FinalCta from '@/components/sections/FinalCta'
 import FaqSection from '@/components/sections/FaqSection'
 import { getWebPageDC } from '@/lib/dublinCore'
@@ -167,6 +168,7 @@ export default function Home() {
         <ProcessSteps />
         <FitChecklist />
         <Testimonials />
+        <ProjectTestimonial />
         <FinalCta />
         <FaqSection />
       </div>

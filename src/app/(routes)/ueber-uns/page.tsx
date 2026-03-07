@@ -309,7 +309,7 @@ export default function AboutPage() {
                 Wie die Zusammenarbeit abläuft
               </h2>
               <div className="space-y-0">
-                {phases.map((phase, index) => (
+                {phases.map((phase) => (
                   <div
                     key={phase.number}
                     className="py-12 lg:py-14 border-b border-[var(--border)] last:border-b-0 first:pt-0"

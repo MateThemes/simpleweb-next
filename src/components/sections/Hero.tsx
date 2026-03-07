@@ -56,6 +56,9 @@ export default function Hero() {
                 <p className="text-sm text-[var(--muted-foreground)] mt-2">
                   Unverbindlich. Ohne Verkaufsdruck.
                 </p>
+                <p className="text-xs text-[var(--muted-foreground)] mt-1">
+                  Besonders sinnvoll, wenn deine Website zu wenig Anfragen bringt.
+                </p>
               </div>
               <Link
                 href="/seo-audit"
