@@ -36,7 +36,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     'prozess',
     'ueber-uns',
     'seo-audit',
-    'ki-automatisierung'
+    'ki-automatisierung',
+    'website-bringt-keine-anfragen'
   ]
 
   // Generate main page entries
