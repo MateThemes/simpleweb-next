@@ -52,36 +52,48 @@ export default function HomeFaq() {
             </p>
           </div>
           
-          <div className="space-y-4">
-            {faqs.map((faq, index) => (
-              <div
-                key={index}
-                className="border border-neutral-200 dark:border-neutral-800 rounded-lg overflow-hidden bg-neutral-50 dark:bg-neutral-900"
-              >
-                <button
-                  onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                  className="w-full flex items-center justify-between p-6 text-left hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
-                  aria-expanded={openIndex === index}
-                >
-                  <span className="font-semibold text-neutral-950 dark:text-white pr-4">
-                    {faq.question}
-                  </span>
-                  <ChevronDownIcon
-                    className={`h-5 w-5 text-neutral-500 flex-shrink-0 transition-transform ${
-                      openIndex === index ? 'transform rotate-180' : ''
-                    }`}
-                  />
-                </button>
-                {openIndex === index && (
-                  <div className="px-6 pb-6">
-                    <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed">
-                      {faq.answer}
-                    </p>
+          <ul className="space-y-4 list-none p-0 m-0">
+            {faqs.map((faq, index) => {
+              const contentId = `home-faq-content-${index}`
+              const buttonId = `home-faq-question-${index}`
+              const isOpen = openIndex === index
+              return (
+                <li key={index}>
+                  <div className="border border-neutral-200 dark:border-neutral-800 rounded-lg overflow-hidden bg-neutral-50 dark:bg-neutral-900">
+                    <button
+                      type="button"
+                      id={buttonId}
+                      onClick={() => setOpenIndex(isOpen ? null : index)}
+                      className="w-full flex items-center justify-between p-6 text-left hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+                      aria-expanded={isOpen}
+                      aria-controls={contentId}
+                    >
+                      <span className="font-semibold text-neutral-950 dark:text-white pr-4">
+                        {faq.question}
+                      </span>
+                      <ChevronDownIcon
+                        className={`h-5 w-5 text-neutral-500 flex-shrink-0 transition-transform ${
+                          isOpen ? 'transform rotate-180' : ''
+                        }`}
+                        aria-hidden
+                      />
+                    </button>
+                    <div
+                      id={contentId}
+                      role="region"
+                      aria-labelledby={buttonId}
+                      hidden={!isOpen}
+                      className={isOpen ? 'px-6 pb-6' : undefined}
+                    >
+                      <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed">
+                        {faq.answer}
+                      </p>
+                    </div>
                   </div>
-                )}
-              </div>
-            ))}
-          </div>
+                </li>
+              )
+            })}
+          </ul>
 
           <div className="mt-10 text-center">
             <p className="text-neutral-600 dark:text-neutral-400">
