@@ -31,7 +31,7 @@ export default function ProjectTestimonial() {
                 cite="https://www.google.com/"
               >
                 <p className="text-xl lg:text-[1.25rem] text-[var(--foreground)] leading-relaxed mb-6">
-                  „Sehr zu empfehlen !"
+                  „Sehr zu empfehlen !{"\""}
                 </p>
                 <footer className="border-t border-[var(--border)] pt-5 mt-auto">
                   <p className="text-[var(--foreground)] font-medium">
