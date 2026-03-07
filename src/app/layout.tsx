@@ -1,4 +1,5 @@
 import { Inter, Outfit } from 'next/font/google'
+import Script from 'next/script'
 import { ThemeProvider } from "next-themes";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -95,23 +96,6 @@ export default function RootLayout({
       <head>
         {/* Google Site Verification */}
         <meta name="google-site-verification" content="DF5fLBHgCmP3fGWh_C86kV5DWFzFRBwm2xZadx2om9k" />
-        
-        {/* Consent Mode 2 Default Initialization */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('consent', 'default', {
-                'analytics_storage': 'denied',
-                'ad_storage': 'denied',
-                'ad_user_data': 'denied',
-                'ad_personalization': 'denied',
-                'wait_for_update': 2000
-              });
-            `,
-          }}
-        />
       </head>
       <body className="flex min-h-screen flex-col">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
@@ -125,6 +109,23 @@ export default function RootLayout({
           <Footer />
           <CookieConsent />
           <CookieSettingsButton />
+          <Script
+            id="gtm-consent-default"
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{
+              __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('consent', 'default', {
+                  'analytics_storage': 'denied',
+                  'ad_storage': 'denied',
+                  'ad_user_data': 'denied',
+                  'ad_personalization': 'denied',
+                  'wait_for_update': 2000
+                });
+              `,
+            }}
+          />
           <GoogleTagManager />
           <Analytics />
         </ThemeProvider>

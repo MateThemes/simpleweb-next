@@ -2,8 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { CookiePreferences } from './CookiePreferences'
-
-export const OPEN_COOKIE_SETTINGS_EVENT = 'openCookieSettings'
+import { OPEN_COOKIE_SETTINGS_EVENT } from './constants'
 
 export function CookieSettingsButton() {
   const [showPreferences, setShowPreferences] = useState(false)
