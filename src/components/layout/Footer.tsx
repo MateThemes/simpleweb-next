@@ -1,16 +1,8 @@
-'use client'
-
 import Link from 'next/link'
-import { OPEN_COOKIE_SETTINGS_EVENT } from '@/components/cookie/CookieSettingsButton'
+import { FooterCookieButton } from './FooterCookieButton'
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
-
-  const openCookieSettings = () => {
-    if (typeof window !== 'undefined') {
-      window.dispatchEvent(new CustomEvent(OPEN_COOKIE_SETTINGS_EVENT))
-    }
-  }
 
   return (
     <footer className="relative border-t border-[var(--border)] bg-[var(--surface)] not-prose">
@@ -38,13 +30,7 @@ export function Footer() {
             >
               AGB
             </Link>
-            <button
-              type="button"
-              onClick={openCookieSettings}
-              className="text-sm text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors duration-[var(--duration-normal)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--ring-offset)] rounded"
-            >
-              Cookie-Einstellungen
-            </button>
+            <FooterCookieButton />
           </nav>
         </div>
       </div>

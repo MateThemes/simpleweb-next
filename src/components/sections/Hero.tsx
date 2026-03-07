@@ -9,7 +9,7 @@ export default function Hero() {
   return (
     <section
       className={cn(
-        'relative pt-24 sm:pt-28 lg:pt-32 pb-24 lg:pb-32',
+        'relative min-h-[640px] sm:min-h-[680px] pt-24 sm:pt-28 lg:pt-32 pb-24 lg:pb-32',
         'bg-[var(--background)] dark:bg-[var(--surface-2)]'
       )}
       aria-labelledby="hero-heading"
@@ -36,22 +36,27 @@ export default function Hero() {
               Strukturierte, conversion-optimierte Websites, die mehr Anfragen und Termine bringen.
             </p>
 
-            <p className="text-xs uppercase tracking-[0.2em] text-[var(--muted-foreground)] font-medium opacity-80">
+            <p className="text-xs uppercase tracking-[0.2em] text-zinc-600 dark:text-zinc-300 font-medium">
               Klarheit · Struktur · Conversion
             </p>
 
             <div className="flex flex-col sm:flex-row sm:items-center gap-4 pt-2 flex-wrap">
-              <Link
-                href="/kontakt"
-                className={cn(
-                  'inline-flex items-center justify-center gap-2 h-[52px] px-6 rounded-xl font-semibold text-base',
-                  'bg-[var(--primary)] text-[var(--primary-foreground)]',
-                  'hover:opacity-95 transition-opacity duration-150',
-                  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--ring-offset)]'
-                )}
-              >
-                Kostenloses Strategiegespräch
-              </Link>
+              <div>
+                <Link
+                  href="/kontakt"
+                  className={cn(
+                    'inline-flex items-center justify-center gap-2 h-[52px] px-6 rounded-xl font-semibold text-base',
+                    'bg-[var(--primary)] text-[var(--primary-foreground)]',
+                    'hover:opacity-95 transition-opacity duration-150',
+                    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--ring-offset)]'
+                  )}
+                >
+                  Kostenloses Strategiegespräch anfragen
+                </Link>
+                <p className="text-sm text-[var(--muted-foreground)] mt-2">
+                  Unverbindlich. Ohne Verkaufsdruck.
+                </p>
+              </div>
               <Link
                 href="/seo-audit"
                 className={cn(
@@ -61,29 +66,28 @@ export default function Hero() {
                   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--ring-offset)]'
                 )}
               >
-                Website-Analyse anfordern
+                Kostenlose Website-Analyse anfordern
               </Link>
             </div>
 
-            <div
-              className="flex flex-wrap items-center gap-x-2 gap-y-1 pt-2 text-[var(--muted-foreground)] text-sm tracking-wide"
-              role="list"
+            <ul
+              className="flex flex-wrap items-center gap-x-2 gap-y-1 pt-2 text-[var(--muted-foreground)] text-sm tracking-wide list-none p-0 m-0"
               aria-label="Erfahrung und Reichweite"
             >
               {trustItems.map((item, i) => (
-                <span key={i} className="inline-flex items-center" role="listitem">
+                <li key={i} className="inline-flex items-center">
                   <span className="uppercase tracking-wider font-medium opacity-90">{item}</span>
                   {i < trustItems.length - 1 && (
                     <span className="mx-2 opacity-50" aria-hidden>
                       ·
                     </span>
                   )}
-                </span>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
 
-          {/* Right: hero image */}
+          {/* Right: hero image — aspect-square reserves space to prevent CLS */}
           <div className="relative z-0 w-full overflow-hidden lg:col-span-6 xl:col-span-5 flex items-center justify-center min-h-[280px] sm:min-h-[320px] lg:min-h-0">
             <div
               className={cn(
@@ -95,9 +99,11 @@ export default function Hero() {
                 src="/img/hero-new-abstract.jpg"
                 alt="Webdesign für KMU – conversion-optimierte Websites in Österreich und Deutschland"
                 fill
-                sizes="(max-width: 640px) 22rem, (max-width: 1024px) 28rem, 50vw"
-                className="object-cover"
                 priority
+                fetchPriority="high"
+                quality={75}
+                sizes="(max-width: 640px) 22rem, (max-width: 1024px) 28rem, 449px"
+                className="object-cover"
               />
             </div>
           </div>

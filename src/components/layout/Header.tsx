@@ -165,6 +165,14 @@ export function Header() {
         isScrollingDown ? '-translate-y-full' : ''
       } bg-[var(--surface)]/95 dark:bg-[var(--surface)]/90 border-b border-[var(--border)] backdrop-blur-md supports-[backdrop-filter]:bg-[var(--surface)]/80`}
     >
+      <style dangerouslySetInnerHTML={{ __html: `
+        @keyframes mobile-menu-backdrop-in{from{opacity:0}to{opacity:1}}
+        @keyframes mobile-menu-panel-in{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+        @media (prefers-reduced-motion: no-preference){
+          .mobile-menu-backdrop-in{animation:mobile-menu-backdrop-in 180ms var(--ease-out) forwards}
+          .mobile-menu-panel-in{animation:mobile-menu-panel-in 200ms var(--ease-out) forwards}
+        }
+      ` }} />
       <nav className="mx-auto flex max-w-7xl items-center justify-between p-4 lg:px-8" aria-label="Hauptnavigation">
         {/* Mobile menu button */}
         <div className="flex xl:hidden">

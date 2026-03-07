@@ -28,7 +28,6 @@ export function AccordionItem({
 
   return (
     <div className="border-b border-[var(--border)] last:border-b-0">
-      <h3 className="sr-only">{question}</h3>
       <button
         type="button"
         id={id}
@@ -53,13 +52,13 @@ export function AccordionItem({
       </button>
       <div
         id={contentId}
+        role="region"
+        aria-labelledby={id}
         className={cn(
           'overflow-hidden transition-all duration-200 ease-[var(--ease-out)]',
           isOpen ? 'max-h-[1000px] pb-6' : 'max-h-0'
         )}
         aria-hidden={!isOpen}
-        role="region"
-        aria-labelledby={id}
       >
         <p className="text-[var(--muted-foreground)] leading-relaxed px-1 pb-2">
           {answer}
@@ -71,16 +70,17 @@ export function AccordionItem({
 
 export function Accordion({ items, className }: AccordionProps) {
   return (
-    <div className={cn('space-y-0', className)} role="list">
+    <ul className={cn('space-y-0 list-none p-0 m-0', className)}>
       {items.map((item, index) => (
-        <AccordionItem
-          key={index}
-          question={item.question}
-          answer={item.answer}
-          defaultOpen={item.defaultOpen}
-          id={`faq-item-${index}`}
-        />
+        <li key={index}>
+          <AccordionItem
+            question={item.question}
+            answer={item.answer}
+            defaultOpen={item.defaultOpen}
+            id={`faq-item-${index}`}
+          />
+        </li>
       ))}
-    </div>
+    </ul>
   )
 }

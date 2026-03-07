@@ -1,5 +1,3 @@
-'use client'
-
 import { Container } from '../ui/Container'
 import Link from 'next/link'
 import { ArrowRightIcon, PhoneIcon, CheckCircleIcon, ClockIcon, UsersIcon } from '@heroicons/react/24/outline'
