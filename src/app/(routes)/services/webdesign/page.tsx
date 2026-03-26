@@ -7,9 +7,9 @@ import { PriceCard } from '@/components/ui/PriceCard'
 import { breadcrumbSchema, webPageSchema, servicePageSchema } from '@/app/schema'
 import { getServicePageDC } from '@/lib/dublinCore'
 
-const PAGE_TITLE = 'Webdesign für KMU in Österreich & Deutschland | Strategische Websites'
+const PAGE_TITLE = 'Webdesign für KMU in AT & DE | Strategische Websites'
 const PAGE_DESCRIPTION =
-  'Webdesign für KMU in Österreich & Deutschland: Wir entwickeln strategische Websites mit klarer Struktur und messbarer Wirkung – für mehr Anfragen, Termine und Verkäufe. Kostenlose Einordnung.'
+  'Webdesign für KMU in Österreich & Deutschland: Wir entwickeln Websites mit klarer Struktur und messbarer Wirkung für mehr Anfragen, Termine und Verkäufe.'
 
 export const metadata: Metadata = {
   title: PAGE_TITLE,
