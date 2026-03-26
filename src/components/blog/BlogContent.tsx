@@ -68,6 +68,13 @@ export function BlogContent({
   // marked returns string synchronously when used with setOptions
   const htmlContent = marked(content) as string
   const $ = cheerio.load(htmlContent, { xml: { decodeEntities: false } })
+
+  // Keep a single page-level H1 (the article title in the hero).
+  // Any H1 inside markdown content is demoted to H2.
+  $('h1').each((_, element) => {
+    const $heading = $(element)
+    $heading.replaceWith(`<h2>${$heading.html() || ''}</h2>`)
+  })
   
   // Find all img tags and extract their attributes
   const imageElements: Array<{ src: string; alt?: string; width?: number; height?: number; placeholder: string }> = []
