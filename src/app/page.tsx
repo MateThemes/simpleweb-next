@@ -8,17 +8,10 @@ import FitChecklist from '@/components/sections/FitChecklist'
 import Testimonials from '@/components/sections/Testimonials'
 import ProjectTestimonial from '@/components/sections/ProjectTestimonial'
 import FinalCta from '@/components/sections/FinalCta'
-import FaqSection from '@/components/sections/FaqSection'
+import FaqSection, { faqData } from '@/components/sections/FaqSection'
 import { getWebPageDC } from '@/lib/dublinCore'
-
-const HOMEPAGE_FAQ_SCHEMA: Array<{ question: string; answer: string }> = [
-  { question: 'Warum bringt meine Website keine Anfragen?', answer: 'Oft fehlt Klarheit: Besucher verstehen nicht sofort, wofür du da bist. Eine conversion-optimierte Website gibt Orientierung und führt zu Anfragen oder Terminen – nicht nur Information.' },
-  { question: 'Was kostet eine Website erstellen lassen?', answer: 'Abhängig vom Umfang. Wir geben eine Einschätzung erst nach dem Kennenlernen deines Ziels – unverbindlich. Webdesign für KMU in Österreich und Deutschland.' },
-  { question: 'Wie lange dauert ein Website-Projekt oder Website Relaunch?', answer: 'In der Regel 3–8 Wochen. Wichtiger als Tempo: dass die Website am Ende mehr Anfragen oder Termine bringt.' },
-  { question: 'Arbeitet ihr nur vor Ort oder auch remote?', answer: 'Wir arbeiten mit KMU in Österreich (z.B. Niederösterreich) und Deutschland – remote ist Standard. Kein Standort-Nachteil.' },
-  { question: 'Website Optimierung oder kompletter Relaunch – was ist sinnvoll?', answer: 'Oft reicht eine strukturierte Website-Optimierung; manchmal ist ein Website Relaunch sinnvoller. Wir schauen uns deine Website an und sagen ehrlich, was mehr bringt.' },
-  { question: 'Was unterscheidet euch von einer klassischen Agentur?', answer: 'Wir starten mit Strategie und Einordnung: Was soll die Website leisten? Dann folgen Struktur und Umsetzung – für messbare Wirkung (mehr Anfragen, Termine).' },
-]
+import { JsonLd } from '@/components/seo/JsonLd'
+import { getHomePageJsonLdGraph, serializeJsonLd } from '@/lib/schema'
 
 const PAGE_TITLE = 'Webdesign für KMU in Österreich & Deutschland | Conversion-optimierte Websites'
 const PAGE_DESCRIPTION =
@@ -63,102 +56,17 @@ export const metadata: Metadata = {
   },
 }
 
-const UnifiedSchema = (faqData: Array<{ question: string; answer: string }>) => ({
-  '@context': 'https://schema.org',
-  '@graph': [
-    {
-      '@type': 'Organization',
-      '@id': 'https://simplewebdesign.at/#organization',
-      name: 'SimpleWebDesign',
-      description: 'Webdesign für KMU in Österreich und Deutschland – Website erstellen lassen, Website Relaunch und Website Optimierung. Conversion-optimierte Websites für mehr Anfragen und Termine.',
-      url: 'https://simplewebdesign.at',
-      logo: { '@type': 'ImageObject', url: 'https://simplewebdesign.at/img/logo.png' },
-      telephone: '+436645182696',
-      email: 'info@simplewebdesign.at',
-      address: {
-        '@type': 'PostalAddress',
-        streetAddress: 'Sonnleite 20',
-        addressLocality: 'Vitis',
-        postalCode: '3902',
-        addressRegion: 'Niederösterreich',
-        addressCountry: 'AT',
-      },
-      areaServed: [{ '@type': 'Country', name: 'Austria' }, { '@type': 'Country', name: 'Germany' }],
-      foundingDate: '2016',
-      numberOfEmployees: '1-10',
-    },
-    {
-      '@type': 'ProfessionalService',
-      '@id': 'https://simplewebdesign.at/#localbusiness',
-      name: 'SimpleWebDesign',
-      description: 'Webdesign für KMU in Österreich und Deutschland – Professionelle Websites mit Fokus auf Conversion, Struktur und messbare Wirkung.',
-      url: 'https://simplewebdesign.at',
-      telephone: '+436645182696',
-      email: 'info@simplewebdesign.at',
-      address: {
-        '@type': 'PostalAddress',
-        streetAddress: 'Sonnleite 20',
-        addressLocality: 'Vitis',
-        postalCode: '3902',
-        addressRegion: 'Niederösterreich',
-        addressCountry: 'AT',
-      },
-      parentOrganization: { '@id': 'https://simplewebdesign.at/#organization' },
-      areaServed: [{ '@type': 'Country', name: 'Austria' }, { '@type': 'Country', name: 'Germany' }],
-      hasOfferCatalog: {
-        '@type': 'OfferCatalog',
-        name: 'Webdesign Services für KMU',
-        itemListElement: [
-          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Responsive Webdesign', description: 'Moderne, responsive Websites für kleine und mittlere Unternehmen' } },
-          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'SEO-Optimierung', description: 'Suchmaschinenoptimierung für mehr Sichtbarkeit und organischen Traffic' } },
-          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'E-Commerce mit Shopify', description: 'Online-Shops für KMU mit Shopify und maßgeschneiderten E-Commerce-Lösungen' } },
-          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Website Redesign', description: 'Optimierung und Neugestaltung bestehender Websites für bessere Performance' } },
-        ],
-      },
-    },
-    {
-      '@type': 'WebSite',
-      '@id': 'https://simplewebdesign.at/#website',
-      name: 'SimpleWebDesign',
-      description: 'Webdesign für KMU in Österreich und Deutschland – conversion-optimierte Websites für mehr Anfragen und Termine.',
-      url: 'https://simplewebdesign.at',
-      publisher: { '@id': 'https://simplewebdesign.at/#organization' },
-    },
-    {
-      '@type': 'WebPage',
-      '@id': 'https://simplewebdesign.at/#webpage',
-      url: 'https://simplewebdesign.at',
-      name: 'Webdesign für KMU in Österreich & Deutschland',
-      description: 'Website erstellen lassen oder Website Optimierung: strukturierte, conversion-optimierte Websites für mehr Anfragen und Termine. Österreich & Deutschland.',
-      isPartOf: { '@id': 'https://simplewebdesign.at/#website' },
-      about: { '@id': 'https://simplewebdesign.at/#organization' },
-      publisher: { '@id': 'https://simplewebdesign.at/#organization' },
-      inLanguage: 'de-AT',
-      image: { '@type': 'ImageObject', url: 'https://simplewebdesign.at/img/og-image.jpg' },
-    },
-    {
-      '@type': 'BreadcrumbList',
-      '@id': 'https://simplewebdesign.at/#breadcrumb',
-      itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://simplewebdesign.at' }],
-    },
-    {
-      '@type': 'FAQPage',
-      '@id': 'https://simplewebdesign.at/#faq',
-      mainEntity: faqData.map((faq) => ({
-        '@type': 'Question',
-        name: faq.question,
-        acceptedAnswer: { '@type': 'Answer', text: faq.answer },
-      })),
-    },
-  ],
-})
-
 export default function Home() {
   return (
     <div>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(UnifiedSchema(HOMEPAGE_FAQ_SCHEMA)) }}
+      <JsonLd
+        json={serializeJsonLd(
+          getHomePageJsonLdGraph({
+            faqs: faqData,
+            webPageName: PAGE_TITLE,
+            webPageDescription: PAGE_DESCRIPTION,
+          })
+        )}
       />
       <div>
         <Hero />
