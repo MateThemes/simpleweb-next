@@ -393,7 +393,7 @@ export function Header() {
                           </p>
                         </div>
                       </div>
-                      {/* Shopify Experte */}
+                      {/* Shopify Agentur */}
                       <div className="group relative flex items-center gap-x-6 rounded-lg p-4 hover:bg-[var(--surface-2)]">
                         <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-[var(--radius-lg)] bg-[var(--surface-2)] group-hover:bg-[var(--surface-elevated)]">
                           <ServerIcon className="h-6 w-6 text-[var(--muted-foreground)] group-hover:text-[var(--primary)]green-600" aria-hidden="true" />
@@ -404,11 +404,11 @@ export function Header() {
                             className="font-display text-lg font-medium text-[var(--foreground)]"
                             onClick={() => setIsServicesOpen(false)}
                           >
-                            Shopify Experte
+                            Shopify Agentur
                             <span className="absolute inset-0" />
                           </Link>
                           <p className="mt-1 text-sm text-[var(--muted-foreground)]">
-                            Professionelle Shopify Agentur für E-Commerce
+                            Shopify Shops für KMU in Österreich
                           </p>
                         </div>
                       </div>
@@ -646,7 +646,7 @@ export function Header() {
                           onClick={() => setIsOpen(false)}
                         >
                           <ServerIcon className="h-5 w-5 shrink-0 text-[var(--primary)]" aria-hidden="true" />
-                          Shopify Experte
+                          Shopify Agentur
                         </Link>
                         <Link
                           href="/ki-automatisierung"
